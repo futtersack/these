@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  PROJECT: Thèse RFU
+%%
+%%  Created by Romain Futtersack on 20/01/11.
+%%  Copyright 2011 __UPS-CEA__. 
+%%  
+%%  All rights reserved.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Packages declarations
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Fonts declarations
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc} \usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{abstract}
+\usepackage[center,labelfont=bf]{caption}
+\usepackage{tocloft}
+\usepackage{indentfirst}
+
+\usepackage[margin=25mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Input macro file
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% Begin Document
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% 
+	%% MARK: Title & Data
+	%% 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{Modèle plasma froid magnétisé}
+\author{\small{R. Futtersack\textsuperscript{1,2},
+		P. Tamain\textsuperscript{1}, 
+		G. Hagelaar\textsuperscript{2}, 
+		Ph. Ghendrih\textsuperscript{1},}\\ 
+		\small{J.P. Boeuf\textsuperscript{2}, 
+		A. Simonin\textsuperscript{1}}\\
+		\scriptsize{\textit{\textsuperscript{1}CEA, IRFM, F-13108 St. Paul-lez-Durance, France}}\\
+		\scriptsize{\textit{\textsuperscript{2}Universite Paul Sabatier Toulouse - LAPLACE - 118 route de Narbonne, F-31062 Toulouse cedex 9}}}
+\date{}
+%%\maketitle
+
+\thispagestyle{empty}
+
+\newpage
+\section*{Modèle plasma froid / magnétisé}
+
+On commence avec l'équation du mouvement
+\begin{align}
+\label{eqMov}&-\vec{\nabla}p+qn\vec{E}+qn\vec{v}\wedge\vec{B}-\frac{1}{\mu}n\vec{v}=\vec{0}
+\end{align}
+où $p$ est la pression, $q$ la charge, $n$ la densité plasma, $E$ le champ électrique, $v$ la vitesse, $B$ le champ magnétique
+et $\mu=\frac{q}{m\nu}$ la mobilité, avec $\nu$ une fréquence d'ionisation / collision (?).
+\\
+En prenant successivement le produit vectoriel et produit scalaire de $\vec{b}$ avec (\ref{eqMov}) 
+pour obtenir les projections perpendiculaires et parallèles, on obtient :
+\begin{align}
+\label{eqMovCrossB}&-\vec{b}\wedge\vec{\nabla}p+qn\vec{b}\wedge\vec{E}+qn\vec{v}B+\frac{1}{\mu}n\vec{v}\wedge\vec{b}=\vec{0}\\
+\label{eqMovDotB}&-\vec{\nabla}_{\parallel}p+qn\vec{E}_{\parallel}-\frac{1}{\mu}n\vec{v}_{\parallel}=\vec{0}
+\end{align}
+\\
+Soit la fréquence cyclotronique $\omega_c=\frac{qB}{m}$, on peut définir le paramètre de Hall 
+$h=\mu B=\frac{\omega_c}{\nu}$. On élimine le terme en $\vec{v}\wedge\vec{B}$ par 
+(\ref{eqMov}) - $h$(\ref{eqMovCrossB}) + $h^2$(\ref{eqMovDotB}) :
+\begin{align}
+&-\vec{\nabla}p-h^2\vec{\nabla}_{\parallel}p+qn\left(\vec{E}+h^2\vec{E}_{\parallel}\right)+h\vec{b}\wedge\vec{\nabla}p\\
+&=\frac{1}{\mu}n\vec{v}\left(1+h^2)\right)\\
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
