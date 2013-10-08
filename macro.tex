@@ -1,0 +1,89 @@
+%%
+%%  MACROS FOR Th_se_RFU
+%%
+%%  Created by Romain Futtersack on 20/01/11.
+%%  Copyright 2011 __MyCompanyName__. All rights reserved.
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Page Display
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Packages declarations
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xcolor,graphicx}
+\usepackage{verbatim}
+\usepackage{enumerate}
+
+\usepackage{setspace}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{cite}
+\usepackage{mathptmx}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{multicol}
+\usepackage[center,labelfont=bf]{caption}
+\usepackage{tocloft}
+\usepackage{indentfirst}
+
+\usepackage[margin=25mm]{geometry}
+
+\usepackage{fancyhdr}
+
+\renewcommand{\chaptermark}[1]{\markboth{\bsc{\chaptername~\thechapter{} :} #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection{} #1}}
+\lhead[\null]{\textsl{\rightmark}}
+\rhead[\textsl{\leftmark}]{\null}
+\cfoot[\thepage]{\thepage}
+
+\renewcommand{\headrulewidth}{0.8pt}
+%\renewcommand{\headheight}{mesure}
+%\renewcommand{\headsep}{13pt}
+
+\fancypagestyle{plain}{ 
+	\fancyhead{} 
+	\cfoot[\null]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}}
+
+\newcommand{\clearemptydoublepage}{\thispagestyle{plain}\cleardoublepage\thispagestyle{plain}}
+
+
+%Une table des matiere par chapitre
+\usepackage[english]{minitoc}
+%ajoute la bibliographie dans la table des matieres
+\usepackage[none]{tocbibind}
+
+
+
+\parindent=1em
+\parskip 0.5em plus 1pt
+
+\newcommand{\Section}[1]{\newpage\section{#1} \setcounter{figure}{0}}
+\renewcommand{\thefigure}{\arabic{section}.\alph{figure}}
+
+\makeatletter
+\renewcommand{\fnum@figure}{\small \textsc{\figurename}~\thefigure\it}
+\renewcommand{\fnum@table}{\small \textsc{\tablename}~\thetable\it}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Theorem Environments
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\labelitemi}{$\bullet$}
+
+
+\newcommand{\artlabel}[1]{{\sc #1.}}
+
+\usepackage{lipsum}
+

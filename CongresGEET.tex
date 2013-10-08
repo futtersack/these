@@ -1,0 +1,209 @@
+% %This is a very basic article template.
+% %There is just one section and two subsections.
+\documentclass[a4paper,11pt]{article} % classe "article", papier a4 et police de
+% 11pt
+
+\usepackage[utf8]{inputenc} \usepackage[T1]{fontenc}
+\usepackage{cite}
+\usepackage{mathptmx}
+
+\usepackage{amsmath}
+\usepackage[frenchb]{babel}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[runin]{abstract}
+\usepackage[footnotesize,labelfont=bf,labelsep=period]{caption}
+\usepackage{tocloft}
+\usepackage{indentfirst}
+\usepackage{sectsty}
+\usepackage{calc}
+
+\usepackage[capposition=beside,capbesideposition=right]{floatrow}
+
+\usepackage[margin=1in]{geometry}
+
+
+\title{
+\vspace{-50pt}
+\textbf{\Large{Modélisation fluide du transport magnétisé dans un plasma froid}}}
+
+\author{\large{Romain FUTTERSACK}\\
+\large{\emph{LAPLACE - Université Paul Sabatier Toulouse}}\\
+\large{\emph{118 route de Narbonne, F-31062 Toulouse cedex 9}}}
+\date{}
+
+\begin{document}
+\maketitle
+\newcommand{\vecMath}[1]{\mathbf{#1}}
+\renewcommand{\abstractname}{Résumé}
+\abslabeldelim{:~}
+\renewcommand{\abstractnamefont}{\normalsize\textbf}
+\renewcommand{\abstracttextfont}{\small}
+
+\cftpagenumbersoff{figure}
+\renewcommand{\cftdotsep}{\cftnodots}
+\renewcommand{\cftfigpresnum}{\textbf{FIG.~}}
+\renewcommand{\cftfigaftersnum}{.}
+%\cftsetindents{figure}{0em}{6em}
+%\renewcommand{\cftbeforefigskip}{1em}
+
+
+%\setlength{\absparindent}{0cm}
+\setlength{\absparsep}{0cm}
+\setlength{\absleftindent}{1.27cm}
+\setlength{\absrightindent}{2.67cm}
+\sectionfont{\large\textbf}
+
+\begin{abstract}
+Nous proposons un nouveau modèle fluide pour étudier la problématique du transport magnétisé dans un plasma basse pression.
+Des simulations simplifiées sont analysées pour caractériser le transport dans différentes
+configurations de champ magnétique représentatives de cas expérimentaux. Dans le cas de la présence d'une barrière
+magnétique, le transport transverse montre une nature turbulente tandis qu'un champ magnétique homogène dans 
+le plan permet un confinement radial du plasma.
+\end{abstract}
+
+\begin{section}{Introduction}
+L'injection de neutres (NBI) est un système de chauffage, de génération de courant et d'alimentation pour
+les machines de Fusion par Confinement Magnétique (FCM). Ce type de système est basé sur l'accélération à haute énergie 
+d'un faisceau d'ions négatifs de Deutérium (D\up{-}) qui est ensuite neutralisé à travers une cible de gaz afin de 
+créer un puissant faisceau de neutres D\up{0}. Le système NBI du futur réacteur ITER devra fournir une puissance de 17MW
+avec des particules à 1MeV\cite{Hemsworth}. Pour atteindre ces spécifications, la source d'ions négatifs en amont du système 
+doit délivrer un courant d'ions négatifs de l'ordre de 250 A.m\up{-2} uniformément distribué sur une large surface 
+d'extraction ($\approx$ 0.8m\up{2}). 
+
+La production et le maintien d'une population d'ions négatifs sont cependant difficiles et nécessitent 
+l'utilisation d'un champ magnétique pour soit :
+\begin{enumerate}
+\item\emph{~Créer une barrière de transport électronique} 
+\item\emph{~Confiner le plasma de la source de façon homogène}. 
+\end{enumerate}
+Cependant, la présence de ce champ magnétique dans le plasma influence fortement le déplacement des particules, 
+développant d'une part de fortes inhomogénéités et favorisant d'autre part l'apparition d'instabilités pouvant 
+mener à un transport de type turbulent~\cite{Zweben}.
+
+Dans ce papier nous présentons les premières simulations obtenues à partir d'un nouveau modèle pour plasmas froids magnétisés. 
+Le papier est organisé de la façon suivante : dans la première partie, nous expliquons le modèle physique développé pour 
+l'étude du transport magnétisé dans les plasmas froids. Nous présentons ensuite des simulations de cas expérimentaux 
+avec leurs configurations spécifiques de champ magnétique et de chauffage, \emph{ie.} en configuration filtre magnétique
+dans la partie 2 et en configuration colonne de plasma confinée dans la partie 3. Finalement, une discussion des résultats
+sera abordée en quatrième partie.
+\end{section}
+\begin{section}{MAPL2D, un code fluide pour le transport magnétisé}
+Depuis quelques décennies, les plasmas basse pression sont couramment utilisés dans l'industrie et 
+la recherche pour une large variété d'applications (dépôts et nettoyage de surfaces, propulseurs plasma, source d'ions
+négatifs...). Conjointement avec les études expérimentales, le recours à la modélisation numérique est devenu essentiel
+pour caractériser et optimiser ces dispositifs ainsi que pour mieux comprendre la physique sous-jacente de la décharge.
+Le transport magnétisé est, quant à lui, un sujet qui a été et qui reste vastement étudié dans le contexte de la fusion 
+contrôlée. 
+
+MAPL2D a été conçu en réunissant l'approche usuelle de modélisation des plasmas froids et les hypothèses des plasmas 
+fortement magnétisés telles que la quasineutralité ou les conditions aux limites de gaine sur les flux de particules 
+et de courants dérivées du critère de Bohm. Nous conservons de plus les termes inertiels de l'équation du mouvement, 
+ce qui permet de rendre compte du courant de polarisation, bien connu dans la physique de bord des tokamaks pour contrôler 
+le transport transverse du potentiel électrostatique\cite{Sarazin} et qui donne lieu au mécanisme de turbulence 
+d'interchange.
+
+Nous commençons par dériver l'expression de la vitesse ionique à partir de l'équation du moment des ions :
+$${\vecMath{v}_i}^{k+1}=(\nu_i^*(1+{h_i}^2))^{-1}(\vecMath{W}-h_i\vecMath{b}\times\vecMath{W}+{h_i}^2\vecMath{b}\cdot\vecMath{W}\cdot\vecMath{b})$$
+avec 
+$\vecMath{W}={\vecMath{v}_i}^{k}/\Delta t-e/m_i(-\vecMath{\nabla\phi}-\vecMath{\nabla P}/n)$, 
+$\vecMath{b}$ le vecteur unitaire dans la direction du champ magnétique, $e/m_i$ le rapport charge sur masse ionique, 
+$-\vecMath{\nabla\phi}$ le champ électrostatique dérivant du potentiel électrique, $P=n(T_e+T_i)$ la pression totale,
+$\nu_i^*=\nu_i+\Delta t^{-1}$ la fréquence réduite de transfert de quantité de mouvement et $h_i=\frac{eB}{m_i\nu_i^*}$ 
+le paramètre de Hall réduit. 
+
+Le champ ambipolaire $\vecMath{E}_a$ et le courant $\vecMath{j}$ sont alors définis par :\\
+$\vecMath{E}_a=-\vecMath{\nabla\phi}-\vecMath{\nabla P}/n-(m_i/e)\partial_t\vecMath{v}_i-(m_i\nu_i+m_e\nu_e)/e\vecMath{v}_i$ et 
+$\vecMath{j}=(\nu_e^*(1+{h_e}^2))^{-1}(\vecMath{H}+h_e\vecMath{b}\times\vecMath{H}+{h_e}^2\vecMath{b}\cdot\vecMath{H}\cdot\vecMath{b})$
+avec $\vecMath{H}=e^2n(-\vecMath{\nabla\phi}-\vecMath{E}_a)/m_e+n^{k+1}\vecMath{j}/(n^k\Delta t)$.\\
+
+En utilisant ces définitions, on peut écrire l'équation de conservation de la matière :
+\begin{equation}
+\label{density}\partial_t n+\vecMath{\nabla}\cdot(n\vecMath{v}_i)=Sn
+\end{equation}
+tandis que l'équation de conservation du courant $\nabla\cdot(\vecMath{j})=0$ nous permet d'obtenir l'équation sur le 
+potentiel électrostatique $\phi$:
+\begin{equation}
+\label{current}\vecMath{\nabla}\cdot\left(-(\nu_e^*(1+{h_e}^2))^{-1}(\vecMath{\nabla\phi}+h_e\vecMath{b}\times\vecMath{\nabla\phi})\right)=
+\vecMath{\nabla}\cdot\left((\nu_e^*(1+{h_e}^2))^{-1}(\vecMath{G}+h_e\vecMath{b}\times\vecMath{G})\right)
+\end{equation}
+où $\vecMath{G}=e^2n\vecMath{E}_a/m_e-n^{k+1}\vecMath{j}/(n^k\Delta t)$. 
+$$\vecMath{\nabla}\cdot(-\frac{\vecMath{\nabla\phi}+h_e\vecMath{b}\times\vecMath{\nabla\phi}}{\nu_e^*(1+{h_e}^2)})=
+\vecMath{\nabla}\cdot(\frac{\vecMath{G}+h_e\vecMath{b}\times\vecMath{G}}{\nu_e^*(1+{h_e}^2)})$$
+Les équations (\ref{density}) et (\ref{current}) contrôlent l'évolution temporelle de la densité et du potentiel 
+électrostatique.
+\end{section}
+
+\begin{section}{Un transport anormal à travers la barrière magnétique}
+\begin{figure}
+\capbeside
+\begin{floatrow}[2]
+	\ffigbox[\hsize]
+	{\includegraphics[height=48mm,width=60mm]{figures/magneticBarrier.png}}{\caption{Carte de densité dans la configuration 'Barrière magnétique'.}\label{figMagneticBarrier}}
+	\hfill
+	\ffigbox[\hsize]
+	{\includegraphics[height=45mm,width=60mm]{figures/profileDensite.png}}{\caption{Profile axial moyen de densité avec et sans turbulence.}\label{figProfileDensite}}
+\end{floatrow}
+\end{figure}
+La première configuration de champ magnétique étudiée est utilisée dans le concept de source d'ions négatifs modulaire 
+retenu pour ITER. La source, de dimension 20~cm par 20~cm, est décomposée en trois régions : la zone driver-chambre 
+d'expansion où le plasma est généré et diffuse dans le volume ; la zone d'extraction, où les ions négatifs sont créés sur
+la paroi de césium puis extraits à travers une grille polarisée, se situe à de l'autre côté de la source ; enfin, 
+la problématique zone de filtre magnétique, utilisée pour diminuer la température électronique et ainsi réduire la 
+perte des ions négatifs par détachement collisionnel. La figure \ref{figMagneticBarrier} représente le plan médian du module, 
+perpendiculaire au champ magnétique. L'amplitude du champ magnétique suit une gaussienne centrée au milieu du domaine et de 
+2 cm de largeur, formant une barrière de transport pour les électrons (voir fig. \ref{figProfileDensite}). 
+Sur cette même figure, on peut voir que les résultats des simulations montrent un accord qualitatif avec les profils d'équilibre
+des modèles stationnaires. L'évolution du plasma est de plus cohérente avec de récents résultats obtenus à l'aide d'un modèle 
+PIC\cite{Boeuf} : Le flux électronique suit le courant diamagnétique $\vecMath{J}_{dia}=\frac{\nabla P\times\vecMath{B}}{B^2}$
+dû au gradient de pression, remontant le long de la barrière jusqu'à proximité de la paroi, où le fort champ électrique 
+généré par la gaine lui permet de traverser la barrière par la dérive $\vecMath{E}\times\vecMath{B}$, entraînant la forte
+inhomogénéité de densité près de la grille d'extraction. Sur la figure \ref{figMagneticBarrier}, on peut voir le développement
+d'une instabilité de même longueur d'onde et de même fréquence que celle observée avec le code PIC. Celle-ci 
+génère une dynamique de style avalanche, caractérisée par la relaxation du profil de densité et par de forts flux intermittents de 
+particules~\cite{Sarazin} laissant apparaître la nature turbulente du transport dans les plasmas magnétisés. 
+Le transport à travers la barrière magnétique est alors fortement amplifié.
+
+\end{section}
+
+\begin{section}{Confinement de la colonne de plasma dans un champ magnétique uniforme}
+La configuration précédente entraînant une forte inhomogénéité verticale du plasma au niveau de la zone d'extraction, 
+Cybele, un autre concept de source d'ions négatifs de forme rectangulaire et fine (15~cm x 20~cm x 1.2~m), est à 
+l'étude~\cite{Simonin}. Le plasma, généré au centre de la source, est créé directement dans un champ magnétique vertical uniforme confinant. 
+Dans le plan transverse au champ magnétique, la vitesse de dérive met le plasma en rotation, formant ainsi une longue 
+colonne de plasma homogène suivant l'axe vertical de la source. Dans cette géométrie, les simulations issues de MAPL2D 
+confortent la théorie sur l'évolution du plasma : une rotation a lieu dans le plan perpendiculaire au champ magnétique 
+et le plasma est bien confiné radialement. Les résultats du code seront bientôt confrontés aux mesures expérimentales et aux
+résultats du code PIC, sur les profils mesurés et sur les caractéristiques du transport turbulent.
+\end{section}
+
+\begin{section}{Conclusions} 
+Dans ce travail, nous avons présenté un nouveau modèle de plasma basse-pression magnétisé, basé sur l'approche 
+usuelle de modélisation des plasmas froids ainsi que sur l'adaptation de méthodes développées pour les plasmas de 
+bord des tokamaks. 
+
+Nous avons aussi testé MAPL2D sur deux géométries de champ magnétique représentatifs de dispositifs expérimentaux 
+et comparé les résultats des simulations avec un code PIC en trouvant un bon accord qualitatif. Dans la configuration 
+filtre magnétique, les profils d'équilibres de densité et de potentiel électrostatique sont similaires. Le transport
+à travers la barrière magnétique montre une nature turbulente avec des caractéristiques du même ordre de grandeur que
+celles obtenues avec le code PIC. Dans la configuration colonne de plasma, les premières simulations sont cohérentes avec
+les résultats théoriques attendus, en attendant d'être confrontés aux mesures expérimentales et aux autres modèles.
+\end{section}
+
+\section*{Remerciements}
+Ce travail, supporté par la Communauté Européenne par l'association entre EURATOM et le CEA, a été mené dans le contexte de 
+l'European Fusion Development Agreement et a été financièrement supporté par l'Agence Nationale de la Recherche (ANR) au sein
+des projets ITER-NIS (BLAN08-2\_310122) and METRIS (ANR-11-JS09-008). Les avis et opinions exprimées dans ce document ne 
+reflètent pas nécessairement ceux de la Commission européenne.
+
+\begin{thebibliography}{1}
+
+\bibitem{Hemsworth} R.S. Hemsworth et al, {\em Rev. Sci. Instrum 79} (2008), 02C109
+\bibitem{Zweben} S. J. Zweben et al, {\em Plasma Phys. Control. Fusion 49} (2007), S1
+\bibitem{Sarazin} Y. Sarazin, Ph. Ghendrih, {\em Phys. Plasma 5} (1998), 4214
+\bibitem{Boeuf} St. Kolev et al, {\em Plasma Sources Sci. Technol. 21} (2012), 025002
+\bibitem{Simonin} A. Simonin et al, {\em Nucl. Fusion 52} (2012), 063003
+
+\end{thebibliography}
+\end{document}

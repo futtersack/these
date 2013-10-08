@@ -1,0 +1,290 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  PROJECT: Thèse RFU
+%%
+%%  Created by Romain Futtersack on 20/01/11.
+%%  Copyright 2011 __UPS-CEA__. 
+%%  
+%%  All rights reserved.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Packages declarations
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{xcolor,graphicx}
+\usepackage{verbatim}
+
+\usepackage{amsmath,amsthm} 
+\usepackage{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Fonts declarations
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{eucal}
+\usepackage{setspace} 
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{placeins}
+\usepackage{hyperref}
+\usepackage[francais]{layout} 
+\usepackage{pstricks,pstricks-add,pst-math,pst-xkey}
+\usepackage[frenchb]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% MARK: Input macro file
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{Th_se_RFU-macro.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% Begin Document
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% 
+	%% MARK: Title & Data
+	%% 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	\renewcommand{\labelitemi}{$\bullet$}
+	\begin{titlepage}
+		\vspace*{-110pt}
+		%\hspace*{-20pt}\includegraphics[height = 100pt]{irfm}\hfill\includegraphics[height = 100pt]{ecp}\hspace*{-20pt}
+		\vspace*{150pt}
+		\hrule
+		\begin{center}
+			\textsc{\textbf{
+			\begin{spacing}{0.9}
+				\Huge Modélisation du transport des électrons à travers 
+					une barrière magnétique dans un plasma froid
+			\end{spacing}}
+			\large Romain Futtersack}
+			\normalsize\today
+		\end{center}
+		\hrule
+		\vfill
+		
+		\hspace*{-40pt}
+		\begin{minipage}{200pt}\begin{flushleft}
+			\emph{Tutrice : Mireille Schneider}
+			
+			CEA/DSM/IRFM/SCCP/GSEM
+			
+			CEA Cadarache
+			
+			13108 St Paul Lez Durance Cedex
+			
+			France
+			
+			+33.442.25.62.15
+		\end{flushleft}
+		\end{minipage}
+		\begin{minipage}{240pt}\begin{flushright}
+			\emph{Suiveur : Florian DeVuyst}
+			
+			Ecole Centrale Paris - LMAS
+			
+			Grandes voies des Vignes
+			
+			92295 Châtenay-Malabry Cedex
+			
+			France
+			
+			+33.141.13.17.19
+		\end{flushright}
+		\end{minipage}
+		\vspace{-80pt}
+	\end{titlepage}
+	\newpage
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% 
+	%% MARK: Abstract
+	%% 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\thispagestyle{empty} 
+	~\newpage
+	\setcounter{page}{1}
+	\pagenumbering{roman}
+	\vspace*{-110pt}
+	\renewcommand{\abstractname}{Abstract}
+	\begin{abstract}
+		
+	\end{abstract}
+	\vfill
+	\renewcommand{\abstractname}{Résumé}
+	\begin{abstract}
+		Dans le bord d'un plasma de tokamak (Scrape Of Layer) 
+		ou dans la chambre d'expansion d'une source d'ions négatifs,
+		le transport des particules est régit par la physique des
+		lignes de champ ouvertes et par la théorie de gaine.
+		Ce travail vise à étudier ce transport à l'aide d'un code 
+		de simulation 3D.
+	\end{abstract}
+	\vfill
+	\newpage
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% 
+	%% MARK: Acknowledgement
+	%% 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\thispagestyle{empty}
+	~\newpage
+	\setcounter{page}{2}
+	\vfill
+	\vspace*{20pt}
+	\section*{\center Remerciements}
+	
+	~\\
+	\vfill
+	\newpage
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% 
+	%% MARK: Table of contents
+	%% 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\thispagestyle{empty} 
+	~\newpage
+	\tableofcontents
+	\thispagestyle{empty} 
+	\setcounter{page}{0}
+	\newpage
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% 
+	%% MARK: Introduction
+	%% 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{arabic}
+	\section*{Introduction}
+	
+	\begin{header}
+		Some header text.    
+	\end{header}	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% 
+	%% MARK: The sections
+	%% 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
+	
+\section{Physique de la turbulence de bord}
+\subsection{Moments cinetiques}
+Equation cinetique de Vlasov 
+$$\partial_t f_s
++\vec{v}_s\cdot\nabla_{\vec{r}}f_s+\frac{\vec{F}_s}{m_s}\cdot\nabla_{\vec{v}}f_s=\partial_tf{|_{coll}}$$
+Comme $\nabla_{\vec{v}}\cdot\vec{F}_s=0$ on peut l'ecrire sous sa forme
+conservative :
+$$\partial_t f_s
++\nabla_{\vec{r}}\left(f_s\vec{v}_s\right)+\nabla_{\vec{v}}\left(\frac{\vec{F}_s}{m_s}f_s\right)=C$$
+\subsubsection{Equation de conservation de la matiere}
+$$\partial_t\int_v f_s d^3v
++\int_v\vec{v}_s\cdot\nabla_{\vec{r}}f_sd^3v+\int_v\frac{\vec{F}_s}{m_s}\cdot\nabla_{\vec{v}}f_sd^3v=\int_vCd^3v$$
+
+
+$$L_\perp\gg \rho^i_{l}$$
+$$\epsilon\equiv\frac{\omega}{\omega_{ci}}\ll 1$$
+$$\partial_tn+\nabla\left(n\vec{u}\right)=0$$
+$$nm\left(\partial_t\vec{u}+\vec{u}\cdot\nabla\vec{u}\right)=nq\left(\vec{E}+\vec{u}\times\vec{B}\right)-\nabla
+P$$
+$$nm\left(\partial_t\vec{u}_\perp+\vec{u}_\perp\cdot\nabla\vec{u}\right)=nq\left(\vec{E}_\perp+\vec{u}_\perp\times\vec{B}\right)-\nabla_\perp
+P$$
+$$\vec{u}^{(1)}_\perp\times\vec{B}=\frac{1}{nq}\nabla_\perp P-\vec{E}_\perp$$
+
+$$\vec{u}_E=\frac{\vec{B}\times\nabla_\perp U}{B^2}$$
+$$\vec{u}_{dia}=\frac{\vec{B}\times\nabla_\perp P}{nqB^2}$$
+$$\vec{u}^{(2)}_\perp=\vec{u}_{pol}=-\frac{m}{qB^2}\left(\frac{d\nabla_\perp U}{dt}\right)_\perp$$
+
+$$\partial_tn+\nabla_\perp\left(n\vec{u}_\perp\right)+\nabla_\parallel\left(n\vec{u}_\parallel\right)=0$$
+$$n\nabla_\perp\vec{u}_E=nB\left[\frac{1}{B^2},U\right]$$
+$$\vec{u}_E\nabla_\perp n=\frac{\vec{B}\times\nabla_\perp
+U}{B^2}\nabla_\perp\left(n\right)=\vec{B}\frac{\nabla_\perp
+U\times\nabla_\perp n}{B^2}=\frac{1}{B}\left[U,n\right]$$
+$$\nabla_\perp\left(n\vec{u}_{dia}\right)=\nabla_\perp\frac{\vec{B}\times\nabla_\perp
+P}{qB^2}=\frac{1}{q}B\left[P,\frac{1}{B^2}\right]=\frac{1}{q}BT\left[n,\frac{1}{B^2}\right]$$
+$$\nabla_\parallel\left(n\vec{u}_\parallel\right)=B\nabla_\parallel\frac{j^e_\parallel}{B}=\sigma_\parallel
+N \exp\left(\Lambda-\Phi\right)$$
+$$\nabla_\perp B \ll \nabla_\perp n $$
+$$\partial_tN+\nabla_\perp\left(N \vec{u}_E\right)=\sigma_\parallel N \exp\left(\Lambda-\Phi\right)+D\nabla^2_\perp N +S$$
+$$\partial_tN+\left[\Phi,N\right]=-\sigma_\parallel N e^{\Lambda-\Phi}+D\nabla^2_\perp N +S_N$$
+$$\partial_tN+\frac{1}{B}\left[\Phi,N\right]+NB\left[\Phi,\frac{1}{B^2}\right]-B\left[NT_e,\frac{1}{B^2}\right]=\sigma_\parallel N \exp\left(\Lambda-\Phi\right)+D\nabla^2_\perp N +S$$
+
+$$\partial_t\left(n_i-n_e\right)+\nabla\left(n_i\vec{u}_i-n_e\vec{u}_e\right)=e\partial_t\left(n_i-n_e\right)+\nabla\left(\vec{j}\right)=0 $$
+$$\nabla\left(\vec{j}_{dia}+\vec{j}_{pol}+\vec{j}_\parallel\right)=\nabla_\perp\left(en\left(\vec{u}^{~dia}_i-\vec{u}^{~dia}_e+\vec{u}^{~pol}_i\right)\right)+\nabla_\parallel\left(j_\parallel\right)=0$$
+$$\nabla_\perp\left(en\left(\vec{u}^{~dia}_i-\vec{u}^{~dia}_e\right)\right)=B\left[P_e+P_i,\frac{1}{B^2}\right]=B\left(T_i+T_e\right)\left[n,\frac{1}{B^2}\right]$$
+$$\left[N,\frac{1}{B^2}\right]=g\partial_yN$$
+$$\nabla_\perp\left(qn\vec{u}^{~pol}_i\right)=-\nabla_\perp\left(n\frac{m_i}{B^2}\left(\frac{d\nabla_\perp U}{dt}\right)_\perp\right)$$
+$$\left(\frac{d\nabla_\perp U}{dt}\right)_\perp\cong\left(\partial_t-\nu\nabla^2_\perp+\left(\vec{u}_E+\vec{u}_{dia}\right)\nabla_\perp\right)\nabla_\perp U $$
+$$\nabla_\perp\left(qn\vec{u}^{~pol}_i\right)=-\nabla_\perp\left(n\frac{m_i}{B^2}\left(\partial_t-\nu\nabla^2_\perp+\frac{1}{B}\left[U,\cdot\right]+\frac{T_i}{qnB}\left[n,\cdot\right]\right)\nabla_\perp U\right) $$
+$$\partial_t\nabla^2_\perp \Phi+\left[\Phi,\nabla^2_\perp \Phi\right]=\sigma_\parallel\left(1-\exp\left(\Lambda-\Phi\right)\right)-\frac{g}{N}\partial_yN+\nu\nabla^4_\perp \Phi$$
+$$\partial_t\nabla^2_\perp \Phi+\left[\Phi,\nabla^2_\perp \Phi\right]-\frac{B^3}{N}\left[NT_e,\frac{1}{B^2}\right]=\sigma_\parallel\left(1-\exp\left(\Lambda-\Phi\right)\right)-\nu\nabla^4_\perp \Phi$$
+
+
+$$\partial_tN+\nabla\left(\vec{v_\perp}N\right)=-\sigma_\parallel N\sqrt{T_e} e^{\Lambda-\frac{\Phi}{T_e}}+D\nabla^2_\perp N +S_N$$
+$$\partial_t\nabla^2_\perp \Phi+\nabla\left(\vec{v_\perp}\nabla^2_\perp \Phi\right)=\sigma_\parallel \sqrt{T_e}\left(1-e^{\Lambda-\frac{\Phi}{T_e}}\right)-\nu\nabla^4_\perp \Phi$$
+$$\frac{3}{2}\partial_tP_e+\frac{3}{2}\nabla\cdot\left(\vec{v_\perp}P_e\right)+P_e\nabla\cdot\vec{v_\perp}=-\sigma_\parallel P_e\sqrt{T_e} e^{\Lambda-\frac{\Phi}{T_e}}+\chi_e\nabla^2P_e+S_{T_e}$$
+
+
+$$\partial_tN+\frac{1}{B}\left[\Phi,N\right]+NB\left[\Phi,\frac{1}{B^2}\right]-B\left[N,\frac{1}{B^2}\right]=-\sigma_\parallel N e^{\Lambda-\Phi}+D\nabla^2_\perp N+S_N$$
+$$\partial_t\nabla^2_\perp \Phi+\frac{1}{B}\left[\Phi,\nabla^2_\perp \Phi\right]-\frac{B^3}{N}\left[N,\frac{1}{B^2}\right]=\sigma_\parallel\left(1-e^{\Lambda-\Phi}\right)+\nu\nabla^4_\perp \Phi$$
+
+$$\partial_tN+\left[\Phi,N\right]=-\sigma_\parallel N e^{\Lambda-\Phi}+D\nabla^2_\perp N +S_N$$
+$$\partial_t\nabla^2_\perp \Phi+\left[\Phi,\nabla^2_\perp \Phi\right]=\sigma_\parallel\left(1-e^{\Lambda-\Phi}\right)-\frac{g}{N}\partial_yN+\nu\nabla^4_\perp \Phi$$
+
+
+$$\alpha\partial^2_xX+\beta\partial_xX+\gamma X=\delta$$
+
+$$\sigma_\parallel \sqrt{T_e}\left(1-e^{\Lambda-\frac{\Phi}{T_e}}\right)=\sigma_\parallel \sqrt{T_e}\left(1-e^{\Lambda-\frac{\Phi^{t}}{T_e}}\right)+\sigma_\parallel \sqrt{T_e}\Phi^{t+1}/T_e$$
+	\section{La dérivation des équations} 
+	
+
+	$$\begin{cases}
+		\displaystyle\frac{\partial N}{\partial t}+\nabla\left(N\cdot v_e\right)=\sigma_\parallel N e^{\left(\Lambda-\Phi\right)}+D\nabla^2_\perp N +S  
+		&\text{: N Density}\\
+		~\\
+		\displaystyle\frac{\partial W}{\partial t}+\nabla\left(W\cdot v_e\right)=\sigma_\parallel \left(1-e^{\left(\Lambda-\Phi\right)}\right)+\frac{g}{N}\partial_y N+\nu\nabla^2_\perp W
+		&\text{: W Vorticity} \\
+		~\\
+		\displaystyle W=\nabla^2_\perp\Phi
+		&\text{:~} \Phi \text{~Potential} \\
+	\end{cases}$$
+	
+	$$\begin{cases}
+		\displaystyle\partial_t N+\nabla\left(N\cdot v_e\right)=-\sigma_\parallel N e^{\left(\Lambda-\Phi\right)}+D\nabla^2_\perp N +S  
+		&\text{: N Density}\\
+		~\\
+		\displaystyle\partial_t{\nabla^2_\perp\Phi}+\nabla\left(\nabla^2_\perp\Phi\cdot v_e\right)=\sigma_\parallel \left(1-e^{\left(\Lambda-\Phi\right)}\right)-g\partial_y ln(N)+\nu\nabla^4_\perp\Phi
+		&\text{: W Vorticity} \\
+		~\\
+		\displaystyle W=\nabla^2_\perp\Phi
+		&\text{:~} \Phi \text{~Potential} \\
+	\end{cases}$$
+
+
+\end{document}
