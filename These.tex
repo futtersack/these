@@ -35,7 +35,7 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\thispagestyle{empty}
 	\cleardoublepage
-	\dominitoc
+	%\dominitoc
 	\tableofcontents
 	\newpage
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,13 +49,18 @@
 	\include{plasmaPhysics}
 	\include{physicModel}
 	
+	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%% 
 	%% MARK: Bibliography
 	%% 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\thispagestyle{empty}\cleardoublepage\thispagestyle{chapitre}
+	\bibliography{biblio}
 	
+
 	\appendix
+	
 	\input{appendixA}
 	\input{appendixB}
 	

@@ -21,22 +21,39 @@
 \usepackage{verbatim}
 \usepackage{enumerate}
 
-\usepackage{setspace}
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc}
-\usepackage{cite}
-\usepackage{mathptmx}
+%\usepackage[utopia]{mathdesign}
+%\usepackage[garamond,expert]{mathdesign}
+%\usepackage{helvet}
+%\usepackage{arial}
+%\usepackage{charter}
+\usepackage{libertine}
+%\usepackage{palatino}
+%\renewcommand\familydefault{\sfdefault}
+
+
 \usepackage[english]{babel}
-\usepackage{amsmath,amsfonts,amsthm,amssymb}
+
 \usepackage{multicol}
 \usepackage[center,labelfont=bf]{caption}
-\usepackage{tocloft}
 \usepackage{indentfirst}
 
 \usepackage[margin=25mm]{geometry}
 
-\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\bibliographystyle{alpha}
 
+%Une table des matiere par chapitre
+\usepackage[english]{minitoc}
+\dominitoc
+%ajoute la bibliographie dans la table des matieres
+\usepackage[nottoc]{tocbibind}
+\renewcommand{\tocbibname}{Literature List}
+\setlength{\cftbeforesecskip}{0.5em}
+
+\usepackage{fancyhdr}
 
 \fancypagestyle{preface}{%
     \fancyhead{}
@@ -55,22 +72,45 @@
     \fancyhfoffset[RO]{6mm}%
     
 	% Put some space and a vertical bar between the folio and the rest of the header
-    \fancyhead[LE]{\small{\thepage}\hskip9mm\rightmark}%
-    \fancyhead[RO]{\leftmark\hskip9mm\small{\thepage}}%
+    \fancyhead[LE]{\rule[-2ex]{0pt}{2ex}\small{\thepage}\hskip9mm\rightmark}%
+    \fancyhead[RO]{\rule[-2ex]{0pt}{2ex}\leftmark\hskip9mm\small{\thepage}}%
 	\fancyfoot[C]{\thepage}
 }
-\newcommand{\Chapter}[1]{\thispagestyle{empty}\cleardoublepage\chapter{#1}\newpage\thispagestyle{empty}\cleardoublepage\pagestyle{chapitre}}
-%Une table des matiere par chapitre
-\usepackage[english]{minitoc}
-%ajoute la bibliographie dans la table des matieres
-\usepackage[none]{tocbibind}
+\usepackage{ifthen}
+\newcommand{\Chapter}[1]{
+	\ifthenelse{\isodd{\thepage}}{\thispagestyle{chapitre}\newpage\thispagestyle{empty}~}{}
+	\newpage
+	\pagestyle{empty}
+	\cleardoublepage
+	\titleformat{\chapter}[display]
+		{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+	\chapter{#1}
+	\minitoc
+	\newpage
+	\thispagestyle{empty}
+	\cleardoublepage
+	\pagestyle{chapitre}}
+	
 
+\usepackage{cite}
+\usepackage{appendix} % Makes appendices
+\usepackage{cclicenses} % Creative commons
+\usepackage{afterpage} % Makes appendices
+\usepackage{microtype} % makes pdf look better
 
+\usepackage{tikz}
+\usepackage{wallpaper}
 
+\usepackage{setspace}
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{section}}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 \parindent=1em
 \parskip 0.5em plus 1pt
 
 \newcommand{\Section}[1]{\newpage\section{#1} \setcounter{figure}{0}}
+
 \renewcommand{\thefigure}{\arabic{section}.\alph{figure}}
 
 \makeatletter
@@ -88,8 +128,30 @@
 \renewcommand{\labelitemi}{$\bullet$}
 
 
-\newcommand{\artlabel}[1]{{\sc #1.}}
+%\newcommand{\artlabel}[1]{{\sc #1.}}
 
 \usepackage{lipsum}
 \usepackage{hyperref}
+\hypersetup{
+    unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={These Futtersack},% title
+    pdfauthor={Romain Futtersack},     % author
+    pdfsubject={Fluid Modeling of Magnetized Transport in Low-Temperature
+    Plasmas},   % subject of the document
+    pdfcreator={Romain Futtersack},   % creator of the document
+    pdfproducer={LAPLACE}, % producer of the document
+    pdfkeywords={Fluid} {Modeling} {Magnetized} {Low-Temperature} {Plasmas}
+    {Transport}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links (change box color with
+    % linkbordercolor)
+    citecolor=cyan,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
 
