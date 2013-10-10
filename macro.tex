@@ -34,24 +34,42 @@
 
 
 \usepackage[english]{babel}
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}%
+    {Table of contents}%
+}
+
 
 \usepackage{multicol}
 \usepackage[center,labelfont=bf]{caption}
 \usepackage{indentfirst}
 
-\usepackage[margin=25mm]{geometry}
-
-\usepackage{titlesec}
+%\usepackage[margin=25mm]{geometry}
 \usepackage{tocloft}
-\bibliographystyle{alpha}
 
+
+%\renewcommand{\cftbeforetoctitleskip}{-0.25in}        % Title is 1in from top
+% title
+%
+\renewcommand{\cftchapnumwidth}{6mm}
+\renewcommand{\cftsecnumwidth}{3mm}
+\renewcommand{\cftsubsecnumwidth}{5mm}
+\renewcommand{\cfttoctitlefont}{\hfill \Huge}
+\renewcommand{\cftaftertoctitle}{\hfill}
 %Une table des matiere par chapitre
-\usepackage[english]{minitoc}
-\dominitoc
+%\usepackage[english]{minitoc}
+
+%\renewcommand{\mtctitle}{}
+
+%\dominitoc
 %ajoute la bibliographie dans la table des matieres
 \usepackage[nottoc]{tocbibind}
 \renewcommand{\tocbibname}{Literature List}
+\bibliographystyle{alpha}
+
 \setlength{\cftbeforesecskip}{0.5em}
+\renewcommand\cftchapfont{\large\bfseries}
+\renewcommand\cftsecfont{\normalsize\bfseries}
 
 \usepackage{fancyhdr}
 
@@ -65,7 +83,7 @@
     \fancyhead{}
 	\fancyfoot{}
 	\renewcommand{\headrulewidth}{0.4pt}
-	
+	\renewcommand{\headheight}{16.5pt}
 	% Increase the length of the header such that the folios
     % (typography jargon for page numbers) move into the margin
     \fancyhfoffset[LE]{6mm}% slightly less than 0.25in
@@ -78,14 +96,15 @@
 }
 \usepackage{ifthen}
 \newcommand{\Chapter}[1]{
-	\ifthenelse{\isodd{\thepage}}{\thispagestyle{chapitre}\newpage\thispagestyle{empty}~}{}
+	\ifthenelse{\isodd{\thepage}}{\newpage\thispagestyle{empty}~}{}
 	\newpage
 	\pagestyle{empty}
 	\cleardoublepage
 	\titleformat{\chapter}[display]
 		{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 	\chapter{#1}
-	\minitoc
+	%\nomtcrule
+	%\minitoc
 	\newpage
 	\thispagestyle{empty}
 	\cleardoublepage
@@ -98,14 +117,12 @@
 \usepackage{afterpage} % Makes appendices
 \usepackage{microtype} % makes pdf look better
 
-\usepackage{tikz}
-\usepackage{wallpaper}
 
 \usepackage{setspace}
 
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\arabic{section}}
-%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+
 \parindent=1em
 \parskip 0.5em plus 1pt
 
@@ -129,9 +146,12 @@
 
 
 %\newcommand{\artlabel}[1]{{\sc #1.}}
+\usepackage{titlesec}
 
 \usepackage{lipsum}
 \usepackage{hyperref}
+\usepackage[final]{pdfpages} 
+
 \hypersetup{
     unicode=true,          % non-Latin characters in Acrobat’s bookmarks
     pdftoolbar=true,        % show Acrobat’s toolbar?
