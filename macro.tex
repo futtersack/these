@@ -56,12 +56,13 @@
 \renewcommand{\cftsubsecnumwidth}{5mm}
 \renewcommand{\cfttoctitlefont}{\hfill \Huge}
 \renewcommand{\cftaftertoctitle}{\hfill}
+
 %Une table des matiere par chapitre
-%\usepackage[english]{minitoc}
+\usepackage[english]{minitoc}
 
-%\renewcommand{\mtctitle}{}
+\renewcommand{\mtctitle}{}
 
-%\dominitoc
+\dominitoc
 %ajoute la bibliographie dans la table des matieres
 \usepackage[nottoc]{tocbibind}
 \renewcommand{\tocbibname}{Literature List}
@@ -103,8 +104,8 @@
 	\titleformat{\chapter}[display]
 		{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 	\chapter{#1}
-	%\nomtcrule
-	%\minitoc
+	\nomtcrule
+	\minitoc
 	\newpage
 	\thispagestyle{empty}
 	\cleardoublepage
