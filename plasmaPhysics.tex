@@ -27,7 +27,7 @@
 		encore la dynamique des fluides. 
 		
 		\subsection{Zoologie des plasmas}
-			Les plasmas se catégorisent essentiellement en trois catégories : les plasmas
+			Les plasmas se divisent essentiellement en trois catégories : les plasmas
 			naturels, les plasmas industriels et les plasmas thermonucléaires.
 			\begin{figure}
 				\centering
@@ -36,8 +36,22 @@
 			\end{figure}
 			La figure \ref{zoologie} issue de \cite{national1995Plasma} représente une
 			classification des plasmas en fonction de leur deux principales
-			caractéristiques : leur densité et leur température électroniques, \emph{ie.}
-			$n_e$ et $T_e$. A très haute température, quand les électrons
+			caractéristiques : 
+			\begin{itemize}
+				\item la densité électronique $n_e$ détermine le degré d'ionisation du plasma :
+				$$\alpha=\frac{n_e}{n_e+n_i}$$ 
+				\item la température électronique $T_e$ définit
+			l'agitation thermique et contrôle la cinétique du plasma à travers le paramètre plasma\footnote{Le paramètre 
+			plasma représente le ratio
+			entre l'énergie thermique des électrons et leur énergie potentielle electrostatique coulombienne 
+			\emph{ie.} l'inertie des électrons (et principalement leur agitation thermique desordonnée) contre les forces
+			d'interactions coulombiennes structurantes. La tendance au chaos, ou à l'ordonnancement.}
+			$$\Gamma=\frac{<E_p>}{<E_c>}=\frac{e^2n_e^{1/3}}{\epsilon_0 kT_e}$$
+			\end{itemize}
+			
+			Le dégré d'ionisation va fortement influencer la nature du transport des courants dans le plasma.
+			le paramètre des charges et 
+			  
 			ont une vitesse supérieure à $c$ la vitesse de la lumière, les effets
 			relativistes sont importants. A forte densité, 
 			
@@ -75,6 +89,9 @@
 			\lipsum{50}
 	\section{Low-temperature plasmas}
 		\subsection{Creation of the discharge, role of electrons}
+		Dans les plasmas basse-température industriels et de laboratoires, qui possédent
+			un faible degré d'ionisation, ou dans l'ionospère, la dynamique du plasma est dominée par
+			la perte de quantité de mouvement dûe à l'ionisation la force de friction avec le gaz.
 		Electrical breakdown, Townsend avalanche, 
 		\lipsum{50}
 		\subsection{Ions transport and ambipolar field}
