@@ -1,43 +1,58 @@
 \Chapter{Introduction}
 	\section{Fondamentaux de la physique des plasmas}
-		\emph{La vie non examinée n'est pas digne d'être vécue }- Socrate. 
+		 
+		\emph{Le plasma}. Le plasma est souvent considéré un peu équivoquement
+		comme le quatrième état de la matière. Dans notre environnement proche,
+		nous avons pris conscience de son existence à travers les phénomènes de flammes,
+		d'éclairs, d'aurore boréales ou d'arc électriques. Mais à des conditions de
+		pressions et de températures différentes de celles de notre atmosphère
+		terrestre, il est omniprésent : plus de 99\% de la matière connue est sous
+		cette forme. 
 		
-		Dans la recherche de la connaissance et de la compréhension ce monde qui
-		l'entoure, l'homme s'est tout d'abord intéressé à la matière qui le compose. Celle-ci
-		peut nous apparaître sous trois états principaux : lorsque les atomes,
-		structures élementaires de la matière, sont immobiles \emph{ie.} à très faible
-		température, on parle d'état solide de la matière. En les laissant se déplacer
-		les uns par rapport aux autres, la matière devient déformable et prend alors
-		la forme d'un liquide. Enfin, une élévation de l'énergie des particules leur
-		permettant une plus grande liberté, la matière se trouve à l'état gazeux, 
-		tendant à occuper tout l'espace qui se trouve à sa disposition.
+		En fait le plasma est un gaz conducteur. Une partie des
+		particules gazeuses y est ionisée, formant une population
+		d'électrons libres et d'ions. Ces populations permettent le transport de
+		courant et sont sensibles aux forces électromagnétiques, influençant
+		fortement le comportement global du plasma et provoquant des phénomènes
+		collectifs, non-linéaires et turbulents.
 		
-		Il existe cependant un état plus exotique de la matière, \emph{le plasma}. Cet
-		état réprésente plus de 99\% de la matière connue mais nous n'avons pris conscience
-		de son existence que très tardivement. Il apparaît en effet dans des
-		conditions de température et de pression très différentes de celles de notre
-		atmosphère terrestre. A très haute température, la dissociation des
-		molécules puis l'ionisation des atomes donne naissance à une
-		population d'ions et d'électrons libres. Celle-ci va fortement influencer le
-		comportement global du gaz, en le rendrant sensible aux champs
-		électromagnétiques, et provoquant de plus des phénomènes collectifs,
-		non-linéaires et turbulents. Le plasma et son comportement sont décris par la
-		théorie de la physique des plasmas. Elle intègre les connaissances de
-		nombreux domaines, tels que la physique statistique, l'électromagnétisme, ou
-		encore la dynamique des fluides. 
+		Le plasma et son comportement sont décrits par la théorie de la physique des
+		plasmas. Elle intègre les connaissances de nombreux domaines, tels que la
+		physique statitique, l'électromagnétisme, ou encore la dynamique des fluides.
 		
-		\subsection{Zoologie des plasmas}
-			Les plasmas se divisent essentiellement en trois catégories : les plasmas
-			naturels, les plasmas industriels et les plasmas thermonucléaires.
-			\begin{figure}
+		\subsection{Les paramètres plasmas}
+		
+			Les plasmas se définissent donc comme des gaz possédant une population
+			d'électrons libres $n_e$ à une température électronique $T_e$. 
+			La figure \ref{zoologie} issue de \cite{national1995Plasma}
+			représente une classification des plasmas en fonction de ces deux paramètres 
+			principaux qui vont influer sur la dynamique du transport du courant.
+			La théorie présentée dans la suite de cette thèse ne concerne que les plasmas
+			dits classiques :
+			\begin{itemize}
+			  \item les plasmas naturels peu dense tels que l'espace interstellaire,
+			  le vent solaire, la magnétosphère, et l'ionosphère
+			  \item les plasmas naturels denses tels que les éclairs et les étoiles
+			  \item les plasmas industriels, de laboratoire, et thermonucléaires
+			\end{itemize}
+			Dans ces plasmas, le courant se propage de fale transport de la matière suit
+			les lois de la mécanique classique et la dynamique du courant \begin{figure}[h]
 				\centering
 				\includegraphics[height=100mm,width=80mm]{figures/zoologie.png}{\caption{Classification
 				de différents plasmas en fonction de $n_e$ et $T_e$.}\label{zoologie}}
 			\end{figure}
-			La figure \ref{zoologie} issue de \cite{national1995Plasma} représente une
-			classification des plasmas en fonction de leur deux principales
-			caractéristiques : 
-			\begin{itemize}
+			
+			
+			
+			Le dégré d'ionisation va fortement influencer la nature du transport des courants dans le plasma.
+			le paramètre des charges et 
+			  
+			ont une vitesse supérieure à $c$ la vitesse de la lumière, les effets
+			relativistes sont importants. A forte densité, 
+			
+		
+		
+		\begin{itemize}
 				\item la densité électronique $n_e$ détermine le degré d'ionisation du plasma :
 				$$\alpha=\frac{n_e}{n_e+n_i}$$ 
 				\item la température électronique $T_e$ définit
@@ -49,14 +64,6 @@
 			$$\Gamma=\frac{<E_p>}{<E_c>}=\frac{e^2n_e^{1/3}}{\epsilon_0 kT_e}$$
 			\end{itemize}
 			
-			Le dégré d'ionisation va fortement influencer la nature du transport des courants dans le plasma.
-			le paramètre des charges et 
-			  
-			ont une vitesse supérieure à $c$ la vitesse de la lumière, les effets
-			relativistes sont importants. A forte densité, 
-			
-			\lipsum{50}
-		\subsection{Plasma parameters}
 		 Plasma parameter $\Lambda$ Debye sphere, Quasineutrality Debye length,
 		Electrostatic plasma frequency $\omega_c$
 		 Density : Degree of ionisation $\alpha=n_i/(n_i+n_n)$
