@@ -41,19 +41,33 @@
 				de différents plasmas en fonction de $n_e$ et $T_e$.}\label{zoologie}}
 			\end{figure}
 			
-			Dans ces gaz, le ratio entre la densité électronique $n_e$ et la densité de gaz $n_g$ nous renseigne 
-			sur la conductivité électrique:
-				$$\alpha=\frac{n_e}{n_e+n_i}$$
-			C'est le pourcentage d'ionisation, qui définit la propension du gaz à être plûtot isolant ou plutôt
-			conducteur. A faible taux de particules chargées libres $\alpha\approx 0$, le gaz se comporte comme un isolant. 
-			L'apparition d'une population de charges libres va petit à petit ajouter une nouvelle dynamique dans ce 
-			mouvement via le transport du courant. L'ionisation progressive du gaz suit l'évolution de la température 
-			électronique $T_e$ qui mesure l'agitation thermique et contrôle la cinétique du plasma à travers 
-			le paramètre plasma\footnote{Le paramètre plasma représente le ratio
-			entre l'énergie thermique des électrons et leur énergie potentielle electrostatique coulombienne 
-			\emph{ie.} l'inertie des électrons (et principalement leur agitation thermique desordonnée) contre les forces
-			d'interactions coulombiennes structurantes. La tendance au chaos, ou à l'ordonnancement.}:
+			Dans ces plasmas, le dégré d'ionisation $\alpha$ est donné par le rapport
+			entre la densité électronique $n_e$ et la densité de gaz $n_g$ :
+				$$\alpha=\frac{n_e}{n_e+n_g}$$
+			Cette fraction va définir l'importance de l'interaction entre les particules 
+			neutres et les particules chargées. Même à très faible $\alpha$, l'apparition
+			d'une population de porteurs de charge va modifier les caractéristiques et la
+			dynamique du plasma. 
+			
+			L'ionisation du gaz suit l'évolution de la température électronique $T_e$ qui
+			mesure l'agitation thermique des électrons. Densité et température
+			électronique permettent de définir le paramètre plasma\footnote{Le
+			paramètre plasma représente le ratio entre l'énergie thermique des électrons
+			et leur énergie potentielle electrostatique coulombienne \emph{ie.}
+			l'agitation thermique desordonnée contre les forces d'interactions
+			coulombiennes structurantes.}:
 				$$\Gamma=\frac{<E_p>}{<E_c>}=\frac{e^2n_e^{1/3}}{\epsilon_0 kT_e}$$
+			Les plasmas classiques sont caractérisés par $\Gamma\ll 1$. Ils ont une
+			population d'électrons assez espacée et/ou une température suffisamment élevée. 
+			
+		\subsection{Echelles et phénomènes collectifs}
+			Le plasma est un milieu très complexe où de multiples dynamiques interfèrent. 
+			Au milieu du gaz en équilibre thermique, les ions et les électrons issus
+			de l'ionisation se réorganisent spatialement pour minimiser les forces
+			de Coulombs ($\mathbf F=q\mathbf E$) et de Laplace ($\mathbf F=-q\mathbf
+			B\times\mathbf v$) qui se forment dans le système amenant ainsi un état de
+			\emph{quasi-neutralité} du plasma. 
+			
 			
 		 Plasma parameter $\Lambda$ Debye sphere, Quasineutrality Debye length,
 		Electrostatic plasma frequency $\omega_c$
@@ -61,12 +75,7 @@
 			Temperature : Saha equation, thermal equilibrium, Maxwellian energy dist function
 			Potentials : Debye sheath, Boltzmann relation
 			Magnetization : Hall parameter, Larmor radius, plasma frequency
-			\lipsum{50}
-		\subsection{Collective behaviour}
-			Ambipolar field, heating, drifts
 		\subsection{Collisions}
-			\lipsum{50}
-		\subsection{Scales}
 			\lipsum{50}
 		
 	\section{Fluid description of a plasma}
