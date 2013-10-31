@@ -24,9 +24,9 @@
 		
 			Les plasmas se définissent donc comme des gaz possédant une population
 			d'électrons libres $n_e$ à une température électronique $T_e$. 
-			La figure \ref{zoologie} issue de \cite{national1995Plasma}
-			représente une classification des plasmas en fonction de ces deux paramètres 
-			principaux qui vont influer sur la dynamique du transport de courant.
+			La figure \ref{zoologie}, issue du livre du National
+			Research Council\cite{national1995Plasma}, représente une classification des
+			plasmas en fonction de ces deux paramètres principaux qui vont influer sur la dynamique du transport de courant.
 			La théorie présentée dans la suite de cette thèse ne concerne que les plasmas
 			dits classiques :
 			\begin{itemize}
@@ -37,7 +37,7 @@
 			\end{itemize}
 			\begin{figure}[h]
 				\centering
-				\includegraphics[height=100mm,width=80mm]{figures/zoologie.png}{\caption{Classification
+				\includegraphics[height=80mm,width=64mm]{figures/zoologie.png}{\caption{Classification
 				de différents plasmas en fonction de $n_e$ et $T_e$.}\label{zoologie}}
 			\end{figure}
 			
@@ -51,41 +51,51 @@
 			
 			L'ionisation du gaz suit l'évolution de la température électronique $T_e$ qui
 			mesure l'agitation thermique des électrons. Densité et température
-			électronique permettent de définir le paramètre plasma\footnote{Le
-			paramètre plasma représente le ratio entre l'énergie thermique des électrons
-			et leur énergie potentielle electrostatique coulombienne \emph{ie.}
-			l'agitation thermique desordonnée contre les forces d'interactions
-			coulombiennes structurantes.}:
+			électronique permettent de définir le paramètre plasma:
 				$$\Gamma=\frac{<E_p>}{<E_c>}=\frac{e^2n_e^{1/3}}{\epsilon_0 eT_e}$$
-			Les plasmas classiques sont caractérisés par $\Gamma\ll 1$. Ils ont une
-			population d'électrons assez espacée et/ou une température suffisamment élevée. 
+			Le paramètre plasma représente le ratio entre l'énergie thermique des
+			électrons et leur énergie potentielle électrostatique coulombienne \emph{ie.}
+			l'agitation thermique desordonnée contre les forces d'interactions
+			coulombiennes structurantes. 
+			
+			Les plasmas classiques sont caractérisés par
+			$\Gamma\ll 1$. Ils ont une population d'électrons assez espacée et/ou une
+			température suffisamment élevée.
 			
 		\subsection{Echelles, phénomènes collectifs et collisions}
-		La dynamique du plasma résulte du couplage entre le mouvement des particules chargeés et les forces 
-		de Coulombs ($\mathbf F=q\mathbf E$) et de Laplace ($\mathbf F=-q\mathbf
-			B\times\mathbf v$) qui se forment dans le système. 
+		La dynamique du plasma résulte du couplage entre le mouvement des particules
+		chargées et les forces de Coulombs ($\mathbf F=q\mathbf E$) et de Lorentz
+		($\mathbf F=-q\mathbf B\times\mathbf v$) présentent ou qui se forment dans le
+		système.
 			\subsubsection{Quasineutralité}
 			Le processus le plus rapide est lié à
-			l'équilibre microscopique électrostatique qui s'opère lors de la formation d'un plasma entre l'agitation thermique et 
-			l'interaction coulombienne. Les ions et des électrons
-			issus de l'ionisation se réorganisent pour écranter leur champ
-			électrique individuel et former ainsi un ensemble électriquement neutre. 
-			Ce comportement est décrit aux plus petites échelles spatiotemporelles par le principe fondamental de 
-			la dynamique et la loi de Boltzman-Poisson :
-			$$m_e\frac{\partial^2 x}{\partial t^2}=-e\mathbf E \;\;\;\text{et}\;\;\;\nabla^2\Phi=\frac{\rho}{\epsilon}$$ 
-			ou $\rho$ est la différence entre la densité ionique et électronique.
-			Les échelles fondamentales entrant en jeu sont alors la pulsation plasma et la longueur de Debye, 
-			reliée à la vitesse thermique 
+			l'équilibre microscopique électrostatique qui s'opère lors de la formation
+			d'un plasma entre l'agitation thermique et l'interaction coulombienne. Les
+			ions et des électrons issus de l'ionisation se réorganisent pour écranter
+			leur champ électrique individuel et former ainsi un ensemble électriquement neutre. 
+			Ce comportement est décrit aux plus petites échelles spatiotemporelles par
+			le principe fondamental de la dynamique et la loi de Boltzman-Poisson :
+			$$m_s\frac{\partial \mathbf{v}}{\partial t}=q_s\mathbf E
+			\;\;\;\text{et}\;\;\;\nabla^2\Phi=\frac{\rho}{\epsilon}$$ ou
+			$m_s$ est la masse de la particule, $\mathbf{v}$ sa vitesse, $q_s$ la
+			charge élémentaire, $\rho$ est la différence entre la densité ionique et
+			électronique.
+			Les échelles fondamentales entrant en jeu sont alors la pulsation plasma et
+			la longueur de Debye, reliée à la vitesse thermique 
 			$$\omega_p=\sqrt{\frac{n_0e^2}{\epsilon
 			m_e}}\;\text{,}\;\;\;\lambda_D=\sqrt{\frac{\epsilon
 			eT_e}{n_0e^2}}\;\;\;\text{et}\;\;\;v_{th}=\sqrt{\frac{eT_e}{m_e}}$$
 			Au dela de ces échelles, on peut considérer cette dynamique comme instantanée
 			et uniforme. Globalement, vu de suffisement loin et exepté à ses frontières,
 			le plasma est dans un état de \emph{quasi-neutralité}, \emph{ie.} $n_e=n_i$.
-			\subsubsection{Vitesses de dérive}
 			
-			\subsubsection{Rayon de Larmor et Vitesses de dérive}
-			La présence d'un champ magnétique va aussi 
+			\subsubsection{Rayon de Larmor et vitesses de dérive}
+			La présence d'un champ magnétique va aussi fortement influencer le transport
+			du plasma. Une particule chargée en mouvement dans un champ magnétique
+			est sujette à la force de Lorentz $\mathbf{F}=q_s\mathbf{v}\times\mathbf{B}$.
+			Son mouvement se décrit alors par deux composantes :
+			\itemize
+			\item Un déplacement parallèle aux lignes de champ
 			
 		 Plasma parameter $\Lambda$ Debye sphere, Quasineutrality Debye length,
 		Electrostatic plasma frequency $\omega_c$
@@ -93,15 +103,11 @@
 			Temperature : Saha equation, thermal equilibrium, Maxwellian energy dist function
 			Potentials : Debye sheath, Boltzmann relation
 			Magnetization : Hall parameter, Larmor radius, plasma frequency
-			\section{Plasma surface interaction and sheath physics}
-			\lipsum{50}
-				\subsection{Debye sheath}
-			\lipsum{50}
-				\subsection{Bohm criterium}
-			\lipsum{50}
-				\subsection{Open field line physics}
-			\lipsum{50}
-				\subsection{Issue of sheath parallel to the magnetic field}
+			\subsection{Plasma surface interaction and sheath physics}
+				\subsubsection{Debye sheath}
+				\subsubsection{Bohm criterium}
+				\subsubsection{Open field line physics}
+				\subsubsection{Issue of sheath parallel to the magnetic field}
 			\lipsum{50}
 	\section{Fluid description of a plasma}
 	\lipsum{50}
