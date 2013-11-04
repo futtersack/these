@@ -64,9 +64,9 @@
 			
 		\subsection{Echelles, phénomènes collectifs et collisions}
 		La dynamique du plasma résulte du couplage entre le mouvement des particules
-		chargées et les forces de Coulombs ($\mathbf F=q\mathbf E$) et de Lorentz
-		($\mathbf F=-q\mathbf B\times\mathbf v$) présentent ou qui se forment dans le
-		système.
+		chargées et les forces de Coulombs ($\mathbf F=q_s\mathbf E$) et de Lorentz
+		($\mathbf F=q_s\mathbf v_s\times\mathbf B$) présentent ou qui se forment dans
+		le système.
 			\subsubsection{Quasineutralité}
 			Le processus le plus rapide est lié à
 			l'équilibre microscopique électrostatique qui s'opère lors de la formation
@@ -90,13 +90,29 @@
 			le plasma est dans un état de \emph{quasi-neutralité}, \emph{ie.} $n_e=n_i$.
 			
 			\subsubsection{Rayon de Larmor et vitesses de dérive}
+			\begin{wrapfigure}{r}{0.4\textwidth}
+    			\includegraphics[width=0.40\textwidth]{figures/particleDrifts.png}
+  				\caption{Mouvement cyclotronique et de dérive des particules dans un
+  				champ magnétique.}\label{particleDrifts}
+			\end{wrapfigure}
 			La présence d'un champ magnétique va aussi fortement influencer le transport
-			du plasma. Une particule chargée en mouvement dans un champ magnétique
-			est sujette à la force de Lorentz $\mathbf{F}=q_s\mathbf{v}\times\mathbf{B}$.
-			Son mouvement se décrit alors par deux composantes :
-			\itemize
-			\item Un déplacement parallèle aux lignes de champ
+			du plasma. Le mouvement d'une particule chargée dans un champ
+			magnétique sujette à la force de Lorentz se décrit essentiellement par trois
+			composantes (cf. figure \ref{particleDrifts}) :
 			
+			
+			\begin{itemize}
+			\item Un déplacement parallèle aux lignes de champ, de l'ordre de la vitesse
+			thermique des espèces, $v_\parallel\approx c_s=(eT_s/m_s)^{1/2}$
+			\item Le mouvement cyclotronique, rotation rapide de la particule
+			autour des lignes de champ magnétiquedans le plan perpendiculaire aux lignes
+			de champ
+			\item Une vitesse de dérive, Le mouvement cyclotronique, rotation rapide de
+			la particule autour des lignes de champ magnétique dans le plan
+			perpendiculaire aux lignes de champ
+			\end{itemize}
+			blablabla
+			\subsubsection{Collisions}
 		 Plasma parameter $\Lambda$ Debye sphere, Quasineutrality Debye length,
 		Electrostatic plasma frequency $\omega_c$
 		 Density : Degree of ionisation $\alpha=n_i/(n_i+n_n)$
