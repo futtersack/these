@@ -16,13 +16,15 @@
     
 %% Begin Document
 \begin{document}
+	\frontmatter
+	
 	\includepdf{pageTitre.pdf}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%% 
 	%%  Abstract and acknowledgement
 	%% 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pagenumbering{roman}
+	%\pagenumbering{roman}
 	\setcounter{page}{0}
 	
 	\include{citation}
@@ -45,8 +47,9 @@
 	%%  Chapters
 	%% 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pagenumbering{arabic}
-	\setcounter{page}{0} 
+	\mainmatter
+	%\pagenumbering{arabic}
+	%\setcounter{page}{0} 
 	\include{introduction}
 	\include{plasmaPhysics}
 	\include{physicModel}

@@ -31,14 +31,11 @@
 %\usepackage{charter}
 \usepackage{libertine}
 %\usepackage{palatino}
-%\renewcommand\familydefault{\sfdefault}
+%\renewcommand\familydefault{\ttfamily}
 
 \usepackage{amsmath}
-\usepackage[english]{babel}
-\addto\captionsenglish{%
-  \renewcommand{\contentsname}%
-    {Table of contents}%
-}
+\usepackage[french]{babel}
+
 
 
 \usepackage{multicol}
@@ -51,22 +48,21 @@
 
 %\renewcommand{\cftbeforetoctitleskip}{-0.25in}        % Title is 1in from top
 % title
-%
 \renewcommand{\cftchapnumwidth}{6mm}
 \renewcommand{\cftsecnumwidth}{3mm}
 \renewcommand{\cftsubsecnumwidth}{5mm}
-\renewcommand{\cfttoctitlefont}{\hfill \Huge}
+\renewcommand{\cfttoctitlefont}{\hfill \huge  \bfseries}
 \renewcommand{\cftaftertoctitle}{\hfill}
 
 %Une table des matiere par chapitre
-\usepackage[english]{minitoc}
+\usepackage[french]{minitoc}
 
 \renewcommand{\mtctitle}{}
 
 \dominitoc
 %ajoute la bibliographie dans la table des matieres
 \usepackage[nottoc]{tocbibind}
-\renewcommand{\tocbibname}{Literature List}
+\renewcommand{\tocbibname}{Liste des références}
 \bibliographystyle{alpha}
 
 \setlength{\cftbeforesecskip}{0.5em}
@@ -85,7 +81,7 @@
     \fancyhead{}
 	\fancyfoot{}
 	\renewcommand{\headrulewidth}{0.4pt}
-	\renewcommand{\headheight}{16.5pt}
+	\renewcommand{\headheight}{18pt}
 	% Increase the length of the header such that the folios
     % (typography jargon for page numbers) move into the margin
     \fancyhfoffset[LE]{6mm}% slightly less than 0.25in
