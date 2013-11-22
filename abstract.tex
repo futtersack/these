@@ -2,57 +2,77 @@
 \thispagestyle{empty}
 \cleardoublepage
 \thispagestyle{preface}	
-	\section*{Résumé}
+\section*{Résumé}
 	\addcontentsline{toc}{section}{Résumé}
-		Cette thèse propose un nouveau cadre pour l'étude de la dynamique et des
-		phénomènes de transport qui apparaissent dans les plasmas froids en présence
-		d'un champ magnétique.
-				
-		Si la compréhension du transport magnétisé est essentielle pour maîtriser la
-		production d'énergie par fusion thermonucléaire, elle devient aussi d'importance
-		grandissante dans la conception et l'optimisation d'applications utilisant des
-		sources plasmas basse-pression et fonctionnant avec un champ magnétique.
-		Depuis les premières expérimentations dans les années 1950-60 sur le confinement
-		magnétique des plasmas, la question du transport magnétisé a été intensément
-		étudiée. Le champ magnétique, qui permet fondamentalement de piéger les
-		particules le long de ses lignes de champ, induit dans de nombreuses situations la formation
-		d'asymétries et d'inhomogénéités du plasma dans la direction perpendiculaire.
-		Celles-ci peuvent en retour conduire à l'apparition d'instabilités et à
-		l'augmentation significative du transport transverse, qui passe d'une nature
-		collisionnelle, homogène et diffusive à une nature convective non-linéaire et
-		dynamique. La complexité de ce transport ne nous est alors accessible qu'à
-		travers l'élaboration et l'utilisation de modèles plus ou moins complets.
-				
-		Dans l'objectif de cette thèse d'étudier le problème du transport magnétisé en
-		tant que tel, l'originalité de notre approche est multiple.
-		D'une part nous considérons la dynamique du plasma de manière macroscopique, le
-		transport des charges, du courant et de l'énergie étant décrit à travers un jeu
-		d'équations fluides, l'hypothèse de quasineutralité et un modèle classique de
-		gaine.
-		Ensuite nous nous focalisons sur le plan perpendiculaire au champ magnétique.
-		C'est en effet dans ce plan que la force magnétique agit, entraînant
-		l'apparition des inhomogénéités et des assymétries caractéristiques des plasmas
-		magnétisés.
-		Enfin, nous conservons à priori l'ensemble des termes du modèle.
-		Les approximations et simplifications généralement effectuées dépendent d'un
-		ordering d'échelles spatiales et temporelles qui, dans les plasmas que l'on
-		cherche à qualifier, est variable, voir totalement absent.
-		La prise en compte de l'inertie dans les équations de transport nous permet de
-		plus de capturer la dynamique transitoire du plasma, comme certains types
-		d'instabilités. Ce modèle fluide et dynamique peut être utilisé pour explorer
-		une large gamme de topologies et d'intensités de champ magnétique.
-				
-		Dans une dernière partie, nous analysons des simulations représentatives de
-		plusieurs expérimentations avec différentes configurations de champ en comparant
-		les résultats avec des données expérimentales ou issues de modèles développés
-		spécifiquement pour certaines applications :
-		en géométrie de filtre magnétique pour le propulseur electrostatique PEGASES ou
-		la source d'ions négatifs du système à injection de neutre d'ITER, le
-		comportement du plasma simulé est conforme aux phénomènes observés avec
-		l’apparition d’asymétries dues aux dérives induites par le champ magnétique.
-		Dans le cas du champ uniforme de la source d'ions CYBELE le plasma se met en
-		rotation autour de l'axe magnétique. L'évolution du plasma et la nature du
-		transport est alors déterminée par la compétition entre le transport
-		perpendiculaire et parallèle au lignes de champ magnétique. Pour terminer, le
-		modèle est appliqué dans le cas fortement magnétisé de la Scrape-Of-Layer des
-		tokamaks.
+		Cette thèse propose un modèle physique et numérique original pour l'étude de
+		la dynamique et des phénomènes de transport qui apparaissent dans les plasmas
+		froids en présence d'un champ magnétique. 
+		
+		Dans les sources basse-pression magnétisées, telles que la source d'ions
+		négatifs pour l'injecteur de neutres d'ITER ou le propulseur électrostatique
+		PEGASES, le comportement du plasma est complexe et mal compris.
+		Les théories et les méthodes développées pour l'étude du transport magnétisé dans le cadre de la recherche
+		sur la production d'énergie par fusion thermonucléaire sont inadaptées
+		pour décrire la dynamique non-ambipolaire de ces plasmas. En effet, dans ces
+		sources, les ions ne sont que faiblement magnétisés, les collisions avec les
+		neutres influencent significativement le transport et les
+		parois, puits à particules omniprésents, contrôlent les profils d'équilibres.
+		
+		Nous adressons la complexité de ce transport à travers l’élaboration d'un
+		modèle fluide~2D\textonehalf ~et de son schéma numérique, sans approximation
+		d'ordering entre les longueurs caractéristiques du plasma magnétisé (ie. la
+		dimention du plasma $L$, les libres parcours moyens $\lambda_\text{mfp}^{i,e}$
+		et les rayons de Larmor ioniques et électroniques 
+		$\rho_\text{L}^{i,e}$).
+		Les équations sont résolues dans le plan perpendiculaire au champ magnétique
+		où les asymétries et les inhomogénéités représentatives du transport magnétisé
+		apparaissent, tandis que les conditions aux limites (parallèles et
+		transverses) sont dérivées de la théorie classique de gaine. La considération
+		de l'inertie des particules permet de plus de capturer la dynamique
+		transitoire du plasma ainsi que certains types d'instabilités.
+		
+		Le modèle, supportant une large gamme de topologies et d'intensités de champ
+		magnétique, est appliqué aux configurations de deux sources d'ions négatifs et
+		du propulseur PEGASES. Les asymétries et inhomogénéités observées
+		expérimentalement sont reproduites et, dans une géométrie représentant la
+		Scrape-of-Layer des tokamaks, le modèle semble capable de simuler
+		la turbulence d'interchange qui domine le transport perpendiculaire du
+		plasma de bord.
+		\newpage
+		\thispagestyle{empty}
+		\cleardoublepage
+		\thispagestyle{preface}	
+		\section*{Abstract}
+		This thesis suggests an original physical and numerical model for the study
+		of the dynamics and transport phenomena that occur in low-temperature plasmas
+		in the presence of a magnetic field.
+
+		In low-pressure magnetized sources , such as the negative ions source of the
+		ITER neutral injector or Pegasus electrostatique thruster , the plasma
+		behavior is far from understood. Theories and methods developed to study the
+		magnetized transport from the research on the production of energy by nuclear
+		fusion are inadequate to describe the non-ambipolar dynamics of these plasmas.
+		Indeed in these sources, ions are weakly magnetized, collisions with neutral
+		significantly affect the global transport and walls, as perfect particles
+		sinks of particles , control the equilibrium profiles.
+
+		We address the complexity of this transport through the development of a
+		2D+1/2 fluid model and its numerical scheme without approximation on the
+		ordering between characteristic lengths scales of magnetized plasmas ( ie. the
+		plasma dimention, the mean free path and Larmor radii of ions and electrons).
+		The equations are solved in the plane perpendicular to the magnetic field
+		where asymmetries and inhomogeneities representative of the magnetized
+		transport appear , while the boundary conditions (parallel and transverse) are
+		derived from the classical sheath theory. Moreover, the consideration of
+		particles inertia makes the model able to capture the plasma transient
+		dynamics and certain types of instabilities.
+	
+		The model, which supports a wide range of magnetic field strengths and
+		topologies, is applied to the configurations of two negative ions sources and
+		of the Pegasus thruster. Asymmetries and inhomogeneities observed
+		experimentally are recovered and, in a geometry representing the
+		Scrape-Of-Layer of tokamaks, the model seems able to simulate the interchange
+		turbulence which is thought to dominate the perpendicular transport of the
+		edge plasma.
+		  
+		
