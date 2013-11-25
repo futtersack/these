@@ -69,7 +69,7 @@
 \setlength{\cftbeforesecskip}{0.5em}
 \renewcommand\cftchapfont{\large\bfseries}
 \renewcommand\cftsecfont{\normalsize\bfseries}
-
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
 \usepackage{fancyhdr}
 
 \fancypagestyle{preface}{%
@@ -82,7 +82,7 @@
     \fancyhead{}
 	\fancyfoot{}
 	\renewcommand{\headrulewidth}{0.4pt}
-	\renewcommand{\headheight}{18pt}
+	\renewcommand{\headheight}{22pt}
 	% Increase the length of the header such that the folios
     % (typography jargon for page numbers) move into the margin
     \fancyhfoffset[LE]{6mm}% slightly less than 0.25in
@@ -93,6 +93,9 @@
     \fancyhead[RO]{\rule[-2ex]{0pt}{2ex}\leftmark\hskip9mm\small{\thepage}}%
 	\fancyfoot[C]{\thepage}
 }
+\renewcommand{\cftpartfont}{\large\bfseries} % make parts look like sections in TOC
+\renewcommand{\cftpartpagefont}{\normalfont}
+\setlength{\cftbeforepartskip}{10pt}
 \usepackage{ifthen}
 \newcommand{\Chapter}[1]{
 	\ifthenelse{\isodd{\thepage}}{\newpage\thispagestyle{empty}~}{}
@@ -107,6 +110,15 @@
 	\newpage
 	\thispagestyle{empty}
 	\cleardoublepage
+	\pagestyle{chapitre}}
+\newcommand{\ChapterStar}[1]{
+	\ifthenelse{\isodd{\thepage}}{\newpage\thispagestyle{empty}~}{}
+	\newpage
+	\pagestyle{empty}
+	\cleardoublepage
+	\titleformat{\chapter}[display]
+		{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+	\chapter*{#1}
 	\pagestyle{chapitre}}
 	
 

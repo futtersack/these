@@ -2,20 +2,35 @@
 interaction avec des parois}
 \chaptermark{Modèles fluides pour le transport magnétisé}
  	\section{Les modèles}
+	\lipsum
  	Un modèle scientifique
  	
-	Dans ce chapitre, nous constuisons notre modèle pour les plasmas froids
-	magnétisés. La première partie  du transport fortement
-	magnétisé  des travaux réalisés pour l'étude de la Scrape-Of-Layer
-	de tokamaks dans le cadre de la recherche sur la fusion par confinement magnétique.
-	\section{Modèle pour les plasmas magnétisés de Scrape-Of-Layer}
+	Ce chapitre est consacré à la construction du modèle fluide pour les plasmas froids
+	magnétisés. 
+	La première partie brosse un rapide état de l'art concernant la modélisation dans le domaine des
+	plasmas froids. Nous présenterons ensuite un modèle de transport
+	fortement magnétisé et son implémentation numérique (le code TOKAM2D) utilisé pour caractériser 
+	la SOL des tokamaks. Enfin nous détaillerons l'élaboration du modèle hybride plasmas 
+	froids/magnétisé à travers une discussion sur les différentes approches qui ont été abordées. 
 	
-	\subsection{Hypothèses, ordering}
+	\section{Plasmas froids, le modèle de dérive-diffusion}
+	\lipsum{20}
+	\section{Plasmas magnétisés de la SOL, l'approche par vitesses de dérive}
+	 \subsection{Le code TOKAM2D}
+	 Le code TOKAM2D a été initialement développé à l'Institut Méditerranéen Technologique de Marseille 
+	 pour étudier la turbulence d'interchange qui domine le tranport transverse dans le plasma de bord des tokamaks. 
+	 Sa modification pour permettre un forcage de la turbulence par un flux entrant au lieu d'un gradient moyen 
+	 de densité a permit de nombreuses avancées dans la compréhension 
+	 des mécanismes de l'instabilité : donnant naissance en outre à une dynamique du transport de style avalanche, 
+	 c'est à dire où les relaxations de profils s'effectuent en relachant par intermittence de forts flux
+	 de densité. Ces structures auto-organisées de densité se propagent sur de très grandes longueurs, augmentant la
+	 largeur de la SOL
+		\subsection{Hypothèses, ordering}
 		\subsection{Velocities and currents}
 		\subsection{Conservation equations}
 		\subsection{Dimensionless and reduction of the model}
 		\subsection{Linear analysis}
-	\section{Magnetized low-temperature plasma model}
+	\section{Elaboration du modèle de plasmas froids magnétisé}
 		\subsection{Drift diffusion and magnetized drift diffusion model}
 		\subsection{Model for highly magnetized low-temperature plasmas}
 		\subsection{Dimensionless and reduction of the model??}
