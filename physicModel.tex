@@ -1,35 +1,51 @@
-\Chapter{Modèles fluides pour le transport magnétisé dans un plasma en
-interaction avec des parois}
+\Chapter{Modèles fluides pour le transport magnétisé dans un plasma limité des
+parois}
 \chaptermark{Modèles fluides pour le transport magnétisé}
  	\section{Les modèles}
-	\lipsum
- 	Un modèle scientifique
+\lipsum Un modèle scientifique
  	
-	Ce chapitre est consacré à la construction du modèle fluide pour les plasmas froids
-	magnétisés. 
-	La première partie brosse un rapide état de l'art concernant la modélisation dans le domaine des
-	plasmas froids. Nous présenterons ensuite un modèle de transport
-	fortement magnétisé et son implémentation numérique (le code TOKAM2D) utilisé pour caractériser 
-	la SOL des tokamaks. Enfin nous détaillerons l'élaboration du modèle hybride plasmas 
-	froids/magnétisé à travers une discussion sur les différentes approches qui ont été abordées. 
+Ce chapitre est consacré à la construction du modèle fluide pour les plasmas
+froids magnétisés.
+La première partie brosse un rapide état de l'art concernant la modélisation
+dans le domaine des plasmas froids. Nous présenterons ensuite un modèle de
+transport fortement magnétisé, son implémentation numérique (le code TOKAM2D)
+utilisé pour caractériser la SOL des tokamaks ainsi que quelques travaux. Enfin
+nous détaillerons l'élaboration du modèle hybride plasmas froids/magnétisé à travers une
+discussion sur les différentes approches qui ont été abordées.
 	
 	\section{Plasmas froids, le modèle de dérive-diffusion}
+Dans le domaine des plasmas froids, l'approche usuelle de modélisation consiste
+à résoudre les équations de dérive-diffusions~\eqref{derivediffusion} pour
+chaques espèces
 	\lipsum{20}
-	\section{Plasmas magnétisés de la SOL, l'approche par vitesses de dérive}
+	\section{Plasmas magnétisés, l'approche par vitesses de dérive}
 	 \subsection{Le code TOKAM2D}
-	 Le code TOKAM2D a été initialement développé à l'Institut Méditerranéen Technologique de Marseille 
-	 pour étudier la turbulence d'interchange qui domine le tranport transverse dans le plasma de bord des tokamaks. 
-	 Sa modification pour permettre un forcage de la turbulence par un flux entrant au lieu d'un gradient moyen 
-	 de densité a permit de nombreuses avancées dans la compréhension 
-	 des mécanismes de l'instabilité : donnant naissance en outre à une dynamique du transport de style avalanche, 
-	 c'est à dire où les relaxations de profils s'effectuent en relachant par intermittence de forts flux
-	 de densité. Ces structures auto-organisées de densité se propagent sur de très grandes longueurs, augmentant la
-	 largeur de la SOL
-		\subsection{Hypothèses, ordering}
-		\subsection{Velocities and currents}
-		\subsection{Conservation equations}
-		\subsection{Dimensionless and reduction of the model}
-		\subsection{Linear analysis}
+Le code TOKAM2D a été initialement développé à l'IMTM\footnote{Institut Méditerranéen
+Technologique de Marseille} pour étudier la turbulence d'interchange qui domine
+le transport transverse dans le plasma de bord des tokamaks. Sa modification
+pour intégrer un forçage de la turbulence par un flux au lieu d'un gradient
+d'équilibre a permis de retrouver le caractère intermittent du
+transport et la longueur de décroissance du profil de densité que l'on mesurait
+expérimentalement. L'étude du modèle a aussi amélioré la compréhension du
+mécanisme principal de l'instabilité, dont le déclenchement à seuil de
+l'interchange et la nature de type avalanche du transport turbulent. 
+		\subsection{Hypothèses du modèle}
+
+		
+		\subsection{Divergence des courants}
+		\subsection{Equations de conservation}
+		\subsection{Adimensionnement et réduction du modèle}
+		\subsection{Analyse linéaire}
+		\subsection{Ajout des conditions aux limites transverses}
+		\subsection{Implémentation de l'équation d'énergie}
+	\section{Application de l'approche par vitesse de dérive pour les plasmas
+	froids}
+		\subsection{Model for highly magnetized low-temperature plasmas}
+		\subsection{Dimensionless and reduction of the model??}
+		\subsection{Linear analysis??}
+		\subsection{Numerical validation}
+		\subsection{stability analysis}
+		\subsection{stability analysis}
 	\section{Elaboration du modèle de plasmas froids magnétisé}
 		\subsection{Drift diffusion and magnetized drift diffusion model}
 		\subsection{Model for highly magnetized low-temperature plasmas}
