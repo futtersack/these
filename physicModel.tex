@@ -2,7 +2,7 @@
 parois}
 \chaptermark{Modèles fluides pour le transport magnétisé}
  	\section{Les modèles}
-L'étude de phénomènes complexes 
+L'étude de phénomènes complexes
  	
 Ce chapitre est consacré à la construction du modèle fluide pour les plasmas
 froids magnétisés.
@@ -10,8 +10,8 @@ La première partie brosse un rapide état de l'art concernant la modélisation
 dans le domaine des plasmas froids. Nous présenterons ensuite un modèle de
 transport fortement magnétisé, son implémentation numérique (le code TOKAM2D)
 utilisé pour caractériser la SOL des tokamaks ainsi que quelques travaux. Enfin
-nous détaillerons l'élaboration du modèle hybride plasmas froids/magnétisé à travers une
-discussion sur les différentes approches qui ont été abordées.
+nous détaillerons l'élaboration du modèle hybride plasmas froids/magnétisé à
+travers une discussion sur les différentes approches qui ont été abordées.
 	
 	\section{Plasmas froids, le modèle de dérive-diffusion}
 Dans le domaine des plasmas froids, l'approche usuelle de modélisation consiste
@@ -20,22 +20,21 @@ chaques espèces
 	\lipsum{20}
 	\section{Plasmas magnétisés, l'approche par vitesses de dérive}
 	 \subsection{Le code TOKAM2D}
-Le code TOKAM2D a été initialement développé à l'IMTM\footnote{Institut Méditerranéen
-Technologique de Marseille} pour étudier la turbulence d'interchange qui domine
-le transport transverse dans le plasma de bord des tokamaks. Sa modification
-pour intégrer un forçage de la turbulence par un flux au lieu d'un gradient
-d'équilibre a permis de retrouver le caractère intermittent du
-transport et la longueur de décroissance du profil de densité que l'on mesurait
-expérimentalement. L'étude du modèle a aussi amélioré la compréhension du
-mécanisme principal de l'instabilité, dont le déclenchement à seuil de
-l'interchange et la nature de type avalanche du transport turbulent. 
+Le code TOKAM2D a été initialement développé à l'IMTM\footnote{Institut
+Méditerranéen Technologique de Marseille} pour étudier la turbulence
+d'interchange qui domine le transport transverse dans le plasma de bord des
+tokamaks. Sa modification pour intégrer un forçage de la turbulence par un flux
+au lieu d'un gradient d'équilibre a permis de retrouver le caractère
+intermittent du transport et la longueur de décroissance du profil de densité
+que l'on mesurait expérimentalement. L'étude du modèle a aussi amélioré la
+compréhension du mécanisme principal de l'instabilité, dont le déclenchement à
+seuil de l'interchange et la nature de type avalanche du transport turbulent.
 		\subsection{Hypothèses du modèle}
-Dans les conditions typiques de la SOL, l'approche fluide est justifiée par la forte collisionnalité 
-du plasma. En effet le libre parcours moyen $\lambda_c=v_T \nu_c$, de l'ordre du mètre, est très 
-inférieure à la longueur de connexion parallèle des lignes de champ $L_{||}=2\pi q R\approx 100\text{m}$.
+Dans les conditions typiques de la SOL, l'approche fluide est justifiée par la
+forte collisionnalité du plasma. En effet le libre parcours moyen $\lambda_c=v_T
+\nu_c$, de l'ordre du mètre, est très inférieure à la longueur de connexion
+parallèle des lignes de champ $L_{||}=2\pi q R\approx 100\text{m}$.
 
-Le modèle est basé sur ordering d'échelles spatiales et temporelles qui permet d'exprimer 
-la vitesse transverse en fonction des champs de densité et de potentiels.
 
 		
 		\subsection{Divergence des courants}
