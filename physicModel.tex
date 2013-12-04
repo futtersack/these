@@ -18,7 +18,7 @@ Dans le domaine des plasmas froids, l'approche usuelle de modélisation consiste
 à résoudre les équations de dérive-diffusions~\eqref{derivediffusion} pour
 chaques espèces
 	\lipsum{20}
-	\section{Plasmas magnétisés, l'approche par vitesses de dérive}
+	\section{Plasmas fortement magnétisés}
 	 \subsection{Le code TOKAM2D}
 Le code TOKAM2D a été initialement développé à l'IMTM\footnote{Institut
 Méditerranéen Technologique de Marseille} pour étudier la turbulence
@@ -30,10 +30,19 @@ que l'on mesurait expérimentalement. L'étude du modèle a aussi amélioré la
 compréhension du mécanisme principal de l'instabilité, dont le déclenchement à
 seuil de l'interchange et la nature de type avalanche du transport turbulent.
 		\subsection{Hypothèses du modèle}
-Dans les conditions typiques de la SOL, l'approche fluide est justifiée par la
-forte collisionnalité du plasma. En effet le libre parcours moyen $\lambda_c=v_T
-\nu_c$, de l'ordre du mètre, est très inférieure à la longueur de connexion
+Dans les conditions typiques de la SOL, l'utilisation d'un modèle fluide est justifiée par la
+forte collisionnalité du plasma. En effet le libre parcours moyen $\lambda_{ei}=v_T
+\nu_{ei}$, de l'ordre du mètre, est très inférieur à la longueur de connexion
 parallèle des lignes de champ $L_{||}=2\pi q R\approx 100\text{m}$.
+Le plasma est considéré quasineutre de densité $n$ et de plus très magnétisé $B\approx 1\text{T}$,
+ ce qui nous permet de nous placer dans le cadre de
+l'approche par vitesse de dérives. Les fréquences caractéristiques
+qui nous intéressent pour décrire le transport transverse suivent donc l'ordering suivant :
+\begin{equation}
+	\omega>>\nu{c}>>\omega_{ci}>>\omega_{pe}
+\end{equation}
+
+
 
 
 		
