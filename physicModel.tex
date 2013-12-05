@@ -4,7 +4,7 @@ parois}
  	\section{Les modèles}
 L'étude de phénomènes complexes
  	
-Ce chapitre est consacré à la construction du modèle fluide pour les plasmas
+Ce chapitre est consacré à la construction du modèle fluide 2D pour les plasmas
 froids magnétisés.
 La première partie brosse un rapide état de l'art concernant la modélisation
 dans le domaine des plasmas froids. Nous présenterons ensuite un modèle de
@@ -29,18 +29,24 @@ intermittent du transport et la longueur de décroissance du profil de densité
 que l'on mesurait expérimentalement. L'étude du modèle a aussi amélioré la
 compréhension du mécanisme principal de l'instabilité, dont le déclenchement à
 seuil de l'interchange et la nature de type avalanche du transport turbulent.
+
+C'est un code fluide, quasineutre, qui décrit le transport transverse en se
+basant sur l'approximation des vitesses de dérive (voir §
+\ref{Introduction}-\ref{vitessesDerive}).
 		\subsection{Hypothèses du modèle}
 Dans les conditions typiques de la SOL, l'utilisation d'un modèle fluide est justifiée par la
-forte collisionnalité du plasma. En effet le libre parcours moyen $\lambda_{ei}=v_T
-\nu_{ei}$, de l'ordre du mètre, est très inférieur à la longueur de connexion
+forte collisionnalité du plasma. Le libre
+parcours moyen $\lambda_{ei}=v_T \nu_{ei}$, de l'ordre du mètre, est très inférieur à la longueur de connexion
 parallèle des lignes de champ $L_{||}=2\pi q R\approx 100\text{m}$.
+
 Le plasma est considéré quasineutre de densité $n$ et de plus très magnétisé $B\approx 1\text{T}$,
  ce qui nous permet de nous placer dans le cadre de
-l'approche par vitesse de dérives. Les fréquences caractéristiques
+l'approche par vitesse de dérives. Les fréquences et longueurs caractéristiques
 qui nous intéressent pour décrire le transport transverse suivent donc l'ordering suivant :
 \begin{equation}
-	\omega>>\nu{c}>>\omega_{ci}>>\omega_{pe}
+	\omega>>\omega_{ci} \text{ et } \lambda_D<<\rho_{l}<<l_{\perp}
 \end{equation}
+Le 
 
 
 
