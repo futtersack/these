@@ -25,16 +25,20 @@
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
+\usepackage{amsmath}
+
 %\usepackage[utopia]{mathdesign}
-%\usepackage[garamond,expert]{mathdesign}
+%\usepackage[zapfino]{mathdesign}
 %\usepackage{helvet}
-%\usepackage{arial}
-%\usepackage{charter}
-\usepackage{libertine}
+%\usepackage{garamond}
+%\usepackage{uop}
+%\usepackage{libertine}
 %\usepackage{palatino}
 %\renewcommand\familydefault{\ttfamily}
+\usepackage{mathpazo}
+%\usepackage{pxfonts}
 
-\usepackage{amsmath}
+%\usepackage{fouriernc,bm}
 \usepackage[french]{babel}
 
 
@@ -58,6 +62,10 @@
 %Une table des matiere par chapitre
 \usepackage[french]{minitoc}
 
+
+\usepackage[squaren,Gray,thinspace]{SIunits}
+\usepackage{lipsum}
+
 \renewcommand{\mtctitle}{}
 
 \dominitoc
@@ -71,6 +79,8 @@
 \renewcommand\cftsecfont{\normalsize\bfseries}
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
 \usepackage{fancyhdr}
+
+\renewcommand{\theequation}{\thechapter-\thesection.I\arabic{equation}}
 
 \fancypagestyle{preface}{%
     \fancyhead{}
@@ -157,8 +167,6 @@
 
 %\newcommand{\artlabel}[1]{{\sc #1.}}
 \usepackage{titlesec}
-
-\usepackage{lipsum}
 
 \usepackage[final]{pdfpages} 
 % \usepackage{hyperref}
