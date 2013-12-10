@@ -37,6 +37,7 @@
 %\renewcommand\familydefault{\ttfamily}
 \usepackage{mathpazo}
 %\usepackage{pxfonts}
+\usepackage[eulergreek]{mathastext}
 
 %\usepackage{fouriernc,bm}
 \usepackage[french]{babel}
@@ -61,7 +62,7 @@
 
 %Une table des matiere par chapitre
 \usepackage[french]{minitoc}
-
+\setcounter{minitocdepth}{1}
 
 \usepackage[squaren,Gray,thinspace]{SIunits}
 \usepackage{lipsum}
@@ -80,7 +81,6 @@
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
 \usepackage{fancyhdr}
 
-\renewcommand{\theequation}{\thechapter-\thesection.I\arabic{equation}}
 
 \fancypagestyle{preface}{%
     \fancyhead{}
@@ -127,11 +127,9 @@
 	\pagestyle{empty}
 	\cleardoublepage
 	\titleformat{\chapter}[display]
-		{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-	\chapter*{#1}
+		{\normalfont\huge\bfseries}{\chaptertitlename\
+		\thechapter}{20pt}{\vspace{-80pt}\Huge} \chapter*{#1}
 	\pagestyle{chapitre}}
-	
-
 \usepackage{cite}
 \usepackage{appendix} % Makes appendices
 \usepackage{cclicenses} % Creative commons
@@ -141,12 +139,13 @@
 
 \usepackage{setspace}
 
+\renewcommand{\theequation}{\thechapter-\thesection.\arabic{equation}}
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\arabic{section}}
 
 \parindent=1em
 \parskip 0.5em plus 1pt
-
+\DeclareMathOperator{\moinsun}{^{-1}} 
 \newcommand{\Section}[1]{\newpage\section{#1} \setcounter{figure}{0}}
 \renewcommand{\thefigure}{\arabic{section}.\alph{figure}}
 
