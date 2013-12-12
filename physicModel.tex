@@ -1,22 +1,20 @@
 \Chapter{Modèles fluides pour le transport magnétisé dans un plasma limité par
 des parois}
 \chaptermark{Modèles fluides}
+Ce chapitre est consacré à la construction d'un modèle fluide 2D pour les
+plasmas froids magnétisés.
+La première partie se concentre sur l'étude de la modélisation du transport
+(fortement) magnétisé en contact avec une paroie. Nous présentons le code TOKAM2D utilisé pour
+caractériser la SOL des tokamaks ainsi que les modifications qui lui ont été
+apportées pour lui permettre décrire le transport dans des conditions se
+rapprochant de notre étude.
+Nous détaillerons enfin l'élaboration du modèle hybride plasmas
+froids/magnétisé, à travers une discussion sur les différentes approches .
 \section{Les modèles}
 L'étude de phénomènes complexes
 
-Ce chapitre est consacré à la construction du modèle fluide 2D pour les plasmas
-froids magnétisés.
-La première partie brosse un rapide état de l'art concernant la modélisation
-dans le domaine des plasmas froids. Nous présenterons ensuite un modèle de
-transport fortement magnétisé, son implémentation numérique (le code TOKAM2D)
-utilisé pour caractériser la SOL des tokamaks ainsi que quelques travaux. Enfin
-nous détaillerons l'élaboration du modèle hybride plasmas froids/magnétisé à
-travers une discussion sur les différentes approches qui ont été abordées.
 
-\section{Plasmas froids, le modèle de dérive-diffusion}
-Dans le domaine des plasmas froids, l'approche usuelle de modélisation consiste
-à résoudre les équations de dérive-diffusions~\eqref{derivediffusion} pour
-chaques espèces
+
 \section{Plasmas fortement magnétisés}
 La première partie de cette thèse a consisté à étudier et modifier un modèle
 fluide décrivant le transport magnétisé de la SOL des tokamaks
@@ -59,8 +57,11 @@ On décrit alors le transport du plasma à travers l'évolution de la densité
 de continuité des électrons ainsi que l'équation de conservation du courant. Les
 températures électronique
 $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e$.
+
+La géométrie 
+
 L'hypothèse flûte, qui permet la réduction du problème de trois à deux
-dimensions fera l'objet de l'une des parties suivantes.
+dimensions .
 \subsection{Equations de conservation}
 \subsubsection{Equation de conservation de la matière}
 En notant $D_\perp$ le coefficient de diffusion rendant compte des collisions,
@@ -160,6 +161,7 @@ B^{\moinsun}\left[U,\nabla_\perp^2\ U\right]\right)
 \end{split}
 \end{equation}
 
+
 \subsection{Normalisation du système}
 Les grandeurs de normalisation sont reliées à l'intensité du champ magnétique
 $B_0$ et à la température électronique de référence $T_0$. Le temps est
@@ -183,18 +185,14 @@ $\overline{N}$ et le potentiel électrostatique $\overline \phi$ par :
 n = n_0\:\overline{N} & \text{et} & U=\frac{\overline {\phi}T_0}{e}
 \end{eqnarray}
 \vfill
-\subsection{Géométrie du système}
-\subsection{Analyse linéaire}
+
 \subsection{Ajout des conditions aux limites transverses}
 \subsection{Implémentation de l'équation d'énergie}
 \subsection{Application de l'approche par vitesse de dérive pour les plasmas
 froids suffisement magnétisé}
+Dans les plasmas froids, 
 
 \section{Modèle pour les plasmas froids magnétisés}
-
-\subsection{Model for highly magnetized low-temperature plasmas}
-\subsection{Dimensionless and reduction of the model??}
-\subsection{Linear analysis??}
-\subsection{Numerical validation}
-\subsection{stability analysis}
-\subsection{stability analysis}
+Dans cette partie, nous proposons un nouveau modèle pour décrire le transport
+magnétisé dans les plasmas froids. 
+\subsection{Modèle de dérive-diffusion magnétisé}
