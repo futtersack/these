@@ -1,0 +1,48 @@
+\Chapter{Le code MAGNIS (MAGnetized Negative Ion Source)}
+\chaptermark{Modèles plasmas froids magnétisés}
+Dans cette partie, nous proposons un nouveau modèle fluide pour décrire le
+transport magnétisé dans les plasmas froids. Nous discutons tout d'abord de
+l'approche standard de modélisation des plasmas froids, des problématiques qui
+lui sont propres ainsi que des difficultés rencontrées lors du développement du
+modèle basé sur les vitesses de dérive. La suite concerne l'élaboration du
+nouveau modèle, nous le dérivons en expliquant les différents
+termes essentiels à description du transport dans les plasmas froids puis nous
+détaillons le schéma numérique original utilisé pour résoudre le modèle.
+\section{Problématique}
+La plupart des modèles fluides décrivant les phénomènes de transport
+magnétisés dans les plasmas froids sont basés sur les équations de
+dérive-diffusion (chapitre \ref{derivediffusion}). Cependant, au delà d'une
+certaine intensité de champ magnétique, l'anisotropie du transport rend la résolution
+numérique de ces équations complexe voire impossible. Le problème est alors
+généralement adressé à travers le développement de
+modèles cinétiques numériquement très coûteux, nécessitant à priori la
+résolution d'échelles de l'ordre de la longueur de Debye et de la fréquence plasma.
+
+Les équations Eqs.\ref{derivediffusion} sont en fait peu adaptées au
+transport fortement magnétisé. Un indice nous est donné en considérant la
+description du transport transverse par les vitesses de dérive (cf.
+introduction) où l'équilibre des courants fait intervenir la divergence de
+la dérive de polarisation. Cette dérive est absente du modèle stationnaire qui
+néglige totalement l'inertie des particules.
+
+Le modèle de dérive-diffusion, construit en négligeant l'inertie
+des particules, ne 
+
+\section{Dérivation du modèle}
+\subsection{Hypothèses et géométrie}
+\subsection{Equations de conservation}
+\subsection{La gaine aux limites}
+\section{Implémentation numérique du modèle}
+\subsection{Source d'ionisation et pertes aux paroies}
+\subsection{Inertie des particules}
+\subsection{Prédictions des flux de matière et de chaleur}
+\subsection{Le schéma numérique}
+\subsection{Conditions aux limites}
+\subsection{Mobilité et conductivité}
+
+\section{Vérification et validation}
+\subsection{Convergence en temps et en espace}
+\subsection{Influence du champ magnétique}
+\subsection{Réponses à la température}
+
+

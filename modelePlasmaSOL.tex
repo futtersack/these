@@ -1,21 +1,14 @@
-\Chapter{Modèles fluides pour le transport magnétisé dans un plasma limité par
-des parois}
-\chaptermark{Modèles fluides}
-Ce chapitre est consacré à la construction d'un modèle fluide 2D pour les
-plasmas froids magnétisés.
+\Chapter{Modélisation du transport magnétisé par les vitesses de dérive}
+\chaptermark{Les vitesses de dérive}
 La première partie se concentre sur l'étude de la modélisation du transport
 (fortement) magnétisé en contact avec une paroie. Nous présentons le code TOKAM2D utilisé pour
 caractériser la SOL des tokamaks ainsi que les modifications qui lui ont été
 apportées pour lui permettre décrire le transport dans des conditions se
 rapprochant de notre étude.
 Nous détaillerons enfin l'élaboration du modèle hybride plasmas
-froids/magnétisé, à travers une discussion sur les différentes approches .
-\section{Les modèles}
-L'étude de phénomènes complexes
-
-
-
-\section{Plasmas fortement magnétisés}
+froids/magnétisés, à travers une discussion sur les différentes approches .
+\section{Transport fortement magnétisé dans la SOL}
+\chaptermark{Transport dans le plasma de bord}
 La première partie de cette thèse a consisté à étudier et modifier un modèle
 fluide décrivant le transport magnétisé de la SOL des tokamaks
 \subsection{Le code TOKAM2D}
@@ -185,31 +178,17 @@ $\overline{N}$ et le potentiel électrostatique $\overline \phi$ par :
 n = n_0\:\overline{N} & \text{et} & U=\frac{\overline {\phi}T_0}{e}
 \end{eqnarray}
 \vfill
+\section{Vers une description des sources d'ions}
+	\subsection{Ajout des conditions aux limites transverses}
+	\subsection{Inclusion d'un champ magnétique non uniforme}
+	\subsection{Implémentation de l'équation d'énergie}
+\section{Application de l'approche par vitesse de dérive pour les plasmas
+froids}
+\label{vitessesDerivePlasmaFroid}
+Dans les plasmas froids,
 
-\subsection{Ajout des conditions aux limites transverses}
-\subsection{Implémentation de l'équation d'énergie}
-\subsection{Application de l'approche par vitesse de dérive pour les plasmas
-froids suffisement magnétisé}
-Dans les plasmas froids, 
 
-\section{Modèle pour les plasmas froids magnétisés}
-Dans cette partie, nous proposons un nouveau modèle fluide pour décrire le
-transport magnétisé dans les plasmas froids. Nous discutons tout d'abord de
-l'approche standard de modélisation des plasmas froids, des problématiques qui
-lui sont propres ainsi que des difficultés rencontrées lors du développement du
-modèle basé sur les vitesses de dérive. La suite concerne l'élaboration du
-nouveau modèle, nous le dérivons en expliquant les différents
-termes essentiels à description du transport dans les plasmas froids puis nous
-détaillons le schéma numérique original utilisé pour résoudre le modèle.
-\subsection{Modèle quasineutre de dérive-diffusion magnétisé}
 
-\subsection{Hypothèses et géométrie}
-\subsection{Dérivation des équations}
-\subsection{Modèle de gaine électrostatique}
-\subsection{Le terme source d'ionisation}
-\subsection{Mobilité et conductivité}
-\subsection{Inertie}
-\subsection{Le flux de chaleur}
 
 
 
