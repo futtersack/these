@@ -39,7 +39,8 @@
 %\usepackage{mathpple}
 
 %\usepackage{pxfonts}
-%\usepackage[eulergreek]{mathastext}
+%\usepackage[OMLmathrm,OMLmathbf]{isomath}
+\usepackage[eulergreek]{mathastext}
 
 %\usepackage{fouriernc,bm}
 \usepackage[french]{babel}
@@ -64,7 +65,7 @@
 
 %Une table des matiere par chapitre
 \usepackage[french]{minitoc}
-\setcounter{minitocdepth}{1}
+\setcounter{minitocdepth}{2}
 
 \usepackage[squaren,Gray,thinspace]{SIunits}
 \usepackage{lipsum}
@@ -147,7 +148,6 @@
 
 \parindent=1em
 \parskip 0.5em plus 1pt
-\DeclareMathOperator{\moinsun}{^{-1}} 
 \newcommand{\Section}[1]{\newpage\section{#1} \setcounter{figure}{0}}
 \renewcommand{\thefigure}{\arabic{section}.\alph{figure}}
 
@@ -156,7 +156,10 @@
 \renewcommand{\fnum@table}{\small \textsc{\tablename}~\thetable\it}
 \makeatother
 
+\DeclareMathOperator{\moinsun}{^{-1}} 
+\DeclareMathOperator{\zero}{_0} 
 
+\newcommand{\para}{{\mkern3mu\vphantom{\perp}\vrule depth 0pt\mkern3mu\vrule depth 0pt\mkern3mu}}
 \renewcommand{\labelitemi}{$\bullet$}
 
 

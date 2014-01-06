@@ -44,7 +44,9 @@ dits classiques :
 			
 			Dans ces plasmas, le dégré d'ionisation $\alpha$ est donné par le rapport
 			entre la densité électronique $n_e$ et la densité de gaz $n_g$ :
-				$$\alpha=\frac{n_e}{n_e+n_g}$$
+			\begin{equation}
+				\alpha=\frac{n_e}{n_e+n_g}
+			\end{equation}
 			Cette fraction va définir l'importance de l'interaction entre les particules 
 			neutres et les particules chargées. Cependant, même à très faible $\alpha$,
 			l'apparition d'une population de porteurs de charge va modifier les caractéristiques et la
@@ -53,7 +55,9 @@ dits classiques :
 			L'ionisation du gaz suit l'évolution de la température électronique $T_e$ qui
 			mesure l'agitation thermique des électrons. Densité et température
 			électronique permettent de définir le paramètre plasma:
-				$$\Gamma=\frac{<E_p>}{<E_c>}=\frac{e^2n_e^{1/3}}{\epsilon_0 eT_e}$$
+			\begin{equation}
+				\Gamma=\frac{<E_p>}{<E_c>}=\frac{e^2n_e^{1/3}}{\varepsilon_{_0} eT_e}
+			\end{equation}
 			Le paramètre plasma représente le ratio entre l'énergie thermique des
 			électrons et leur énergie potentielle électrostatique coulombienne \emph{ie.}
 			l'agitation thermique desordonnée contre les forces d'interactions
@@ -63,7 +67,7 @@ dits classiques :
 			$\Gamma\ll 1$. Ils ont une population d'électrons assez espacée et/ou une
 			température suffisamment élevée.
 			
-		\subsection{Dynamique : Echelles, équilibres et transport}
+		\subsection{Echelles et phénomènes collectifs}
 		La dynamique d'un plasma résulte du couplage entre le mouvement des
 		particules chargées et les forces électromagnétiques de Coulombs ($\mathbf
 		F=q_s\mathbf E$) et de Lorentz ($\mathbf F=q_s\mathbf v_s\times\mathbf B$)
@@ -78,16 +82,21 @@ dits classiques :
 			leur champ électrique individuel et former ainsi un ensemble électriquement neutre. 
 			Ce comportement est décrit aux plus petites échelles spatiotemporelles par
 			le principe fondamental de la dynamique et la loi de Boltzman-Poisson :
-			$$m_s\frac{\partial \mathbf{v}}{\partial t}=q_s\mathbf E
-			\;\;\;\text{et}\;\;\;\nabla^2\Phi=\frac{\rho}{\varepsilon_0}$$ ou
-			$m_s$ est la masse de la particule, $\mathbf{v}$ sa vitesse, $q_s$ la
+			\begin{align}
+				m_s\frac{\partial \mathbf{v}}{\partial t}=q_s\mathbf E
+				\;\;\;\;\;\;\text{et}\;\;\;\;\;\;
+				\nabla^2\Phi=\frac{\rho}{\varepsilon_{_0}}
+			\end{align} 
+			où $m_s$ est la masse de la particule, $\mathbf{v}$ sa vitesse, $q_s$ la
 			charge élémentaire, $\rho$ est la différence entre la densité ionique et
 			électronique.
 			Les échelles fondamentales entrant en jeu sont alors la pulsation plasma et
 			la longueur de Debye, reliée à la vitesse thermique 
-			$$\omega_p=\sqrt{\frac{n_0e^2}{\varepsilon_0
-			m_e}}\;\text{,}\;\;\;\lambda_D=\sqrt{\frac{\varepsilon_0
-			eT_e}{n_0e^2}}\;\;\;\text{et}\;\;\;v_{th}=\sqrt{\frac{eT_e}{m_e}}$$
+			\begin{equation}
+				\omega_p=\sqrt{\frac{n_{_0}e^2}{\varepsilon_{_0}
+				m_e}}\;\text{,}\;\;\;\lambda_D=\sqrt{\frac{\varepsilon_{_0}
+				eT_e}{n_{_0}e^2}}\;\;\;\text{et}\;\;\;v_{th}=\sqrt{\frac{eT_e}{m_e}}
+			\end{equation}
 			Au dela de ces échelles, on peut considérer cette dynamique comme instantanée
 			et uniforme. Globalement, vu de suffisement loin et exepté à ses frontières,
 			le plasma est dans un état de \emph{quasi-neutralité}, \emph{ie.} $n_e=n_i$.
@@ -126,7 +135,7 @@ dits classiques :
 			
 			\begin{itemize}
 			\item Un déplacement parallèle aux lignes de champ, de l'ordre de la vitesse
-			thermique des espèces, $v_\parallel\approx c_s=(eT_s/m_s)^{1/2}$
+			thermique des espèces, $v_\para\approx c_s=(eT_s/m_s)^{1/2}$
 			\item Le mouvement cyclotronique, rotation rapide de la particule
 			autour des lignes de champ magnétiquedans le plan perpendiculaire aux lignes
 			de champ
@@ -156,8 +165,7 @@ dits classiques :
 			Les gaines électrostatiques sont des structures non-neutres qui se
 			développent à la frontière entre un plasma et un objet. Elles apparaissent
 			spontanément du fait de la plus grande vitesse des électrons par rapport à
-			celle des ions.  d'un facteur au moins égal à même température au ratio des
-			masses $\sqrt{m_i/m_e}$ Ces structures se forment ont une taille de l'ordre de grandeur de la longueur de Debye $\lambda_D$
+			celle des ions. D'une taille de l'ordre de quelques longueurs de Debye $\lambda_D$, 
 			L'interaction dite plasma-paroi est une branche à part entière de la physique des plasmas.
 			En effet, au contact d'un milieu extérieur, que ce soit un obstacle matériel
 			ou un gaz ambiant, le plasma perd sa quasineutralité.

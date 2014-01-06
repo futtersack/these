@@ -41,7 +41,7 @@ des pertes à la paroi en les intégrant le long de la direction parallèle.
 \subsection{Equations de conservation}
 Comme discuté en introduction, nous retenons tous les termes de l'équation du moment :
 \begin{equation}
-	\partial_t \mathbf{u}_s + \mathbf{u}_s\cdot\nabla\mathbf{u}_s+\nu_s\mathbf{u}_s+\omega_s\mathbf{b}\times\mathbf{u}_s=-(\frac{q_s\nabla U}{m_s}+\frac{\nabla p_s}{m_sn_s})
+	\partial_t \mathbf{u}_s + \mathbf{u}_s\cdot\nabla\mathbf{u}_s+\nu_s\mathbf{u}_s+\omega_s\mathbf{b}\times\mathbf{u}_s=-\frac{q_s}{m_s}\left(\nabla U+\frac{\nabla p_s}{q_sn_s}\right)
 \end{equation}
 
 où $n_s$ est la densité de l'espèce considérée, $\mathbf{u}_s$ sa vitesse fluide, $p_s$ la pression, $U$ le potentiel électrostatique,
@@ -61,6 +61,7 @@ conduit à l'équation de conservation du courant :
 	\label{eqCourant}
 	\nabla\cdot(\sum_sq_sn_s\mathbf{u}_s)=0
 \end{equation}
+
 Eq. \ref{eqCourant} couple les différentes espèces en contrôlant l'évolution du potentiel électrostatique $U$.
 L'équation de conservation de l'énergie est obtenue classiquement en substituant l'équation de continuité 
 afin d'éliminer le terme convectif :
@@ -71,7 +72,7 @@ afin d'éliminer le terme convectif :
 \end{equation}
 
 où $S_e$ est le terme source d'électrons lié à l'ionisation, $P_{ext}$ la puissance extérieure déposée dans le plasma
- et $\Pi$ le terme de perte d'énergie dû aux collisions. La fermeture du modèle se fait alors sur le flux de chaleur $Q$ 
+ et $\Pi$ le terme de perte d'énergie dû aux collisions. La fermeture du modèle se fait alors sur le flux de chaleur $\mathbf{Q}$ 
  \cite{Golant} :
 \begin{equation}
 	\partial_t \mathbf{Q} + \nu_e\mathbf{Q}+\omega_e\mathbf{Q}\times\mathbf{b} = -\frac{5}{2}\frac{e^2}{m_e}n_eT_e\nabla T_e
@@ -80,8 +81,41 @@ où $S_e$ est le terme source d'électrons lié à l'ionisation, $P_{ext}$ la pu
 Le flux de chaleur est magnétisé de la même façon que le flux de matière et dépend principalement 
 du gradient de température. Dans les sources magnétisées, où la longueur de gradient thermique est de 
 l'ordre de grandeur de la largueur du filtre magnétique, le flux de chaleur influence fortement le transport
-transverse. Il doit donc nécessairement être pris en compte et ... 
-\subsection{La gaine comme condition aux limites}
+transverse. Il doit donc nécessairement être pris en compte et décrit là encore avec le minimum d'approximations.
+ 
+\subsection{Conditions aux limites}
+Le modèle est complété par la définition de conditions aux limites intégrant le maximum de 
+considérations physiques. Dans le cas d'une paroi conductrice, un modèle classique de gaine est utilisé. Les 
+flux ioniques et le flux électronique sont alors définis en l'entrée de gaine par : 
+\begin{align}
+	\boldsymbol{\Gamma}_i\cdot\mathbf{n}&=n.\max\left(c_s,\mathbf{u_i}\cdot\mathbf{n}\right)=n.\max\left(\left(\frac{eT_e}{m_i}\right)^{\text{\textonehalf}},\mathbf{u_i}\cdot\mathbf{n}\right)
+	\\
+	\boldsymbol{\Gamma}_e\cdot\mathbf{n}&=n.v_{th}=n\left(\frac{eT_e}{2\pi m_e}\right)^{\text{\textonehalf}}\exp\left({-\frac{\Phi-\Phi_w}{T_e}}\right)
+\end{align}
+
+où $\mathbf{n}$ est le vecteur normal à la paroi. Les ions sont perdus au minimum avec la vitesse acoustique, 
+mais éventuellement avec une vitesse supersonique. La condition limite pour le courant est par conséquence définie 
+par :
+\begin{equation}
+	\mathbf{j}\cdot\mathbf{n}=\left(\sum_s\boldsymbol{\Gamma}_s-\boldsymbol{\Gamma}_e\right)\cdot\mathbf{n}
+\end{equation}
+
+Dans le cas d'une paroi isolante, la surface se polarise pour assurer la nullité du courant sortant :
+\begin{equation}\begin{split}
+	\mathbf{j}\cdot\mathbf{n}=0\Leftrightarrow
+	\Phi_w=\Phi-T_e.ln\left(\left(\frac{2\pi m_e}{eT_e}\right)^{\text{\textonehalf}}\frac{1}{n_e}\sum_s \boldsymbol{\Gamma}_s\right)
+\end{split}\end{equation}
+
+Pour le flux d'énergie, 
+\begin{equation}
+	\frac{5}{2}n_eT_e\mathbf{u}_e\cdot\mathbf{n}+\mathbf{Q}\cdot\mathbf{n}=
+	n\left(\frac{eT_e}{2\pi m_e}\right)^{\text{\textonehalf}}\exp\left({-\frac{\Phi-\Phi_w}{T_e}}\right)\left(2T_e+\Phi-\Phi_w\right)
+\end{equation}
+
+\begin{equation}
+	\mathbf{Q}\cdot\mathbf{n}=n\left(\frac{eT_e}{2\pi m_e}\right)^{\text{\textonehalf}}\exp\left({-\frac{\Phi-\Phi_w}{T_e}}\right)\left(\Phi-\Phi_w-\frac{1}{2}T_e\right)
+\end{equation}
+
 
 \section{Implémentation numérique du modèle}
 \subsection{Discrétisation temporelle}
@@ -92,17 +126,11 @@ transverse. Il doit donc nécessairement être pris en compte et ...
 	{\caption{Maillage 2D pour les schémas volumes finis}
 	\label{maillage}}
 \end{figure}
-\subsection{Source d'ionisation et pertes aux paroies}
 \begin{equation}
 	S_s(T_e)=n_en_gk_{s}^{iz}(T_e)
 \end{equation}
 où $n_g$ est la densité du gaz et $k_{s}^{iz}$ le coefficient d'ionisation spécifique à l'espèce. 
 
-\subsection{Inertie des particules}
-\subsection{Prédictions des flux de matière et de chaleur}
-\subsection{Le schéma numérique}
-\subsection{Conditions aux limites}
-\subsection{Mobilité et conductivité}
 
 \section{Vérification et validation}
 \subsection{Convergence en temps et en espace}
