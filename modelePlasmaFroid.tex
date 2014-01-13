@@ -78,7 +78,7 @@ où l'indice i dénote éventuellement différentes espèces d'ions. Eq.
 L'équation de conservation de l'énergie est obtenue classiquement en substituant
 l'équation de continuité afin d'éliminer le terme convectif :
 \begin{equation}\begin{split}
-\label{eqEnergie}
+\label{3-energie}
 \frac{3}{2}n_e\partial_tT_e + \nabla\cdot(\mathbf{Q}) +
 (\frac{5}{2}S_e-\partial_tn_e)T_e \\=n_e\mathbf{u}_e\cdot(\nabla
 \Phi-\frac{5}{2}\nabla T_e)+n_e\left(P_{ext}-\Pi\right)
@@ -90,7 +90,6 @@ terme source d'électrons lié à l'ionisation, $P_\text{ext}$ la puissance
 extérieure déposée dans le plasma et $\Pi$ le terme de perte d'énergie dû aux collisions. La fermeture du modèle se fait alors sur le flux de chaleur
 $\mathbf{Q}$ \cite{Golant} :
 \begin{equation}
-\label{3-energie}
 \partial_t \mathbf{Q} + \nu_e\mathbf{Q}+\omega_e\mathbf{Q}\times\mathbf{b} =
 -\frac{5}{2}\frac{e^2}{m_e}n_eT_e\nabla T_e
 \end{equation}
@@ -136,13 +135,13 @@ Les ions sont perdus au minimum avec la vitesse acoustique, mais
 éventuellement avec une vitesse supersonique. La condition limite pour le
 courant est par conséquence définie par :
 \begin{equation}
-\mathbf{j}\cdot\mathbf{n}=e\sum_i{\Gamma}_i-e{\Gamma}_e
+\boldsymbol{\Gamma}_\rho\cdot\mathbf{n}=\mathbf{j}\cdot\mathbf{n}=e\sum_i{\Gamma}_i-e{\Gamma}_e
 \end{equation}
 
 Si la paroi est isolante, la surface se polarise pour assurer la nullité du
 courant sortant :
 \begin{equation}\begin{split}
-\mathbf{j}\cdot\mathbf{n}=0\Leftrightarrow
+\boldsymbol{\Gamma}_\rho\cdot\mathbf{n}=0\Leftrightarrow
 \Phi_w=\Phi-T_e(\Lambda-ln\sum_i\Gamma_i/nc_s)
 \end{split}\end{equation}
 
@@ -157,7 +156,7 @@ semi-maxwellienne) et l'énergie transférée aux ions dans la chute de potentie
  d'énergie Eq.\ref{eqEnergie}, correspondant au flux d'énergie porté par les
  particule et au flux de chaleur :
 \begin{equation}
-\frac{5}{2}\boldsymbol{\Gamma}_eT_e\cdot\mathbf{n}+\mathbf{Q}\cdot\mathbf{n}=
+\boldsymbol{\Gamma}_\varepsilon=\frac{5}{2}\boldsymbol{\Gamma}_eT_e\cdot\mathbf{n}+\mathbf{Q}\cdot\mathbf{n}=
 \boldsymbol{\Gamma}_e\left(2T_e+\Delta\Phi\right)\cdot\mathbf{n}
 \end{equation}
 
@@ -178,11 +177,54 @@ résultant d'une polarisation positive de la paroi.
 \subsection{Réduction 2D du modèle}
 Le système d'équations Eqs.(\ref{3-continuite}~-~\ref{3-energie}) décrit le
 transport magnétisé dans un plasma froid en suivant l'évolution des densités de
-particules, du potentiel électrique, de la température électronique et du flux
-de chaleur dans un espace à trois dimensions. 
+particules, du potentiel électrique et de la température électronique 
+dans un espace à trois dimensions. La réduction du modèle à deux dimensions est
+alors possible en considérant la forte anisotropie du transport induite par le champ magnétique.
+En effet, le long des lignes de champ, les électrons sont collisionnels et en équilibre de 
+Boltzmann, homogénéisant le système. 
 
-\section{Implémentation numérique du modèle}
-La grande difficulté de 
+En considérant l'hypothèse flûte, qui consiste à supposer les fluctuations constantes
+le long des lignes de champ, le système est intégré dans la direction parallèle et se
+réécrit :
+\begin{equation}
+\label{3-equations2D}
+\left\{\begin{array}{lr}
+\partial_t \tilde{n}_s + \Gamma_{n\para} +
+\nabla_\perp\cdot\left(\tilde{n}_s\mathbf{u}_{s_\perp}\right)=S_s(\tilde{T}_e)
+\\\\
+\Gamma_{\rho_\para}+\nabla_\perp\cdot(\sum_ie\tilde{n}_i\mathbf{u}_{i_\perp}
+-e\tilde{n}_e\mathbf{u}_{e_\perp})=0
+\\\\
+\frac{3}{2}\tilde{n}_e\partial_t\tilde{T}_e + \Gamma_{\varepsilon_\para}+\nabla_\perp\cdot(\mathbf{Q}_\perp) +
+(\frac{5}{2}S_e-\partial_t\tilde{n}_e)\tilde{T}_e =\\\tilde{n}_e\mathbf{u}_{e_\perp}\cdot(\nabla_\perp
+\tilde{\Phi}-\frac{5}{2}\nabla_\perp \tilde{T}_e)+\tilde{n}_e\left(P_{ext}-\Pi\right)
+\end{array}\right.
+\end{equation}
+
+où les grandeurs sont des moyennes effectives le long de la direction parallèle $\tilde{x}=<x>_\para$ 
+et où le mouvement parallèle se réduit aux pertes de particules $\Gamma_n$, de courant $\Gamma_\rho$ et d'énergie $\Gamma_\varepsilon$
+au bout des lignes de champ. Dans la suite, nous laissons de côté
+la notation de moyenne, l'indice perpendiculaire et nous ne considérons qu'une espèce d'ion afin de simplifier les notations.
+
+\section{Implémentation numérique : le code MAGNIS}
+
+MAGNIS résout le système d'équations \ref{3-equations2D} de manière implicite les termes influençants non-négligemment
+le transport magnétisé dans les plasmas froids. Le domaine de simulation est le plan perpendiculaire à $\mathbf{b}$, rectangulaire et maillé uniformément
+ suivant les directions $\mathbf{x}$ et $\mathbf{y}$. Les quantités scalaires sont définies aux noeuds du maillage et les composantes
+ vectorielles entre les points de maillage. 
+ \subsection{Discrétisation spatiale}
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=64mm,width=80mm]{figures/grid.png}
+{\caption{Maillage 2D pour les schémas volumes finis}
+\label{maillage}}
+\end{figure}
+
+ \subsection{Fréquences}
+ 
+ Une attention particulière est portée à description précise des 
+ flux de matière et de chaleur fortement dépendants de la magnétisation du plasma. Une étape de prédiction est tenant compte de la force 
+
 
 \subsection{Discrétisation temporelle}
 
@@ -191,13 +233,6 @@ S_s(T_e)=n^{k+1}n_gk_{s}^{iz}(T_e)
 \end{equation}
 où $n_g$ est la densité du gaz et $k_{s}^{iz}$ le coefficient d'ionisation spécifique à l'espèce.
 
-\subsection{Discrétisation spatiale}
-\begin{figure}[htbp]
-\centering
-\includegraphics[height=64mm,width=80mm]{figures/grid.png}
-{\caption{Maillage 2D pour les schémas volumes finis}
-\label{maillage}}
-\end{figure}
 
 \section{Vérification et validation}
 
