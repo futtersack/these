@@ -22,8 +22,10 @@ physique statitique, l'électromagnétisme, ou encore la dynamique des fluides.
 		
 		\subsection{Les paramètres plasmas}
 		
-Les plasmas se définissent donc comme des gaz possédant une population
-d'électrons libres $n_e$ à une température électronique $T_e$.
+Les plasmas se présentent donc comme des gaz dont le comportement est influencé de manière 
+non négligeable par une population d'électrons libres $n_e$. 
+Les plasmas se caractérisent de plus par l'agitation moyenne
+de ses particules, mesurée par la température électronique $T_e$. 
 La figure \ref{zoologie}, issue du livre du National Research
 Council\cite{national1995Plasma}, représente une classification des plasmas en
 fonction de ces deux paramètres principaux qui vont influer sur la dynamique du
@@ -75,16 +77,18 @@ dits classiques :
 		F=q_s(\mathbf E+ \mathbf v_s\times\mathbf B)$
 		présentent ou qui se forment dans le système.
 		Elle se décompose principalement sur deux échelles de temps : la première
-		phase correspond à l'équilibre électrostatique, où la
+		phase correspond à l'équilibre électrostatique, où une
 		quasineutralité s'établit. Dans une deuxième phase, l'évolution quasineutre du
-		plasma se passe plus lentement.
+		plasma, plus lente, tend à former un équilibre entre les particules et la valeur locale 
+		et instantanée des champs de force extérieurs.
+		.
 		\subsection{Quasineutralité}
 			Le processus le plus rapide est lié à
-			l'équilibre microscopique électrostatique qui s'opère lors de la formation
-			d'un plasma entre l'agitation thermique et l'interaction coulombienne. Les
-			ions et des électrons issus de l'ionisation se réorganisent pour écranter
+			l'équilibre microscopique électrostatique qui s'opère 
+			entre l'agitation thermique et l'interaction coulombienne des particules. Les
+			ions et les électrons issus de l'ionisation se réorganisent pour écranter
 			leur champ électrique individuel et former ainsi un ensemble électriquement neutre. 
-			Cette dynamique est portée par les électrons et décrite aux plus petites
+			Cette dynamique est essentiellement portée par les électrons et décrite aux plus petites
 			échelles spatiotemporelles par le principe fondamental de la dynamique et la loi de Boltzman-Poisson :
 			\begin{align}
 			\label{1-PFD}
@@ -109,27 +113,38 @@ dits classiques :
 				eT_e}{n_{_0}e^{^2}}\right)^\text{\textonehalf}\right]
 				=v_{th}\left[\left(\frac{eT_e^{^{\phantom{1}}}}{m_e}\right)^\text{\textonehalf}\right]
 			\end{equation}
+		
+			Au delà de ces échelles, le plasma est dans un état de \emph{quasi-neutralité}, ie. $n_e=n_i$.
 			
-			Dans l'étude des phénomènes de transport, sous l'hypothèse d'un plasma
-			suffisement peuplé on peut considérer cette dynamique comme instantanée et
-			uniforme.
-			Globalement, vu de suffisement loin et exepté à ses frontières, le plasma
-			est dans un état de \emph{quasi-neutralité}, \emph{ie.} $n_e=n_i$.
-			
-			Une fois cet équilibre mis en place, le système évolue par le biais de
-			\emph{phénomènes de transport} résultants de la tendance à
-			l'homogénéisation du plasma par collisions entres les particules et de
-			l'influence globale des champs électromagnétiques. On parle notamment de
-			processus de diffusion/convection de particules, de viscosité (transfert de
+			Le système évolue ensuite sur cet équilibre par le biais de
+			\emph{phénomènes de transport} résultants de l'influence 
+			globale des champs électromagnétiques et de la tendance à
+			l'homogénéisation du plasma par collisions entres particules.
+			Ces processus interviennent sur des échelles relativements
+			lentes et relativement grandes devant $\omega_p$ et $\lambda_D$ :
+			\begin{equation}
+				\tau\gg \omega_p^{\moinsun} \;\;\;\;\text{et}\;\;\;\;\tau v\gg\lambda_D
+			\end{equation}
+			$\tau$ étant le temps et $v$ la vitesse caractériques du transport.
+			  On parle alors de diffusion/convection de particules, de viscosité (transfert de
 			quantité de mouvement), de conductivité (transport de charges) ou encore de
-			conductivité thermique (transport de chaleur). Dans les plasmas
-			classiques, ces phénomènes interviennent sur des échelles relativements
-			lentes et relativement grandes respectivement devant $\omega_p$ et
-			$\lambda_D$.
+			conductivité thermique (transport de chaleur). 
+			
 		\subsection{Collisions}
-			Dans un plasma, les collisions représentent les interactions binaires
-			directes entre électrons, ions et atomes neutres. Elles sont
-			définies pour chaque couple d'espèces de particules et catégorisées suivant
+			Dans un plasma, les électrons, les ions et les atomes neutres sont en mouvement les uns
+			par rapports aux autres constament. 
+			Au cours de leur déplacement, ces particules peuvent rentrer en collision avec d'autres
+			ou encore être déviées de leur trajectoire du fait de la force coulombienne.
+			Ces interactions binaires directes entre particules, regroupées sous 
+			le terme général de collisions, sont fondamentales dans la physique des plasmas. 
+			
+			Au sein d'une même espèce, le caractère 
+			répulsif de la force coulombienne tend à uniformiser la repartition des particules dans 
+			l'espace des phases. 
+			
+			
+			
+			Elles sont définies pour chaque couple d'espèces de particules et catégorisées suivant
 			leur nature élastique ou inélastique, entraînant pour chacun des cas des
 			comportements spécifiques.
 			
