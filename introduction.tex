@@ -22,15 +22,35 @@ physique statitique, l'électromagnétisme, ou encore la dynamique des fluides.
 
 \subsection{Les paramètres plasmas}
 Les plasmas se présentent donc comme des gaz dont le comportement est influencé
-de manière non négligeable par une population d'électrons libres $n_e$.
-Les plasmas se caractérisent de plus par l'agitation moyenne de ses particules,
-mesurée par la température électronique $T_e$.
-La figure \ref{zoologie}, issue du livre du National Research
+de manière non négligeable par une population d'électrons libres. Cette population
+se caractérise par deux paramètres principaux :
+
+\begin{itemize}
+  \item sa densité, $n_e$, mesurant le nombre de particules par élément de volume
+  \item sa température électronique $T_e$, mesurée en électronvolts, représentative
+   de l'energie cinétique moyenne non dirigée des particules (aussi appelée agitation thermique)
+\end{itemize}
+
+\begin{equation}
+	eT_e=m_e v_{t_e}^{^2}
+\end{equation}
+
+où $m_e$ est la masse de l'électron, et $e$ la charge élémentaire. Pour un électron possédant
+une énergie de \unit{1}{\electronvolt}, la vitesse thermique est de l'ordre de \unit{400}{\kilo\meter}.$s^{\moinsun}$. 
+Cette vitesse est bien inférieure pour les ions, qui à même énergie 
+auront une vitesse thermique d'environ \unit{10}{\kilo\meter}.$s^{\moinsun}$, du fait de la différence de masse.
+
+\begin{equation}
+	v_{t_i}\approx\left(m_e/m_i\right)^{^\text{\textonehalf}}v_{t_e}
+\end{equation}
+
+La figure (\ref{zoologie}), issue du livre du National Research
 Council\cite{national1995Plasma}, représente une classification des plasmas en
 fonction de ces deux paramètres principaux qui vont influer sur la dynamique du
-transport de courant.
+transport des particules et du courant.
 La théorie présentée dans la suite de cette thèse ne concerne que les plasmas
 dits classiques :
+
 \begin{itemize}
   \item les plasmas naturels peu dense tels que l'espace interstellaire,
   le vent solaire, la magnétosphère, et l'ionosphère
@@ -45,22 +65,26 @@ de différents plasmas en fonction de $n_e$ et $T_e$.}\label{zoologie}}
 
 Dans ces plasmas, le dégré d'ionisation $\alpha$ est donné par le rapport
 entre la densité électronique $n_e$ et la densité de gaz $n_g$ :
+
 \begin{equation}
 \alpha=\frac{n_e}{n_e+n_g}
 \end{equation}
+
 Cette fraction va définir l'importance de l'interaction entre les particules
 neutres et les particules chargées. Cependant, même à très faible $\alpha$,
-l'apparition d'une population de porteurs de charge va modifier les caractéristiques et la
-dynamique du plasma.
+l'apparition d'une population de porteurs de charge va modifier considérablement 
+les caractéristiques et la dynamique du plasma.
 
 L'ionisation du gaz suit l'évolution de la température électronique $T_e$ qui
 mesure l'agitation thermique des électrons. Densité et température
 électronique permettent de définir le paramètre plasma:
+
 \begin{equation}
 \label{1-paramPlasma}
 \Gamma=\frac{<E_p>}{<E_c>}=\frac{e^{^2}n_e^{^{1/3}}}{\varepsilon_{_0}
 eT_e}
 \end{equation}
+
 Le paramètre plasma représente le ratio entre l'énergie thermique des
 électrons et leur énergie potentielle électrostatique coulombienne \emph{ie.}
 l'agitation thermique desordonnée contre les forces d'interactions
@@ -70,33 +94,34 @@ Les plasmas classiques (ou cinétiques) sont caractérisés par
 $\Gamma\ll 1$. Ils ont une population d'électrons assez espacée et/ou une
 température suffisamment élevée.
 
-\subsection{Echelles et phénomènes collectifs}
+\subsection{Echelles, phénomènes de transport et collisions}
 La dynamique d'un plasma résulte du couplage entre le mouvement des
 particules chargées et les forces électromagnétiques $\mathbf
 F=q_s(\mathbf E+ \mathbf v_s\times\mathbf B)$
 présentent ou qui se forment dans le système.
 Elle se décompose principalement sur deux échelles de temps : la première
 phase correspond à l'équilibre électrostatique, où une
-quasineutralité s'établit. Dans une deuxième phase, l'évolution quasineutre du
-plasma, plus lente, tend à former un équilibre entre les particules et la valeur locale
+quasineutralité s'établit au sein du plasma. Dans une deuxième phase, l'évolution quasineutre du
+plasma, plus lente, tend à former un équilibre entre le déplacement des particules et la valeur locale
 et instantanée des champs de force extérieurs.
-.
-\subsection{Quasineutralité}
-Le processus le plus rapide est lié à
+
+\subsubsection{Quasineutralité}
+L'un des processus les plus rapides que l'on peut trouver dans un plasma est lié à
 l'équilibre microscopique électrostatique qui s'opère
 entre l'agitation thermique et l'interaction coulombienne des particules. Les
 ions et les électrons issus de l'ionisation se réorganisent pour écranter
 leur champ électrique individuel et former ainsi un ensemble électriquement neutre.
 Cette dynamique est essentiellement portée par les électrons et décrite aux plus petites
 échelles spatiotemporelles par le principe fondamental de la dynamique et la loi de Boltzman-Poisson :
+
 \begin{align}
 \label{1-PFD}
 m_e\frac{\partial \mathbf{v}_e}{\partial t}=-e\mathbf E
 \;\;\;\;\;\;\text{et}\;\;\;\;\;\;
 \nabla\cdot\mathbf{E}=\rho\varepsilon_{_0}^{\moinsun}
 \end{align}
-où $m_e$ est la masse de l'électron, $\mathbf{v}_e$ sa vitesse,
-$e$ la charge élémentaire, $\rho=e\,(n_i-n_e)$ la densité de charge,
+
+où $\mathbf{v}_e$ est la vitesse de l'électron et $\rho=e\,(n_i-n_e)$ la densité de charge,
 résultant de la différence entre la densité ionique et la densité
 électronique.
 Les échelles fondamentales définies par \ref{1-PFD} sont alors la pulsation
@@ -106,6 +131,7 @@ semblable au paramètre plasma (Eq.\ref{1-paramPlasma}). Un
 grand nombre de particules dans la sphère de Debye $n\lambda_D^3\gg1$
 définit un plasma idéal, où le phénomène d'écrantage électrique est
 dominant.}, reliée par l'intermédiaire la vitesse thermique :
+
 \begin{equation}
 \omega_p\left[\left(\frac{n_{_0}e^{^2}}{\varepsilon_{_0}
 m_e}\right)^\text{\textonehalf}
@@ -122,17 +148,20 @@ globale des champs électromagnétiques et de la tendance à
 l'homogénéisation du plasma par collisions entres particules.
 Ces processus interviennent sur des échelles relativements
 lentes et relativement grandes devant $\omega_p$ et $\lambda_D$ :
+
 \begin{equation}
-\tau\gg \omega_p^{\moinsun} \;\;\;\;\text{et}\;\;\;\;\tau v\gg\lambda_D
+\tau\gg \omega_p^{\moinsun} \;\;\;\;\text{et}\;\;\;\;\tau V\gg\lambda_D
 \end{equation}
-$\tau$ étant le temps et $v$ la vitesse caractériques du processus de transport
+
+$\tau$ étant le temps et $V$ la vitesse, caractériques du processus de transport
 considéré.
 On parle alors de diffusion/convection de particules, de viscosité (transfert de
 quantité de mouvement), de conductivité (transport de charges) ou encore de
 conductivité thermique (transport de chaleur).
 
-\subsection{Collisions}
-Dans un plasma, les électrons, les ions et les atomes neutres sont constament en
+\subsubsection{Collisions}
+Dans un plasma, l'interaction coulombienne globale de l'ensemble des particules est écrantée et apparaît à travers un potentiel
+électrostatique, les particules, prises individuellement, peuvent aussi entrer  Le phénomène d'écrantage électrique permet en interaction avec un ensemble d'autre particules, les électrons, les ions et les atomes neutres sont constament en
 mouvement les uns par rapports aux autres.
 Au cours de leur déplacement, ces particules peuvent rentrer en collision avec d'autres
 ou encore être déviées de leur trajectoire par l'action de la force
