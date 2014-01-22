@@ -94,23 +94,20 @@ Les plasmas classiques (ou cinétiques) sont caractérisés par
 $\Gamma\ll 1$. Ils ont une population d'électrons assez espacée et/ou une
 température suffisamment élevée.
 
-\subsection{Echelles, phénomènes de transport et collisions}
+\subsection{Quasineutralité et phénomène d'écrantage}
 La dynamique d'un plasma résulte du couplage entre le mouvement des
 particules chargées et les forces électromagnétiques $\mathbf
 F=q_s(\mathbf E+ \mathbf v_s\times\mathbf B)$
-présentent ou qui se forment dans le système.
-Elle se décompose principalement sur deux échelles de temps : la première
+présentent ou qui se forment dans le système. Elle se décompose principalement sur deux échelles de temps : la première
 phase correspond à l'équilibre électrostatique, où une
 quasineutralité s'établit au sein du plasma. Dans une deuxième phase, l'évolution quasineutre du
 plasma, plus lente, tend à former un équilibre entre le déplacement des particules et la valeur locale
 et instantanée des champs de force extérieurs.
 
-\subsubsection{Quasineutralité}
 L'un des processus les plus rapides que l'on peut trouver dans un plasma est lié à
 l'équilibre microscopique électrostatique qui s'opère
 entre l'agitation thermique et l'interaction coulombienne des particules. Les
-ions et les électrons issus de l'ionisation se réorganisent pour écranter
-leur champ électrique individuel et former ainsi un ensemble électriquement neutre.
+ions et les électrons issus de l'ionisation se réorganisent spontanément pour former un ensemble électriquement neutre.
 Cette dynamique est essentiellement portée par les électrons et décrite aux plus petites
 échelles spatiotemporelles par le principe fondamental de la dynamique et la loi de Boltzman-Poisson :
 
@@ -121,16 +118,13 @@ m_e\frac{\partial \mathbf{v}_e}{\partial t}=-e\mathbf E
 \nabla\cdot\mathbf{E}=\rho\varepsilon_{_0}^{\moinsun}
 \end{align}
 
-où $\mathbf{v}_e$ est la vitesse de l'électron et $\rho=e\,(n_i-n_e)$ la densité de charge,
-résultant de la différence entre la densité ionique et la densité
-électronique.
-Les échelles fondamentales définies par \ref{1-PFD} sont alors la pulsation
-plasma et la longueur de Debye\footnote{Le nombre de particules présentes
-dans la sphère de rayon $\lambda_D$ définit un paramètre adimensionné
-semblable au paramètre plasma (Eq.\ref{1-paramPlasma}). Un
-grand nombre de particules dans la sphère de Debye $n\lambda_D^3\gg1$
-définit un plasma idéal, où le phénomène d'écrantage électrique est
-dominant.}, reliée par l'intermédiaire la vitesse thermique :
+où $\mathbf{v}_e$ est la vitesse de l'électron et $\rho=e\,(n_i-n_e)$ 
+la densité spatiale de charge.
+Tout écart entre la densité d'ions et la densité d'électrons
+entraîne ainsi l'apparition d'un fort champ électrique de rappel à l'équilibre.
+
+Les échelles fondamentales définies par Eq.\ref{1-PFD} sont la pulsation
+plasma et la longueur de Debye, reliée par l'intermédiaire la vitesse thermique :
 
 \begin{equation}
 \omega_p\left[\left(\frac{n_{_0}e^{^2}}{\varepsilon_{_0}
@@ -140,7 +134,28 @@ eT_e}{n_{_0}e^{^2}}\right)^\text{\textonehalf}\right]
 =v_{th}\left[\left(\frac{eT_e^{^{\phantom{1}}}}{m_e}\right)^\text{\textonehalf}\right]
 \end{equation}
 
-Au delà de ces échelles, le plasma est dans un état de \emph{quasi-neutralité}, ie. $n_e=n_i$.
+La pulsation plasma $\omega_p$ correspond à la fréquence typique d'oscillation des électrons en réponse 
+à une petite séparation de charge. Des processus plus lents que cette fréquence ne voient
+pas apparaître d'équarts à la neutralité. 
+
+La longueur de Debye $\lambda_D$, quant à elle, permet de définir le phénomène d'écrantage :
+C'est une longueur au-delà de laquelle le champ électrique créé par une particule est \emph{écranté} par 
+un nuage de particules de charge opposée. Dans un plasma chaque particule est écrantée et participe
+à l'écrantage des autres ; Le nombre de particules présentes
+dans la sphère de rayon $\lambda_D$ définit alors un paramètre adimensionné
+\footnote{Un
+grand nombre de particules dans la sphère de Debye $4\pi/3\,n\lambda_D^3\gg1$
+définit un plasma idéal, où le phénomène d'écrantage électrique est
+dominant.}semblable au paramètre plasma (Eq.\ref{1-paramPlasma}).
+
+Au delà de ces échelles, le plasma est dans un état de \emph{quasi-neutralité},
+\footnote{La quasi-neutralité n'est pas la seule conséquence de ce phénomène de réorganisation
+de charges : lors de l'application d'un champ électrique ou magnétique, celui-ci est rapidement
+écranté par le plasma, les particules se
+déplaçant afin de créer un champ opposé.} 
+ie. où $n_e=n_i$.
+L'interaction coulombienne d'une particule chargée avec l'ensemble des autres particules peut alors
+se réduire à son intéraction avec un potentiel électrique local moyen.
 
 Le système évolue ensuite sur cet équilibre par le biais de
 \emph{phénomènes de transport} résultants de l'influence
@@ -150,31 +165,36 @@ Ces processus interviennent sur des échelles relativements
 lentes et relativement grandes devant $\omega_p$ et $\lambda_D$ :
 
 \begin{equation}
-\tau\gg \omega_p^{\moinsun} \;\;\;\;\text{et}\;\;\;\;\tau V\gg\lambda_D
+T\gg \omega_p^{\moinsun} \;\;\;\;\text{et}\;\;\;\;T V\gg\lambda_D
 \end{equation}
 
-$\tau$ étant le temps et $V$ la vitesse, caractériques du processus de transport
+$T$ étant le temps et $V$ la vitesse, caractériques du processus de transport
 considéré.
 On parle alors de diffusion/convection de particules, de viscosité (transfert de
 quantité de mouvement), de conductivité (transport de charges) ou encore de
 conductivité thermique (transport de chaleur).
 
-\subsubsection{Collisions}
-Dans un plasma, l'interaction coulombienne globale de l'ensemble des particules est écrantée et apparaît à travers un potentiel
-électrostatique, les particules, prises individuellement, peuvent aussi entrer  Le phénomène d'écrantage électrique permet en interaction avec un ensemble d'autre particules, les électrons, les ions et les atomes neutres sont constament en
-mouvement les uns par rapports aux autres.
-Au cours de leur déplacement, ces particules peuvent rentrer en collision avec d'autres
-ou encore être déviées de leur trajectoire par l'action de la force
-coulombienne. Ces interactions binaires directes entre particules, regroupées
-sous le terme général de collisions, sont fondamentales dans la physique des plasmas.
-Elles sont définies pour chaque couple d'espèces de particules et catégorisées suivant
-leur nature élastique (dans le cas où la nature des particules en collision
-reste inchangée) ou inélastique (dans le cas de l'ionisation, des
-recombinaisons ou des processus d'exitation/desexitation , entraînant pour
-chacun des cas des comportements spécifiques.
+\subsection{Collisions, diffusion et conduction}
+En plus de l'interaction coulombienne globale de l'ensemble des espèces chargées, 
+les particules, prises individuellement, peuvent interagir binairement. 
+Ces interactions directes entre particules, regroupées
+sous le terme général de collisions et caractérisées par des fréquences de collision, 
+sont fondamentales dans la physique des plasmas.
 
+Lors de collisions \emph{élastiques}\footnote{Les collisions sont dites élastiques car
+elles donnent lieu à des transferts d'impulsion et d'énergie sans changer
+la nature des particules à l'issue de la collision.}, les particules échangent de l'énergie 
+en fonction de leur ratio de masse. Entre les électrons et les autres espèces ce transfert 
+d'énergie est très faible mais cause une isotropisation globale des vitesses.
+Dans le cas des plasmas totalement ionisés, ces collisions sont coulombiennes. La féquence de 
+collision $\nu_{ei}$ mesure la fréquence à laquelle la trajectoire d'un électron est déviée 
+de plus de \unit{90}{\degree} :
 
+\begin{equation}
+	\nu_{ei}\approx\frac{e^4 ln(\Lambda) n}{4\pi\varepsilon_{_0}m_e^{^{1/2}}T_e^{^{3/2}}}
+\end{equation}
 
+Dans les plasmas faiblement ionisés, l
 
 \textbf{Collisions élastiques}
 
