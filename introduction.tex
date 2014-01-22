@@ -187,14 +187,21 @@ la nature des particules à l'issue de la collision.}, les particules échangent
 en fonction de leur ratio de masse. Entre les électrons et les autres espèces ce transfert 
 d'énergie est très faible mais cause une isotropisation globale des vitesses.
 Dans le cas des plasmas totalement ionisés, ces collisions sont coulombiennes. La féquence de 
-collision $\nu_{ei}$ mesure la fréquence à laquelle la trajectoire d'un électron est déviée 
-de plus de \unit{90}{\degree} :
+collision $\nu_{ei}$ mesure la fréquence à laquelle un électron est dévié 
+de plus de \unit{90}{\degree} de sa trajectoire initiale:
 
 \begin{equation}
-	\nu_{ei}\approx\frac{e^4 ln(\Lambda) n}{4\pi\varepsilon_{_0}m_e^{^{1/2}}T_e^{^{3/2}}}
+	\nu_{ei}\approx\frac{4\sqrt{2\pi}e^{^4} n_e ln\Lambda
+	}{3(4\pi\varepsilon_{_0})^{^2}m_e^{^{1/2}}T_e^{^{3/2}}}
 \end{equation}
 
-Dans les plasmas faiblement ionisés, l
+avec $ln \Lambda$ le logarithme de Coulomb,
+$\Lambda=\lambda_D(e^{^2}/4\pi\varepsilon_{_0}T_e)^{\moinsun}$ étant le ratio
+entre la longueur de Debye et une distance minimale d'approche. 
+
+Dans les plasmas faiblement ionisés, les collisions avec les neutres
+qui forment un fond diffus sont dominantes. Les échanges d
+d'interaction
 
 \textbf{Collisions élastiques}
 
