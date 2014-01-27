@@ -67,7 +67,7 @@
 %ajoute la bibliographie dans la table des matieres
 \usepackage[nottoc]{tocbibind}
 \renewcommand{\tocbibname}{Liste des références}
-\bibliographystyle{alpha}
+
 
 \setlength{\cftbeforesecskip}{0.5em}
 \renewcommand\cftchapfont{\large\bfseries}
@@ -148,8 +148,8 @@
 
 \makeatother
 
-\DeclareMathOperator{\moinsun}{^{-1}} 
-\DeclareMathOperator{\zero}{_0} 
+\newcommand{\puissance}[1]{^{^{#1}}}
+\newcommand{\indice}[1]{_{_{#1}}}
 
 \newcommand{\para}{{\mkern3mu\vphantom{\perp}\vrule depth 0pt\mkern3mu\vrule depth 0pt\mkern3mu}}
 
@@ -160,6 +160,9 @@
 
 \usepackage[final]{pdfpages} 
 
+\usepackage{natbib}
+\usepackage{chapterbib}
+%\bibliographystyle{siam}
 % \usepackage{hyperref}
 % \hypersetup{
 %      unicode=true,          % non-Latin characters in Acrobat’s bookmarks

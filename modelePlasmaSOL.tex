@@ -2,7 +2,7 @@
 \chaptermark{Les vitesses de dérive}
 Ce deuxième chapitre se concentre sur l'étude de la modélisation du transport
 (fortement) magnétisé en contact avec une paroi. Nous présentons dans cet objectif 
-le code TOKAM2D utilisé pour
+le code TOKAM2D~\cite{Sarazin} utilisé pour
 caractériser la SOL des tokamaks ainsi que les modifications qui lui ont été
 apportées pour lui permettre décrire le transport dans des conditions se
 rapprochant de notre étude.
@@ -120,7 +120,7 @@ La divergence du courant diamagnétique donne un crochet de Poisson :
 \begin{equation}
 \nabla_\perp\cdot\mathbf{j}_*=
 \nabla_\perp\cdot\left(\nabla_\perp\left(
-P_i+P_e\right)\times\mathbf{B}/B^2\right) = \left[P_i+P_e,B^{\moinsun}\right]
+P_i+P_e\right)\times\mathbf{B}/B^2\right) = \left[P_i+P_e,B\puissance{-1}\right]
 \end{equation}
 
 La vitesse de polarisation étant proportionnelle à la masse des particules
@@ -139,10 +139,10 @@ la vitesse de dérive électrique est considérée dans la divergence.
 Eq.~\ref{EqCourant1} se réécrit alors :
 \begin{equation}\begin{split}
 \label{EqCourant2}
-\nabla_\para\cdot\mathbf{j}_\para + \left[P_i+P_e,B^{\moinsun}\right] +
+\nabla_\para\cdot\mathbf{j}_\para + \left[P_i+P_e,B\puissance{-1}\right] +
 \nabla_\perp\cdot\left(-\frac{n\text{m}_i}{B^2}\left(\partial_\text{t}\nabla_\perp
 U - \nu_\perp \nabla_\perp^3 U \right)\right) \\+
-\nabla_\perp\cdot\left(-\frac{n\text{m}_i}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
+\nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
 U\right)=0
 \end{split}
 \end{equation}
@@ -155,35 +155,37 @@ finale de l'équation du courant :
 \begin{equation}\begin{split}
 \label{EqCourantFinale}
 \nabla_\para\cdot\mathbf{j}_\para +
-(T_e+T_i)\left[n,B^{\moinsun}\right] =\\
+(T_e+T_i)\left[n,B\puissance{-1}\right] =\\
 \frac{nm_i}{B^2}\left(\partial_\text{t}\nabla_\perp^2 U - \nu_\perp
 \nabla_\perp^4U+
-B^{\moinsun}\left[U,\nabla_\perp^2\ U\right]\right)
+B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
 \end{split}
 \end{equation}
 
 
 \subsection{Normalisation du système}
 Les grandeurs de normalisation sont reliées à l'intensité du champ magnétique
-$B_{\zero}$ et à la température électronique de référence $T_{\zero}$. Le temps est
-normalisé à l'inverse de la fréquence cyclotronique ionique :
+$B\indice{0}$ et à la température électronique de référence $T\indice{0}$. Le
+temps est normalisé à l'inverse de la fréquence cyclotronique ionique :
 \begin{equation}
-t = \overline{t}\:\omega_c^{\moinsun} = \overline{t}\:\frac{m_i}{eB_{\zero}}
+t = \overline{t}\:\omega_c\puissance{-1} =
+\overline{t}\:\frac{m_i}{eB\indice{0}}
 \end{equation}
 Les longueurs et vitesses sont alors logiquement normalisées par le rayon de
 Larmor et la vitesse de Bohm :
 
 \begin{eqnarray}
 x = \overline{x}\:\rho_L =
-\overline{x}\:\frac{m_ic_s}{eB_{\zero}} &
+\overline{x}\:\frac{m_ic_s}{eB\indice{0}} &
 et &
-v=\overline{v}\:c_s=\overline{v}\left(\frac{eT_{\zero}}{m_i}\right)^{\text{\textonehalf}}
+v=\overline{v}\:c_s=\overline{v}\left(\frac{eT\indice{0}}{m_i}\right)^{\text{\textonehalf}}
 \end{eqnarray}
 
 Nous définissons de plus les variables adimensionnées du modèle, la densité
 $\overline{N}$ et le potentiel électrostatique $\overline \phi$ par :
 \begin{eqnarray}
-n = n_{\zero}\:\overline{N} & \text{et} & U=\frac{\overline {\phi}T_{\zero}}{e}
+n = n_{\indice{0}}\:\overline{N} & \text{et} & U=\frac{\overline
+{\phi}T\indice{0}}{e}
 \end{eqnarray}
 \vfill
 \section{Vers une description des sources d'ions}
@@ -253,7 +255,8 @@ froids}
 \label{vitessesDerivePlasmaFroid}
 Dans les plasmas froids,
 
-
+\bibliographystyle{alpha}
+\bibliography{biblio}
 
 
 
