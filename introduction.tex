@@ -32,21 +32,21 @@ se caractérise par deux paramètres principaux :
 \end{itemize}
 
 \begin{equation}
-	eT_e=m_e v_{t_e}^{^2}
+	eT_\text{e}=m_\text{e} v_{\text{T}_\text{e}}^{^2}
 \end{equation}
 
-où $m_e$ est la masse de l'électron, et $e$ la charge élémentaire. Pour un électron possédant
+où $m_\text{e}$ est la masse de l'électron, et $e$ la charge élémentaire. Pour un électron possédant
 une énergie de \unit{1}{\electronvolt}, la vitesse thermique est de l'ordre de \unit{400}{\kilo\meter}.$s^{\moinsun}$. 
 Cette vitesse est bien inférieure pour les ions, qui à même énergie 
 auront une vitesse thermique d'environ \unit{10}{\kilo\meter}.$s^{\moinsun}$, du fait de la différence de masse.
 
 \begin{equation}
-	v_{t_i}\approx\left(m_e/m_i\right)^{^\text{\textonehalf}}v_{t_e}
+	v_{\text{T}_\text{i}}\approx\left(m_\text{e}/m_\text{i}\right)^{^\text{\textonehalf}}v_{\text{T}_\text{e}}
 \end{equation}
 
 La figure (\ref{zoologie}), issue du livre du National Research
-Council\cite{national1995Plasma}, représente une classification des plasmas en
-fonction de ces deux paramètres principaux qui vont influer sur la dynamique du
+Council \cite{national1995Plasma}, représente une classification des plasmas
+en fonction de ces deux paramètres principaux qui vont influer sur la dynamique du
 transport des particules et du courant.
 La théorie présentée dans la suite de cette thèse ne concerne que les plasmas
 dits classiques :
@@ -64,10 +64,11 @@ de différents plasmas en fonction de $n_e$ et $T_e$.}\label{zoologie}}
 \end{figure}
 
 Dans ces plasmas, le dégré d'ionisation $\alpha$ est donné par le rapport
-entre la densité électronique $n_e$ et la densité de gaz $n_g$ :
+entre la densité électronique $n_\text{e}$ et la densité de gaz neutre
+$n_\text{n}$ :
 
 \begin{equation}
-\alpha=\frac{n_e}{n_e+n_g}
+\alpha=\frac{n_\text{e}}{n_\text{e}+n_\text{n}}
 \end{equation}
 
 Cette fraction va définir l'importance de l'interaction entre les particules
@@ -75,14 +76,14 @@ neutres et les particules chargées. Cependant, même à très faible $\alpha$,
 l'apparition d'une population de porteurs de charge va modifier considérablement 
 les caractéristiques et la dynamique du plasma.
 
-L'ionisation du gaz suit l'évolution de la température électronique $T_e$ qui
-mesure l'agitation thermique des électrons. Densité et température
+L'ionisation du gaz suit l'évolution de la température électronique $T_\text{e}$
+qui mesure l'agitation thermique des électrons. Densité et température
 électronique permettent de définir le paramètre plasma:
 
 \begin{equation}
 \label{1-paramPlasma}
-\Gamma=\frac{<E_p>}{<E_c>}=\frac{e^{^2}n_e^{^{1/3}}}{\varepsilon_{_0}
-eT_e}
+\Gamma=\frac{<E_\text{p}>}{<E_\text{c}>}=\frac{e^{^2}n_\text{e}^{^{1/3}}}{\varepsilon_{_0}
+eT_\text{e}}
 \end{equation}
 
 Le paramètre plasma représente le ratio entre l'énergie thermique des
@@ -96,10 +97,17 @@ température suffisamment élevée.
 
 \subsection{Quasineutralité et phénomène d'écrantage}
 La dynamique d'un plasma résulte du couplage entre le mouvement des
-particules chargées et les forces électromagnétiques $\mathbf
-F=q_s(\mathbf E+ \mathbf v_s\times\mathbf B)$
-présentent ou qui se forment dans le système. Elle se décompose principalement sur deux échelles de temps : la première
-phase correspond à l'équilibre électrostatique, où une
+particules chargées et les forces électromagnétiques présentent ou qui se
+forment dans le système :
+
+\begin{equation}
+\mathbf F=q_\alpha(\mathbf E+ \mathbf v_\alpha\times\mathbf B)
+\end{equation}
+
+l'indice $\alpha$ dénotant le type de la particule chargée, $q_\alpha$ sa
+charge et $(E,B)$ le champ électromagnétique. Elle se décompose
+principalement sur deux échelles de temps :
+la première phase correspond à l'équilibre électrostatique, où une
 quasineutralité s'établit au sein du plasma. Dans une deuxième phase, l'évolution quasineutre du
 plasma, plus lente, tend à former un équilibre entre le déplacement des particules et la valeur locale
 et instantanée des champs de force extérieurs.
@@ -113,13 +121,13 @@ Cette dynamique est essentiellement portée par les électrons et décrite aux p
 
 \begin{align}
 \label{1-PFD}
-m_e\frac{\partial \mathbf{v}_e}{\partial t}=-e\mathbf E
+m_\text{e}\frac{\partial \mathbf{v}_\text{e}}{\partial t}=-e\mathbf E
 \;\;\;\;\;\;\text{et}\;\;\;\;\;\;
 \nabla\cdot\mathbf{E}=\rho\varepsilon_{_0}^{\moinsun}
 \end{align}
 
-où $\mathbf{v}_e$ est la vitesse de l'électron et $\rho=e\,(n_i-n_e)$ 
-la densité spatiale de charge.
+où $\mathbf{v}_\text{e}$ est la vitesse de l'électron et
+$\rho=e\,(n_\text{i}-n_\text{e})$ la densité spatiale de charge.
 Tout écart entre la densité d'ions et la densité d'électrons
 entraîne ainsi l'apparition d'un fort champ électrique de rappel à l'équilibre.
 
@@ -127,23 +135,24 @@ Les échelles fondamentales définies par Eq.\ref{1-PFD} sont la pulsation
 plasma et la longueur de Debye, reliée par l'intermédiaire la vitesse thermique :
 
 \begin{equation}
-\omega_p\left[\left(\frac{n_{_0}e^{^2}}{\varepsilon_{_0}
-m_e}\right)^\text{\textonehalf}
+\omega_\text{p}\left[\left(\frac{n_{_0}e^{^2}}{\varepsilon_{_0}
+m_\text{e}}\right)^\text{\textonehalf}
 \right]\cdot\lambda_D\left[\left(\frac{\varepsilon_{_0}
-eT_e}{n_{_0}e^{^2}}\right)^\text{\textonehalf}\right]
-=v_{th}\left[\left(\frac{eT_e^{^{\phantom{1}}}}{m_e}\right)^\text{\textonehalf}\right]
+eT_\text{e}}{n_{_0}e^{^2}}\right)^\text{\textonehalf}\right]
+=v_\text{th}\left[\left(\frac{eT_\text{e}^{^{\phantom{1}}}}{m_\text{e}}\right)^\text{\textonehalf}\right]
 \end{equation}
 
-La pulsation plasma $\omega_p$ correspond à la fréquence typique d'oscillation des électrons en réponse 
-à une petite séparation de charge. Des processus plus lents que cette fréquence ne voient
+La pulsation plasma $\omega_\text{p}$ correspond à la fréquence typique
+d'oscillation des électrons en réponse à une petite séparation de charge. Des processus plus lents que cette fréquence ne voient
 pas apparaître d'équarts à la neutralité. 
 
-La longueur de Debye $\lambda_D$, quant à elle, permet de définir le phénomène d'écrantage :
+La longueur de Debye $\lambda_\text{D}$, quant à elle, permet de définir le
+phénomène d'écrantage :
 C'est une longueur au-delà de laquelle le champ électrique créé par une particule est \emph{écranté} par 
 un nuage de particules de charge opposée. Dans un plasma chaque particule est écrantée et participe
 à l'écrantage des autres ; Le nombre de particules présentes
-dans la sphère de rayon $\lambda_D$ définit alors un paramètre adimensionné
-\footnote{Un
+dans la sphère de rayon $\lambda_\text{D}$ définit alors un paramètre
+adimensionné \footnote{Un
 grand nombre de particules dans la sphère de Debye $4\pi/3\,n\lambda_D^3\gg1$
 définit un plasma idéal, où le phénomène d'écrantage électrique est
 dominant.}semblable au paramètre plasma (Eq.\ref{1-paramPlasma}).
@@ -153,7 +162,7 @@ Au delà de ces échelles, le plasma est dans un état de \emph{quasi-neutralit�
 de charges : lors de l'application d'un champ électrique ou magnétique, celui-ci est rapidement
 écranté par le plasma, les particules se
 déplaçant afin de créer un champ opposé.} 
-ie. où $n_e=n_i$.
+ie. où $n_\text{e}=n_\text{i}$.
 L'interaction coulombienne d'une particule chargée avec l'ensemble des autres particules peut alors
 se réduire à son intéraction avec un potentiel électrique local moyen.
 
@@ -162,50 +171,154 @@ Le système évolue ensuite sur cet équilibre par le biais de
 globale des champs électromagnétiques et de la tendance à
 l'homogénéisation du plasma par collisions entres particules.
 Ces processus interviennent sur des échelles relativements
-lentes et relativement grandes devant $\omega_p$ et $\lambda_D$ :
+lentes et relativement grandes devant $\omega_\text{p}$ et $\lambda_\text{D}$ :
 
 \begin{equation}
-T\gg \omega_p^{\moinsun} \;\;\;\;\text{et}\;\;\;\;T V\gg\lambda_D
+\text{T}\gg \omega_\text{p}^{\moinsun}
+\;\;\;\;\text{et}\;\;\;\;\text{TV}\gg\lambda_\text{D}
 \end{equation}
 
-$T$ étant le temps et $V$ la vitesse, caractériques du processus de transport
-considéré.
+$\text{T}$ étant le temps et $\text{V} $ la vitesse, caractériques du processus
+de transport considéré.
 On parle alors de diffusion/convection de particules, de viscosité (transfert de
 quantité de mouvement), de conductivité (transport de charges) ou encore de
 conductivité thermique (transport de chaleur).
 
 \subsection{Collisions, diffusion et conduction}
 En plus de l'interaction coulombienne globale de l'ensemble des espèces chargées, 
-les particules, prises individuellement, peuvent interagir binairement. 
-Ces interactions directes entre particules, regroupées
-sous le terme général de collisions et caractérisées par des fréquences de collision, 
-sont fondamentales dans la physique des plasmas.
+les particules, prises deux à deux, peuvent interagir binairement. 
+Ces interactions directes entre particules donnent lieu à des transferts
+d'impulsion, d'énergie ou encore à des réactions plus complexes telles que
+l'ionisation, l'exitation et la recombinaison ; elles sont regroupées
+sous le terme général de collisions et se caractérisent par des fréquences de
+collisions.
 
 Lors de collisions \emph{élastiques}\footnote{Les collisions sont dites élastiques car
 elles donnent lieu à des transferts d'impulsion et d'énergie sans changer
 la nature des particules à l'issue de la collision.}, les particules échangent de l'énergie 
-en fonction de leur ratio de masse. Entre les électrons et les autres espèces ce transfert 
-d'énergie est très faible mais cause une isotropisation globale des vitesses.
-Dans le cas des plasmas totalement ionisés, ces collisions sont coulombiennes. La féquence de 
-collision $\nu_{ei}$ mesure la fréquence à laquelle un électron est dévié 
-de plus de \unit{90}{\degree} de sa trajectoire initiale:
+en fonction de leur ratio de masse. Entre les électrons et les espèces plus
+lourdes, ce transfert d'énergie est très faible et cause une isotropisation
+globale des vitesses électroniques.
+Dans le cas des plasmas totalement ionisés, seules les collisions coulombiennes 
+(interactions binaires entre particules chargées dues à la force de Coulomb)
+sont présentes. 
+La féquence de collision $\nu_\text{ei}$ mesure alors la fréquence à laquelle un
+électron est dévié de plus de \unit{90}{\degree} de sa trajectoire initiale:
 
 \begin{equation}
-	\nu_{ei}\approx\frac{4\sqrt{2\pi}e^{^4} n_e ln\Lambda
-	}{3(4\pi\varepsilon_{_0})^{^2}m_e^{^{1/2}}T_e^{^{3/2}}}
+	\nu_\text{ei}\approx\frac{4\sqrt{2\pi}e^{^4} n_\text{e} \ln\Lambda
+	}{3(4\pi\varepsilon_{_0})^{^2}m_\text{e}^{^{1/2}}T_\text{e}^{^{3/2}}}
 \end{equation}
 
-avec $ln \Lambda$ le logarithme de Coulomb,
-$\Lambda=\lambda_D(e^{^2}/4\pi\varepsilon_{_0}T_e)^{\moinsun}$ étant le ratio
-entre la longueur de Debye et une distance minimale d'approche. 
+avec $\ln \Lambda$ le logarithme de Coulomb,
+$\Lambda=\lambda_\text{D}(e^{^2}/4\pi\varepsilon_{_0}T_\text{e})^{\moinsun}$
+étant le ratio entre la longueur de Debye et une distance minimale d'approche. 
 
-Dans les plasmas faiblement ionisés, les collisions avec les neutres
-qui forment un fond diffus sont dominantes. Les échanges d
-d'interaction
+Dans les plasmas faiblement ionisés, le
+gaz neutre forme un fond diffus et influence fortement le transport des particules chargées.
+Les fréquences de collisions électrons-neutres et ions-neutres sont alors
+définies par :
 
-\textbf{Collisions élastiques}
+\begin{equation}
+	\nu_\text{en}=\sigma_\text{en} n_\text{n} v_\text{e}
+	\;\;\;\;\text{et}\;\;\;\;\nu_\text{in}=\sigma_\text{in} n_\text{n} v_\text{i}
+\end{equation} 
+ 
+avec $\sigma_\text{en}$ et $\sigma_\text{in}$ les sections efficaces de
+réaction\footnote{Les sections efficaces de collisions sont permettent de
+caractériser \ldots} électrons-neutres et ions neutres. La principale différence
+dans le transport entre les plasmas faiblement et totalement ionisés tient à la
+présence de ce gaz neutre : les collisions avec le gaz sont un puit
+direct de quantité de mouvement et d'énergie alors que les
+collisions coulombiennes résultent en une redistribution de celles-ci au sein
+du plasma.
 
-\subsection{Plasma et champ magnétique}
+Les collisions avec le gaz peuvent aussi entraîner des réactions plus complexes
+au cours desquelles les particules changent de nature ou d'état (ionisation,
+attachement électronique, excitation\ldots).
+Ces collisions sont dites \emph{inélastiques} en opposition aux collisions
+élastiques. Parmis ces réactions, l'ionisation est le processus le plus
+important car il contraint le bilan de particule et contrôle donc l'existence
+du plasma. L'association de fréquences de collisions à ces types de réaction
+(eg. $\nu_\text{iz}$ pour l'ionisation), là aussi en fonction de sections
+efficaces, permet alors un ordering sur l'importance des processus dans l'évolution du plasma.
+
+En plus d'une fréquence, on associe souvent une longueur caractéristique
+à l'occurence d'une collision. Le libre parcours moyen $\lambda_\text{lpm}$
+représente alors la distance que peut parcourir une particule avant de subir
+une certaine interaction avec le système qui l'entoure :
+
+\begin{equation}
+	\lambda_\text{lpm}=\frac{v}{\nu}
+\end{equation} 
+
+La collisionnalité d'une espèce est
+définie par le ratio entre son libre parcours moyen $\lambda_\text{lpm}$ et la
+taille $L$ du plasma. Quand le libre parcours moyen est petit devant la
+taille du plasma $\lambda_\text{lpm}/L\ll 1$
+les particules ont le temps de faire de nombreuses collisions avant de
+traverser entièrement le système. Dans des plasmas collisionnels, la description
+du transport des espèces est alors simplifiée, les collisions amenant le système dans un état
+d'équilibre statistique, caractérisé par des fonctions de distributions de
+type Maxwell-Boltzmann (cf. paragraphe \ref{Introduction}-\ref{Maxwell-Boltzmann}).
+
+Dans un plasma collisionnel, le mouvement d'une particule peut être assimilé à
+une succession de déplacements libres et de collisions, formant une marche
+aléatoire de pas $\lambda_\text{lpm}$. Compte tenu du caractère isotrope du
+problème, ce déplacement, sur plusieurs temps de collisions, est de
+moyenne nulle. L'écart quadratique de ce déplacement à la moyenne, mesuré par la
+température, ne l'est cependant pas. Il définit le processus de diffusion qui
+apparaît en présence d'une inhomogénité de densité, dont la vitesse typique est
+fonction de la longueur de gradient de densité et du coefficient de diffusion
+$D$ :
+
+\begin{equation}
+	\text{V}_\text{Diff}\approx D_\alpha\frac{\nabla
+	n_\alpha}{n_\alpha}=\frac{eT_\alpha}{m_\alpha\nu}\frac{\nabla
+	n_\alpha}{n_\alpha}=\frac{\lambda_\text{lpm}}{L_\text{n}}v_{\text{T}_\alpha}
+\end{equation}
+
+où $L_\text{n}=\nabla n/n$ est la longueur de gradient de densité. 
+En présence d'un champ électrique, ce déplacement aléatoire est accéléré entre
+chaque collision, et entraîne un déplacement macroscopique moyen non nul, décrit
+par le coefficient de mobilité :
+
+\begin{equation}
+	\mu_\alpha=\frac{q_\alpha}{m_\alpha\nu}
+\end{equation}
+
+Conduction et diffusion sont les processus de transport dominants dans les
+plasmas non magnétisé. Leur coefficient de transport respectifs, $D_\alpha$ et
+$\mu_\alpha$, ne sont pas indépendants et leur rapport $D_\alpha/\mu_\alpha$,
+appelé énergie caractéristique, est égal à la température de l'espèce selon la relation
+d'Einstein :
+
+\begin{equation}
+	\frac{D_\alpha}{\mu_\alpha}=T_\alpha
+\end{equation}
+
+\subsection{Plasma et champ magnétique} 
+Un plasma magnétisé est un plasma dans lequel le champ magnétique ambiant
+$\mathbf{B}$ est suffisement important pour modifier de manière non-négligeable
+le transport des particules. Les plasmas magnétisés sont de plus fortement
+anisotropiques, réagissant différement aux forces parallèlement et
+perpendiculairement au champ magnétique.
+
+Sous l'action de la force de Lorentz, le mouvement d'une particule chargée peut
+se décrire par trois composantes (cf. figure \ref{1-particleDrifts}) :
+
+\begin{itemize}
+  \item Un déplacement parallèle aux lignes de champ, de l'ordre de la vitesse
+  thermique de l'espèce, $v_\para\approx
+  (eT_\alpha/m_\alpha)^{\text{\textonehalf}}$
+  \item Un mouvement cyclotronique, rotation rapide de la particule
+  autour d'un centre-guide dans le plan perpendiculaire aux lignes de champ
+  \item Un mouvement de dérive, lent devant le mouvement cyclotronique, dû à la
+  modification de la trajectoire du centre guide en réponse aux forces
+  appliquées
+\end{itemize}
+
+
 %\begin{wrapfigure}{r}{0.50\textwidth}
 %	\vspace{-5pt}
 %
@@ -221,39 +334,27 @@ d'interaction
 {\caption{Mouvement cyclotronique des particules autour des lignes de champ
 magnétique.}\label{1-particleDrifts}}
 \end{figure}
-La présence d'un champ magnétique influence aussi fortement le transport global qui
-se met en place dans les plasmas. Sous l'action de la force de Lorentz, les particules
-chargées sont en rotation autour des lignes de champ magnétique. En l'absence de force
-extérieure, les particules sont confinéesLeur mouvement peut alors
-se décrire par trois composantes (cf. figure \ref{1-particleDrifts}) :
-\begin{itemize}
-  \item Un déplacement parallèle aux lignes de champ, de l'ordre de la vitesse
-  thermique de l'espèce, $v_\para\approx c_s=(eT_s/m_s)^{\text{\textonehalf}}$
-  \item Le mouvement cyclotronique, rotation rapide de la particule
-  autour des lignes de champ magnétiquedans le plan perpendiculaire aux lignes
-  de champ
-  \item Une vitesse de dérive,
-\end{itemize}
 
 Dans suite de cette thèse, nous allons étudier la dynamique électrique d'un
 plasma en milieu magnétisé , ie. ou les structures et la dynamique
 essentiellement reliée aux variations du champ électrique.
-\section{Description fluide d'un plasma}
+\subsection{Description fluide d'un plasma}
 
-\subsection{De la statistique au fluide}
+\subsubsection{De la statistique au fluide}
+\label{Maxwell-Boltzmann}
 $$\partial_tf_s+\mathbf{v}_s\cdot\vec\nabla_\mathbf{r}f_s+
 \frac{\mathbf{F}_s}{m_s}\cdot\vec\nabla_{\mathbf{v}_s}f_s
 =\partial_tf_{|_{coll}}$$ 
 Braginskii equations
 $$M^{(k)}_s=\int_{-\infty}^{\infty}\mathbf{v}_s^kf_sd\mathbf{v}$$
-\subsection{Conservation de la matière}
+\subsubsection{Conservation de la matière}
 $$n_s=\int f_sd\mathbf{v}$$
 
-\subsection{Conservation de l'impulsion}
+\subsubsection{Conservation de l'impulsion}
 $$n_s\mathbf{v}_s=\int \mathbf{v}_sf_sd\mathbf{v}$$
-\subsection{Conservation de l'énergie}
-\subsection{Conservation de la chaleur}
-\section{Les gaines électrostatiques}
+\subsubsection{Conservation de l'énergie}
+\subsubsection{Conservation de la chaleur}
+\subsection{Les gaines électrostatiques}
 Les gaines électrostatiques sont des structures non-neutres qui se
 développent à la frontière entre un plasma et un objet. Elles apparaissent
 spontanément du fait de la plus grande vitesse des électrons par rapport à
@@ -261,30 +362,13 @@ celle des ions. D'une taille de l'ordre de quelques longueurs de Debye $\lambda_
 L'interaction dite plasma-paroi est une branche à part entière de la physique des plasmas.
 En effet, au contact d'un milieu extérieur, que ce soit un obstacle matériel
 ou un gaz ambiant, le plasma perd sa quasineutralité.
-\subsection{Physique de la prégaine}
-\subsection{Physique de la gaine}
-\subsection{Gaine dans les plasmas magnétisés}
-\subsection{Problématique de la gaine parallèle aux lignes de champ}
+\subsubsection{Physique de la prégaine}
+\subsubsection{Physique de la gaine}
+\subsubsection{Gaine dans les plasmas magnétisés}
+\subsubsection{Problématique de la gaine parallèle aux lignes de champ}
 
-\section{Les décharges plasma basse-pression}
-\subsection{Création de la décharge, rôle des électrons}
-Dans les plasmas basse-température industriels et de laboratoires, qui possédent
-un faible degré d'ionisation, ou dans l'ionospère, la dynamique du plasma est dominée par
-la perte de quantité de mouvement dûe à l'ionisation la force de friction avec le gaz.
-Electrical breakdown, Townsend avalanche,
-\subsection{Trasport des ions et champ ambipolaire}
-\begin{equation}
-\label{derivediffusion}
-\end{equation}
-\subsection{Equations de dérive-diffusion magnétisées}
-
-\section{Les plasmas de bord des tokamaks}
-Lawson criteriom, strongly magnetized
-\subsection{La fusion et les tokamaks}
-\subsection{Le plasma de la Scrape-of-Layer}
-\subsection{Les vitesses de dérives}
-\label{vitessesDerive}
-\section{Les modèles numériques}
+\section{Modèles de plasmas magnétisés}
+\subsection{Les modèles numériques}
 L'étude de phénomènes complexes
 %\begin{figure}[htbp]
 %	\centering
@@ -297,7 +381,23 @@ L'étude de phénomènes complexes
 %			{\caption{Magritte. La trahison des images.}\label{magritte}}
 %		\end{figure}
 
+\subsection{Les décharges plasma basse-pression}
+\subsubsection{Création de la décharge, rôle des électrons}
+Dans les plasmas basse-température industriels et de laboratoires, qui possédent
+un faible degré d'ionisation, ou dans l'ionospère, la dynamique du plasma est dominée par
+la perte de quantité de mouvement dûe à l'ionisation la force de friction avec le gaz.
+Electrical breakdown, Townsend avalanche,
+\subsubsection{Transport des ions et champ ambipolaire}
+\begin{equation}
+\label{derivediffusion}
+\end{equation}
+\subsubsection{Equations de dérive-diffusion magnétisées}
 
-
+\subsection{Les plasmas de bord des tokamaks}
+Lawson criteriom, strongly magnetized
+\subsubsection{La fusion et les tokamaks}
+\subsubsection{Le plasma de la Scrape-of-Layer}
+\subsubsection{Les vitesses de dérives}
+\label{vitessesDerive}
 
 
