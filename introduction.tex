@@ -1,6 +1,6 @@
 \Chapter{Introduction}
 \label{Introduction}
-\section{Fondamentaux de la physique des plasmas}
+\section{Fondamentaux et échelles caractéristiques}
 
 \emph{Le plasma}. Le plasma est souvent considéré un peu équivoquement comme le
 quatrième état de la matière. Dans notre environnement proche, nous avons pris
@@ -28,7 +28,8 @@ se caractérise par deux paramètres principaux :
 \begin{itemize}
   \item sa densité, $n_e$, mesurant le nombre de particules par élément de volume
   \item sa température électronique $T_e$, mesurée en électronvolts, représentative
-   de l'energie cinétique moyenne non dirigée des particules (aussi appelée agitation thermique)
+   de l'energie cinétique moyenne non dirigée des électrons (aussi appelée
+   agitation thermique)
 \end{itemize}
 
 \begin{equation}
@@ -38,9 +39,8 @@ se caractérise par deux paramètres principaux :
 où $m_\text{e}$ est la masse de l'électron, et $e$ la charge élémentaire. Pour un électron possédant
 une énergie de \unit{1}{\electronvolt}, la vitesse thermique est de l'ordre de
 \unit{400}{\kilo\meter}.$s\puissance{-1}$.
-Cette vitesse est bien inférieure pour les ions, qui à même énergie 
-auront une vitesse thermique d'environ \unit{10}{\kilo\meter}.$s\puissance{-1}$,
-du fait de la différence de masse.
+Du fait de la différence de masse, cette vitesse est bien inférieure pour les
+ions, qui à même énergie auront une vitesse thermique d'environ \unit{10}{\kilo\meter}.$s\puissance{-1}$.
 
 \begin{equation}
 	v_{\text{T}_\text{i}}\approx\left(m_\text{e}/m_\text{i}\right)^{\text{\textonehalf}}
@@ -104,12 +104,14 @@ particules chargées et les forces électromagnétiques présentent ou qui se
 forment dans le système :
 
 \begin{equation}
-\mathbf F=q_\alpha(\mathbf E+ \mathbf v_\alpha\times\mathbf B)
+\partial_t \mathbf v=q_\alpha(\mathbf E+ \mathbf v_\alpha\times\mathbf
+B)
 \end{equation}
 
 l'indice $\alpha$ dénotant le type de la particule chargée, $q_\alpha$ sa
-charge et $(\mathbf E,\mathbf B)$ le champ électromagnétique. Elle se décompose
-principalement sur deux échelles de temps :
+charge, $\mathbf v_\alpha$ sa vitesse et $(\mathbf E,\mathbf B)$ le champ
+électromagnétique.
+Elle se décompose principalement sur deux échelles de temps :
 la première phase correspond à l'équilibre électrostatique, où une
 quasineutralité s'établit au sein du plasma. Dans une deuxième phase, l'évolution quasineutre du
 plasma, plus lente, tend à former un équilibre entre le déplacement des particules et la valeur locale
@@ -167,7 +169,8 @@ de charges : lors de l'application d'un champ électrique ou magnétique, celui-
 déplaçant afin de créer un champ opposé.} 
 ie. où $n_\text{e}=n_\text{i}$.
 L'interaction coulombienne d'une particule chargée avec l'ensemble des autres particules peut alors
-se réduire à son intéraction avec un potentiel électrique local moyen.
+se réduire à son intéraction avec un potentiel électrique local $\Phi$,
+résultant de la somme des potentiels microscopiques individuels.
 
 Le système évolue ensuite sur cet équilibre par le biais de
 \emph{phénomènes de transport} résultants de l'influence
@@ -187,7 +190,7 @@ On parle alors de diffusion/convection de particules, de viscosité (transfert d
 quantité de mouvement), de conductivité (transport de charges) ou encore de
 conductivité thermique (transport de chaleur).
 
-\subsection{Collisions, diffusion et conduction}
+\subsection{Collisions}
 En plus de l'interaction coulombienne globale de l'ensemble des espèces chargées, 
 les particules, prises deux à deux, peuvent interagir binairement. 
 Ces interactions directes entre particules donnent lieu à des transferts
@@ -249,8 +252,8 @@ efficaces, permet alors un ordering sur l'importance des processus dans l'évolu
 
 En plus d'une fréquence, on associe souvent une longueur caractéristique
 à l'occurence d'une collision. Le libre parcours moyen $\lambda_\text{lpm}$
-représente alors la distance que peut parcourir une particule avant de subir
-une certaine interaction avec le système qui l'entoure :
+représente alors la distance que peut parcourir une particule à une vitesse
+$v$ avant de subir une certaine interaction avec le système qui l'entoure :
 
 \begin{equation}
 	\lambda_\text{lpm}=\frac{v}{\nu}
@@ -266,90 +269,73 @@ du transport des espèces est alors simplifiée, les collisions amenant le syst�
 d'équilibre statistique, caractérisé par des fonctions de distributions de
 type Maxwell-Boltzmann (cf. paragraphe \ref{Introduction}-\ref{Maxwell-Boltzmann}).
 
-Dans un plasma collisionnel, le mouvement d'une particule peut être assimilé à
-une succession de déplacements libres et de collisions, formant une marche
-aléatoire de pas $\lambda_\text{lpm}$. Compte tenu du caractère isotrope du
-problème, ce déplacement, sur plusieurs temps de collisions, est de
-moyenne nulle. L'écart quadratique de ce déplacement à la moyenne, mesuré par la
-température, ne l'est cependant pas. Il définit le processus de diffusion qui
-apparaît en présence d'une inhomogénité de densité, dont la vitesse typique est
-fonction de la longueur de gradient de densité et du coefficient de diffusion
-$D$ :
-
-\begin{equation}
-	\text{V}_\text{Diff}\approx D_\alpha\frac{\nabla
-	n_\alpha}{n_\alpha}=\frac{eT_\alpha}{m_\alpha\nu}\frac{\nabla
-	n_\alpha}{n_\alpha}=\frac{\lambda_\text{lpm}}{L_\text{n}}v_{\text{T}_\alpha}
-\end{equation}
-
-où $L_\text{n}=\nabla n/n$ est la longueur de gradient de densité. 
-En présence d'un champ électrique, ce déplacement aléatoire est accéléré entre
-chaque collision (voir figure~\ref{1-collisions}), et entraîne un déplacement
-macroscopique moyen non nul, décrit par le coefficient de mobilité :
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{figures/collisions.jpg}
-{\caption{Processus de diffusion-conduction suivant la marche aléatoire
-collisionnelle d'un électron~{\citep{Rax}}.}\label{1-collisions}}
-\end{figure}
-\begin{equation}
-	\mu_\alpha=\frac{q_\alpha}{m_\alpha\nu}
-\end{equation}
-
-Conduction et diffusion sont les processus de transport dominants dans les
-plasmas non magnétisé. Leur coefficient de transport respectifs, $D_\alpha$ et
-$\mu_\alpha$, ne sont pas indépendants et leur rapport $D_\alpha/\mu_\alpha$,
-appelé énergie caractéristique, est égal à la température de l'espèce selon la relation
-d'Einstein :
-
-\begin{equation}
-	\frac{D_\alpha}{\mu_\alpha}=T_\alpha
-\end{equation}
-
 \subsection{Plasma et champ magnétique} 
 Un plasma magnétisé est un plasma dans lequel le champ magnétique ambiant
 $\mathbf{B}$ est suffisement important pour modifier de manière non-négligeable
-le transport des particules. Les plasmas magnétisés sont de plus fortement
+le transport des particules. Les plasmas magnétisés sont fortement
 anisotropiques, réagissant différement aux forces parallèlement et
 perpendiculairement au champ magnétique.
 
 Sous l'action de la force de Lorentz, le mouvement d'une particule chargée peut
 se décrire par trois composantes (cf. figure \ref{1-particleDrifts}) :
 
-\begin{itemize}
-  \item Un déplacement parallèle aux lignes de champ, de l'ordre de la vitesse
-  thermique de l'espèce, $v_\para\approx
-  (eT_\alpha/m_\alpha)^{\text{\textonehalf}}$
-  \item Un mouvement cyclotronique, rotation rapide de la particule
-  autour d'un centre-guide dans le plan perpendiculaire aux lignes de champ
-  \item Un mouvement de dérive, lent devant le mouvement cyclotronique, dû à la
-  modification de la trajectoire du centre guide en réponse aux forces
-  appliquées
-\end{itemize}
-
-
-%\begin{wrapfigure}{r}{0.50\textwidth}
-%	\vspace{-5pt}
-%
-%	%
-%	%
-% \hspace{20pt}\includegraphics[width=0.40\textwidth]{figures/particleDrifts.png} \hspace{20pt}\caption{Mouvement cyclotronique et de dérive des particules
-%	dans un champ magnétique.}\label{particleDrifts}
-%	 \vspace{-20pt}
-%\end{wrapfigure}
-\begin{figure}
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/mouvementCyclotron.png}
 {\caption{Mouvement cyclotronique des particules autour des lignes de champ
 magnétique.}\label{1-particleDrifts}}
 \end{figure}
 
-Dans suite de cette thèse, nous allons étudier la dynamique électrique d'un
-plasma en milieu magnétisé , ie. ou les structures et la dynamique
-essentiellement reliée aux variations du champ électrique.
+\begin{itemize}
+  \item Un déplacement parallèle aux lignes de champ, de l'ordre de la vitesse
+  thermique de l'espèce, $v_\para\approx
+  (eT_\alpha/m_\alpha)^{\text{\textonehalf}}$
+  \item Un mouvement de rotation rapide de la particule
+  autour d'un centre-guide dans le plan perpendiculaire aux lignes de champ
+  \item Une lente dérive du centre-guide, résultant de forces extérieures ou
+  d'inhomogénéités du plasma
+\end{itemize}
+
+Le mouvement de rotation autour des lignes de champ est appelé mouvement
+cyclotronique. Le rayon Larmor de cette orbite et la pulsation cyclotronique
+sont alors les échelles caratéristiques pour le transport magnétisé des espèces
+reliées là encore par la vitesse thermique :
+
+\begin{equation}
+\omega\indice{c_{\alpha}}\left[\frac{e B}{m_\alpha}\right]
+\cdot\rho\indice{L_{\alpha}}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
+=v\indice{T_{\alpha}}\left[\left(\frac{eT_{\alpha}}{m_{\alpha}}\right)^{\text{\textonehalf}}\right]
+\end{equation}
+
+Quand le champ magnétique s'intensifie, les trajectoires
+hélicoïdales se resserrent, limitant de plus en plus le déplacement des
+particules perpendiculairement à la direction magnétique. L'influence du champ
+sur le transport peut alors être mesuré par le paramètre de
+magnétisation $\delta$, une espèce pouvant être considérée comme magnétisée à
+partir du moment où la longueur caractéristique $L$ du transport considéré est
+grande devant le rayon de Larmor :
+
+\begin{equation}
+\delta=\frac{\rho_{L_{\alpha}}}{L}\ll 1
+\end{equation}
+
+Enfin, 
+
+\subsection{Les gaines électrostatiques}
+Les gaines électrostatiques sont des structures non-neutres qui se
+développent à la frontière entre un plasma et un objet. Elles apparaissent
+spontanément du fait de la plus grande vitesse des électrons par rapport à
+celle des ions. D'une taille de l'ordre de quelques longueurs de Debye $\lambda_D$,
+L'interaction dite plasma-paroi est une branche à part entière de la physique des plasmas.
+En effet, au contact d'un milieu extérieur, que ce soit un obstacle matériel
+ou un gaz ambiant, le plasma perd sa quasineutralité.
+\subsubsection{Physique de la prégaine}
+\subsubsection{Physique de la gaine}
+\subsubsection{Gaine dans les plasmas magnétisés}
+\subsubsection{Problématique de la gaine parallèle aux lignes de champ}
 \subsection{Description fluide d'un plasma}
 
-\subsubsection{De la statistique au fluide}
+\subsubsection{Equations fluides et phénomènes de transport}
 \label{Maxwell-Boltzmann}
 $$\partial_tf_s+\mathbf{v}_s\cdot\vec\nabla_\mathbf{r}f_s+
 \frac{\mathbf{F}_s}{m_s}\cdot\vec\nabla_{\mathbf{v}_s}f_s
@@ -363,18 +349,7 @@ $$n_s=\int f_sd\mathbf{v}$$
 $$n_s\mathbf{v}_s=\int \mathbf{v}_sf_sd\mathbf{v}$$
 \subsubsection{Conservation de l'énergie}
 \subsubsection{Conservation de la chaleur}
-\subsection{Les gaines électrostatiques}
-Les gaines électrostatiques sont des structures non-neutres qui se
-développent à la frontière entre un plasma et un objet. Elles apparaissent
-spontanément du fait de la plus grande vitesse des électrons par rapport à
-celle des ions. D'une taille de l'ordre de quelques longueurs de Debye $\lambda_D$,
-L'interaction dite plasma-paroi est une branche à part entière de la physique des plasmas.
-En effet, au contact d'un milieu extérieur, que ce soit un obstacle matériel
-ou un gaz ambiant, le plasma perd sa quasineutralité.
-\subsubsection{Physique de la prégaine}
-\subsubsection{Physique de la gaine}
-\subsubsection{Gaine dans les plasmas magnétisés}
-\subsubsection{Problématique de la gaine parallèle aux lignes de champ}
+
 
 \section{Modèles de plasmas magnétisés}
 \subsection{Les modèles numériques}
