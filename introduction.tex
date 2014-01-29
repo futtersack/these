@@ -269,6 +269,46 @@ du transport des espèces est alors simplifiée, les collisions amenant le syst�
 d'équilibre statistique, caractérisé par des fonctions de distributions de
 type Maxwell-Boltzmann (cf. paragraphe \ref{Introduction}-\ref{Maxwell-Boltzmann}).
 
+Dans un plasma collisionnel, le mouvement d'une particule peut être assimilé à
+une succession de déplacements libres et de collisions, formant une marche
+aléatoire de pas $\lambda_\text{lpm}$. Compte tenu du caractère isotrope du
+problème, ce déplacement, sur plusieurs temps de collisions, est de
+moyenne nulle. L'écart quadratique de ce déplacement à la moyenne, mesuré par la
+température, ne l'est cependant pas. Il définit le processus de diffusion qui
+apparaît en présence d'une inhomogénité de densité, dont la vitesse typique est
+fonction de la longueur de gradient de densité et du coefficient de diffusion
+$D$ :
+ 
+\begin{equation}
+    \text{V}_\text{Diff}\approx D_\alpha\frac{\nabla
+    n_\alpha}{n_\alpha}=\frac{eT_\alpha}{m_\alpha\nu}\frac{\nabla
+    n_\alpha}{n_\alpha}=\frac{\lambda_\text{lpm}}{L_\text{n}}v_{\text{T}_\alpha}
+\end{equation}
+ 
+où $L_\text{n}=\nabla n/n$ est la longueur de gradient de densité. 
+En présence d'un champ électrique, ce déplacement aléatoire est accéléré entre
+chaque collision (voir figure~\ref{1-collisions}), et entraîne un déplacement
+macroscopique moyen non nul, décrit par le coefficient de mobilité :
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{figures/collisions.jpg}
+{\caption{Processus de diffusion-conduction suivant la marche aléatoire
+collisionnelle d'un électron~{\citep{Rax}}.}\label{1-collisions}}
+\end{figure}
+\begin{equation}
+    \mu_\alpha=\frac{q_\alpha}{m_\alpha\nu}
+\end{equation}
+ 
+Conduction et diffusion sont les processus de transport dominants dans les
+plasmas non magnétisé. Leur coefficient de transport respectifs, $D_\alpha$ et
+$\mu_\alpha$, ne sont pas indépendants et leur rapport $D_\alpha/\mu_\alpha$,
+appelé énergie caractéristique, est égal à la température de l'espèce selon la relation
+d'Einstein :
+ 
+\begin{equation}
+    \frac{D_\alpha}{\mu_\alpha}=T_\alpha
+\end{equation}
+ 
 \subsection{Plasma et champ magnétique} 
 Un plasma magnétisé est un plasma dans lequel le champ magnétique ambiant
 $\mathbf{B}$ est suffisement important pour modifier de manière non-négligeable
