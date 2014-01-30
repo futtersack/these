@@ -157,10 +157,21 @@
 %\newcommand{\artlabel}[1]{{\sc #1.}}
 \usepackage{titlesec}
 
-\usepackage[final]{pdfpages} 
+%\usepackage[final]{pdfpages} 
+\usepackage{nameref}
 
-\usepackage[authoryear]{natbib}
-\usepackage{chapterbib}
+\usepackage[refsection=chapter, isbn=false,
+    url=false,
+    doi=false,
+    eprint=false,
+backend=biber]{biblatex}
+\addbibresource{biblio.bib}
+
+
+\usepackage{csquotes}
+%\bibliography{biblio}
+%\usepackage[authoryear]{natbib}
+%\usepackage{chapterbib}
 %\bibliographystyle{siam}
 % \usepackage{hyperref}
 % \hypersetup{

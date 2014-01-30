@@ -13,12 +13,17 @@
 	
 	%%Input macro file
 	\input{macro.tex}
-    
+\defbibheading{subbib}[]{%
+ \section*{\nameref{refsection:\therefsection}}
+ %Références du
+ % chapitre\space\therefsection :
+ %\\
+ }
 %% Begin Document
 \begin{document}
 	\frontmatter
 	
-	\includepdf{pageTitre.pdf}
+	%\includepdf{pageTitre.pdf}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%% 
 	%%  Abstract and acknowledgement
@@ -53,21 +58,27 @@
 	%\pagenumbering{arabic}
 	%\setcounter{page}{0} 
 	\renewcommand{\labelitemi}{$\bullet$}
-
-	\include{contexte}
-	\include{introduction}
-	\include{modelePlasmaSOL}
-	\include{modelePlasmaFroid}
 	
-	\include{etudePlasmasMagnetises}
-	\include{conclusion}
+	\input{contexte}
+	\input{introduction}
+	
+	\input{modelePlasmaSOL}
+	
+	\input{modelePlasmaFroid}
+
+	\input{etudePlasmasMagnetises}
+	\input{conclusion}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%% 
 	%% MARK: Bibliography
 	%% 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\thispagestyle{empty}\cleardoublepage\thispagestyle{chapitre}
+	%\bibliographystyle{alpha}
+\printbibheading%[heading=bibbook]
+\bibbysection[heading=subbib]
+
+%\thispagestyle{empty}\cleardoublepage\thispagestyle{chapitre}
 	
 	\appendix
 	
