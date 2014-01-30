@@ -269,6 +269,86 @@ du transport des espèces est alors simplifiée, les collisions amenant le syst�
 d'équilibre statistique, caractérisé par des fonctions de distributions de
 type Maxwell-Boltzmann (cf. paragraphe \ref{Introduction}-\ref{Maxwell-Boltzmann}).
 
+\subsection{Plasma et champ magnétique} 
+Un plasma magnétisé est un plasma dans lequel le champ magnétique ambiant
+$\mathbf{B}$ est suffisement important pour modifier de manière non-négligeable
+le transport des particules. Les plasmas magnétisés sont fortement
+anisotropiques, réagissant différement aux forces parallèlement et
+perpendiculairement au champ magnétique.
+
+Dans un champ magnétique uniforme, le mouvement d'une particule chargée
+soumise à la force de Lorentz peut se décrire par deux composantes :
+
+\begin{itemize}
+  \item Un déplacement libre le long lignes de champ, de l'ordre de la
+  vitesse thermique de l'espèce, $v_\para\approx
+  (eT_\alpha/m_\alpha)^{\text{\textonehalf}}$
+  \item Un mouvement de rotation rapide de la particule
+  autour d'un centre-guide dans le plan perpendiculaire aux lignes de champ
+\end{itemize}
+
+Le mouvement de rotation autour des lignes de champ est appelé mouvement
+cyclotronique. Le rayon Larmor de cette orbite et la pulsation cyclotronique
+sont alors les échelles caratéristiques pour le transport magnétisé des espèces :
+
+\begin{equation}
+\omega\indice{c_{\alpha}}\left[\frac{e B}{m_\alpha}\right]
+\cdot\rho\indice{L_{\alpha}}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
+=v\indice{T_{\alpha}}\left[\left(\frac{eT_{\alpha}}{m_{\alpha}}\right)^{\text{\textonehalf}}\right]
+\end{equation}
+
+Quand le champ magnétique s'intensifie, les trajectoires
+hélicoïdales se resserrent, limitant de plus en plus le déplacement des
+particules perpendiculairement à la direction magnétique. L'influence du champ
+sur le transport peut alors être mesuré par le paramètre de
+magnétisation $\delta$, une espèce pouvant être considérée comme magnétisée à
+partir du moment où la longueur caractéristique $L$ du transport considéré est
+grande devant son rayon de Larmor :
+
+\begin{equation}
+\delta=\frac{\rho_{L_{\alpha}}}{L}\ll 1
+\end{equation}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/mouvementCyclotron.png}
+{\caption{Mouvement cyclotronique des particules autour des lignes de champ
+magnétique.}\label{1-particleDrifts}}
+\end{figure}
+
+(cf. figure \ref{1-particleDrifts})
+
+\subsection{Les gaines électrostatiques}
+Les gaines électrostatiques sont des structures non-neutres qui se
+développent à la frontière entre un plasma et un objet. Elles apparaissent
+spontanément du fait de la plus grande vitesse des électrons par rapport à
+celle des ions. D'une taille de l'ordre de quelques longueurs de Debye $\lambda_D$,
+L'interaction dite plasma-paroi est une branche à part entière de la physique des plasmas.
+En effet, au contact d'un milieu extérieur, que ce soit un obstacle matériel
+ou un gaz ambiant, le plasma perd sa quasineutralité.
+\subsubsection{Physique de la prégaine}
+\subsubsection{Physique de la gaine}
+\subsubsection{Gaine dans les plasmas magnétisés}
+\subsubsection{Problématique de la gaine parallèle aux lignes de champ}
+
+\section{Equations fluides et phénomènes de transport}
+\label{Maxwell-Boltzmann}
+\subsection{De la statistique au transport fluide}
+$$\partial_tf_s+\mathbf{v}_s\cdot\vec\nabla_\mathbf{r}f_s+
+\frac{\mathbf{F}_s}{m_s}\cdot\vec\nabla_{\mathbf{v}_s}f_s
+=\partial_tf_{|_{coll}}$$ 
+Braginskii equations
+$$M^{(k)}_s=\int_{-\infty}^{\infty}\mathbf{v}_s^kf_sd\mathbf{v}$$
+\subsubsection{Conservation de la matière}
+$$n_s=\int f_sd\mathbf{v}$$
+
+\subsubsection{Conservation de l'impulsion}
+$$n_s\mathbf{v}_s=\int \mathbf{v}_sf_sd\mathbf{v}$$
+\subsubsection{Conservation de l'énergie}
+\subsubsection{Conservation de la chaleur}
+
+\subsection{Les phénomènes de transport magnétisés}
 Dans un plasma collisionnel, le mouvement d'une particule peut être assimilé à
 une succession de déplacements libres et de collisions, formant une marche
 aléatoire de pas $\lambda_\text{lpm}$. Compte tenu du caractère isotrope du
@@ -309,89 +389,6 @@ d'Einstein :
     \frac{D_\alpha}{\mu_\alpha}=T_\alpha
 \end{equation}
  
-\subsection{Plasma et champ magnétique} 
-Un plasma magnétisé est un plasma dans lequel le champ magnétique ambiant
-$\mathbf{B}$ est suffisement important pour modifier de manière non-négligeable
-le transport des particules. Les plasmas magnétisés sont fortement
-anisotropiques, réagissant différement aux forces parallèlement et
-perpendiculairement au champ magnétique.
-
-Sous l'action de la force de Lorentz, le mouvement d'une particule chargée peut
-se décrire par trois composantes (cf. figure \ref{1-particleDrifts}) :
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/mouvementCyclotron.png}
-{\caption{Mouvement cyclotronique des particules autour des lignes de champ
-magnétique.}\label{1-particleDrifts}}
-\end{figure}
-
-\begin{itemize}
-  \item Un déplacement parallèle aux lignes de champ, de l'ordre de la vitesse
-  thermique de l'espèce, $v_\para\approx
-  (eT_\alpha/m_\alpha)^{\text{\textonehalf}}$
-  \item Un mouvement de rotation rapide de la particule
-  autour d'un centre-guide dans le plan perpendiculaire aux lignes de champ
-  \item Une lente dérive du centre-guide, résultant de forces extérieures ou
-  d'inhomogénéités du plasma
-\end{itemize}
-
-Le mouvement de rotation autour des lignes de champ est appelé mouvement
-cyclotronique. Le rayon Larmor de cette orbite et la pulsation cyclotronique
-sont alors les échelles caratéristiques pour le transport magnétisé des espèces
-reliées là encore par la vitesse thermique :
-
-\begin{equation}
-\omega\indice{c_{\alpha}}\left[\frac{e B}{m_\alpha}\right]
-\cdot\rho\indice{L_{\alpha}}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
-=v\indice{T_{\alpha}}\left[\left(\frac{eT_{\alpha}}{m_{\alpha}}\right)^{\text{\textonehalf}}\right]
-\end{equation}
-
-Quand le champ magnétique s'intensifie, les trajectoires
-hélicoïdales se resserrent, limitant de plus en plus le déplacement des
-particules perpendiculairement à la direction magnétique. L'influence du champ
-sur le transport peut alors être mesuré par le paramètre de
-magnétisation $\delta$, une espèce pouvant être considérée comme magnétisée à
-partir du moment où la longueur caractéristique $L$ du transport considéré est
-grande devant son rayon de Larmor :
-
-\begin{equation}
-\delta=\frac{\rho_{L_{\alpha}}}{L}\ll 1
-\end{equation}
-
-Enfin, 
-
-\subsection{Les gaines électrostatiques}
-Les gaines électrostatiques sont des structures non-neutres qui se
-développent à la frontière entre un plasma et un objet. Elles apparaissent
-spontanément du fait de la plus grande vitesse des électrons par rapport à
-celle des ions. D'une taille de l'ordre de quelques longueurs de Debye $\lambda_D$,
-L'interaction dite plasma-paroi est une branche à part entière de la physique des plasmas.
-En effet, au contact d'un milieu extérieur, que ce soit un obstacle matériel
-ou un gaz ambiant, le plasma perd sa quasineutralité.
-\subsubsection{Physique de la prégaine}
-\subsubsection{Physique de la gaine}
-\subsubsection{Gaine dans les plasmas magnétisés}
-\subsubsection{Problématique de la gaine parallèle aux lignes de champ}
-
-\section{Equations fluides et phénomènes de transport}
-\label{Maxwell-Boltzmann}
-\subsection{De la statistique au transport fluide}
-$$\partial_tf_s+\mathbf{v}_s\cdot\vec\nabla_\mathbf{r}f_s+
-\frac{\mathbf{F}_s}{m_s}\cdot\vec\nabla_{\mathbf{v}_s}f_s
-=\partial_tf_{|_{coll}}$$ 
-Braginskii equations
-$$M^{(k)}_s=\int_{-\infty}^{\infty}\mathbf{v}_s^kf_sd\mathbf{v}$$
-\subsubsection{Conservation de la matière}
-$$n_s=\int f_sd\mathbf{v}$$
-
-\subsubsection{Conservation de l'impulsion}
-$$n_s\mathbf{v}_s=\int \mathbf{v}_sf_sd\mathbf{v}$$
-\subsubsection{Conservation de l'énergie}
-\subsubsection{Conservation de la chaleur}
-
-\subsection{Les phénomènes de transport magnétisés}
-
 \section{Modèles de plasmas magnétisés}
 \subsection{Les modèles numériques}
 L'étude de phénomènes complexes
