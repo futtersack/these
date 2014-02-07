@@ -44,7 +44,7 @@ Du fait de la différence de masse, cette vitesse est bien inférieure pour les
 ions, qui à même énergie auront une vitesse thermique d'environ \unit{10}{\kilo\meter}.$s\puissance{-1}$.
 
 \begin{equation}
-	v_{\text{T}_\text{i}}\approx\left(m_\text{e}/m_\text{i}\right)^{\text{\textonehalf}}
+	v_{\text{T}_\text{i}}\sim\left(m_\text{e}/m_\text{i}\right)^{\text{\textonehalf}}
 	v_{\text{T}_\text{e}}
 \end{equation}
 
@@ -60,6 +60,7 @@ dits classiques :
   \item les plasmas naturels denses tels que les éclairs et les étoiles
   \item les plasmas industriels, de laboratoire, et thermonucléaires
 \end{itemize}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=80mm,width=64mm]{figures/zoologie.png}{\caption{Classification
@@ -137,7 +138,7 @@ $\rho=e\,(n_\text{i}-n_\text{e})$ la densité spatiale de charge.
 Tout écart entre la densité d'ions et la densité d'électrons
 entraîne ainsi l'apparition d'un fort champ électrique de rappel à l'équilibre.
 
-Les échelles fondamentales définies par Eq.\ref{1-PFD} sont la pulsation
+Les échelles fondamentales définies par \eqref{1-PFD} sont la pulsation
 plasma et la longueur de Debye, reliée par l'intermédiaire la vitesse thermique :
 
 \begin{equation}
@@ -145,7 +146,7 @@ plasma et la longueur de Debye, reliée par l'intermédiaire la vitesse thermiqu
 e\puissance{2}}{\varepsilon\indice{0} m_\text{e}}\right)^{\text{\textonehalf}}
 \right]\cdot\lambda_D\left[\left(\frac{\varepsilon\indice{0}
 eT_\text{e}}{n\indice{0} e\puissance{2}}\right)^{\text{\textonehalf}}\right]
-=v_\text{th}\left[\left(\frac{eT_\text{e}^{^{\phantom{1}}}}{m_\text{e}}\right)^{\text{\textonehalf}}\right]
+=v_{\text{T}_\text{e}}\left[\left(\frac{eT_\text{e}^{^{\phantom{1}}}}{m_\text{e}}\right)^{\text{\textonehalf}}\right]
 \end{equation}
 
 La pulsation plasma $\omega_\text{p}$ correspond à la fréquence typique
@@ -161,14 +162,20 @@ dans la sphère de rayon $\lambda_\text{D}$ définit alors un paramètre
 adimensionné \footnote{Un
 grand nombre de particules dans la sphère de Debye $4\pi/3\,n\lambda_D^3\gg1$
 définit un plasma idéal, où le phénomène d'écrantage électrique est
-dominant.}semblable au paramètre plasma (Eq.\ref{1-paramPlasma}).
+dominant.}semblable au paramètre plasma \eqrefp{1-paramPlasma}.
 
 Au delà de ces échelles, le plasma est dans un état de \emph{quasi-neutralité},
 \footnote{La quasi-neutralité n'est pas la seule conséquence de ce phénomène de réorganisation
 de charges : lors de l'application d'un champ électrique ou magnétique, celui-ci est rapidement
 écranté par le plasma, les particules se
 déplaçant afin de créer un champ opposé.} 
-ie. où $n_\text{e}=n_\text{i}$.
+ie. où :
+
+\begin{equation}
+n_\text{e}=n_\text{i}
+\label{quasineutralité}
+\end{equation}
+
 L'interaction coulombienne d'une particule chargée avec l'ensemble des autres particules peut alors
 se réduire à son intéraction avec un potentiel électrique local $\Phi$,
 résultant de la somme des potentiels microscopiques individuels.
@@ -213,7 +220,7 @@ La féquence de collision $\nu_\text{ei}$ mesure alors la fréquence à laquelle
 électron est dévié de plus de \unit{90}{\degree} de sa trajectoire initiale:
 
 \begin{equation}
-	\nu_\text{ei}\approx\frac{4\sqrt{2\pi}e\puissance{4} n_\text{e} \ln\Lambda
+	\nu_\text{ei}\sim\frac{4\sqrt{2\pi}e\puissance{4} n_\text{e} \ln\Lambda
 	}{3(4\pi\varepsilon\indice{0})\puissance{2}m_\text{e}\puissance{1/2}T_\text{e}\puissance{3/2}}
 \end{equation}
 
@@ -295,8 +302,8 @@ cyclotronique, est caractérisé par la pulsation cyclotronique :
 
 Le rayon de Larmor $\rho_\text{L}$ de l'orbite révèle quant à lui une échelle
 spatiale représentative du transport magnétisé. Le rayon de Larmor se
-calcule en fonction de la pulsation cyclotronique et de la vitesse $v$ de la
-particule :
+calcule en fonction de la pulsation cyclotronique et de la vitesse
+$v\indice{\alpha}$ de la particule :
 
 \begin{equation}
 \rho\indice{L_{\alpha}}
@@ -309,7 +316,7 @@ la vitesse typique de la particule est sa vitesse thermique. On peut alors noter
 \begin{equation}
 \omega\indice{c_{\alpha}}\left[\frac{e B}{m_\alpha}\right]
 \cdot\rho\indice{L_{\alpha}}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
-=v\indice{\alpha}\left[\left(\frac{eT_{\alpha}}{m_{\alpha}}\right)^{\text{\textonehalf}}\right]
+=v\indice{T_{\alpha}}\left[\left(\frac{eT_{\alpha}}{m_{\alpha}}\right)^{\text{\textonehalf}}\right]
 \end{equation}
 
 Quand le champ magnétique s'intensifie, les trajectoires
@@ -352,24 +359,53 @@ pour chaque force appliquée au plasma, le champ magnétique est à l'origine
 d'une vitesse de dérive perpendiculaires aux deux forces en jeu :
 
 \begin{equation}
-\mathbf{v}_F=\frac{\mathbf{F}\times\mathbf{B}}{q_\alpha B^2}
+\mathbf{v}\indice{\text{F}}=\frac{\mathbf{F}\times\mathbf{B}}{q_\alpha B^2}
 \end{equation}
 
-Si la force $F$ est indépendante de la charge de la particule, cette vitesse de
-dérive induira un courant $\mathbf j_F=en(\mathbf v\indice{F_i}-\mathbf
-v\indice{F_e})$. Dans un plasma, où l'anisotropie du champ magnétique est
-souvent utilisée pour contrôler et limiter le déplacement des particules, 
-l'apparition de vitesse de dérives peut alors entraîner des
+Si la force $\mathbf F$ est indépendante de la charge de la particule ou
+fonction de la masse de la particule, cette vitesse de dérive induira un courant $\mathbf
+j\indice{\text{F}}=en(\mathbf v\indice{\text{F}_\text{i}}-\mathbf
+v\indice{\text{F}_\text{e}})$. Dans un plasma, où l'anisotropie du champ
+magnétique est souvent utilisée pour contrôler et limiter le déplacement des particules, l'apparition de vitesse de dérives peut alors entraîner des
 comportements complexes.
 
 \subsection{Les gaines électrostatiques}
-Les gaines électrostatiques sont des structures non-neutres qui se
-développent à la frontière entre un plasma et un objet. Elles apparaissent
-spontanément du fait de la plus grande vitesse des électrons par rapport à
-celle des ions. D'une taille de l'ordre de quelques longueurs de Debye $\lambda_D$,
-L'interaction dite plasma-paroi est une branche à part entière de la physique des plasmas.
-En effet, au contact d'un milieu extérieur, que ce soit un obstacle matériel
-ou un gaz ambiant, le plasma perd sa quasineutralité.
+La gaine de Debye (ou gaine électrostatique) est une structure non
+neutre qui apparait le long des parois, des électrodes ou de tout obstacle
+matériel en contact avec le plasma. A l'interface plasma-solide, les
+électrons, généralement plus rapides que les ions du fait de leur faible masse
+et de leur température, polarisent négativement la surface du matériau,
+relativement au plasma. 
+Suite à l'augmentation progressive de ce potentiel, qui attire de plus en plus
+les ions tout en repoussant les électrons, une région de densité ionique
+supérieure, que l'on appelle gaine, se forme en périphérie du plasma (voir
+figure~\ref{1-gaine}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/mouvementCyclotron.png}
+{\caption{Mouvement cyclotronique des particules autour des lignes de champ
+magnétique.}\label{1-gaine}}
+\end{figure}
+
+L'apparition de la gaine est fondamentalement relié à l'établissement de la
+quasineutralité et de la diffusion ambipolaire qui s'opère lors de la formation
+d'un plasma. Ce phénomène sera détaillé dans la suite du chapitre
+(§\ref{1-transportAmbipolaire}, mais nous pouvons d'ores et déjà introduire
+quelques idées. La taille gaine, de l'ordre de la longueur
+de Debye $\lambda\indice{D}$, diminue le champ électrique
+généré par la charge d'espace positive est suffisement imporant pour écranter le potentiel de la surface.
+
+Comme $\lambda\indice{D}$ est 
+
+Le phénomène de 
+Ce phénomène, régit par les mêmes échelles que l
+
+ de
+atteindre un équilibre dans lequel assurant une égalité des flux tombant à la surface.
+
+
+
 \subsubsection{Physique de la prégaine}
 \subsubsection{Physique de la gaine}
 \subsubsection{Gaine dans les plasmas magnétisés}
@@ -403,7 +439,7 @@ fonction de la longueur de gradient de densité et du coefficient de diffusion
 $D$ :
  
 \begin{equation}
-    \text{V}_\text{Diff}\approx D_\alpha\frac{\nabla
+    \text{V}_\text{Diff}\sim D_\alpha\frac{\nabla
     n_\alpha}{n_\alpha}=\frac{eT_\alpha}{m_\alpha\nu}\frac{\nabla
     n_\alpha}{n_\alpha}=\frac{\lambda_\text{lpm}}{L_\text{n}}v_{\text{T}_\alpha}
 \end{equation}
@@ -447,11 +483,29 @@ L'étude de phénomènes complexes
 %		\end{figure}
 
 \subsection{Les décharges plasma basse-pression}
+\label{1-transportAmbipolaire}
+
 \subsubsection{Création de la décharge, rôle des électrons}
+
 Dans les plasmas basse-température industriels et de laboratoires, qui
 possédent un faible degré d'ionisation, ou dans l'ionospère, la dynamique du
 plasma est dominée par la perte de quantité de mouvement dûe à l'ionisation la force de friction avec
 le gaz.
+
+l'établissement de la quasineutralité n'est pas instantané : à faible densité,
+le champ électrique étant négligeable, les ions et les électrons diffusent
+uniformément dans le volume qui les entoure.
+
+Comme les électrons se déplacent et diffusent bien plus rapidement que les ions
+du fait de leur faible masse $D\indice{e}\gg D\indice{i}$, durant un temps
+$t\sim \tau\indice{e}=L\puissance{2}/D\indice{e}$, ils se dispersent jusqu'à atteindre
+une paroi ou un quelconque obstable qu'ils polarisent négativement. Il apparaît
+alors dans la zone proche de la surface une couche limite appelée gaine, ne
+contenant que très peu d'électrons et où la quasineutralité est donc rompue. 
+attirant les ions et ralentissant les électrons pour ajuster leur flux et préserver la neutralité du matériau. La zone proche de l'obstacle 
+
+
+
 Electrical breakdown, Townsend avalanche,
 \subsubsection{Transport des ions et champ ambipolaire}
 \begin{equation}

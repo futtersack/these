@@ -147,11 +147,12 @@
 
 \makeatother
 
-\newcommand{\puissance}[1]{^{^{#1}}}
+\newcommand{\puissance}[1]{^{{#1}}}
 \newcommand{\indice}[1]{_{_{#1}}}
 
 \newcommand{\para}{{\mkern3mu\vphantom{\perp}\vrule depth 0pt\mkern3mu\vrule depth 0pt\mkern3mu}}
-
+\renewcommand{\eqref}[1]{\hbox{Eq.~\thechapter-\ref{#1}}}
+\newcommand{\eqrefp}[1]{\hbox{(Eq.~\thechapter-\ref{#1})}}
 
 
 %\newcommand{\artlabel}[1]{{\sc #1.}}

@@ -1,20 +1,33 @@
 \Chapter{Modélisation par les vitesses de dérive}
 \chaptermark{Les vitesses de dérive}
 \begin{refsection}
-
 Ce deuxième chapitre se concentre sur l'étude de la modélisation du transport
 (fortement) magnétisé en contact avec une paroi. Nous présentons dans cet objectif 
 le code TOKAM2D~\cite{Sarazin} utilisé pour
 caractériser la SOL des tokamaks ainsi que les modifications qui lui ont été
 apportées pour lui permettre décrire le transport dans des conditions se
 rapprochant de notre étude.
-Nous détaillerons enfin un modèle plasmas
-froids/magnétisés basé sur les vitesses de dérive.
+Nous détaillerons enfin un modèle pour l'étude des plasmas
+froids/magnétisés basé sur les vitesses de dérive, mais construit en tenant
+compte du transport collisionnel avec les neutres. Ce nouveau modèle permet
+de décrire les zones non magnétisée du plasma et contient les conditions aux
+limites physiques sur le courant de gaine dans la direction perpendiculaire au
+champ magnétique.
+
 \section{Transport fortement magnétisé dans la SOL}
 \chaptermark{Transport dans le plasma de bord}
 La première partie de cette thèse a consisté à étudier et à modifier un modèle
-fluide décrivant le transport magnétisé de la SOL des tokamaks.
+fluide décrivant le transport magnétisé de la SOL des tokamaks dans le but de
+comprendre les mécanismes du transport magnétisé et de pouvoir appliquer la
+méthodologie développée dans le cadre de la recherche au problème des sources
+d'ions. Après une brève description de d'historique de TOKAM2D et des hypothèses
+du modèle, les équations du modèle sont dérivées dans leur forme adimensionnée
+puis moyennée dans la direction parallèle. Nous discutons finalement une
+simulation typique, qui servira de base pour comparer les différentes évolutions
+du modèle.
+
 \subsection{Le code TOKAM2D}
+
 Le code TOKAM2D a été initialement développé à l'IMTM\footnote{Institut
 Méditerranéen Technologique de Marseille} pour étudier la turbulence
 d'interchange qui domine le transport transverse dans le plasma de bord des
@@ -22,33 +35,28 @@ tokamaks. Sa modification pour intégrer un forçage de la turbulence par un flu
 au lieu d'un gradient d'équilibre a permis de retrouver le caractère
 intermittent du transport et la longueur de décroissance du profil de densité
 que l'on mesurait expérimentalement. L'étude du modèle a aussi amélioré la
-compréhension du mécanisme principal de l'instabilité, dont le déclenchement à
-seuil de l'interchange et la nature de type avalanche du transport turbulent.
+compréhension du mécanisme principal de l'instabilité d'interchange, dont
+la mise en évidence de son déclenchement à seuil et la nature de type avalanche
+du transport turbulent.
 
 C'est un code fluide, quasineutre, qui décrit le transport transverse en se
 basant sur l'approximation des vitesses de dérive (voir §
 \ref{Introduction}-\ref{vitessesDerive}).
+
 \subsection{Hypothèses du modèle}
 Dans les conditions typiques de la SOL, l'utilisation d'un modèle fluide est
 justifiée par la forte collisionnalité du plasma. Le libre parcours moyen
 $\lambda_{ei}=v_T \nu_{ei}$, de l'ordre du mètre, est très inférieur à la
-longueur de connexion parallèle des lignes de champ $L_\para=2\pi q R\approx
+longueur de connexion parallèle des lignes de champ $L_\para=2\pi q R\sim
 $\unit{100}{\meter}.
-Le plasma est de plus très magnétisé $B\approx$\unit{1}{\tesla}, les fréquences
+Le plasma est de plus très magnétisé $B\sim$\unit{1}{\tesla}, les fréquences
 caractéristiques du transport transverse sont donc très lentes devant la fréquence
 cyclotronique ionique ce qui nous permet de nous placer dans le cadre de
 l'approche des vitesse de dérives :
+
 \begin{equation}
 \omega\ll\omega_c\Leftrightarrow \varepsilon_\omega\equiv\frac{\omega}{\omega_c}\ll 1
 \end{equation}
-
-\begin{wrapfigure}{r}{0.50\textwidth}
-	\vspace{-5pt}
-
- \hspace{20pt}\includegraphics[width=0.40\textwidth]{figures/geomTokam.png}{\caption{Zone
-de la SOL simulée dans TOKAM2D.}\label{figTokamGeom}}
-	 \vspace{-20pt}
-\end{wrapfigure}
 
 D'un autre côté $\rho_L^i$, le rayon de Larmor ionique, d'environ
 \unit{1}{\milli\meter}, est bien supérieur à la longueur de
@@ -60,23 +68,33 @@ On décrit alors le transport du plasma à travers l'évolution de la densité
 de continuité des électrons ainsi que l'équation de conservation du courant. Les
 températures électronique
 $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e$.
-
-La zone simulée, présentée sur la figure~\ref{figTokamGeom}, correspond à  
-L'hypothèse flûte, qui permet la réduction du problème de trois à deux
+\begin{wrapfigure}{r}{0.50\textwidth}
+	\vspace{-5pt}
+ \hspace{20pt}\includegraphics[width=0.40\textwidth]{figures/geomTokam.png}{\caption{Zone
+de la SOL simulée dans TOKAM2D.}\label{figTokamGeom}}
+	 \vspace{-20pt}
+\end{wrapfigure}
+La zone simulée, présentée sur la figure~\ref{figTokamGeom}, correspond à une
+petite partie de la SOL, la séparatrice étant modélisée par un flux entrant de
+particule L'hypothèse flûte, qui permet la réduction du problème de trois à deux
 dimensions .
+
 \subsection{Dérivation des équations}
 \subsubsection{Equation de conservation de la matière}
-En notant $D_\perp$ le coefficient de diffusion rendant compte des collisions,
-et $S$ un terme source pour modéliser le flux de particules provenant du plasma
-de coeur, l'équation de continuité des électrons s'écrit :
+En notant $D_\perp\sim eT_\text{e}/m_\text{e}\nu_\text{ei}$ le coefficient de
+diffusion rendant compte des collisions coulombiennes, et $S$ un terme source modélisant le flux de particules
+provenant du plasma de coeur, l'équation de continuité des électrons s'écrit :
+
 \begin{equation}
 \label{2-ContinuiteElectrons}
 \partial_t n + \nabla\cdot(n\mathbf{u}^e) = D_\perp\nabla^2_\perp n + S
 \end{equation}
 
-Comme discuté dans le chapitre précédent, le flux de matière transverse est
-essentiellement issu de l'advection par la vitesse de
-dérive électrique. L'équation \ref{2-ContinuiteElectrons} se transforme donc en :
+Comme discuté dans le paragraphe consacré aux vitesses de dérive, le flux de
+matière transverse est essentiellement issu de l'advection par la vitesse de
+dérive électrique. \eqref{2-ContinuiteElectrons} peut ainsi se
+développer en :
+
 \begin{equation}
 \label{2-ContinuiteElectrons2}
 \partial_t n + \nabla_\para\cdot(n\mathbf{u}^e_{\para}) =
@@ -87,16 +105,18 @@ Le terme d'advection $\mathbf{u}_E\cdot\nabla_\perp
 n$ peut se réécrire en utilisant la notation
 du crochet de Poisson $[n,U]=\mathbf{b}.(\nabla_\perp n\times\nabla_\perp U)$.
 C'est la forme que prend toute advection d'un champ scalaire par une vitesse de
-dérive $\mathbf{v}^\text{d}=\nabla H\times\mathbf{B}/B^2$, où $\nabla H$ est la
-force à l'origine de la dérive. L'équation de continuité pour les électrons est
-alors :
+dérive $\mathbf{v}_\text{D}=\nabla H\times\mathbf{B}/B^2$, où $\nabla H$ est la
+force à l'origine de la dérive. L'équation de continuité pour les électrons
+s'écrit alors :
+
 \begin{equation}
+\label{2-eqContinuiteFinale}
 \partial_t n + \nabla_{\para}\cdot(n\mathbf{u}^e_{\para}) =
 \frac{1}{B}\left[n,U\right] + D_\perp\nabla^2_\perp n + S
 \end{equation}
 
 Le terme non-linéraire $[n,U]$ est l'un des éléments moteur du modèle
-d'interchange, couplant la densité au potentiel électrique, il opère un
+d'interchange. Couplant la densité au potentiel électrique, il opère un
 transfert d'exitation des composantes radiales des fluctuations à leurs
 composantes poloïdales et réciproquement. Les termes de flux parallèle et de
 diffusion sont stabilisant, ils tendent à
@@ -105,11 +125,13 @@ amortir les fluctuations et donc à homogénéiser le système.
 \subsubsection{Equation de conservation du courant}
 L'équation de conservation du courant s'obtient en soustrayant l'équation de
 continuité des électrons à celle des ions. La vitesse de dérive électrique
-$\mathbf{u}^E$, indépendante de la masse et de la charge des particules, est
-identique pour les deux espèces et ne transporte donc aucun courant. 
+$\mathbf{u}_E$, indépendante de la masse et de la charge des particules,
+est identique pour les deux espèces et ne transporte donc aucun courant. 
 La conservation du courant se résume ainsi à un équilibre entre le courant
-parallèle et les courants transverses diamagnétique et de polarisation à
-travers leur divergences:
+parallèle $\mathbf{j}_\para$ et les courants transverses diamagnétique
+$\mathbf{j}_*$ et de polarisation $\mathbf{j}_p$ à travers leur
+divergences:
+
 \begin{equation}
 \label{EqCourant1}
 \nabla\cdot\left(\mathbf{j}\right) = 
@@ -118,30 +140,38 @@ travers leur divergences:
 \end{equation}
 
 La divergence du courant diamagnétique donne un crochet de Poisson :
+
 \begin{equation}
 \nabla_\perp\cdot\mathbf{j}_*=
 \nabla_\perp\cdot\left(\nabla_\perp\left(
 P_i+P_e\right)\times\mathbf{B}/B^2\right) = \left[P_i+P_e,B\puissance{-1}\right]
 \end{equation}
 
-La vitesse de polarisation étant proportionnelle à la masse des particules
-(Eq.~\ref{Introduction}-\ref{vitessesDerive}), on ne retient dans l'expression
-du courant que la contribution ionique
-$\mathbf{j}_p\approx\text{e}n\mathbf{u}^i_p$. En prenant en compte une viscosité
-$\nu_\perp$, la dérivée totale est approximée par :
+La vitesse de polarisation étant de plus proportionnelle à la masse des
+particules \eqref{vitessesDerive}, on ne retient
+dans l'expression du courant que la contribution ionique
+$\mathbf{j}_p\sim\text{e}n\mathbf{u}^i_p$. En prenant en compte une viscosité
+$\nu_\perp$\footnote{L'origine physique de cette viscosité définie par le
+coéfficient $\nu_\perp$ peut être rapprochée de la conductivité de Spitzer
+$\eta\equiv n_\text{e}e\puissance{2}/m_\text{e}\nu_\text{ei}$, soit encore à
+une expression modifiée de la vitesse de dérive électrique
+$\mathbf{u}_\text{E}=(1+\rho_\text{L}\puissance{2}/4\nabla\puissance{2})\mathbf{E}\times\mathbf{B}/B\puissance{2}$}
+du milieu, la dérivée totale est approximée par :
+
 \begin{equation}
 \frac{\text{d}\nabla_\perp U}{\text{dt}} \equiv 
 \left(\partial_\text{t} - \nu_\perp \nabla_\perp^2 +
-\mathbf{u}^i\cdot\nabla_\perp\right)\nabla_\perp U
+\mathbf{u}_\text{i}\cdot\nabla_\perp\right)\nabla_\perp U
 \end{equation}
 
-De manière similaire à Eq.~\ref{2-ContinuiteElectrons2}, seule l'advection par
+De manière similaire à \eqref{2-ContinuiteElectrons2}, seule l'advection par
 la vitesse de dérive électrique est considérée dans la divergence.
-Eq.~\ref{EqCourant1} se réécrit alors :
+L'équation \eqrefp{EqCourant1} se réécrit alors :
+
 \begin{equation}\begin{split}
 \label{EqCourant2}
 \nabla_\para\cdot\mathbf{j}_\para + \left[P_i+P_e,B\puissance{-1}\right] +
-\nabla_\perp\cdot\left(-\frac{n\text{m}_i}{B^2}\left(\partial_\text{t}\nabla_\perp
+\nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\left(\partial_\text{t}\nabla_\perp
 U - \nu_\perp \nabla_\perp^3 U \right)\right) \\+
 \nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
 U\right)=0
@@ -149,12 +179,13 @@ U\right)=0
 \end{equation}
 
 Diverses considérations sur l'importance relative des termes contenus dans
-Eq.~\ref{EqCourant2} (reliées entre autres aux hypothèses d'ordering ou aux
-variations et à la finitude du rayon de Larmor) sont développées dans
+\eqref{EqCourant2} (reliées entre autres aux hypothèses d'ordering
+ou aux variations et à la finitude du rayon de Larmor) sont développées dans
 \cite{Sarazin} pour simplifier le modèle. Elles conduisent à l'expression
 finale de l'équation du courant :
+
 \begin{equation}\begin{split}
-\label{EqCourantFinale}
+\label{2-eqCourantFinale}
 \nabla_\para\cdot\mathbf{j}_\para +
 (T_e+T_i)\left[n,B\puissance{-1}\right] =\\
 \frac{nm_i}{B^2}\left(\partial_\text{t}\nabla_\perp^2 U - \nu_\perp
@@ -163,15 +194,19 @@ B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
 \end{split}
 \end{equation}
 
-
 \subsection{Normalisation du système}
-Les grandeurs de normalisation sont reliées à l'intensité du champ magnétique
-$B\indice{0}$ et à la température électronique de référence $T\indice{0}$. Le
-temps est normalisé à l'inverse de la fréquence cyclotronique ionique :
+Pour faire apparaître les grandeurs caractéristiques du système et simplifier
+l'écriture des équations, les différents termes sont
+maintenant adimensionnées. L'intensité du champ
+magnétique $B\indice{0}$ et à la température électronique de référence
+$T\indice{0}$ constituent les bases de cet adimensionnement. Le temps est
+normalisé à l'inverse de la fréquence cyclotronique ionique :
+
 \begin{equation}
 t = \overline{t}\:\omega_c\puissance{-1} =
 \overline{t}\:\frac{m_i}{eB\indice{0}}
 \end{equation}
+
 Les longueurs et vitesses sont alors logiquement normalisées par le rayon de
 Larmor et la vitesse de Bohm :
 
@@ -184,11 +219,33 @@ v=\overline{v}\:c_s=\overline{v}\left(\frac{eT\indice{0}}{m_i}\right)^{\text{\te
 
 Nous définissons de plus les variables adimensionnées du modèle, la densité
 $\overline{N}$ et le potentiel électrostatique $\overline \phi$ par :
+
 \begin{eqnarray}
 n = n_{\indice{0}}\:\overline{N} & \text{et} & U=\frac{\overline
 {\phi}T\indice{0}}{e}
 \end{eqnarray}
-\vfill
+
+Avec cette normalisation, on réécrit le système d'équations (
+\eqref{2-eqContinuiteFinale}-\eqref{2-eqCourantFinale}) sous la forme :
+
+\begin{equation}
+\label{2-eqContinuiteFinale}
+\partial_t N +
+\frac{\rho\indice{i}}{L_{\para}}\nabla_{\para}\cdot(NM^e_{\para}) =
+\frac{1}{B}\left[N,\Phi\right] + D_\perp\nabla^2_\perp N + S
+\end{equation}
+
+\begin{equation}\begin{split}
+\label{2-eqCourantFinale}
+\nabla_\para\cdot(N\mathbf{M}_\para) +
+T_e(1+\tau)\left[N,B\puissance{-1}\right] =\\
+\frac{N}{B^2}\left(\partial_\text{t}\nabla_\perp^2 U - \nu_\perp
+\nabla_\perp^4U+
+B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
+\end{split}
+\end{equation}
+
+
 \section{Vers une description des sources d'ions}
 L'approche par les vitesses de dérive utilisée pour construire le modèle de TOKAM2D n'est pas 
 réellement justifiée dans le cas des sources d'ions. Le modèle suppose tout d'abord une
