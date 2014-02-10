@@ -39,9 +39,10 @@ se caractérise par deux paramètres principaux :
 
 où $m_\text{e}$ est la masse de l'électron, et $e$ la charge élémentaire. Pour un électron possédant
 une énergie de \unit{1}{\electronvolt}, la vitesse thermique est de l'ordre de
-\unit{400}{\kilo\meter}.$s\puissance{-1}$.
+\unit{400}{\kilo\meter}/s.
 Du fait de la différence de masse, cette vitesse est bien inférieure pour les
-ions, qui à même énergie auront une vitesse thermique d'environ \unit{10}{\kilo\meter}.$s\puissance{-1}$.
+ions, qui à même énergie auront une vitesse thermique d'environ
+\unit{10}{\kilo\meter}/s.
 
 \begin{equation}
 	v_{\text{T}_\text{i}}\sim\left(m_\text{e}/m_\text{i}\right)^{\text{\textonehalf}}
@@ -106,13 +107,14 @@ particules chargées et les forces électromagnétiques présentent ou qui se
 forment dans le système :
 
 \begin{equation}
-\partial_t \mathbf v=q_\alpha(\mathbf E+ \mathbf v_\alpha\times\mathbf
-B)
+\frac{\text{d} \mathbf
+v_\alpha}{\text{dt}}=\frac{q_\alpha}{m_\alpha}(\mathbf E+ \mathbf
+v_\alpha\times\mathbf B)
 \end{equation}
 
-l'indice $\alpha$ dénotant le type de la particule chargée, $q_\alpha$ sa
-charge, $\mathbf v_\alpha$ sa vitesse et $(\mathbf E,\mathbf B)$ le champ
-électromagnétique.
+l'indice $\alpha$ dénotant le type de la particule chargée, $m_\alpha$
+et $q_\alpha$ sa masse et sa charge, $\mathbf v_\alpha$ sa vitesse et $(\mathbf
+E,\mathbf B)$ le champ électromagnétique.
 Elle se décompose principalement sur deux échelles de temps :
 la première phase correspond à l'équilibre électrostatique, où une
 quasineutralité s'établit au sein du plasma. Dans une deuxième phase, l'évolution quasineutre du
@@ -128,7 +130,7 @@ Cette dynamique est essentiellement portée par les électrons et décrite aux p
 
 \begin{align}
 \label{1-PFD}
-m_\text{e}\frac{\partial \mathbf{v}_\text{e}}{\partial t}=-e\mathbf E
+m_\text{e}\frac{\text{d} \mathbf{v}_\text{e}}{\text{d} t}=-e\mathbf E
 \;\;\;\;\;\;\text{et}\;\;\;\;\;\;
 \nabla\cdot\mathbf{E}=\rho\varepsilon\indice{0}\puissance{-1}
 \end{align}
@@ -159,16 +161,16 @@ C'est une longueur au-delà de laquelle le champ électrique créé par une part
 un nuage de particules de charge opposée. Dans un plasma chaque particule est écrantée et participe
 à l'écrantage des autres ; Le nombre de particules présentes
 dans la sphère de rayon $\lambda_\text{D}$ définit alors un paramètre
-adimensionné \footnote{Un
+adimensionné\footnote{Un
 grand nombre de particules dans la sphère de Debye $4\pi/3\,n\lambda_D^3\gg1$
 définit un plasma idéal, où le phénomène d'écrantage électrique est
-dominant.}semblable au paramètre plasma \eqrefp{1-paramPlasma}.
+dominant.} semblable au paramètre plasma \eqrefp{1-paramPlasma}.
 
-Au delà de ces échelles, le plasma est dans un état de \emph{quasi-neutralité},
+Au delà de ces échelles, le plasma est dans un état de \emph{quasi-neutralité}
 \footnote{La quasi-neutralité n'est pas la seule conséquence de ce phénomène de réorganisation
 de charges : lors de l'application d'un champ électrique ou magnétique, celui-ci est rapidement
 écranté par le plasma, les particules se
-déplaçant afin de créer un champ opposé.} 
+déplaçant afin de créer un champ opposé.}, 
 ie. où :
 
 \begin{equation}
@@ -343,7 +345,8 @@ induit une troisième sorte de mouvement, appelé communément "dérive
 ExB" (E-cross-B) : le phénomène de dérive se décrit comme un lent déplacement du
 centre guide de la particule, perpendiculairement aux champs électrique et
 magnétique (cf. figure \ref{1-particleDrifts}). Son expression s'obtient en
-prenant le produit vectoriel de l'equation du mouvement et du champ magnétique :
+prenant le produit vectoriel de l'équation du mouvement par le champ magnétique
+:
 
 \begin{equation}
 \mathbf{v}_E=\frac{\mathbf{E}\times\mathbf{B}}{B^2}
@@ -366,10 +369,13 @@ Si la force $\mathbf F$ est indépendante de la charge de la particule ou
 fonction de la masse de la particule, cette vitesse de dérive induira un courant $\mathbf
 j\indice{\text{F}}=en(\mathbf v\indice{\text{F}_\text{i}}-\mathbf
 v\indice{\text{F}_\text{e}})$. Dans un plasma, où l'anisotropie du champ
-magnétique est souvent utilisée pour contrôler et limiter le déplacement des particules, l'apparition de vitesse de dérives peut alors entraîner des
-comportements complexes.
+magnétique est souvent utilisée pour contrôler et limiter le déplacement des
+particules, l'apparition de vitesse de dérives peut alors entraîner des
+effets non désirables par le développement de comportements non-linéaires
+complexes.
 
 \subsection{Les gaines électrostatiques}
+\subsubsection{Physique de la gaine}
 La gaine de Debye (ou gaine électrostatique) est une structure non
 neutre qui apparait le long des parois, des électrodes ou de tout obstacle
 matériel en contact avec le plasma. A l'interface plasma-solide, les
@@ -379,37 +385,67 @@ relativement au plasma.
 Suite à l'augmentation progressive de ce potentiel, qui attire de plus en plus
 les ions tout en repoussant les électrons, une région de densité ionique
 supérieure, que l'on appelle gaine, se forme en périphérie du plasma (voir
-figure~\ref{1-gaine}.
+figure~\ref{1-gaine}). La taille de cette gaine est de l'ordre de la longueur de Debye
+$\lambda_D$, et est donc fortement dépendante de la densité plasma. 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/mouvementCyclotron.png}
-{\caption{Mouvement cyclotronique des particules autour des lignes de champ
-magnétique.}\label{1-gaine}}
+\includegraphics[height=80mm,width=80mm]{figures/sheath1.jpg}{\caption{Séparation
+du plasma entre une région quasineutre et la gaine à sa
+périphérie. A la frontière, il y a rupture de la quasineutralité et la vitesse
+ionique est égale à la vitesse de Bohm $C_s$\parencite{Rax}.}\label{1-gaine}}
 \end{figure}
 
-L'apparition de la gaine est fondamentalement relié à l'établissement de la
-quasineutralité et de la diffusion ambipolaire qui s'opère lors de la formation
-d'un plasma. Ce phénomène sera détaillé dans la suite du chapitre
-(§\ref{1-transportAmbipolaire}, mais nous pouvons d'ores et déjà introduire
-quelques idées. La taille gaine, de l'ordre de la longueur
-de Debye $\lambda\indice{D}$, diminue le champ électrique
-généré par la charge d'espace positive est suffisement imporant pour écranter le potentiel de la surface.
+Considérons de nouveau l'équation de Poisson, qui contrôle l'évolution du
+potentiel électrique, au voisinage de la paroi :
+\begin{equation}
+\frac{d\puissance{2}\Phi}{d\xi}=\frac{1}{\lambda_D\puissance{2}}\frac{n_\text{e}-n_\text{i}}{n\indice{0}}
+\end{equation}
+ où $\Phi$ est le potentiel normalisé $\Phi=eU/T_\text{e}$, $\xi$ est la
+ direction normale à la paroi, $n_\text{e}$ et $n_\text{i}$ les densités
+ électronique et ionique respectivement, et $n\indice{0}$ la densité
+ moyenne du plasma. Dans la limite où $\lambda_D\ll L$ l'équation de
+ poisson permet de distinguer les deux régions :
 
-Comme $\lambda\indice{D}$ est 
+ \begin{itemize}
+   \item La gaine, fine épaisseur de peau du plasma de taille caractérisique
+   $\lambda_D$, où l'électroneutralité est rompue et où se développe un fort
+   gradient de potentiel ($d\Phi/d\xi\sim 1/\lambda_D$)
+   \item Le reste du plasma, de taille caractéristique $L$, qui satisfait
+   à l'hypothèse de quasineutralité dans la mesure où le potentiel varie en
+   $d\Phi/d\xi\sim1/L$
+ \end{itemize}
 
-Le phénomène de 
-Ce phénomène, régit par les mêmes échelles que l
+L'étude de la transition plasma-gaine donne lieu à l'énoncé du critère de
+Bohm \parencite{Stangeby}, qui impose la vitesse ionique en entrée de
+gaine, $C_s$, communément appelée vitesse de Bohm ou encore vitesse acoustique
+ionique\footnote{la deuxième appellation provient de la similitude entre la
+transition subsonique-supersonique qui s'observe dans les gaz neutres. Les ondes
+acoustiques, reliées aux surpressions et aux souspressions, se propagent dans un
+plasma par le champ électrique. L'élasticité du plasma est alors due à la
+température électronique $T_\text{e}$ et à l'inertie ionique.} :
 
- de
-atteindre un équilibre dans lequel assurant une égalité des flux tombant à la surface.
+\begin{equation}
+C_\text{s}=\sqrt{\frac{q_\text{i} (T_\text{e}+T_\text{i})}{m_\text{i}}}
+\end{equation}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=90mm,width=100mm]{figures/sheath2.jpg}{\caption{Profiles
+des densités électronique et ioniques,
+du potentiel et de la vitesse ionique à
+la transition plasma-gaine\parencite{Rax}.}\label{1-profilesgaine}}
+\end{figure}
 
+\begin{equation}
+j_\text{eg}=en\indice{eg}C_s\left(1-\exp{(\Lambda-\Delta\Phi/T_\text{e})}\right)
+\end{equation} 
 
-\subsubsection{Physique de la prégaine}
-\subsubsection{Physique de la gaine}
+où $n\indice{0}$ est
+  En fait, le rôle de
+la gaine est de maintenir une quasineutralité dans l'ensemble du plasma en régulant les flux à sa périphérie.
+
 \subsubsection{Gaine dans les plasmas magnétisés}
-\subsubsection{Problématique de la gaine parallèle aux lignes de champ}
 
 \section{Equations fluides et phénomènes de transport}
 \label{Maxwell-Boltzmann}
