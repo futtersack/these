@@ -366,35 +366,54 @@ d'une vitesse de dérive perpendiculaires aux deux forces en jeu :
 \end{equation}
 
 Si la force $\mathbf F$ est indépendante de la charge de la particule ou
-fonction de la masse de la particule, cette vitesse de dérive induira un courant $\mathbf
+fonction de la masse de la particule, la différence entre les vitesses de dérive
+électroniques et ioniques induira un courant $\mathbf
 j\indice{\text{F}}=en(\mathbf v\indice{\text{F}_\text{i}}-\mathbf
 v\indice{\text{F}_\text{e}})$. Dans un plasma, où l'anisotropie du champ
 magnétique est souvent utilisée pour contrôler et limiter le déplacement des
-particules, l'apparition de vitesse de dérives peut alors entraîner des
-effets non désirables par le développement de comportements non-linéaires
-complexes.
+particules, les vitesses de dérives sont souvent à l'origine d'un déconfinement
+entraîné par le développement de comportements
+non-linéaires complexes.
 
 \subsection{Les gaines électrostatiques}
-\subsubsection{Physique de la gaine}
-La gaine de Debye (ou gaine électrostatique) est une structure non
-neutre qui apparait le long des parois, des électrodes ou de tout obstacle
-matériel en contact avec le plasma. A l'interface plasma-solide, les
-électrons, généralement plus rapides que les ions du fait de leur faible masse
-et de leur température, polarisent négativement la surface du matériau,
-relativement au plasma. 
-Suite à l'augmentation progressive de ce potentiel, qui attire de plus en plus
-les ions tout en repoussant les électrons, une région de densité ionique
-supérieure, que l'on appelle gaine, se forme en périphérie du plasma (voir
-figure~\ref{1-gaine}). La taille de cette gaine est de l'ordre de la longueur de Debye
-$\lambda_D$, et est donc fortement dépendante de la densité plasma. 
+Un plasma est souvent, à un moment ou à un autre, amené à entrer en contact avec
+une paroi ou un quelconque obstable matériel. L'interaction entre
+les deux milieux conditionne alors l'existence du plasma et influence
+fortement son comportement. 
+
+Une paroi agit comme un parfait
+puit de matière et d'énergie pour le plasma, les ions et les électrons se
+recombinant facilement à sa surface. Ceci étant, un plasma ne peut se maintenir
+que si le nombres de particules créées dans son volume est suffisant pour
+balancer ces pertes en surface. De plus, les électrons interceptant généralement
+plus rapidement la paroi du fait de leur faible masse et de leur température,
+polarisent négativement la surface du matériau.
+L'augmentation progressive de ce potentiel mène alors à la formation en
+périphérie du plasma d'une région de densité ionique supérieure, et donc
+non-neutre, que l'on appelle gaine électrostatique (ou gaine de Debye, voir
+figure~\ref{1-gaine}).
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[height=80mm,width=80mm]{figures/sheath1.jpg}{\caption{Séparation
+\includegraphics[height=60mm,width=60mm]{figures/sheath1.jpg}{\caption{Séparation
 du plasma entre une région quasineutre et la gaine à sa
 périphérie. A la frontière, il y a rupture de la quasineutralité et la vitesse
 ionique est égale à la vitesse de Bohm $C_s$\parencite{Rax}.}\label{1-gaine}}
 \end{figure}
+
+Dans les plasmas classiques où la taille de la gaine est petite
+à l'échelle du plasma, son rôle est essentiellement de
+maintenir la quasineutralité dans le volume en régulant les flux d'ions et
+d'électrons tombant aux parois. Cependant la gaine a une propriété les électrons, énergétiquement confinés par le
+potentiel de la paroi, forment un équilibre électrostatique à l'intérieur du plasma, et peuvent donc
+être décrits par une distribution de Boltzman :
+\begin{equation}
+	n_\text{e}=n\indice{0}\exp(e\Phi/eT_\text{e})
+\end{equation}
+
+
+
+\subsubsection{Physique de la gaine}
 
 Considérons de nouveau l'équation de Poisson, qui contrôle l'évolution du
 potentiel électrique, au voisinage de la paroi :
@@ -404,22 +423,22 @@ potentiel électrique, au voisinage de la paroi :
  où $\Phi$ est le potentiel normalisé $\Phi=eU/T_\text{e}$, $\xi$ est la
  direction normale à la paroi, $n_\text{e}$ et $n_\text{i}$ les densités
  électronique et ionique respectivement, et $n\indice{0}$ la densité
- moyenne du plasma. Dans la limite où $\lambda_D\ll L$ l'équation de
- poisson permet de distinguer les deux régions :
+ moyenne du plasma. Quand le plasma est suffisement dense pour que $\lambda_D\ll
+ L$, l'équation de poisson permet d'estimer le champ électrique des deux
+ régions :
 
  \begin{itemize}
-   \item La gaine, fine épaisseur de peau du plasma de taille caractérisique
-   $\lambda_D$, où l'électroneutralité est rompue et où se développe un fort
-   gradient de potentiel ($d\Phi/d\xi\sim 1/\lambda_D$)
+   \item Face à la paroi chargée négativement, la différence de charge
+   développe un fort gradient de potentiel ($d\Phi/d\xi\sim 1/\lambda_D$) dont le plasma
+   s'écrante en formant une épaisseur de peau ionique non-neutre de
+   taille caractérisique $\lambda_D$
    \item Le reste du plasma, de taille caractéristique $L$, qui satisfait
    à l'hypothèse de quasineutralité dans la mesure où le potentiel varie en
    $d\Phi/d\xi\sim1/L$
  \end{itemize}
 
-L'étude de la transition plasma-gaine donne lieu à l'énoncé du critère de
-Bohm \parencite{Stangeby}, qui impose la vitesse ionique en entrée de
-gaine, $C_s$, communément appelée vitesse de Bohm ou encore vitesse acoustique
-ionique\footnote{la deuxième appellation provient de la similitude entre la
+ L'étude de la
+transition plasma-gaine classique donne lieu à l'énoncé du critère de Bohm \parencite{Stangeby}, qui impose la vitesse ionique en entrée de gaine, $C_s$, communément appelée vitesse de Bohm ou encore vitesse acoustique ionique\footnote{la deuxième appellation provient de la similitude entre la
 transition subsonique-supersonique qui s'observe dans les gaz neutres. Les ondes
 acoustiques, reliées aux surpressions et aux souspressions, se propagent dans un
 plasma par le champ électrique. L'élasticité du plasma est alors due à la
