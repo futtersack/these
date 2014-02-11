@@ -379,13 +379,13 @@ non-linéaires complexes.
 Un plasma est souvent, à un moment ou à un autre, amené à entrer en contact avec
 une paroi ou un quelconque obstable matériel. L'interaction entre
 les deux milieux conditionne alors l'existence du plasma et influence
-fortement son comportement. 
-
-Une paroi agit comme un parfait
+fortement son comportement. Une paroi agit en effet comme un parfait
 puit de matière et d'énergie pour le plasma, les ions et les électrons se
 recombinant facilement à sa surface. Ceci étant, un plasma ne peut se maintenir
 que si le nombres de particules créées dans son volume est suffisant pour
-balancer ces pertes en surface. De plus, les électrons interceptant généralement
+balancer ces pertes en surface. 
+
+De plus, les électrons interceptant généralement
 plus rapidement la paroi du fait de leur faible masse et de leur température,
 polarisent négativement la surface du matériau.
 L'augmentation progressive de ce potentiel mène alors à la formation en
@@ -404,13 +404,28 @@ ionique est égale à la vitesse de Bohm $C_s$\parencite{Rax}.}\label{1-gaine}}
 Dans les plasmas classiques où la taille de la gaine est petite
 à l'échelle du plasma, son rôle est essentiellement de
 maintenir la quasineutralité dans le volume en régulant les flux d'ions et
-d'électrons tombant aux parois. Cependant la gaine a une propriété les électrons, énergétiquement confinés par le
-potentiel de la paroi, forment un équilibre électrostatique à l'intérieur du plasma, et peuvent donc
-être décrits par une distribution de Boltzman :
+d'électrons tombant aux parois. Les électrons, énergétiquement confinés par le
+potentiel de la surface, forment un équilibre électrostatique à l'intérieur du
+plasma, et peuvent donc être décrits par une distribution de Boltzman :
+
 \begin{equation}
 	n_\text{e}=n\indice{0}\exp(e\Phi/eT_\text{e})
 \end{equation}
 
+Pour égaler le flux électronique et écranter la polarisation de la paroi, la
+quasineutralité doit être brisée. L'étude de la transition plasma-gaine,
+à travers l'énoncé du critère de Bohm \parencite{Stangeby}, montre que
+cette condition ne peut être remplie que si la vitesse ionique en entrée de
+gaine est au moins égale à $C_s$, communément appelée vitesse de Bohm ou encore
+vitesse acoustique ionique\footnote{la deuxième appellation provient de la similitude entre la
+transition subsonique-supersonique qui s'observe dans les gaz neutres. Les
+ondes acoustiques, reliées aux surpressions et aux souspressions, se propagent
+dans un plasma par le champ électrique. L'élasticité du plasma est alors due à
+la température électronique $T_\text{e}$ et à l'inertie ionique.} :
+
+\begin{equation}
+C_\text{s}=\sqrt{\frac{q_\text{i} (T_\text{e}+T_\text{i})}{m_\text{i}}}
+\end{equation}
 
 
 \subsubsection{Physique de la gaine}
@@ -437,16 +452,6 @@ potentiel électrique, au voisinage de la paroi :
    $d\Phi/d\xi\sim1/L$
  \end{itemize}
 
- L'étude de la
-transition plasma-gaine classique donne lieu à l'énoncé du critère de Bohm \parencite{Stangeby}, qui impose la vitesse ionique en entrée de gaine, $C_s$, communément appelée vitesse de Bohm ou encore vitesse acoustique ionique\footnote{la deuxième appellation provient de la similitude entre la
-transition subsonique-supersonique qui s'observe dans les gaz neutres. Les ondes
-acoustiques, reliées aux surpressions et aux souspressions, se propagent dans un
-plasma par le champ électrique. L'élasticité du plasma est alors due à la
-température électronique $T_\text{e}$ et à l'inertie ionique.} :
-
-\begin{equation}
-C_\text{s}=\sqrt{\frac{q_\text{i} (T_\text{e}+T_\text{i})}{m_\text{i}}}
-\end{equation}
 
 \begin{figure}[htbp]
 \centering
