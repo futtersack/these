@@ -617,7 +617,7 @@ approprié de les représenter d'une manière statistique et en fonction de chaq
 espèce, comme un continuum défini par une fonction de
 distribution $f$ dénombrant le nombre de particule présentes à un instant $t$
 dans un volume de l'espace des phases, ie. $f_\alpha(\mathbf r,\mathbf
-v,t)\text{d}\puissance{3}\mathbf x\text{d}\puissance{3}\mathbf v$.
+v,t)\text{d}\puissance{3}\mathbf r\text{d}\puissance{3}\mathbf v$.
 L'évolution de cette fonction de distribution sous l'influence de forces
 extérieures et des collisions est alors décrite par l'équation cinétique de
 Boltzmann :
@@ -685,8 +685,28 @@ n_\alpha(\mathbf
 r,t)=\int f_\alpha(\mathbf r,\mathbf v,t)
 \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
+\fcolorbox{red}{white}{
+\begin{minipage}{0.9\textwidth}En effet, si l'on ne tient pas compte de la distribution en vitesse, le nombre
+de particules dans un volume $\text{d}\puissance{3}\mathbf r$ correspond bien à
+la définition d'une densité.\ldots
+\end{minipage}}
 
-En effet, 
+Les moments d'ordre un (le flux de
+particule) et d'ordre deux (la densité d'énergie chaotique), permettent de
+définir la vitesse fluide et la température d'une espèce:
+
+\begin{equation}
+\Gamma_\alpha(\mathbf
+r,t)=n_\alpha\mathbf u_\alpha=\int \mathbf v_\alpha f_\alpha(\mathbf r,\mathbf
+v,t) \,\text{d}\puissance{3}\mathbf{v}
+\end{equation}
+
+\begin{equation}
+\frac{3}{2}n_\alpha T_\alpha(\mathbf
+r,t)=\frac{m_\alpha}{2}\int (\mathbf v_\alpha-\mathbf u_\alpha)\puissance{2}
+f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
+\end{equation}
+
 \subsubsection{Conservation de la matière}
 $$n_s=\int f_sd\mathbf{v}$$
 
