@@ -398,7 +398,8 @@ figure~\ref{1-gaine}).
 \includegraphics[height=60mm,width=60mm]{figures/sheath1.jpg}{\caption{Séparation
 du plasma entre une région quasineutre et la gaine à sa
 périphérie. A la frontière, il y a rupture de la quasineutralité et la vitesse
-ionique est égale à la vitesse de Bohm $C_s$\parencite{Rax}.}\label{1-gaine}}
+ionique est égale à la vitesse de Bohm
+$C_\text(s)$\parencite{Rax}.}\label{1-gaine}}
 \end{figure}
 
 Dans les plasmas classiques où la taille de la gaine est petite
@@ -413,8 +414,8 @@ plasma, et peuvent donc être décrits par une distribution de Boltzman :
 \end{equation}
 
 Pour égaler le flux électronique et écranter la polarisation de la paroi, la
-quasineutralité doit être brisée. L'étude de la transition plasma-gaine,
-à travers l'énoncé du critère de Bohm \parencite{Stangeby}, montre que
+quasineutralité doit être brisée. L'étude de la transition plasma-gaine montre,
+à travers l'énoncé du critère de Bohm \parencite{Stangeby}, que
 cette condition ne peut être remplie que si la vitesse ionique en entrée de
 gaine est au moins égale à $C_s$, communément appelée vitesse de Bohm ou encore
 vitesse acoustique ionique\footnote{la deuxième appellation provient de la similitude entre la
@@ -426,7 +427,6 @@ la température électronique $T_\text{e}$ et à l'inertie ionique.} :
 \begin{equation}
 C_\text{s}=\sqrt{\frac{q_\text{i} (T_\text{e}+T_\text{i})}{m_\text{i}}}
 \end{equation}
-
 
 \subsubsection{Physique de la gaine}
 
@@ -443,14 +443,29 @@ potentiel électrique, au voisinage de la paroi :
  régions :
 
  \begin{itemize}
-   \item Face à la paroi chargée négativement, la différence de charge
+   \item Face à la paroi chargée négativement se
    développe un fort gradient de potentiel ($d\Phi/d\xi\sim 1/\lambda_D$) dont le plasma
    s'écrante en formant une épaisseur de peau ionique non-neutre de
    taille caractérisique $\lambda_D$
-   \item Le reste du plasma, de taille caractéristique $L$, qui satisfait
-   à l'hypothèse de quasineutralité dans la mesure où le potentiel varie en
+   \item Le reste du plasma, de taille caractéristique $L$, satisfait
+   à l'hypothèse de quasineutralité et le potentiel varie en
    $d\Phi/d\xi\sim1/L$
  \end{itemize}
+
+La frontière entre la gaine et la partie
+quasineutre du plasma, qualifiée de prégaine, peut être définie à partir de la
+brisure de la quasineutralité. Quelques considérations dans le cadre d'une
+description unidimensionnelle du problème permettent une vision simple : A
+l'intérieur de la gaine, afin de maintenir la décroissance du potentiel jusqu'à
+la paroi, la densité ionique doit diminuer moins rapidement que
+la densité d'électrons. En applicant la loi de conservation d'énergie entre
+l'entrée de la gaine (où les densités sont égales) et la paroi, on trouve le
+critère universel dérivé par Bohm :
+
+\begin{equation}
+	v_\text{i}|_{\xi=x_s}\geq C_\text{s}=\sqrt{\frac{eT_\text{e}}{m_\text{i}}}
+\end{equation}
+\end{equation}
 
 
 \begin{figure}[htbp]
