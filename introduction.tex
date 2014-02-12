@@ -88,17 +88,17 @@ qui mesure l'agitation thermique des électrons. Densité et température
 
 \begin{equation}
 \label{1-paramPlasma}
-\Gamma=\frac{<E_\text{p}>}{<E_\text{c}>}=\frac{e\puissance{2}
+\Xi=\frac{<E_\text{p}>}{<E_\text{c}>}=\frac{e\puissance{2}
 n_\text{e}\puissance{1/3}}{\varepsilon\indice{0} eT_\text{e}}
 \end{equation}
 
 Le paramètre plasma représente le ratio entre l'énergie thermique des
-électrons et leur énergie potentielle électrostatique coulombienne \emph{ie.}
+électrons et leur énergie potentielle électrostatique coulombienne, ie.
 l'agitation thermique desordonnée contre les forces d'interactions
 coulombiennes structurantes.
 
 Les plasmas classiques (ou cinétiques) sont caractérisés par
-$\Gamma\ll 1$. Ils ont une population d'électrons assez espacée et/ou une
+$\Xi\ll 1$. Ils ont une population d'électrons assez espacée et/ou une
 température suffisamment élevée.
 
 \subsection{Quasineutralité et phénomène d'écrantage}
@@ -126,7 +126,8 @@ l'équilibre microscopique électrostatique qui s'opère
 entre l'agitation thermique et l'interaction coulombienne des particules. Les
 ions et les électrons issus de l'ionisation se réorganisent spontanément pour former un ensemble électriquement neutre.
 Cette dynamique est essentiellement portée par les électrons et décrite aux plus petites
-échelles spatiotemporelles par le principe fondamental de la dynamique et la loi de Boltzman-Poisson :
+échelles spatiotemporelles par le principe fondamental de la dynamique et la loi
+de Boltzmann-Poisson :
 
 \begin{align}
 \label{1-PFD}
@@ -163,8 +164,8 @@ un nuage de particules de charge opposée. Dans un plasma chaque particule est �
 dans la sphère de rayon $\lambda_\text{D}$ définit alors un paramètre
 adimensionné\footnote{Un
 grand nombre de particules dans la sphère de Debye $4\pi/3\,n\lambda_D^3\gg1$
-définit un plasma idéal, où le phénomène d'écrantage électrique est
-dominant.} semblable au paramètre plasma \eqrefp{1-paramPlasma}.
+définit un plasma idéal, qui peut alors se décrire comme un plasma où le
+phénomène d'écrantage électrique est dominant.} semblable au paramètre plasma $\Xi$ \eqrefp{1-paramPlasma}.
 
 Au delà de ces échelles, le plasma est dans un état de \emph{quasi-neutralité}
 \footnote{La quasi-neutralité n'est pas la seule conséquence de ce phénomène de réorganisation
@@ -242,9 +243,9 @@ définies par :
 \end{equation} 
  
 avec $\sigma_\text{en}$ et $\sigma_\text{in}$ les sections efficaces de
-réaction\footnote{Les sections efficaces de collisions sont permettent de
-caractériser \ldots} électrons-neutres et ions neutres. La principale différence
-dans le transport entre les plasmas faiblement et totalement ionisés tient à la
+réaction\footnote{\fcolorbox{red}{white}{Les sections efficaces de collisions sont permettent de
+caractériser \ldots}} électrons-neutres et ions neutres. La principale
+différence dans le transport entre les plasmas faiblement et totalement ionisés tient à la
 présence de ce gaz neutre : les collisions avec le gaz sont un puit
 direct de quantité de mouvement et d'énergie alors que les
 collisions coulombiennes résultent en une redistribution de celles-ci au sein
@@ -278,6 +279,9 @@ traverser entièrement le système. Dans des plasmas collisionnels, la descripti
 du transport des espèces est alors simplifiée, les collisions amenant le système dans un état
 d'équilibre statistique, caractérisé par des fonctions de distributions de
 type Maxwell-Boltzmann (cf. paragraphe \ref{Introduction}-\ref{Maxwell-Boltzmann}).
+
+\fcolorbox{red}{white}{encore beaucoup de choses à
+dire\ldots}
 
 \subsection{Plasma et champ magnétique} 
 Un plasma magnétisé est un plasma dans lequel le champ magnétique ambiant
@@ -349,7 +353,7 @@ prenant le produit vectoriel de l'équation du mouvement par le champ magnétiqu
 :
 
 \begin{equation}
-\mathbf{v}_E=\frac{\mathbf{E}\times\mathbf{B}}{B^2}
+\mathbf{v}_\text{E}=\frac{\mathbf{E}\times\mathbf{B}}{B^2}
 \end{equation}
 
 La vitesse de dérive électrique, principale source de transport perpendiculaire
@@ -369,12 +373,15 @@ Si la force $\mathbf F$ est indépendante de la charge de la particule ou
 fonction de la masse de la particule, la différence entre les vitesses de dérive
 électroniques et ioniques induira un courant $\mathbf
 j\indice{\text{F}}=en(\mathbf v\indice{\text{F}_\text{i}}-\mathbf
-v\indice{\text{F}_\text{e}})$. Dans un plasma, où l'anisotropie du champ
+v\indice{\text{F}_\text{e}})$. 
+
+\fcolorbox{red}{white}{
+\begin{minipage}{0.9\textwidth}Dans un plasma, où l'anisotropie du champ
 magnétique est souvent utilisée pour contrôler et limiter le déplacement des
 particules, les vitesses de dérives sont souvent à l'origine d'un déconfinement
 entraîné par le développement de comportements
-non-linéaires complexes.
-
+non-linéaires complexes\ldots
+\end{minipage}}
 \subsection{Les gaines électrostatiques}
 Un plasma est souvent, à un moment ou à un autre, amené à entrer en contact avec
 une paroi ou un quelconque obstable matériel. L'interaction entre
@@ -382,7 +389,7 @@ les deux milieux conditionne alors l'existence du plasma et influence
 fortement son comportement. Une paroi agit en effet comme un parfait
 puit de matière et d'énergie pour le plasma, les ions et les électrons se
 recombinant facilement à sa surface. Ceci étant, un plasma ne peut se maintenir
-que si le nombres de particules créées dans son volume est suffisant pour
+que si le nombre de particules créées dans son volume est suffisant pour
 balancer ces pertes en surface. 
 
 De plus, les électrons interceptant généralement
@@ -399,7 +406,7 @@ figure~\ref{1-gaine}).
 du plasma entre une région quasineutre et la gaine à sa
 périphérie. A la frontière, il y a rupture de la quasineutralité et la vitesse
 ionique est égale à la vitesse de Bohm
-$C_\text(s)$\parencite{Rax}.}\label{1-gaine}}
+$C_\text{s}$\parencite{Rax}.}\label{1-gaine}}
 \end{figure}
 
 Dans les plasmas classiques où la taille de la gaine est petite
@@ -407,12 +414,13 @@ Dans les plasmas classiques où la taille de la gaine est petite
 maintenir la quasineutralité dans le volume en régulant les flux d'ions et
 d'électrons tombant aux parois. Les électrons, énergétiquement confinés par le
 potentiel de la surface, forment un équilibre électrostatique à l'intérieur du
-plasma, et peuvent donc être décrits par une distribution de Boltzman :
+plasma, et peuvent donc être décrits par une distribution de Boltzmann :
 
 \begin{equation}
 	n_\text{e}=n\indice{0}\exp(e\Phi/eT_\text{e})
 \end{equation}
 
+avec $n\indice{0}$ la densité de référence prise au niveau du potentiel nul.
 Pour égaler le flux électronique et écranter la polarisation de la paroi, la
 quasineutralité doit être brisée. L'étude de la transition plasma-gaine montre,
 à travers l'énoncé du critère de Bohm \parencite{Stangeby}, que
@@ -425,7 +433,7 @@ dans un plasma par le champ électrique. L'élasticité du plasma est alors due 
 la température électronique $T_\text{e}$ et à l'inertie ionique.} :
 
 \begin{equation}
-C_\text{s}=\sqrt{\frac{q_\text{i} (T_\text{e}+T_\text{i})}{m_\text{i}}}
+C_\text{s}=\sqrt{\frac{e (T_\text{e}+T_\text{i})}{m_\text{i}}}
 \end{equation}
 
 \subsubsection{Physique de la gaine}
@@ -454,46 +462,231 @@ potentiel électrique, au voisinage de la paroi :
 
 La frontière entre la gaine et la partie
 quasineutre du plasma, qualifiée de prégaine, peut être définie à partir de la
-brisure de la quasineutralité. Quelques considérations dans le cadre d'une
-description unidimensionnelle du problème permettent une vision simple : A
-l'intérieur de la gaine, afin de maintenir la décroissance du potentiel jusqu'à
-la paroi, la densité ionique doit diminuer moins rapidement que
-la densité d'électrons. En applicant la loi de conservation d'énergie entre
-l'entrée de la gaine (où les densités sont égales) et la paroi, on trouve le
-critère universel dérivé par Bohm :
+brisure de la quasineutralité. A l'intérieur de la gaine, afin de maintenir la
+décroissance du potentiel jusqu'à la paroi, la densité ionique doit diminuer
+moins rapidement que la densité d'électrons. 
 
 \begin{equation}
-	v_\text{i}|_{\xi=x_s}\geq C_\text{s}=\sqrt{\frac{eT_\text{e}}{m_\text{i}}}
-\end{equation}
+	\frac{dn_\text{i}}{d\xi}<\frac{dn_\text{e}}{d\xi}
 \end{equation}
 
+En applicant la loi de conservation de l'énergie entre
+l'entrée de la gaine (où les densités sont égales) et la paroi, on trouve le
+critère général obtenu par Bohm en hydrodynamique :
 
+\begin{equation}
+	v_{\text{i}\,|_{\xi=\xi_s}}\geq C_\text{s}
+\end{equation}
+
+où $\xi_s$ indique la position de la frontière plasma/gaine.
+Dans le cas de plasmas non-magnétisés et avec l'hypothèse d'une température
+électronique uniforme $T_\text{e}\gg T_\text{i}$, on montre de plus que la
+vitesse ionique doit rester subsonique dans la prégaine, donnant une limite dure
+$v_\text{i}=C_\text{s}$.
+Pour estimer la chute de potentiel, on peut alors écrire :
+
+\begin{equation}
+	\left(\frac{2e(\Phi_{\xi}-\Phi_{\xi_\text{s}})}{m_\text{i}}+v_\text{i}\puissance{2}\right)_{\xi=\xi_s}=
+	\frac{eT_\text{e}}{m_\text{i}}=\left(\frac{2e(\Phi_{\xi}-\Phi_{\xi_\text{s}})}{m_\text{i}}\right)_{\xi=0}
+\end{equation}
+
+A partir d'une région centrale où $v_\text{i}=0$, le potentiel chute donc de
+$T_{e}/2$ et la densité, par conséquence, d'un facteur
+$n_\text{s}/n\indice{0}=e^{-1/2}$, l'indice $s$ dénotant dans la suite du
+paragraphe la position de la gaine.
+Le flux d'électron atteignant la paroi se calcule en intégrant une maxwellienne sur le
+demi-espace des vitesses positives :
+
+\begin{equation}
+	v_\text{e}^\text{wall}=\frac{1}{\sqrt{\pi}v_\perp}\int_0^\infty
+	v_\perp
+	e^{-v_\perp^2/v_\text{T}^2}dv_\perp=\frac{1}{2\sqrt{\pi}}v_\text{T}=\sqrt{\frac{eT_\text{e}}{2\pi
+	m_\text{e}}}
+\end{equation}
+
+les flux ionique et électronique sont égaux à la paroi, le flux ionique étant
+conservé à travers la gaine :
+
+\begin{equation}
+	\Gamma_\text{e}^\text{wall}=n_\text{e}^\text{wall}\exp{\left(\frac{\Phi_\text{wall}}{T_\text{e}}\right)}\sqrt{\frac{eT_\text{e}}{2\pi
+	m_\text{e}}}=\Gamma_\text{i}^\text{wall}=\Gamma_\text{i}
+\end{equation}
+\begin{equation}
+\label{1-densitéIonique}
+	n_\text{i}=n_\text{s}\exp{\left(\frac{\Phi_\text{s}-\Phi_\text{wall}}{T_\text{e}}\right)}\sqrt{\frac{eT_\text{e}}{2\pi
+	m_\text{e}v_\text{i}\puissance{2}}}
+\end{equation}
+
+en prenant la relation \ref{1-densitéIonique} au seuil de la gaine, on peut
+calculer le potentiel flottant $\Lambda$ qui s'établit naturellement entre le
+plasma et le mur :
+
+\begin{equation}
+	\Lambda=\Phi_\text{s}-\Phi_\text{wall}=\frac{1}{2}T_\text{e}\ln{\frac{m_\text{i}C_\text{s}^2}{2\pi
+	m_\text{e}v_\text{i}\puissance{2}}}
+	\end{equation}
+
+Si l'on suppose donc $v_\text{i}=C_\text{s}$ à l'entrée de gaine, le potentiel
+flottant d'un plasma d'hydrogène à une température électronique d'1eV est
+défini par le logarithme du rapport de masse :
+
+\begin{equation}
+	\Lambda=\frac{1}{2}\ln{\frac{m_\text{i}}{2\pi
+	m_\text{e}}}=2.8388
+	\end{equation}
+	
 \begin{figure}[htbp]
 \centering
-\includegraphics[height=90mm,width=100mm]{figures/sheath2.jpg}{\caption{Profiles
-des densités électronique et ioniques,
+\includegraphics[height=70mm,width=80mm]{figures/sheath2.jpg}{\caption{Profils
+des densités électronique, ionique,
 du potentiel et de la vitesse ionique à
-la transition plasma-gaine\parencite{Rax}.}\label{1-profilesgaine}}
+la transition plasma-gaine\parencite{Rax}. La taille
+de la gaine est ici exagérée.}\label{1-profilesgaine}}
 \end{figure}
 
-\begin{equation}
-j_\text{eg}=en\indice{eg}C_s\left(1-\exp{(\Lambda-\Delta\Phi/T_\text{e})}\right)
-\end{equation} 
+Pour résumer ces considérations, les profils de densité,
+potentiel et vitesse ionique pour un plasma sont tracés sur la figure
+(\ref{1-profilesgaine}).
 
-où $n\indice{0}$ est
-  En fait, le rôle de
-la gaine est de maintenir une quasineutralité dans l'ensemble du plasma en régulant les flux à sa périphérie.
+$\Lambda$ est le potentiel correspondant à une égalité stricte des flux au
+niveau de la gaine. Cependant, en général il ne définit qu'une position
+d'équilibre autour de laquelle le potentiel s'ajuste constament pour
+équilibrer les flux à travers la circulation de courant :
+
+\begin{equation}
+	j_\text{s}=en_\text{s}v_\text{i}\left(1-e^{\Lambda-\Phi_\text{s}/T_\text{e}}\right)
+\end{equation}
+
+\fcolorbox{red}{white}{
+\begin{minipage}{0.9\textwidth}flux d'énergie et de chaleur\ldots
+\end{minipage}}
+
+
 
 \subsubsection{Gaine dans les plasmas magnétisés}
+La situation dans le cas d'un champ magnétique normal à la paroi est
+identique au cas non-magnétisé. La théorie peut de plus être étendue 
+à une incidence $\alpha_\text{inc}$ non-rasante des lignes de champ où une
+prégaine magnétique de quelques rayons de Larmor accélère les ions jusqu'à la
+vitesse de Bohm via une déflexion imposée à la trajectoire des particules. Le
+critère de Bohm est alors légèrement corrigé pour tenir compte du transport tansverse
+\cite{Stangeby} :
+
+\begin{equation}
+	v_\para\geq
+	C_{s}-\frac{v_\perp}{\tan{\alpha_\text{inc}}}
+\end{equation}
+ 
+ $v_\perp$ désignant la composante de la vitesse ionique perpendiculaire à la
+ surface. 
+ 
+ 
+ \fcolorbox{red}{white}{
+\begin{minipage}{0.9\textwidth}Le cas d'une gaine parallèle au champ magnétique s'avère être bien
+ plus complexe et sera abordé dans la suite du manuscrit.
+\end{minipage}}
 
 \section{Equations fluides et phénomènes de transport}
 \label{Maxwell-Boltzmann}
+
+Pour décrire l'évolution d'un plasma, une possibilité serait de suivre le
+déplacement de chacune des particules ainsi que l'ensemble de leurs intéractions
+au cours du temp. Ce problème d'interaction à N-corps est cependant bien trop
+compliqué, et en fait plutôt superflu quand on considère un si grand nombre de
+particule. 
+
+Une autre possibilité est de raisonner statistiquement. La description
+microscopique du plasma est alors donnée par un ensemble de fonctions de
+distribution $f_\alpha(\mathbf{r},\mathbf{v},t)$, correspondant chacune à une
+espèce du plasma. Les coordonnées, six dans l'espace des
+phases (trois pour la position et trois pour la vitesse), ainsi que le temps,
+sont alors considérées comme sept variables indépendantes.
+
+Pour l'étude de l'évolution du plasma sur les échelles relativement
+grandes qui rendent compte des phénomènes de transport, la connaissance
+détaillée des fonctions de distribution n'est cependant pas indispensable et le
+calcul de moyennes statistiques - les moments en vitesse des fonctions de
+distribution - contiennent souvent l'ensemble des informations nécéssaires à la
+description du plasma.
+
 \subsection{De la statistique au transport fluide}
-$$\partial_tf_s+\mathbf{v}_s\cdot\vec\nabla_\mathbf{r}f_s+
-\frac{\mathbf{F}_s}{m_s}\cdot\vec\nabla_{\mathbf{v}_s}f_s
-=\partial_tf_{|_{coll}}$$ 
-Braginskii equations
-$$M^{(k)}_s=\int_{-\infty}^{\infty}\mathbf{v}_s^kf_sd\mathbf{v}$$
+
+\subsubsection{L'équation de Boltzmann}
+Le nombre de particules dans un plasma étant généralement élevé, il est
+approprié de les représenter d'une manière statistique et en fonction de chaque
+espèce, comme un continuum défini par une fonction de
+distribution $f$ dénombrant le nombre de particule présentes à un instant $t$
+dans un volume de l'espace des phases, ie. $f_\alpha(\mathbf r,\mathbf
+v,t)\text{d}\puissance{3}\mathbf x\text{d}\puissance{3}\mathbf v$.
+L'évolution de cette fonction de distribution sous l'influence de forces
+extérieures et des collisions est alors décrite par l'équation cinétique de
+Boltzmann :
+
+\begin{equation}
+\label{1-BoltzmannEquation}
+\partial_tf_\alpha+\mathbf{v}_\alpha\cdot\nabla_\mathbf{r}f_\alpha+
+\frac{\mathbf{F_\alpha}}{m_\alpha}\cdot\vec\nabla_{\mathbf{v}}f_\alpha
+=C[f_\alpha]
+\end{equation}
+
+où l'indice $\alpha$ dénote les différentes espèces\footnote{La fonction de
+distribution peut aussi servir à suivre les différents états quantiques des
+ions, des atomes et des molécules (rotationnel, vibrationnel, électronique).},
+$\vec\nabla$ est l'opérateur gradient appliqué à l'espace des positions ou des
+vitesses, et $\mathbf{F_\alpha}$ se résumant souvent aux forces
+électromagnétiques. Lors de collisions, les particules peuvent changer de
+trajectectoire instantanément, et ainsi disparaître puis apparaître dans des
+régions éloignées de leur espace des phases (ou encore changer d'espèce avec les
+collisions inélastiques). L'opérateur de collisions $C[f_\alpha]$ représente
+l'intégralité des ces effets collisionnels et se réécrit en
+tant que somme sur l'ensemble des espèces :
+
+\begin{equation}
+C[f_\alpha]=\sum_\beta C_{\alpha\beta}(f_\alpha,f_\beta)
+\end{equation}
+
+$C_{\alpha\beta}$ étant un taux caractéristique correspondant aux collisions
+entre chaque espèce, et au sein d'une même espèce. En l'absence collisions,
+\eqref{1-BoltzmannEquation} est connue sous le nom de \emph{Equation de Vlasov}.
+
+\subsubsection{Les moments fluides}
+L'approche fluide consiste à décrire le comportement des particules de chaque
+espèce en terme de quantités macroscopiques telles que la densité $n$, la
+vitesse moyenne $\mathbf u$ et la température $T$. Ces quantités sont dérivées
+des moyennes des fonctions de distributions sur l'espace des vitesses et leur
+évolution est contrôlée par les équations fluides obtenues en intégrant
+l'équation de Boltzann multipliée par une certaine puissance de $\mathbf v$.
+
+Le nombre de degré de liberté du problème est ainsi
+réduit en ne conservant de l'état du plasma que ses dimensions spatiales et temporelle.
+Cette description sous-entend cependant que le plasma est à l'équilibre
+thermodynamique local (ETL), ie. que la fonction des vitesses de chaque espèce est
+supposée Maxwellienne :
+
+\begin{equation}
+f(\mathbf v)=\sqrt{\left(\frac{m_\alpha}{2\pi
+eT_\alpha}\right)\puissance{3}}4\pi\mathbf
+v\puissance{2}\exp{\left(\frac{-m_\alpha\mathbf
+v\puissance{2}}{2eT_\alpha}\right)}
+\end{equation}
+
+Le moment en vitesse d'ordre $k$ est un tenseur d'ordre $k$ et s'écrit :
+\begin{equation}
+M^{(k)}_\alpha(\mathbf
+r,t)=\int\mathbf{v}_\alpha^kf_\alpha(\mathbf r,\mathbf v,t)
+\,\text{d}\puissance{3}\mathbf{v}
+\end{equation}
+
+La densité, définie par le moment d'ordre zéro, est la quantité macroscopique la
+plus importante :
+
+\begin{equation}
+n_\alpha(\mathbf
+r,t)=\int f_\alpha(\mathbf r,\mathbf v,t)
+\,\text{d}\puissance{3}\mathbf{v}
+\end{equation}
+
+En effet, 
 \subsubsection{Conservation de la matière}
 $$n_s=\int f_sd\mathbf{v}$$
 
