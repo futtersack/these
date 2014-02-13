@@ -589,11 +589,31 @@ critère de Bohm est alors légèrement corrigé pour tenir compte du transport 
 \section{Equations fluides et phénomènes de transport}
 \label{Maxwell-Boltzmann}
 
-Pour décrire l'évolution d'un plasma, une possibilité serait de suivre le
-déplacement de chacune des particules ainsi que l'ensemble de leurs intéractions
-au cours du temp. Ce problème d'interaction à N-corps est cependant bien trop
-compliqué, et en fait plutôt superflu quand on considère un si grand nombre de
-particule. 
+Le plasma, contitué de l'ensemble de ses
+particules, est un système dynamique complexe dont l'évolution au cours du temps
+peut être suivie à différentes échelles. La précinétique, échelle microscopique,
+est de l'ordre de grandeur du temp d'interaction entre deux particules, ie. de
+la longueur de l'interaction divisée par la vitesse moyenne des particules.
+Compte tenu du caractère à la fois désordonné et collectif du plasma, il est
+souvent plus adapté de le décrire statistiquement par une fonction de distribution sur une
+échelle dite cinétique, de l'ordre de grandeur du temps entre deux intéractons
+d'une même particule $t\sim\lambda/\left<v\right>}$, avec $\lambda$ le libre
+parcours moyen et $\left<v\right>$ la vitesse moyenne. Dans cet état, une espèce
+$\alpha$ est caractérisée par sa fonction de distribution $f_\alpha(\mathbf{r},\mathbf{v},t)$, qui
+représente le nombre statistique de particule occupant un volume de l'espace des
+phases et prenant souvent\footnote{Quand le plasma possède deux populations
+d'une même espèce à des énergies très différentes, la distribution en vitesse
+n'est pas maxwellienne mais peut se décomposer en une somme de maxwellienne.} la
+forme d'une distribution de Maxwell-Boltzmann déformée :
+
+\begin{equation}
+	f_\alpha(\mathbf{r},\mathbf{v},t)=\underset{\text{Distribution de Boltzmann}}
+	{n\indice{0}\exp\left(\frac{-q_\alpha\Phi(\mathbf r)}{eT_\alpha}\right)}
+	\underset{\text{Distribution de Maxwell}} {\left(\frac{m_\alpha}{2\pi
+	eT_\alpha}\right)\puissance{3/2}\exp\left(\frac{-m_\alpha
+	\mathbf v\puissance{2}}{2eT_\alpha}\right)}
+\end{equation}
+
 
 Une autre possibilité est de raisonner statistiquement. La description
 microscopique du plasma est alors donnée par un ensemble de fonctions de
@@ -603,8 +623,8 @@ phases (trois pour la position et trois pour la vitesse), ainsi que le temps,
 sont alors considérées comme sept variables indépendantes.
 
 Pour l'étude de l'évolution du plasma sur les échelles relativement
-grandes qui rendent compte des phénomènes de transport, la connaissance
-détaillée des fonctions de distribution n'est cependant pas indispensable et le
+grandes qui rendent compte des phénomènes de transport macroscopiques, la
+connaissance détaillée des fonctions de distribution n'est cependant pas indispensable et le
 calcul de moyennes statistiques - les moments en vitesse des fonctions de
 distribution - contiennent souvent l'ensemble des informations nécéssaires à la
 description du plasma.
