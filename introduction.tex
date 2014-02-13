@@ -589,38 +589,12 @@ critère de Bohm est alors légèrement corrigé pour tenir compte du transport 
 \section{Equations fluides et phénomènes de transport}
 \label{Maxwell-Boltzmann}
 
-Le plasma, contitué de l'ensemble de ses
-particules, est un système dynamique complexe dont l'évolution au cours du temps
-peut être suivie à différentes échelles. La précinétique, échelle microscopique,
-est de l'ordre de grandeur du temp d'interaction entre deux particules, ie. de
-la longueur de l'interaction divisée par la vitesse moyenne des particules.
-Compte tenu du caractère à la fois désordonné et collectif du plasma, il est
-souvent plus adapté de le décrire statistiquement par une fonction de distribution sur une
-échelle dite cinétique, de l'ordre de grandeur du temps entre deux intéractons
-d'une même particule $t\sim\lambda/\left<v\right>}$, avec $\lambda$ le libre
-parcours moyen et $\left<v\right>$ la vitesse moyenne. Dans cet état, une espèce
-$\alpha$ est caractérisée par sa fonction de distribution $f_\alpha(\mathbf{r},\mathbf{v},t)$, qui
-représente le nombre statistique de particule occupant un volume de l'espace des
-phases et prenant souvent\footnote{Quand le plasma possède deux populations
-d'une même espèce à des énergies très différentes, la distribution en vitesse
-n'est pas maxwellienne mais peut se décomposer en une somme de maxwellienne.} la
-forme d'une distribution de Maxwell-Boltzmann déformée :
-
-\begin{equation}
-	f_\alpha(\mathbf{r},\mathbf{v},t)=\underset{\text{Distribution de Boltzmann}}
-	{n\indice{0}\exp\left(\frac{-q_\alpha\Phi(\mathbf r)}{eT_\alpha}\right)}
-	\underset{\text{Distribution de Maxwell}} {\left(\frac{m_\alpha}{2\pi
-	eT_\alpha}\right)\puissance{3/2}\exp\left(\frac{-m_\alpha
-	\mathbf v\puissance{2}}{2eT_\alpha}\right)}
-\end{equation}
-
-
-Une autre possibilité est de raisonner statistiquement. La description
-microscopique du plasma est alors donnée par un ensemble de fonctions de
-distribution $f_\alpha(\mathbf{r},\mathbf{v},t)$, correspondant chacune à une
-espèce du plasma. Les coordonnées, six dans l'espace des
-phases (trois pour la position et trois pour la vitesse), ainsi que le temps,
-sont alors considérées comme sept variables indépendantes.
+Le plasma est un système dynamique complexe dont l'évolution au cours du temps
+peut être suivie de différentes façons. La description la plus complète utilise
+une approche statistique dans laquelle chaque espèce $\alpha$ est caractérisée
+par une fonction de distribution $f_\alpha(\mathbf{r},\mathbf{v},t)$
+représentant le nombre moyen de particules occupant un volume infintésimal
+de l'espace des phases à un instant $t$. 
 
 Pour l'étude de l'évolution du plasma sur les échelles relativement
 grandes qui rendent compte des phénomènes de transport macroscopiques, la
@@ -629,16 +603,19 @@ calcul de moyennes statistiques - les moments en vitesse des fonctions de
 distribution - contiennent souvent l'ensemble des informations nécéssaires à la
 description du plasma.
 
+L'approche fluide consiste ainsi à supposer à étudier l'évolution de 
+pour chaque espèce,
+
 \subsection{De la statistique au transport fluide}
 
 \subsubsection{L'équation de Boltzmann}
 Le nombre de particules dans un plasma étant généralement élevé, il est
-approprié de les représenter d'une manière statistique et en fonction de chaque
-espèce, comme un continuum défini par une fonction de
+approprié de les représenter en fonction de chaque
+espèce d'une manière statistique, comme un continuum défini par une fonction de
 distribution $f$ dénombrant le nombre de particule présentes à un instant $t$
 dans un volume de l'espace des phases, ie. $f_\alpha(\mathbf r,\mathbf
 v,t)\text{d}\puissance{3}\mathbf r\text{d}\puissance{3}\mathbf v$.
-L'évolution de cette fonction de distribution sous l'influence de forces
+L'évolution de cette fonction de distribution sous l'influence des forces
 extérieures et des collisions est alors décrite par l'équation cinétique de
 Boltzmann :
 
@@ -665,9 +642,22 @@ tant que somme sur l'ensemble des espèces :
 C[f_\alpha]=\sum_\beta C_{\alpha\beta}(f_\alpha,f_\beta)
 \end{equation}
 
-$C_{\alpha\beta}$ étant un taux caractéristique correspondant aux collisions
-entre chaque espèce, et au sein d'une même espèce. En l'absence collisions,
-\eqref{1-BoltzmannEquation} est connue sous le nom de \emph{Equation de Vlasov}.
+$C_{\alpha\beta}$ étant un taux caractéristique correspondant au phénomène
+collisionnel enntre $\alpha$ et $\beta$.
+
+
+En effet sur ces échelles de temps, les fonctions de
+distribution en vitesses se relaxent vers maxwellienne locale vers des
+distributions de Maxwell-Boltzmann, prenant souvent\footnote{Quand le plasma possède deux populations d'une même espèce à des énergies très différentes, la distribution en vitesse n'est pas maxwellienne mais peut se décomposer en une somme de maxwellienne.} la forme d' déformée :
+
+\begin{equation}
+	f_\alpha(\mathbf{r},\mathbf{v},t)=\underset{\text{Distribution de Boltzmann}}
+	{n\indice{0}\exp\left(\frac{-q_\alpha\Phi(\mathbf r)}{eT_\alpha}\right)}
+	\underset{\text{Distribution de Maxwell}} {\left(\frac{m_\alpha}{2\pi
+	eT_\alpha}\right)\puissance{3/2}\exp\left(\frac{-m_\alpha
+	\mathbf v\puissance{2}}{2eT_\alpha}\right)}
+\end{equation}
+
 
 \subsubsection{Les moments fluides}
 L'approche fluide consiste à décrire le comportement des particules de chaque
