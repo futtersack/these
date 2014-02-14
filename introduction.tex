@@ -598,7 +598,7 @@ de l'espace des phases à un instant $t$. Son évolution est alors décrite à
 travers l'équation de Boltzmann.
 
 Sur des échelles de temps suffisement longues, l'évolution d'un plasma est 
-essentiellement due à des phénomènes de transport macroscopiques pour lesquels
+essentiellement due à des processus de transport macroscopiques pour lesquels
 une description fluide est plus adaptée. Une espèce est alors
 caractérisée par un ensemble de paramètres macroscopiques, calculés à
 partir des moments de la fonction de distribution. Les plus importants -
@@ -613,7 +613,10 @@ expérimentalement. L'évolution de ces quantités est ensuite décrite par les
 \subsubsection{L'équation de Boltzmann}
 Le nombre de particules dans un plasma étant généralement élevé, il est
 approprié de les représenter en fonction de chaque
-espèce d'une manière statistique, comme un continuum défini par une fonction de
+espèce\footnote{La fonction de
+distribution peut aussi servir à suivre les différents états quantiques des
+ions, des atomes et des molécules (rotationnel, vibrationnel, électronique).}
+d'une manière statistique, comme un continuum défini par une fonction de
 distribution $f$ dénombrant le nombre de particule présentes à un instant $t$
 dans un volume de l'espace des phases, ie. $f_\alpha(\mathbf r,\mathbf
 v,t)\text{d}\puissance{3}\mathbf r\text{d}\puissance{3}\mathbf v$.
@@ -623,22 +626,17 @@ Boltzmann :
 
 \begin{equation}
 \label{1-BoltzmannEquation}
-\partial_tf_\alpha+\mathbf{v}_\alpha\cdot\vec\nabla_\mathbf{r}f_\alpha+
-\frac{\mathbf{F_\alpha}}{m_\alpha}\cdot\vec\nabla_{\mathbf{v}}f_\alpha
-=C[f_\alpha]
+\partial_tf+\mathbf{v}\cdot\vec\nabla_\mathbf{r}f+
+\frac{\mathbf{F}}{m}\cdot\vec\nabla_{\mathbf{v}}f
+=C[f]
 \end{equation}
 
-où l'indice $\alpha$ dénote les différentes espèces\footnote{La fonction de
-distribution peut aussi servir à suivre les différents états quantiques des
-ions, des atomes et des molécules (rotationnel, vibrationnel, électronique).},
-$\vec\nabla$ étant l'opérateur gradient appliqué à l'espace des positions ou des
-vitesses, et $\mathbf{F_\alpha}$ se résumant souvent aux forces
-électromagnétiques. \eqref{1-BoltzmannEquation} est très
-difficile à résoudre du fait de la complexité de l'opérateur de collisions $C[f_\alpha]$.
-En effet, lors de collisions, les particules peuvent changer de trajectectoire,
-et ainsi se déplacer instantanément dans des régions éloignées de leur espace des
+où $\vec\nabla$ est l'opérateur gradient appliqué à l'espace des positions ou
+des vitesses, et $\mathbf{F}$ se résumant souvent aux forces
+électromagnétiques. Lors de collisions, les particules peuvent changer de
+trajectectoire, et ainsi se déplacer instantanément dans des régions éloignées de leur espace des
 phases (ou encore totalement disparaître lors de collisions inélastiques).
-L'opérateur de collisions $C[f_\alpha]$, qui doit représenter l'intégralité de
+L'opérateur de collisions $C[f]$, qui doit représenter l'intégralité de
 ces effets discrets, se réécrit généralement comme une somme sur l'ensemble des
 espèces de coefficients spécifiques à chacune des interactions.
 
@@ -646,66 +644,103 @@ L'équation de Boltzmann permet de suivre
 parfaitement l'évolution de l'ensemble des espèces du plasma et elle est
 même parfois incontournable pour décrire avec exactitude les interactions
 ondes-particules ou celles implicant des particules rapides. 
-Cependant, les méthodes utilisées pour la résoudre nécessitent de
-nombreuses approximations\footnote{Approximation bi-terme, Approche
-homogène, approche non-locale}. De plus, quand une espèce est suffisement
-collisionnelle, sa distribution en vitesse relaxe rapidement vers une
-maxwellienne locale :
+
+Cependant, \eqref{1-BoltzmannEquation} est très
+difficile à résoudre du fait de la complexité de l'opérateur de collisions
+$C[f]$. Les méthodes utilisées pour la résoudre nécessitent de nombreuses
+approximations\parencite{Approximation bi-terme, Approche homogène, approche
+non-locale}. De plus, quand une espèce est suffisement collisionnelle, sa
+distribution en vitesse relaxe vers une maxwellienne locale sur une échelle de
+temps cinétique $t\sim\lambda/\left<v\right>$ :
 
 \begin{equation}
 \label{1-MaxwellDistribution}
-	f_\alpha(\mathbf{v})=
-	\left(\frac{m_\alpha}{2\pi
-	eT_\alpha}\right)\puissance{3/2}\exp\left(\frac{-m_\alpha
-	\mathbf v\puissance{2}}{2eT_\alpha}\right)
+	f(\mathbf{v})=
+	\left(\frac{m}{2\pi
+	eT}\right)\puissance{3/2}4\pi v\indice{0}\puissance{2}\exp\left(\frac{-m
+	\left(\mathbf v-\mathbf v\indice{0}\right)\puissance{2}}{2eT}\right)
 \end{equation}
 
-Les intégrales d'une maxwellienne sont facilement calculables et favorisant
-donc l'utilisation des équations fluides, la
-description macroscopique donnant une interprétation plus simple des phénomènes entrants en jeu. Le nombre de degrés de liberté du problème est ainsi
-réduit en ne conservant de l'état du plasma que ses dimensions spatiales et temporelle.
+$m$ étant la masse de l'espèce considérée, $\mathbf v_0$ correspondant à la
+vitesse moyenne dirigée et $T$ la température mesurant l'agitation
+thermique. Il suffit de deux vitesses pour caractériser une maxwellienne, la
+vitesse moyenne $\left<v\right>$ et la vitesse quadratique moyenne
+$\sqrt{\left<v\puissance{2}\right>}$ :
+
+\begin{equation}
+\label{1-EnergyFluxDensity}
+	\left<v\right>=\sqrt{\frac{8eT}{\pi m}} \;\;\;\;\text{et}\;\;\;\; 
+	\left<v\puissance{2}\right>=\frac{3eT}{m}
+\end{equation}
+
+Quand un ensemble de particules suit une distribution
+de Maxwelll, l'équation de Boltzmann s'intègre donc facilement dans l'espace des
+vitesses, pour former les équations fluide de conservation. Le nombre de degrés
+de liberté du problème est ainsi réduit en ne conservant de l'état du plasma
+que ses dimensions spatiales et temporelle.
 Cette description sous-entend cependant, par la forme de la fonction de
 distribution \eqrefp{1-MaxwellDistribution}, que le plasma est à l'équilibre
 thermodynamique local (ETL)
 
-\subsubsection{Les moments fluides}
+\subsubsection{Théorie fluide}
 L'approche fluide consiste à décrire le comportement des particules de chaque
-espèce en terme de quantités macroscopiques telles que la densité $n$, la
-vitesse moyenne $\mathbf u$ et la température $T$. Ces quantités sont dérivées
-des moyennes des fonctions de distributions sur l'espace des vitesses et leur
-évolution est contrôlée par les équations fluides obtenues en intégrant
-l'équation de Boltzann multipliée par une certaine puissance de $\mathbf v$.
+espèce en terme de quantités macroscopiques moyennes telles que la densité $n$,
+la vitesse moyenne $\mathbf u$ et la température $T$. Ces quantités sont dérivées
+des moments des fonctions de distributions sur l'espace des vitesses.
+Pour une espèce $\alpha$ le moment en vitesse d'ordre $k$ est un tenseur d'ordre
+$k$ :
 
-Le moment en vitesse d'ordre $k$ est un tenseur d'ordre $k$ et s'écrit :
 \begin{equation}
-M^{(k)}_\alpha(\mathbf
-r,t)=\int\mathbf{v}_\alpha^kf_\alpha(\mathbf r,\mathbf v,t)
+\mathbf M^{(k)}_\alpha(\mathbf
+r,t)=\int\mathbf{v} \mathbf{v} . . .
+\mathbf{v} f_\alpha(\mathbf r,\mathbf v,t)
 \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
 
-La densité, définie par le moment d'ordre zéro, est la quantité macroscopique la
-plus importante :
+$\mathbf M^{(0)}$, $\mathbf M^{(1)}$ et $\mathbf M^{(2)}$ ont chacun un nom et
+une interprétation physique simple. La densité $n$, qui
+mesure le nombre de particules dans un petit volume et la vitesse fluide
+$\mathbf u$ sont données par :
 
 \begin{equation}
 n_\alpha(\mathbf
 r,t)=\int f_\alpha(\mathbf r,\mathbf v,t)
 \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
-\fcolorbox{red}{white}{
-\begin{minipage}{0.9\textwidth}En effet, si l'on ne tient pas compte de la distribution en vitesse, le nombre
-de particules dans un volume $\text{d}\puissance{3}\mathbf r$ correspond bien à
-la définition d'une densité.\ldots
-\end{minipage}}
-
-Les moments d'ordre un (le flux de
-particule) et d'ordre deux (la densité d'énergie chaotique), permettent de
-définir la vitesse fluide et la température d'une espèce:
 
 \begin{equation}
-\Gamma_\alpha(\mathbf
-r,t)=n_\alpha\mathbf u_\alpha=\int \mathbf v_\alpha f_\alpha(\mathbf r,\mathbf
+\boldsymbol{\Gamma}_\alpha(\mathbf
+r,t)=n_\alpha\mathbf u_\alpha=\int \mathbf v f_\alpha(\mathbf r,\mathbf
 v,t) \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
+
+Le moment d'ordre deux (le tenseur de pression) est mesuré dans le repère au
+repos du fluide en introduisant la vitesse relative $\mathbf w=\mathbf
+v-\mathbf u_\alpha$ : 
+
+\begin{equation}
+\mathbf P_\alpha(\mathbf
+r,t)=m_\alpha\int \mathbf w\mathbf w
+f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
+\end{equation}
+
+ce tenseur se décompose en introduisant la pression
+scalaire $p_\alpha$ et le tenseur de viscosité $\boldsymbol{\Pi}_\alpha$:
+
+\begin{equation}
+\mathbf P_\alpha=p_\alpha\,\mathbf I + \boldsymbol{\Pi}_\alpha
+\end{equation}
+
+avec $\mathbf I$ la matrice  
+Pour les distributions maxwelliennes, $T_\alpha=p_\alpha/n_\alpha$ représente la
+température partielle mesurée en unité d'énergie :
+
+\begin{equation}
+p_\alpha=en_\alpha T_\alpha\
+\end{equation}
+
+ d'ordre trois (le flux de chaleur),
+sont
 
 \begin{equation}
 \frac{3}{2}n_\alpha T_\alpha(\mathbf
@@ -713,6 +748,8 @@ r,t)=\frac{m_\alpha}{2}\int (\mathbf v_\alpha-\mathbf u_\alpha)\puissance{2}
 f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
 
+Leur évolution est contrôlée par les équations fluides obtenues en intégrant
+l'équation de Boltzann multipliée par une certaine puissance de $\mathbf v$
 \subsubsection{Conservation de la matière}
 $$n_s=\int f_sd\mathbf{v}$$
 
