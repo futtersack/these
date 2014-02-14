@@ -594,17 +594,19 @@ peut être suivie de différentes façons. La description la plus complète util
 une approche statistique dans laquelle chaque espèce $\alpha$ est caractérisée
 par une fonction de distribution $f_\alpha(\mathbf{r},\mathbf{v},t)$
 représentant le nombre moyen de particules occupant un volume infintésimal
-de l'espace des phases à un instant $t$. 
+de l'espace des phases à un instant $t$. Son évolution est alors décrite à
+travers l'équation de Boltzmann.
 
-Pour l'étude de l'évolution du plasma sur les échelles relativement
-grandes qui rendent compte des phénomènes de transport macroscopiques, la
-connaissance détaillée des fonctions de distribution n'est cependant pas indispensable et le
-calcul de moyennes statistiques - les moments en vitesse des fonctions de
-distribution - contiennent souvent l'ensemble des informations nécéssaires à la
-description du plasma.
+Sur des échelles de temps suffisement longues, l'évolution d'un plasma est 
+essentiellement due à des phénomènes de transport macroscopiques pour lesquels
+une description fluide est plus adaptée. Une espèce est alors
+caractérisée par un ensemble de paramètres macroscopiques, calculés à
+partir des moments de la fonction de distribution. Les plus importants -
+la densité $n_\alpha$, la vitesse fluide $u_\alpha$ et la température $T_\alpha$
+- ont des interprétations physiques immédiates et sont souvent mesurables
+expérimentalement. L'évolution de ces quantités est ensuite décrite par les
+équations fluides, obtenues en prenant les moments correspondants de l'équation de Boltzmann.
 
-L'approche fluide consiste ainsi à supposer à étudier l'évolution de 
-pour chaque espèce,
 
 \subsection{De la statistique au transport fluide}
 
@@ -621,7 +623,7 @@ Boltzmann :
 
 \begin{equation}
 \label{1-BoltzmannEquation}
-\partial_tf_\alpha+\mathbf{v}_\alpha\cdot\nabla_\mathbf{r}f_\alpha+
+\partial_tf_\alpha+\mathbf{v}_\alpha\cdot\vec\nabla_\mathbf{r}f_\alpha+
 \frac{\mathbf{F_\alpha}}{m_\alpha}\cdot\vec\nabla_{\mathbf{v}}f_\alpha
 =C[f_\alpha]
 \end{equation}
@@ -629,35 +631,42 @@ Boltzmann :
 où l'indice $\alpha$ dénote les différentes espèces\footnote{La fonction de
 distribution peut aussi servir à suivre les différents états quantiques des
 ions, des atomes et des molécules (rotationnel, vibrationnel, électronique).},
-$\vec\nabla$ est l'opérateur gradient appliqué à l'espace des positions ou des
+$\vec\nabla$ étant l'opérateur gradient appliqué à l'espace des positions ou des
 vitesses, et $\mathbf{F_\alpha}$ se résumant souvent aux forces
-électromagnétiques. Lors de collisions, les particules peuvent changer de
-trajectectoire instantanément, et ainsi disparaître puis apparaître dans des
-régions éloignées de leur espace des phases (ou encore changer d'espèce avec les
-collisions inélastiques). L'opérateur de collisions $C[f_\alpha]$ représente
-l'intégralité des ces effets collisionnels et se réécrit en
-tant que somme sur l'ensemble des espèces :
+électromagnétiques. \eqref{1-BoltzmannEquation} est très
+difficile à résoudre du fait de la complexité de l'opérateur de collisions $C[f_\alpha]$.
+En effet, lors de collisions, les particules peuvent changer de trajectectoire,
+et ainsi se déplacer instantanément dans des régions éloignées de leur espace des
+phases (ou encore totalement disparaître lors de collisions inélastiques).
+L'opérateur de collisions $C[f_\alpha]$, qui doit représenter l'intégralité de
+ces effets discrets, se réécrit généralement comme une somme sur l'ensemble des
+espèces de coefficients spécifiques à chacune des interactions.
+
+L'équation de Boltzmann permet de suivre
+parfaitement l'évolution de l'ensemble des espèces du plasma et elle est
+même parfois incontournable pour décrire avec exactitude les interactions
+ondes-particules ou celles implicant des particules rapides. 
+Cependant, les méthodes utilisées pour la résoudre nécessitent de
+nombreuses approximations\footnote{Approximation bi-terme, Approche
+homogène, approche non-locale}. De plus, quand une espèce est suffisement
+collisionnelle, sa distribution en vitesse relaxe rapidement vers une
+maxwellienne locale :
 
 \begin{equation}
-C[f_\alpha]=\sum_\beta C_{\alpha\beta}(f_\alpha,f_\beta)
-\end{equation}
-
-$C_{\alpha\beta}$ étant un taux caractéristique correspondant au phénomène
-collisionnel enntre $\alpha$ et $\beta$.
-
-
-En effet sur ces échelles de temps, les fonctions de
-distribution en vitesses se relaxent vers maxwellienne locale vers des
-distributions de Maxwell-Boltzmann, prenant souvent\footnote{Quand le plasma possède deux populations d'une même espèce à des énergies très différentes, la distribution en vitesse n'est pas maxwellienne mais peut se décomposer en une somme de maxwellienne.} la forme d' déformée :
-
-\begin{equation}
-	f_\alpha(\mathbf{r},\mathbf{v},t)=\underset{\text{Distribution de Boltzmann}}
-	{n\indice{0}\exp\left(\frac{-q_\alpha\Phi(\mathbf r)}{eT_\alpha}\right)}
-	\underset{\text{Distribution de Maxwell}} {\left(\frac{m_\alpha}{2\pi
+\label{1-MaxwellDistribution}
+	f_\alpha(\mathbf{v})=
+	\left(\frac{m_\alpha}{2\pi
 	eT_\alpha}\right)\puissance{3/2}\exp\left(\frac{-m_\alpha
-	\mathbf v\puissance{2}}{2eT_\alpha}\right)}
+	\mathbf v\puissance{2}}{2eT_\alpha}\right)
 \end{equation}
 
+Les intégrales d'une maxwellienne sont facilement calculables et favorisant
+donc l'utilisation des équations fluides, la
+description macroscopique donnant une interprétation plus simple des phénomènes entrants en jeu. Le nombre de degrés de liberté du problème est ainsi
+réduit en ne conservant de l'état du plasma que ses dimensions spatiales et temporelle.
+Cette description sous-entend cependant, par la forme de la fonction de
+distribution \eqrefp{1-MaxwellDistribution}, que le plasma est à l'équilibre
+thermodynamique local (ETL)
 
 \subsubsection{Les moments fluides}
 L'approche fluide consiste à décrire le comportement des particules de chaque
@@ -666,19 +675,6 @@ vitesse moyenne $\mathbf u$ et la température $T$. Ces quantités sont dérivé
 des moyennes des fonctions de distributions sur l'espace des vitesses et leur
 évolution est contrôlée par les équations fluides obtenues en intégrant
 l'équation de Boltzann multipliée par une certaine puissance de $\mathbf v$.
-
-Le nombre de degré de liberté du problème est ainsi
-réduit en ne conservant de l'état du plasma que ses dimensions spatiales et temporelle.
-Cette description sous-entend cependant que le plasma est à l'équilibre
-thermodynamique local (ETL), ie. que la fonction des vitesses de chaque espèce est
-supposée Maxwellienne :
-
-\begin{equation}
-f(\mathbf v)=\sqrt{\left(\frac{m_\alpha}{2\pi
-eT_\alpha}\right)\puissance{3}}4\pi\mathbf
-v\puissance{2}\exp{\left(\frac{-m_\alpha\mathbf
-v\puissance{2}}{2eT_\alpha}\right)}
-\end{equation}
 
 Le moment en vitesse d'ordre $k$ est un tenseur d'ordre $k$ et s'écrit :
 \begin{equation}
@@ -725,6 +721,23 @@ $$n_s\mathbf{v}_s=\int \mathbf{v}_sf_sd\mathbf{v}$$
 \subsubsection{Conservation de l'énergie}
 \subsubsection{Conservation de la chaleur}
 
+De plus, dans un plasma classique,
+la forte agitation thermique des électrons et le potentiel de gaine tendent à
+faire relaxer rapidement la distribution en vitesses électronique vers une
+maxwellienne locale. Les électrons suivent alors une distribution de Maxwell-Boltzmann :
+
+\begin{equation}
+	f_e(\mathbf{r},\mathbf{v},t)=\underset{\text{Distribution de Boltzmann}}
+	{n\indice{0}\exp\left(\frac{-q_e\Phi(\mathbf r)}{eT_e}\right)}
+	\underset{\text{Distribution de Maxwell}} {\left(\frac{m_e}{2\pi
+	eT_e}\right)\puissance{3/2}\exp\left(\frac{-m_e
+	\mathbf v\puissance{2}}{2eT_e}\right)}
+\end{equation}
+ 
+ 
+ \footnote{Quand le
+plasma possède deux populations d'une même espèce à des énergies très différentes, la
+distribution en vitesse n'est pas maxwellienne mais peut se décomposer en une somme de maxwellienne.}
 \subsection{Les phénomènes de transport magnétisés}
 Dans un plasma collisionnel, le mouvement d'une particule peut être assimilé à
 une succession de déplacements libres et de collisions, formant une marche
