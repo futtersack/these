@@ -18,6 +18,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor,graphicx}
+\usepackage[a4paper]{geometry}
+\setlength{\textheight}{675pt}
+\setlength{\topmargin}{-40pt}
+\setlength{\footskip}{60pt}
+
 \usepackage{wrapfig}
 \usepackage{verbatim}
 \usepackage{enumerate}
@@ -76,6 +81,7 @@
 \usepackage{fancyhdr}
 
 
+
 \fancypagestyle{preface}{%
     \fancyhead{}
 	\fancyfoot{}
@@ -86,15 +92,15 @@
     \fancyhead{}
 	\fancyfoot{}
 	\renewcommand{\headrulewidth}{0.4pt}
-	\renewcommand{\headheight}{36pt}
+	
 	% Increase the length of the header such that the folios
     % (typography jargon for page numbers) move into the margin
     \fancyhfoffset[LE]{6mm}% slightly less than 0.25in
     \fancyhfoffset[RO]{6mm}%
     
 	% Put some space and a vertical bar between the folio and the rest of the header
-    \fancyhead[LE]{\rule[-2ex]{0pt}{2ex}\small{\thepage}\hskip9mm\rightmark}%
-    \fancyhead[RO]{\rule[-2ex]{0pt}{2ex}\leftmark\hskip9mm\small{\thepage}}%
+    \fancyhead[LE]{\rule[-2ex]{0pt}{2ex}\small{\thepage}\hfill\rightmark}%
+    \fancyhead[RO]{\rule[-2ex]{0pt}{2ex}\leftmark\hfill\small{\thepage}}%
 	\fancyfoot[C]{\thepage}
 }
 \renewcommand{\cftpartfont}{\large\bfseries} % make parts look like sections in TOC
@@ -167,7 +173,7 @@
     eprint=false,
 backend=biber]{biblatex}
 \addbibresource{biblio.bib}
-
+\usepackage{subfigure}
 \usepackage{epstopdf} 
 
 
