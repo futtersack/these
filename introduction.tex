@@ -674,9 +674,9 @@ $\sqrt{\left<v\puissance{2}\right>}$ :
 \end{equation}
 
 Quand un ensemble de particules suit une distribution
-de Maxwell, l'équation de Boltzmann s'intègre donc facilement dans l'espace des
-vitesses, pour former les équations fluide de conservation. Le nombre de degrés
-de liberté du problème est ainsi réduit en ne conservant de l'état du plasma
+de Maxwell, l'équation de Boltzmann s'intègre facilement dans l'espace des
+vitesses, aboutissant ainsi aux équations fluides de conservation. Le nombre de
+degrés de liberté du problème est ainsi réduit en ne conservant de l'état du plasma
 que ses dimensions spatiales et temporelle.
 Cette description sous-entend cependant, par la forme de la fonction de
 distribution \eqrefp{1-MaxwellDistribution}, que le plasma est à l'équilibre
@@ -724,20 +724,27 @@ r,t)=m_\alpha\int \mathbf w\mathbf w
 f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
 
-ce tenseur se décompose en introduisant la pression
-scalaire $p_\alpha$ et le tenseur de viscosité $\boldsymbol{\Pi}_\alpha$:
+le tenseur de pression mesure l'écart quadratique entre la vitesse moyenne des
+particules et la vitesse fluide. On introduit ensuite la
+pression scalaire $p_\alpha$ et le tenseur de viscosité $\boldsymbol{\Pi}_\alpha$:
 
 \begin{equation}
 \mathbf P_\alpha=p_\alpha\,\mathbf I + \boldsymbol{\Pi}_\alpha
 \end{equation}
 
-avec $\mathbf I$ la matrice  
-Pour les distributions maxwelliennes, $T_\alpha=p_\alpha/n_\alpha$ représente la
-température partielle mesurée en unité d'énergie :
+avec $\mathbf I$ la matrice identité. Par analogie avec la thérie fluide
+conventionnelle, on s'attend à ce que les termes diagonaux soient dominants
+quand l'espèce est à l'équilibre thermique. La trace du tenseur
+$\mathbf P_\alpha$, quantifie ainsi la densité d'énergie cinétique
+interne de l'espèce et peut se réécrire en définissant la température partielle 
+$T_\alpha$ mesurée en unité d'énergie:
 
 \begin{equation}
-p_\alpha=en_\alpha T_\alpha\
+\frac{3}{2}p_\alpha=\frac{3}{2}n_\alpha eT_\alpha=\frac{m_\alpha}{2}\int 
+w\puissance{2} f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
+
+, avec , 
 
  d'ordre trois (le flux de chaleur),
 sont
