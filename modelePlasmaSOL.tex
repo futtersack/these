@@ -260,11 +260,8 @@ B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
 \section{Vers une description des sources d'ions}
 L'approche par les vitesses de dérive utilisée pour construire le modèle de TOKAM2D n'est pas 
 réellement justifiée dans le cas des sources d'ions. Le modèle suppose tout d'abord une
-forte magnétisation des particules, $v_\perp<<v_\text{th}$, ce qui n'est pas du tout le cas dans 
-les zones faiblement ou non-magnétisées. Les équations de TOKAM2D ne décrivent pas non plus l'intéraction
-collisionnelle des particules chargées avec la population neutre, essentielle dans la physique des plasmas froids,
-(ceci pouvant éventuellement être modifié, cf.
-partie~\ref{vitessesDerivePlasmaFroid}).
+forte magnétisation des particules limitant le transport transverse,
+$v_\perp<<v_\text{th}$, ce qui n'est pas du tout le cas dans les zones faiblement ou non-magnétisées. 
 
 Le code TOKAM2D peut toutefois être complété pour décrire des cas limites de notre étude, \emph{ie.} des plasmas totalement ionisés
 confinés par un champ magnétique suffisement intense. Les questions de confinement transverse, d'inhomogénéité du champ 
@@ -274,16 +271,24 @@ magnétique et d'influence de la température sont alors utiles pour :
 	\item donner un aperçu du transport dans des configurations de type source d'ions, ainsi que des résultats sur les 
 	cas limites fortement magnétisés à étudier et comparer.
 \end{itemize}
-	\subsection{Ajout des conditions aux limites transverses}
-	Les systèmes physiques décrits par les équations fluides sont très sensibles aux conditions limites. Ces conditions étant 
-	souvent mal connues, on peut les choisir de facon arbitraire, mais avec quel impact sur le système? La simplification de 
-	TOKAM2D de considérer une géométrie bipériodique dans le plan transverse est fondamentalement injustifiée, mais a-t-elle une 
-	influence sur le transport transverse en soi? Quels sont les effets d'autres conditions aux limites courament utilisées? 
+	\subsection{Etude sur les conditions aux limites}
+	Les systèmes physiques décrits par les équations fluides sont très sensibles
+	aux conditions aux limites imposées par le milieu qui les entoure. Dans les
+	plasmas froids ou parallèlement au champ magnétique, cette
+	interaction avec les parois est décrite par la théorie des gaines qui donne
+	accès à la valeur des flux et des courants, fournissant de ce fait des conditions aux
+	limites ayant un sens physique. 
+	
+	Bien que situation d'une gaine parallèle au champ magnétique soit très mal
+	connue (cf. §\ref{1-}) le système doit nécéssairement être fermé, impliquant un
+	choix de conditions aux limites de façon arbitraire. Mais avec quel impact sur le
+	système? La simplification de TOKAM2D de considérer une géométrie bipériodique
+	dans le plan transverse est fondamentalement injustifiée, mais a-t-elle une
+	influence sur le transport transverse en soi? Quels sont les effets d'autres
+	conditions aux limites courament utilisées?
 	
 	La prise en compte de conditions aux limites physiques telle que des conditions dérivées du critère de Bohm 
-	sont nécéssaires pour décrire correctement la physique du transport dans les plasmas. Cependant bien que la théorie des
-	gaines prédise le même comportement dans le cas des plasmas froids et que dans celui des plasmas magnétisés le long des lignes de 
-	champ, la situation d'une gaine parallèle au champ magnétique est très mal connue dans la littérature.
+	sont nécéssaires pour décrire correctement la physique du transport dans les plasmas. 
 	
 	\subsection{Inclusion d'un champ magnétique non uniforme}
 	Dans les plasmas de fusions, l'inhomogénéité du champ magnétique est responsable d'une majeure partie du transport turbulent.
@@ -294,10 +299,12 @@ magnétique et d'influence de la température sont alors utiles pour :
 	être intéressant de poursuivre l'étude dans cette direction.
 	
 	\subsection{Implémentation de l'équation d'énergie}
-	La fermeture isoterme considérée dans le modèle de TOKAM2D est aussi très discutable. Les effets de la température et de la chaleur
-	deviennent non-négligeables dès que $\omega>>\text{?}$. De plus la prise en compte des variations spatiales de la température
-	complexifie grandement la relation de dispersion du modèle, et pouvant donner lieu à l'apparition d'instabilités différentes de 
-	l'interchange.
+	La fermeture isoterme considérée dans le modèle de TOKAM2D est aussi très
+	discutable. Le transport transverse dans la SOL est directement lié aux
+	variations du potentiel plasma à travers la dérive ExB.  Les effets de la température et de la chaleur deviennent
+	non-négligeables dès que $\omega>>\text{?}$. De plus la prise en compte des
+	variations spatiales de la température complexifie grandement la relation de
+	dispersion du modèle, et pouvant donner lieu à l'apparition d'instabilités différentes de l'interchange.
 	Les équations du modèle s'écrivent alors :
 	
 	\begin{equation}\begin{split}
@@ -318,11 +325,15 @@ magnétique et d'influence de la température sont alors utiles pour :
 	\end{split}\end{equation}
 	
 	aa
+	\subsubsection{Impact sur le transport transverse}
+	\subsubsection{Simulation d'une colonne de plasma magnétisée}
+	\subsubsection{Application au filtre magnétique}
 	
-\section{Application de l'approche par vitesse de dérive pour les plasmas
+\section{L'approche par vitesses de dérive pour les plasmas
 froids}
 \label{vitessesDerivePlasmaFroid}
-Dans les plasmas froids,
+Les équations de TOKAM2D ne décrivent pas non plus l'intéraction
+collisionnelle des particules chargées avec la population neutre, essentielle dans la physique des plasmas froids,
 
 %\bibliographystyle{apalike}
 %\bibliography{biblio}
