@@ -617,8 +617,8 @@ espèce\footnote{La fonction de
 distribution peut aussi servir à suivre les différents états quantiques des
 ions, des atomes et des molécules (rotationnel, vibrationnel, électronique).}
 d'une manière statistique, comme un continuum défini par une fonction de
-distribution $f$ dénombrant le nombre de particule présentes à un instant $t$
-dans un volume de l'espace des phases, ie. $f_\alpha(\mathbf r,\mathbf
+distribution $f$ dénombrant le nombre moyen de particule présentes à un instant
+$t$ dans un volume de l'espace des phases, ie. $f_\alpha(\mathbf r,\mathbf
 v,t)\text{d}\puissance{3}\mathbf r\text{d}\puissance{3}\mathbf v$.
 L'évolution de cette fonction de distribution sous l'influence des forces
 extérieures et des collisions est alors décrite par l'équation cinétique de
@@ -682,7 +682,7 @@ Cette description sous-entend cependant, par la forme de la fonction de
 distribution \eqrefp{1-MaxwellDistribution}, que le plasma est à l'équilibre
 thermodynamique local (ETL)
 
-\subsubsection{Théorie fluide}
+\subsubsection{Les quantités fluides}
 L'approche fluide consiste à décrire le comportement des particules de chaque
 espèce en terme de quantités macroscopiques moyennes telles que la densité $n$,
 la vitesse moyenne $\mathbf u$ et la température $T$. Ces quantités sont dérivées
@@ -726,7 +726,8 @@ f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
 
 le tenseur de pression mesure l'écart quadratique entre la vitesse moyenne des
 particules et la vitesse fluide. On introduit ensuite la
-pression scalaire $p_\alpha$ et le tenseur de viscosité $\boldsymbol{\Pi}_\alpha$:
+pression scalaire $p_\alpha$ et le tenseur de viscosité
+$\boldsymbol{\Pi}_\alpha$, tels que:
 
 \begin{equation}
 \mathbf P_\alpha=p_\alpha\,\mathbf I + \boldsymbol{\Pi}_\alpha
@@ -744,7 +745,10 @@ $T_\alpha$ mesurée en unité d'énergie:
 w\puissance{2} f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
 
-Il 
+\subsubsection{Les équations de conservation}
+
+Les équations de conservation, aussi appelées équations fluides, s'obtiennent
+en prenant les moments de l'équation de Boltzmann.
 
 \begin{equation}
 \frac{3}{2}n_\alpha T_\alpha(\mathbf
@@ -753,7 +757,7 @@ f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
 \end{equation}
 
 Leur évolution est contrôlée par les équations fluides obtenues en intégrant
-l'équation de Boltzmann multipliée par une certaine puissance de $\mathbf v$
+l'équation de Boltzmann multipliée par une certaine puissance de 
 \subsubsection{Conservation de la matière}
 $$n_s=\int f_sd\mathbf{v}$$
 
