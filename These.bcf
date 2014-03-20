@@ -2024,6 +2024,10 @@
     <bcf:datasource type="file" datatype="bibtex">biblio.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="5">
+    <bcf:citekey order="1">Popelier</bcf:citekey>
+    <bcf:citekey order="2">Popelier</bcf:citekey>
+    <bcf:citekey order="3">Rozhansky</bcf:citekey>
+    <bcf:citekey order="4">Rozhansky</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">

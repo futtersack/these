@@ -68,13 +68,15 @@ On décrit alors le transport du plasma à travers l'évolution de la densité
 de continuité des électrons ainsi que l'équation de conservation du courant. Les
 températures électronique
 $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e$.
-\begin{wrapfigure}{r}{0.50\textwidth}
-	\vspace{-5pt}
- \hspace{20pt}\includegraphics[width=0.40\textwidth]{figures/geomTokam.png}{\caption{Zone
-de la SOL simulée dans TOKAM2D.}\label{figTokamGeom}}
-	 \vspace{-20pt}
-\end{wrapfigure}
-La zone simulée, présentée sur la figure~\ref{figTokamGeom}, correspond à une
+\begin{figure}[htbp]
+\centering
+    \includegraphics[width=0.8\textwidth]{figures/2-tokamSimDomain.png}
+    \caption{La région simulée est située à la frontière du plasma confiné,
+    au niveau de la séparatrice, et dans le plan poloïdal médian.}
+    \label{2-figTokamGeom}
+\end{figure}
+
+La zone simulée, présentée sur la figure~\ref{2-figTokamGeom}, correspond à une
 petite partie de la SOL, la séparatrice étant modélisée par un flux entrant de
 particule L'hypothèse flûte, qui permet la réduction du problème de trois à deux
 dimensions .
@@ -248,19 +250,27 @@ B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
 \begin{figure}
     \centering
     \subfigure[]{\label{2-CarteDensiteBase}
-    \includegraphics[width=5.5cm]{figures/2-CarteDensiteBase.eps}}
+    \includegraphics[height=6cm]{figures/2-CarteDensiteBase.eps}}
     \subfigure[]{\label{2-CartePotentielBase}
-    \includegraphics[width=5.5cm]{figures/2-CartePotentielBase.eps}}
-    \caption{Cartes de densité \subref{2-CarteDensiteBase} et de potentiel
+    \includegraphics[height=6cm]{figures/2-CartePotentielBase.eps}}
+    \caption{Cartes de la densité \subref{2-CarteDensiteBase}~~et du potentiel
+    électrostatique
     \subref{2-CartePotentielBase}}
-    \label{pandas}
+    \label{2-CartesBase}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+    \includegraphics[width=10cm]{figures/2-PDFBase.eps}
+    \caption{Densité de probabilité pour la densité et le flux radial}
+    \label{2-PDFBase}
 \end{figure}
 
 
 \section{Vers une description des sources d'ions}
 L'approche par les vitesses de dérive utilisée pour construire le modèle de TOKAM2D n'est pas 
-réellement justifiée dans le cas des sources d'ions. Le modèle suppose tout d'abord une
-forte magnétisation des particules limitant le transport transverse,
+réellement justifiée dans le cas des sources d'ions. Le modèle suppose tout
+d'abord une forte magnétisation des particules limitant le transport transverse,
 $v_\perp<<v_\text{th}$, ce qui n'est pas du tout le cas dans les zones faiblement ou non-magnétisées. 
 
 Le code TOKAM2D peut toutefois être complété pour décrire des cas limites de notre étude, \emph{ie.} des plasmas totalement ionisés
@@ -287,6 +297,15 @@ magnétique et d'influence de la température sont alors utiles pour :
 	influence sur le transport transverse en soi? Quels sont les effets d'autres
 	conditions aux limites courament utilisées?
 	
+	\begin{figure}[htbp]
+\centering
+    \includegraphics[width=8cm]{figures/2-profileDenNoLimit.eps}
+    {\caption{Profile de densité pour un cas périodique et un cas absorbant
+    \footnotemark}
+    \label{2-profileDenNoLimit}}
+\end{figure}
+\footnotetext{Les conditions aux parois absorbantes}
+	
 	La prise en compte de conditions aux limites physiques telle que des conditions dérivées du critère de Bohm 
 	sont nécéssaires pour décrire correctement la physique du transport dans les plasmas. 
 	
@@ -295,6 +314,18 @@ magnétique et d'influence de la température sont alors utiles pour :
 	L'inclusion d'un champ magnétique inhomogène en espace a permis d'élargir le domaine de fonctionnalité de TOKAM2D. 
 	
 	Le cas d'une barrière magnétique montre...
+	\begin{figure}
+    \centering
+    \subfigure[]{\label{2-CarteDensiteMagBarrier}
+    \includegraphics[height=5.8cm]{figures/2-CarteDensiteMagBarrier.eps}}
+    \subfigure[]{\label{2-CartePotentielMagBarrier}
+    \includegraphics[height=5.8cm]{figures/2-CartePotentielMagBarrier.eps}}
+    \caption{Cartes de densité \subref{2-CarteDensiteMagBarrier} et de potentiel
+    \subref{2-CartePotentielMagBarrier}}
+    \label{2-CartesMagBarrier}
+\end{figure}
+
+	
 	De très faibles inhomogénéités pouvant être responsable d'une modification non-négligeable du transport transverse, il pourrait 
 	être intéressant de poursuivre l'étude dans cette direction.
 	
@@ -324,17 +355,83 @@ magnétique et d'influence de la température sont alors utiles pour :
 		\sigma_\para {T_e}^{\text{\textonehalf}}\left(1-e^{\Lambda-\Delta\Phi/T_e}\right) +\nu_\perp\nabla_\perp^4\Phi
 	\end{split}\end{equation}
 	
-	aa
-	\subsubsection{Impact sur le transport transverse}
-	\subsubsection{Simulation d'une colonne de plasma magnétisée}
-	\subsubsection{Application au filtre magnétique}
+	\begin{figure}
+    \centering
+    \subfigure[]{\label{2-CarteDensiteWithTe}
+    \includegraphics[height=5.75cm]{figures/2-CarteDensiteWhTe.eps}}
+    \subfigure[]{\label{2-CartePotentielWithTe}
+    \includegraphics[height=5.75cm]{figures/2-CartePotentielWhTe.eps}}
+    \subfigure[]{\label{2-CarteTeWhTe}
+    \includegraphics[height=5.75cm]{figures/2-CarteTeWhTe.eps}}
+    \caption{Cartes de densité \subref{2-CarteDensiteBase}, de potentiel
+    \subref{2-CartePotentielBase} et de température \subref{2-CarteDensiteBase}}
+    \label{2-CartesWithTe}
+	\end{figure}
 	
+	\begin{figure}[htbp]
+\centering
+    \includegraphics[width=10cm]{figures/2-CartePotentielSurTeWhTedNdx.eps}
+    \caption{Carte du potentiel électrostatique rapporté à la température.}
+    \label{2-CartePotentielSurTeWhTedNdx}
+\end{figure}
+
+	
+	\subsubsection{Impact sur le transport transverse}
+	
+	\begin{figure}[htbp]
+    \centering
+    \subfigure[]{\label{2-CarteDensiteWhTe}
+    \includegraphics[height=5cm]{figures/2-profileFluxRadialWhTedNdx.eps}}
+    \subfigure[]{\label{2-profileFluxRadialWhTedNdx}
+    \includegraphics[height=6cm]{figures/2-profileFluxWhTedNdx.eps}}
+    \caption{Cartes de densité \subref{2-CarteDensiteWhTe}, de potentiel
+    \subref{2-CartePotentielBase} et de température \subref{2-profileFluxWhTedNdx}}
+    \label{2-CartesWithTe}
+	\end{figure}
+	
+	\subsubsection{Application au filtre magnétique}
+	\begin{figure}[htbp]
+    \centering
+    \subfigure[]{\label{2-CarteDensiteMagBarrierWhTe}
+    \includegraphics[height=5.75cm]{figures/2-CarteDensiteMagBarrierWhTe.eps}}
+    \subfigure[]{\label{2-CartePotentielMagBarrierWhTe}
+    \includegraphics[height=5.75cm]{figures/2-CartePotentielMagBarrierWhTe.eps}}
+    \subfigure[]{\label{2-CarteTeMagBarrierWhTe}
+    \includegraphics[height=5.75cm]{figures/2-CarteTeMagBarrierWhTe.eps}}
+    \caption{Cartes de densité \subref{2-CarteDensiteMagBarrierWhTe}, de potentiel
+    \subref{2-CartePotentielMagBarrierWhTe} et de température \subref{2-CarteTeMagBarrierWhTe}}
+    \label{2-CartesWithTe}
+	\end{figure}
+	
+	\subsubsection{Simulation d'une colonne de plasma magnétisée}
+	
+	\begin{figure}[htbp]
+    \centering
+    \subfigure[]{\label{2-CarteDensiteMagColumn}
+    \includegraphics[height=5.75cm]{figures/2-CarteDensiteMagColumn.eps}}
+    \subfigure[]{\label{2-CartePotentielMagColumn}
+    \includegraphics[height=5.75cm]{figures/2-CartePotentielMagColumn.eps}}
+    \subfigure[]{\label{2-CarteTeMagColumn}
+    \includegraphics[height=5.75cm]{figures/2-CarteTeMagColumn.eps}}
+    \caption{Cartes de densité \subref{2-CarteDensiteMagColumn}, de potentiel
+    \subref{2-CartePotentielMagColumn} et de température \subref{2-CarteTeMagColumn}}
+    \label{2-CartesWithTe}
+	\end{figure}
 \section{L'approche par vitesses de dérive pour les plasmas
 froids}
 \label{vitessesDerivePlasmaFroid}
 Les équations de TOKAM2D ne décrivent pas non plus l'intéraction
 collisionnelle des particules chargées avec la population neutre, essentielle dans la physique des plasmas froids,
-
+\begin{figure}[htbp]
+    \centering
+    \subfigure[]{\label{2-CarteDensiteMapl}
+    \includegraphics[height=8cm]{figures/2-CarteDensiteMapl.eps}}
+    \subfigure[]{\label{2-CartePotentielMapl}
+    \includegraphics[height=8cm]{figures/2-CartePotentielMapl.eps}}
+    \caption{Cartes de densité \subref{2-CarteDensiteMapl}~~et de potentiel
+    \subref{2-CartePotentielMapl}}
+    \label{2-CartesWithTe}
+	\end{figure}
 %\bibliographystyle{apalike}
 %\bibliography{biblio}
 
