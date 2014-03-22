@@ -1,7 +1,7 @@
 \Chapter{Étude de plasmas magnétisés}
 \chaptermark{Étude de plasmas magnétisés}
 \begin{refsection}
-Ce quatrième chapitre porte sur l'étude de deux cas concrets
+Ce quatrième chapitre porte sur l'étude de deux cas concrets,
 chacun représentatif d'une configuration magnétique particulière : le filtre
 magnétique avec le propulseur PEGASES et la colonne de plasma magnétisée de la
 source d'ions négatifs CYBELE. 
@@ -14,18 +14,65 @@ de champ magnétique intense et où le transport est principalement de nature
 turbulente. 
 		 
 \section{Barrière magnétique - PEGASES}
-a
+PEGASES, acronyme de \emph{Plasma Propulsion with Electronegative Gases}, est
+un prototype de propulseur électrostatique à grille (PEG)
+ion-ion\parencite{Chabert} conçu au LPP (Laboratoire de Physique des
+Plasma) de l'Ecole Polytechnique de Paris et qui a pour originalité d'éjecter à
+la fois des ions négatifs et des ions positifs pour générer la poussée. Dans ce
+nouveau concept prometteur, les faisceaux d'ions de charges opposées se
+neutralisent mutuellement à la sortie du propulseur, rendant la cathode
+neutralisante non nécéssaire. Contrairement aux Propulseurs à Effets Hall
+\footnote{Les propulseurs ioniques classiques, Propulseurs à Effet Hall (PEH),
+sont constitués de trois étages : la source d'ion, l'étage d'accélération, où un
+fort champ électromagnétique accélère les ions, et une cathode pour neutraliser
+les ions positifs et éviter que le propulseur ne se charge.}, les PEG n'ont
+donc pas de séparation entre les étages de création et d'accélération des ions.
+Pour filtrer les électrons chauds et favoriser la création du plasma ion-ion, une
+barrière magnétique d'une centaine de Gauss est placée entre la zone
+d'ionisation et la région d'extraction.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/4-pegases3D.png}
+\includegraphics[width=0.75\textwidth]{figures/4-pegases3D.png}
 {\caption{Schéma de principe de fonctiopnnement du propulseur PEGASES avec les
 différents étages mentionnés en italiques\parencite{Popelier}.}
-\label{4-pegasesSimDomain}}
+\label{4-pegases3D}}
 \end{figure}
 
-a
+La structure en différents étages de PEGASES est représentée sur la
+figure \ref{4-pegases3D}. Dans le premier étage, un gaz électronégatif est
+excité inductivement par une puissance RF.
+Le plasma de la source, consitué d'ion positifs, d'ions négatifs et d'électrons
+est ensuite filtré par une barrière magnétique dans le deuxième étage du
+propulseur. L'intensité de la barrière magnétique est choisie de façon à ce que
+seuls les électrons soient magnétisés, laissant les ions diffuser librement à
+travers le champ. Le plasma se sépare ainsi en deux régions de températures
+électroniques différentes, l'une chaude du côté de l'injection de puissance,
+l'autre plus froide en aval de la barrière, où se forme un plasma
+ion-ion. Le troisième étage est enfin constitué du plasma ion-ion et
+d'une série de grille que l'on polarise pour extraire et accélérer les
+particules, afin de former les faisceaux d'ions qui feront la poussée. La grille
+d'extraction est la seule paroi conductrice du propulseur, ce qui permet de
+contrôler le potentiel plasma en s'affranchissant du problème de l'état de
+surface et de la contamination des parois.
 
+La source ICP est entretenue à 4MHz avec une bobine plane dopée par un noyau de
+ferrite protégée d'une fine (3mm) couche de céramique\parencite{Godyak} qui
+peut fournir de 50W à 250W.
+La géométrie de la source et la configuration du
+filtre magnétique ont été choisies d'après les résultats de Aanesland \emph{et
+al.}\parencite{Aanesland} qui donne les conditions nécéssaires à la
+formation d'un plasma ion-ion. L'enceinte du propulseur, de dimension
+12x12x8cm, est usiné à partir d'un bloc d'aluminium, anodisée afin de rendre
+ses parois diélectriques. Une autre version, constituée de paroi conductrices,
+est aussi utilisée à des fins de diagnostique de la source.
+
+Bien que MAGNIS ne puisse pas encore simuler les plasmas électronégatifs qui
+nécéssitent une description des intéractions chimiques, il peut être utilisé
+pour caractériser le transport complexe des électrons et du plasma en général à
+travers le filtre magnétique. Pour étudier ce comportement, nous choisissons de
+simuler un plasma d'argon, avec la géométrie présentée figure
+\ref{4-pegasesSimDomain} :
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/4-pegasesSimDomain.png}
@@ -34,7 +81,17 @@ magnétique.}
 \label{4-pegasesSimDomain}}
 \end{figure}
 
-a
+Rectangulaire et de
+dimension similaire à celle du prototype, la puissance est déposée dans la
+région en amont du filtre magnétique sous la forme d'une demi-gaussienne de 2cm
+de largeur. Le filtre magnétique est aussi de forme gaussienne, centré en
+x=7.5cm et de largeur $\sim$ 2.5cm. Les parois seront choisies
+conductrices ou diélectriques, avec une polarisation éventuelle de la grille
+d'extraction (en jaune à droite du domaine). La puissance totale absorbée et la
+densité de gaz sont fixées respectivement à 150W et 1mTorr.
+
+Le type de solutions obtenues par MAGNIS dans le cas de parois diélectriques et
+sans bias appliqué sont illustrées figure \ref{2-CartesWithTe} :
 
 \begin{figure}[htbp]
     \centering
@@ -44,12 +101,19 @@ a
     \includegraphics[height=5.75cm]{figures/4-PegasesCartePotentielBase.eps}}
     \subfigure[]{\label{4-PegasesCarteTemperatureBase}
     \includegraphics[height=5.75cm]{figures/4-PegasesCarteTemperatureBase.eps}}
-    \caption{Cartes de densité \subref{4-PegasesCarteDensiteBase}, de potentiel
-    \subref{4-PegasesCartePotentielBase} et de température \subref{4-PegasesCarteTemperatureBase}}
+    \caption{Cartes de densité \subref{4-PegasesCarteDensiteBase}~, de potentiel
+    \subref{4-PegasesCartePotentielBase}~ et de température
+    \subref{4-PegasesCarteTemperatureBase} dans le cas de parois diélectriques.}
     \label{2-CartesWithTe}
 	\end{figure}
 
-a
+La densité maximum de la source, 2.5x10$^{17}\text{m}^{-3}$  est atteinte au
+centre de la région d'ionisation. La densité du plasma décroît ensuite très
+rapidement sur une longueur de 2 à 4cm. On peut observer de plus qu'une partie
+du plasma diffuse en travers du champ magnétique. Le potentiel électrique, qui
+suit le profile de densité, donne naissance à un champ électrique d'une centaine
+de Volt par mètre, quasiment ambipolaire dans la région non magnétisée, et
+plutôt faible dans le filtre magnétique.
 
 \begin{figure}[htbp]
   \centering
@@ -158,8 +222,8 @@ a
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias5}
     \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteVarBias5.eps}}
-    \subfigure[]{\label{4-PegasesCarteViSurTeVarBias6}
-    \includegraphics[height=5cm]{figures/4-PegasesCarteViSurTeVarBias6.eps}}
+    \subfigure[]{\label{4-PegasesCarteDensiteVarBias6}
+    \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteVarBias6.eps}}
     \caption{Cartes de densité\subref{4-PegasesCarteDensiteVarBias5}~, de
     potentiel\subref{4-PegasesCarteDensiteVarBias6}}
     \label{pandas}
