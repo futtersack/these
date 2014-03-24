@@ -17,11 +17,11 @@ turbulente.
 PEGASES, acronyme de \emph{Plasma Propulsion with Electronegative Gases}, est
 un prototype de propulseur électrostatique à grille (PEG)
 ion-ion\parencite{Chabert} conçu au LPP (Laboratoire de Physique des
-Plasma) de l'Ecole Polytechnique de Paris et qui a pour originalité d'éjecter à
+Plasma) de l'École Polytechnique de Paris et qui a pour originalité d'éjecter à
 la fois des ions négatifs et des ions positifs pour générer une poussée. Dans ce
 nouveau concept prometteur, les faisceaux d'ions de charges opposées se
 neutralisent mutuellement à la sortie du propulseur, rendant la cathode
-neutralisante non nécéssaire. Contrairement aux Propulseurs à Effet Hall
+neutralisante non nécessaire. Contrairement aux Propulseurs à Effet Hall
 \footnote{Les propulseurs ioniques classiques, Propulseurs à Effet Hall (PEH),
 sont constitués de trois étages : la source d'ion, l'étage d'accélération, où un
 fort champ électromagnétique accélère les ions, et une cathode pour neutraliser
@@ -34,7 +34,7 @@ d'ionisation et la région d'extraction.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{figures/4-pegases3D.png}
-{\caption{Schéma de principe de fonctiopnnement du propulseur PEGASES avec les
+{\caption{Schéma de principe de fonctionnement du propulseur PEGASES avec les
 différents étages mentionnés en italiques\parencite{Popelier}.}
 \label{4-pegases3D}}
 \end{figure}
@@ -42,7 +42,7 @@ différents étages mentionnés en italiques\parencite{Popelier}.}
 La structure en différents étages de PEGASES est représentée sur la
 figure \ref{4-pegases3D}. Dans le premier étage, un gaz électronégatif est
 excité inductivement par une puissance RF.
-Le plasma de la source, consitué d'ion positifs, d'ions négatifs et d'électrons
+Le plasma de la source, constitué d'ion positifs, d'ions négatifs et d'électrons
 est ensuite filtré par une barrière magnétique dans le deuxième étage du
 propulseur. L'intensité de la barrière magnétique est choisie de façon à ce que
 seuls les électrons soient magnétisés, laissant les ions diffuser librement à
@@ -62,14 +62,14 @@ ferrite protégée d'une fine (3mm) couche de céramique\parencite{Godyak} qui
 peut fournir une puissance allant de 50W à 250W.
 La géométrie de la source et la configuration du
 filtre magnétique ont été choisies d'après les résultats de Aanesland \emph{et
-al.}\parencite{Aanesland} qui donnent les conditions nécéssaires à la
+al.}\parencite{Aanesland} qui donnent les conditions nécessaires à la
 formation d'un plasma ion-ion. L'enceinte du propulseur, de dimension
 12x12x8cm, est usiné à partir d'un bloc d'aluminium, anodisé afin de rendre
 ses parois diélectriques. Une autre version, constituée de parois conductrices,
 est aussi utilisée à des fins de diagnostique pour les éléments de la source.
 
 Bien que MAGNIS ne puisse pas encore simuler les plasmas électronégatifs qui
-nécéssitent une description des intéractions chimiques, il peut être utilisé
+nécessitent une description des interactions chimiques, il peut être utilisé
 pour caractériser le transport complexe des électrons et du plasma en général à
 travers le filtre magnétique. Pour étudier ce comportement, nous choisissons de
 simuler un plasma d'argon, avec la géométrie présentée figure
@@ -166,7 +166,7 @@ chute de température électronique en présence d'un champ magnétique
 non-uniforme~\parencite{Bredin}. Nous reprenons et confrontons ainsi les mesures
 effectuées à pression de gaz et champ magnétique variables. Dans ces expériences, la grille
 d'extraction est enlevée, la source étant reliée à un grand volume diminuant
-l'expension spatiale du plasma. Pour nous placer au plus près des conditions
+l'expansion spatiale du plasma. Pour nous placer au plus près des conditions
 expérimentales, le domaine est allongé dans la direction X jusqu'à une longueur
 de 24cm.
 	
@@ -183,7 +183,7 @@ de 24cm.
 	X=2cm et diminue à travers le filtre pour atteindre une valeur constante
 	d'environ 1eV. On note cependant que le minimum de température n'est pas
 	atteint exactement au même niveau que dans les expériences, celles-ci le
-	placant au sommet de la barrière magnétique, et le modèle le
+	plaçant au sommet de la barrière magnétique, et le modèle le
 	prédisant plutôt à la fin du filtre, cette différence pouvant éventuellement
 	être imputée à la géométrie du système dans le modèle.
 
@@ -203,10 +203,10 @@ de 24cm.
 	
 	La comparaison des profils à différents champs magnétiques, présentée
 	figure~\ref{4-pegasesCompMagProfile}, est un peu moins concordante. Les mesures
-	expérimentales montrent en effet une augmentation de la densité et une chute
-	moins nette de la température. Cependant, lors des mesures à 140G d'intensité
-	de champ, on voit que le profil du filtre est aussi un peu plus large, pouvant
-	éventuellement influencer les paramètres du plasma.
+	expérimentales montrent en effet une augmentation de la densité et une
+	température post-filtre de 2eV. Cependant, lors des mesures à 140G
+	d'intensité de champ, on voit que le profil du filtre est aussi un peu plus
+	large, pouvant éventuellement influencer les paramètres du plasma.
 	
 	\begin{figure}[htbp]
   \centering
@@ -289,7 +289,7 @@ intermittents.
 Dans les sources d'ions utilisant un filtre magnétique, c'est le courant
 d'électrons qui est principalement responsable des inhomogénéités observées.
 Théoriquement réduit d'un facteur en $1/B^2$ à travers le filtre dans une
-analyse unidimentionnelle, on peut voir sur la
+analyse unidimensionnelle, on peut voir sur la
 figure~\ref{pegasesVarMagCourantParoi} que le courant récupéré au niveau de la
 grille d'extraction se comporte plutôt en $1/B$, ce qui est
 généralement prit comme la signature de la présence d'un transport anormal.
@@ -318,14 +318,14 @@ différents de 0V, 10V et 20V appliqués à la source.
 
 Les trois premières cartes, en l'absence de filtre magnétique, montrent la
 situation initiale pour les trois différents voltages. Cette situation, bien que
-basique, est déjà intriguante, le flux électronique formant des
+basique, est déjà intriguâtes, le flux électronique formant des
 vortex en dehors de la région d'ionisation et remontant le long du
 gradient de densité\footnote{Ce phénomène est hors de contexte du présent
 manuscrit mais mérite tout de même d'être signalé, étant totalement absent de
 la littérature.
 Des simulations particulaires ont par ailleurs montré un comportement
 similaire.}. On observe cependant que l'application du bias attire le flux
-éléctronique qui peut alors atteindre dans le plasma une densité de courant de
+électronique qui peut alors atteindre dans le plasma une densité de courant de
 quelques centaines d'ampère par mètre carré.
 
  \begin{figure}[htbp]
@@ -337,7 +337,7 @@ quelques centaines d'ampère par mètre carré.
 	\end{figure}
 	
 L'apparition du filtre magnétique, à faible intensité de champ, modifie
-complètement le flux électronique : la densité de courant devient asymétique et
+complètement le flux électronique : la densité de courant devient asymétrique et
 décuple d'intensité dans le bas de la région d'ionisation. A 10G, la
 température électronique est de l'ordre de 5eV, donnant un rayon de Larmor
 électronique d'environ 5mm. Les électrons sont déjà magnétisés et ne peuvent
@@ -358,14 +358,25 @@ de l'intensité de la barrière mène alors à l'apparition d'un phénomène ins
 que nous allons regarder plus en détail dans la partie suivante.
 
 \subsection{Phénomènes intermittents, instabilités}
-A faible champ magnétique ou à pression suffisement élevée, les solutions
-obtenues par MAGNIS sont stationnaires, validant à postériori l'hypothèse
-d'approximation de l'intertie qui fonde les modèles de dérive-diffusion.
-Cependant, lorsque la pression chute, le transport collisionnel ne domine
-plus et des phénomènes instables, caractéristiques des plasmas magnétisés,
-peuvent apparaître et bouleverser toute la dynamique du système. 
+A faible champ magnétique ou à pression suffisamment élevée, les solutions
+obtenues par MAGNIS sont stationnaires, validant à posteriori l'hypothèse
+d'approximation de l'inertie qui fonde les modèles de dérive-diffusion.
+Cependant, lorsque la pression diminue, le transport collisionnel n'est plus
+dominant et des phénomènes instables, caractéristiques des plasmas
+magnétisés, peuvent apparaître et affecter toute la dynamique du système. 
+ 
 	\subsubsection{Vagues ioniques}
+La première instabilité que l'on voit apparaître est illustrée
+figure\ref{4-PegasesVaguesIoniques}. A intervalles régulières, des vagues de
+surdensités traversent le filtre magnétique à très grande vitesse dans la
+direction perpendiculaire au front de densité. Cette instabilité est directement
+reliée au terme inertiel d'advection de la vitesse ionique (il
+suffit en effet de ne plus le prendre en compte dans le modèle pour faire
+totalement disparaître le phénomène). 
 
+Sans bias et à une pression de gaz de 1mTorr, les fronts de densité apparaissent
+à une fréquence de 80kHz et se déplacent à une vitesse de  proche de la vitesse
+acoustique ionique, fait naturellement penser à la transition subsonique-supersonique qui advient dans les gaz classiques.
 \begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias4}
@@ -374,7 +385,7 @@ peuvent apparaître et bouleverser toute la dynamique du système.
     \includegraphics[height=5cm]{figures/4-PegasesCarteViSurTeVarBias.eps}}
     \caption{Cartes de densité\subref{4-PegasesCarteDensiteVarBias1}~, de
     potentiel\subref{4-PegasesCarteDensiteVarBias2}}
-    \label{pandas}
+    \label{4-PegasesVaguesIoniques}
 \end{figure}
 	
 
@@ -410,9 +421,9 @@ a
 \begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-pegasesCarteDensite512}
-    \includegraphics[height=7cm]{figures/4-pegasesCarteDensite512.png}}
+    \includegraphics[height=7cm]{figures/4-PegasesCarteDensite512.eps}}
     \subfigure[]{\label{4-pegasesCarteTemp512}
-    \includegraphics[height=7cm]{figures/4-PegasesCarteTemperature512.png}}
+    \includegraphics[height=7cm]{figures/4-PegasesCarteTemp512.eps}}
     \caption{Cartes de densité\subref{4-pegasesCarteDensite512}~, de
     potentiel\subref{4-pegasesCarteTemp512}}
     \label{pandas}
@@ -560,7 +571,7 @@ a
 \footnotesize\centering
 \ra{1.3}
 \begin{tabular}{@{}cccccccccc@{}}\toprule
-B&&\multicolumn{3}{c}{Echelles} && \multicolumn{2}{c}{Champs} &&
+B&&\multicolumn{3}{c}{Échelles} && \multicolumn{2}{c}{Champs} &&
 Rotation\\
 \cmidrule{3-5} \cmidrule{7-8} \cmidrule{10-10}
 && $\omega_c$ & $\rho\indice{L}$& $l_{\text{lpm}}$&& $n$ & $T_e$ && 
@@ -580,7 +591,7 @@ Phase 3\\
 
 \bottomrule
 \end{tabular}
-\caption{Caption}
+\caption{Captions}
 \end{table*}
 	
 \subsection{Rôle de la direction parallèle}
