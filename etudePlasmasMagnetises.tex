@@ -18,15 +18,15 @@ PEGASES, acronyme de \emph{Plasma Propulsion with Electronegative Gases}, est
 un prototype de propulseur électrostatique à grille (PEG)
 ion-ion\parencite{Chabert} conçu au LPP (Laboratoire de Physique des
 Plasma) de l'Ecole Polytechnique de Paris et qui a pour originalité d'éjecter à
-la fois des ions négatifs et des ions positifs pour générer la poussée. Dans ce
+la fois des ions négatifs et des ions positifs pour générer une poussée. Dans ce
 nouveau concept prometteur, les faisceaux d'ions de charges opposées se
 neutralisent mutuellement à la sortie du propulseur, rendant la cathode
-neutralisante non nécéssaire. Contrairement aux Propulseurs à Effets Hall
+neutralisante non nécéssaire. Contrairement aux Propulseurs à Effet Hall
 \footnote{Les propulseurs ioniques classiques, Propulseurs à Effet Hall (PEH),
 sont constitués de trois étages : la source d'ion, l'étage d'accélération, où un
 fort champ électromagnétique accélère les ions, et une cathode pour neutraliser
 les ions positifs et éviter que le propulseur ne se charge.}, les PEG n'ont
-donc pas de séparation entre les étages de création et d'accélération des ions.
+pas de séparation entre les étages de création et d'accélération des ions.
 Pour filtrer les électrons chauds et favoriser la création du plasma ion-ion, une
 barrière magnétique d'une centaine de Gauss est placée entre la zone
 d'ionisation et la région d'extraction.
@@ -50,22 +50,23 @@ travers le champ. Le plasma se sépare ainsi en deux régions de températures
 électroniques différentes, l'une chaude du côté de l'injection de puissance,
 l'autre plus froide en aval de la barrière, où se forme un plasma
 ion-ion. Le troisième étage est enfin constitué du plasma ion-ion et
-d'une série de grille que l'on polarise pour extraire et accélérer les
+d'une série de grilles que l'on polarise pour extraire et accélérer les
 particules, afin de former les faisceaux d'ions qui feront la poussée. La grille
 d'extraction est la seule paroi conductrice du propulseur, ce qui permet de
 contrôler le potentiel plasma en s'affranchissant du problème de l'état de
-surface et de la contamination des parois.
+surface et de la contamination des parois\footnote{Dans les sources d'ion qui
+utilisent des parois conductrices\ldots}.
 
 La source ICP est entretenue à 4MHz avec une bobine plane dopée par un noyau de
 ferrite protégée d'une fine (3mm) couche de céramique\parencite{Godyak} qui
-peut fournir de 50W à 250W.
+peut fournir une puissance allant de 50W à 250W.
 La géométrie de la source et la configuration du
 filtre magnétique ont été choisies d'après les résultats de Aanesland \emph{et
-al.}\parencite{Aanesland} qui donne les conditions nécéssaires à la
+al.}\parencite{Aanesland} qui donnent les conditions nécéssaires à la
 formation d'un plasma ion-ion. L'enceinte du propulseur, de dimension
-12x12x8cm, est usiné à partir d'un bloc d'aluminium, anodisée afin de rendre
-ses parois diélectriques. Une autre version, constituée de paroi conductrices,
-est aussi utilisée à des fins de diagnostique de la source.
+12x12x8cm, est usiné à partir d'un bloc d'aluminium, anodisé afin de rendre
+ses parois diélectriques. Une autre version, constituée de parois conductrices,
+est aussi utilisée à des fins de diagnostique pour les éléments de la source.
 
 Bien que MAGNIS ne puisse pas encore simuler les plasmas électronégatifs qui
 nécéssitent une description des intéractions chimiques, il peut être utilisé
@@ -81,8 +82,8 @@ magnétique.}
 \label{4-pegasesSimDomain}}
 \end{figure}
 
-Rectangulaire et de
-dimension similaire à celle du prototype, la puissance est déposée dans la
+Le domaine de simulation est rectangulaire et de
+dimensions similaires à celles du prototype. La puissance est déposée dans la
 région en amont du filtre magnétique sous la forme d'une demi-gaussienne de 2cm
 de largeur. Le filtre magnétique est aussi de forme gaussienne, centré en
 x=7.5cm et de largeur $\sim$ 2.5cm. Les parois seront choisies
@@ -90,8 +91,8 @@ conductrices ou diélectriques, avec une polarisation éventuelle de la grille
 d'extraction (en jaune à droite du domaine). La puissance totale absorbée et la
 densité de gaz sont fixées respectivement à 150W et 1mTorr.
 
-Le type de solutions obtenues par MAGNIS dans le cas de parois diélectriques et
-sans bias appliqué sont illustrées figure \ref{2-CartesWithTe} :
+Les types de solutions obtenues par MAGNIS dans le cas de parois diélectriques
+et sans bias appliqué sont illustrées figure \ref{2-CartesWithTe} :
 
 \begin{figure}[htbp]
     \centering
@@ -103,67 +104,204 @@ sans bias appliqué sont illustrées figure \ref{2-CartesWithTe} :
     \includegraphics[height=5.75cm]{figures/4-PegasesCarteTemperatureBase.eps}}
     \caption{Cartes de densité \subref{4-PegasesCarteDensiteBase}~, de potentiel
     \subref{4-PegasesCartePotentielBase}~ et de température
-    \subref{4-PegasesCarteTemperatureBase} dans le cas de parois diélectriques.}
+    \subref{4-PegasesCarteTemperatureBase}~ dans le cas de parois
+    diélectriques.}
     \label{2-CartesWithTe}
 	\end{figure}
 
-La densité maximum de la source, 2.5x10$^{17}\text{m}^{-3}$  est atteinte au
+Le plasma atteint un état stationnaire en $\tau\simeq 10^{-4}\text{s}$. Le
+maximum de densité de la source, 2.5x10$^{17}\text{m}^{-3}$ est atteint au
 centre de la région d'ionisation. La densité du plasma décroît ensuite très
 rapidement sur une longueur de 2 à 4cm. On peut observer de plus qu'une partie
 du plasma diffuse en travers du champ magnétique. Le potentiel électrique, qui
-suit le profile de densité, donne naissance à un champ électrique d'une centaine
-de Volt par mètre, quasiment ambipolaire dans la région non magnétisée, et
+suit le profil de densité, donne naissance à un champ électrique d'une centaine
+de volt par mètre, quasiment ambipolaire dans la région non magnétisée, et
 plutôt faible dans le filtre magnétique.
+
+De manière conforme à la théorie, le filtre magnétique fait fortement décroître
+la température électronique, la faisant chuter de 7eV à 1eV sur une
+longueur de quelques centimètres. On peut aussi remarquer une légère asymétrie qui se met en
+place le long de la direction Y. 
+
+Dans ce type de configuration
+magnétique les électrons, dont la mobilité est considérablement réduite,
+cherchent un moyen de franchir le filtre afin de préserver la quasineutralité du
+plasma. Les cartes de flux ioniques et électroniques présentées sur la figure~\ref{4-PegasesCarteFlux} permettent de se faire une idée de la dynamique
+du système. Dans la zone non magnétisée, les ions issus de l'ionisation du gaz
+sont créés avec une vitesse initiale quasiment nulle et tombent de façon
+rectiligne aux parois. Du côté magnétisé, le flux augmente fortement puis est
+ralenti à travers le filtre, mais celui-ci n'a pas d'influence notoire sur la
+trajectoire des particules.
+
+Le flux électronique est quant à lui bien moins évident à interpréter. La
+caractéristique la plus immédiate à visualiser correspond au fort flux qui
+remonte le long de la direction Y. Ce comportement se retrouve dans d'autres
+sources utilisant un filtre magnétique, notamment dans la
+sources d'ions négatifs de Garshing~\parencite{GarshingFiltre} et a été modélisé
+dans ce contexte à travers différents
+modèles, fluides et cinétiques\parencite{PIC2D-PIC3D-MAGMA}. On peut remarquer
+deux autres phénomènes, moins détaillés dans la littérature : tout d'abord il
+faut noter que le flux le plus important se situe dans la zone non magnétisée en
+formant un vortex proche de la paroi à X=0cm qui reste à interpréter. Dans la
+région en aval du filtre, on observe que le flux
+électronique traverse le domaine en sens inverse, une partie
+de celui-ci franchissant même à nouveau la barrière magnétique au niveau de la
+paroi opposée.
 
 \begin{figure}[htbp]
   \centering
-    \subfigure[]{\label{4-PegasesCarteFluxEBase}
-    \includegraphics[height=4cm]{figures/4-PegasesCarteFluxEBase.eps}}
     \subfigure[]{\label{4-PegasesCarteFluxIBase}
-    \includegraphics[height=4cm]{figures/4-PegasesCarteFluxIBase.eps}}
-    \caption{Cartes de densité\subref{4-PegasesCarteFluxEBase}~, de
-    potentiel\subref{4-PegasesCarteFluxEBase}~ et de
-    température\subref{4-PegasesCarteFluxEBase}}
-    \label{pandas}
+    \includegraphics[height=6cm]{figures/4-PegasesCarteFluxIBase.eps}}
+    \subfigure[]{\label{4-PegasesCarteFluxEBase}
+    \includegraphics[height=6cm]{figures/4-PegasesCarteFluxEBase.eps}}
+    \caption{Cartes de flux ionique \subref{4-PegasesCarteFluxEBase}~et de flux
+    électronique \subref{4-PegasesCarteFluxEBase}~.}
+    \label{4-PegasesCarteFlux}
 \end{figure}
-\subsection{Comparaison expérimentale}
 
-a
+\subsection{Comparaison expérimentale}
+Pour une première vérification du modèle, nous
+comparons les résultats obtenus par Bredin sur l'étude de la
+chute de température électronique en présence d'un champ magnétique
+non-uniforme~\parencite{Bredin}. Nous reprenons et confrontons ainsi les mesures
+effectuées à pression de gaz et champ magnétique variables. Dans ces expériences, la grille
+d'extraction est enlevée, la source étant reliée à un grand volume diminuant
+l'expension spatiale du plasma. Pour nous placer au plus près des conditions
+expérimentales, le domaine est allongé dans la direction X jusqu'à une longueur
+de 24cm.
 	
 	\subsubsection{Scan en pression}
-	\begin{figure}[htbp]
+	Les comparaisons des profils de densité et de température présentées
+	figure~\ref{pegasesCompPressProfils} sont en bon accords avec les mesures : à
+	100mTorr, la densité du plasma atteint 10$^{18}\text{m}^{-3}$ puis décroît
+	exponentiellement. La température électronique reste approximativement égale à
+	2eV et n'est que faiblement impactée par le filtre magnétique. A 1mTorr, la
+	densité diminue d'une décade et présente une sorte de palier dans la région de
+	champ magnétique croissant que l'on devine dans les courbes expérimentales.
+	
+	La température, bien plus élevée à basse pression, part d'un maximum de 7eV à
+	X=2cm et diminue à travers le filtre pour atteindre une valeur constante
+	d'environ 1eV. On note cependant que le minimum de température n'est pas
+	atteint exactement au même niveau que dans les expériences, celles-ci le
+	placant au sommet de la barrière magnétique, et le modèle le
+	prédisant plutôt à la fin du filtre, cette différence pouvant éventuellement
+	être imputée à la géométrie du système dans le modèle.
+
+\begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-pegasesCompPressDenProfile}
-    \includegraphics[height=4cm]{figures/4-pegasesCompPressDenProfile.eps}}
+    \includegraphics[height=5cm]{figures/4-pegasesCompPressDenProfile.eps}}
     \subfigure[]{\label{4-pegasesCompPressTempProfile}
-    \includegraphics[height=4cm]{figures/4-pegasesCompPressTempProfile.eps}}
-    \caption{Cartes de densité\subref{4-pegasesCompPressTempProfile}~, de
-    potentiel\subref{4-pegasesCompPressTempProfile}~ et de
-    température\subref{4-pegasesCompPressTempProfile}}
-    \label{pandas}
+    \includegraphics[height=5cm]{figures/4-pegasesCompPressTempProfile.eps}}
+    \caption{Profils de densité~\subref{4-pegasesCompPressTempProfile}~ et de
+    température~\subref{4-pegasesCompPressTempProfile}~ pour trois pressions de
+    gaz différentes, 1mtorr, 10mtorr et 100mtorr.}
+    \label{pegasesCompPressProfils}
 \end{figure}
-	\subsubsection{Variations du champ magnétique}
 
-a
+	\subsubsection{Variations du champ magnétique}
+	
+	La comparaison des profils à différents champs magnétiques, présentée
+	figure~\ref{4-pegasesCompMagProfile}, est un peu moins concordante. Les mesures
+	expérimentales montrent en effet une augmentation de la densité et une chute
+	moins nette de la température. Cependant, lors des mesures à 140G d'intensité
+	de champ, on voit que le profil du filtre est aussi un peu plus large, pouvant
+	éventuellement influencer les paramètres du plasma.
 	
 	\begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-pegasesCompMagDenProfile}
-    \includegraphics[height=4cm]{figures/4-pegasesCompMagDenProfile.eps}}
+    \includegraphics[height=5cm]{figures/4-pegasesCompMagDenProfile.eps}}
     \subfigure[]{\label{4-pegasesCompMagTempProfile}
-    \includegraphics[height=4cm]{figures/4-pegasesCompMagTempProfile.eps}}
-    \caption{Cartes de densité\subref{4-pegasesCompMagTempProfile}~, de
-    potentiel\subref{4-pegasesCompMagTempProfile}~ et de
-    température\subref{4-pegasesCompMagTempProfile}}
-    \label{pandas}
+    \includegraphics[height=5cm]{figures/4-pegasesCompMagTempProfile.eps}}
+    \caption{Profils de densité \subref{4-pegasesCompMagTempProfile}~ et de
+    température \subref{4-pegasesCompMagTempProfile}~ pour trois intensité de
+    champ magnétique 50G, 140G et 250G.}
+    \label{4-pegasesCompMagProfile}
 \end{figure}
+
+Pour confirmer ces hypothèses, faisons varier la largeur de dépôt d'énergie
+et la largeur de la barrière pour deux intensités de champ magnétique puis
+comparons la densité maximale et la température des électrons après le
+filtre~(voir le tableau \ref{4-pegasesCompLargeurs}). On voit ainsi que quand le
+filtre est plus long, la densité augmente et la température baisse de façon plus
+prononcée.
+De l'autre côté, quand l'énergie est déposée sur une plus grande distance, la
+densité a plutôt tendance à diminuer tandis qu'après la barrière, la
+température électronique remonte.
+
+\begin{table}
+\footnotesize\centering
+\ra{1.3}
+\begin{tabular}{@{}ccccccc@{}}\toprule
+\bfseries B&&\multicolumn{2}{c}{$l_B=2cm$} && \multicolumn{2}{c}{$l_B=4cm$}\\
+\cmidrule{3-4} \cmidrule{6-7}
+&& $n (m^{-3})$ & $\min T_e (eV)$ && $n (m^{-3})$ & $\min T_e (eV)$\\
+\midrule 
+250G\\
+\scriptsize $l_S=2cm$ &&\bfseries\scriptsize 1.58
+10\textsuperscript{17}&\bfseries\scriptsize 0.91&&\scriptsize 2.3
+10\textsuperscript{17}&\scriptsize 0.73
+\\
+\scriptsize $l_S=4cm$  &&\scriptsize 1.4 10\textsuperscript{17} &\scriptsize
+2.08&&\scriptsize 12 10\textsuperscript{17}&\scriptsize 1.38\\
+140G\\
+\scriptsize $l_S=2cm$ &&\scriptsize 1.57 10\textsuperscript{17} &\scriptsize
+1.27&&\scriptsize 1.96 10\textsuperscript{17}&\scriptsize 0.98 \\
+\scriptsize $l_S=4cm$  &&\scriptsize 1.39 10\textsuperscript{17} &\scriptsize
+2.36&&\bfseries\scriptsize 1.75 10\textsuperscript{17}&\bfseries\scriptsize
+1.6\\
+\bottomrule
+\end{tabular}
+\caption{Tableau comparatif présentant la densité maximale du plasma ainsi que
+la température électronique après le filtre magnétique pour des largeurs de
+source d'énergie $l_S$ et de filtre magnétique $l_B$ différentes.}
+\label{4-pegasesCompLargeurs}
+\end{table}
+
+Dans les mesures réalisées sur PEGASES, le filtre magnétique est respectivement
+de largeur 4cm et 2cm dans les cas à 140G et 250G, ne laissant que deux
+résultats "possibles" à prendre en considération. 
+Les valeurs se rapprochant le plus des données expérimentales sont en gras dans
+le tableau, elles correspondent à une largeur de source plus petite dans le cas fortement
+magnétisé et inversement à une largeur de puissance déposée plus grande quand le
+champ magnétique est plus étendu. L'influence de la taille de la zone de
+chauffage n'est donc pas négligeable dans le cas des sources d'ion et semble de
+plus varier en fonction de la configuration magnétique.
+
 \subsection{Transport du courant dans le cas de parois conductrices}
 
-a
+La suite de cette étude porte sur le cas de parois
+conductrices. Dans ce mode de fonctionnement, représentatif de l'une des
+configurations de PEGASES ainsi que de nombreuses expérimentations,
+l'application d'un bias positif sur la grille d'extraction afin d'extraire un
+courant d'ions négatifs modifie aussi de manière conséquente les boucles de
+courant, qui peuvent alors se refermer dans les parois (effet Hall?).
+
+Cet effet peut être particulièrement déterminant pour le transport global du
+plasma dans le cas des parois qui interceptent les lignes de champ magnétique,
+et où la gaine joue un rôle important dans l'évolution du potentiel jusqu'au
+coeur de la source. A basse pression, les solutions deviennent instationnaires, et le transport
+change radicalement de nature, devenant instable avec de violents phénomènes
+intermittents.
 	
-	\subsubsection{Influence du champ magnétique}
-	a
-	
+\subsubsection{Influence du champ magnétique}
+Dans les sources d'ions utilisant un filtre magnétique, c'est le courant
+d'électrons qui est principalement responsable des inhomogénéités observées.
+Théoriquement réduit d'un facteur en $1/B^2$ à travers le filtre dans une
+analyse unidimentionnelle, on peut voir sur la
+figure~\ref{pegasesVarMagCourantParoi} que le courant récupéré au niveau de la
+grille d'extraction se comporte plutôt en $1/B$, ce qui est
+généralement prit comme la signature de la présence d'un transport anormal.
+Pourtant, dans ces sources, le transport reste classique et la raison de cette
+augmentation significative doit être recherchée dans les effets de dérive
+induits par le champ magnétique. Nous ne nous tenterons pas à
+expliquer l'origine de transport, bien que la future utilisation de MAGNIS sera
+possiblement d'une grande utilité pour aider à répondre à cette question.
+Actuellement, même si les tentatives d'explications s'accordent sur la
+traversée du filtre via la forte dérive ExB à proximité de la gaine, la
+déviation du flux électronique en face du filtre reste incomprise.
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/4-pegasesVarMagCourantParoi.eps}
@@ -171,23 +309,75 @@ a
 	filtre magnétique pour trois voltages appliqués. }
 	\label{pegasesVarMagCourantParoi}}
 	\end{figure}
-	
-	a
-	
-	\subsubsection{Transport à travers le filtre magnétique}
-	a
-	
-	\begin{figure}[htbp]
+
+Attardons nous donc sur le flux électronique, à travers l'augmentation
+progressive de l'intensité du champ magnétique. La
+figure~\ref{4-pegasesfluxElectronique} représente une comparaison croisée du
+flux d'électrons pour un champ magnétique variant de 0G à 500G et trois bias
+différents de 0V, 10V et 20V appliqués à la source. 
+
+Les trois premières cartes, en l'absence de filtre magnétique, montrent la
+situation initiale pour les trois différents voltages. Cette situation, bien que
+basique, est déjà intriguante, le flux électronique formant des
+vortex en dehors de la région d'ionisation et remontant le long du
+gradient de densité\footnote{Ce phénomène est hors de contexte du présent
+manuscrit mais mérite tout de même d'être signalé, étant totalement absent de
+la littérature.
+Des simulations particulaires ont par ailleurs montré un comportement
+similaire.}. On observe cependant que l'application du bias attire le flux
+éléctronique qui peut alors atteindre dans le plasma une densité de courant de
+quelques centaines d'ampère par mètre carré.
+
+ \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figures/4-pegasesfluxElectronique.pdf}
-	{\caption{Flux électronique à travers le filtre magnétique sur un plage
-	allant de 0 à 500 Gauss pour trois différents voltages appliqués.}
+	{\caption{Flux électronique à travers le filtre magnétique sur une plage
+	allant de 0G à 500G pour trois différents voltages appliqués.}
 	\label{4-pegasesfluxElectronique}}
 	\end{figure}
-\subsection{Phénomènes intermittents, instabilités}
-	\subsubsection{Vagues ioniques}
-	a
 	
+L'apparition du filtre magnétique, à faible intensité de champ, modifie
+complètement le flux électronique : la densité de courant devient asymétique et
+décuple d'intensité dans le bas de la région d'ionisation. A 10G, la
+température électronique est de l'ordre de 5eV, donnant un rayon de Larmor
+électronique d'environ 5mm. Les électrons sont déjà magnétisés et ne peuvent
+traverser le filtre qu'au niveau de la paroi située en Y=12cm. Le flux
+d'électrons se sépare ensuite pour rejoindre les ions qui ont traversé la
+barrière sans perturbation, une partie plus ou moins importante allant à la
+paroi en fonction du bias et l'autre traversant le domaine en sens inverse
+jusqu'à atteindre la paroi en Y=0cm.
+
+A 50G, l'intensité du courant électronique reste importante et un phénomène de
+rotation des électrons autour de la barrière magnétique devient plus clair.
+L'application du bias montre aussi que le flux pénètre sur quelques centimètre
+dans la partie basse du filtre. A 200G et sans bias appliqué, le flux
+électronique est fortement réduit à travers la barrière et change encore de
+forme : le premier courant qui remontait le long du champ magnétique devient
+moins important que le flux de retour. L'application d'un bias ou l'augmentation
+de l'intensité de la barrière mène alors à l'apparition d'un phénomène instable
+que nous allons regarder plus en détail dans la partie suivante.
+
+\subsection{Phénomènes intermittents, instabilités}
+A faible champ magnétique ou à pression suffisement élevée, les solutions
+obtenues par MAGNIS sont stationnaires, validant à postériori l'hypothèse
+d'approximation de l'intertie qui fonde les modèles de dérive-diffusion.
+Cependant, lorsque la pression chute, le transport collisionnel ne domine
+plus et des phénomènes instables, caractéristiques des plasmas magnétisés,
+peuvent apparaître et bouleverser toute la dynamique du système. 
+	\subsubsection{Vagues ioniques}
+
+\begin{figure}[htbp]
+  \centering
+    \subfigure[]{\label{4-PegasesCarteDensiteVarBias4}
+    \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteVarBias4.eps}}
+    \subfigure[]{\label{4-PegasesCarteViSurTeVarBias}
+    \includegraphics[height=5cm]{figures/4-PegasesCarteViSurTeVarBias.eps}}
+    \caption{Cartes de densité\subref{4-PegasesCarteDensiteVarBias1}~, de
+    potentiel\subref{4-PegasesCarteDensiteVarBias2}}
+    \label{pandas}
+\end{figure}
+	
+
 	\begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias1}
@@ -204,20 +394,8 @@ a
 
 a
 
-\begin{figure}[htbp]
-  \centering
-    \subfigure[]{\label{4-PegasesCarteDensiteVarBias4}
-    \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteVarBias4.eps}}
-    \subfigure[]{\label{4-PegasesCarteViSurTeVarBias}
-    \includegraphics[height=5cm]{figures/4-PegasesCarteViSurTeVarBias.eps}}
-    \caption{Cartes de densité\subref{4-PegasesCarteDensiteVarBias1}~, de
-    potentiel\subref{4-PegasesCarteDensiteVarBias2}}
-    \label{pandas}
-\end{figure}
-	
-	a
-	
 	\subsubsection{Instabilité liée au gradient de densité}
+a
 	\begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias5}
@@ -228,9 +406,22 @@ a
     potentiel\subref{4-PegasesCarteDensiteVarBias6}}
     \label{pandas}
 \end{figure}
+
+\begin{figure}[htbp]
+  \centering
+    \subfigure[]{\label{4-pegasesCarteDensite512}
+    \includegraphics[height=7cm]{figures/4-pegasesCarteDensite512.png}}
+    \subfigure[]{\label{4-pegasesCarteTemp512}
+    \includegraphics[height=7cm]{figures/4-PegasesCarteTemperature512.png}}
+    \caption{Cartes de densité\subref{4-pegasesCarteDensite512}~, de
+    potentiel\subref{4-pegasesCarteTemp512}}
+    \label{pandas}
+\end{figure}
+	
 	
 \section{Colonne de plasma magnétisée - CYBELE}
 a
+\subsection{Caractéristiques de la source}
 
 \begin{figure}[htbp]
   \centering
@@ -253,7 +444,8 @@ plasma\parencite{Rozhansky}.}
 \label{4-magnetizedColumn}}
 \end{figure}
 
-a
+\subsection{Simulation d'un plasma classique}
+
 
 \begin{figure}[htbp]
 \centering
@@ -282,11 +474,15 @@ a
 a
 
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/4-CybeleCartePhiSurTeBase.eps}
-{\caption{Carte du potentiel électrostatique rapporté à la température
-électronique.}
-\label{4-CybeleCartePhiSurTeBase}}
+  \centering
+    \subfigure[]{\label{4-CybeleProfilsRadial}
+    \includegraphics[height=5.5cm]{figures/4-CybeleProfilsRadial.eps}}
+    \subfigure[]{\label{4-CybeleProfilsPol}
+    \includegraphics[height=5.5cm]{figures/4-CybeleProfilsPol.eps}}
+    \caption{Profils radiaux\subref{4-CybeleProfilsPol}~ et
+    poloïdaux~\subref{4-CybeleProfilsPol} de la densité, du potentiel et de la
+    température.}
+    \label{4-CybeleProfils}
 \end{figure}
 
 a
@@ -304,7 +500,7 @@ a
 
 a
 
-\subsection{Le transport transverse magnétisé}
+\subsection{Variation croissante du champ magnétique}
 
 \begin{figure}[htbp]
   \centering
@@ -387,12 +583,65 @@ Phase 3\\
 \caption{Caption}
 \end{table*}
 	
-	\subsection{Influence du champ magnétique}
-	\subsubsection{Influence de la densité de gaz}
-\subsection{Polarisation des parois}
-		
+\subsection{Rôle de la direction parallèle}
+\begin{figure}[htbp]
+  \centering
+    \subfigure[]{\label{4-CybeleProfileDenRadialeZ}
+    \includegraphics[height=5.25cm]{figures/4-CybeleProfileDenRadialeZ.eps}}
+    \subfigure[]{\label{4-CybeleProfileTempRadialeZ}
+    \includegraphics[height=5cm]{figures/4-CybeleProfileTempRadialeZ.eps}}
+    \caption{Comparaison des profils de
+    densité~\subref{4-CybeleProfileDenRadialeZ}~ et de
+    température~\subref{4-CybeleProfileTempRadialeZ}~ pour différentes
+    longueurs parallèles}
+    \label{pandas}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/4-CybeleCarteDensiteIsolant.eps}
+{\caption{Carte de densité pour des parois diélectriques au bout des lignes de
+champ.}
+\label{4-CybeleCarteDensiteIsolant}}
+\end{figure}		
 
 \section{Plasma de bord de tokamaks}
+\subsection{Un cas critique pour MAGNIS}
+
+\begin{figure}[htbp]
+  \centering
+    \subfigure[]{\label{4-Tokam1}
+    \includegraphics[height=8cm]{figures/4-Tokam1.eps}}
+    \subfigure[]{\label{4-Tokam2}
+    \includegraphics[height=8cm]{figures/4-Tokam2.eps}}
+    \caption{Cartes de densité de la SOL simulée par
+    TOKAM~\subref{4-CybeleVarMag4}~ et par MAGNIS~\subref{4-CybeleVarMag5}}
+    \label{pandas}
+\end{figure}
+\subsection{Comparaison des profils et de la statistique}
+
+\begin{figure}[htbp]
+  \centering
+    \subfigure[]{\label{4-TokamProfileDensite}
+    \includegraphics[height=6cm]{figures/4-TokamProfileDensite.eps}}
+    \subfigure[]{\label{4-TokamProfileFluxRadial}
+    \includegraphics[height=6cm]{figures/4-TokamProfileFluxRadial.eps}}
+    \caption{Comparaison des profils de
+    densité~\subref{4-pegasesCompPressTempProfile}~ et de flux
+    radial~\subref{4-pegasesCompPressTempProfile}~ entre TOKAM et MAGNIS}
+    \label{pandas}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/4-TokamPDFDensite.eps}
+{\caption{Comparaisons des densités de probabilité pour la densité et
+le flux radial.}
+\label{4-TokamPDFDensite}}
+\end{figure}
+
+\subsection{Simulation plus complète de la SOL}
+ avec une densité de neutre et la température
 %\bibliographystyle{apalike}
 %\bibliography{biblio}
 \end{refsection}

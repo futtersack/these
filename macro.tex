@@ -53,8 +53,8 @@
 
 %\renewcommand{\cftbeforetoctitleskip}{-0.25in}        % Title is 1in from top
 % title
-\renewcommand{\cftchapnumwidth}{6mm}
-\renewcommand{\cftsecnumwidth}{3mm}
+\renewcommand{\cftchapnumwidth}{8mm}
+\renewcommand{\cftsecnumwidth}{4mm}
 \renewcommand{\cftsubsecnumwidth}{8mm}
 \renewcommand{\cfttoctitlefont}{\hfill \huge  \bfseries}
 \renewcommand{\cftaftertoctitle}{\hfill}
@@ -62,7 +62,7 @@
 %Une table des matiere par chapitre
 \usepackage[french]{minitoc}
 \setcounter{minitocdepth}{2}
-
+\usepackage{chngcntr}
 \usepackage[squaren,Gray,thinspace]{SIunits}
 \usepackage{lipsum}
 
@@ -146,6 +146,7 @@
 \parskip 0.5em plus 1pt
 \newcommand{\Section}[1]{\newpage\section{#1} \setcounter{figure}{0}}
 \renewcommand{\thefigure}{\arabic{section}.\alph{figure}}
+\counterwithin{figure}{section}
 
 \makeatletter
 \renewcommand{\fnum@figure}{\small \textsc{\figurename}~\thefigure\it}
