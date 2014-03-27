@@ -276,7 +276,8 @@ conductrices. Dans ce mode de fonctionnement, représentatif de l'une des
 configurations de PEGASES ainsi que de nombreuses expérimentations,
 l'application d'un bias positif sur la grille d'extraction afin d'extraire un
 courant d'ions négatifs modifie aussi de manière conséquente les boucles de
-courant, qui peuvent alors se refermer dans les parois (effet Hall?).
+courant, qui peuvent alors se refermer dans les parois (effet
+Simon~\parencite{Simon54}).
 
 Cet effet peut être particulièrement déterminant pour le transport global du
 plasma dans le cas des parois qui interceptent les lignes de champ magnétique,
@@ -367,29 +368,69 @@ magnétisés, peuvent apparaître et affecter toute la dynamique du système.
  
 	\subsubsection{Vagues ioniques}
 La première instabilité que l'on voit apparaître est illustrée
-figure\ref{4-PegasesVaguesIoniques}. A intervalles régulières, des vagues de
-surdensités traversent le filtre magnétique à très grande vitesse dans la
-direction perpendiculaire au front de densité. Cette instabilité est directement
-reliée au terme inertiel d'advection de la vitesse ionique (il
-suffit en effet de ne plus le prendre en compte dans le modèle pour faire
-totalement disparaître le phénomène). 
-
-Sans bias et à une pression de gaz de 1mTorr, les fronts de densité
-apparaissent à une fréquence d'environ 120kHz et se déplacent à une vitesse de
-2.2 km.s$\puissance{-1}$. proche de la vitesse acoustique ionique, fait
-naturellement penser à la transition subsonique-supersonique qui advient dans les gaz classiques.
+figure~\ref{4-PegasesCarteDensiteWaves}. A intervalles régulières, un front
+de surdensité traverse le filtre magnétique à très grande vitesse. La direction
+ de propagation est perpendiculaire au front de densité, à l'oblique entre le
+ champ magnétique et son gradient. Sans bias et à une pression de gaz de 1mTorr,
+ les fronts de densité apparaissent à une fréquence d'environ 120kHz et se
+ déplacent à une vitesse approximative de 2.2 km.s$\puissance{-1}$. 
+ 
 \begin{figure}[htbp] 
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteWaves}
     \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteWave.eps}}
     \subfigure[]{\label{4-PegasesCarteViSurTeVarBias}
     \includegraphics[height=5cm]{figures/4-PegasesCarteViSurTeVarBias.eps}}
-    \caption{Cartes de densité\subref{4-PegasesCarteDensiteWave}~, de
-    potentiel\subref{4-PegasesCarteDensiteVarBias2}}
+    \caption{Cartes de densité~\subref{4-PegasesCarteDensiteWaves}~ et de
+    nombre de Mach~\subref{4-PegasesCarteViSurTeVarBias} pour un champ
+    magnétique de 250G, une densité de neutre de 1mTorr et un bias appliqué de
+    20V.}
     \label{4-PegasesVaguesIoniques}
 \end{figure}
-	
+ 
+ La figure~\ref{4-PegasesCarteViSurTeVarBias} représente la vitesse ionique
+ rapportée à la vitesse de Bohm, ie. le nombre de Mach de
+ l'écoulement ionique. On voit tout d'abord qu'une grande partie du domaine est
+ occupée par des ions dont la vitesse dépasse la vitesse acoustique locale. En
+ effet, les ions franchissent Mach1 le long du gradient de température, à
+ $T_e\sim 5eV$ puis accélèrent encore jusqu'à atteindre Mach2 avant le front de
+ densité. La vitesse décroît ensuite lors de la traversée de la surdensité, tout
+ en restant supérieure à la vitesse de Bohm. La vitesse calculée du
+ front est cependant inférieure à la vitesse des particules le constituant,
+ soulignant le caractère ondulatoire de cette surdensité. Ce phénomène fait
+ naturellement penser à la transition subsonique-supersonique qui advient dans
+ les gaz compressibles classiques, où le front de densité serait l'onde
+ acoustique résultante du passage des ions supersoniques. La vitesse de
+ propagation de l'onde permet ainsi de définir une température critique :
+ \begin{equation}
+ 	V_f=C_{s}=\sqrt{\frac{eT_e}{Zm_i}}\simeq 2.2\;10^{3}\,\text{m.s}^{-1}
+ 	\Leftrightarrow T_e\simeq 2\,\text{eV}
+ \end{equation}
+ 
+ L'apparition de cette instabilité est directement reliée au gradient de
+ température électronique et au terme d'inertie  :
+ 
+ \begin{itemize}
+   \item Un plasma isotherme s'étend dans le sens du flux d'électron
+   transverse tandis que la variation de la longueur de gradient influe
+   sur le profil de température et modifie l'orientation des ondes
+   acoustiques. 
+	\item Les solutions du modèle quand le terme inertiel d'advection est
+	négligé sont elles aussi stationnaires.
+\end{itemize}
 
+La réponse à la polarisation de la grille d'extraction est aussi une autre
+caractéristique intéressante de ce phénomène. Les
+figures~\ref{4-PegasesCarteDensiteVarBiasWave}~
+\subref{4-PegasesCarteDensiteVarBias1}~ \subref{4-PegasesCarteDensiteVarBias2}~
+et~\subref{4-PegasesCarteDensiteVarBias3}~ illustrent cet effet en partie : la
+dynamique des fronts, de vitesse approximativement constante à 0V, se décompose
+en deux temps après l'application d'un faible voltage. Les fronts ralentissent
+au niveau du maximum du filtre magnétique, augmentent en densité, puis sont
+propulsés vers les parois après un certain temps de latence. A 30V, le champ
+électrique freine si bien les ions qu'un bras de densité équivalente à celle du
+plasma de la region d'ionisation se forme. 
+	
 	\begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias1}
@@ -401,10 +442,21 @@ naturellement penser à la transition subsonique-supersonique qui advient dans l
     \caption{Cartes de densité\subref{4-PegasesCarteDensiteVarBias1}~, de
     potentiel\subref{4-PegasesCarteDensiteVarBias2}~ et de
     température\subref{4-PegasesCarteDensiteVarBias3}}
-    \label{pandas}
+    \label{4-PegasesCarteDensiteVarBiasWave}
 \end{figure}
 
-a
+On peut maintenant raccorder l'étrange flux électronique qui apparaissait dans
+les cas fortements magnétisés de la
+figure~\ref{4-PegasesCarteDensiteVarBiasWave}. Entre les surdensités, il se crée
+un champ électrique, qui combiné au filtre magnétique est responsable d'un
+mouvement de dérive du type ExB autour des fronts exacerbé fortement le
+transport transverse des électrons.
+
+
+La caractérisation complète de cette instabilité est à réaliser, mais
+s'avère d'ores et déjà difficile : bien que la vitesse des particules et des
+fronts d'ondes ne .
+On peut se poser la question de la réalité physique de phénomène.
 
 	\subsubsection{Instabilité liée au gradient de densité}
 a
