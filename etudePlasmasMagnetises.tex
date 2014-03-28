@@ -402,21 +402,23 @@ de surdensité traverse le filtre magnétique à très grande vitesse. La direct
  les gaz compressibles classiques, où le front de densité serait l'onde
  acoustique résultante du passage des ions supersoniques. La vitesse de
  propagation de l'onde permet ainsi de définir une température critique :
+ 
  \begin{equation}
  	V_f=C_{s}=\sqrt{\frac{eT_e}{Zm_i}}\simeq 2.2\;10^{3}\,\text{m.s}^{-1}
  	\Leftrightarrow T_e\simeq 2\,\text{eV}
  \end{equation}
  
- L'apparition de cette instabilité est directement reliée au gradient de
- température électronique et au terme d'inertie  :
+ Quelques propriétés peuvent être immédiatement dégagées. L'apparition et
+ certaines particularités de cette instabilité sont directement reliées au
+ gradient de température électronique et au terme d'inertie  :
  
  \begin{itemize}
+   	\item Les solutions du modèle quand le terme inertiel d'advection est
+	négligé sont stationnaires.
    \item Un plasma isotherme s'étend dans le sens du flux d'électron
-   transverse tandis que la variation de la longueur de gradient influe
-   sur le profil de température et modifie l'orientation des ondes
-   acoustiques. 
-	\item Les solutions du modèle quand le terme inertiel d'advection est
-	négligé sont elles aussi stationnaires.
+   transverse et atteint lui aussi une solution stationnaire.
+   \item la direction des fronts d'ondes est fortement corrélée au gradient
+   de température.
 \end{itemize}
 
 La réponse à la polarisation de la grille d'extraction est aussi une autre
@@ -447,19 +449,31 @@ plasma de la region d'ionisation se forme.
 
 On peut maintenant raccorder l'étrange flux électronique qui apparaissait dans
 les cas fortements magnétisés de la
-figure~\ref{4-PegasesCarteDensiteVarBiasWave}. Entre les surdensités, il se crée
-un champ électrique, qui combiné au filtre magnétique est responsable d'un
-mouvement de dérive du type ExB autour des fronts exacerbé fortement le
-transport transverse des électrons.
+figure~\ref{4-PegasesCarteDensiteVarBiasWave}. Un champ éléctrique se forme
+entre les fronts de densité, et se combine au filtre
+magnétique pour faire naître un mouvement de dérive du type ExB, exacerbant le
+transport des électrons au travers de la barrière. 
 
-
-La caractérisation complète de cette instabilité est à  réaliser, mais
-s'avère d'ores et déjà difficile : bien que la vitesse des particules et des
-fronts d'ondes ne .
-On peut se poser la question de la réalité physique de phénomène.
+Enfin, il faut toutefois relever que le modèle n'arrive pas à atteindre 
+une fréquence ou une longueur d'onde caractéristique pour ces oscillations,
+celles-ci n'ayant pas convergées lors des tests sur maillage\footnote{La
+vitesse des particules ainsi que celle des fronts d'onde semblent quant-t-à
+elles indépendantes du maillage.}.
+La caractérisation complète de cette instabilité est donc pour le moment
+assez difficile à réaliser.
+Pour terminer, on peut se poser la question de la réalité physique de
+ce phénomène, qui n'a apparement pas été remarqué lors des expérimentations. La
+présence d'ions supersoniques ne serait pourtant pas surprenante, étant donné
+les gradients extrêmes, la très faible température électronique 
+après le filtre, et la forte tension retenant le flux ionique.
+Des simulations PIC récemment lancées au GREPHE sur une géométrie similaire
+semblent montrer un comportement similaire, ce qui nous conforte dans les
+résultats du modèle.
 
 	\subsubsection{Instabilité liée au gradient de densité}
-a
+	A plus haute pression (10 mTorr et 100 mTorr), la variation de la tension
+	appliquée à la grille d'extraction révèle une autre instabilité
+	
 	\begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias5}
