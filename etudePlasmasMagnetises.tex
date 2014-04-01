@@ -470,27 +470,76 @@ Des simulations PIC récemment lancées au GREPHE sur une géométrie similaire
 semblent montrer un comportement similaire, ce qui nous conforte dans les
 résultats du modèle.
 
-	\subsubsection{Instabilité liée au gradient de densité}
+	\subsubsection{Instabilité flute}
 	A plus haute pression (10 mTorr et 100 mTorr), la variation de la tension
 	appliquée à la grille d'extraction révèle une autre instabilité qui prend la
-	forme de vaguelettes le long des gradients de densité (cf.
+	forme de vaguelettes (cf.
 	figure~\ref{4-PegasesCarteDensiteVarBias5}). On peut aussi la voir apparaître
 	le long des fronts de densité, au niveau des parois, dans des
-	simulations isothermes ou encore dans le cas de la colonne de plasma. 
-	
-	\begin{figure}[htbp]
+	simulations isothermes ou encore dans le cas de la colonne de plasma.
+		
+\begin{figure}[htbp]
   \centering
-    \label{4-PegasesCarteDensiteVarBias5}
     \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteVarBias5.eps}
     \caption{Cartes de densité pour une pression de gaz de 10mTorr et un bias
-    appliqué de 30V.}
+    appliqué de 30V.\label{4-PegasesCarteDensiteVarBias5}}
 \end{figure}
 	
+	Ce phénomène, qui se développe sur le bord du plasma et
+	en présence d'un champ électrique important, rappelle
+	les travaux de Simon~\parencite{Simon63} dans lesquels il démontre que l'état
+	stationnaire peut devenir instable si le signe du produit du
+	gradient de densité et du champ électrique est positif :
 	
-\section{Colonne de plasma magnétisée - CYBELE}
+	\begin{equation}
+		\nabla n\cdot \mathbf E>0
+	\end{equation}
+	
+	Le champ électrique requis est dans la direction opposée à celle du champ
+	électrique ambipolaire confinant usuellement les plasmas froids. Si l'étude de
+	Simon nous renseigne sur l'un des ingrédients de cette instabilité, elle porte
+	cependant sur un plasma isotherme et dans une géométrie simplifiée par rapport
+	à notre cadre d'étude. L'étude linéaire se complexifie hélas fortement avec la
+	prise en compte de la température électronique et la présence d'un gradient
+	de champ magnétique, rendant l'étude analytique de ce phénomène problématique.
+
+	MAGNIS a été conçu dans la perspective d'une résolution multi-espèce de
+	l'évolution du plasma et pourra bientôt prendre en compte les ions
+	négatifs, ce qui permettra une modélisation du propulseur PEGASES en mode
+	opérationnel. En attendant, nous avons vu qu'il reproduit correctement les
+	résultats expérimentaux obtenus avec l'utilisation d'un gaz inerte tel que
+	l'argon et qu'il ouvre la perspective de l'étude instationnaire du transport
+	magnétisé.
+	
+\section{Colonne de plasma magnétisée - Cybele}
+Cybele est une source d'ions négatifs de
+dimension très alongée 15x20x120~cm$\puissance{3}$ développée à
+l'IRFM (CEA)~\parencite{Simonin} dans le cadre de la recherche sur les systèmes
+d'injection de neutres (IDN) qui sont utilisés pour le chauffage et la
+génération de courant dans les réacteurs de fusion par confinement magnétique\footnote{Le principe d'un
+injecteur de neutres est basé sur l'accélération d'ions à très haute énergie,
+puis neutralisés afin de former un puissant faisceau de neutres.
+Le faisceau est ensuite injecté au coeur du réacteur pour déposer son énergie
+directement dans le plasma. Pour ITER, les deux IDN devront fournir 17MW de
+puissance chacun, avec des faiseaux de D$\puissance{0}$ à 1MeV.}.
+Actuellement, les sources d'ions négatifs en amont des IDN se servent d'un champ
+magnétique pour filter et refroidir les électrons. La configuration magnétique,
+très similaire à celle de PEGASES, entraîne dans ce type de sources de fortes
+inhomogénéités dans le plasma, avec l'émergence de différents gradients
+(densité, température, champ magnétique). L'uniformité du plasma généré par
+la source est cependant primordiale pour une bonne efficacité de l'accélérateur
+dans l'IDN, et de nombreux efforts sont portés à la correction de ce problème.
+
+L'une des pistes possible est d'utiliser le champ magnétique non pas pour
+filtrer les électrons énergétiques mais plutôt pour les confiner au centre
+d'une colonne de plasma en rotation autour d'un axe magnétique. Ce concept,
+idéal pour la géométrie étirée de Cybele, permettrait d'obtenir une densité de
+plasma homogène sur toute la longueur de la source. 
 
 \subsection{Caractéristiques de la source}
 
+Cybele, présentée sur la figure~\ref{4-cybelePhoto}, est . Créé par des cathodes
+filamentaires polarisée négativement à -60V fournissant des électrons primaires au 
 \begin{figure}[htbp]
   \centering
     \subfigure[]{\label{4-cybelePhoto}
@@ -719,4 +768,5 @@ le flux radial.}
  avec une densité de neutre et la température
 %\bibliographystyle{apalike}
 %\bibliography{biblio}
+	
 \end{refsection}
