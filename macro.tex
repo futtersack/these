@@ -43,7 +43,6 @@
 
 
 
-\usepackage{multicol}
 \usepackage[center,labelfont=bf]{caption}
 \usepackage{indentfirst}
 
@@ -161,7 +160,6 @@
 \renewcommand{\eqref}[1]{\hbox{Eq.~\ref{#1}}}
 \newcommand{\eqrefp}[1]{\hbox{(Eq.~\ref{#1})}}
 
-
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
 %\newcommand{\artlabel}[1]{{\sc #1.}}
@@ -175,13 +173,14 @@
     doi=false,
     eprint=false,
 backend=biber]{biblatex}
+
 \addbibresource{biblio.bib}
 \usepackage{subfigure}
 \usepackage{epstopdf} 
 
 \usepackage{booktabs}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
-
+\usepackage{multicol}
 \usepackage{csquotes}
 %\bibliography{biblio}
 %\uspackage[authoryear]{natbib}
