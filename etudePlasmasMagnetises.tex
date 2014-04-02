@@ -512,8 +512,8 @@ résultats du modèle.
 	magnétisé.
 	
 \section{Colonne de plasma magnétisée - Cybele}
-Cybele est une source d'ions négatifs de
-dimension très alongée 15x20x120~cm$\puissance{3}$ développée à
+Cybele, présentée sur la figure~\ref{4-cybelePhoto}, est une source d'ions
+négatifs de dimension très alongée développée à
 l'IRFM (CEA)~\parencite{Simonin} dans le cadre de la recherche sur les systèmes
 d'injection de neutres (IDN) qui sont utilisés pour le chauffage et la
 génération de courant dans les réacteurs de fusion par confinement magnétique\footnote{Le principe d'un
@@ -522,10 +522,20 @@ puis neutralisés afin de former un puissant faisceau de neutres.
 Le faisceau est ensuite injecté au coeur du réacteur pour déposer son énergie
 directement dans le plasma. Pour ITER, les deux IDN devront fournir 17MW de
 puissance chacun, avec des faiseaux de D$\puissance{0}$ à 1MeV.}.
+\begin{figure}[htbp]
+  \centering
+  \subfigure[]{\label{4-cybelePhoto}
+    \includegraphics[height=8cm]{figures/4-cybelePhoto.png}}
+    \subfigure[]{\label{4-CybelePhoto2}
+    \includegraphics[height=8cm]{figures/4-CybelePhoto2.jpg}} 
+    \caption{Photographies de la source d'ions négatifs Cybele en développement
+    à l'IFRM de Cadarache~\parencite{SimoninHDR}.
+    \label{4-cybelePhoto}} 
+\end{figure}	
 Actuellement, les sources d'ions négatifs en amont des IDN se servent d'un champ
 magnétique pour filter et refroidir les électrons. La configuration magnétique,
 très similaire à celle de PEGASES, entraîne dans ce type de sources de fortes
-inhomogénéités dans le plasma, avec l'émergence de différents gradients
+inhomogénéités du plasma, avec l'émergence de différents gradients
 (densité, température, champ magnétique). L'uniformité du plasma généré par
 la source est cependant primordiale pour une bonne efficacité de l'accélérateur
 dans l'IDN, et de nombreux efforts sont portés à la correction de ce problème.
@@ -538,28 +548,26 @@ plasma homogène sur toute la longueur de la source.
 
 \subsection{Caractéristiques de la source}
 
-Cybele, présentée sur la figure~\ref{4-cybelePhoto}, est . Créé par des cathodes
-filamentaires polarisée négativement à -60V fournissant des électrons primaires au 
-\begin{figure}[htbp]
+La source Cybele, rectangulaire de dimension 
+15x20x120~cm$\puissance{3}$, est schématisée 
+figure~\ref{4-cybeleSchema}. Le centre de la source est
+occupé par des cathodes filamentaires qui, polarisées négativement à -60V, libèrent des
+électrons primaires pour créer le plasma. Celui-ci est ensuite confiné dans un champ
+magnétique vertical et uniforme, généré par deux bobines sur les côtés de la
+source et dont l'intensité peut varier de 0G à 160G.
+\begin{figure}[!h]
   \centering
-    \subfigure[]{\label{4-cybelePhoto}
-    \includegraphics[height=12cm]{figures/4-cybelePhoto.png}}
-    \subfigure[]{\label{4-cybeleSchema}
-    \includegraphics[height=10cm]{figures/4-cybeleSchema.png}}
-    \caption{Cartes de densité\subref{4-cybelePhoto}~, de
-    potentiel\subref{4-cybeleSchema}}
-    \label{pandas}
+    \includegraphics[height=8cm]{figures/4-cybeleSchema.png}
+    \caption{Schémas en coupe de Cybele~\parencite{SimoninHDR}. A gauche dans la
+vue de dessus, le champ magnétique est perpendiculaire au plan et confine le
+plasma qui est créé au centre de la source. La vue de face montre quant-à-elle
+la fine colonne de plasma, de densité homogène sur toute sa hauteur.
+\label{4-cybeleSchema} }
 \end{figure}	
+Cybele opère enfin avec un gaz d'hydrogène à très basse pression, $P\simeq 2$
+mTorr, condition requise pour réduire la perte d'ions négatifs.
 
-a
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/4-magnetizedColumn.jpg}
-{\caption{Transport des ions et des électrons dans une colonne de
-plasma\parencite{Rozhansky}.}
-\label{4-magnetizedColumn}}
-\end{figure}
+Les mesures expérimentales donne une densité au centre du plasma d'environ
 
 \subsection{Simulation d'un plasma classique}
 
