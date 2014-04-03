@@ -603,6 +603,16 @@ Nancy~\parencite{Mirabelle} ou NAGDIS-II au Japon~\parencite{NAGDIS1}.
  
 \subsection{Simulation d'une colonne de plasma}
 
+Dans une géométrie simple comme la colonne de plasma, avec un champ magnétique
+axial et uniforme, de nombreuses tentatives ont été entreprises pour réduire le
+problème multidimensionnel de diffusion du plasma à travers le champ à une
+sorte de diffusion ambipolaire effective. Cependant, même à très faible champ
+magnétique, la diffusion des ions et des électrons fondamentalement non
+ambipolaire : les courants, qui se referment dans les parois aux extrêmités des
+lignes de champ et forment des vortex dans la direction perpendiculaire,
+permettent de créer des phénomènes de court-circuit dans le plasma et stimulent
+significativement le transport transverse~\parencite{Gurevich}.
+
 Commençons par montrer les résultats d'une simulation classique. Le domaine de
 simulation, sur la figure~\ref{4-cybeleSimDomain}, est pris de dimension
 20x20x120 cm$\puissance{3}$ et représente toujours le plan transverse au champ
@@ -752,20 +762,19 @@ de dérive le long de la direction radiale. On observe que la vitesse de dérive
 diamagnétique, ie. liée au gradient de pression, est dominante au centre du
 plasma. 
 
-Cette dérive entraine les ions et les électrons en direction
-contraire et génère alors un fort courant en forme d'anneau (au centre de la
-source, les gradients s'annulent). A r $\sim$ 4 cm, au niveau de la séparation,
-les deux vitesses s'égalisent, puis la vitesse de dérive électrique, qui ne
-génère que peu de courant, prend le dessus. Dans la région traversée par le bras
-de densité, $\omega_E\simeq$ 2.3 rad/s est très proche de la vitesse de rotation
-mesurée.
-
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/4-CybeleProfileVitessesDerive.eps}
 {\caption{Carte de densité à 35G.}
 \label{4-CybeleVitessesDerive}}
 \end{figure}
+
+Cette dérive entraine les ions et les électrons dans des directions
+contraires, génèrant un fort courant. A r~$\sim$~4~cm, au niveau de la
+séparation, les deux vitesses s'égalisent, puis la vitesse de dérive électrique, qui ne
+génère que peu de courant, prend le dessus. Dans la région traversée par le bras
+de densité, $\omega_E\simeq$ 2.3~rad/s est très proche de la vitesse de rotation
+mesurée.
 
 Lors de l'exploration des modes de fonctionnement de la source, le transport
 dans la colonne de plasma s'est révélé principalement sensible à deux
@@ -774,8 +783,14 @@ paramètres : L'intensité du champ magnétique et les conditions parallèles
 montrent un rapide apercu de l'influence de ces variables.
 
 \subsection{Variation croissante du champ magnétique}
+Nous reprenons dans cette partie les conditions de base utilisées précédement.
+En l'absence de champ magnétique, le transport est isotrope. La différence de
+mobilité entre les ions et les électrons donne naissance à un champ électrique
+dit ambipolaire qui les fait dériver ensemble. Le plasma d'hydrogène a une
+densité de 3 10$\puissance{14}$ m$\puissance{-3}$ et sa température, assez
+homogène, est de 11eV.
 
-\begin{figure}[htbp]
+\begin{figure}[h]
   \centering
     \subfigure[]{\label{4-CybeleVarMag1}
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag1.eps}}
@@ -785,10 +800,35 @@ montrent un rapide apercu de l'influence de ces variables.
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag3.eps}}
     \caption{Cartes de densité à 1G\subref{4-CybeleVarMag1}~, 4G
     \subref{4-CybeleVarMag2}~ et 15G \subref{4-CybeleVarMag3}}
-    \label{pandas}
+    \label{4-CybeleVarMag-1}
 \end{figure}
 
-a
+L'apparition d'un faible champ magnétique modifie radicalement la nature du
+transport. Observons la figure~\ref{4-CybeleVarMag1} : entre 1 G et 2 G, le
+plasma forme un anneau, de densité équivalente au cas non
+magnétisé. La température au centre de la source s'élève, passant 
+successivement à 14 eV puis à 20 eV. Le rayon de l'anneau est approximativement
+égal au rayon de Larmor électronique local, qui s'encadre par :
+\begin{equation}
+\frac{L_\perp}{2}=10\,\text{cm}>\rho\indice{L_e}>l_c\simeq 5\,\text{cm}
+\end{equation}
+où $L_\perp$ est la longueur caractéristique de la source et $l_c$ une distance
+critique. A partir de 3G, la température maximale commence à osciller et
+augmente plus modérément. Le rayon de Larmor passe alors sous la barre des 5cm
+et le plasma se met en rotation, changeant encore de forme comme le montre la
+figure~\ref{4-CybeleVarMag2}. Deux ilôts de densité plus élevée apparaissent,
+tournant concentriquement à une vitesse angulaire $\Omega_r$ de  1.4
+ rad/s sur une orbite de rayon approximativement égale au
+rayon de Larmor électronique. A B=7.5G la fréquence cyclotronique électronique
+est égale à 1.3 10$\puissance{8}\,\text{s}\puissance{-1}$, très proche de la fréquence de
+collision des électrons. Le maximum de température atteint son plus taux de
+fluctuation, 
+
+Ce premier type de fonctionnement, qui est caractérisé par une
+fréquence de rotation assez rapide et la présence d'une structure de densité de
+mode m=2, se manifeste jusqu'à un champ magnétique d'une petite vingtaine de
+gauss. A 20G, le plasma est extrêmement instable, comme illustré sur la
+figure~\ref{4-CybeleVarMag-2}.
 
 \begin{figure}[htbp]
   \centering
@@ -801,10 +841,10 @@ a
     \caption{Cartes de densité à 20G\subref{4-CybeleVarMag4}~, de
     potentiel \subref{4-CybeleVarMag5}~ et de
     température \subref{4-CybeleVarMag6}}
-    \label{pandas}
+    \label{4-CybeleVarMag-2}
 \end{figure}
 
-a
+
 
 \begin{figure}[htbp]
 \centering
