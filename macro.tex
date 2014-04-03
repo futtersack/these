@@ -16,19 +16,19 @@
 %% MARK: Packages declarations
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
 \usepackage{xcolor,graphicx}
 \usepackage[a4paper]{geometry}
 \setlength{\textheight}{675pt}
 \setlength{\topmargin}{-32pt}
 \setlength{\footskip}{60pt}
-
+\DeclareUnicodeCharacter{00A0}{~}
 \usepackage{wrapfig}
 %\usepackage{verbatim}
 \usepackage{enumerate}
 
-\usepackage[utf8]{inputenc} 
-\usepackage[T1]{fontenc}
+
 \usepackage{textcomp}
 \usepackage{amsmath}
 
@@ -168,7 +168,7 @@
 \usepackage[final]{pdfpages} 
 \usepackage{nameref}
 
-\usepackage[refsection=chapter, isbn=false,
+\usepackage[refsection=chapter, isbn=false,bibencoding=utf8,
     url=false,sorting=none,
     doi=false,
     eprint=false,

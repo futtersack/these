@@ -572,7 +572,7 @@ localement et ainsi de créer une configuration miroir pour retenir les
 électrons qui seraient sinon perdus très rapidement le long de la direction
 parallèle. Une autre solution pour réduire le transport parallèle des électrons
 consiste à polariser négativement les parois aux extrémités des lignes de
-champ} sur les côtés de la source, l'intensité du champ pouvant varier de 0G à
+champ.} sur les côtés de la source, l'intensité du champ pouvant varier de 0G à
 160G. Cybele opère enfin avec un gaz d'hydrogène à très basse pression,
 P $\simeq$ 0.7-2 mTorr, condition requise pour réduire la perte des ions
 négatifs par phénomène d'épluchage électronique.
@@ -659,14 +659,45 @@ encourageant sur la validité des solutions trouvées par MAGNIS. Le potentiel
 décroît monotonement de 12V à un peu moins de 0V dans la direction radiale et
 ne rend que faiblement compte de la structure de densité.
  La température présente quant-à-elle un fort gradient, passant de 10 eV à moins
- d'1 eV sur 2 à 3 cm de longueur. 
+ d'1 eV sur 2 à 3 cm de longueur.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/4-CybeleNAGDIS.png}
-{\caption{Images succéssives prises par caméra rapide~\ref{NagdisCamera}.}
+\caption{Images succéssives prises par caméra rapide~\parencite{NagdisCamera}.
+La structure effectue une rotation complète en 230 \micro s et apparaît par
+intermittence.
 \label{4-CybeleNagdis}}
 \end{figure}
+
+Dans les colonnes de plasma magnétisées, les électrons ont tendance à s'échapper
+le long des lignes de champ dans la direction parallèle. Le flux électronique
+est alors déterminé par les conditions de gaine de Bohm~\parencite{Stangeby} et
+entièrement gouverné par le rapport $\Phi/T_e$. Au centre du plasma, la
+température électronique est très élevée. Pour retenir les électrons, le
+potentiel plasma augmente, atteignant un ratio $\Phi/T_e$ de 1.1515 permettant
+de déduire une densité de courant parallèle négative de :
+\begin{equation}
+\mathbf j_\para=enC_s(1-\exp(\Lambda-1.1515))\sim -600\text{A.m}\puissance{-2}
+\end{equation}
+
+qui est une estimation assez correcte de la valeur résolue par le modèle (-780
+A.m$\puissance{-2}$). En dehors du plasma central, le ratio devient supérieur
+au potentiel flottant, inversant le signe du courant récupéré au bout les lignes
+de champ. Les électrons sont accélérés afin de compenser la trop grande perte de
+charges positives. On peut placer la frontière entre ces deux régions au niveau
+de la fin du plasma central, indiquant une modification dans le transport des
+particules à cet endroit.
+
+La figure~\ref{4-CybeleProfilsRadial} montre le profil radial moyennés dans le
+temps des précédents champs, du centre de la source au bord X=20cm. Le plasma
+est confiné sur un rayon de 4 cm tandis que le potentiel plasma
+diminue progressivement, bien que de façon un peu plus prononcée juste après la
+chute de densité du plasma. 
+Le profil poloïdal est moyenné sur un repère tournant, qui positionne le pic de
+densité en $\theta=-\pi/2$. On peut remarquer la présence d'une légère avance de
+phase de la température sur la densité. Le potentiel, de son côté, est de forme
+sinusoïdale et montre aussi un déphasage, dans le sens opposé, avec la densité.
 
 \begin{figure}[htbp]
   \centering
@@ -674,20 +705,28 @@ ne rend que faiblement compte de la structure de densité.
     \includegraphics[height=5.2cm]{figures/4-CybeleProfileTempRadiale.eps}}
     \subfigure[]{\label{4-CybeleProfilsPol}
     \includegraphics[height=5.2cm]{figures/4-CybeleProfileTempPol.eps}}
-    \caption{Profils radiaux\subref{4-CybeleProfilsPol}~ et
-    poloïdaux~\subref{4-CybeleProfilsPol} de la densité, du potentiel et de la
-    température.}
+    \caption{Profils radiaux~\subref{4-CybeleProfilsRadial}~ et
+    poloïdaux~\subref{4-CybeleProfilsPol}~ moyennés en temps de la densité, du
+    potentiel et de la température. Le profil radial est pris du centre de la source au bord droit
+    en X=20cm. Le profil poloïdal est moyenné sur un repère tournant qui suit
+    la structure de densité à r=5 cm du centre de la source. Les quantités
+    $\tilde{\Phi}$ et $\tilde{T}_e$ sont les variations de potentiel et de température par rapport à leur valeur
+    moyenne, qui sont respectivement égale à 9V et 2eV. La structure se déplace
+    dans le sens horaire, ie. vers les $\theta$ croissants.}
     \label{4-CybeleProfils}
 \end{figure}
 
-a
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.5\textwidth]{figures/4-CybeleProfileVitessesDerive.eps}
-{\caption{Carte de densité à 35G.}
-\label{4-CybeleVitessesDerive}}
-\end{figure}
-
+Pour déterminer l'origine de la structure et de la rotation, intéressons nous
+tout d'abord aux flux électronique et ionique dans la direction
+transverse, illustrés sur la figure~\ref{4-CybeleCarteFlux}.
+Les ions, créés au centre de la source, traversent le champ magnétiques et
+tombent aux parois en effectuant des spirales dans le même sens que le bras de
+densité. On constate que le courant ionique est maximal au centre de la source,
+et qu'un fort flux passe par la surdensité. La vitesse du fluide ionique
+est cependant deux à trois fois moins importante que la vitesse de rotation de
+la structure. Sur la seconde image, on peut remarquer que le fluide électronique
+change de direction après un minimum, situé là encore aux alentours de la
+frontière du plasma confiné.
 
 \begin{figure}[htbp]
   \centering
@@ -697,10 +736,42 @@ a
     \includegraphics[height=5.5cm]{figures/4-CybeleCarteFluxEBase.eps}}
     \caption{Cartes de densité \subref{4-CybeleCarteFluxEBase}~ et de
     température \subref{4-CybeleCarteCourant}}
-    \label{pandas}
+    \label{4-CybeleCarteFlux}
 \end{figure}
 
-a
+Dans la direction radiale et en présence d'un champ magnétique, les gradients
+moyens de potentiel et de pression donnent naissance à une vitesse de dérive
+fluide. Le champ électrique radial moyen $E_r$ d'environ 120 V/m, entraîne
+théoriquement une dérive poloïdale de l'ordre de :
+\begin{equation}
+\omega_E=\frac{E_r}{rB}\simeq10^5\,\text{rad/s} 
+\end{equation}
+qui est du même ordre de grandeur que la vitesse de rotation du bras de plasma.
+La figure~\ref{4-CybeleVitessesDerive} montre les profils de ces deux vitesses
+de dérive le long de la direction radiale. On observe que la vitesse de dérive
+diamagnétique, ie. liée au gradient de pression, est dominante au centre du
+plasma. 
+
+Cette dérive entraine les ions et les électrons en direction
+contraire et génère alors un fort courant en forme d'anneau (au centre de la
+source, les gradients s'annulent). A r $\sim$ 4 cm, au niveau de la séparation,
+les deux vitesses s'égalisent, puis la vitesse de dérive électrique, qui ne
+génère que peu de courant, prend le dessus. Dans la région traversée par le bras
+de densité, $\omega_E\simeq$ 2.3 rad/s est très proche de la vitesse de rotation
+mesurée.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/4-CybeleProfileVitessesDerive.eps}
+{\caption{Carte de densité à 35G.}
+\label{4-CybeleVitessesDerive}}
+\end{figure}
+
+Lors de l'exploration des modes de fonctionnement de la source, le transport
+dans la colonne de plasma s'est révélé principalement sensible à deux
+paramètres : L'intensité du champ magnétique et les conditions parallèles 
+(longueur de la source et nature des parois). Les deux sections suivantes
+montrent un rapide apercu de l'influence de ces variables.
 
 \subsection{Variation croissante du champ magnétique}
 
