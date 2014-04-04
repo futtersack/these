@@ -786,9 +786,12 @@ montrent un rapide apercu de l'influence de ces variables.
 Nous reprenons dans cette partie les conditions de base utilisées précédement.
 En l'absence de champ magnétique, le transport est isotrope. La différence de
 mobilité entre les ions et les électrons donne naissance à un champ électrique
-dit ambipolaire qui les fait dériver ensemble. Le plasma d'hydrogène a une
-densité de 3 10$\puissance{14}$ m$\puissance{-3}$ et sa température, assez
-homogène, est de 11eV.
+dit ambipolaire qui les fait dériver ensemble jusqu'aux parois. Le plasma
+d'hydrogène a une densité de 3 10$\puissance{14}$ m$\puissance{-3}$ et sa température, assez
+homogène, est de 11eV. Ajoutons maintenant un champ magnétique : au fur et à mesure de la montée en
+intensité, on peut repérer 6 modes de fonctionnement.
+
+\subsubsection{de 0G à 2G}
 
 \begin{figure}[h]
   \centering
@@ -803,7 +806,7 @@ homogène, est de 11eV.
     \label{4-CybeleVarMag-1}
 \end{figure}
 
-L'apparition d'un faible champ magnétique modifie radicalement la nature du
+L'apparition d'un faible champ magnétique modifie légèrement la nature du
 transport. Observons la figure~\ref{4-CybeleVarMag1} : entre 1 G et 2 G, le
 plasma forme un anneau, de densité équivalente au cas non
 magnétisé. La température au centre de la source s'élève, passant 
@@ -813,22 +816,32 @@ successivement à 14 eV puis à 20 eV. Le rayon de l'anneau est approximativemen
 \frac{L_\perp}{2}=10\,\text{cm}>\rho\indice{L_e}>l_c\simeq 5\,\text{cm}
 \end{equation}
 où $L_\perp$ est la longueur caractéristique de la source et $l_c$ une distance
-critique. A partir de 3G, la température maximale commence à osciller et
-augmente plus modérément. Le rayon de Larmor passe alors sous la barre des 5cm
-et le plasma se met en rotation, changeant encore de forme comme le montre la
-figure~\ref{4-CybeleVarMag2}. Deux ilôts de densité plus élevée apparaissent,
-tournant concentriquement à une vitesse angulaire $\Omega_r$ de  1.4
- rad/s sur une orbite de rayon approximativement égale au
-rayon de Larmor électronique. A B=7.5G la fréquence cyclotronique électronique
-est égale à 1.3 10$\puissance{8}\,\text{s}\puissance{-1}$, très proche de la fréquence de
-collision des électrons. Le maximum de température atteint son plus taux de
-fluctuation, 
+critique. 
 
-Ce premier type de fonctionnement, qui est caractérisé par une
+\subsubsection{de 3G à 15G}
+A partir de 3G, le plasma se met en rotation, changeant encore de forme (comme
+le montre la figure~\ref{4-CybeleVarMag2}). Deux ilôts de densité plus élevée
+apparaissent, tournant à une vitesse angulaire $\Omega_r$ qui varie de 1 à 2
+10$\puissance{6}\,\text{rad.s}\puissance{-1}$ sur une orbite de rayon
+approximativement égale au rayon de Larmor électronique, qui devient inférieur
+à 5cm. La température maximale commence à
+osciller\footnote{A B=7.5G, la fréquence cyclotronique électronique est égale à 1.3
+10$\puissance{8}\,\text{s}\puissance{-1}$, très proche de la fréquence de
+collision des électrons. Le maximum de température atteint son plus haut taux de
+fluctuation.} et augmente plus modérément.
+
+Ce type de fonctionnement, qui est caractérisé par une
 fréquence de rotation assez rapide et la présence d'une structure de densité de
 mode m=2, se manifeste jusqu'à un champ magnétique d'une petite vingtaine de
-gauss. A 20G, le plasma est extrêmement instable, comme illustré sur la
-figure~\ref{4-CybeleVarMag-2}.
+gauss. 
+
+\subsubsection{de 18G à 70G}
+A partir de 18G, le plasma devient extrêmement instable, comme illustré
+sur la figure~\ref{4-CybeleVarMag-2} : le plasma croît en
+densité et en température jusqu'à atteindre une valeur critique, puis relaxe
+très rapidement par une sorte d'explosion. La fréquence du phénomène est
+d'environ 12~kHz, variant peu de 18G à 35G.
+
 
 \begin{figure}[htbp]
   \centering
@@ -838,13 +851,21 @@ figure~\ref{4-CybeleVarMag-2}.
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag5.eps}}
     \subfigure[]{\label{4-CybeleVarMag6}
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag6.eps}}
-    \caption{Cartes de densité à 20G\subref{4-CybeleVarMag4}~, de
-    potentiel \subref{4-CybeleVarMag5}~ et de
-    température \subref{4-CybeleVarMag6}}
+    \caption{Cartes de densité à 20G à trois instants
+    différents. La densité part de 2 10$\puissance{15}$
+    ~\subref{4-CybeleVarMag4}~, augmente pendant un durée $t\sim
+    \subref{4-CybeleVarMag5}~ et de température \subref{4-CybeleVarMag6}}
     \label{4-CybeleVarMag-2}
 \end{figure}
 
-
+La figure~\ref{4-CybeleVarMag8} montre la forme du plasma à 35G, qui se
+stabilise. La température moyenne des électrons redescend à une quinzaine
+d'électron-volt, faisant diminuant le rayon de Larmor ionique jusqu'à une
+longueur de l'ordre de la dizaine de centimètres, qui devient donc inférieure à
+la longueur caractéristique du système.
+Plusieurs pics, situés à la frontière du plasma, sont de densités 2 à 3 fois
+supérieure à la densité centrale. On commence aussi à voir apparaître un bras en
+périphérie du plasma, qui tourne à une fréquence de 50kHz. 
 
 \begin{figure}[htbp]
 \centering
@@ -853,7 +874,12 @@ figure~\ref{4-CybeleVarMag-2}.
 \label{4-CybeleVarMag8}}
 \end{figure}
 
-a
+De 35G à 70G, le plasma est dans un régime transitoire : la température
+et la densité oscillent fortement et un mode poloïdal prend de plus en plus
+d'importance.
+
+\subsubsection{de 70G à 100G}
+
 
 \begin{figure}[htbp]
   \centering
@@ -868,7 +894,8 @@ a
     \label{pandas}
 \end{figure}
 
-a
+\subsubsection{de 110G à 170G}
+
 \begin{table*}
 \footnotesize\centering
 \ra{1.3}
