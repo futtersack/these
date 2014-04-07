@@ -997,10 +997,42 @@ potentiel est un peu plus bas.
     \label{CybeleCartesIsolant}
 \end{figure}		
 
+A travers cette partie, nous avons tout d'abord vu que 
+les solutions calculées par MAGNIS pour une colonne de plasma
+sont plutôt cohérentes : Qualitativement, le plasma est confiné dans le plan
+transverse et en rotation. La forme caractéristique en spirale, ainsi que
+l'intermittence du transport, sont retrouvées. Enfin, et comme le prédit les
+théories, l'ajout de parois conductrices dans la direction parallèle (ainsi
+que dans la direction perpendiculaire) en permettant de court-circuiter le
+plasma, montre la nécéssité de tenir compte des pertes en particules et en
+courant le long du champ magnétique.
 
+Il est de plus intéressant de préciser que, malgré un maillage cartésien très
+peu adapté à la résolution d'un problème cylindrique et l'habituelle difficulté
+liée à la discrétisation des flux magnétisés, le schéma de MAGNIS est très
+stable, supportant sans difficulté la propagation des discontinuités.
 
 \section{Plasma de bord de tokamaks}
+
+Le dernier cas de test est consacré à la configuration hautement magnétisée de
+la SOL. Le premier objectif est toujours de vérifier la validité des solutions
+calculées par MAGNIS ; nous les comparons pour cela avec les résultats de
+TOKAM dans sa version avec conditions aux limites dans la direction radiale.
+
 \subsection{Un cas critique pour MAGNIS}
+
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/4-TokamGeometrie.png}
+{\caption{Le domaine de simulation correspond à une petite partie de la SOL,
+dans le plan poloïdal médian. La source, en orange représente le flux de
+particules traversant la séparatrice et entrant dans la SOL. La taille du domaine de
+simulation est prise à 256x256 rayons de Larmor ioniques, soit
+0.02x0.02m\textsuperscript{2}}, et la direction poloïdale est périodique.
+\label{4-TokamPDFDensite}}
+\end{figure}
+
 
 \begin{figure}[!htbp]
   \centering
