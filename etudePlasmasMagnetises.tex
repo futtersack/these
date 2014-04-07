@@ -1014,23 +1014,50 @@ stable, supportant sans difficulté la propagation des discontinuités.
 
 \section{Plasma de bord de tokamaks}
 
-Le dernier cas de test est consacré à la configuration hautement magnétisée de
-la SOL. Le premier objectif est toujours de vérifier la validité des solutions
-calculées par MAGNIS ; nous les comparons pour cela avec les résultats de
-TOKAM dans sa version avec conditions aux limites dans la direction radiale.
+Cette dernière partie est consacrée à la configuration hautement magnétisée
+de la SOL, qui correspond à un cas limite de notre étude. Le premier objectif
+est toujours de vérifier la validité des solutions calculées par MAGNIS ; 
+nous les comparons pour cela avec les résultats de
+TOKAM dans sa version isotherme avec conditions aux limites dans la direction
+radiale.
 
 \subsection{Un cas critique pour MAGNIS}
+Les modèles décrivant les plasmas de SOL ont tous un
+point commun :
+ils sont constuits avec une hypothèse d'ordering basée sur la forte magnétisation des
+particules sui permet de simplifier considérablement les équations
+du transport transverse dans le plasma, en séparant le mouvement cyclotronique
+des mouvements de dérive.
+Cette hypothèse d'ordering n'est
+toutefois pas applicable dans MAGNIS, l'objectif étant de pouvoir simuler à la
+fois les plasmas faiblement et fortement magnétisés. 
 
+La simulation d'un plasma de type SOL avec MAGNIS constitue ainsi un cas idéal
+pour :
+\begin{itemize}
+  \item valider les solutions du transport magnétisé calculées par MAGNIS
+  \item	tester le schéma numérique du modèle, dans le cadre d'un plasma
+  totalement ionisé et turbulent
+ \end{itemize} 
+
+Nous reprenons les paramètres de simulation utilisés dans le chapitre 2 : Le
+champ magnétique, à peu près égal à 1 Tesla, est choisi linéairement
+décroissant, et correspond à un coefficient de courbure des lignes de champ
+g=5.10$^{-4}$.
+Le plasma est considéré isotherme et la densité de neutre égale à zéro. La
+taille de la zone simulée, dont on rappelle la géométrie
+figure~\ref{4-TokamGeometrie}, est de 200 $\rho_L$ soit à peu près 2cm pour une
+température électronique de 1eV. La longueur de la boîte dans la direction
+du champ magnétique est choisie égale à 10m pour obtenir une conductivité
+parallèle $\sigma$=10$^{-5}$.
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/4-TokamGeometrie.png}
-{\caption{Le domaine de simulation correspond à une petite partie de la SOL,
-dans le plan poloïdal médian. La source, en orange représente le flux de
-particules traversant la séparatrice et entrant dans la SOL. La taille du domaine de
-simulation est prise à 256x256 rayons de Larmor ioniques, soit
-0.02x0.02m\textsuperscript{2}}, et la direction poloïdale est périodique.
-\label{4-TokamPDFDensite}}
+\caption{Le domaine de simulation est identique à celui présenté au
+chapitre II. La boîte correspond à une petite région de la SOL, de dimension
+2cm x 2cm, simulant le côté LFS à gauche de la source et le côté HFS à droite.
+\label{4-TokamGeometrie}}
 \end{figure}
 
 
