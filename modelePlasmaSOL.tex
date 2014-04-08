@@ -1,47 +1,61 @@
 \Chapter{Modélisation par les vitesses de dérive}
 \chaptermark{Les vitesses de dérive}
 \begin{refsection}
-Ce deuxième chapitre se concentre sur l'étude de la modélisation du transport
-(fortement) magnétisé en contact avec une paroi. Nous présentons dans cet objectif 
-le code TOKAM2D~\cite{Sarazin} utilisé pour
-caractériser la SOL des tokamaks ainsi que les modifications qui lui ont été
-apportées pour lui permettre décrire le transport dans des conditions se
-rapprochant de notre étude.
-Nous détaillerons enfin un modèle pour l'étude des plasmas
-froids/magnétisés basé sur les vitesses de dérive, mais construit en tenant
-compte du transport collisionnel avec les neutres. Ce nouveau modèle permet
-de décrire les zones non magnétisée du plasma et contient les conditions aux
-limites physiques sur le courant de gaine dans la direction perpendiculaire au
-champ magnétique.
+Le deuxième chapitre de cette thèse concerne la modélisation du transport
+(fortement) magnétisé par une approche basée sur les vitesses de dérive. Cette
+méthode, élaborée dans le cadre de la recherche sur la fusion par
+confinement magnétique, est implémentée dans TOKAM2D~\cite{Sarazin}, un code 
+spécifiquement développé pour caractériser le transport dans le plasma de bord
+des tokamaks.
+
+Nous introduisons tout d'abord le code TOKAM2D et les hypothèses sur
+lesquelles repose le modèle. Les équations de continuité et de
+courant sont ensuites dérivées avec quelques précisions sur les approximations
+choisies.
+Dans une deuxième partie, nous présentons les évolutions du
+modèle et les modifications sur le code qui ont été entreprises pour lui
+permettre décrire le transport dans des conditions caractéristiques des plasmas
+froids. Sont ainsi passées en revues :
+
+\begin{itemize}
+  \item l'inclusion de conditions aux limites
+perpendiculaires
+\item la prise en compte de géométries de champ magnétique complexes
+\item l'ajout de l'équation de la
+température électronique
+\item la construction d'un modèle basé sur les vitesses de dérive pour les plasmas froids
+\end{itemize}
+
+Pour le dernier point, les équations sont redérivées en tenant
+compte du transport collisionnel avec les neutres et le modèle intègre des
+conditions aux limites de type gaine sur le courant et le flux de particule dans
+la direction perpendiculaire au champ magnétique.
+
 
 \section{Transport fortement magnétisé dans la SOL}
 \sectionmark{Transport dans le plasma de bord}
-La première partie de cette thèse a consisté à étudier et à modifier un modèle
-fluide décrivant le transport magnétisé de la SOL des tokamaks dans le but de
-comprendre les mécanismes du transport magnétisé et de pouvoir appliquer la
-méthodologie développée dans le cadre de la recherche au problème des sources
-d'ions. Après une brève description de d'historique de TOKAM2D et des hypothèses
-du modèle, les équations du modèle sont dérivées dans leur forme adimensionnée
+La première phase de cette thèse a consisté à utiliser et modifier le
+code TOKAM2D. Le but était alors de se familiariser avec les
+techniques développées dans lmécanismes du transport magnétisé tout en  par les 
+de pouvoir appliquer au problème des sources d'ions. Après une brève description de d'historique de TOKAM2D et des hypothèses du modèle, les équations du modèle sont dérivées dans leur forme adimensionnée
 puis moyennée dans la direction parallèle. Nous discutons finalement une
 simulation typique, qui servira de base pour comparer les différentes évolutions
 du modèle.
 
 \subsection{Le code TOKAM2D}
 
-Le code TOKAM2D a été initialement développé à l'IMTM\footnote{Institut
-Méditerranéen Technologique de Marseille} pour étudier la turbulence
-d'interchange qui domine le transport transverse dans le plasma de bord des
-tokamaks. Sa modification pour intégrer un forçage de la turbulence par un flux
-au lieu d'un gradient d'équilibre a permis de retrouver le caractère
-intermittent du transport et la longueur de décroissance du profil de densité
-que l'on mesurait expérimentalement. L'étude du modèle a aussi amélioré la
-compréhension du mécanisme principal de l'instabilité d'interchange, dont
-la mise en évidence de son déclenchement à seuil et la nature de type avalanche
-du transport turbulent.
-
-C'est un code fluide, quasineutre, qui décrit le transport transverse en se
-basant sur l'approximation des vitesses de dérive (voir §
-\ref{Introduction}-\ref{vitessesDerive}).
+Le code TOKAM2D est un code fluide, quasineutre, qui décrit le transport
+transverse en se basant sur l'approximation des vitesses de dérive (voir §
+\ref{Introduction}-\ref{vitessesDerive}). Initialement développé à
+l'Institut Méditerranéen Technologique de Marseille (IMTM) pour étudier
+la turbulence d'interchange qui domine le transport transverse dans le plasma
+de bord des tokamaks, sa modification pour intégrer un forçage de la turbulence
+par un flux au lieu d'un gradient d'équilibre a permis de retrouver le
+caractère intermittent du transport et la longueur de décroissance du profil de
+densité que l'on mesurait expérimentalement. L'étude du modèle a ainsi permis
+d'améliorer la compréhension du mécanisme de l'instabilité
+d'interchange, par la mise en évidence du transport turbulent de type
+avalanche et le caractère de déclenchement à seuil de l'instabilité.
 
 \subsection{Hypothèses du modèle}
 Dans les conditions typiques de la SOL, l'utilisation d'un modèle fluide est
