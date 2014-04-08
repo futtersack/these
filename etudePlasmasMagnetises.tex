@@ -1034,11 +1034,22 @@ fois les plasmas faiblement et fortement magnétisés.
 
 La simulation d'un plasma de type SOL avec MAGNIS constitue ainsi un cas idéal
 pour :
+
 \begin{itemize}
   \item valider les solutions du transport magnétisé calculées par MAGNIS
   \item	tester le schéma numérique du modèle, dans le cadre d'un plasma
   totalement ionisé et turbulent
+  
  \end{itemize} 
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/4-tokamSimDomain.png}
+\caption{Le domaine de simulation est identique à celui présenté au
+chapitre II. La boîte correspond à une petite région de la SOL, de dimension
+2cm x 2cm, simulant le côté LFS à gauche de la source et le côté HFS à droite.
+\label{4-tokamSimDomain}}
+\end{figure}
+
 
 Nous reprenons les paramètres de simulation utilisés dans le chapitre 2 : Le
 champ magnétique, à peu près égal à 1 Tesla, est choisi linéairement
@@ -1052,40 +1063,73 @@ du champ magnétique est choisie égale à 10m pour obtenir une conductivité
 parallèle $\sigma$=10$^{-5}$.
 
 \begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.5\textwidth]{figures/4-TokamGeometrie.png}
-\caption{Le domaine de simulation est identique à celui présenté au
-chapitre II. La boîte correspond à une petite région de la SOL, de dimension
-2cm x 2cm, simulant le côté LFS à gauche de la source et le côté HFS à droite.
-\label{4-TokamGeometrie}}
-\end{figure}
-
-
-\begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-Tokam1}
     \includegraphics[height=8cm]{figures/4-Tokam1.eps}}
     \subfigure[]{\label{4-Tokam2}
     \includegraphics[height=8cm]{figures/4-Tokam2.eps}}
-    \caption{Cartes de densité de la SOL simulée par
-    TOKAM~\subref{4-CybeleVarMag4}~ et par MAGNIS~\subref{4-CybeleVarMag5}}
-    \label{pandas}
+    \caption{Carte de densité telle que calculée par MAGNIS~\subref{4-Tokam1}~
+et par TOKAM~\subref{4-Tokam2}~. La densité calculée par TOKAM est ici
+redimensionnée avec $n_0 \simeq$ 10$^{19}$ m$^{-3}$.}
+    \label{4-TokamDensite}
 \end{figure}
+
+
+La figure~\ref{4-TokamDensite} présente les cartes de densité
+calculées par MAGNIS et par TOKAM pour ces conditions. On peut
+constater que MAGNIS donne des résultats remarquablement proches de ceux
+escomptés au vu de la disparité de conception entre les deux modèles. Tout
+d'abord, il arrive à capturer le mécanisme de l'instabilité d'interchange , stable quand
+$\nabla B\cdot\nabla n<0$ et donnant naissance à un transport intermittent de
+type avalanche côté HFS. Le mouvement cyclotronique, que l'on devine au début
+des simulations de MAGNIS, se confond très vite dans le transport
+macroscopique transverse. Les particules sont enfin principalement
+advectées dans la direction radiale entre les structures de potentiel qui se
+forment. Ces résultats valident a postériori l'approximation des vitesses de
+dérive, mais montre surtout que MAGNIS donne des solutions correctes
+dans des cas fortement magnétisés.
+
+Une différence notable concerne cependant le gradient moyen de potentiel qui
+apparaît dans la direction radiale et sur les bords de la simulation\footnote{Plutôt choisies de façon arbitraire dans la simulation de
+TOKAM, avec les parois prises totalement absorbantes pour la densité et
+fixées au potentiel flottant pour le potentiel, les conditions aux limites
+implémentées dans MAGNIS reposent sur un modèle de gaine.}. Cette
+tendance donne naissance à
+une dérive poloïdale, et se retrouve dans la version anisotherme de TOKAM.
+Quand le gradient de densité varie, cette dérive entraîne une diminution du transport transverse à travers un effet de
+cisaillement. 
+
 \subsection{Comparaison des profils et de la statistique}
+
+Moyennés dans le temps et sur la direction poloïdale, les profils de densité
+(fig.~\ref{4-TokamProfileDensite}) et de flux radial moyen
+(fig.~\ref{4-TokamProfileFluxRadial}) sont très proches : sur le profil de
+densité, les différences sont possiblement dues aux conditions aux limites
+perpendiculaires et parallèle. Le seul écart observable sur le flux radial
+moyen (calculé en multipliant le profil moyen de densité par la vitesse
+radiale moyenne) se situe à gauche de la source, où la densité est contrôlée par
+l'équilibre entre le flux radial diffusif et les pertes le long des lignes de
+champ magnétique.
 
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-TokamProfileDensite}
-    \includegraphics[height=6cm]{figures/4-TokamProfileDensite.eps}}
+    \includegraphics[height=5.5cm]{figures/4-TokamProfileDensite.eps}}
     \subfigure[]{\label{4-TokamProfileFluxRadial}
-    \includegraphics[height=6cm]{figures/4-TokamProfileFluxRadial.eps}}
+    \includegraphics[height=5.5cm]{figures/4-TokamProfileFluxRadial.eps}}
     \caption{Comparaison des profils de
     densité~\subref{4-pegasesCompPressTempProfile}~ et de flux
     radial~\subref{4-pegasesCompPressTempProfile}~ entre TOKAM et MAGNIS}
-    \label{pandas}
+    \label{4-TokamProfils}
 \end{figure}
 
-\begin{figure}[!htbp]
+Enfin, la figure~\ref{4-TokamPDFDensite} montre les densités de probalité des
+fluctuations de densité et de flux radial au niveau de la source de particule.
+On retrouve là encore un accord très correct, avec une légère déformation de la
+PDF, donnant une probabilité plus grande de faible flux dirigé vers les x
+décroissant et des évènements (les avalanches) plus importants en sens opposé.
+
+ \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/4-TokamPDFDensite.eps}
 {\caption{Comparaisons des densités de probabilité pour la densité et
@@ -1093,9 +1137,14 @@ le flux radial.}
 \label{4-TokamPDFDensite}}
 \end{figure}
 
-\subsection{Simulation plus complète de la SOL}
- avec une densité de neutre et la température
-%\bibliographystyle{apalike}
-%\bibliography{biblio}
-	
+TOKAM, dont le modèle a été spécifiquement développé pour étudier les plasmas de
+SOL, a été validé analytiquement et est encore utilisé quotidiennement dans le
+cadre de la recherche sur les plasmas de fusion. La capacité à
+reproduire avec autant de similitude ces résultats est très encourageante,
+et prouve que MAGNIS peut capturer la physique de base du
+transport fortement magnétisé, tout en restant suffisement stable confronté à un
+problème de type turbulent.
+Une comparaison instructive pourrait être etudiée prochainement en ajoutant une
+densité de neutre et la température électronique.
+
 \end{refsection}
