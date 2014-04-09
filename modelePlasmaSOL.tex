@@ -13,8 +13,8 @@ lesquelles repose le modèle. Les équations de continuité et de
 courant sont ensuites dérivées avec quelques précisions sur les approximations
 choisies.
 Dans une deuxième partie, nous présentons les évolutions du
-modèle et les modifications sur le code qui ont été entreprises pour lui
-permettre décrire le transport dans des conditions caractéristiques des plasmas
+modèle et les modifications entreprises sur le code pour lui
+permettre décrire le transport dans des conditions caractéristiques aux plasmas
 froids. Sont ainsi passées en revues :
 
 \begin{itemize}
@@ -27,61 +27,58 @@ température électronique
 \end{itemize}
 
 Pour le dernier point, les équations sont redérivées en tenant
-compte du transport collisionnel avec les neutres et le modèle intègre des
-conditions aux limites de type gaine sur le courant et le flux de particule dans
-la direction perpendiculaire au champ magnétique.
+compte du transport collisionnel avec les neutres. Le modèle intègre de plus des
+conditions aux limites de type gaine sur le courant et le flux de particules
+dans la direction perpendiculaire au champ magnétique.
 
+\section{Le code TOKAM2D}
 
-\section{Transport fortement magnétisé dans la SOL}
-\sectionmark{Transport dans le plasma de bord}
-La première phase de cette thèse a consisté à utiliser et modifier le
-code TOKAM2D. Le but était alors de se familiariser avec les
-techniques développées dans lmécanismes du transport magnétisé tout en  par les 
-de pouvoir appliquer au problème des sources d'ions. Après une brève description de d'historique de TOKAM2D et des hypothèses du modèle, les équations du modèle sont dérivées dans leur forme adimensionnée
-puis moyennée dans la direction parallèle. Nous discutons finalement une
-simulation typique, qui servira de base pour comparer les différentes évolutions
-du modèle.
-
-\subsection{Le code TOKAM2D}
+\sectionmark{Le code TOKAM2D}
+La première année de cette thèse a consisté à utiliser et modifier le
+code {TOKAM2D}. Le but était alors de se familiariser avec les
+techniques développées pour la modélisation des plasmas
+de SOL et les mécanismes du transport magnétisé afin
+de pouvoir les appliquer au problème des sources d'ions. 
 
 Le code TOKAM2D est un code fluide, quasineutre, qui décrit le transport
 transverse en se basant sur l'approximation des vitesses de dérive (voir §
 \ref{Introduction}-\ref{vitessesDerive}). Initialement développé à
 l'Institut Méditerranéen Technologique de Marseille (IMTM) pour étudier
-la turbulence d'interchange qui domine le transport transverse dans le plasma
-de bord des tokamaks, sa modification pour intégrer un forçage de la turbulence
+la turbulence d'interchange, sa modification pour intégrer un forçage de la turbulence
 par un flux au lieu d'un gradient d'équilibre a permis de retrouver le
 caractère intermittent du transport et la longueur de décroissance du profil de
-densité que l'on mesurait expérimentalement. L'étude du modèle a ainsi permis
-d'améliorer la compréhension du mécanisme de l'instabilité
+densité que l'on mesurait expérimentalement~\cite{SarazinPhD}. L'étude du modèle a
+ainsi permis d'améliorer la compréhension du mécanisme de l'instabilité
 d'interchange, par la mise en évidence du transport turbulent de type
-avalanche et le caractère de déclenchement à seuil de l'instabilité.
+avalanche. Il a aussi permi de prouver le déclenchement à seuil de
+l'instabilité.
 
 \subsection{Hypothèses du modèle}
 Dans les conditions typiques de la SOL, l'utilisation d'un modèle fluide est
 justifiée par la forte collisionnalité du plasma. Le libre parcours moyen
 $\lambda_{ei}=v_T \nu_{ei}$, de l'ordre du mètre, est très inférieur à la
-longueur de connexion parallèle des lignes de champ $L_\para=2\pi q R\sim
-$\unit{100}{\meter}.
-Le plasma est de plus très magnétisé $B\sim$\unit{1}{\tesla}, les fréquences
-caractéristiques du transport transverse sont donc très lentes devant la fréquence
-cyclotronique ionique ce qui nous permet de nous placer dans le cadre de
-l'approche des vitesse de dérives :
+longueur de connexion parallèle des lignes de champ $L_\para\sim
+$~100m.
+Le plasma est de plus très magnétisé $B\sim$~1T, les fréquences
+caractéristiques du transport transverse sont donc suffisement lentes devant la
+fréquence cyclotronique ionique pour nous placer dans le cadre de
+l'approche par vitesses de dérive :
 
 \begin{equation}
 \omega\ll\omega_c\Leftrightarrow \varepsilon_\omega\equiv\frac{\omega}{\omega_c}\ll 1
 \end{equation}
 
-D'un autre côté $\rho_L^i$, le rayon de Larmor ionique, d'environ
-\unit{1}{\milli\meter}, est bien supérieur à la longueur de
-Debye $\lambda_D$, de l'ordre de \unit{10^{-5}}{\meter}, ce qui permet de
-considérer le plasma quasineutre dans son ensemble
-, avec des densités ionique et électronique équales à $n$.
+D'un autre côté $\rho\indice{Li}$, le rayon de Larmor ionique, d'environ
+1mm, est bien supérieur à la longueur de
+Debye $\lambda_D$, de l'ordre de 10$^{-5}$~m, ce qui permet de
+considérer le plasma quasineutre dans son ensemble, avec des densités ionique
+et électronique équales à $n$.
 On décrit alors le transport du plasma à travers l'évolution de la densité
-électronique $n_e=n$ et du potentiel électrostatique $U$ en résolvant l'équation
+électronique $n=n_e$ et du potentiel électrostatique $U$ en résolvant l'équation
 de continuité des électrons ainsi que l'équation de conservation du courant. Les
 températures électronique
 $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e$.
+
 \begin{figure}[htbp]
 \centering
     \includegraphics[width=0.8\textwidth]{figures/2-tokamSimDomain.png}
@@ -92,8 +89,9 @@ $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e
 
 La zone simulée, présentée sur la figure~\ref{2-figTokamGeom}, correspond à une
 petite partie de la SOL, la séparatrice étant modélisée par un flux entrant de
-particule L'hypothèse flûte, qui permet la réduction du problème de trois à deux
-dimensions .
+particule. L'hypothèse flûte, qui autorise la réduction du problème de trois à
+deux dimensions, consiste à considérer les fluctuations constantes le long des
+lignes de champ.
 
 \subsection{Dérivation des équations}
 \subsubsection{Equation de conservation de la matière}
@@ -197,7 +195,7 @@ U\right)=0
 Diverses considérations sur l'importance relative des termes contenus dans
 \eqref{EqCourant2} (reliées entre autres aux hypothèses d'ordering
 ou aux variations et à la finitude du rayon de Larmor) sont développées dans
-\cite{Sarazin} pour simplifier le modèle. Elles conduisent à l'expression
+\cite{SarazinPhD} pour simplifier le modèle. Elles conduisent à l'expression
 finale de l'équation du courant :
 
 \begin{equation}\begin{split}
@@ -260,6 +258,9 @@ T_e(1+\tau)\left[N,B\puissance{-1}\right] =\\
 B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
 \end{split}
 \end{equation}
+
+\subsection{Réduction du système à deux dimensions}
+
 
 \begin{figure}
     \centering
