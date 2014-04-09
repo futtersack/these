@@ -814,7 +814,7 @@ magnétisé. La température au centre de la source s'élève, passant
 successivement à 14 eV puis à 20 eV. Le rayon de l'anneau est approximativement
 égal au rayon de Larmor électronique local, qui s'encadre par :
 \begin{equation}
-\frac{L_\perp}{2}=10\,\text{cm}>\rho\indice{L_e}>l_c\simeq 5\,\text{cm}
+\frac{L_\perp}{2}=10\,\text{cm}>\rho\indice{e}>l_c\simeq 5\,\text{cm}
 \end{equation}
 où $L_\perp$ est la longueur caractéristique de la source et $l_c$ une distance
 critique. 
@@ -903,27 +903,28 @@ dans cette partie.
 B&&\multicolumn{2}{c}{Champs}&&\multicolumn{2}{c}{Echelles} &&
 Rotation\\
 \cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-9}
-&& $n$ (m\textsuperscript{-3}) & $T_e$ (eV)&& $\omega_c$ &$\rho\indice{L}$&& $\Omega_r$ (10\textsuperscript{5}rad/s)\\
+&& $n$ (m\textsuperscript{-3}) & $T_e$ (eV)&& $\omega_\alpha$
+&$\rho\indice{\alpha}$&& $\Omega_r$ (10\textsuperscript{5}rad/s)\\
 \midrule Phase 1&&&&&\multicolumn{2}{c}{électrons}\\
 \scriptsize 1-2 &&\scriptsize 3.3 10\textsuperscript{14} $\nearrow$~~
 \scriptsize 3.5 10\textsuperscript{14} &\scriptsize14 $\nearrow$~~\scriptsize 20 &&
-$\omega_c<\nu_e$ &\scriptsize$\rho\indice{L}\sim L_\perp$ && \scriptsize -
+$\omega_e<\nu_e$ &\scriptsize$\rho\indice{e}\sim L_\perp$ && \scriptsize -
 \\
 Phase 2\\
 \scriptsize 3-15 &&\scriptsize 5.5 10\textsuperscript{14}
 $\nearrow$~~\scriptsize 1.8 10\textsuperscript{15} &\scriptsize22
-$\nearrow$~~\scriptsize 28.5 && $\omega_c\sim\nu_e$ &\scriptsize$\rho\indice{L}<
+$\nearrow$~~\scriptsize 28.5 && $\omega_e\sim\nu_e$ &\scriptsize$\rho\indice{e}<
 L_\perp$ && \scriptsize 10 $\nearrow$~~\scriptsize20
 \\
 Phase 3 &&&&&\multicolumn{2}{c}{ions}\\
 \scriptsize 17-60 &&\scriptsize 2 10\textsuperscript{15} $\nearrow$~~\scriptsize
 2 10\textsuperscript{16} &\scriptsize$\in$ \scriptsize [26 - \scriptsize 37]
-&& $\omega_c<\nu_i$ &\scriptsize$\rho\indice{L}\sim L_\perp$ && \scriptsize N.A.
+&& $\omega_i<\nu_i$ &\scriptsize$\rho\indice{i}\sim L_\perp$ && \scriptsize N.A.
 \\
 Phase 4 \\
 \scriptsize 70-170 &&\scriptsize 1.3 10\textsuperscript{16}
 $\nearrow$~~\scriptsize 4.5 10\textsuperscript{16} &\scriptsize23
-$\searrow$~~\scriptsize 9 && $\omega_c\sim\nu_i$ &\scriptsize$\rho\indice{L}<
+$\searrow$~~\scriptsize 9 && $\omega_i\sim\nu_i$ &\scriptsize$\rho\indice{i}<
 L_\perp$ && \scriptsize 4 $\searrow$~~\scriptsize1.5$\nearrow$~~\scriptsize2
 \\
 \bottomrule
@@ -1046,7 +1047,7 @@ pour :
 \includegraphics[width=0.5\textwidth]{figures/4-tokamSimDomain.png}
 \caption{Le domaine de simulation est identique à celui présenté au
 chapitre II. La boîte correspond à une petite région de la SOL, de dimension
-2cm x 2cm, simulant le côté LFS à gauche de la source et le côté HFS à droite.
+2cm x 2cm, simulant le côté HFS à gauche de la source et le côté LFS à droite.
 \label{4-tokamSimDomain}}
 \end{figure}
 
@@ -1057,7 +1058,7 @@ décroissant, et correspond à un coefficient de courbure des lignes de champ
 g=5.10$^{-4}$.
 Le plasma est considéré isotherme et la densité de neutre égale à zéro. La
 taille de la zone simulée, dont on rappelle la géométrie
-figure~\ref{4-tokamSimDomain}, est de 200 $\rho_L$ soit à peu près 2cm pour une
+figure~\ref{4-tokamSimDomain}, est de 200 $\rho_i$ soit à peu près 2cm pour une
 température électronique de 1eV. La longueur de la boîte dans la direction
 du champ magnétique est choisie égale à 10m pour obtenir une conductivité
 parallèle $\sigma$=10$^{-5}$.

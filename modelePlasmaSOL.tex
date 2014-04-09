@@ -50,7 +50,7 @@ caractère intermittent du transport et la longueur de décroissance du profil d
 densité que l'on mesurait expérimentalement~\cite{SarazinPhD}. L'étude du modèle a
 ainsi permis d'améliorer la compréhension du mécanisme de l'instabilité
 d'interchange, par la mise en évidence du transport turbulent de type
-avalanche. Il a aussi permi de prouver le déclenchement à seuil de
+avalanche. Il a aussi aidé à prouver le déclenchement à seuil de
 l'instabilité.
 
 \subsection{Hypothèses du modèle}
@@ -59,6 +59,7 @@ justifiée par la forte collisionnalité du plasma. Le libre parcours moyen
 $\lambda_{ei}=v_T \nu_{ei}$, de l'ordre du mètre, est très inférieur à la
 longueur de connexion parallèle des lignes de champ $L_\para\sim
 $~100m.
+
 Le plasma est de plus très magnétisé $B\sim$~1T, les fréquences
 caractéristiques du transport transverse sont donc suffisement lentes devant la
 fréquence cyclotronique ionique pour nous placer dans le cadre de
@@ -68,13 +69,13 @@ l'approche par vitesses de dérive :
 \omega\ll\omega_c\Leftrightarrow \varepsilon_\omega\equiv\frac{\omega}{\omega_c}\ll 1
 \end{equation}
 
-D'un autre côté $\rho\indice{Li}$, le rayon de Larmor ionique, d'environ
+D'un autre côté $\rho\indice{i}$, le rayon de Larmor ionique, d'environ
 1mm, est bien supérieur à la longueur de
-Debye $\lambda_D$, de l'ordre de 10$^{-5}$~m, ce qui permet de
+Debye $\lambda_D$, de l'ordre de 10$^{-5}$~m, ce qui autorise à
 considérer le plasma quasineutre dans son ensemble, avec des densités ionique
 et électronique équales à $n$.
-On décrit alors le transport du plasma à travers l'évolution de la densité
-électronique $n=n_e$ et du potentiel électrostatique $U$ en résolvant l'équation
+Le transport est alors décrit à travers l'évolution de la densité
+électronique $n$ et du potentiel électrostatique $U$ en résolvant l'équation
 de continuité des électrons ainsi que l'équation de conservation du courant. Les
 températures électronique
 $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e$.
@@ -87,11 +88,14 @@ $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e
     \label{2-figTokamGeom}
 \end{figure}
 
-La zone simulée, présentée sur la figure~\ref{2-figTokamGeom}, correspond à une
-petite partie de la SOL, la séparatrice étant modélisée par un flux entrant de
-particule. L'hypothèse flûte, qui autorise la réduction du problème de trois à
-deux dimensions, consiste à considérer les fluctuations constantes le long des
-lignes de champ.
+L'hypothèse flûte, qui sera développée §\ref{2-flute}, permet enfin de réduire
+le problème de trois à deux dimensions.
+La figure~\ref{2-figTokamGeom} montre la zone simulée. La SOL est représentée
+en géométrie slab, ie. avec $x\equiv(r-a)/\rho_i$ et $y\equiv
+a\theta/\rho_i$ les coordonnées transverses, normalisées par le rayon de
+Larmor ionique. La séparatrice est modélisée par un flux entrant de particules,
+séparant la zone simulée en une zone région de courbure magnétique favorable à
+gauche et une autre sujette à l'instabilité d'interchange (côté LFS) à droite.
 
 \subsection{Dérivation des équations}
 \subsubsection{Equation de conservation de la matière}
@@ -260,7 +264,12 @@ B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
 \end{equation}
 
 \subsection{Réduction du système à deux dimensions}
-
+\label{2-flute}
+qui s'appuie sur des observations
+expérimentales\footnote{Des mesures expérimentales ont montré que le
+vecteur d'onde parallèle des fluctuations électrostatiques était très
+petit devant la longueur de connexion parallèle $L_\para$} justifie la réduction en considérant les
+fluctuations constantes le long des lignes de champ
 
 \begin{figure}
     \centering

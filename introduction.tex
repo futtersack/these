@@ -133,11 +133,11 @@ de Boltzmann-Poisson :
 \label{1-PFD}
 m_\text{e}\frac{\text{d} \mathbf{v}_\text{e}}{\text{d} t}=-e\mathbf E
 \;\;\;\;\;\;\text{et}\;\;\;\;\;\;
-\nabla\cdot\mathbf{E}=\rho\varepsilon\indice{0}\puissance{-1}
+\nabla\cdot\mathbf{E}=\frac{e\,(n_\text{i}-n_\text{e})}{\varepsilon\indice{0}}
 \end{align}
 
 où $\mathbf{v}_\text{e}$ est la vitesse de l'électron et
-$\rho=e\,(n_\text{i}-n_\text{e})$ la densité spatiale de charge.
+$e\,(n_\text{i}-n_\text{e})$ la densité spatiale de charge.
 Tout écart entre la densité d'ions et la densité d'électrons
 entraîne ainsi l'apparition d'un fort champ électrique de rappel à l'équilibre.
 
@@ -303,25 +303,25 @@ Ce mouvement de rotation autour des lignes de champ, appelé mouvement
 cyclotronique, est caractérisé par la pulsation cyclotronique : 
 
 \begin{equation}
-\omega\indice{c_{\alpha}}=\frac{e B}{m_\alpha}
+\omega\indice{{\alpha}}=\frac{e B}{m_\alpha}
 \end{equation}
 
-Le rayon de Larmor $\rho_\text{L}$ de l'orbite révèle quant à lui une échelle
-spatiale représentative du transport magnétisé. Le rayon de Larmor se
+Le rayon de Larmor $\rho_\text{\alpha}$ de l'orbite révèle quant à lui une
+échelle spatiale représentative du transport magnétisé. Le rayon de Larmor se
 calcule en fonction de la pulsation cyclotronique et de la vitesse
 $v\indice{\alpha}$ de la particule :
 
 \begin{equation}
-\rho\indice{L_{\alpha}}
-=\frac{v\indice{\alpha}}{\omega_{c_{\alpha}}}
+\rho\indice{\alpha}
+=\frac{v\indice{\alpha}}{\omega_{{\alpha}}}
 \end{equation}
 
 Pour les ions suffisamment énergétiques, ainsi que pour les électrons en général,
 la vitesse typique de la particule est sa vitesse thermique. On peut alors noter :
 
 \begin{equation}
-\omega\indice{c_{\alpha}}\left[\frac{e B}{m_\alpha}\right]
-\cdot\rho\indice{L_{\alpha}}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
+\omega\indice{{\alpha}}\left[\frac{e B}{m_\alpha}\right]
+\cdot\rho\indice{{\alpha}}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
 =v\indice{T_{\alpha}}\left[\left(\frac{eT_{\alpha}}{m_{\alpha}}\right)^{\text{\textonehalf}}\right]
 \end{equation}
 
@@ -334,7 +334,7 @@ partir du moment où la longueur caractéristique $L$ du transport considéré e
 grande devant son rayon de Larmor :
 
 \begin{equation}
-\delta=\frac{\rho_{L_{\alpha}}}{L}\ll 1
+\delta=\frac{\rho_{{\alpha}}}{L}\ll 1
 \end{equation}
 
 \begin{figure}[htbp]
