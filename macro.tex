@@ -60,6 +60,7 @@
 \usepackage[french]{minitoc}
 \setcounter{minitocdepth}{2}
 \usepackage{chngcntr}
+\numberwithin{equation}{section}
 \usepackage[squaren,Gray,thinspace]{SIunits}
 \usepackage{lipsum}
 
@@ -141,7 +142,8 @@
 
 \parindent=1em
 \parskip 0.5em plus 1pt
-\newcommand{\Section}[1]{\newpage\section{#1} \setcounter{figure}{0}}
+\newcommand{\Section}[1]{\newpage\section{#1} \setcounter{figure}{0}
+\setcounter{equation}{0}}
 \renewcommand{\thefigure}{\arabic{section}.\alph{figure}}
 \counterwithin{figure}{section}
 

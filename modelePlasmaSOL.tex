@@ -94,33 +94,43 @@ La figure~\ref{2-figTokamGeom} montre la zone simulée. La SOL est représentée
 en géométrie slab, ie. avec $x\equiv(r-a)/\rho_i$ et $y\equiv
 a\theta/\rho_i$ les coordonnées transverses, normalisées par le rayon de
 Larmor ionique. La séparatrice est modélisée par un flux entrant de particules,
-séparant la zone simulée en une zone région de courbure magnétique favorable à
-gauche et une autre sujette à l'instabilité d'interchange (côté LFS) à droite.
+qui sépare la zone simulée en deux régions :
+
+\begin{itemize}
+  \item une région stable, ie. où la courbure magnétique est favorable, à gauche
+  de la source
+  \item une région sujette à l'instabilité d'interchange (côté LFS) à droite
+ \end{itemize}
+ 
+Dans la version initiale de TOKAM2D, pour des raisons pratiques, le domaine de
+simulation a été choisi bipériodique. 
 
 \subsection{Dérivation des équations}
 \subsubsection{Equation de conservation de la matière}
-En notant $D_\perp\sim eT_\text{e}/m_\text{e}\nu_\text{ei}$ le coefficient de
-diffusion rendant compte des collisions coulombiennes, et $S$ un terme source modélisant le flux de particules
-provenant du plasma de c\oe{}ur, l'équation de continuité des électrons s'écrit :
+La densité $n$ du plasma est conrôlée par l'équation de continuité des
+électrons. L'effet des collisions coulombiennes est pris en compte à travers un
+terme diffusif de coefficient $D_\perp\sim eT_\text{e}/m_\text{e}\nu_\text{ei}$
+et on note $S$ un terme source modélisant le flux de particules
+provenant du plasma de c\oe{}ur. L'équation de continuité s'écrit :
 
 \begin{equation}
 \label{2-ContinuiteElectrons}
-\partial_t n + \nabla\cdot(n\mathbf{u}^e) = D_\perp\nabla^2_\perp n + S
+\partial_t n + \nabla\cdot(n\mathbf{u}) = D_\perp\nabla^2_\perp n + S
 \end{equation}
 
-Comme discuté dans le paragraphe consacré aux vitesses de dérive, le flux de
-matière transverse est essentiellement issu de l'advection par la vitesse de
-dérive électrique. \eqref{2-ContinuiteElectrons} peut ainsi se
-développer en :
+En décomposant la divergence suivant les directions parallèle et
+perpendiculaire, et en se souvenant que le flux de matière transverse est
+essentiellement issu de l'advection par la vitesse de dérive électrique
+(cf.~§\ref{Introduction}-\ref{vitessesDerive}), \eqref{2-ContinuiteElectrons} peut se développer en :
 
 \begin{equation}
 \label{2-ContinuiteElectrons2}
-\partial_t n + \nabla_\para\cdot(n\mathbf{u}^e_{\para}) =
+\partial_t n + \nabla_\para\cdot(n\mathbf{u}_{\para}) =
 \mathbf{u}_E\cdot\nabla_\perp n + D_\perp\nabla^2_\perp n + S
 \end{equation}
 
 Le terme d'advection $\mathbf{u}_E\cdot\nabla_\perp
-n$ peut se réécrire en utilisant la notation
+n$ se réécrit en utilisant la notation
 du crochet de Poisson $[n,U]=\mathbf{b}.(\nabla_\perp n\times\nabla_\perp U)$.
 C'est la forme que prend toute advection d'un champ scalaire par une vitesse de
 dérive $\mathbf{v}_\text{D}=\nabla H\times\mathbf{B}/B^2$, où $\nabla H$ est la
@@ -157,39 +167,48 @@ divergences:
 = 0
 \end{equation}
 
-La divergence du courant diamagnétique donne un crochet de Poisson :
+La divergence du courant diamagnétique, dans un plasma isotherme, donne un
+crochet de Poisson entre la densité et la courbure du champ magnétique :
 
 \begin{equation}
-\nabla_\perp\cdot\mathbf{j}_*=
+\nabla\cdot\mathbf{j}_*=
 \nabla_\perp\cdot\left(\nabla_\perp\left(
-P_i+P_e\right)\times\mathbf{B}/B^2\right) = \left[P_i+P_e,B\puissance{-1}\right]
+P_i+P_e\right)\times\mathbf{B}/B^2\right) =
+T_e(1+\tau)\left[n,B\puissance{-1}\right]
 \end{equation}
 
-La vitesse de polarisation étant de plus proportionnelle à la masse des
-particules \eqref{vitessesDerive}, on ne retient
-dans l'expression du courant que la contribution ionique
-$\mathbf{j}_p\sim\text{e}n\mathbf{u}^i_p$. En prenant en compte une viscosité
-$\nu_\perp$\footnote{L'origine physique de cette viscosité définie par le
-coéfficient $\nu_\perp$ peut être rapprochée de la conductivité de Spitzer
-$\eta\equiv n_\text{e}e\puissance{2}/m_\text{e}\nu_\text{ei}$, soit encore à
-une expression modifiée de la vitesse de dérive électrique
-$\mathbf{u}_\text{E}=(1+\rho_\text{L}\puissance{2}/4\nabla\puissance{2})\mathbf{E}\times\mathbf{B}/B\puissance{2}$}
-du milieu, la dérivée totale est approximée par :
-
+La vitesse de polarisation étant de plus
+proportionnelle à la masse des particules \eqrefp{1-vitessePol}, on ne
+retient dans l'expression du courant que la contribution ionique :
 \begin{equation}
-\frac{\text{d}\nabla_\perp U}{\text{dt}} \equiv 
-\left(\partial_\text{t} - \nu_\perp \nabla_\perp^2 +
-\mathbf{u}_\text{i}\cdot\nabla_\perp\right)\nabla_\perp U
+\mathbf{j}_p\sim\text{e}n\mathbf{u}^i_p=-\frac{nm_\text{i}}{B^2}\frac{\text{d}\nabla_\perp
+U}{\text{dt}}
 \end{equation}
 
-De manière similaire à \eqref{2-ContinuiteElectrons2}, seule l'advection par
-la vitesse de dérive électrique est considérée dans la divergence.
-L'équation \eqrefp{EqCourant1} se réécrit alors :
+En exprimant la dérivée totale de
+façon eulérienne, la divergence du courant de polarisation devient :
+\begin{equation}
+\nabla\cdot\mathbf{j}_p\sim\nabla\cdot\left(\text{e}n\mathbf{u}^i_p\right)\equiv
+-\nabla_\perp\cdot\left(\frac{nm_\text{i}}{B^2}\left(\partial_\text{t} -
+\nu_\perp \nabla_\perp^2 +
+\mathbf{u}\cdot\nabla_\perp\right)\nabla_\perp U\right)
+\end{equation}
+$\nu_\perp$ représentant une viscosité effective du milieu\footnote{L'origine
+physique de cette viscosité définie par le coéfficient $nu_\perp$ peut être
+rapprochée de la conductivité de Spitzer $\eta\equiv
+n_\text{e}e\puissance{2}/m_\text{e}\nu_\text{ei}$, soit encore à une expression
+modifiée de la vitesse de dérive électrique
+$\mathbf{u}_\text{E}=(1+\rho_\text{L}\puissance{2}/4\nabla\puissance{2})\mathbf{E}\times\mathbf{B}/B\puissance{2}$}.
+De manière similaire à \eqref{2-ContinuiteElectrons2}, seule l'advection par la
+vitesse de dérive électrique est considérée dans la divergence : 
+$\nabla\cdot\left(\mathbf{u}\,\nabla_\perp^2 U\right)
+\approx\nabla\cdot\left(\mathbf{u}_E\,\nabla_\perp^2 U\right)$.
+En insérant l'expression des dérives, \eqref{EqCourant1} se réécrit :
 
 \begin{equation}\begin{split}
 \label{EqCourant2}
-\nabla_\para\cdot\mathbf{j}_\para + \left[P_i+P_e,B\puissance{-1}\right] +
-\nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\left(\partial_\text{t}\nabla_\perp
+\nabla_\para\cdot\mathbf{j}_\para +
+T_e(1+\tau)\left[n,B\puissance{-1}\right] + \nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\left(\partial_\text{t}\nabla_\perp
 U - \nu_\perp \nabla_\perp^3 U \right)\right) \\+
 \nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
 U\right)=0
@@ -197,15 +216,15 @@ U\right)=0
 \end{equation}
 
 Diverses considérations sur l'importance relative des termes contenus dans
-\eqref{EqCourant2} (reliées entre autres aux hypothèses d'ordering
-ou aux variations et à la finitude du rayon de Larmor) sont développées dans
-\cite{SarazinPhD} pour simplifier le modèle. Elles conduisent à l'expression
-finale de l'équation du courant :
+\eqref{EqCourant2} (reliées aux hypothèses d'ordering
+et aux variations de champ magnétique) sont développées dans
+\cite{SarazinPhD} pour réduire le modèle. Elles conduisent à l'expression
+simplifiée de l'équation du courant :
 
 \begin{equation}\begin{split}
 \label{2-eqCourantFinale}
 \nabla_\para\cdot\mathbf{j}_\para +
-(T_e+T_i)\left[n,B\puissance{-1}\right] =\\
+T_e(1+\tau)\left[n,B\puissance{-1}\right] =\\
 \frac{nm_i}{B^2}\left(\partial_\text{t}\nabla_\perp^2 U - \nu_\perp
 \nabla_\perp^4U+
 B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
@@ -262,6 +281,13 @@ T_e(1+\tau)\left[N,B\puissance{-1}\right] =\\
 B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
 \end{split}
 \end{equation}
+
+Cette expression fait apparaître la vorticité électrique\footnote{La
+vorticité d'un écoulement est généralement définie comme le rotationnel de sa vitesse. Dans la SOL, le champ
+de vitesse correspond essentiellement à la dérive ExB, ce qui donne pour un
+champ magnétique constant de 1T : 
+$W\sim\nabla\times\mathbf{u}_E=\nabla\times(\mathbf{E}/B\times\mathbf{b})\equiv-\nabla_\perp^2
+U$ } $\text{W}=-\nabla_\perp^2 U$.
 
 \subsection{Réduction du système à deux dimensions}
 \label{2-flute}
