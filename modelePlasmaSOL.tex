@@ -218,20 +218,37 @@ U\right)=0
 Diverses considérations sur l'importance relative des termes contenus dans
 \eqref{EqCourant2} (reliées aux hypothèses d'ordering
 et aux variations de champ magnétique) sont développées dans
-\cite{SarazinPhD} pour réduire le modèle. Elles conduisent à l'expression
-simplifiée de l'équation du courant :
+\cite{SarazinPhD}. En effectuant un changement de variable $W=\nabla_\perp^2U$, où $W$ symbolise
+une vorticité\footnote{La vorticité d'un écoulement est généralement définie comme le rotationnel de sa vitesse. Dans la SOL, le champ de vitesse correspond essentiellement à la dérive ExB, ce qui donne pour un
+champ magnétique constant de 1T : 
+$\nabla\times\mathbf{v}\sim\nabla\times\mathbf{u}_E=\nabla\times(\mathbf{E}/B\times\mathbf{b})\equiv-\nabla_\perp^2
+U=W$ }, \eqref{EqCourant2} se transforme en :
 
 \begin{equation}\begin{split}
 \label{2-eqCourantFinale}
 \nabla_\para\cdot\mathbf{j}_\para +
 T_e(1+\tau)\left[n,B\puissance{-1}\right] =\\
-\frac{nm_i}{B^2}\left(\partial_\text{t}\nabla_\perp^2 U - \nu_\perp
-\nabla_\perp^4U+
-B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
+\frac{nm_i}{B^2}\left(\partial_\text{t}W - \nu_\perp
+\nabla_\perp^2W+
+B\puissance{-1}\left[U,W\right]\right)
 \end{split}
 \end{equation}
 
-\subsection{Normalisation du système}
+une équation simplifiée que nous
+appelerons équation de vorticité 
+Notons que le terme en $\left[n,B\puissance{-1}\right]$, issu de la divergence
+du courant diamagnétique, contient l'élément déstabilisant de
+ l'instabilité d'interchange. Dans le système d'équations
+ \eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale}, seule la vitesse
+ parallèle électronique reste inconnue. 
+
+\subsection{Système moyenné et normalisation}
+\label{2-flute}
+qui s'appuie sur des observations
+expérimentales\footnote{Des mesures expérimentales ont montré que le
+vecteur d'onde parallèle des fluctuations électrostatiques était très
+petit devant la longueur de connexion parallèle $L_\para$} justifie la réduction en considérant les
+fluctuations constantes le long des lignes de champ
 Pour faire apparaître les grandeurs caractéristiques du système et simplifier
 l'écriture des équations, les différents termes sont
 maintenant adimensionnées. L'intensité du champ
@@ -282,20 +299,7 @@ B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
 \end{split}
 \end{equation}
 
-Cette expression fait apparaître la vorticité électrique\footnote{La
-vorticité d'un écoulement est généralement définie comme le rotationnel de sa vitesse. Dans la SOL, le champ
-de vitesse correspond essentiellement à la dérive ExB, ce qui donne pour un
-champ magnétique constant de 1T : 
-$W\sim\nabla\times\mathbf{u}_E=\nabla\times(\mathbf{E}/B\times\mathbf{b})\equiv-\nabla_\perp^2
-U$ } $\text{W}=-\nabla_\perp^2 U$.
 
-\subsection{Réduction du système à deux dimensions}
-\label{2-flute}
-qui s'appuie sur des observations
-expérimentales\footnote{Des mesures expérimentales ont montré que le
-vecteur d'onde parallèle des fluctuations électrostatiques était très
-petit devant la longueur de connexion parallèle $L_\para$} justifie la réduction en considérant les
-fluctuations constantes le long des lignes de champ
 
 \begin{figure}
     \centering
