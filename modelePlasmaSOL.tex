@@ -125,7 +125,7 @@ essentiellement issu de l'advection par la vitesse de dérive électrique
 
 \begin{equation}
 \label{2-ContinuiteElectrons2}
-\partial_t n + \nabla_\para\cdot(n\mathbf{u}_{\para}) =
+\partial_t n + \nabla_\para(nu_{\para}) =
 \mathbf{u}_E\cdot\nabla_\perp n + D_\perp\nabla^2_\perp n + S
 \end{equation}
 
@@ -139,7 +139,7 @@ s'écrit alors :
 
 \begin{equation}
 \label{2-eqContinuiteFinale}
-\partial_t n + \nabla_{\para}\cdot(n\mathbf{u}^e_{\para}) =
+\partial_t n + \nabla_{\para}(nu_{\para}) =
 \frac{1}{B}\left[n,U\right] + D_\perp\nabla^2_\perp n + S
 \end{equation}
 
@@ -207,7 +207,7 @@ En insérant l'expression des dérives, \eqref{EqCourant1} se réécrit :
 
 \begin{equation}\begin{split}
 \label{EqCourant2}
-\nabla_\para\cdot\mathbf{j}_\para +
+\nabla_\para j_\para +
 T_e(1+\tau)\left[n,B\puissance{-1}\right] + \nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\left(\partial_\text{t}\nabla_\perp
 U - \nu_\perp \nabla_\perp^3 U \right)\right) \\+
 \nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
@@ -223,38 +223,91 @@ une vorticité\footnote{La vorticité d'un écoulement est généralement défin
 champ magnétique constant de 1T : 
 $\nabla\times\mathbf{v}\sim\nabla\times\mathbf{u}_E=\nabla\times(\mathbf{E}/B\times\mathbf{b})\equiv-\nabla_\perp^2
 U=W$ }, \eqref{EqCourant2} se transforme en :
-
 \begin{equation}\begin{split}
 \label{2-eqCourantFinale}
-\nabla_\para\cdot\mathbf{j}_\para +
+\nabla_\para{j}_\para +
 T_e(1+\tau)\left[n,B\puissance{-1}\right] =\\
 \frac{nm_i}{B^2}\left(\partial_\text{t}W - \nu_\perp
 \nabla_\perp^2W+
 B\puissance{-1}\left[U,W\right]\right)
 \end{split}
 \end{equation}
-
-une équation simplifiée que nous
-appelerons équation de vorticité 
+une équation simplifiée dite de vorticité. 
 Notons que le terme en $\left[n,B\puissance{-1}\right]$, issu de la divergence
 du courant diamagnétique, contient l'élément déstabilisant de
- l'instabilité d'interchange. Dans le système d'équations
- \eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale}, seule la vitesse
- parallèle électronique reste inconnue. 
+ l'instabilité d'interchange, dû au gradient de densité et à la courbure du
+ champ magnétique.
+ Dans le système d'équations
+ \eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale}, seules restent
+ inconnues la vitesse parallèle électronique  et le courant parallèle. La
+ fermeture s'opère alors en moyennant les équations le long de la direction
+ parallèle. 
 
 \subsection{Système moyenné et normalisation}
 \label{2-flute}
-qui s'appuie sur des observations
-expérimentales\footnote{Des mesures expérimentales ont montré que le
-vecteur d'onde parallèle des fluctuations électrostatiques était très
-petit devant la longueur de connexion parallèle $L_\para$} justifie la réduction en considérant les
-fluctuations constantes le long des lignes de champ
+\subsubsection{Réduction 2D}
+
+ L'hypothèse flûte, qui s'appuie sur des observations
+expérimentales\footnote{Des mesures expérimentales ont montré que le vecteur
+d'onde parallèle des fluctuations électrostatiques était très petit devant la
+longueur de connexion parallèle $L_\para$\parencite{Woot90}}, consiste à
+considérer les fluctuations constantes le long des lignes de champ. Toute grandeur $f(x,y)$
+vérifiant l'hypothèse flûte est donc indépendante de la direction parallèle et
+sa moyenne est égale à la fonction elle-même :
+\begin{equation}
+\left<f(x,y)\right>_\para=f(x,y)
+\end{equation}
+En supposant que la densité $n$ et le potentiel $U$ ne dépendent que de x et de
+y, le passage des équations
+\eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale} à la moyenne laisse
+la plupart des termes inchangés.
+
+Les divergences parallèles du flux et du
+courant font naturellement apparaître
+les conditions aux limites de gaine issue du critère de Bohm (cf.~\ref{1-gaine})
+:
+\begin{align}
+\left<\nabla_\para
+nu_\para\right>_\para&=\frac{nc_s}{L_\para}\exp(\Lambda-\Delta\Phi/T_e)
+\\
+\left<\nabla_\para
+j_\para\right>_\para&=\frac{enc_s}{L_\para}\left(1-\exp(\Lambda-\Delta\Phi/T_e)\right)
+\end{align}
+
+La moyenne sur le terme de courbure est plus délicate à obtenir et doit tenir
+compte de l'enroulement des lignes de champ magnétique. Dans~\parencite{Garbet},
+Garbet détermine un coefficient de courbure $g$ moyen tel que :
+
+\begin{equation}
+\left<T_e(1+\tau)\left[n,B^{-1}\right]\right>_\para=g\partial_yn
+\end{equation}
+
+comme ce coefficient est positif, le signe du terme déstabilisant
+de l'interchange $g\partial_yn$ ne dépend que du sens du gradient de densité,
+donnant un caractère de ballooning à l'instabilité, ie. qui ne se développe que
+d'un côté du plasma. Avec ces expressions, le système d'équations
+\eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale} devient :
+\begin{align}
+\label{2-eqContinuiteMoyenne}
+&\partial_t n + \frac{nc_s}{L_\para}\exp(\Lambda-e\Delta U/T_e) =
+\frac{1}{B}\left[n,U\right] + D_\perp\nabla^2_\perp n + S
+\\\begin{split}
+\label{2-eqCourantMoyenne}
+&\frac{enc_s}{L_\para}\left(1-\exp(\Lambda-e\Delta U/T_e)\right) +
+-g\partial_yn =\\
+&\frac{nm_i}{B^2}\left(\partial_\text{t}W - \nu_\perp
+\nabla_\perp^2W+
+B\puissance{-1}\left[U,W\right]\right)
+\end{split}
+\end{align}
+ 
+\subsubsection{Normalisation des équations}
+
 Pour faire apparaître les grandeurs caractéristiques du système et simplifier
-l'écriture des équations, les différents termes sont
-maintenant adimensionnées. L'intensité du champ
-magnétique $B\indice{0}$ et à la température électronique de référence
-$T\indice{0}$ constituent les bases de cet adimensionnement. Le temps est
-normalisé à l'inverse de la fréquence cyclotronique ionique :
+l'écriture des équations, les différents termes sont maintenant adimensionnées.
+L'intensité du champ magnétique $B\indice{0}$ et à la température électronique
+de référence $T\indice{0}$ constituent les bases de cet adimensionnement. Le
+temps est normalisé à l'inverse de la fréquence cyclotronique ionique :
 
 \begin{equation}
 t = \overline{t}\:\omega_c\puissance{-1} =
@@ -268,38 +321,41 @@ Larmor et la vitesse de Bohm :
 x = \overline{x}\:\rho_L =
 \overline{x}\:\frac{m_ic_s}{eB\indice{0}} &
 et &
-v=\overline{v}\:c_s=\overline{v}\left(\frac{eT\indice{0}}{m_i}\right)^{\text{\textonehalf}}
+v=\overline{v}c_s=\overline{v}\left(\frac{eT\indice{0}}{m_i}\right)^{\text{\textonehalf}}
 \end{eqnarray}
 
 Nous définissons de plus les variables adimensionnées du modèle, la densité
-$\overline{N}$ et le potentiel électrostatique $\overline \phi$ par :
+$\overline{\text{N}}$ et le potentiel électrostatique $\overline \Phi$ par :
 
 \begin{eqnarray}
-n = n_{\indice{0}}\:\overline{N} & \text{et} & U=\frac{\overline
-{\phi}T\indice{0}}{e}
+n = n_{\indice{0}}N & \text{et} & U=\frac{\Phi T\indice{0}}{e}
 \end{eqnarray}
 
-Avec cette normalisation, on réécrit le système d'équations (
-\eqref{2-eqContinuiteFinale}-\eqref{2-eqCourantFinale}) sous la forme :
+Avec cette normalisation, on
+réécrit le système d'équations
+(\eqref{2-eqContinuiteMoyenne}--\eqref{2-eqCourantMoyenne}) sous la forme :
 
-\begin{equation}
+\begin{align}
 \label{2-eqContinuiteNorm}
-\partial_t N +
-\frac{\rho\indice{i}}{L_{\para}}\nabla_{\para}\cdot(NM^e_{\para}) =
-\frac{1}{B}\left[N,\Phi\right] + D_\perp\nabla^2_\perp N + S
-\end{equation}
-
-\begin{equation}\begin{split}
+&\partial_t N +
+\sigma Ne^{\Lambda-\Delta\Phi} =
+\left[N,\Phi\right] + D\nabla^2 N + S
+\\
 \label{2-eqCourantNorm}
-\nabla_\para\cdot(N\mathbf{M}_\para) +
-T_e(1+\tau)\left[N,B\puissance{-1}\right] =\\
-\frac{N}{B^2}\left(\partial_\text{t}\nabla_\perp^2 U - \nu_\perp
-\nabla_\perp^4U+
-B\puissance{-1}\left[U,\nabla_\perp^2\ U\right]\right)
-\end{split}
-\end{equation}
+&\partial_\text{t}W - \nu
+\nabla_\perp^2W+
+\left[\Phi,W\right] =
+\sigma\left(1-e^{\Lambda-\Delta\Phi}\right)-g\partial_y\log N
+\end{align}
 
-
+Dans cette expression, l'équation de vorticité a de plus été divisée par la
+densité. Le champ magnétique et la température électronique sont pris constants
+et uniformes $\overline{B}=\overline{T_e}=1$ et les termes de diffusion
+$D_\perp/D_B=D$ et de viscosité $\nu_\perp/D_B=\nu$ sont normalisés au
+coefficient de Bohm $D_B=\rho_ic_s^2$.
+Nous interprétons enfin $\sigma\sim\rho_i/L_\para$ comme la conductivité de
+gaine. Du fait de sa faible valeur, elle limite les pertes en courant parallèle
+au niveau des parois (limiteur), et laissant ainsi l'instabilité se développer. 
 
 \begin{figure}
     \centering
