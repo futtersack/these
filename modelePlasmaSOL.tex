@@ -470,44 +470,109 @@ ces plasmas :
 \end{itemize}
 
 Dans cette partie, nous présentons les évolutions successives du modèle pour
-tenir compte de ces trois points. Cependant, le plasma sera toujours supposé
-totalement ionisé et le champ magnétique suffisement intense pour que les
-ions soient magnétisés. La levée de ces deux hypothèses, qui n'est possible
-qu'en incluant l'interaction avec les atomes neutres, requiert une réécriture
-plus en profondeur du modèle, ce qui sera l'objet de la partie suivante.
+tenir compte de ces trois points.
+Si les simulations de cette version complétée de TOKAM2D ne correspondent pas
+encore aux plasmas froids des sources d'ions, elles seront tout de même
+éclairantes sur le type de
+transport qui se met en place dans des configurations de type filtre magnétique
+et colonne de plasma pour des cas limites de notre étude, ie. où le plasma
+est totalement ionisé et très magnétisé\footnote{La levée de ces deux hypothèses, qui n'est possible qu'en incluant l'interaction avec les atomes neutres, requiert une réécriture
+plus en profondeur du modèle, ce qui sera l'objet de la partie suivante.}.
+
+Dans le cadre de la recherche sur la fusion, cette refonte de TOKAM2D a tout
+d'abord permis de vérifier les approximations choisies dans la description de
+l'interchange du modèle original. Mais plus intéressant, les nouvelles
+possibilités offertes par le code a ouvert la voie à de nouvelles études sur le transport du courant
+et l'influence de la température électonique.
 
 \subsection{Etude sur les conditions aux limites}
 	
-	Les systèmes physiques décrits par les équations fluides sont très sensibles
-	aux conditions aux limites imposées par le milieu qui les entoure. Dans les
-	plasmas non-magnétisés, l'interaction avec
-	les parois est fondamentale et décrite par la théorie classique des gaines.
-	Celle-ci donne accès à la valeur des flux et des courants, fournissant de ce fait des conditions aux
-	limites concrètes qui reflètent de la réalité physique.
+	Lors de l'étude du mouvement des fluides, le type d'écoulement qui se
+	forme est toujours fortement dépendant de la géométrie du système et des conditions aux limites
+	imposées par l'environnement. Cette considération est aussi vraie dans le
+	cas des plasmas dont l'évolution est totalement contrôlée par l'interaction
+	avec les parois. Celle-ci est décrite par la théorie classique des gaines,
+	qui nous donne directement accès à la valeur des flux et des courants à la
+	frontière du plasma, et nous fournit des conditions aux limites concrètes
+	reflétant la réalité physique.
 	
-	En présence d'un champ magnétique, nous avons vu §~\ref{1-gaines} que la
-	situation est plus ambiguë : dans la direction perpendiculaire au champ
-	magnétique, la théorie classique ne tient plus et le système doit
-	tout de même être refermé, ce qui implique un choix arbitraire de conditions
-	aux limites. Mais avec quel impact sur le système? La simplification de TOKAM2D de considérer une géométrie bipériodique
-	dans le plan transverse est fondamentalement injustifiée, mais a-t-elle une
-	influence sur le transport transverse en soi? Quels sont les effets d'autres
-	conditions aux limites courament utilisées?
+	En présence d'un champ magnétique, le courant se referme essentiellement
+	à travers les parois parallèles et le critère de Bohm reste valide.
+	Hélas, nous avons vu §~\ref{1-gaines} que dans la direction
+	perpendiculaire la situation est plus ambiguë ; bien que la théorie
+	classique ne tienne pas, le système doit tout de même être refermé, ce qui
+	implique un choix arbitraire de conditions aux limites. Mais avec quel impact sur le
+	système? Ce choix a-t-il une influence sur le transport transverse en soi?
+	Quels sont les effets des conditions aux limites courament utilisées?
 	
-	\begin{figure}[htbp]
+	La figure~\ref{2-profileDenNoLimit} compare les profils de densité pour des
+	conditions aux limites périodiques, implémentées dans la version initiale de
+	TOKAM2D, et des conditions aux limites absorbantes que nous définissons par
+	trois critères :
+	
+	\begin{itemize}
+	  \item les particules sont perdues dans la gaine et aucun flux ne peut
+	  provenir des parois 
+	  \begin{equation}
+	  	\Gamma_\text{N}\cdot\mathbf n>0
+	  \end{equation}
+	  \item Le
+	potentiel est fixé au potentiel flottant, interdisant aux
+	courants de sortir dans la direction transverse
+	\begin{equation}
+	  	\Phi_\Omega=\Lambda
+	  \end{equation}
+	\item La vorticité est totalement amortie au contact de la gaine 
+	\begin{equation}
+	  	W_\Omega=0
+	  \end{equation}
+	\end{itemize}
+	
+\begin{figure}[htbp]
 \centering
     \includegraphics[width=8cm]{figures/2-profileDenNoLimit.eps}
     \caption{Profile de densité pour un cas périodique et un cas
     absorbant\label{2-profileDenNoLimit}}
 \end{figure}
-\footnotemark{}
-\footnotetext{Les conditions aux parois absorbantes}
+	Plusieurs différences sont à noter. Dans le cas périodique, la région stable
+	est alimentée en particules par les flux traversant la fontière ; l'équilibre radial qui se
+	forme est alors caractérisé par la combinaison des deux longueurs de
+	décroissance.
+	Dans le cas non-périodique, on peut voir que l'équilibre est indépendant de
+	chaque côté de la source et que le profil de densité est aussi plus piqué. 
 	
-	La prise en compte de conditions aux limites physiques telle que des conditions dérivées du critère de Bohm 
-	sont nécéssaires pour décrire correctement la physique du transport dans les plasmas. 
+	Une analyse plus approfondie, publiée dans~\parencite{Futtersack-PSI} et
+	jointe à ce manuscrit en annexe~\ref{AnnexeA}, étudie l'impact des conditions
+	aux limites, parallèles et transverses, sur le courant et le transport en général.
+	La conclusion prévient que la prise en compte de conditions aux limites
+	physiques est obligatoire pour décrire correctement le transport qui s'installe
+	dans les plasmas en général. Dans la direction parallèle, la conductivité de
+	gaine joue un rôle crucial, prouvant la nécéssité d'opter pour des conditions
+	aux limites issues de considération physiques. Dans la direction
+	perpendiculaire, en attendant qu'une théorie solide se développe, il faut être
+	conscient de l'influence du choix de ces conditions.
+	
+	TOKAM2D ayant été initialement
+	développé avec une méthode spectrale, l'implémentation de conditions aux
+	limites non-périodiques a nécéssité une réécriture presque complète du code.
+	La nouvelle version est maintenant basée sur une méthode Volumes Finis, avec un
+	schéma d'advection MUSCL (Modified Upwind Scheme for Conservation Laws),
+	pouvant supporter les chocs, les discontinuités et les forts gradients. Les
+	conditions aux limites ont été implémentées de façons très souples afin de
+	pouvoir choisir entre différentes combinaisons :
+	\begin{equation}
+	\label{2-BC}
+		\alpha \partial^2_{x}X + \beta \partial_{x}X + \gamma X =
+		\delta
+	\end{equation}
+	$X$ pouvant représenter la densité, le potentiel ou la vorticité. A l'aide de
+	l'expression~\ref{2-BC}, le quadruplet \{0,0,$\gamma$,$\delta$\} définit une
+	condition aux limites de Dirichlet, et \{0,$\beta$,0,$\delta$\} une de
+	Neumann, toutes combinaisons étant possibles.
 	
 	\subsection{Inclusion d'un champ magnétique non uniforme}
-	Dans les plasmas de fusions, l'inhomogénéité du champ magnétique est responsable d'une majeure partie du transport turbulent.
+	Dans les plasmas de fusions, l'inhomogénéité du champ magnétique est
+	responsable d'une partie du transport turbulent et donc du déconfinement.
 	L'inclusion d'un champ magnétique inhomogène en espace a permis d'élargir le domaine de fonctionnalité de TOKAM2D. 
 	
 	Le cas d'une barrière magnétique montre...
