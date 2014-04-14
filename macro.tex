@@ -45,7 +45,7 @@
 \usepackage{indentfirst}
 
 %\usepackage[margin=25mm]{geometry}
-\usepackage{tocloft}
+\usepackage[subfigure]{tocloft} 
 \uchyph=0
 
 %\renewcommand{\cftbeforetoctitleskip}{-0.25in}        % Title is 1in from top
@@ -63,7 +63,6 @@
 \numberwithin{equation}{section}
 \usepackage[squaren,Gray,thinspace]{SIunits}
 \usepackage{lipsum}
-
 \renewcommand{\mtctitle}{}
 
 \dominitoc
@@ -183,6 +182,29 @@ backend=biber]{biblatex}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 \usepackage{multicol}
 \usepackage{csquotes}
+
+
+\usepackage{nomencl,etoolbox,ragged2e}
+
+\renewcommand\nomgroup[1]{%
+  \item
+  \item[\large\bfseries
+  \ifstrequal{#1}{C}{Constantes}{%
+  \ifstrequal{#1}{R}{Symboles romans}{%
+  \ifstrequal{#1}{G}{Symboles grecs}{%  
+  \ifstrequal{#1}{A}{Acronymes}{}}}}]
+  }
+
+\renewcommand*{\nompreamble}{\markboth{\nomname}{\nomname}}
+
+\newcommand{\nomdescr}[1]{\parbox[t]{8cm}{\RaggedRight #1}}
+\newcommand{\nomwithdim}[5]{\nomenclature[#1]{#2}%
+{\nomdescr{#3}\parbox[t]{2cm}{\RaggedRight #4}\parbox[t]{2cm}{\RaggedLeft #5}}}
+
+\makenomenclature
+
+
+
 %\bibliography{biblio}
 %\uspackage[authoryear]{natbib}
 %\usepackage{chapterbib}

@@ -27,7 +27,8 @@ de manière non négligeable par une population d'électrons libres. Cette popul
 se caractérise par deux paramètres principaux :
 
 \begin{itemize}
-  \item sa densité, $n_e$, mesurant le nombre de particules par élément de volume
+  \item sa densité $n_e$, mesurant le nombre
+  de particules par élément de volume
   \item sa température électronique $T_e$, mesurée en électronvolts, représentative
    de l'énergie cinétique moyenne non dirigée des électrons (aussi appelée
    agitation thermique)
@@ -306,22 +307,22 @@ cyclotronique, est caractérisé par la pulsation cyclotronique :
 \omega\indice{{\alpha}}=\frac{e B}{m_\alpha}
 \end{equation}
 
-Le rayon de Larmor $\rho_\alpha$ de l'orbite révèle quant à lui une
+Le rayon de Larmor $\rho_\text{L}^\alpha$ de l'orbite révèle quant à lui une
 échelle spatiale représentative du transport magnétisé. Le rayon de Larmor se
 calcule en fonction de la pulsation cyclotronique et de la vitesse
 $v\indice{\alpha}$ de la particule :
 
 \begin{equation}
-\rho\indice{\alpha}
-=\frac{v\indice{\alpha}}{\omega_{{\alpha}}}
+\rho\text{L}^\alpha
+=\frac{v\indice{\alpha}}{\omega_c^{{\alpha}}}
 \end{equation}
 
 Pour les ions suffisamment énergétiques, ainsi que pour les électrons en général,
 la vitesse typique de la particule est sa vitesse thermique. On peut alors noter :
 
 \begin{equation}
-\omega\indice{{\alpha}}\left[\frac{e B}{m_\alpha}\right]
-\cdot\rho\indice{{\alpha}}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
+\omega_c^{\alpha}\left[\frac{e B}{m_\alpha}\right]
+\cdot\rho_\text{L}^{\alpha}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
 =v\indice{T_{\alpha}}\left[\left(\frac{eT_{\alpha}}{m_{\alpha}}\right)^{\text{\textonehalf}}\right]
 \end{equation}
 
@@ -334,7 +335,7 @@ partir du moment où la longueur caractéristique $L$ du transport considéré e
 grande devant son rayon de Larmor :
 
 \begin{equation}
-\delta=\frac{\rho_{{\alpha}}}{L}\ll 1
+\delta=\frac{\rho_\text{L}^\alpha}{L}\ll 1
 \end{equation}
 
 \begin{figure}[htbp]
@@ -383,6 +384,7 @@ entraîné par le développement de comportements
 non-linéaires complexes\ldots
 \end{minipage}}
 \subsection{Les gaines électrostatiques}
+\label{1-gaines}
 Un plasma est souvent, à un moment ou à un autre, amené à entrer en contact avec
 une paroi ou un quelconque obstacle matériel. L'interaction entre
 les deux milieux conditionne alors l'existence du plasma et influence
@@ -398,7 +400,7 @@ polarisent négativement la surface du matériau.
 L'augmentation progressive de ce potentiel mène alors à la formation en
 périphérie du plasma d'une région de densité ionique supérieure, et donc
 non-neutre, que l'on appelle gaine électrostatique (ou gaine de Debye, voir
-figure~\ref{1-gaine}).
+figure~\ref{1-gaine1}).
 
 \begin{figure}[htbp]
 \centering
@@ -406,7 +408,7 @@ figure~\ref{1-gaine}).
 du plasma entre une région quasineutre et la gaine à sa
 périphérie. A la frontière, il y a rupture de la quasineutralité et la vitesse
 ionique est égale à la vitesse de Bohm
-$c_\text{s}$\parencite{Rax}.}\label{1-gaine}}
+$c_\text{s}$\parencite{Rax}.}\label{1-gaine1}}
 \end{figure}
 
 Dans les plasmas classiques où la taille de la gaine est petite
