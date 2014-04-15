@@ -571,11 +571,51 @@ et l'influence de la température électonique.
 	Neumann, toutes combinaisons étant possibles.
 	
 	\subsection{Inclusion d'un champ magnétique non uniforme}
-	Dans les plasmas de fusions, l'inhomogénéité du champ magnétique est
-	responsable d'une partie du transport turbulent et donc du déconfinement.
-	L'inclusion d'un champ magnétique inhomogène en espace a permis d'élargir le domaine de fonctionnalité de TOKAM2D. 
 	
-	Le cas d'une barrière magnétique montre...
+	Dans la version initiale
+	des équations, l'effet de courbure du champ magnétique n'apparaît qu'à travers
+	le coefficient de courbure $g$, tous les autres termes ayant été négligés.
+	La deuxième évolution du modèle a consisté à inclure un champ magnétique
+	inhomogène en espace pour élargir le domaine de fonctionnalité de TOKAM2D. Pour
+	cela, nous reprenons les équations dérivées précédement, avant le développement
+	des divergences. La version Volumes Finis de TOKAM2D utilisant un schéma
+	d'advection évolué, les flux sont calculés de façon conservative et incluent
+	directement l'effet de courbure du champ magnétique :
+\begin{align}
+\label{2-eqContinuiteMag}
+&\partial_t \text{N}
+= - \nabla\cdot\left(\text{N}\mathbf U_\text{E}\right) -\sigma
+\text{N}e^{\Lambda-\Delta\Phi} + D\nabla^2 \text{N} + S
+\\
+\label{2-eqCourantMag}
+&\partial_\text{t}\text{W} = 
+-\nabla\cdot\left(\text{W}\mathbf U_\text{E}\right)
++\text{B}^2\sigma\left(1-e^{\Lambda-\Delta\Phi}\right) 
+-\frac{\text{B}^2}{\text{N}}\nabla\cdot\left(\text{N}\mathbf U^i_*\right) 
++\nu\nabla_\perp^2\text{W}
+\end{align}
+
+Pour profiter de la nullité mathématique du rotationnel du gradient de
+pression dans l'expression de la divergence du courant
+diamagnétique, nous remarquons que celle-ci est équivalente à l'advection de la
+densité par une vitesse fluide $\mathbf U_{\nabla\text{B}}$ :
+
+\begin{equation}
+\nabla\cdot\left(\text{N}\mathbf U_{\nabla\text{B}}\right)=
+\nabla\cdot\left(\frac{2\text{N}\text{T}_e}{\text{B}^2}\nabla\text{B}\times\mathbf
+b\right)
+\end{equation}
+
+Cette vitesse ressemble étonnement à la vitesse de dérive due au gradient du
+champ magnétique que l'on rencontre dans la théorie particulaire du centre
+guide. 
+
+Pour illustrer la modification du code, nous simulons le cas d'une
+barrière magnétique. Sur la
+figure~\ref{2-CartesMagBarrier}, on observe le profil du champ magnétique : égal
+à 0.1T et légèrement décroissant sur l'ensemble du domaine, la barrière est
+placée en $\text{X}\sim$ 200$\rho_\text{L}$ et monte jusqu'à 0.2T à son maximum.
+
 	\begin{figure}
     \centering
     \subfigure[]{\label{2-CarteDensiteMagBarrier}
@@ -587,36 +627,63 @@ et l'influence de la température électonique.
     \label{2-CartesMagBarrier}
 \end{figure}
 
-	
-	De très faibles inhomogénéités pouvant être responsable d'une modification non-négligeable du transport transverse, il pourrait 
-	être intéressant de poursuivre l'étude dans cette direction.
-	
+On voit que la barrière est très efficace. La carte de densité, prise en log,
+montre des vaguelettes qui se déplacent rapidement dans la direction poloïdale.
+Au même endroit, le potentiel forme lui aussi des structures qui s'étalent le
+long du gradient positif de champ magnétique. 
+Dans cette simulation, c'est le cisaillement de cette vitesse de dérive qui
+apparaît dans la direction poloïdale qui semble responsable de l'effet de
+barrière. 
+
+
 	\subsection{Implémentation de l'équation d'énergie}
-	La fermeture isoterme considérée dans le modèle de TOKAM2D est aussi très
-	discutable. Le transport transverse dans la SOL est directement lié aux
-	variations du potentiel plasma à travers la dérive ExB.  Les effets de la température et de la chaleur deviennent
-	non-négligeables dès que $\omega>>\text{?}$. De plus la prise en compte des
-	variations spatiales de la température complexifie grandement la relation de
-	dispersion du modèle, et pouvant donner lieu à l'apparition d'instabilités différentes de l'interchange.
-	Les équations du modèle s'écrivent alors :
+	La fermeture isoterme choisie dans le modèle de TOKAM2D est aussi très
+	discutable. Comme le potentiel plasma est fortement lié à la température
+	électronique à travers les conditions de gaines, il a tendance à suivre ses
+	fluctuations. Le transport transverse dans la SOL peut alors se voir grandement
+	impacté par l'apparition d'un gradient radial de température qui donne alors
+	naturellement naissance à une dérive poloïdale. De plus, la prise en compte des
+	variations spatiales de la température complexifie énormément la relation de
+	dispersion obtenue par analyse linéaire du modèle, et peut donner lieu à
+	l'apparition d'instabilités différentes de l'interchange.
 	
-	\begin{equation}\begin{split}
-		\partial_t N + \nabla_\perp\cdot\left(NB^{^{-2}}\mathbf{E}\times\mathbf{B}\right)
-		+ \nabla_\perp\cdot\left(B^{^{-2}}\nabla P_e\times\mathbf{B}\right)
-		  \\= \sigma_\para N{T_e}^{\text{\textonehalf}} exp({\Lambda-\Delta\Phi/T_e}) 
-		 + D_\perp\nabla^2_\perp N + S
-		 \end{split}
+	Pour obtenir l'équation de la température électronique, nous partons de
+	l'équation de conservation de l'énergie normalisée :
+	
+	\begin{equation} 
+		\frac{3}{2}\partial_t \text{P}_e +
+		\frac{3}{2}\nabla\cdot\left(\text{P}_e\mathbf{U}+\mathbf{Q}\right) +
+		\text{P}_e\nabla\cdot\mathbf{U}=S_{\text{T}_e} +
+		\mathbf{\Pi}:\nabla \mathbf U
 	\end{equation}
 	
-	aa
+	Les équations du modèle s'écrivent alors :
 	
-	\begin{equation}\begin{split}
-			\partial_\text{t}\nabla_\perp^2 \Phi +\nabla_\perp\cdot\left(\nabla_\perp^2 \Phi\frac{\mathbf{E}\times\mathbf{B}}{B^2}\right)
-			+ \nabla_\perp\cdot\left(\frac{\nabla P\times\mathbf{B}}{B^2}\right)
-			\\= 
-		\sigma_\para {T_e}^{\text{\textonehalf}}\left(1-e^{\Lambda-\Delta\Phi/T_e}\right) +\nu_\perp\nabla_\perp^4\Phi
-	\end{split}\end{equation}
-	
+\hspace*{-2cm}\begin{minipage}{1.1\textwidth}
+\begin{align}
+\label{2-eqContinuiteTemp}
+&\partial_t \text{N}
+= - \nabla\cdot\left(\text{N}\mathbf U_\text{E}\right) -\sigma
+\text{N}\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e} + D\nabla^2 \text{N}
++ S
+\\
+\label{2-eqCourantTemp}
+&\partial_\text{t}\text{W} = 
+-\nabla\cdot\left(\text{W}\mathbf U_\text{E}\right)
++\text{B}^2\sigma\sqrt{\text{T}_e}\left(1-e^{\Lambda-\Delta\Phi/\text{T}_e}\right)
+-\frac{\text{B}^2}{\text{N}}\nabla\cdot\left(\text{N}\mathbf
+U_{\nabla\text{B}}\right) +\nu\nabla^2\text{W}
+\\
+\label{2-eqEnergyTemp}
+&\partial_\text{t}\text{P}_e 
++\nabla\cdot\left(\text{P}_e\mathbf U_\text{E}\right) =
+\text{NT}_e\sigma\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e}
+-\frac{2}{3}\text{P}_e\nabla\cdot\mathbf U
++\chi\nabla^2\text{P}_e
++\frac{2}{3}S_{\text{T}_e}
+\end{align}
+\end{minipage}
+
 	\begin{figure}
     \centering
     \subfigure[]{\label{2-CarteDensiteWithTe}
