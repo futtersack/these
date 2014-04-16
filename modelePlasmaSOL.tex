@@ -248,7 +248,7 @@ une équation simplifiée dite de vorticité.
  L'hypothèse flûte, qui s'appuie sur des observations
 expérimentales\footnote{Des mesures expérimentales ont montré que le vecteur
 d'onde parallèle des fluctuations électrostatiques était très petit devant la
-longueur de connexion parallèle $L_\para$\parencite{Woot90}}, consiste à
+longueur de connexion parallèle $L_\para$\parencite{Wootton}}, consiste à
 considérer les fluctuations constantes le long des lignes de champ. Toute grandeur $f(x,y)$
 vérifiant l'hypothèse flûte est donc indépendante de la direction parallèle et
 sa moyenne est égale à la fonction elle-même :
@@ -542,7 +542,7 @@ et l'influence de la température électronique.
 	Dans le cas non-périodique, on peut voir que l'équilibre est indépendant de
 	chaque côté de la source et que le profil de densité est aussi plus piqué. 
 	
-	Une analyse plus approfondie, publiée dans~\parencite{Futtersack-PSI} et
+	Une analyse plus approfondie, publiée dans~\parencite{Futtersack} et
 	jointe à ce manuscrit en annexe~\ref{AnnexeA}, étudie l'impact des conditions
 	aux limites, parallèles et transverses, sur le courant et le transport en général.
 	La conclusion prévient que la prise en compte de conditions aux limites
@@ -794,6 +794,11 @@ source aux parois, est fixé artificiellement à $\Lambda$ au niveau de la gaine
 Là encore, le champ électrique qui émerge à proximité immédiate de la limite du
 domaine donne naissance à une dérive poloïdale qui varie sur très courte
 distance, se cisaille et génère les vortex caractéristiques de l'instabilité.
+Les travaux réalisés par Theilhaber sur la modélisation PIC 2D de l'interaction
+plasma-surface perpendiculairement au champ magnétique
+\parencite{Theilhaber} montrent que l'instabilité de Kelvin-Helmotz est à
+l'origine de la formation d'une gaine "de champs croisés" de largeur $l\sim$
+5$\rho_\text{L}$.
 
 Dans cette simulation, ce phénomène est un artéfact numérique, amplifié par les
 conditions aux limites strictes. On peut toutefois imaginer que si un fort
@@ -811,8 +816,15 @@ plasma, où le transport devient turbulent malgré un champ magnétique uniforme
 n'était pas le cas avec une hypothèse isotherme.
 
 	\subsubsection{Application au filtre magnétique}
-	
-	
+
+Nous reprenons les paramètres de simulation de la barrière magnétique, mais en
+incluant l'évolution de la température électronique. Les cartes des trois champs
+sont présentées sur les figures~\ref{2-CartesWithTe}. Le
+potentiel électrostatique suit toujours les variations de température, ce qui
+provoque l'apparition d'une dérive poloïdale, très cisaillée, et stoppe complètement le
+transport des particules dans la direction radiale. Au parois, on observe le
+même phénomène que précédemment ; il est dû là aussi aux conditions aux limites
+transverses.
 	\begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteMagBarrierWhTe}
@@ -821,14 +833,53 @@ n'était pas le cas avec une hypothèse isotherme.
     \includegraphics[height=5.75cm]{figures/2-CartePotentielMagBarrierWhTe.eps}}
     \subfigure[]{\label{2-CarteTeMagBarrierWhTe}
     \includegraphics[height=5.75cm]{figures/2-CarteTeMagBarrierWhTe.eps}}
-    \caption{Cartes de densité \subref{2-CarteDensiteMagBarrierWhTe}, de potentiel
-    \subref{2-CartePotentielMagBarrierWhTe} et de température \subref{2-CarteTeMagBarrierWhTe}}
+    \caption{Cartes de densité~\subref{2-CarteDensiteMagBarrierWhTe}~, de
+    potentiel~\subref{2-CartePotentielMagBarrierWhTe}~et de température
+   \subref{2-CarteTeMagBarrierWhTe}~.}
     \label{2-CartesWithTe}
 	\end{figure}
 	
-	\subsubsection{Simulation d'une colonne de plasma magnétisée}
+Contrairement au cas des plasmas froids, où les électrons perdent leur énergie
+par collision dans le piège magnétique, on
+remarque que dans un plasma totalement ionisé la température croît avec
+l'intensité du champ. Sur la carte de température, on voit bien l'emplacement du
+zonal flow au niveau du gradient de potentiel, en X $\sim$ 140 $\rho_\text{L}$.
 	
-	\begin{figure}[!htbp]
+\subsubsection{Simulation d'une colonne de plasma magnétisée}
+Regardons maintenant une configuration de type colonne magnétisée : 
+
+\begin{itemize}
+  \item le champ magnétique est pris homogène et constant, d'intensité B = 0.1T
+  \item les dimensions de la source, en supposant le rayon de Larmor ionique
+  $\rho_\text{L}\simeq$~6~10$^{-4}$~m, sont approximativement égales à 16 cm x
+  16 cm x 6 m, la conductivité de gaine $\sigma=\rho_\text{L}/L_\para$ étant prise
+  égale à 10$^{-4}$
+  \item à la gaine, dans la direction perpendiculaire, le potentiel plasma est
+  fixé au potentiel flottant
+  \item une source de densité de profile gaussien est placée au centre de la
+  source
+\end{itemize}
+
+Les simulations isothermes de cette configuration sont stationnaires, très
+stables. La densité et la température électronique sont décroissantes du
+centre de la source jusqu'aux parois. Quand la température électronique est
+prise en compte, le plasma commence à se déformer et une instabilité,
+indépendante de la courbure du champ magnétique, se développe.
+La caractérisation de cette instabilité est encore à réaliser
+mais on peut dores et déjà essayer de la relier au travaux
+réalisés dans~\parencite{Berk} qui prédisent une instabilité à fort taux de
+croissance en présence de parois conductrice et d'un gradient de température.
+Conformément à nos attentes, le plasma est en rotation dans le plan transverse (sur les
+figures~\ref{2-MagColumnWithTe}, la rotation s'effectue dans le sens
+anti-trigonométrique, qui correspond à la direction de la dérive ExB).
+
+Les conditions aux limites choisies, en supposant $\Phi=\Lambda$ et $W=0$ à la
+paroi, empêche le courant de rentrer et sortir par les bords latéraux. Comme
+les électrons sont moins mobiles que les ions perpendiculairement au champ
+magnétique, le courant préfère passer le long des lignes de champ pour conserver
+la quasineutralité du plasma, agissant comme un court-circuit. 
+
+ \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteMagColumn}
     \includegraphics[height=5.75cm]{figures/2-CarteDensiteMagColumn.eps}}
@@ -838,11 +889,13 @@ n'était pas le cas avec une hypothèse isotherme.
     \includegraphics[height=5.75cm]{figures/2-CarteTeMagColumn.eps}}
     \caption{Cartes de densité \subref{2-CarteDensiteMagColumn}, de potentiel
     \subref{2-CartePotentielMagColumn} et de température \subref{2-CarteTeMagColumn}}
-    \label{2-CartesWithTe}
+    \label{2-MagColumnWithTe}
 	\end{figure}
+	
 \section{L'approche par vitesses de dérive pour les plasmas
 froids}
 \label{vitessesDerivePlasmaFroid}
+\parencite{Sudan}
 Les équations de TOKAM2D ne décrivent pas non plus l'interaction
 collisionnelle des particules chargées avec la population neutre, essentielle dans la physique des plasmas froids,
 \begin{figure}[!htbp]
