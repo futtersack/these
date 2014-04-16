@@ -765,7 +765,19 @@ les zones de faible température (densité?).
 \end{figure}
 L'une des conséquences immédiatement observables de cette corrélation est
 l'apparition d'un champ électrique radial moyen non nul, qui, combiné au champ
-magnétique, donne naissance à une dérive poloïdale.
+magnétique, donne naissance à une dérive poloïdale du type ExB. Sur la
+figure~\ref{2-ProfileFluxWhTe}, on peut voir que par rapport au cas isotherme,
+le transport transverse est réduit notablement. En observant la dynamique
+des flux, on voit que cette diminution est reliée au cisaillement créé par la
+variation de cette dérive, dont l'intensité change en fonction du gradient de
+potentiel, lui même proche du gradient de température.
+
+Ce phénomène rappelle les "zonal flows" qui se forment en présence
+d'un champ électrique radial $\text{E}_r$. Pour illustration, les profils moyens du
+potentiel électrique, du flux radial et du flux poloïdal sont montés
+figure~\ref{2-profileFluxRadialWhTedNdx}. On y voit que le flux poloïdal moyen
+est plus important que son homologue radial, mais surtout qu'il suit exactement
+le gradient de potentiel, confirmant l'hypothèse proposée pour son origine.
 
 	\begin{figure}[!htbp]
     \centering
@@ -775,8 +787,32 @@ magnétique, donne naissance à une dérive poloïdale.
     $\overline{\Phi}$ et du flux poloïdal $\Gamma_\theta$ généré, à comparer
     avec le flux radial moyen $\Gamma_r$.}
 	\end{figure}
-	
+
+Le dernier point intéressant à relever se voit le long des parois, où une
+instabilité de Kelvin-Helmotz se développe. Le potentiel, décroissant de la
+source aux parois, est fixé artificiellement à $\Lambda$ au niveau de la gaine.
+Là encore, le champ électrique qui émerge à proximité immédiate de la limite du
+domaine donne naissance à une dérive poloïdale qui varie sur très courte
+distance, se cisaille et génère les vortex caractéristiques de l'instabilité.
+
+Dans cette simulation, ce phénomène est un artéfact numérique, amplifié par les
+conditions aux limites strictes. On peut toutefois imaginer que si un fort
+champ électrique se forme en face de la paroi (comme celui de la gaine), tout
+flux arrivant sera dévié perpendiculairement par effet de dérive.
+Dans les sources d'ions avec filtre magnétique, ce comportement a déjà été
+observé, mais est encore assez mal compris. Il rappelle cependant que le choix
+des conditions aux limites dans la direction transverse n'est pas sans
+conséquences sur le transport et qu'une théorie serait nécéssaire pour décrire
+convenablement l'évolution du plasma.
+
+Nous illustrons maintenant l'ajout de la température par deux exemples, la
+barrière magnétique que nous avons regardée précédement et une colonne de
+plasma, où le transport devient turbulent malgré un champ magnétique uniforme, ce qui
+n'était pas le cas avec une hypothèse isotherme.
+
 	\subsubsection{Application au filtre magnétique}
+	
+	
 	\begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteMagBarrierWhTe}
