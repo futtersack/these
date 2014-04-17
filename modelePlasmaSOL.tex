@@ -896,9 +896,37 @@ la quasineutralité du plasma, agissant comme un court-circuit.
 froids}
 \label{vitessesDerivePlasmaFroid}
 \parencite{Sudan}
-Les équations de TOKAM2D ne décrivent pas non plus l'interaction
-collisionnelle des particules chargées avec la population neutre, essentielle dans la physique des plasmas froids,
-\begin{figure}[!htbp]
+Les équations de TOKAM2D ne décrivent
+pas non plus l'interaction collisionnelle des particules chargées avec la
+population neutre, essentielle dans la physique des plasmas froids. Dans les
+régions non magnétisées, l'hypothèse de forte magnétisation sur laquelle se
+base l'approximation des vitesses de dérive n'est plus valable. Pour étendre le
+domaine de validité du modèle, on peut cependant dériver une nouvelle
+expression des vitesses de dérive qui tient alors compte de l'interaction
+avec les neutres. Les équations forment une sorte de combinaison entre les
+équations du transport magnétisé et celles du modèle de dérive-diffusion.
+
+Reprenons l'équation du moment pour une espèce d'indice $\alpha$ :
+
+\begin{equation}
+\label{2-MaplEqMoment}
+\frac{\text{d}\mathbf{u}_\alpha}{\text{dt}}+
+\nu_\alpha\mathbf{u}_\alpha+\omega_{c\alpha}\mathbf{b}\times\mathbf{u}_\alpha=
+-\frac{q_\alpha}{m_\alpha}\left(\nabla \Phi +\frac{\nabla p_\alpha}{q_\alpha n_\alpha}\right)
+\end{equation}
+
+En prendant le produit vectoriel de \eqref{2-MaplEqMoment} et du champ
+magnétique,  on peut éliminer le terme de
+Lorentz $\omega_{c\alpha}\mathbf{b}\times\mathbf{u}_\alpha$ :
+
+\begin{equation}
+\label{2-MaplVitesse}
+\mathbf{u}_\alpha=\frac{q_\alpha}{m_\alpha}(\nu_\alpha\puissance{2b}+\omega_{c\alpha}\puissance{2})\puissance{-1}
+-\frac{q_\alpha}{m_\alpha}\left(\nabla \Phi +\frac{\nabla p_\alpha}{q_\alpha
+n_\alpha}\right)-\frac{\text{d}\mathbf{u}_\alpha}{\text{dt}}
+\end{equation}
+
+ \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteMapl}
     \includegraphics[height=8cm]{figures/2-CarteDensiteMapl.eps}}
