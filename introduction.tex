@@ -203,6 +203,7 @@ quantité de mouvement), de conductivité (transport de charges) ou encore de
 conductivité thermique (transport de chaleur).
 
 \subsection{Collisions}
+\label{1-Collisions}
 En plus de l'interaction coulombienne globale de l'ensemble des espèces chargées, 
 les particules, prises deux à deux, peuvent interagir binairement. 
 Ces interactions directes entre particules donnent lieu à des transferts
@@ -698,8 +699,8 @@ r,t)=\int\mathbf{v} \mathbf{v} . . .
 
 Les trois premiers moments $\mathbf M^{(0)}$, $\mathbf M^{(1)}$ et $\mathbf
 M^{(2)}$ ont chacun un nom et une interprétation physique simple. La densité $n$, qui
-mesure le nombre de particules dans un petit volume et la vitesse fluide
-$\mathbf u$ sont données par :
+mesure le nombre de particules dans un petit volume et le flux de particule
+$\Gamma$ sont données par :
 
 \begin{equation}
 n_\alpha(\mathbf
@@ -753,17 +754,45 @@ entièrement l'ensemble des particules de l'espèce.
 
 \subsection{Les équations de conservation}
 
-A chaque quantité macroscopique est adjoint une équation traduisant sa
+A chaque quantité macroscopique est adjointe une équation traduisant sa
 conservation. Ces équations de conservation, aussi appelée équations fluides,
 sont obtenues en prenant les moments correspondants de l'équation de Boltzmann.
 
-
-
 \subsubsection{Conservation de la matière}
-$$n_s=\int f_sd\mathbf{v}$$
+L'équation de conservation de la matière contrôle
+l'évolution de la densité. On l'obtient en intégrant
+l'équation de Boltzmann (\eqref{1-BoltzmannEquation}) sur l'espace des
+vitesses~:
 
-\subsubsection{Conservation de l'impulsion}
-$$n_s\mathbf{v}_s=\int \mathbf{v}_sf_sd\mathbf{v}$$
+\begin{equation}
+	\partial_tn_\alpha+
+	\nabla\cdot\left(n_\alpha\mathbf{u_\alpha}\right)=S
+\end{equation}
+
+avec $n_\alpha$ la densité de l'espèce, $\mathbf{u_\alpha}$ la vitesse
+fluide et $S$ un terme source se mesurant en nombre de particules par
+unité de temps et de volume. Dans les plasmas froids, ce terme source est issu
+de l'intégration du terme de collisions et rend compte du nombre de particules
+créées ou perdues lors de collisions inélastiques. Il est constitué
+par l'ensemble des intéractions collisionnelles et chimiques :
+$$S=\sum_i N_i n_{1i}n_{2i}k_i$$ où $N$ est le nombre de particules créées lors
+d'une collision (négatif en cas de destruction), $n_1$ et $n_2$ les densités des espèces en collisions et
+$k=\left<\sigma (v_2-v_1)\right>$ le coefficient de collision/réaction associé
+(cf.\S\ref{1-Collisions}). 
+
+\subsubsection{Conservation de la quantité de mouvement}
+L'équation de conservation de la quantité de mouvement peut être considérée
+comme le moment d'ordre un en vitesse de l'équation de Boltzmann. En multipliant
+\eqref{1-BoltzmannEquation} par $\mathbf v$ puis en intégrant sur l'espace des
+vitesse :
+
+\begin{equation}
+\partial_t m_\alpha n_\alpha \mathbf{u}_\alpha + 
+\nabla\cdot\left(m_\alpha n_\alpha
+\mathbf{u}_\alpha\otimes\mathbf{u}_\alpha+\mathbf{P_\alpha}\right)=\mathbf
+f_\alpha n_\alpha+\mathbf{R_\alpha}
+\end{equation}
+
 \subsubsection{Conservation de l'énergie}
 \subsubsection{Conservation de la chaleur}
 
@@ -829,12 +858,12 @@ d'Einstein :
 \section{Les plasmas magnétisés}
 
 
-\section{Les plasmas de bord des tokamaks}
+\subsection{Les plasmas de bord des tokamaks}
 Lawson criteriom, strongly magnetized
-\subsection{La fusion et les tokamaks}
-\subsection{Le plasma de la Scrape-of-Layer}
+\subsubsection{La fusion et les tokamaks}
+\subsubsection{Le plasma de la Scrape-of-Layer}
 \parencite{Ghendrih}biasing stabilization of bursts
-\subsection{Les vitesses de dérives}
+\subsubsection{Les vitesses de dérives}
 \parencite{Garcia}Esel
 \parencite{Bisai}Bisai
 \label{vitessesDerive}
