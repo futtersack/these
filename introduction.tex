@@ -749,7 +749,7 @@ En montant en ordre, les moments donnent de plus en plus de détails sur la
 fonction de distribution, donnant théoriquement une description du plasma
 strictement équivalente à la description statistique. Dans les fluides
 classiques, il ne suffit généralement que de la densité $n_\alpha$, de la
-vitesse $mathbf{u}_\alpha$ et de la température $T_\alpha$ pour caractériser
+vitesse $\mathbf{u}_\alpha$ et de la température $T_\alpha$ pour caractériser
 entièrement l'ensemble des particules de l'espèce.
 
 \subsection{Les équations de conservation}
@@ -784,14 +784,19 @@ $k=\left<\sigma (v_2-v_1)\right>$ le coefficient de collision/réaction associé
 L'équation de conservation de la quantité de mouvement peut être considérée
 comme le moment d'ordre un en vitesse de l'équation de Boltzmann. En multipliant
 \eqref{1-BoltzmannEquation} par $\mathbf v$ puis en intégrant sur l'espace des
-vitesse :
+vitesse, on obtient :
 
 \begin{equation}
 \partial_t m_\alpha n_\alpha \mathbf{u}_\alpha + 
 \nabla\cdot\left(m_\alpha n_\alpha
-\mathbf{u}_\alpha\otimes\mathbf{u}_\alpha+\mathbf{P_\alpha}\right)=\mathbf
-f_\alpha n_\alpha+\mathbf{R_\alpha}
+\mathbf{u}_\alpha\mathbf{u}_\alpha+\mathbf{P_\alpha}\right)=\mathbf
+F_\alpha n_\alpha+\mathbf{R_\alpha}
 \end{equation}
+
+avec $\mathbf{P_\alpha}$ le tenseur de pression, $\mathbf{F_\alpha}$
+les forces extérieures et $\mathbf{R_\alpha}$ un terme de
+friction traduisant la perte et l'échange de quantité de mouvement dans les
+collisions.
 
 \subsubsection{Conservation de l'énergie}
 \subsubsection{Conservation de la chaleur}
