@@ -831,28 +831,61 @@ dont la contraction garantit la conservation de l'énergie moyenne du système.
 L'équation de conservation de
 l'énergie, qui s'obtient également en multipliant \eqref{1-BoltzmannEquation}
 par $m_\alpha {u}_\alpha^2/2$, s'écrit en ne considérent que la force de
-Lorentz :
+Lorentz dont la force magnétique ne travaille pas :
 
 \begin{equation}
 \label{1-eqEnergie}
-\partial_t \varepsilon+
-\nabla\cdot\left(\varepsilon\mathbf{u}_\alpha+\mathbf
+\partial_t \varepsilon_\alpha+
+\nabla\cdot\left(\varepsilon_\alpha\mathbf{u}_\alpha+\mathbf
 P_\alpha\cdot\mathbf{u}_\alpha + \mathbf q_\alpha\right) =q_\alpha
-n_\alpha\mathbf E_\alpha\cdot
-\mathbf{u}_\alpha+\mathbf{R_\alpha}\mathbf{u}_\alpha+Q_\alpha
+n_\alpha\mathbf E\cdot
+\mathbf{u}_\alpha+Q_\alpha
 \end{equation}
 
-où $\varepsilon=m_\alpha n_\alpha u_\alpha^2/2+3p_\alpha/2$ représente la
-densité d'énergie totale du fluide et 
-	$\mathbf q_\alpha=m_\alpha n_\alpha\left<w^2\mathbf w\right>/2$
+où $\varepsilon_\alpha=m_\alpha n_\alpha u_\alpha^2/2+3p_\alpha/2$ représente
+la densité d'énergie du fluide et 
+	$$\mathbf q_\alpha=m_\alpha n_\alpha\left<w^2\mathbf w\right>/2$$
 est le flux de chaleur (d'énergie chaotique), ie. le flux d'énergie dans le
-repère au repos du fluide. Enfin, $Q_\alpha$ est la production totale de
-chaleur lors de collisions et de réactions chimiques. Pour les électrons, cette
-puissance collisionnelle est généralement négative et peut s'exprimer en terme de taux:
+repère au repos du fluide. Enfin, $Q_\alpha$ est la production
+\emph{totale}\footnote{Dans de nombreux ouvrages, le terme de chauffage
+collisionnel est décomposé en un terme de chauffage dirigé et un terme mesurant
+le chauffage dans le repère au repos $\text{W}_\alpha$: $$Q_\alpha=\int_{\mathbf
+v}\frac{m_\alpha}{2}v_\alpha^2C_\alpha d\mathbf v=\int_{\mathbf
+v}\frac{m_\alpha}{2}(u_\alpha+w_\alpha)^2C_\alpha d\mathbf
+v\sim\text{W}_\alpha+\mathbf u_\alpha\cdot\mathbf R_\alpha $$ Après le travail
+algébrique sur les équations pour obtenir la conservation de l'énergie
+thermique, le terme $\mathbf u_\alpha\cdot\mathbf R_\alpha$ disparaît pour
+ne laisser que le terme $\text{W}_\alpha$. 
+
+Dans ce manuscrit, nous
+considérons dans les équations la perte d'énergie totale ; le terme de
+chauffage par friction (ie. l'effet Joule) est donc toujours présent. C'est
+d'ailleurs un terme primordial pour capturer correctement le comportement de la
+température électronique.} de chaleur lors de collisions et de réactions chimiques.
+Pour les électrons, cette puissance collisionnelle est généralement négative et peut s'exprimer en terme de taux:
 \begin{equation}
-	Q_e=-en_e\sum_{i}\left(U_in_ik_i+\frac{2m_e}{m_i}k^m_i\varepsilon_e\right)
+	Q_e=\int_{\mathbf
+	v}\frac{m_\alpha}{2}v^2C_\alpha d\mathbf
+	v=-en_e\sum_{i}\left(U_in_ik_i+\frac{2m_e}{m_i}k^m_i\varepsilon_e\right)
 \end{equation}
 
+On peut maintenant soustraire la contribution de l'énergie dirigée de
+\eqref{1-eqEnergie} en utilisant le produit scalaire de l'équation de
+conservation de la quantité de mouvement (\eqref{1-eqQuantiteMouvement}) et de
+la vitesse fluide pour obtenir une équation de conservation sur l'énergie
+interne (thermique) d'une espèce :
+
+\begin{equation}
+\label{1-eqEnergieInterne}
+\frac{3}{2}\partial_t p_\alpha + 
+\frac{3}{2}\nabla\cdot\left(p_\alpha
+\mathbf{u}_\alpha\right)+p_\alpha\nabla\cdot\mathbf u_\alpha
++\boldsymbol{\Pi}_{\alpha j k}\frac{\partial u_{\alpha j}}{\partial{x_k}} +
+\nabla\cdot\mathbf q_\alpha={Q_\alpha}
+\end{equation}
+
+Les changements dans l'énergie interne du fluide sont donc dus aux flux nets
+d'énergie arrivant ou partant d'un point
 \subsubsection{Conservation de la chaleur}
 
 De plus, quand une espèce est
