@@ -649,38 +649,10 @@ ondes-particules ou celles impliquant des particules rapides.
 Cependant, \eqref{1-BoltzmannEquation} est très
 difficile à résoudre du fait de la complexité de l'opérateur de collisions
 $C[f]$. Les méthodes utilisées pour la résoudre nécessitent de nombreuses
-approximations\parencite{HagelaarHDR}. De plus, quand une espèce est
-suffisamment collisionnelle, sa distribution en vitesse relaxe vers une maxwellienne locale sur une échelle de
-temps cinétique $t\sim\lambda/\left<v\right>$ :
-
-\begin{equation}
-\label{1-MaxwellDistribution}
-	f(\mathbf{v})=
-	\left(\frac{m}{2\pi
-	eT}\right)\puissance{3/2}4\pi v\indice{0}\puissance{2}\exp\left(\frac{-m
-	\left(\mathbf v-\mathbf v\indice{0}\right)\puissance{2}}{2eT}\right)
-\end{equation}
-
-$m$ étant la masse de l'espèce considérée, $\mathbf v_0$ correspondant à la
-vitesse moyenne dirigée et $T$ la température mesurant l'agitation
-thermique. Il suffit de deux vitesses pour caractériser une maxwellienne, la
-vitesse moyenne $\left<v\right>$ et la vitesse quadratique moyenne
-$\sqrt{\left<v\puissance{2}\right>}$ :
-
-\begin{equation}
-\label{1-EnergyFluxDensity}
-	\left<v\right>=\sqrt{\frac{8eT}{\pi m}} \;\;\;\;\text{et}\;\;\;\; 
-	\left<v\puissance{2}\right>=\frac{3eT}{m}
-\end{equation}
-
-Quand un ensemble de particules suit une distribution
-de Maxwell, l'équation de Boltzmann s'intègre facilement dans l'espace des
-vitesses, aboutissant ainsi aux équations fluides de conservation. Le nombre de
-degrés de liberté du problème est ainsi réduit en ne conservant de l'état du plasma
-que ses dimensions spatiales et temporelle.
-Cette description sous-entend cependant, par la forme de la fonction de
-distribution \eqrefp{1-MaxwellDistribution}, que le plasma est à l'équilibre
-thermodynamique local (ETL)
+approximations sur la fonction de distribution\parencite{HagelaarHDR}. Pour
+réduire le problème, l'équation peut être intégrée dans l'espace des vitesses
+en ne gardant que les dimensions statiales et temporelle du système : c'est
+l'approche fluide.
 
 \subsection{Les quantités fluides}
 L'approche fluide consiste à décrire le comportement des particules de chaque
@@ -730,6 +702,7 @@ pression scalaire $p_\alpha$ et le tenseur de viscosité
 $\boldsymbol{\Pi}_\alpha$, tels que:
 
 \begin{equation}
+\label{1-tenseurPression}
 \mathbf P_\alpha=p_\alpha\,\mathbf I + \boldsymbol{\Pi}_\alpha
 \end{equation}
 
@@ -765,8 +738,9 @@ l'équation de Boltzmann (\eqref{1-BoltzmannEquation}) sur l'espace des
 vitesses~:
 
 \begin{equation}
+\label{1-eqContinuite}
 	\partial_tn_\alpha+
-	\nabla\cdot\left(n_\alpha\mathbf{u_\alpha}\right)=S
+	\nabla\cdot\left(n_\alpha\mathbf{u_\alpha}\right)=S_\alpha
 \end{equation}
 
 avec $n_\alpha$ la densité de l'espèce, $\mathbf{u_\alpha}$ la vitesse
@@ -775,10 +749,12 @@ unité de temps et de volume. Dans les plasmas froids, ce terme source est issu
 de l'intégration du terme de collisions et rend compte du nombre de particules
 créées ou perdues lors de collisions inélastiques. Il est constitué
 par l'ensemble des intéractions collisionnelles et chimiques :
-$$S=\sum_i N_i n_{1i}n_{2i}k_i$$ où $N$ est le nombre de particules créées lors
-d'une collision (négatif en cas de destruction), $n_1$ et $n_2$ les densités des espèces en collisions et
-$k=\left<\sigma (v_2-v_1)\right>$ le coefficient de collision/réaction associé
-(cf.\S\ref{1-Collisions}). 
+$$S_\alpha=\sum_i N_i n_{\alpha}n_{i}k_{\alpha i}$$ où $N$ est le nombre de
+particules créées lors d'une collision (négatif en cas de destruction) et $n_i$ la
+densité de l'espèce en collision et $k_{\alpha i}=\left<\sigma_{\alpha i}
+v_r\right>$ le coefficient de collision/réaction
+associé (cf.\S\ref{1-Collisions}), où $v_r=(\mathbf u_i-\mathbf u_\alpha)$ est
+la vitesse relative des deux fluides.
 
 \subsubsection{Conservation de la quantité de mouvement}
 L'équation de conservation de la quantité de mouvement peut être considérée
@@ -787,6 +763,7 @@ comme le moment d'ordre un en vitesse de l'équation de Boltzmann. En multiplian
 vitesse, on obtient :
 
 \begin{equation}
+\label{1-eqQuantiteMouvement}
 \partial_t m_\alpha n_\alpha \mathbf{u}_\alpha + 
 \nabla\cdot\left(m_\alpha n_\alpha
 \mathbf{u}_\alpha\mathbf{u}_\alpha+\mathbf{P_\alpha}\right)=\mathbf
@@ -796,10 +773,120 @@ F_\alpha n_\alpha+\mathbf{R_\alpha}
 avec $\mathbf{P_\alpha}$ le tenseur de pression, $\mathbf{F_\alpha}$
 les forces extérieures et $\mathbf{R_\alpha}$ un terme de
 friction traduisant la perte et l'échange de quantité de mouvement dans les
-collisions.
+collisions. En toute généralité, on peut écrire ce transfert de quantité de
+mouvement pour chaque espèce $\alpha$ comme une somme de deux composants :
+\begin{equation}
+\mathbf{R_\alpha}=\sum_{i\neq\alpha}(\mathbf{R_{\alpha i}^{(\mathbf
+u)}}+\mathbf{R_{\alpha i}^{(T)}})
+\end{equation}
+où $i$ denote les autres espèces présentes dans le plasma. Le terme
+$\mathbf{R_{\alpha i}^{(T)}}$ est connu sous le nom de force thermique et émerge
+de la dépendance en vitesse des fréquences de collisions. Le terme $\mathbf{R_{\alpha}^{(\mathbf
+u)}}$ est une force de frottement proportionnelle à la vitesse relative des espèces en collision
+:
+\begin{equation}
+\mathbf{R_{\alpha}^{(\mathbf
+u)}}=n_\alpha\sum_{i\neq\alpha}\frac{m_\alpha m_i}{m_\alpha+m_i}
+n_ik_{\alpha i} \left(\mathbf u_i-\mathbf u_\alpha\right)
+\end{equation}
+
+Dans le cas de plasmas fortement ionisés où les collisions coulombiennes sont
+dominantes, $\mathbf{R_\alpha}$ s'exprime à travers la fermeture de
+Braginsky en fonction du courant $\mathbf
+j=en\left(\mathbf u_i-\mathbf u_e\right)$ et du gradient de température
+électronique $\nabla T_e$~\parencite{Braginsky}. Dans le cadre des plasmas
+froids, c'est les collisions avec le gaz au repos qui sont dominantes. La force termique peut être
+négligée et le terme de friction se réécrit de façon macroscopique :
+\begin{equation}
+\label{1-forceFriction}
+\mathbf{R_{\alpha}}=\mathbf{R_{\alpha}^{(\mathbf
+u)}}=m_\alpha n_\alpha\mathbf u_\alpha\sum_{i\neq\alpha}\frac{m_i}{m_\alpha+m_i}
+n_ik^m_{\alpha i} = m_\alpha n_\alpha \nu_\alpha \mathbf u_\alpha
+\end{equation}
+où $k^m_{\alpha i}=\left<\sigma^m_{\alpha i}v_r\right>$ est un coefficient
+efficace de transfert de quantité de mouvement. En remplacant les expressions du
+tenseur de pression (\eqref{1-tenseurPression}) et du terme de friction (\eqref{1-forceFriction}) dans
+\eqref{1-eqQuantiteMouvement} et en la combinant avec l'équation de continuité
+(\eqref{1-eqContinuite}), on obtient l'équation du mouvement qui contrôle
+l'évolution de la vitesse :
+
+\begin{equation}
+\label{1-eqMouvement}
+\partial_t \mathbf{u}_\alpha + (\mathbf{u}_\alpha\cdot\nabla)\mathbf{u}_\alpha
++\left(\nu_\alpha+\nu_\text{iz}\right) \mathbf u_\alpha=\frac{\mathbf
+F_\alpha}{m_\alpha} -\frac{\nabla p_\alpha}{m_\alpha n_\alpha}
+-\frac{\nabla\cdot\boldsymbol{\Pi}_\alpha}{m_\alpha n_\alpha}
+\end{equation}
+
+où $\nu_{\text{iz}}=S_\alpha/n_\alpha$ provient de la substitution de l'équation
+de continuité et caractérise la perte effective de quantité de mouvement
+dans les collisions inélastiques : les particules sont ionisées sans
+vitesse initiale et perdues à la vitesse moyenne $\mathbf u_\alpha$, entraînant une force de traînée nette
+proportionnelle à la vitesse du fluide en mouvement $\mathbf
+F_{drag}=\mathbf{u_\alpha}\nu_{\text{iz}}$.
 
 \subsubsection{Conservation de l'énergie}
+Le deuxième moment de l'équation de Boltzmann donne une équation tensorielle
+dont la contraction garantit la conservation de l'énergie moyenne du système.
+L'équation de conservation de
+l'énergie, qui s'obtient également en multipliant \eqref{1-BoltzmannEquation}
+par $m_\alpha {u}_\alpha^2/2$, s'écrit en ne considérent que la force de
+Lorentz :
+
+\begin{equation}
+\label{1-eqEnergie}
+\partial_t \varepsilon+
+\nabla\cdot\left(\varepsilon\mathbf{u}_\alpha+\mathbf
+P_\alpha\cdot\mathbf{u}_\alpha + \mathbf q_\alpha\right) =q_\alpha
+n_\alpha\mathbf E_\alpha\cdot
+\mathbf{u}_\alpha+\mathbf{R_\alpha}\mathbf{u}_\alpha+Q_\alpha
+\end{equation}
+
+où $\varepsilon=m_\alpha n_\alpha u_\alpha^2/2+3p_\alpha/2$ représente la
+densité d'énergie totale du fluide et 
+	$\mathbf q_\alpha=m_\alpha n_\alpha\left<w^2\mathbf w\right>/2$
+est le flux de chaleur (d'énergie chaotique), ie. le flux d'énergie dans le
+repère au repos du fluide. Enfin, $Q_\alpha$ est la production totale de
+chaleur lors de collisions et de réactions chimiques. Pour les électrons, cette
+puissance collisionnelle est généralement négative et peut s'exprimer en terme de taux:
+\begin{equation}
+	Q_e=-en_e\sum_{i}\left(U_in_ik_i+\frac{2m_e}{m_i}k^m_i\varepsilon_e\right)
+\end{equation}
+
 \subsubsection{Conservation de la chaleur}
+
+De plus, quand une espèce est
+suffisamment collisionnelle, sa distribution en vitesse relaxe vers une maxwellienne locale sur une échelle de
+temps cinétique $t\sim\lambda/\left<v\right>$ :
+
+\begin{equation}
+\label{1-MaxwellDistribution}
+	f(\mathbf{v})=
+	\left(\frac{m}{2\pi
+	eT}\right)\puissance{3/2}4\pi v\indice{0}\puissance{2}\exp\left(\frac{-m
+	\left(\mathbf v-\mathbf v\indice{0}\right)\puissance{2}}{2eT}\right)
+\end{equation}
+
+$m$ étant la masse de l'espèce considérée, $\mathbf v_0$ correspondant à la
+vitesse moyenne dirigée et $T$ la température mesurant l'agitation
+thermique. Il suffit de deux vitesses pour caractériser une maxwellienne, la
+vitesse moyenne $\left<v\right>$ et la vitesse quadratique moyenne
+$\sqrt{\left<v\puissance{2}\right>}$ :
+
+\begin{equation}
+\label{1-EnergyFluxDensity}
+	\left<v\right>=\sqrt{\frac{8eT}{\pi m}} \;\;\;\;\text{et}\;\;\;\; 
+	\left<v\puissance{2}\right>=\frac{3eT}{m}
+\end{equation}
+
+Quand un ensemble de particules suit une distribution
+de Maxwell, l'équation de Boltzmann s'intègre facilement dans l'espace des
+vitesses, aboutissant ainsi aux équations fluides de conservation. Le nombre de
+degrés de liberté du problème est ainsi réduit en ne conservant de l'état du plasma
+que ses dimensions spatiales et temporelle.
+Cette description sous-entend cependant, par la forme de la fonction de
+distribution \eqrefp{1-MaxwellDistribution}, que le plasma est à l'équilibre
+thermodynamique local (ETL)
 
 De plus, dans un plasma classique,
 la forte agitation thermique des électrons et le potentiel de gaine tendent à
