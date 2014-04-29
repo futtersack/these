@@ -590,7 +590,7 @@ critère de Bohm est alors légèrement corrigé pour tenir compte du transport 
  plus complexe et sera abordé dans la suite du manuscrit.
 \end{minipage}}
 
-\section{Équations fluides et phénomènes de transport}
+\section{Fonction de distribution et théorie fluide}
 \label{Maxwell-Boltzmann}
 
 Le plasma est un système dynamique complexe dont l'évolution au cours du temps
@@ -721,9 +721,11 @@ w\puissance{2} f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
 En montant en ordre, les moments donnent de plus en plus de détails sur la
 fonction de distribution, donnant théoriquement une description du plasma
 strictement équivalente à la description statistique. Dans les fluides
-classiques, il ne suffit généralement que de la densité $n_\alpha$, de la
+collisionnels, il ne suffit généralement que de la densité $n_\alpha$, de la
 vitesse $\mathbf{u}_\alpha$ et de la température $T_\alpha$ pour caractériser
-entièrement l'ensemble des particules de l'espèce.
+l'ensemble des particules d'une espèce.
+
+
 
 \subsection{Les équations de conservation}
 
@@ -766,12 +768,13 @@ vitesse, on obtient :
 \label{1-eqQuantiteMouvement}
 \partial_t m_\alpha n_\alpha \mathbf{u}_\alpha + 
 \nabla\cdot\left(m_\alpha n_\alpha
-\mathbf{u}_\alpha\mathbf{u}_\alpha+\mathbf{P_\alpha}\right)=\mathbf
-F_\alpha n_\alpha+\mathbf{R_\alpha}
+\mathbf{u}_\alpha\mathbf{u}_\alpha+\mathbf{P_\alpha}\right)=q_\alpha
+n_\alpha\left(\mathbf E+\mathbf u_\alpha\times\mathbf B\right)
++\mathbf{R_\alpha}
 \end{equation}
 
-avec $\mathbf{P_\alpha}$ le tenseur de pression, $\mathbf{F_\alpha}$
-les forces extérieures et $\mathbf{R_\alpha}$ un terme de
+avec $\mathbf{P_\alpha}$ le tenseur de pression, $\mathbf{E}$ et $\mathbf{B}$
+les forces électromagnétiques et $\mathbf{R_\alpha}$ un terme de
 friction traduisant la perte et l'échange de quantité de mouvement dans les
 collisions. En toute généralité, on peut écrire ce transfert de quantité de
 mouvement pour chaque espèce $\alpha$ comme une somme de deux composants :
@@ -813,9 +816,9 @@ l'évolution de la vitesse :
 \begin{equation}
 \label{1-eqMouvement}
 \partial_t \mathbf{u}_\alpha + (\mathbf{u}_\alpha\cdot\nabla)\mathbf{u}_\alpha
-+\left(\nu_\alpha+\nu_\text{iz}\right) \mathbf u_\alpha=\frac{\mathbf
-F_\alpha}{m_\alpha} -\frac{\nabla p_\alpha}{m_\alpha n_\alpha}
--\frac{\nabla\cdot\boldsymbol{\Pi}_\alpha}{m_\alpha n_\alpha}
++\left(\nu_\alpha+\nu_\text{iz}\right) \mathbf
+u_\alpha=\frac{q_\alpha}{m_\alpha}\left(\mathbf E+\mathbf u_\alpha\times \mathbf
+B\right) -\frac{\nabla p_\alpha}{m_\alpha n_\alpha} -\frac{\nabla\cdot\boldsymbol{\Pi}_\alpha}{m_\alpha n_\alpha}
 \end{equation}
 
 où $\nu_{\text{iz}}=S_\alpha/n_\alpha$ provient de la substitution de l'équation
@@ -830,8 +833,7 @@ Le deuxième moment de l'équation de Boltzmann donne une équation tensorielle
 dont la contraction garantit la conservation de l'énergie moyenne du système.
 L'équation de conservation de
 l'énergie, qui s'obtient également en multipliant \eqref{1-BoltzmannEquation}
-par $m_\alpha {u}_\alpha^2/2$, s'écrit en ne considérent que la force de
-Lorentz dont la force magnétique ne travaille pas :
+par $m_\alpha {u}_\alpha^2/2$, s'écrit :
 
 \begin{equation}
 \label{1-eqEnergie}
@@ -842,12 +844,12 @@ n_\alpha\mathbf E\cdot
 \mathbf{u}_\alpha+Q_\alpha
 \end{equation}
 
-où $\varepsilon_\alpha=m_\alpha n_\alpha u_\alpha^2/2+3p_\alpha/2$ représente
-la densité d'énergie du fluide et 
-	$$\mathbf q_\alpha=m_\alpha n_\alpha\left<w^2\mathbf w\right>/2$$
-est le flux de chaleur (d'énergie chaotique), ie. le flux d'énergie dans le
-repère au repos du fluide. Enfin, $Q_\alpha$ est la production
-\emph{totale}\footnote{Dans de nombreux ouvrages, le terme de chauffage
+où $\varepsilon_\alpha=m_\alpha n_\alpha u_\alpha^2/2+3p_\alpha/2$ est
+la densité d'énergie du fluide. L'équation fait intervenir le troisième moment
+de la fonction de distribution, $$\mathbf q_\alpha=m_\alpha
+n_\alpha\left<w^2\mathbf w\right>/2$$ qui représente le flux de chaleur
+(d'énergie chaotique), ie. le flux d'énergie dans le repère au repos du fluide. 
+Enfin, $Q_\alpha$ est la production \emph{totale}\footnote{Dans de nombreux ouvrages, le terme de chauffage
 collisionnel est décomposé en un terme de chauffage dirigé et un terme mesurant
 le chauffage dans le repère au repos $\text{W}_\alpha$: $$Q_\alpha=\int_{\mathbf
 v}\frac{m_\alpha}{2}v_\alpha^2C_\alpha d\mathbf v=\int_{\mathbf
@@ -859,17 +861,18 @@ ne laisser que le terme $\text{W}_\alpha$.
 
 Dans ce manuscrit, nous
 considérons dans les équations la perte d'énergie totale ; le terme de
-chauffage par friction (ie. l'effet Joule) est donc toujours présent. C'est
-d'ailleurs un terme primordial pour capturer correctement le comportement de la
-température électronique.} de chaleur lors de collisions et de réactions chimiques.
+chauffage par friction (ie. l'effet Joule) est donc toujours présent après la
+substitution dans l'équation d'énergie.} de chaleur lors de collisions et de
+réactions chimiques.
 Pour les électrons, cette puissance collisionnelle est généralement négative et peut s'exprimer en terme de taux:
 \begin{equation}
 	Q_e=\int_{\mathbf
 	v}\frac{m_\alpha}{2}v^2C_\alpha d\mathbf
-	v=-en_e\sum_{i}\left(U_in_ik_i+\frac{2m_e}{m_i}k^m_i\varepsilon_e\right)
+	v=-en_e\sum_{i}\left(E_in_ik_i+\frac{2m_e}{m_i}k^m_i\varepsilon_e\right)
 \end{equation}
 
-On peut maintenant soustraire la contribution de l'énergie dirigée de
+avec $E_i$ l'énergie de seuil de la réaction. On peut maintenant soustraire la
+contribution de l'énergie dirigée $U_\alpha=m_\alpha n_\alpha u_\alpha^2/2$ de
 \eqref{1-eqEnergie} en utilisant le produit scalaire de l'équation de
 conservation de la quantité de mouvement (\eqref{1-eqQuantiteMouvement}) et de
 la vitesse fluide pour obtenir une équation de conservation sur l'énergie
@@ -878,126 +881,135 @@ interne (thermique) d'une espèce :
 \begin{equation}
 \label{1-eqEnergieInterne}
 \frac{3}{2}\partial_t p_\alpha + 
-\frac{3}{2}\nabla\cdot\left(p_\alpha
-\mathbf{u}_\alpha\right)+p_\alpha\nabla\cdot\mathbf u_\alpha
-+\boldsymbol{\Pi}_{\alpha j k}\frac{\partial u_{\alpha j}}{\partial{x_k}} +
-\nabla\cdot\mathbf q_\alpha={Q_\alpha}
+\nabla\cdot\left(\frac{3}{2}p_\alpha
+\mathbf{u}_\alpha+\mathbf q_\alpha\right)+p_\alpha\nabla\cdot\mathbf u_\alpha
++\boldsymbol{\Pi}_{\alpha j k}\frac{\partial u_{\alpha j}}{\partial{x_k}} =
+{Q_\alpha}+(2n_\alpha\nu_\alpha+S_\alpha)U_\alpha
 \end{equation}
 
-Les changements dans l'énergie interne du fluide sont donc dus aux flux nets
-d'énergie arrivant ou partant d'un point
-\subsubsection{Conservation de la chaleur}
+Dans cette équation, $p_\alpha\nabla\cdot\mathbf u_\alpha$ représente la
+puissance produite par la pression partielle qui résulte du
+refroidissement/chauffage lié à la compression ou à l'expansion d'un volume de
+plasma et le terme $\boldsymbol{\Pi}_{\alpha j k}\partial u_{\alpha
+j}/\partial{x_k}$ décrit le chauffage visqueux. Le terme
+$(2n_\alpha\nu_\alpha+S_\alpha)U_\alpha$ apparaît distinctement comme une
+production ou une perte de chaleur conséquente du travail de la force de traînée générée par
+les collisions. C'est un terme primordial pour capturer correctement le
+comportement de la température électronique. 
 
-De plus, quand une espèce est
-suffisamment collisionnelle, sa distribution en vitesse relaxe vers une maxwellienne locale sur une échelle de
-temps cinétique $t\sim\lambda/\left<v\right>$ :
+En utilisant l'équation de
+continuité pour réduire l'équation d'énergie (\eqref{1-eqEnergieInterne}), on
+obtient une équation d'évolution pour la température de l'espèce :
 
 \begin{equation}
-\label{1-MaxwellDistribution}
-	f(\mathbf{v})=
-	\left(\frac{m}{2\pi
-	eT}\right)\puissance{3/2}4\pi v\indice{0}\puissance{2}\exp\left(\frac{-m
-	\left(\mathbf v-\mathbf v\indice{0}\right)\puissance{2}}{2eT}\right)
+\label{1-eqTemperature}
+\frac{3}{2}n_\alpha\frac{\text{d}eT_\alpha}{\text{dt}}+\nabla\cdot\mathbf
+q_\alpha + p_\alpha\nabla\cdot\mathbf u_\alpha +\boldsymbol{\Pi}_{\alpha j
+k}\frac{\partial u_{\alpha j}}{\partial{x_k}}+ \frac{3}{2}S_\alpha eT_\alpha =
+{Q_\alpha}+(2n_\alpha\nu_\alpha+S_\alpha)U_\alpha
 \end{equation}
 
-$m$ étant la masse de l'espèce considérée, $\mathbf v_0$ correspondant à la
-vitesse moyenne dirigée et $T$ la température mesurant l'agitation
-thermique. Il suffit de deux vitesses pour caractériser une maxwellienne, la
-vitesse moyenne $\left<v\right>$ et la vitesse quadratique moyenne
+avec $\text{d}/\text{dt}=\partial_t+\mathbf u\cdot\nabla$ la notation de
+la dérivée convective. En substituant enfin le terme de compression
+$p_\alpha\nabla\cdot\mathbf u_\alpha$ pour faire disparaître la divergence de la vitesse,
+\eqref{1-eqTemperature} se réécrit :
+
+\begin{equation}
+\label{1-eqTemperature2}
+\frac{3}{2}n_\alpha\frac{\text{d}eT_\alpha}{\text{dt}}+\nabla\cdot\mathbf
+q_\alpha +\boldsymbol{\Pi}_{\alpha j k}\frac{\partial u_{\alpha
+j}}{\partial{x_k}}+ \frac{5}{2}S_\alpha eT_\alpha = eT_\alpha\frac{\text{d}n_\alpha}{\text{dt}}+ 
+{Q_\alpha}+(2n_\alpha\nu_\alpha+S_\alpha)U_\alpha
+\end{equation}
+
+Dans notre étude des plasmas froids magnétisés, la température ionique $T_i$
+est très proche de celle des neutres et il n'est pas nécéssaire de décrire
+son évolution. $T_e$ en revanche joue un rôle primordial dans le comportement
+du plasma car directement responsable de l'ionisation du gaz et donc du
+transport collisionnel généré. Comme le flux de chaleur électronique est très
+sensible au champ magnétique et tend à influencer de façon notable le
+comportement de $T_e$, il doit être décrit avec attention à travers une équation
+spécifique.
+
+\subsubsection{Conservation de la chaleur électronique}
+
+Les équations \eqref{1-eqEnergieInterne}-\eqref{1-eqTemperature2} font
+intervenir des moments d'ordre trois, les composantes du vecteur de flux de
+chaleur $\mathbf q_\alpha$ dont les expressions sont assez similaires et se
+dérivent de la même façon que celles du flux de particule. Quand les électrons
+sont suffisement collisionnels et que l'énergie dirigée est inférieure à
+l'énergie chaotique ($m_eu_e^2/2\ll T_e$), l'équation pour le flux de chaleur
+électronique prend la forme~\parencite{Golant} :
+
+\begin{equation}
+\label{1-eqFluxChaleur}
+\partial_t\mathbf
+q_e+\frac{5}{2}\frac{n_e
+T_e}{m_\alpha}+\frac{e}{m_e} \mathbf q_e\times\mathbf
+B=\frac{\delta\mathbf q_e}{\delta t}
+\end{equation}
+
+
+En considérant le faible ratio de
+masses et en supposant que la chaleur est essentiellement perdue lors des
+collisions avec les neutres, on trouve une expression pour le terme de collision  $\delta\mathbf q_e/\delta
+t$ qui est alors
+proportionnel à la fréquence de collision $\nu_{en}$. \eqref{1-eqFluxChaleur} se
+réécrit :
+
+\begin{equation}
+\label{1-eqFluxChaleur}
+\partial_t\mathbf
+q_e+\frac{5}{2}\frac{n_e
+T_e}{m_\alpha}+\frac{e}{m_e} \mathbf q_e\times\mathbf
+B=-\nu_{en}\mathbf q_e
+\end{equation}
+
+Le système (\eqref{1-eqContinuite}, \eqref{1-eqQuantiteMouvement},
+\eqref{1-eqEnergieInterne},\eqref{1-eqFluxChaleur}) forme une suite d'équations
+de conservation décrivant le comportement des espèces dans le plasma.
+Ces équations sont valides pour des échelles de temps et d'espace grandes devant
+les échelles caractéristiques collisionnelles :
+\begin{equation}
+\text{T}\gg \nu_{\alpha}\puissance{-1}
+\;\;\;\;\text{et}\;\;\;\;\text{L}\gg\lambda_\text{lpm}=\frac{c_s}{\nu_\alpha}
+\end{equation}
+ie. quand les fonctions de distributions se
+rapprochent de maxwelliennes locales\footnote{Il suffit de deux vitesses pour caractériser
+une maxwellienne, la vitesse moyenne $\left<v\right>$ et la vitesse quadratique moyenne
 $\sqrt{\left<v\puissance{2}\right>}$ :
-
-\begin{equation}
-\label{1-EnergyFluxDensity}
+$$
 	\left<v\right>=\sqrt{\frac{8eT}{\pi m}} \;\;\;\;\text{et}\;\;\;\; 
 	\left<v\puissance{2}\right>=\frac{3eT}{m}
-\end{equation}
-
-Quand un ensemble de particules suit une distribution
-de Maxwell, l'équation de Boltzmann s'intègre facilement dans l'espace des
-vitesses, aboutissant ainsi aux équations fluides de conservation. Le nombre de
-degrés de liberté du problème est ainsi réduit en ne conservant de l'état du plasma
-que ses dimensions spatiales et temporelle.
-Cette description sous-entend cependant, par la forme de la fonction de
-distribution \eqrefp{1-MaxwellDistribution}, que le plasma est à l'équilibre
-thermodynamique local (ETL)
-
-De plus, dans un plasma classique,
-la forte agitation thermique des électrons et le potentiel de gaine tendent à
-faire relaxer rapidement la distribution en vitesses électronique vers une
-maxwellienne locale. Les électrons suivent alors une distribution de Maxwell-Boltzmann :
-
+$$ Les moments de la fonction de distribution se calculent ainsi facilement.},
+:
 \begin{equation}
-	f_e(\mathbf{r},\mathbf{v},t)=\underset{\text{Distribution de Boltzmann}}
-	{n\indice{0}\exp\left(\frac{-q_e\Phi(\mathbf r)}{eT_e}\right)}
-	\underset{\text{Distribution de Maxwell}} {\left(\frac{m_e}{2\pi
-	eT_e}\right)\puissance{3/2}\exp\left(\frac{-m_e
-	\mathbf v\puissance{2}}{2eT_e}\right)}
+\label{1-MaxwellDistribution}
+	f_\alpha\simeq n_\alpha
+	\left(\frac{m_\alpha}{2\pi
+	eT_\alpha}\right)\puissance{3/2}4\pi
+	u_\alpha\puissance{2}\exp\left(\frac{-m_\alpha \left(\mathbf
+	v_\alpha-\mathbf u_\alpha\right)\puissance{2}}{2eT_\alpha}\right)
 \end{equation}
- 
- 
- \footnote{Quand le
-plasma possède deux populations d'une même espèce à des énergies très différentes, la
-distribution en vitesse n'est pas maxwellienne mais peut se décomposer en une somme de maxwellienne.}
 
-\subsection{Les phénomènes de transport magnétisés}
-Dans un plasma collisionnel, le mouvement d'une particule peut être assimilé à
-une succession de déplacements libres et de collisions, formant une marche
-aléatoire de pas $\lambda_\text{lpm}$. Compte tenu du caractère isotrope du
-problème, ce déplacement, sur plusieurs temps de collisions, est de
-moyenne nulle. L'écart quadratique de ce déplacement à la moyenne, mesuré par la
-température, ne l'est cependant pas. Il définit le processus de diffusion qui
-apparaît en présence d'une inhomogénéité de densité, dont la vitesse typique est
-fonction de la longueur de gradient de densité et du coefficient de diffusion
-$D$ :
- 
-\begin{equation}
-    \text{V}_\text{Diff}\sim D_\alpha\frac{\nabla
-    n_\alpha}{n_\alpha}=\frac{eT_\alpha}{m_\alpha\nu}\frac{\nabla
-    n_\alpha}{n_\alpha}=\frac{\lambda_\text{lpm}}{L_\text{n}}v_{\text{T}_\alpha}
-\end{equation}
- 
-où $L_\text{n}=\nabla n/n$ est la longueur de gradient de densité. 
-En présence d'un champ électrique, ce déplacement aléatoire est accéléré entre
-chaque collision (voir figure~\ref{1-collisions}), et entraîne un déplacement
-macroscopique moyen non nul, décrit par le coefficient de mobilité :
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{figures/1-collisions.jpg}
-{\caption{Processus de diffusion-conduction suivant la marche aléatoire
-collisionnelle d'un électron~{\cite{Rax}}.}\label{1-collisions}}
-\end{figure}
-\begin{equation}
-    \mu_\alpha=\frac{q_\alpha}{m_\alpha\nu}
-\end{equation}
- 
-Conduction et diffusion sont les processus de transport dominants dans les
-plasmas non magnétisé. Leur coefficient de transport respectifs, $D_\alpha$ et
-$\mu_\alpha$, ne sont pas indépendants et leur rapport $D_\alpha/\mu_\alpha$,
-appelé énergie caractéristique, est égal à la température de l'espèce selon la relation
-d'Einstein :
- 
-\begin{equation}
-    \frac{D_\alpha}{\mu_\alpha}=T_\alpha
-\end{equation}
- 
-\section{Les plasmas magnétisés}
+Il peut sembler qu'une description fluide d'un plasma soit fortement limitée
+par cette hypothèse. Cependant, excepté pour les interactions
+ondes-particules, elle est valide et suffisante dans de nombreuses
+situations : les électrons sont généralement en équilibre de Boltzmann et une
+description cohérente du flux ionique peut être obtenue en considérant l'hypothèse de quasineutralité du
+plasma.
+
+\section{Modèles pour le transport magnétisé}
+
+L'étude de phénomènes et de processus physiques s'effectue généralement en
+combinant expérimentation et développement théorique.  La description fluide, en
+supposant une cohésion macroscopique de l'ensemble des particules, forme un modèle de base pour étudier l En supposant le tenseur
+de pression isotrope, ie.
+$\boldsymbol{\Pi}_{\alpha j k}\partial u_{\alpha j}/\partial{x_k}=0$, et e
 
 
-\subsection{Les plasmas de bord des tokamaks}
-Lawson criteriom, strongly magnetized
-\subsubsection{La fusion et les tokamaks}
-\subsubsection{Le plasma de la Scrape-of-Layer}
-\parencite{Ghendrih}biasing stabilization of bursts
-\subsubsection{Les vitesses de dérives}
-\parencite{Garcia}Esel
-\parencite{Bisai}Bisai
-\label{vitessesDerive}
-\begin{equation}
-\label{1-vitessePol}
-\mathbf{u}_p^\alpha=-\frac{m_\alpha}{q_\alpha B^2}\frac{\text{d}\nabla_\perp
-U}{\text{dt}}
-\end{equation}
-\subsection{Les décharges plasma basse-pression}
+
+\subsection{Les plasmas de décharge}
 \label{1-transportAmbipolaire}
 
 \subsubsection{Création de la décharge, rôle des électrons}
@@ -1027,8 +1039,20 @@ Electrical breakdown, Townsend avalanche,
 \begin{equation}
 \label{derivediffusion}
 \end{equation}
-\subsubsection{Équations de dérive-diffusion magnétisées}
 
+En l'absence de champ magnétique, 
+
+\begin{equation}
+	f_e(\mathbf{r},\mathbf{v},t)=\underset{\text{Distribution de Boltzmann}}
+	{n\indice{0}\exp\left(\frac{-q_e\Phi(\mathbf r)}{eT_e}\right)}
+	\underset{\text{Distribution de Maxwell}} {\left(\frac{m_e}{2\pi
+	eT_e}\right)\puissance{3/2}\exp\left(\frac{-m_e
+	\mathbf v\puissance{2}}{2eT_e}\right)}
+\end{equation}
+
+\subsection{Les sources magnétisées}
+La présence d'un champ magnétique modifie considérablement le comportement du
+plasma. 
 \subsubsection{Les colonnes de plasmas}
 \parencite{RosenbluthSimon}
 
@@ -1048,6 +1072,29 @@ plasma\parencite{Rozhansky}.}
 \parencite{Fruchtman} stationnaire
 
 \parencite{Sternberg} plasma infini dans z, symetrie axiale \ldots 
+
+\subsubsection{Les filtres magnétiques}
+
+
+\subsubsection{Équations de dérive-diffusion magnétisées}
+
+
+\subsection{Les plasmas de bord des tokamaks}
+Lawson criteriom, strongly magnetized
+\subsubsection{La fusion et les tokamaks}
+\subsubsection{Le plasma de la Scrape-of-Layer}
+\parencite{Ghendrih}biasing stabilization of bursts
+\subsubsection{Les vitesses de dérives}
+\parencite{Garcia}Esel
+\parencite{Bisai}Bisai
+\label{vitessesDerive}
+\begin{equation}
+\label{1-vitessePol}
+\mathbf{u}_p^\alpha=-\frac{m_\alpha}{q_\alpha B^2}\frac{\text{d}\nabla_\perp
+U}{\text{dt}}
+\end{equation}
+
+
 %\bibliographystyle{apalike}
 %\bibliography{biblio}
 \end{refsection}
