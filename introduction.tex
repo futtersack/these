@@ -315,16 +315,16 @@ calcule en fonction de la pulsation cyclotronique et de la vitesse
 $v\indice{\alpha}$ de la particule :
 
 \begin{equation}
-\rho\text{L}^\alpha
-=\frac{v\indice{\alpha}}{\omega_c^{{\alpha}}}
+\rho_{\text{L}\alpha}
+=\frac{v\indice{\alpha}}{\omega_{c{\alpha}}}
 \end{equation}
 
 Pour les ions suffisamment énergétiques, ainsi que pour les électrons en général,
 la vitesse typique de la particule est sa vitesse thermique. On peut alors noter :
 
 \begin{equation}
-\omega_c^{\alpha}\left[\frac{e B}{m_\alpha}\right]
-\cdot\rho_\text{L}^{\alpha}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
+\omega_{c\alpha}\left[\frac{e B}{m_\alpha}\right]
+\cdot\rho_{\text{L}\alpha}\left[\frac{\sqrt{m_\alpha eT_\alpha}}{eB}\right]
 =v\indice{T_{\alpha}}\left[\left(\frac{eT_{\alpha}}{m_{\alpha}}\right)^{\text{\textonehalf}}\right]
 \end{equation}
 
@@ -337,7 +337,7 @@ partir du moment où la longueur caractéristique $L$ du transport considéré e
 grande devant son rayon de Larmor :
 
 \begin{equation}
-\delta=\frac{\rho_\text{L}^\alpha}{L}\ll 1
+\delta=\frac{\rho_{\text{L}\alpha}}{L}\ll 1
 \end{equation}
 
 \begin{figure}[htbp]
@@ -958,7 +958,7 @@ proportionnel à la fréquence de collision $\nu_{en}$. \eqref{1-eqFluxChaleur} 
 réécrit :
 
 \begin{equation}
-\label{1-eqFluxChaleur}
+\label{1-eqFluxChaleur2}
 \partial_t\mathbf
 q_e+\frac{5}{2}\frac{n_e
 T_e}{m_\alpha}+\frac{e}{m_e} \mathbf q_e\times\mathbf
@@ -981,8 +981,7 @@ $\sqrt{\left<v\puissance{2}\right>}$ :
 $$
 	\left<v\right>=\sqrt{\frac{8eT}{\pi m}} \;\;\;\;\text{et}\;\;\;\; 
 	\left<v\puissance{2}\right>=\frac{3eT}{m}
-$$ Les moments de la fonction de distribution se calculent ainsi facilement.},
-:
+$$ Les moments de la fonction de distribution se calculent ainsi facilement.}:
 \begin{equation}
 \label{1-MaxwellDistribution}
 	f_\alpha\simeq n_\alpha
@@ -1002,12 +1001,22 @@ plasma.
 \section{Modèles pour le transport magnétisé}
 
 L'étude de phénomènes et de processus physiques s'effectue généralement en
-combinant expérimentation et développement théorique.  La description fluide, en
-supposant une cohésion macroscopique de l'ensemble des particules, forme un modèle de base pour étudier l En supposant le tenseur
-de pression isotrope, ie.
+combinant expérimentation et développement théorique. La description fluide, en
+supposant une cohésion macroscopique de l'ensemble des particules, forme un
+modèle de base pour étudier l 
+
+\begin{equation}
+\begin{equation}
+\label{1-eqMouvement}
+\partial_t \mathbf{u}_\alpha + (\mathbf{u}_\alpha\cdot\nabla)\mathbf{u}_\alpha
++\left(\nu_\alpha+\nu_\text{iz}\right) \mathbf
+u_\alpha=\frac{q_\alpha}{m_\alpha}\left(\mathbf E+\mathbf u_\alpha\times \mathbf
+B\right) -\frac{\nabla p_\alpha}{m_\alpha n_\alpha} -\frac{\nabla\cdot\boldsymbol{\Pi}_\alpha}{m_\alpha n_\alpha}
+\end{equation}
+\end{equation}
+
+En supposant le tenseur de pression isotrope, ie.
 $\boldsymbol{\Pi}_{\alpha j k}\partial u_{\alpha j}/\partial{x_k}=0$, et e
-
-
 
 \subsection{Les plasmas de décharge}
 \label{1-transportAmbipolaire}
