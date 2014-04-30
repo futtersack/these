@@ -182,7 +182,8 @@ backend=biber]{biblatex}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 \usepackage{multicol}
 \usepackage{csquotes}
-
+\usepackage{cancel}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
 \newenvironment{tirade} 
    {\begin{quotation} \itshape\small} 
    {\normalsize \end{quotation}} 

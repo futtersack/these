@@ -1000,21 +1000,28 @@ plasma.
 
 \section{Modèles pour le transport magnétisé}
 
-L'étude de phénomènes et de processus physiques s'effectue généralement en
-combinant expérimentation et développement théorique. La description fluide, en
-supposant une cohésion macroscopique de l'ensemble des particules, forme un
-modèle de base pour étudier l 
+La théorie fluide, en supposant une cohésion macroscopique de l'ensemble des
+particules, fournit une description de base pour étudier les phénomènes de
+transport dans les plasmas. A partir de ce formalisme, la plupart des modèles
+sont construits en simplifiant les équations pour ne retenir que les
+caractéristiques et processus essentiels du système à étudier. Une hypothèse
+communément retenue
 
-\begin{equation}
 \begin{equation}
 \label{1-eqMouvement}
-\partial_t \mathbf{u}_\alpha + (\mathbf{u}_\alpha\cdot\nabla)\mathbf{u}_\alpha
-+\left(\nu_\alpha+\nu_\text{iz}\right) \mathbf
-u_\alpha=\frac{q_\alpha}{m_\alpha}\left(\mathbf E+\mathbf u_\alpha\times \mathbf
-B\right) -\frac{\nabla p_\alpha}{m_\alpha n_\alpha} -\frac{\nabla\cdot\boldsymbol{\Pi}_\alpha}{m_\alpha n_\alpha}
-\end{equation}
+\underbrace{mn\left(\partial_t \mathbf{u} +
+(\mathbf{u}\cdot\nabla)\mathbf{u}\right)}_\text{Inertie}
++\underbrace{mn\nu\mathbf u}_\text{Traînée}=\underbrace{{qn}\left(\mathbf
+E+\mathbf u\times \mathbf B\right)}_\text{Forces électromagnétiques} -\underbrace{{\nabla
+p}}_\text{Pression}
 \end{equation}
 
+\begin{equation}
+\label{1-eqMouvement}
+\Ccancel[red]{\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u}}
++\nu\mathbf u=\frac{q}{m}\left(\mathbf E+\mathbf u\times
+\mathbf B\right) -\frac{\nabla p}{mn}
+\end{equation}
 En supposant le tenseur de pression isotrope, ie.
 $\boldsymbol{\Pi}_{\alpha j k}\partial u_{\alpha j}/\partial{x_k}=0$, et e
 
