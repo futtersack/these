@@ -1004,11 +1004,16 @@ La théorie fluide, en supposant une cohésion macroscopique de l'ensemble des
 particules, fournit une description de base pour étudier les phénomènes de
 transport dans les plasmas. A partir de ce formalisme, la plupart des modèles
 sont construits en simplifiant les équations pour ne retenir que les
-caractéristiques et processus essentiels du système à étudier. Une hypothèse
-communément retenue
+caractéristiques et processus essentiels du système à étudier. 
+
+La première hypothèse communément retenue pour simplifier le modèle consiste à
+considérer le tenseur de pression isotrope ie.
+$\boldsymbol{\Pi}=0$. L'équation de mouvement \eqref{1-eqMouvement} se réduit
+ainsi à un équilibre entre les forces d'inertie, de traînée, de Lorentz et de
+pression :
 
 \begin{equation}
-\label{1-eqMouvement}
+\label{1-eqBilanForce}
 \underbrace{mn\left(\partial_t \mathbf{u} +
 (\mathbf{u}\cdot\nabla)\mathbf{u}\right)}_\text{Inertie}
 +\underbrace{mn\nu\mathbf u}_\text{Traînée}=\underbrace{{qn}\left(\mathbf
@@ -1016,39 +1021,39 @@ E+\mathbf u\times \mathbf B\right)}_\text{Forces électromagnétiques} -\underbr
 p}}_\text{Pression}
 \end{equation}
 
-\begin{equation}
-\label{1-eqMouvement}
-\Ccancel[red]{\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u}}
-+\nu\mathbf u=\frac{q}{m}\left(\mathbf E+\mathbf u\times
-\mathbf B\right) -\frac{\nabla p}{mn}
-\end{equation}
-En supposant le tenseur de pression isotrope, ie.
-$\boldsymbol{\Pi}_{\alpha j k}\partial u_{\alpha j}/\partial{x_k}=0$, et e
 
-\subsection{Les plasmas de décharge}
+\subsection{Modèle non magnétisé de dérive-diffusion}
 \label{1-transportAmbipolaire}
+\subsubsection{Plasmas de décharge collisionnels}
+ industriels et de laboratoires
+\subsubsection{Equations de dérive-diffusion}
 
-\subsubsection{Création de la décharge, rôle des électrons}
+Dans les plasmas basse-température, qui possèdent un faible degré d'ionisation,
+la dynamique est dominée par la perte de quantité de mouvement
+liée à l'ionisation et au frottement avec le gaz. En
+l'absence de champ magnétique et pour des particules collisionnelles chargées,
+l'équation du mouvement se simplifie alors en négligeant les termes d'inertie
+relativement faibles\footnote{Les termes inertiels peuvent être négligés quand
+la vitesse fluide $\mathbf u$ est subsonique : $\mathbf u$ vérifie alors
+$\mathbf u\ll \left<v\right>/K_n$, où $K_n=\lambda/L$ est le nombre de Knudsen
+et $$\nu \mathbf u=\frac{\left<v\right>\mathbf u}{\lambda}\gg
+\frac{u^2}{\lambda}K_n=\frac{u^2}{L}\sim \mathbf u\cdot\nabla\mathbf u$$} par
+rapport au terme collisionnel :
 
-Dans les plasmas basse-température industriels et de laboratoires, qui
-possèdent un faible degré d'ionisation, ou dans l'ionosphère, la dynamique du
-plasma est dominée par la perte de quantité de mouvement due à l'ionisation la force de friction avec
-le gaz.
+\begin{equation}
+\label{1-eqBilanForce}
+n\mathbf u=\frac{q}{\nu m}n\mathbf
+E-\frac{\nabla\left(neT\right)}{\nu m}\equiv\pm\mu n\mathbf
+E-{\nabla\left(Dn\right)}
+\end{equation}
 
-l'établissement de la quasineutralité n'est pas instantané : à faible densité,
-le champ électrique étant négligeable, les ions et les électrons diffusent
-uniformément dans le volume qui les entoure.
-
-Comme les électrons se déplacent et diffusent bien plus rapidement que les ions
-du fait de leur faible masse $D\indice{e}\gg D\indice{i}$, durant un temps
-$t\sim \tau\indice{e}=L\puissance{2}/D\indice{e}$, ils se dispersent jusqu'à atteindre
-une paroi ou un quelconque obstacle qu'ils polarisent négativement. Il apparaît
-alors dans la zone proche de la surface une couche limite appelée gaine, ne
-contenant que très peu d'électrons et où la quasineutralité est donc rompue. 
-attirant les ions et ralentissant les électrons pour ajuster leur flux et
-préserver la neutralité du matériau. La zone proche de l'obstacle
-
-
+C'est l'équation bien connue de dérive-diffusion, avec les deux coefficients de
+transport : 
+\begin{itemize}
+  \item la mobilité, $\mu=e/\nu m$, qui mesure la disposition d'une espèce à
+  laisser passer le courant dans un milieu
+  \item le coefficient de diffusion $D=eT/\nu m$ qui représente 
+\end{itemize}
 
 Electrical breakdown, Townsend avalanche,
 \subsubsection{Transport des ions et champ ambipolaire}
