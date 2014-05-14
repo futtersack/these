@@ -35,7 +35,7 @@ se caractérise par deux paramètres principaux :
 \end{itemize}
 
 \begin{equation}
-	eT_\text{e}=m_\text{e} v_{\text{T}_\text{e}}\puissance{2}
+	eT_\text{e}=m_\text{e} v_{\text{T}\text{e}}\puissance{2}
 \end{equation}
 
 où $m_\text{e}$ est la masse de l'électron, et $e$ la charge élémentaire. Pour un électron possédant
@@ -46,8 +46,8 @@ ions, qui à même énergie auront une vitesse thermique d'environ
 \unit{10}{\kilo\meter}/s.
 
 \begin{equation}
-	v_{\text{T}_\text{i}}\sim\left(m_\text{e}/m_\text{i}\right)^{\text{\textonehalf}}
-	v_{\text{T}_\text{e}}
+	v_{\text{T}\text{i}}\sim\left(m_\text{e}/m_\text{i}\right)^{\text{\textonehalf}}
+	v_{\text{T}\text{e}}
 \end{equation}
 
 La figure (\ref{zoologie}) représente une classification des plasmas
@@ -150,7 +150,7 @@ plasma et la longueur de Debye, reliée par l'intermédiaire la vitesse thermiqu
 e\puissance{2}}{\varepsilon\indice{0} m_\text{e}}\right)^{\text{\textonehalf}}
 \right]\cdot\lambda_D\left[\left(\frac{\varepsilon\indice{0}
 eT_\text{e}}{n\indice{0} e\puissance{2}}\right)^{\text{\textonehalf}}\right]
-=v_{\text{T}_\text{e}}\left[\left(\frac{eT_\text{e}^{^{\phantom{1}}}}{m_\text{e}}\right)^{\text{\textonehalf}}\right]
+=v_{\text{T}\text{e}}\left[\left(\frac{eT_\text{e}^{^{\phantom{1}}}}{m_\text{e}}\right)^{\text{\textonehalf}}\right]
 \end{equation}
 
 La pulsation plasma $\omega_\text{p}$ correspond à la fréquence typique
@@ -287,6 +287,7 @@ type Maxwell-Boltzmann (cf. paragraphe \ref{Introduction}-\ref{Maxwell-Boltzmann
 dire\ldots}
 
 \subsection{Plasma et champ magnétique} 
+\label{1-plasma-champMag}
 Un plasma magnétisé est un plasma dans lequel le champ magnétique ambiant
 $\mathbf{B}$ est suffisamment important pour modifier de manière non-négligeable
 le transport des particules. Les plasmas magnétisés sont fortement
@@ -331,10 +332,10 @@ la vitesse typique de la particule est sa vitesse thermique. On peut alors noter
 Quand le champ magnétique s'intensifie, les trajectoires
 hélicoïdales se resserrent, limitant de plus en plus le déplacement des
 particules perpendiculairement à la direction magnétique. L'influence du champ
-sur le transport peut alors être mesuré par le paramètre de
+sur le transport peut alors être mesurée par le paramètre de
 magnétisation $\delta$, une espèce pouvant être considérée comme magnétisée à
-partir du moment où la longueur caractéristique $L$ du transport considéré est
-grande devant son rayon de Larmor :
+partir du moment où la longueur caractéristique $L_\perp$ du transport
+perpendiculaire considéré est grande devant son rayon de Larmor :
 
 \begin{equation}
 \delta=\frac{\rho_{L\alpha}}{L}\ll 1
@@ -379,13 +380,11 @@ fonction de la masse de la particule, la différence entre les vitesses de déri
 j\indice{\text{F}}=en(\mathbf v\indice{\text{F}_\text{i}}-\mathbf
 v\indice{\text{F}_\text{e}})$. 
 
-\fcolorbox{red}{white}{
-\begin{minipage}{0.9\textwidth}Dans un plasma, où l'anisotropie du champ
+Dans un plasma, où l'anisotropie du champ
 magnétique est souvent utilisée pour contrôler et limiter le déplacement des
-particules, les vitesses de dérives sont souvent à l'origine d'un déconfinement
-entraîné par le développement de comportements
-non-linéaires complexes\ldots
-\end{minipage}}
+particules, les vitesses de dérives sont à l'origine d'un transport
+ transverse déconfinant, qui s'amplifie généralement par le développement de
+ comportements non-linéaires et turbulent.
 \subsection{Les gaines électrostatiques}
 \label{1-gaines}
 Un plasma est souvent, à un moment ou à un autre, amené à entrer en contact avec
@@ -1066,7 +1065,7 @@ transport pour les plasmas dans la mesure où elle constitue l'une des bases de
 la théorie des gaines vue précédement. 
 
 \subsection{Approche par les vitesses de dérive}
-
+\label{vitessesDerive}
 L'approche par les vitesses de dérive est à la base de nombreux modèles
 développés pour étudier le transport dans les plasmas de fusion par
 confinement magnétique~\parencite{Garcia,Bisai,Tamain}. Dans cette approche, la
@@ -1077,54 +1076,189 @@ version fluide de la théorie particulaire du centre-guide, sous-entend que les
 fréquences cyclotroniques sont grandes devant les fréquences caractéristiques du
 transport, ie. $\omega_{ce},\omega_{ci}\gg\omega$. 
  
-\subsubsection{Le plasma de la Scrape-off-Layer}
+\subsubsection{Les plasmas de la Scrape-off-Layer}
 La Scrape-Off-Layer des tokamaks, ou SOL, est la zone en
-périphérie du plasma confiné, ie. qui se situe entre la séparatrice et les
-parois internes du tore~\ref{SOL}. Dans cette région, les particules ne sont
-plus confinées car les lignes de champ interceptent un obstacle matériel
-construit spécifiquement pour supporter les flux de matière et de chaleur
-sortant du plasma de c\oe ur (un limiteur ou un divertor).
+périphérie du plasma confiné, ie. qui commence à partir de la séparatrice et qui
+peut éventuellement s'étendre jusqu'aux parois internes du tore (voir
+figure~\ref{SOL}). Dans cette région, les
+particules ne sont plus confinées car les lignes de champ interceptent un
+obstacle matériel (un limiteur ou un divertor) traité et dessiné spécifiquement
+pour supporter les flux de matière et de chaleur qui s'échappent du plasma de
+c\oe ur par transport transverse.
+En conséquence, les profils de densité et de température s'effondrent sur une
+longueur caractéristique qui définit la largeur de la SOL, $\lambda_\text{SOL}$,
+donnant naissance à de forts gradients qui maintiennent le plasma hors
+de l'équilibre thermodynamique.
 
-Comprendre l'origine et la nature du transport dans la SOL est l'un des enjeux
-majeurs dans la réussite de la fusion par confinement magnétique, et ce pour
-deux raisons essentielles : 
-\begin{itemize}
-  \item d'une part 
-\end{itemize} les lignes de champs magnétiques
-interceptent l faible niveau de confinement Le transport transverse est loin d'être diffusif, le transport turbulent brise le confinement. zonal flow
-retroagit sur la turbulence Ces dispositif qui permet de contrôler la forme du
-plasma et d'extraire la chaleur produite par le plasma de c\oe ur.
 \begin{figure}[!htbp]
     \centering
 	\includegraphics[height=80mm]{figures/1-limiterDivertor.jpg}
 	\caption{Section verticale du tokamak JET en version limiteur
 	(à gauche) et divertor (à droite). La SOL est illustrée en
-	jaune~\parencite{efda}.}\label{SOL}
+	orange~\parencite{efda}.}\label{SOL}
+\end{figure}
+ 
+Typiquement, les plasmas de SOL ont une densité de
+l'ordre de 10$^{19}$~m$^{-3}$ et une température inférieure à la centaine
+d'électronvolts. A cette température, le plasma est presque totalement ionisé et
+le champ magnétique, d'environ 3T, confine efficacement les particules dans un
+mouvement cyclotronique de fréquence $\omega_{ci}\sim45$~MHz pour un proton et
+$\omega_{ce}\sim80$~GHz pour un électron, toutes deux bien supérieures à la
+fréquence caractéristique du transport parallèle :
+
+\begin{equation}
+\omega_\para\sim
+\frac{v_{\text{T}\alpha}}{L_\para}\approx\omega_{c\alpha}\frac{\rho_{L\alpha}}{L_\para}\rightarrow
+\delta=\frac{\omega_\para}{\omega_{c\alpha}}\ll1
+\end{equation} 
+
+Dans la direction perpendiculaire au champ
+magnétique, les vitesses de dérive associées aux gradients transverses (dont les longueurs
+typiques $L_\nabla$ de quelques centimètres sont bien supérieures aux rayon de
+Larmor ionique $\rho_{Li}\approx3.10^{-4}$~m et électroniques
+$\rho_{Le}\approx7.10^{-6}$~m) entraînent un transport de fréquence
+caractéristique $\omega_\perp\sim v_\perp/L_\para\sim\rho_{L\alpha}
+v_{\text{T}\alpha}/(L_\para L_\nabla)$ de deux ordres de grandeur inférieur à
+$\omega_{c\alpha}$ :
+
+\begin{equation}
+\frac{\omega_\perp}{\omega_{c\alpha}}\approx\frac{\rho_{L\alpha}^2}{L_\para
+L_\nabla}=\delta^2
+\end{equation}
+
+Malgré leur faible fréquence, ces vitesses de dérives sont à l'origine de tous
+les mécanismes de micro-turbulence et jouent ainsi un rôle primordiale dans le
+problème du confinement.
+
+\subsubsection{Vitesses de dérive électrique et diamagnétique}
+
+Quand le degré d'ionisation du plasma est très élevé, le terme issu de
+l'interaction avec le gaz peut être négligé dans l'équation du
+mouvement~\eqref{1-eqBilanForce} :
+
+\begin{equation}
+\label{1-eqSOL}
+ m_\alpha n_\alpha\left(\partial_t \mathbf{u_\alpha} +
+(\mathbf{u_\alpha}\cdot\nabla)\mathbf{u_\alpha}\right)
+={q_\alpha n_\alpha}\left(\mathbf E+\mathbf
+u_\alpha\times \mathbf B\right)
+-{\nabla p_\alpha}
+\end{equation}
+
+ Sous l'hypothèse de faible variation spatiale des grandeurs et des champs à
+ l'échelle du rayon de Larmor, la lente évolution du système par rapport aux
+ fréquences cyclotroniques permet d'effectuer un développement de l'équation du
+ mouvement en fonction du petit paramètre $\delta$. En négligeant le
+ mouvement cyclotronique, qui correspond à l'ordre 0 de ce développement et qui
+ est de moyenne nulle sur un temp $t\sim\omega^{-1}$, la projection
+ de~\eqref{1-eqSOL} perpendiculairement au champ magnétique s'écrit à l'ordre 1
+ en $\delta$ :
+ 
+ \begin{equation}
+\label{1-eqSOLperp}
+0
+={q_\alpha n_\alpha}\left(\mathbf E+\mathbf
+u_{\alpha\perp}^{(1)}\times \mathbf B\right)
+-{\nabla_\perp p_\alpha}
+\end{equation}
+
+En prenant le produit vectoriel par $\mathbf B$ de cette équation, on obtient
+les deux vitesses de dérive fluides principales, la vitesse de dérive électrique
+$\mathbf u_E$ et la vitesse de dérive diamagnétique $\mathbf u_*$, relativement
+liées aux gradients transverses de potentiel électrique $U$ et de pression
+$p_\alpha$:
+
+\begin{equation}
+\mathbf u_{\alpha\perp}^{(1)}=\mathbf u_E+\mathbf u_*=\frac{\mathbf
+B\times\nabla_\perp U}{B^2}-\frac{\mathbf B\times\nabla_\perp p_\alpha}{n_\alpha q_\alpha B^2}
+\end{equation}
+
+L'origine de ces vitesses de dérive est illustrée sur la
+figure~\ref{1-vitessesDerive}. La dérive diamagnétique est une vitesse
+purement fluide qui traduit le mouvement d'ensemble des particules, et non
+une dérive individuelle de celles-ci. De ce fait, elle ne transporte que
+très peu de matière en comparaison de la dérive électrique : pour s'en
+convaincre, il suffit de regarder la divergence des flux issus de ces
+vitesses :
+
+\begin{equation}
+\nabla\cdot\left(n_\alpha\mathbf
+u_E\right)=\nabla\cdot\left(n_\alpha\frac{\mathbf B\times\nabla U}{B^2}\right)
+=\nabla\frac{n_\alpha}{B}\times\nabla U\cdot \mathbf b
+\end{equation}
+
+\begin{equation}
+\nabla\cdot\left(n_\alpha\mathbf
+u_*\right)=\nabla\cdot\left(\frac{\mathbf B\times\nabla
+p_\alpha}{q_\alpha B^2}\right)
+=\frac{1}{q_\alpha}\nabla p_\alpha\times\nabla\frac{1}{B}\cdot \mathbf b
+\end{equation}
+
+La divergence du flux diamagnétique est donc nulle aux effets de courbure du
+champ magnétique près. Par contre, et comme
+précisé au paragraphe \S\ref{1-plasma-champMag}, la dérive diamagnétique est 
+sensible à la charge des particules et est donc la seule à porter du courant.
+L'influence de ce courant est fondamental dans la stabilité du plasma. En
+se souvenant de l'hypothèse de quasineutralité, ce courant s'écrit :
+
+\begin{equation}
+\mathbf j_*=e(n_i\mathbf u^i_*-n_e\mathbf
+u^e_*)=en(\nabla(p_i+p_e)\times\mathbf B/B^2)
+\end{equation}
+
+\begin{figure}[!htbp]
+    \centering
+	\includegraphics[height=80mm]{figures/1-vitessesDerive.jpg}
+	\caption{Interprétation des vitesses de dérive électrique et diamagnétique.}
+	\label{1-vitessesDerive}
 \end{figure}
 
 
+\subsubsection{Dérive de polarisation}
 
-\parencite{Ghendrih}biasing stabilization of bursts
-\subsubsection{Les vitesses de dérives}
-\parencite{Garcia}Esel
-\parencite{Bisai}Bisai
-\label{vitessesDerive}
+Dans le cas d'un champ électrique dépendant du temps, une troisième dérive, d'un
+ordre de grandeur inférieure aux dérives électrique et diamagnétique,
+peut être identifiée : 
+
 \begin{equation}
 \label{1-vitessePol}
-\mathbf{u}_p^\alpha=-\frac{m_\alpha}{q_\alpha B^2}\frac{\text{d}\nabla_\perp
+\mathbf{u}_\perp^{(2)}= \text{d}\mathbf
+u_\perp^{(1)}/\text{dt}=\text{d}(\mathbf
+u_E+\mathbf
+u_*)/\text{dt}
+\end{equation}
+
+Par un calcul compliqué, on peut montrer que la dérivée totale de la dérive
+diamagnétique est exactement compensée par la prise en compte du tenseur des
+contraintes de Braginskii (les termes non-diagonaux du tenseur de
+pression). L'expression de cette dérive d'ordre 2 se réduit alors à :
+
+\begin{equation}
+\label{1-vitessePol}
+\mathbf{u}_p^\alpha= \frac{\text{d}\mathbf
+u_E}{\text{dt}}=-\frac{m_\alpha}{q_\alpha B^2}\frac{\text{d}\nabla_\perp
 U}{\text{dt}}
 \end{equation}
+
+C'est la dérive de polarisation $\mathbf u^\alpha_p$, qui dérive du terme
+d'inertie. Bien qu'elle soit d'un ordre de grandeur inférieur aux deux autres
+vitesses de dérive, la divergence du flux qui lui est associé est comparable à celle du
+flux diamagnétique. Comme la dérive électrique n'a aucune influence sur
+l'évolution du courant, la contribution de la dérive de polarisation est dès
+lors du même ordre de grandeur que celle de la dérive diamagnétique et ne peut plus
+être négligée.
 
 \subsection{Equation de dérive-diffusion}
 \label{1-transportAmbipolaire}
 Les plasmas froids de décharge utilisés dans l'industrie et la recherche n'ont
 en général qu'un faible degré d'ionisation $\alpha<$1\% et la dynamique des
 espèces y est dominée par la perte de quantité de mouvement liée à l'ionisation
-et aux collisions avec le gaz. Pour modéliser ce type de plasma, En l'absence de champ magnétique, le
-rapport d'échelle entre le libre parcours moyen des particules et la taille du
-plasma $\lambda_\alpha\ll L$ permet de simplifier l'équation du mouvement en
-négligeant les termes d'inertie, relativement faibles\footnote{Les termes
-inertiels peuvent être négligés quand la vitesse fluide $\mathbf u$ est
+et aux collisions avec le gaz. Pour modéliser ce type de plasma, la prise en
+compte du terme collisionnel dans l'équation du mouvement est donc essentielle.
+En l'absence de champ magnétique, le rapport d'échelle entre le libre parcours moyen des particules
+et la taille du plasma $\lambda_\alpha\ll L$ permet de simplifier l'équation du
+mouvement en négligeant les termes d'inertie, relativement faibles\footnote{Les
+termes inertiels peuvent être négligés quand la vitesse fluide $\mathbf u$ est
 subsonique : $\mathbf u$ vérifie alors $\mathbf u\ll \left<v\right>/K_n$, où
 $K_n=\lambda/L$ est le nombre de Knudsen et $$\nu \mathbf u=\frac{
 \left<v\right>\mathbf u}{\lambda}\gg \frac{u^2}{\lambda}K_n=\frac{u^2}{L}\sim
