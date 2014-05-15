@@ -1275,7 +1275,8 @@ $K_n=\lambda/L$ est le nombre de Knudsen et $$\nu \mathbf u=\frac{
 \label{1-eqDriftDif}
 n_\alpha\mathbf u_\alpha=\frac{q_\alpha}{\nu_\alpha m_\alpha}n_\alpha\mathbf
 E-\frac{\nabla\left(n_\alpha eT_\alpha\right)}{\nu_\alpha
-m_\alpha}\equiv\frac{q}{|q|}\mu_\alpha n_\alpha\mathbf E-{\nabla\left(D_\alpha n_\alpha\right)}
+m_\alpha}\equiv\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf
+E-{\nabla\left(D_\alpha n_\alpha\right)}
 \end{equation}
 
 C'est l'équation de dérive-diffusion, avec les coefficients de
@@ -1302,8 +1303,8 @@ constituée d'une loi d'Ohm et d'une loi de Fick :
  
 \begin{equation}
 \label{1-eqDriftDifContinuite}
-\partial_t n_\alpha=\nabla\cdot(\underbrace{\frac{q}{|q|}\mu_\alpha n_\alpha\mathbf
-E}_\text{Loi d'Ohm}+\underbrace{D_\alpha{\nabla n_\alpha}}_\text{Loi
+\partial_t
+n_\alpha=\nabla\cdot(\underbrace{\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf E}_\text{Loi d'Ohm}+\underbrace{D_\alpha{\nabla n_\alpha}}_\text{Loi
 de Fick})+S_\alpha
 \end{equation}
 
@@ -1335,6 +1336,7 @@ la densité diminue d'un facteur 2 et la chute de potentiel ambipolaire est
 de l'ordre de $T_e/2$ (cf. \S\ref{1-gaines}.
 
 \subsection{Equation de dérive-diffusion magnétisée}
+\label{1-deriveDiffMag}
 L'utilisation d'un champ magnétique dans un plasma permet de contrôler en partie
 le transport des particules et d'obtenir des configurations favorables pour
 diverses applications. Cependant, la prise en compte du terme de Laplace dans
