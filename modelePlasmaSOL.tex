@@ -76,7 +76,7 @@ Debye $\lambda_D$, de l'ordre de 10$^{-5}$~m, ce qui autorise à
 considérer le plasma quasineutre dans son ensemble, avec des densités ionique
 et électronique égales à $n$.
 Le transport est alors décrit à travers l'évolution de la densité
-électronique $n$ et du potentiel électrostatique $U$ en résolvant l'équation
+électronique $n$ et du potentiel électrostatique $\Phi$ en résolvant l'équation
 de continuité des électrons ainsi que l'équation de conservation du courant. Les
 températures électronique
 $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e$.
@@ -134,7 +134,8 @@ peut se développer en :
 
 Le terme d'advection $\mathbf{u}_E\cdot\nabla_\perp
 n$ se réécrit en utilisant la notation
-du crochet de Poisson $[n,U]=\mathbf{b}.(\nabla_\perp n\times\nabla_\perp U)$.
+du crochet de Poisson $[n,\Phi]=\mathbf{b}.(\nabla_\perp
+n\times\nabla_\perp\Phi)$.
 C'est la forme que prend toute advection d'un champ scalaire par une vitesse de
 dérive $\mathbf{v}_\text{D}=\nabla H\times\mathbf{B}/B^2$, où $\nabla H$ est la
 force à l'origine de la dérive. L'équation de continuité pour les électrons
@@ -143,10 +144,10 @@ s'écrit alors :
 \begin{equation}
 \label{2-eqContinuiteFinale}
 \partial_t n + \nabla_{\para}(nu_{\para}) =
-\frac{1}{B}\left[n,U\right] + D_\perp\nabla^2_\perp n + S
+\frac{1}{B}\left[n,\Phi\right] + D_\perp\nabla^2_\perp n + S
 \end{equation}
 
-Le terme non-linéaire $[n,U]$ est l'un des éléments moteur du modèle
+Le terme non-linéaire $[n,\Phi]$ est l'un des éléments moteur du modèle
 d'interchange. Couplant la densité au potentiel électrique, il opère un
 transfert d'excitation des composantes radiales des fluctuations à leurs
 composantes poloïdal es et réciproquement. Les termes de flux parallèle et de
@@ -185,7 +186,7 @@ proportionnelle à la masse des particules \eqrefp{1-vitessePol}, on ne
 retient dans l'expression du courant que la contribution ionique :
 \begin{equation}
 \mathbf{j}_p\sim\text{e}n\mathbf{u}^i_p=-\frac{nm_\text{i}}{B^2}\frac{\text{d}\nabla_\perp
-U}{\text{dt}}
+\Phi}{\text{dt}}
 \end{equation}
 
 En exprimant la dérivée totale de
@@ -194,41 +195,41 @@ façon eulérienne, la divergence du courant de polarisation devient :
 \nabla\cdot\mathbf{j}_p\sim\nabla\cdot\left(\text{e}n\mathbf{u}^i_p\right)\equiv
 -\nabla_\perp\cdot\left(\frac{nm_\text{i}}{B^2}\left(\partial_\text{t} -
 \nu_\perp \nabla_\perp^2 +
-\mathbf{u}\cdot\nabla_\perp\right)\nabla_\perp U\right)
+\mathbf{u}\cdot\nabla_\perp\right)\nabla_\perp \Phi\right)
 \end{equation}
 $\nu_\perp$ représentant une viscosité effective du milieu.
 De manière similaire à \eqref{2-ContinuiteElectrons2}, seule l'advection par la
 vitesse de dérive électrique est considérée dans la divergence : 
-$\nabla\cdot\left(\mathbf{u}\,\nabla_\perp^2 U\right)
-\approx\nabla\cdot\left(\mathbf{u}_E\,\nabla_\perp^2 U\right)$.
+$\nabla\cdot\left(\mathbf{u}\,\nabla_\perp^2 \Phi\right)
+\approx\nabla\cdot\left(\mathbf{u}_E\,\nabla_\perp^2 \Phi\right)$.
 En insérant l'expression des dérives, \eqref{EqCourant1} se réécrit :
 
 \begin{equation}\begin{split}
 \label{EqCourant2}
 \nabla_\para j_\para +
 T_e(1+\tau)\left[n,B\puissance{-1}\right] + \nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\left(\partial_\text{t}\nabla_\perp
-U - \nu_\perp \nabla_\perp^3 U \right)\right) \\+
+\Phi - \nu_\perp \nabla_\perp^3 \Phi \right)\right) \\+
 \nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
-U\right)=0
+\Phi\right)=0
 \end{split}
 \end{equation}
 
 Diverses considérations sur l'importance relative des termes contenus dans
 \eqref{EqCourant2} (reliées aux hypothèses d'ordering
 et aux variations de champ magnétique) sont développées dans
-\cite{SarazinPhD}. En effectuant un changement de variable $\Omega=\nabla_\perp^2U$,
-où $W$ symbolise une vorticité\footnote{La vorticité d'un écoulement est généralement définie comme le rotationnel de sa vitesse. Dans la SOL, le champ de vitesse correspond essentiellement à la dérive ExB, ce qui donne pour un
-champ magnétique constant de 1T : 
+\cite{SarazinPhD}. En effectuant un changement de variable
+$\Omega=\nabla_\perp^2\Phi$, où $W$ symbolise une vorticité\footnote{La
+vorticité d'un écoulement est généralement définie comme le rotationnel de sa vitesse. Dans la SOL, le champ de vitesse correspond essentiellement à la dérive ExB, ce qui donne pour un champ magnétique constant de 1T : 
 $\nabla\times\mathbf{v}\sim\nabla\times\mathbf{u}_E=\nabla\times(\mathbf{E}/B\times\mathbf{b})\equiv-\nabla_\perp^2
-U=\Omega$ }, \eqref{EqCourant2} se transforme en une équation simplifiée dite de
-vorticité:
+\Phi=\Omega$ }, \eqref{EqCourant2} se transforme en une équation simplifiée dite
+de vorticité:
 \begin{equation}\begin{split}
 \label{2-eqCourantFinale}
 \nabla_\para{j}_\para +
 T_e(1+\tau)\left[n,B\puissance{-1}\right] =\\
 \frac{nm_i}{B^2}\left(\partial_\text{t}\Omega - \nu_\perp
 \nabla_\perp^2\Omega+
-B\puissance{-1}\left[U,\Omega\right]\right)
+B\puissance{-1}\left[\Phi,\Omega\right]\right)
 \end{split}
 \end{equation} 
 
@@ -252,8 +253,8 @@ sa moyenne est égale à la fonction elle-même :
 \begin{equation}
 \left<f(x,y)\right>_\para=f(x,y)
 \end{equation}
-En supposant que la densité $n$ et le potentiel $U$ ne dépendent que de x et de
-y, le passage des équations
+En supposant que la densité $n$ et le potentiel $\Phi$ ne dépendent que de x et
+de y, le passage des équations
 \eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale} à la moyenne laisse
 la plupart des termes inchangés.
 
@@ -283,12 +284,12 @@ d'un côté du plasma. Avec ces expressions, le système d'équations
 \eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale} devient :
 \begin{align}
 \label{2-eqContinuiteMoyenne}
-&\partial_t n + \frac{nc_s}{L_\para}e^{\Lambda-e\Delta U/T_e} =
-\frac{1}{B}\left[n,U\right] + D_\perp\nabla^2_\perp n + S\\
+&\partial_t n + \frac{nc_s}{L_\para}e^{\Lambda-e\Delta \Phi/T_e} =
+\frac{1}{B}\left[n,\Phi\right] + D_\perp\nabla^2_\perp n + S\\
 &\partial_\text{t}\Omega - \nu_\perp
 \nabla_\perp^2\Omega+
-\frac{1}{B}\left[U,\Omega\right]=\frac{ec_sB^2}{m_iL_\para}\left(1-e^{\Lambda-e\Delta
-U/T_e}\right) -\frac{B^2}{m_i}T_eg_\perp\partial_y\ln n
+\frac{1}{B}\left[\Phi,\Omega\right]=\frac{ec_sB^2}{m_iL_\para}\left(1-e^{\Lambda-e\Delta
+\Phi/T_e}\right) -\frac{B^2}{m_i}T_eg_\perp\partial_y\ln n
 \label{2-eqCourantMoyenne}
 \end{align}
  
@@ -317,11 +318,12 @@ v=\overline{v}c_s=\overline{v}\left(\frac{eT\indice{0}}{m_i}\right)^{\text{\text
 \end{eqnarray}
 
 Nous définissons de plus les variables adimensionnées du modèle, la densité
-$\text{N}$, le potentiel électrostatique $\Phi$ et la vorticité $\text{W}$ par :
+$\text{N}$, le potentiel électrostatique $\Phi$ (pour lequel nous gardons la
+même notation) et la vorticité $\text{W}$ par :
 
 \begin{eqnarray}
-n = n_{\indice{0}}\text{N} \text{~~~~~~~} U=\frac{\Phi T\indice{0}}{e} \text{~~~~~~~}
-\Omega=\frac{\text{W} T\indice{0}}{e\rho_L^2}
+n = n_{\indice{0}}\text{N} \text{~~~~~~~} \Phi=\frac{\Phi T\indice{0}}{e}
+\text{~~~~~~~} \Omega=\frac{\text{W} T\indice{0}}{e\rho_L^2}
 \end{eqnarray}
 
 Avec cette normalisation, on

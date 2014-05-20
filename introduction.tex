@@ -181,7 +181,7 @@ n_e=n_i
 \end{equation}
 
 L'interaction coulombienne d'une particule chargée avec l'ensemble des autres particules peut alors
-se réduire à son interaction avec un potentiel électrique local $U$,
+se réduire à son interaction avec un potentiel électrique local $\Phi$,
 résultant de la somme des potentiels microscopiques individuels.
 
 Le système évolue ensuite sur cet équilibre par le biais de
@@ -425,7 +425,7 @@ potentiel de la surface, forment un équilibre électrostatique à l'intérieur 
 plasma, et peuvent donc être décrits par une distribution de Boltzmann :
 
 \begin{equation}
-	n_{e}=n\indice{0}\exp(eU/eT_{e})
+	n_{e}=n\indice{0}\exp(e\Phi/eT_{e})
 \end{equation}
 
 avec $n\indice{0}$ la densité de référence prise au niveau du potentiel nul.
@@ -451,7 +451,7 @@ potentiel électrique, au voisinage de la paroi :
 \begin{equation}
 \frac{d\puissance{2}\Phi}{d\xi}=\frac{1}{\lambda_D\puissance{2}}\frac{n_{e}-n_{i}}{n\indice{0}}
 \end{equation}
- où $\Phi$ est le potentiel normalisé $\Phi=eU/T_{e}$, $\xi$ est la
+ où $\xi$ est la
  direction normale à la paroi, $n_{e}$ et $n_{i}$ les densités
  électronique et ionique respectivement, et $n\indice{0}$ la densité
  moyenne du plasma. Quand le plasma est suffisamment dense pour que $\lambda_D\ll
@@ -1065,7 +1065,7 @@ ie. où les particules suivent une distribution de Boltzmann :
 
 \begin{equation}
 \label{1-profilBoltzman}
-n_\alpha=n_0\exp(q_\alpha U/eT_\alpha)
+n_\alpha=n_0\exp(q_\alpha \Phi/eT_\alpha)
 \end{equation}
 
 Cette hypothèse est fondamentale dans la dérivation des modèles fluides de
@@ -1173,12 +1173,13 @@ u_{\alpha\perp}^{(1)}\times \mathbf B\right)
 En prenant le produit vectoriel par $\mathbf B$ de cette équation, on obtient
 les deux vitesses de dérive fluides principales, la vitesse de dérive électrique
 $\mathbf u_E$ et la vitesse de dérive diamagnétique $\mathbf u_*$, relativement
-liées aux gradients transverses de potentiel électrique $U$ et de pression
+liées aux gradients transverses de potentiel électrique $\Phi$ et de pression
 $p_\alpha$:
 
 \begin{equation}
 \mathbf u_{\alpha\perp}^{(1)}=\mathbf u_E+\mathbf u_*=\frac{\mathbf
-B\times\nabla_\perp U}{B^2}-\frac{\mathbf B\times\nabla_\perp p_\alpha}{n_\alpha q_\alpha B^2}
+B\times\nabla_\perp \Phi}{B^2}-\frac{\mathbf B\times\nabla_\perp
+p_\alpha}{n_\alpha q_\alpha B^2}
 \end{equation}
 
 L'origine de ces vitesses de dérive est illustrée sur la
@@ -1191,8 +1192,8 @@ vitesses :
 
 \begin{equation}
 \nabla\cdot\left(n_\alpha\mathbf
-u_E\right)=\nabla\cdot\left(n_\alpha\frac{\mathbf B\times\nabla U}{B^2}\right)
-=\nabla\frac{n_\alpha}{B}\times\nabla U\cdot \mathbf b
+u_E\right)=\nabla\cdot\left(n_\alpha\frac{\mathbf B\times\nabla
+\Phi}{B^2}\right) =\nabla\frac{n_\alpha}{B}\times\nabla \Phi\cdot \mathbf b
 \end{equation}
 
 \begin{equation}
@@ -1244,7 +1245,7 @@ pression). L'expression de cette dérive d'ordre 2 se réduit alors à :
 \label{1-vitessePol}
 \mathbf{u}_\perp^{(2)}= \frac{\text{d}\mathbf
 u_E}{\text{dt}}=-\frac{m_\alpha}{q_\alpha B^2}\frac{\text{d}\nabla_\perp
-U}{\text{dt}}
+\Phi}{\text{dt}}
 \end{equation}
 
 C'est la dérive de polarisation $\mathbf{u}_\perp^{(2)}=\mathbf u^\alpha_p$, qui

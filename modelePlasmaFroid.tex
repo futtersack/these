@@ -48,7 +48,7 @@ confiné et en interaction avec des parois à travers une gaine large de quelque
 de Debye. La longueur $L$ est prise suffisement grande $L\gg\lambda_D$ pour
 supposer le plasma quasi-neutre. Le champ magnétique $\mathbf{B}$ imposé est 
 stationnaire, de sorte que le champ électrique dérive directement d'un 
-potentiel électrostatique $\mathbf{E}=-\nabla U$. Le transport est décrit
+potentiel électrostatique $\mathbf{E}=-\nabla \Phi$. Le transport est décrit
 dans le plan perpendiculaire au champ magnétique et tient compte des pertes à
 la paroi dans la direction parallèle en les intégrant le long des lignes de champ.
 
@@ -60,13 +60,13 @@ l'interaction avec le gaz, de l'inertie et du terme de Laplace :
 \begin{equation}
 \partial_t \mathbf{u}_\alpha + \mathbf{u}_\alpha\cdot\nabla\mathbf{u}_\alpha+
 \nu_\alpha\mathbf{u}_\alpha+\omega_{c\alpha}\mathbf{b}\times\mathbf{u}_\alpha=
--\frac{q_\alpha}{m_\alpha}\left(\nabla U+\frac{\nabla
+-\frac{q_\alpha}{m_\alpha}\left(\nabla \Phi+\frac{\nabla
 p_\alpha}{q_\alpha n_\alpha}\right)
 \end{equation}
 
 où $n_\alpha$ est la densité de l'espèce considérée, $\mathbf{u}_\alpha$ sa
 vitesse fluide, $p_\alpha$ la pression (dont nous ne retenons que la
-contribution isotrope) et $U$ le potentiel électrostatique. La fréquence
+contribution isotrope) et $\Phi$ le potentiel électrostatique. La fréquence
 cyclotronique est notée $\omega_{c\alpha}=q_\alpha B/m_\alpha$ et $\nu_\alpha$
 est une fréquence effective rendant compte des collisions.
 Le transfert de quantité de mouvement dû aux collisions contient la perte liée à
@@ -95,7 +95,7 @@ température électronique $T_e$. En considérant l'hypothèse de quasi-neutrali
 
 où l'indice i dénote éventuellement différentes espèces d'ions. 
 L'équation \eqref{eqCourant} couple les différentes espèces en contrôlant
-l'évolution du potentiel électrostatique $U$.
+l'évolution du potentiel électrostatique $\Phi$.
 
 L'équation de conservation de l'énergie est obtenue classiquement en substituant
 l'équation de continuité afin d'éliminer le terme convectif :
@@ -104,7 +104,7 @@ l'équation de continuité afin d'éliminer le terme convectif :
 \label{3-energie}
 \frac{3}{2}en_e\partial_tT_e + \nabla\cdot(\mathbf{q_e}) +
 (\frac{5}{2}S_e-\partial_tn_e)eT_e \\=n_e\mathbf{u}_e\cdot(\nabla
-U-\frac{5}{2}e\nabla T_e)+n_e\left(P_{ext}-\Pi\right)
+\Phi-\frac{5}{2}e\nabla T_e)+n_e\left(P_{ext}-\Pi\right)
 \end{split}
 \end{equation}
 
@@ -138,7 +138,7 @@ le flux électronique sont définis en l'entrée de gaine par :
 &\Gamma_i=n_i\mathbf{u}_i\cdot\mathbf{n}=n_i.\max\left(c_s,\mathbf{u_i}\cdot\mathbf{n}\right)
 \\
 &\Gamma_e=n_e\mathbf{u}_e\cdot\mathbf{n}=n_e\frac{1}{2\sqrt{\pi}}v_{Te}=n_ec_s\exp(\Lambda-\Delta
-U/T_e)
+\Phi/T_e)
 \end{align}
 
 avec $\mathbf{n}$ le vecteur normal à la paroi,
@@ -146,11 +146,11 @@ et $c_s=(eT_e/m_i)^{\text{\textonehalf}}$ la vitesse acoustique ionique. Le flux
 d'électron est obtenu en considérant une fonction de distribution maxwellienne, 
 que l'on intègre sur le demi-espace des vitesses dirigées vers la paroi avec 
 $v_{Te}=(2eT_e/m_e)^{\text{\textonehalf}}$ la vitesse électronique thermique.
-La différence entre le potentiel plasma $U$ et le potentiel de la paroi
-$U_w$ se réécrit pour un courant nul:
+La différence entre le potentiel plasma $\Phi$ et le potentiel de la paroi
+$\Phi_w$ se réécrit pour un courant nul:
 
 \begin{equation}
-	\mathbf{j}\cdot\mathbf{n}=0\Leftrightarrow \Delta U=U-U_w =
+	\mathbf{j}\cdot\mathbf{n}=0\Leftrightarrow \Delta \Phi=\Phi-\Phi_w =
 T_e(\Lambda-ln\sum_i\mathbf u_i/c_s)
 \end{equation} 
 
@@ -170,7 +170,7 @@ limite pour le courant est par conséquence définie par :
 
 \begin{equation}
 \mathbf{j}\cdot\mathbf{n}=e\sum_in_i{\mathbf u}_i-en_ec_s\exp(\Lambda-\Delta
-U/T_e)
+\Phi/T_e)
 \end{equation}
 
 Si la paroi est isolante, la surface se polarise pour assurer la nullité du
@@ -178,7 +178,7 @@ courant sortant :
 
 \begin{equation}\begin{split}
 \mathbf j\cdot\mathbf{n}=0\Leftrightarrow
-U_w=U-T_e(\Lambda-ln\sum_i\mathbf u_i/c_s)
+\Phi_w=\Phi-T_e(\Lambda-ln\sum_i\mathbf u_i/c_s)
 \end{split}\end{equation}
 
 L'énergie perdue par les électrons en entrée de gaine s'obtient en
@@ -186,7 +186,7 @@ additionnant l'énergie moyenne perdue à la paroi (intégrée sur une distribut
 semi-maxwellienne) et l'énergie transférée aux ions dans la chute de potentiel :
 
 \begin{equation}
-	\varepsilon_w=2T_e+\Delta U
+	\varepsilon_w=2T_e+\Delta \Phi
 \end{equation}
  
  On peut alors relier cette perte totale aux flux sortants de l'équation
@@ -195,14 +195,14 @@ semi-maxwellienne) et l'énergie transférée aux ions dans la chute de potentie
  
 \begin{equation}
 \Gamma_\varepsilon=\frac{5}{2}{\Gamma}_eT_e+\mathbf{q}_e\cdot\mathbf{n}=
-\Gamma_e\left(2T_e+\Delta U\right)
+\Gamma_e\left(2T_e+\Delta \Phi\right)
 \end{equation}
 
 En regroupant les termes portant sur le flux d'électron, on peut exprimer la
 condition limite pour le flux de chaleur :
 
 \begin{equation}
-\mathbf{q}_e\cdot\mathbf{n}=\Gamma_e\left(\Delta U-\frac{1}{2}T_e\right)
+\mathbf{q}_e\cdot\mathbf{n}=\Gamma_e\left(\Delta \Phi-\frac{1}{2}T_e\right)
 \end{equation}
 
 Ces conditions aux limites sont justifiées dans des plasmas non-magnétisés et à
@@ -216,14 +216,18 @@ positive.
 \subsection{Réduction 2D du modèle}
 Le système d'équations Eqs.(\ref{3-continuite}~-~\ref{3-energie}) décrit le
 transport magnétisé dans un plasma froid en suivant l'évolution des densités de
-particules $n_\alpha$, du potentiel électrique $U$ et de la température
-électronique $T_e$ dans un espace à trois dimensions.
+particules $n_\alpha$, du potentiel électrique $\Phi$ et de la température
+électronique $T_e$ dans un espace à trois dimensions. 
 
-Le long des lignes de champ, les électrons sont collisionnels et en équilibre de
-Boltzmann, entraînant une rapide homogénéisation des quantités macroscopiques
-du plasma dans la direction du champ magnétique. 
-En considérant une moyenne effective le long des lignes de
-champ, le système est intégré dans la direction parallèle et peut se réécrire :
+Le champ magnétique n'affecte que très peu les particules dans la direction
+parallèle aux lignes de champ : les électrons, en équilibre de Boltzmann le
+long des lignes, permettent le transport rapide des fluctuations des quantités
+macroscopiques électroniques dans la direction parallèle. Le problème du
+transport magnétisé se réduit en fait essentiellement au problème du transport
+dans plan perpendiculaire à $\mathbf B$, qui est le plan des dérives et des
+fort gradients.
+Pour nous focaliser sur cette dynamique, En considérant une moyenne effective le long des lignes de champ, le
+système est intégré dans la direction parallèle et peut se réécrire :
 
 \begin{align}
 \label{3-equations2D}
@@ -241,7 +245,7 @@ champ, le système est intégré dans la direction parallèle et peut se réécr
 \end{split}
 \end{align}
 
-où les grandeurs sont des moyennes effectives le long de la direction parallèle $\tilde{x}=<x>_\para$ 
+où les grandeurs sont des moyennes effectives le long de la direction parallèle $\b{x}=<x>_\para$ 
 et où le mouvement parallèle se réduit aux pertes de particules $\Gamma_n$, de
 courant $\Gamma_\rho$ et d'énergie $\Gamma_\varepsilon$ au bout des lignes de
 champ. Dans la suite, nous laissons de côté la notation de moyenne, l'indice
