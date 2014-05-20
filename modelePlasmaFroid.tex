@@ -49,8 +49,10 @@ de Debye. La longueur $L$ est prise suffisement grande $L\gg\lambda_D$ pour
 supposer le plasma quasi-neutre. Le champ magnétique $\mathbf{B}$ imposé est 
 stationnaire, de sorte que le champ électrique dérive directement d'un 
 potentiel électrostatique $\mathbf{E}=-\nabla \Phi$. Le transport est décrit
-dans le plan perpendiculaire au champ magnétique et tient compte des pertes à
-la paroi dans la direction parallèle en les intégrant le long des lignes de champ.
+dans le plan perpendiculaire au champ magnétique et les conditions aux limites
+parallèles, qui dérivent d'une théorie classique de gaine, sont
+inclues directement dans les équations de conservation à travers des termes
+sources.
 
 \subsection{Equations de conservation}
 Pour décrire l'évolution des espèces dans un plasma partiellement ionisé, basse
@@ -146,8 +148,8 @@ et $c_s=(eT_e/m_i)^{\text{\textonehalf}}$ la vitesse acoustique ionique. Le flux
 d'électron est obtenu en considérant une fonction de distribution maxwellienne, 
 que l'on intègre sur le demi-espace des vitesses dirigées vers la paroi avec 
 $v_{Te}=(2eT_e/m_e)^{\text{\textonehalf}}$ la vitesse électronique thermique.
-La différence entre le potentiel plasma $\Phi$ et le potentiel de la paroi
-$\Phi_w$ se réécrit pour un courant nul:
+$\Delta\Phi$ la différence entre le potentiel plasma $\Phi$ et le potentiel de
+la paroi $\Phi_w$ se réécrit pour un courant nul:
 
 \begin{equation}
 	\mathbf{j}\cdot\mathbf{n}=0\Leftrightarrow \Delta \Phi=\Phi-\Phi_w =
@@ -165,12 +167,13 @@ n'étant composé que d'une espèce :
 
 Les ions sont perdus au minimum avec la vitesse acoustique, mais
 éventuellement avec une vitesse supersonique. Le flux d'électron s'ajuste
-quant à lui pour réguler la valeur du potentiel flottant autour de La condition
+quant à lui pour réguler potentiel autour de sa valeur
+d'équilibre définie par le potentiel flottant $\Phi=\Lambda T_e$. La condition
 limite pour le courant est par conséquence définie par :
 
 \begin{equation}
-\mathbf{j}\cdot\mathbf{n}=e\sum_in_i{\mathbf u}_i-en_ec_s\exp(\Lambda-\Delta
-\Phi/T_e)
+\Gamma_j=\mathbf{j}\cdot\mathbf{n}=e\sum_in_i{\mathbf
+u}_i-en_ec_s\exp(\Lambda-\Delta \Phi/T_e)
 \end{equation}
 
 Si la paroi est isolante, la surface se polarise pour assurer la nullité du
@@ -220,54 +223,120 @@ particules $n_\alpha$, du potentiel électrique $\Phi$ et de la température
 électronique $T_e$ dans un espace à trois dimensions. 
 
 Le champ magnétique n'affecte que très peu les particules dans la direction
-parallèle aux lignes de champ : les électrons, en équilibre de Boltzmann le
-long des lignes, permettent le transport rapide des fluctuations des quantités
+parallèle aux lignes de champ : le plasma est stationnaire, et les électrons, en
+équilibre de Boltzmann le long des lignes, permettent le transport rapide des fluctuations des quantités
 macroscopiques électroniques dans la direction parallèle. Le problème du
-transport magnétisé se réduit en fait essentiellement au problème du transport
+transport magnétisé se réduit alors essentiellement au problème du transport
 dans plan perpendiculaire à $\mathbf B$, qui est le plan des dérives et des
 fort gradients.
-Pour nous focaliser sur cette dynamique, En considérant une moyenne effective le long des lignes de champ, le
-système est intégré dans la direction parallèle et peut se réécrire :
+
+La dissociation des mouvements parallèle et perpendiculaire s'effectue
+en réécrivant les équations dans un repère axé sur le champ magnétique
+(O,$\mathbf x$,$\mathbf y$,$\mathbf b$), puis nous refermons le
+système en l'intégrant le long de la direction parallèle. Les conditions aux
+limites au bout des lignes de champ apparaissent ainsi comme des termes source
+ou perte dans les équations de conservation :
 
 \begin{align}
-\label{3-equations2D}
-\partial_t {n}_\alpha& +
-\nabla_\perp\cdot\left({n}_\alpha\mathbf{u}_{\alpha\perp}\right)=S_\alpha({T}_e)
-- \Gamma_{\alpha\para}\\[0.5cm]
-\nabla_\perp\cdot&(\sum_ie{n}_i\mathbf{u}_{i\perp}
--e{n}_e\mathbf{u}_{e\perp})= - \nabla_\para j_\para\\[0.5cm]
-\begin{split}\frac{3}{2}{n}_e&\partial_t{T}_e +
-\nabla_\perp\cdot(\mathbf{q}_{e\perp}) +
-(\frac{5}{2}S_e-\partial_t\tilde{n}_e)\tilde{T}_e =\\
-&\tilde{n}_e\mathbf{u}_{e_\perp}\cdot(\nabla_\perp
-\tilde{\Phi}-\frac{5}{2}\nabla_\perp
-\tilde{T}_e)+\tilde{n}_e\left(P_{ext}-\Pi\right)-\Gamma_{\varepsilon\para}
+\begin{split}
+\Gamma&_{i_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_iu_{i_\para}\right)=\frac{2a}{L_\para}n_ic_s\\
+\Gamma&_{e_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_eu_{e_\para}\right)=\frac{2}{L_\para}n_ec_s
+\exp(\Lambda-\Delta \Phi/T_e)\\
+\Gamma&_{j_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(j_\para\right)=\sum_i\Gamma_{i_\para}-\Gamma_{e_\para}\\
+\Gamma&_{\varepsilon_\para}=\frac{1}{L_\para}
+\int_{-L_\para/2}^{L_\para/2}\nabla_\para
+\left(\frac{5}{2}n_eT_eu_{e_\para}+q_{e_\para}\right)
+=\frac{2}{L_\para}n_eu_{e_\para}(2T_e+\Delta \Phi)
 \end{split}
 \end{align}
 
-où les grandeurs sont des moyennes effectives le long de la direction parallèle $\b{x}=<x>_\para$ 
-et où le mouvement parallèle se réduit aux pertes de particules $\Gamma_n$, de
-courant $\Gamma_\rho$ et d'énergie $\Gamma_\varepsilon$ au bout des lignes de
-champ. Dans la suite, nous laissons de côté la notation de moyenne, l'indice
+où $L_\para$ est la taille du plasma dans la direction du champ magnétique. Pour
+les électrons, $\Gamma_{e_\para}$ implique le potentiel de la paroi au bout des
+lignes de champ. Pour les pertes ioniques, un facteur $a$ représente le ratio
+entre la densité de particules à l'entrée de la gaine et la densité moyenne
+calculée le long des lignes de champ. Après cette opération de fermeture,
+le système d'équation peut se réécrire en fonction des variables moyennées
+($\bar{n}_\alpha$, $\bar{\mathbf u}_\alpha$,$\bar{T}_e$\ldots) :
+\begin{align}
+\label{3-equations2D1}
+\partial_t \bar{n}_\alpha& +
+\nabla_\perp\cdot\left(\bar{n}_\alpha\bar{\mathbf{u}}_{\alpha_\perp}\right)=S_\alpha
+- \Gamma_{\alpha\para}\\[0.5cm]
+\nabla_\perp\cdot&(\sum_ie\bar{n}_i\bar{\mathbf{u}}_{i_\perp}
+-e\bar{n}_e\bar{\mathbf{u}}_{e_\perp})= - \Gamma_{j_\para}\\[0.5cm]
+\begin{split}\frac{3}{2}\bar{n}_e&\partial_t\bar{T}_e +
+\nabla_\perp\cdot(\bar{\mathbf{q}}_{e_\perp}) +
+(\frac{5}{2}S_e-\partial_t\bar{n}_e)\bar{T}_e =\\
+&\bar{n}_e\bar{\mathbf{u}}_{e_\perp}\cdot(\nabla_\perp
+\bar{\Phi}-\frac{5}{2}\nabla_\perp
+\bar{T}_e)+\bar{n}_e(P_{ext}-\Pi)-\Gamma_{\varepsilon\para}
+\label{3-equations2D2}
+\end{split}
+\end{align}
+
+Dans la suite, nous laissons de côté la notation de moyenne, l'indice
 perpendiculaire et nous ne considérons qu'une espèce d'ion afin de simplifier
 les notations.
 
-\section{Implémentation numérique}
+\section{Solution numérique}
 
-MAGNIS résout le système d'équations \ref{3-equations2D} de manière implicite
-les termes influençants non-négligemment le transport magnétisé dans les
-plasmas froids. Le domaine de simulation est le plan perpendiculaire à
-$\mathbf{b}$, rectangulaire et maillé uniformément suivant les directions
-$\mathbf{x}$ et $\mathbf{y}$. Les quantités scalaires sont définies aux noeuds
-du maillage et les composantes vectorielles entre les points de maillage.
+Les équations Eqs.(\ref{3-equations2D1}~-~\ref{3-equations2D2}) sont résolues
+semi-implicitement dans le temps avec une prédiction-correction des flux de
+particules et de chaleur pour garantir les conservations du courant et de
+l'énergie. Les variables macroscopiques sont avancées temporellement par
+petit pas de temps $\Delta t$ en suivant l'algorithme suivant :
 
- \subsection{Discrétisation spatiale}
+\begin{enumerate}
+  \item Calcul de toutes les fréquences $\nu$ pour
+  chaque interaction à prendre en compte, des termes sources de particules
+  $S_\alpha$ et des vitesses aux bords du domaine $u_{\alpha_\para}$.
+  \item Prédiction des vitesses fluides $\tilde{\mathbf u}_\alpha$ par
+  l'équation du mouvement.
+  \item Résolution du champ électrique $\mathbf E$ et du potentiel
+  électrostatique $\Phi$ à travers la conservation du courant, en tenant compte de la
+  réponse des vitesses fluides au changement $\delta \mathbf
+  E=\mathbf E^{k+1}-\mathbf E^{k}$.
+  \item Correction des vitesses fluides $\mathbf u_\alpha$ pour le nouveau
+  $\mathbf E$.
+  \item Résolution des équations de continuité ioniques avec les vitesses
+  corrigées $\mathbf u_\alpha$.
+  \item Calcul de la densité électronique en utilisant l'hypothèse de
+  quasineutralité.
+  \item Prédiction du flux de chaleur $\tilde{\mathbf q}_e$ (de la même manière
+  que pour le flux de particule).
+  \item Résolution de la température électronique $T_e$ à partir de l'équation
+  de conservation de l'énergie, en incluant la réponse du flux de chaleur au
+  changement $\delta T_e=T_e^{k+1}-T_e^{k}$.
+  \item Correction du flux de chaleur pour tenir compte du changement de la
+  température.
+\end{enumerate}
+
+Pour la résolution spatiale, les équations sont intégrées suivant une méthode
+volumes finis. Le domaine de simulation est schématiquement représenté sur la figure~\ref{3-maillage}.
+C'est le plan perpendiculaire à $\mathbf{b}$, rectangulaire et maillé uniformément suivant
+les directions $\mathbf{x}$ et $\mathbf{y}$. Les parois perpendiculaires
+et parallèles peuvent être choisies conductrices ou isolantes, impliquant un jeu
+de conditions aux limites physiques sur les flux en entrée de gaine. Le domaine
+peut aussi être choisi périodique dans la direction $\mathbf y$ pour représenter
+certaines géométries, et éventuellement de longueur infinie dans la direction
+parallèle.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=64mm,width=80mm]{figures/3-magnisGrid.png}
-{\caption{Maillage 2D pour les schémas volumes finis}
-\label{maillage}}
+{\caption{Schéma du domaine du simulation, entouré d'une gaine
+non-collisionnelle.
+Les quantités scalaires $n$, $\Phi$ et $T_e$ sont définies aux noeuds et sur les
+bords du maillage. Les composantes x et y des champs vectoriels sont
+situées entre les noeuds, sur les arêtes des volumes de contrôle, respectivement
+au niveau des flêches horizontales et verticales.}
+\label{3-maillage}}
 \end{figure}
+ 
+\subsection{Equations du mouvement}
+
+Pour résoudre 
+
 
  \subsection{Fréquences}
  \parencite{Phelps}
