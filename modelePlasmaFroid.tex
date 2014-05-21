@@ -15,6 +15,8 @@ Une dernière partie est consacrée à la vérification du code par une étude d
 convergence sur maillage et à une validatation élémentaire du comportement du
 plasma dans des cas théoriques représentatifs.
 
+
+
 \section{Problématique}
 
 La compréhension de l'origine et de la nature du transport dans les plasmas
@@ -29,6 +31,10 @@ longueur de Debye et de la fréquence plasma.}.
 Celles-ci sont en fait peu adaptées au transport fortement
 magnétisé~\cite{Golant}.
 
+L'un des points délicats dans la modélisation du transport magnétisé concerne la
+discrétisation de l'équation du mouvement. Au fur et à mesure de l'augmentation
+du champ magnétique, les flux magnétisés dominent de plus en plus sur les termes
+collisionnels.
 
 Un indice nous est donné en considérant la description du transport transverse
 par les vitesses de dérive (cf.
@@ -67,13 +73,13 @@ p_\alpha}{q_\alpha n_\alpha}\right)
 \end{equation}
 
 où $n_\alpha$ est la densité de l'espèce considérée, $\mathbf{u}_\alpha$ sa
-vitesse fluide, $p_\alpha$ la pression (dont nous ne retenons que la
-contribution isotrope) et $\Phi$ le potentiel électrostatique. La fréquence
+vitesse fluide, $p_\alpha =en_\alpha T_\alpha$ la pression (dont nous ne
+retenons que la contribution isotrope) et $\Phi$ le potentiel électrostatique. La fréquence
 cyclotronique est notée $\omega_{c\alpha}=q_\alpha B/m_\alpha$ et $\nu_\alpha$
 est une fréquence effective rendant compte des collisions.
 Le transfert de quantité de mouvement dû aux collisions contient la perte liée à
 l'ionization
-$\nu_\alpha=\nu_{\alpha}^{iz}+\nu_{\alpha}^{c}+\nu_{\alpha}^{ei}$ où
+$\nu_\alpha=\nu_{\alpha}^\text{iz}+\nu_{\alpha}^{c}+\nu_{\alpha}^{ei}$ où
 $\nu_{\alpha}^{c}$ et $\nu_{\alpha}^{ei}$ sont respectivement les
 fréquences de collisions particules chargées - neutres et de collisions
 coulombiennes.
@@ -257,6 +263,7 @@ entre la densité de particules à l'entrée de la gaine et la densité moyenne
 calculée le long des lignes de champ. Après cette opération de fermeture,
 le système d'équation peut se réécrire en fonction des variables moyennées
 ($\bar{n}_\alpha$, $\bar{\mathbf u}_\alpha$,$\bar{T}_e$\ldots) :
+
 \begin{align}
 \label{3-equations2D1}
 \partial_t \bar{n}_\alpha& +
@@ -275,8 +282,8 @@ le système d'équation peut se réécrire en fonction des variables moyennées
 \end{align}
 
 Dans la suite, nous laissons de côté la notation de moyenne, l'indice
-perpendiculaire et nous ne considérons qu'une espèce d'ion afin de simplifier
-les notations.
+perpendiculaire et nous abandonnons l'indice $\alpha$, les quantités se référant
+indifférement aux ions ou aux électrons sauf si précisé explicitement.
 
 \section{Solution numérique}
 
@@ -289,17 +296,17 @@ petit pas de temps $\Delta t$ en suivant l'algorithme suivant :
 \begin{enumerate}
   \item Calcul de toutes les fréquences $\nu$ pour
   chaque interaction à prendre en compte, des termes sources de particules
-  $S_\alpha$ et des vitesses aux bords du domaine $u_{\alpha_\para}$.
-  \item Prédiction des vitesses fluides $\tilde{\mathbf u}_\alpha$ par
+  $S$ et des vitesses aux bords du domaine $u_{\para}$.
+  \item Prédiction des vitesses fluides $\tilde{\mathbf u}$ par
   l'équation du mouvement.
   \item Résolution du champ électrique $\mathbf E$ et du potentiel
   électrostatique $\Phi$ à travers la conservation du courant, en tenant compte de la
   réponse des vitesses fluides au changement $\delta \mathbf
   E=\mathbf E^{k+1}-\mathbf E^{k}$.
-  \item Correction des vitesses fluides $\mathbf u_\alpha$ pour le nouveau
+  \item Correction des vitesses fluides $\mathbf u$ pour le nouveau
   $\mathbf E$.
   \item Résolution des équations de continuité ioniques avec les vitesses
-  corrigées $\mathbf u_\alpha$.
+  corrigées $\mathbf u$.
   \item Calcul de la densité électronique en utilisant l'hypothèse de
   quasineutralité.
   \item Prédiction du flux de chaleur $\tilde{\mathbf q}_e$ (de la même manière
@@ -333,10 +340,45 @@ au niveau des flêches horizontales et verticales.}
 \label{3-maillage}}
 \end{figure}
  
-\subsection{Equations du mouvement}
+\subsection{Equation du mouvement}
+Ecrivons l'équation du mouvement comme une équation algébrique d'inconnue
+$\mathbf u$, reliant la fréquence caractéristique du transport
+$\omega\sim\partial_t$, une fréquence de collision effective $\nu_m$ et la
+fréquence cyclotronique $\omega_c$ avec un terme
+$\mathbf F$ accélérateur incluant le terme inertiel d'advection :
 
-Pour résoudre 
+\begin{equation}
+\label{3-eqMvt}
+\alpha_\omega\partial_t \mathbf{u} + 
+\nu_m\mathbf{u}\pm\omega_{c}\mathbf{b}\times\mathbf{u}=
+\mathbf F
+\end{equation}
 
+avec 
+\begin{equation*}\mathbf F=
+-\frac{q\nabla \Phi}{m}-\frac{e\nabla
+n T}{m
+n}-\alpha_u\mathbf{u}\cdot\nabla\mathbf{u}
+\end{equation*}
+
+Les facteurs $\alpha_\omega$ et $\alpha_u$ sont des paramètres numériques qui
+permettent de modifier l'influence des termes d'inertie, ou éventuellement de
+les négliger ($\alpha_{\omega,u}$=0). Discrétisons temporellement
+\eqref{3-eqMvt} en prenant la vitesse implicitement dans les termes
+magnétique et collisionnel\footnote{Une récente modification permet de choisir
+une résolution implicite du terme
+d'inertie $\mathbf{u}\cdot\nabla\mathbf{u}$, rendant le code MAGNIS
+full-implicit. Cependant dans ce document, pour des raisons de lisibilité, nous
+le laisserons inclus dans la force $\mathbf F$} :
+
+\begin{equation}
+\label{3-eqMvtDiscretT}
+\delta\left(\mathbf{u}^{k+1}-\mathbf{u}^{k}\right) + 
+\nu_m\mathbf{u}^{k+1}\pm\omega_{c}\mathbf{b}\times\mathbf{u}^{k+1}=
+\mathbf F
+\end{equation}
+
+avec $\delta=\alpha_\omega/\Delta t+\omega_c$
 
  \subsection{Fréquences}
  \parencite{Phelps}
