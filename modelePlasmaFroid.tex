@@ -387,7 +387,7 @@ fonction de leur nature isolante, conductrice ou polarisée (les expressions
 sont données dans \ref{3-vitessesBord}) puis prisent en compte implicitement
 dans les équations de continuités.
 
-\subsection{Equation du mouvement}
+\subsection{Expression des vitesses et conservation du courant}
 L'un des points clés du modèle tient à la méthode de résolution de l'équation du
 mouvement. Ecrivons la comme une équation algébrique
 d'inconnue $\mathbf u$, reliant la fréquence caractéristique du transport
@@ -421,40 +421,39 @@ le laisserons inclus dans la force $\mathbf F$} :
 
 \begin{equation}
 \label{3-eqMvtDiscretT}
-\frac{\alpha_\omega}{\Delta t}\left(\mathbf{u}^{k+1}-\mathbf{u}^{k}\right) + 
+\delta\left(\mathbf{u}^{k+1}-\mathbf{u}^{k}\right) + 
 \nu_m\mathbf{u}^{k+1}\pm\omega_{c}\mathbf{b}\times\mathbf{u}^{k+1}=
-\mathbf a^k
+\mathbf a
 \end{equation}
 
-En combinant \ref{3-eqMvtDiscretT} et l'expression de son produit vectoriel
-par $\mathbf b$, on peut éliminer le terme de Laplace. La vitesse s'exprime
-alors comme une somme pondérée du transport perpendiculaire et du transport
-croisé :
+où $\delta=\alpha_\omega/\Delta t$. En combinant \ref{3-eqMvtDiscretT} et
+l'expression de son produit vectoriel par $\mathbf b$, on peut éliminer le
+terme de Laplace. La vitesse s'exprime alors comme une somme pondérée du
+transport perpendiculaire et du transport croisé :
 
 \begin{equation}
 \label{3-eqMvtPonderee}
-\mathbf{u}^{k+1}=A\left(\mathbf a + \frac{\alpha_\omega}{\Delta
-t}\mathbf{u}^{k}\right)\pm B\mathbf b\times\left(\mathbf a +
-\frac{\alpha_\omega}{\Delta t}\mathbf{u}^{k}\right)
+\mathbf{u}^{k+1}=A\left(\mathbf a + \delta\mathbf{u}^{k}\right)\pm B\mathbf
+b\times\left(\mathbf a + \delta\mathbf{u}^{k}\right)
 \end{equation}
 
 avec 
 \begin{equation*}
 \label{3-eqMvtPonderee}
-A=\frac{\nu_m+\alpha_\omega/\Delta t}{(\nu_m+\alpha_\omega/\Delta
-t)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=\frac{\omega_c}{(\nu_m+\alpha_\omega/\Delta
-t)^2+\omega_c^2}
+A=\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
 \end{equation*}
 
-$\delta=\max(\alpha_\omega/\Delta t,\omega_c)$
+La vitesse telle que définie par \eqref{3-eqMvtPonderee} s'exprime
+explicitement en fonction du champ $\mathbf E^k$. 
+
+où $\delta=\alpha_\omega/\Delta t$ prend la place du facteur
+usuel $\Delta t\puissance{-1}$ de la dérivée temporelle. Cette opération, qui
+peut être vue comme une sous-relaxation de la vitesse électronique en présence
+d'un fort champ magnétique, permet  Si $\Delta t\omega_c<$1, il n'y a aucune
+substitution,
 
 
- Une attention particulière est portée à description précise des 
- flux de matière et de chaleur fortement dépendants de la magnétisation du
- plasma. Une étape de prédiction est tenant compte de la force
-
-
-\subsection{Discrétisation temporelle}
+\subsection{Flux de chaleur et équation d'énergie}
 
 \begin{equation}
 S_s(T_e)=n^{k+1}n_gk_{s}^{iz}(T_e)
