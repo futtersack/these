@@ -66,6 +66,7 @@ pression et magnétisé, l'équation du mouvement doit tenir compte de
 l'interaction avec le gaz, de l'inertie et du terme de Laplace :
 
 \begin{equation}
+\label{3-eqMouvement}
 \partial_t \mathbf{u}_\alpha + \mathbf{u}_\alpha\cdot\nabla\mathbf{u}_\alpha+
 \nu_\alpha\mathbf{u}_\alpha+\omega_{c\alpha}\mathbf{b}\times\mathbf{u}_\alpha=
 -\frac{q_\alpha}{m_\alpha}\left(\nabla \Phi+\frac{\nabla
@@ -389,8 +390,8 @@ dans les équations de continuités.
 
 \subsection{Expression des vitesses et conservation du courant}
 L'un des points clés du modèle tient à la méthode de résolution de l'équation du
-mouvement. Ecrivons la comme une équation algébrique
-d'inconnue $\mathbf u$, reliant la fréquence caractéristique du transport
+mouvement et de celle du courant. Ecrivons \eqref{3-eqMouvement} comme une
+équation algébrique d'inconnue $\mathbf u$, reliant la fréquence caractéristique du transport
 $\omega\sim\partial_t$, une fréquence de collision effective $\nu_m$ et la
 fréquence cyclotronique $\omega_c$ avec un terme
 accélérateur $\mathbf a$ incluant le terme inertiel d'advection :
@@ -430,19 +431,31 @@ où $\delta=\alpha_\omega/\Delta t$. En combinant \ref{3-eqMvtDiscretT} et
 l'expression de son produit vectoriel par $\mathbf b$, on peut éliminer le
 terme de Laplace. La vitesse s'exprime alors comme une somme pondérée du
 transport perpendiculaire et du transport croisé :
-
 \begin{equation}
 \label{3-eqMvtPonderee}
 \mathbf{u}^{k+1}=A\left(\mathbf a + \delta\mathbf{u}^{k}\right)\pm B\mathbf
 b\times\left(\mathbf a + \delta\mathbf{u}^{k}\right)
 \end{equation}
-
 avec 
 \begin{equation*}
-\label{3-eqMvtPonderee}
+\label{3-coefficientsVitesses}
 A=\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
 \end{equation*}
 
+L'expression ainsi obtenue pour la vitesse fluide fait intervenir le champ
+électrique à travers le terme $\mathbf a$. 
+\begin{equation}
+\label{3-eqCorrection}
+\mathbf a(\mathbf E^{k+1}) = \mathbf a(\mathbf E^{k})-\frac{q}{m}\nabla
+(\Phi^{k+1}-\Phi^{k})
+\end{equation}
+Avec ces expressions, l'équation du courant \eqrefp{eqCourant} 
+
+
+\begin{equation}
+\label{3-eqCourantCoefficient}
+\nabla\cdot(\sum_ien_i\mathbf{u}_i-en_e\mathbf{u}_e)=0
+\end{equation}
 La vitesse telle que définie par \eqref{3-eqMvtPonderee} s'exprime
 explicitement en fonction du champ $\mathbf E^k$. 
 
