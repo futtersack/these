@@ -390,24 +390,23 @@ dans les équations de continuités.
 
 \subsection{Expression des vitesses et conservation du courant}
 L'un des points clés du modèle tient à la méthode de résolution de l'équation du
-mouvement et de celle du courant. Ecrivons \eqref{3-eqMouvement} comme une
-équation algébrique d'inconnue $\mathbf u$, reliant la fréquence caractéristique du transport
+mouvement et de la conservation du courant. Ecrivons \eqref{3-eqMouvement} comme
+une équation algébrique d'inconnue $\mathbf u$, reliant la fréquence caractéristique du transport
 $\omega\sim\partial_t$, une fréquence de collision effective $\nu_m$ et la
-fréquence cyclotronique $\omega_c$ avec un terme
-accélérateur $\mathbf a$ incluant le terme inertiel d'advection :
+fréquence cyclotronique $\omega_c$ avec un champ
+accélérateur $\mathbf F$ incluant le terme inertiel d'advection :
 
 \begin{equation}
 \label{3-eqMvt}
 \alpha_\omega\partial_t \mathbf{u} + 
 \nu_m\mathbf{u}\pm\omega_{c}\mathbf{b}\times\mathbf{u}=
-\mathbf a
+\frac{q}{m}\mathbf F
 \end{equation}
 
 avec 
-\begin{equation*}\mathbf a=
--\frac{q\nabla \Phi}{m}-\frac{e\nabla
-n T}{m
-n}-\alpha_u\mathbf{u}\cdot\nabla\mathbf{u}
+\begin{equation*}\mathbf F=E-\frac{e\nabla
+n T}{qm
+n}-\frac{\alpha_um}{q}\mathbf{u}\cdot\nabla\mathbf{u}
 \end{equation*}
 
 Les facteurs $\alpha_\omega$ et $\alpha_u$ sont des paramètres numériques qui
@@ -424,7 +423,7 @@ le laisserons inclus dans la force $\mathbf F$} :
 \label{3-eqMvtDiscretT}
 \delta\left(\mathbf{u}^{k+1}-\mathbf{u}^{k}\right) + 
 \nu_m\mathbf{u}^{k+1}\pm\omega_{c}\mathbf{b}\times\mathbf{u}^{k+1}=
-\mathbf a
+\frac{q}{m}\mathbf F
 \end{equation}
 
 où $\delta=\alpha_\omega/\Delta t$. En combinant \ref{3-eqMvtDiscretT} et
@@ -433,17 +432,17 @@ terme de Laplace. La vitesse s'exprime alors comme une somme pondérée du
 transport perpendiculaire et du transport croisé :
 \begin{equation}
 \label{3-eqMvtPonderee}
-\mathbf{u}^{k+1}=A\left(\mathbf a + \delta\mathbf{u}^{k}\right)\pm B\mathbf
-b\times\left(\mathbf a + \delta\mathbf{u}^{k}\right)
+\mathbf{u}^{k+1}=A\left(\mathbf F + \delta\mathbf{u}^{k}\right)\pm B\mathbf
+b\times\left(\mathbf F + \delta\mathbf{u}^{k}\right)
 \end{equation}
 avec 
 \begin{equation*}
 \label{3-coefficientsVitesses}
-A=\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
+A=\frac{q}{m}\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=-\frac{q}{m}\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
 \end{equation*}
 
 L'expression ainsi obtenue pour la vitesse fluide fait intervenir le champ
-électrique à travers le terme $\mathbf a$. 
+électrique à travers le terme $\mathbf F$. 
 \begin{equation}
 \label{3-eqCorrection}
 \mathbf a(\mathbf E^{k+1}) = \mathbf a(\mathbf E^{k})-\frac{q}{m}\nabla
