@@ -23,11 +23,11 @@ La compréhension de l'origine et de la nature du transport dans les plasmas
 magnétisés est un enjeu majeur pour la conception, la réalisation et
 l'optimisation de nombreuses applications et procédés. Dans les sources plasmas
 fonctionnant à basse pression,  La plupart des modèles fluides décrivant les
-phénomènes de transport magnétisés dans les plasmas froids sont basés sur les équations de dérive-diffusion (\S \ref{1-deriveDiffMag}). Cependant, au delà d'une certaine intensité de champ magnétique, l'anisotropie du transport rend la résolution numérique de ces
-équations complexe voire impossible\footnote{Le problème est alors généralement
-adressé à travers le développement de modèles cinétiques numériquement très
-coûteux, et nécessitant à priori la résolution d'échelles de l'ordre de la
-longueur de Debye et de la fréquence plasma.}.
+phénomènes de transport magnétisés dans les plasmas froids sont basés sur les
+équations de dérive-diffusion (\S \ref{1-deriveDiffMag}). Cependant, au delà
+d'une certaine intensité de champ magnétique, l'anisotropie du transport rend
+la résolution numérique de ces équations complexe voire impossible\footnote{Le
+problème est alors généralement adressé à travers le développement de modèles cinétiques numériquement très coûteux, et nécessitant à priori la résolution d'échelles de l'ordre de la longueur de Debye et de la fréquence plasma.}.
 Celles-ci sont en fait peu adaptées au transport fortement
 magnétisé~\parencite{Golant}.
 
@@ -459,22 +459,51 @@ avec
 A=\frac{q}{m}\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=-\frac{q}{m}\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
 \end{equation*}
 
-L'expression ainsi obtenue pour la vitesse fluide fait intervenir le champ
-électrique à travers le terme $\mathbf F$. 
+L'expression ainsi obtenue pour la vitesse
+fluide fait intervenir le champ électrique à travers le terme $\mathbf F$.
+L'évaluation de ce terme avec un champ électrique pris au temps $k$+1 peut alors
+s'écrire en fonction du changement de potentiel :
+
 \begin{equation}
 \label{3-eqCorrection}
-\mathbf a(\mathbf E^{k+1}) = \mathbf a(\mathbf E^{k})-\frac{q}{m}\nabla
+\mathbf F(\mathbf E^{k+1}) = \mathbf F(\mathbf E^{k})-\nabla
 (\Phi^{k+1}-\Phi^{k})
 \end{equation}
-Avec ces expressions, l'équation du courant \eqrefp{eqCourant} 
 
+Cette propriété est alors mise à profit pour utiliser une méthode de
+prédiction-correction pour les vitesses fluides. Celles-ci sont calculées
+explicitement dans une première étape à partir de l'ancien champ électrique,
+puis corrigées par le changement de potentiel $\Theta=\Phi^{k+1}-\Phi^k$ :
 
 \begin{equation}
-\label{3-eqCourantCoefficient}
-\nabla\cdot(\sum_ien_i\mathbf{u}_i-en_e\mathbf{u}_e)=0
+\label{3-eqCorrectionVitesse}
+\mathbf u^{k+1} = \tilde{\mathbf u}^{k+1}-A\nabla
+\Theta-B\mathbf b\times\nabla
+\Theta
 \end{equation}
-La vitesse telle que définie par \eqref{3-eqMvtPonderee} s'exprime
-explicitement en fonction du champ $\mathbf E^k$. 
+
+Pour résoudre la différence de potentiel, on considère ensuite l'équation de
+conservation du courant~\eqrefp{eqCourant} dans laquelle on substitue les
+vitesses par leur expression \eqref{3-eqCorrectionVitesse} :
+
+\begin{equation}
+\begin{split}
+\label{3-eqCourantCoefficient}
+\nabla\cdot(-(\sum_iq_in_iA_i-en_eA_e)\nabla
+\Theta-(\sum_iq_in_iB_i-en_eB_e)\mathbf
+b\times\nabla
+\Theta)\\=(en_e\tilde{\mathbf
+u}_e^{k+1}-\sum_iq_in_i\tilde{\mathbf u}_i^{k+1})
+\end{split}
+\end{equation}
+
+Après cette correction, l'ensemble des vitesses fluides $\mathbf u_\alpha$
+satisfait exactement à la continuité du courant. 
+
+\subsubsection{Maillages croisés et sous-relaxation}
+
+Quand le transport magnétisé commence à dominer, 
+
 
 où $\delta=\alpha_\omega/\Delta t$ prend la place du facteur
 usuel $\Delta t\puissance{-1}$ de la dérivée temporelle. Cette opération, qui
