@@ -568,6 +568,29 @@ d'équilibre autour de laquelle le potentiel s'ajuste constamment pour
 \fcolorbox{red}{white}{
 \begin{minipage}{0.9\textwidth}flux d'énergie et de chaleur\ldots?
 \end{minipage}}
+\subsubsection{Gaine dans les plasmas multi-espèces}
+Le critère de Bohm pour un plasma multi-espèce a été dérivé par Riemann
+\parencite{Riemann95}, il prend la forme :
+
+\begin{equation}
+\label{1-BohmMulti}
+1\geq\sum_i{\frac{n_ic_{si}^2}{n_eu_i^2}}
+\end{equation}
+
+avec $c_{si}\approx\sqrt{eT_e/m_i}$ la vitesse de Bohm de l'espèce $i$.
+L'inégalité \eqref{1-BohmMulti} est vérifiée si chaque fraction possède sa
+propre vitesse de Bohm en entrée de gaine, ou si tous les ions ont la même
+vitesse, $c_s$, une sorte de vitesse de Bohm du système :
+
+\begin{equation}
+\label{1-BohmSpeed}
+c_s=\sqrt{\sum_i\frac{n_i}{n_e}c_{si}^2}
+\end{equation}
+
+Cette propriété a été confirmée par une étude de la gaine dans un plasma
+argon-helium réalisée par Severn et al.~\parencite{Severn}, montrant que les
+ions d'argon se déplacent 75\% plus rapidement que leur vitesse de Bohm
+spécifique.
 
 \subsubsection{Gaine dans les plasmas magnétisés}
 La situation dans le cas d'un champ magnétique normal à la paroi est
@@ -743,17 +766,17 @@ vitesses~:
 \begin{equation}
 \label{1-eqContinuite}
 	\partial_tn_\alpha+
-	\nabla\cdot\left(n_\alpha\mathbf{u_\alpha}\right)=S_\alpha
+	\nabla\cdot\left(n_\alpha\mathbf{u_\alpha}\right)=\mathcal{S}_\alpha
 \end{equation}
 
 avec $n_\alpha$ la densité de l'espèce, $\mathbf{u_\alpha}$ la vitesse
-fluide et $S_\alpha$ un terme source se mesurant en nombre de particules par
-unité de temps et de volume. Dans les plasmas froids, ce terme source est issu
+fluide et $\mathcal{S}_\alpha$ un terme source se mesurant en nombre de
+particules par unité de temps et de volume. Dans les plasmas froids, ce terme source est issu
 de l'intégration du terme de collisions et rend compte du nombre de particules
 créées ou perdues lors de collisions inélastiques. Il est constitué
 par l'ensemble des intéractions collisionnelles et chimiques :
-$$S_\alpha=\sum_s N_s n_{\alpha}n_{s}k_{\alpha s}$$ où $s$ denote les autres
-espèces présentes dans le plasma, $N$ est le nombre de particules créées lors
+$$\mathcal{S}_\alpha=\sum_s N_s n_{\alpha}n_{s}k_{\alpha s}$$ où $s$ denote les
+autres espèces présentes dans le plasma, $N$ est le nombre de particules créées lors
 d'une collision (négatif en cas de destruction), $n_i$ la densité de l'espèce en collision et $k_{\alpha s}=\left<\sigma_{\alpha s}
 v_r\right>$ le coefficient de collision/réaction
 associé (cf.\S\ref{1-Collisions}), avec $v_r=(\mathbf u_s-\mathbf u_\alpha)$
@@ -822,8 +845,8 @@ u_\alpha=\frac{q_\alpha}{m_\alpha}\left(\mathbf E+\mathbf u_\alpha\times \mathbf
 B\right) -\frac{\nabla p_\alpha}{m_\alpha n_\alpha} -\frac{\nabla\cdot\boldsymbol{\Pi}_\alpha}{m_\alpha n_\alpha}
 \end{equation}
 
-où $\nu_{{iz}}=S_\alpha/n_\alpha$ provient de la substitution de l'équation
-de continuité et caractérise la perte effective de quantité de mouvement
+où $\nu_{{iz}}=\mathcal{S}_\alpha/n_\alpha$ provient de la substitution de
+l'équation de continuité et caractérise la perte effective de quantité de mouvement
 dans les collisions inélastiques : les particules sont ionisées sans
 vitesse initiale et perdues à la vitesse moyenne $\mathbf u_\alpha$, entraînant une force de traînée nette
 proportionnelle à la vitesse du fluide en mouvement $\mathbf
@@ -874,7 +897,7 @@ Pour les électrons, cette puissance collisionnelle est généralement négative
 \end{equation}
 
 avec $E_s$ l'énergie de seuil de la réaction. On peut maintenant soustraire la
-contribution de l'énergie dirigée $\text{U}_{\alpha}=m_\alpha n_\alpha
+contribution de l'énergie dirigée $\mathcal{U}_{\alpha}=m_\alpha n_\alpha
 u_\alpha^2/2$ de \eqref{1-eqEnergie} en utilisant le produit scalaire de l'équation de
 conservation de la quantité de mouvement (\eqref{1-eqQuantiteMouvement}) et de
 la vitesse fluide pour obtenir une équation de conservation sur l'énergie
@@ -886,7 +909,7 @@ interne (thermique) d'une espèce :
 \nabla\cdot\left(\frac{3}{2}p_\alpha
 \mathbf{u}_\alpha+\mathbf q_\alpha\right)+p_\alpha\nabla\cdot\mathbf u_\alpha
 +\boldsymbol{\Pi}_{\alpha j k}\frac{\partial u_{\alpha j}}{\partial{x_k}} =
-{Q_\alpha}+(2n_\alpha\nu_\alpha+S_\alpha)\text{U}_\alpha
+{Q_\alpha}+(2n_\alpha\nu_\alpha+\mathcal{S}_\alpha)\mathcal{U}_\alpha
 \end{equation}
 
 Dans cette équation, $p_\alpha\nabla\cdot\mathbf u_\alpha$ représente la
@@ -894,8 +917,8 @@ puissance produite par la pression partielle qui résulte du
 refroidissement/chauffage lié à la compression ou à l'expansion d'un volume de
 plasma et le terme $\boldsymbol{\Pi}_{\alpha j k}\partial u_{\alpha
 j}/\partial{x_k}$ décrit le chauffage visqueux. Le terme
-$(2n_\alpha\nu_\alpha+S_\alpha)\text{U}_\alpha$ apparaît distinctement comme une
-production ou une perte de chaleur conséquente du travail de la force de traînée générée par
+$(2n_\alpha\nu_\alpha+\mathcal{S}_\alpha)\mathcal{U}_\alpha$ apparaît distinctement
+comme une production ou une perte de chaleur conséquente du travail de la force de traînée générée par
 les collisions. C'est un terme primordial pour capturer correctement le
 comportement de la température électronique dans les plasmas froids. 
 
@@ -907,8 +930,8 @@ obtient une équation d'évolution pour la température de l'espèce :
 \label{1-eqTemperature}
 \frac{3}{2}n_\alpha\frac{\text{d}eT_\alpha}{\text{dt}}+\nabla\cdot\mathbf
 q_\alpha + p_\alpha\nabla\cdot\mathbf u_\alpha +\boldsymbol{\Pi}_{\alpha j
-k}\frac{\partial u_{\alpha j}}{\partial{x_k}}+ \frac{3}{2}S_\alpha eT_\alpha =
-{Q_\alpha}+(2n_\alpha\nu_\alpha+S_\alpha)\text{U}_\alpha
+k}\frac{\partial u_{\alpha j}}{\partial{x_k}}+ \frac{3}{2}\mathcal{S}_\alpha
+eT_\alpha = {Q_\alpha}+(2n_\alpha\nu_\alpha+\mathcal{S}_\alpha)\mathcal{U}_\alpha
 \end{equation}
 
 avec $\text{d}/\text{dt}=\partial_t+\mathbf u\cdot\nabla$ la notation de
@@ -920,8 +943,9 @@ $p_\alpha\nabla\cdot\mathbf u_\alpha$ pour faire disparaître la divergence de l
 \label{1-eqTemperature2}
 \frac{3}{2}n_\alpha\frac{\text{d}eT_\alpha}{\text{dt}}+\nabla\cdot\mathbf
 q_\alpha +\boldsymbol{\Pi}_{\alpha j k}\frac{\partial u_{\alpha
-j}}{\partial{x_k}}+ \frac{5}{2}S_\alpha eT_\alpha = eT_\alpha\frac{\text{d}n_\alpha}{\text{dt}}+ 
-{Q_\alpha}+(2n_\alpha\nu_\alpha+S_\alpha)\text{U}_\alpha
+j}}{\partial{x_k}}+ \frac{5}{2}\mathcal{S}_\alpha eT_\alpha =
+eT_\alpha\frac{\text{d}n_\alpha}{\text{dt}}+
+{Q_\alpha}+(2n_\alpha\nu_\alpha+\mathcal{S}_\alpha)\mathcal{U}_\alpha
 \end{equation}
 
 Dans notre étude des plasmas froids magnétisés, la température ionique $T_i$

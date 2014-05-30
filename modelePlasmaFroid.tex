@@ -21,13 +21,15 @@ plasma dans des cas théoriques représentatifs.
 
 La compréhension de l'origine et de la nature du transport dans les plasmas
 magnétisés est un enjeu majeur pour la conception, la réalisation et
-l'optimisation de nombreuses applications et procédés. Dans les sources plasmas
-fonctionnant à basse pression,  La plupart des modèles fluides décrivant les
-phénomènes de transport magnétisés dans les plasmas froids sont basés sur les
-équations de dérive-diffusion (\S \ref{1-deriveDiffMag}). Cependant, au delà
-d'une certaine intensité de champ magnétique, l'anisotropie du transport rend
-la résolution numérique de ces équations complexe voire impossible\footnote{Le
-problème est alors généralement adressé à travers le développement de modèles cinétiques numériquement très coûteux, et nécessitant à priori la résolution d'échelles de l'ordre de la longueur de Debye et de la fréquence plasma.}.
+l'optimisation de nombreuses applications et procédés. La plupart des modèles
+fluides décrivant les phénomènes de transport magnétisés dans les plasmas
+froids sont basés sur les équations de dérive-diffusion (\S
+\ref{1-deriveDiffMag}). Cependant, au delà d'une certaine intensité de champ
+magnétique, l'anisotropie du transport rend la résolution numérique de ces
+équations complexe voire impossible\footnote{Le problème est alors généralement
+adressé à travers le développement de modèles cinétiques numériquement très
+coûteux, et nécessitant à priori la résolution d'échelles de l'ordre de la
+longueur de Debye et de la fréquence plasma.}.
 Celles-ci sont en fait peu adaptées au transport fortement
 magnétisé~\parencite{Golant}.
 
@@ -102,10 +104,10 @@ L'évolution de chaque espèce est décrite par une équation de continuité :
 \begin{equation}
 \label{3-continuite}
 \partial_t n_\alpha +
-\nabla\cdot\left(n_\alpha\mathbf{u}_\alpha\right)=S_\alpha(T_e)
+\nabla\cdot\left(n_\alpha\mathbf{u}_\alpha\right)=\mathcal{S}_\alpha(T_e)
 \end{equation}
 
-avec $S_\alpha$ un terme source net, fortement dépendant de la
+avec $\mathcal{S}_\alpha$ un terme source net, fortement dépendant de la
 température électronique $T_e$ et qui se limite à l'ionisation dans le cas d'un
 plasma simple électrons-ions.
 En considérant l'hypothèse de quasi-neutralité, la somme des équations de
@@ -122,22 +124,22 @@ l'évolution du potentiel électrostatique $\Phi$.
 
 L'équation de conservation de l'énergie est obtenue classiquement en substituant
 l'équation de continuité afin d'éliminer le terme convectif puis en retranchant
-l'expression de l'énergie dirigée $\text{U}_e=m_eu_e^2$ :
+l'expression de l'énergie dirigée $\mathcal{U}_e=m_eu_e^2$ :
 
 \begin{equation}
-\label{1-eqTemperature2}
+\label{3-eqTemperature}
 \frac{3}{2}en_e\frac{\text{d}T_e}{\text{dt}}+\nabla\cdot\mathbf
-q_e + \frac{5}{2}S_e eT_e = eT_e\frac{\text{d}n_e}{\text{dt}}+ 
-{n_e\left(P_\text{ext}-\Pi\right)}+(2n_e\nu_e+S_e)\text{U}_e
+q_e + \frac{5}{2}\mathcal{S}_e eT_e = eT_e\frac{\text{d}n_e}{\text{dt}}+ 
+{n_e\left(\mathcal{P}_\text{ext}-\Pi\right)}+(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e
 \end{equation}
 
 où $T_e$ est la température électronique exprimée en eV, $\text{d/dt}$
-représente la dérivée totale, $S_e$ est le terme source d'électrons lié à
-l'ionisation, $P_\text{ext}$ la puissance extérieure déposée dans le plasma et
-$\Pi$ le terme de perte d'énergie dûe aux collisions. Le chauffage
+représente la dérivée totale, $\mathcal{S}_e$ est le terme source d'électrons
+lié à l'ionisation, $\mathcal{P}_\text{ext}$ la puissance extérieure déposée
+dans le plasma et $\Pi$ le terme de perte d'énergie dûe aux collisions. Le chauffage
 ohmique n'apparaît plus explicitement en fonction du champ électrique mais est
-inclus dans le terme $(2n_e\nu_e+S_e)\text{U}_e$ qui peut être vu comme une
-production de chaleur conséquente au travail de la force de traînée générée par
+inclus dans le terme $(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e$ qui peut être vu
+comme une production de chaleur conséquente au travail de la force de traînée générée par
 les collisions (voir \S~\ref{Introduction}-\ref{1-ConservationEnergie}).
 La fermeture du modèle se fait enfin sur le flux de chaleur $\mathbf{q}_e$, tel qu'exprimé par V.E. Golant
 dans~\parencite{Golant} :
@@ -158,47 +160,47 @@ avec le minimum d'approximations.
 Le modèle quasineutre est complété par la
 définition des conditions aux limites portant sur les flux et intégrant le
 maximum de considérations physiques. Dans le cas d'une paroi conductrice, un
-modèle classique de gaine non-collisionnelle est utilisé. Les flux ioniques et
-le flux électronique sont définis en l'entrée de gaine par :
+modèle classique de gaine non-collisionnelle est utilisé, en imposant un flux
+de particules net à la surface :
 
-\begin{align}
-&\Gamma_i=n_i\mathbf{u}_i\cdot\mathbf{n}=n_i.\max\left(c_s,\mathbf{u_i}\cdot\mathbf{n}\right)
-\\
-&\Gamma_e=n_e\mathbf{u}_e\cdot\mathbf{n}=n_e\frac{1}{2\sqrt{\pi}}v_{Te}=n_ec_s\exp(\Lambda-\Delta
-\Phi/T_e)
-\end{align}
+\begin{equation*}
+	\Gamma_\alpha=n_\alpha\mathbf u_\alpha\cdot \mathbf n=n_\alpha W_\alpha
+\end{equation*} 
 
-avec $\mathbf{n}$ le vecteur normal à la paroi,
-et $c_s=(eT_e/m_i)^{\text{\textonehalf}}$ la vitesse acoustique ionique. Le flux
-d'électron est obtenu en considérant une fonction de distribution maxwellienne, 
-que l'on intègre sur le demi-espace des vitesses dirigées vers la paroi avec 
-$v_{Te}=(2eT_e/m_e)^{\text{\textonehalf}}$ la vitesse électronique thermique.
-$\Delta\Phi$ la différence entre le potentiel plasma $\Phi$ et le potentiel de
-la paroi $\Phi_w$ se réécrit pour un courant nul:
+avec $\mathbf{n}$ le vecteur normal à la paroi et $W_\alpha$ la vitesse de perte
+effective d'une espèce en entrée de gaine. Les flux d'ions positifs sont définis
+par :
 
 \begin{equation}
-	\mathbf{j}\cdot\mathbf{n}=0\Leftrightarrow \Delta \Phi=\Phi-\Phi_w =
-T_e(\Lambda-ln\sum_i\mathbf u_i/c_s)
-\end{equation} 
-
-où le potentiel flottant $\Lambda$ est défini pour un plasma
-n'étant composé que d'une espèce :
-
-\begin{equation}
-	\Lambda=ln\left(\frac{eT_e}{2\pi
-	m_e\mathbf{u}_i^2}\right)^{\text{\textonehalf}} \le 
-	ln\left(\frac{m_i}{2\pi m_e}\right)^{\text{\textonehalf}}
+\Gamma_i=n_iW_i=n_i\max\left(c_s,\mathbf{u_i}\cdot\mathbf{n}\right)
 \end{equation}
 
+où $c_s=(\sum_i\frac{n_i}{n_e}c_{si}^2)^{\text{\textonehalf}}$ la vitesse de Bohm
+généralisée et
+$c_{si}=(eT_e/m_i)^{\text{\textonehalf}}$ les vitesses de Bohm
+individuelles~\parencite{Riemann95,Severn}.
 Les ions sont perdus au minimum avec la vitesse acoustique, mais
-éventuellement avec une vitesse supersonique. Le flux d'électron s'ajuste
-quant à lui pour réguler potentiel autour de sa valeur
-d'équilibre définie par le potentiel flottant $\Phi=\Lambda T_e$. La condition
-limite pour le courant est par conséquence définie par :
+éventuellement avec une vitesse supersonique.
+
+Le flux d'électrons est obtenu en considérant une fonction de distribution
+maxwellienne, que l'on intègre sur le demi-espace des vitesses dirigées vers la
+paroi avec $v_{Te}=(eT_e/m_e)^{\text{\textonehalf}}$ la vitesse électronique
+thermique :
 
 \begin{equation}
-\Gamma_j=\mathbf{j}\cdot\mathbf{n}=e\sum_in_i{\mathbf
-u}_i-en_ec_s\exp(\Lambda-\Delta \Phi/T_e)
+\Gamma_e=n_eW_e=n_e\frac{1}{\sqrt{2\pi}}v_{Te}=\sqrt{\frac{eT_e}{2\pi
+m_e}}\exp(-(\Phi-\Phi_w)/T_e)
+\end{equation}
+
+Le flux d'électron s'ajuste
+quant à lui pour réguler potentiel autour de sa valeur
+d'équilibre définie par le potentiel flottant normalisé $\Lambda=({eT_e}/{2\pi
+m_e c_s})^{\text{\textonehalf}}$
+définissant une condition limite pour le courant :
+
+\begin{equation}
+\Gamma_j=\mathbf{j}\cdot\mathbf{n}=en_ec_s\left(\sum_i\frac{n_i\mathbf
+u_i}{n_ec_s}-\exp\left(\Lambda-(\Phi-\Phi_w)/T_e\right)\right)
 \end{equation}
 
 Si la paroi est isolante, la surface se polarise pour assurer la nullité du
@@ -206,7 +208,7 @@ courant sortant :
 
 \begin{equation}\begin{split}
 \mathbf j\cdot\mathbf{n}=0\Leftrightarrow
-\Phi_w=\Phi-T_e(\Lambda-ln\sum_i\mathbf u_i/c_s)
+\Phi_w=\Phi-T_e(\Lambda-ln\sum_in_i\mathbf u_i/n_ec_s)
 \end{split}\end{equation}
 
 L'énergie perdue par les électrons en entrée de gaine s'obtient en
@@ -214,35 +216,36 @@ additionnant l'énergie moyenne perdue à la paroi (intégrée sur une distribut
 semi-maxwellienne) et l'énergie transférée aux ions dans la chute de potentiel :
 
 \begin{equation}
-	\varepsilon_w=2T_e+\Delta \Phi
+	\varepsilon_w=2T_e+\Phi-\Phi_w
 \end{equation}
  
  On peut alors relier cette perte totale aux flux sortants de l'équation
- d'énergie \eqrefp{3-energie}, qui correspondent au flux d'énergie porté par
- les particules et au flux de chaleur :
+ d'énergie \eqrefp{3-eqTemperature}, qui correspondent au flux d'énergie porté
+ par les particules et au flux de chaleur :
  
 \begin{equation}
 \Gamma_\varepsilon=\frac{5}{2}{\Gamma}_eT_e+\mathbf{q}_e\cdot\mathbf{n}=
-\Gamma_e\left(2T_e+\Delta \Phi\right)
+\Gamma_e\left(2T_e+\Phi-\Phi_w\right)
 \end{equation}
 
 En regroupant les termes portant sur le flux d'électron, on peut exprimer la
 condition limite pour le flux de chaleur :
 
 \begin{equation}
-\mathbf{q}_e\cdot\mathbf{n}=\Gamma_e\left(\Delta \Phi-\frac{1}{2}T_e\right)
+\mathbf{q}_e\cdot\mathbf{n}=\Gamma_e\left(\Phi-\Phi_w-\frac{1}{2}T_e\right)
 \end{equation}
 
 Ces conditions aux limites sont justifiées dans des plasmas non-magnétisés et à
 l'extrémité de lignes de champ interceptant la paroi dans
 des plasmas magnétisés. Dans la direction perpendiculaire au champ magnétique,
-nous gardons comme hypothèse que le la vitesse ionique doit au
+nous gardons comme hypothèse que la vitesse ionique doit au
 minimum atteindre la vitesse de Bohm pour permettre une brisure de
 la quasineutralité du plasma et l'apparition d'une gaine de charge d'espace
 positive.
 
 \subsection{Réduction 2D du modèle}
-Le système d'équations Eqs.(\ref{3-continuite}~-~\ref{3-energie}) décrit le
+
+Le système d'équations Eqs.(\ref{3-continuite}~-~\ref{3-eqTemperature}) décrit le
 transport magnétisé dans un plasma froid en suivant l'évolution des densités de
 particules $n_\alpha$, du potentiel électrique $\Phi$ et de la température
 électronique $T_e$ dans un espace à trois dimensions. 
@@ -259,65 +262,68 @@ La dissociation des mouvements parallèle et perpendiculaire s'effectue
 en réécrivant les équations dans un repère axé sur le champ magnétique
 (O,$\mathbf x$,$\mathbf y$,$\mathbf b$), puis nous refermons le
 système en l'intégrant le long de la direction parallèle. Les conditions aux
-limites au bout des lignes de champ apparaissent ainsi comme des termes source
-ou perte dans les équations de conservation :
+limites au bout des lignes de champ apparaissent ainsi comme des termes
+nets de source ou de perte dans les équations de conservation :
 
 \begin{align}
 \label{3-vitessesBord}
 \begin{split}
-\Gamma&_{i_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_iu_{i_\para}\right)=\frac{2a}{L_\para}n_ic_s\\
-\Gamma&_{e_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_eu_{e_\para}\right)=\frac{2}{L_\para}n_ec_s
-\exp(\Lambda-\Delta \Phi/T_e)\\
-\Gamma&_{j_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(j_\para\right)=\sum_i\Gamma_{i_\para}-\Gamma_{e_\para}\\
-\Gamma&_{\varepsilon_\para}=\frac{1}{L_\para}
+\mathcal{L}&_{i_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_iu_{i_\para}\right)=\frac{2a}{L_\para}n_iW_{i_\para}\\
+\mathcal{L}&_{e_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_eu_{e_\para}\right)=\frac{2}{L_\para}n_ec_s
+\exp(\Lambda-(\Phi-\Phi_w)/T_e)\\
+\mathcal{L}&_{j_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(j_\para\right)=\sum_i\mathcal{L}_{i_\para}-\mathcal{L}_{e_\para}\\
+\mathcal{L}&_{\varepsilon_\para}=\frac{1}{L_\para}
 \int_{-L_\para/2}^{L_\para/2}\nabla_\para
 \left(\frac{5}{2}n_eT_eu_{e_\para}+q_{e_\para}\right)
-=\frac{2}{L_\para}n_eu_{e_\para}(2T_e+\Delta \Phi)
+=\frac{2}{L_\para}n_eW_{e_\para}(2T_e+\Phi-\Phi_w)
 \end{split}
 \end{align}
 
 où $L_\para$ est la taille du plasma dans la direction du champ magnétique. Pour
-les électrons, $\Gamma_{e_\para}$ implique le potentiel de la paroi au bout des
-lignes de champ. Pour les pertes ioniques, un facteur $a$ représente le ratio
-entre la densité de particules à l'entrée de la gaine et la densité moyenne
-calculée le long des lignes de champ. Après cette opération de fermeture,
-le système d'équation peut se réécrire en fonction des variables moyennées
-($\bar{n}_\alpha$, $\bar{\mathbf u}_\alpha$,$\bar{T}_e$\ldots) :
+les électrons, $\mathcal{L}_{e_\para}$ implique le potentiel de la
+paroi au bout des lignes de champ. Pour les pertes ioniques, un facteur $a$
+représente approximativement le ratio entre la densité de particules à l'entrée
+de la gaine et la densité moyenne calculée le long des lignes de champ
+(typiquement $a\approx$0.7-0.9).
+Après cette opération de fermeture, le système d'équation peut se réécrire en
+fonction des variables moyennées ($\bar{n}_\alpha$, $\bar{\mathbf
+u}_\alpha$,$\bar{T}_e$\ldots) :
 
 \begin{align}
 \label{3-equations2D1}
 \partial_t \bar{n}_\alpha& +
-\nabla_\perp\cdot\left(\bar{n}_\alpha\bar{\mathbf{u}}_{\alpha_\perp}\right)=S_\alpha
-- \Gamma_{\alpha_\para}\\[0.5cm]
+\nabla_\perp\cdot\left(\bar{n}_\alpha\bar{\mathbf{u}}_{\alpha_\perp}\right)=\mathcal{S}_\alpha
+- \mathcal{L}_{\alpha_\para}\\[0.5cm]
 \nabla_\perp\cdot&(\sum_ie\bar{n}_i\bar{\mathbf{u}}_{i_\perp}
--e\bar{n}_e\bar{\mathbf{u}}_{e_\perp})= - \Gamma_{j_\para}\\[0.5cm]
+-e\bar{n}_e\bar{\mathbf{u}}_{e_\perp})= - \mathcal{L}_{j_\para}\\[0.5cm]
 \begin{split}\frac{3}{2}\bar{n}_e&\partial_t\bar{T}_e +
 \nabla_\perp\cdot(\bar{\mathbf{q}}_{e_\perp}) +
-(\frac{5}{2}S_e-\partial_t\bar{n}_e)\bar{T}_e =\\
+(\frac{5}{2}\mathcal{S}_e-\partial_t\bar{n}_e)\bar{T}_e =\\
 &\bar{n}_e\bar{\mathbf{u}}_{e_\perp}\cdot(\nabla_\perp
 \bar{\Phi}-\frac{5}{2}\nabla_\perp
-\bar{T}_e)+\bar{n}_e(P_{ext}-\Pi)-\Gamma_{\varepsilon_\para}
+\bar{T}_e)+\bar{n}_e(\mathcal{P}_\text{ext}-\Pi)-\mathcal{L}_{\varepsilon_\para}
 \label{3-equations2D2}
 \end{split}
 \end{align}
 
 Dans la suite, nous laissons de côté la notation de moyenne, l'indice
-perpendiculaire et nous abandonnons l'indice $\alpha$, les quantités se référant
-indifférement aux ions ou aux électrons sauf si précisé explicitement.
+perpendiculaire et nous omettons volontairement l'indice $\alpha$ pour les
+quantités se référant indifférement aux ions ou aux électrons.
 
 \section{Solution numérique}
 
 Les équations Eqs.(\ref{3-equations2D1}~-~\ref{3-equations2D2}) sont résolues
 semi-implicitement dans le temps avec une prédiction-correction des flux de
-particules et de chaleur pour garantir les conservations du courant et de
+particules et de chaleur pour garantir la conservation du courant et de
 l'énergie. Les variables macroscopiques sont avancées temporellement par
 petit pas de temps $\Delta t$ en suivant l'algorithme suivant :
 
 \begin{enumerate}
   \item Calcul de toutes les fréquences $\nu$ pour
-  chaque interaction à prendre en compte, des termes sources de particules
-  $S$ et des vitesses aux bords du domaine $u_{\para}$.
-  \item Prédiction des vitesses fluides $\tilde{\mathbf u}$ par
+  chaque interaction à prendre en compte, du chauffage, des termes sources de
+  particules $\mathcal{S}$ et des vitesses aux bords du domaine $W_{\para}$ et
+  $W_{\perp}$.
+  \item Prédiction des vitesses fluides $\tilde{\mathbf u}$ à l'aide de
   l'équation du mouvement.
   \item Résolution du champ électrique $\mathbf E$ et du potentiel
   électrostatique $\Phi$ à travers la conservation du courant, en tenant compte de la
@@ -338,8 +344,9 @@ petit pas de temps $\Delta t$ en suivant l'algorithme suivant :
   température.
 \end{enumerate}
 
-Pour la résolution spatiale, les équations sont intégrées suivant une méthode
-volumes finis. Le domaine de simulation est schématiquement représenté sur la figure~\ref{3-maillage}.
+Les équations sont intégrées suivant une méthode
+volumes finis qui imposent la conservation par contruction~\parencite{toro}. Le
+domaine de simulation est schématiquement représenté sur la figure~\ref{3-maillage}.
 C'est le plan perpendiculaire à $\mathbf{b}$, rectangulaire et maillé uniformément suivant
 les directions $\mathbf{x}$ et $\mathbf{y}$. Les parois perpendiculaires
 et parallèles peuvent être choisies conductrices ou isolantes, impliquant un jeu
@@ -347,7 +354,7 @@ de conditions aux limites physiques sur les flux en entrée de gaine. Le domaine
 peut aussi être choisi périodique dans la direction $\mathbf y$ pour représenter
 certaines géométries, et éventuellement de longueur infinie dans la direction
 parallèle.
-
+ 
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=64mm,width=80mm]{figures/3-magnisGrid.png}
@@ -359,6 +366,15 @@ situées entre les noeuds, sur les arêtes des volumes de contrôle, respectivem
 au niveau des flêches horizontales et verticales.}
 \label{3-maillage}}
 \end{figure}
+
+Pour résoudre les systèmes linéaires du modèle, nous utilisons un solveur
+9-points développé au GREPHE par Gerjan Hagelaar qui se base sur la procédure
+MSI (Modified Strongly Implicit Procedure) décrite par Schneider
+dans~\parencite{Schneider} et qui tient compte du caractère intrinsèquement lié
+des équations fluides pour diminuer le nombre d'itération nécéssaire pour
+trouver la solution du problème. Autorisant des conditions aux limites
+périodique, le solveur est de plus construit pour utiliser une approche multi-grille
+rendant la convergence particulièremant rapide sur un maillage 2D.
 
 \subsection{Fréquences, termes sources et conditions parallèles}
 Avant de résoudre à proprement dit les équations du modèle, MAGNIS
@@ -385,13 +401,25 @@ nombre de réactions chimiques peuvent éventuellement être prises en compte.
 Le terme source de particule est calculé en fonction de la fréquence
 d'ionisation :
 \begin{equation*}
-S_{\alpha}=n_\alpha n_g k^m_{\alpha_\text{iz}}(T_e)=n_\alpha\nu_{\alpha_\text{iz}}
+\mathcal{S}_{\alpha}=n_\alpha n_g
+k^m_{\alpha_\text{iz}}(T_e)=n_\alpha\nu_{\alpha_\text{iz}}
 \end{equation*}
 
 Le terme de perte d'énergie par électron, $\Pi$, est lui aussi fortement
 dépendant de la température électronique. Afin de résoudre correctement
 l'évolution de la température, le terme est décomposé par une itération
-de Newton pour renforcer son influence :
+de Newton\footnote{Cette technique peut être utilisée en toute généralité pour
+renforcer la stabilité numérique en présence de pertes lorsque celles-ci
+dépendent fortement de la quantité perdue 
+$\frac{d\mathcal L}{d\mathcal Q}<0$.
+La perte est alors décomposée suivant une itération de Newton pour renforcer son
+influence :
+\begin{equation*}
+\mathcal L^{k+1}=\mathcal L^{k}+\frac{d\mathcal L^{k}}{d\mathcal Q}(\mathcal
+Q^{k+1}-\mathcal Q^k) \end{equation*}
+Originalement mise en \oe vre dans les travaux de
+Hagelaar~\parencite{Hagelaar}, nous utilisons cette technique pour quelques
+termes du modèle.} :
 \begin{equation*}
 n_e\Pi(T_e^{k+1})=n_e\left(\Pi(T_e^{k})+\frac{\partial\Pi}{\partial
 T_e}\left(T_e^{k+1}-T_e^{k}\right)\right)= n_en_g\left(
@@ -417,14 +445,14 @@ accélérateur $\mathbf F$ incluant le terme inertiel d'advection :
 \begin{equation}
 \label{3-eqMvt}
 \alpha_\omega\partial_t \mathbf{u} + 
-\nu_m\mathbf{u}\pm\omega_{c}\mathbf{b}\times\mathbf{u}=
-\frac{q}{m}\mathbf F
+\nu_m\mathbf{u}+\omega_{c}\mathbf{b}\times\mathbf{u}=
+\mathbf F
 \end{equation}
 
 avec 
-\begin{equation*}\mathbf F=E-\frac{e\nabla
-n T}{qm
-n}-\frac{\alpha_um}{q}\mathbf{u}\cdot\nabla\mathbf{u}
+\begin{equation*}\mathbf F=\frac{q}{m}E-\frac{e\nabla
+n T}{m
+n}-\alpha_u\mathbf{u}\cdot\nabla\mathbf{u}
 \end{equation*}
 
 Les facteurs $\alpha_\omega$ et $\alpha_u$ sont des paramètres numériques qui
@@ -435,13 +463,13 @@ magnétique et collisionnel\footnote{Une récente modification permet de choisir
 une résolution implicite du terme
 d'inertie $\mathbf{u}\cdot\nabla\mathbf{u}$, rendant le code MAGNIS
 full-implicit. Cependant dans ce document, pour des raisons de lisibilité, nous
-le laisserons inclus dans la force $\mathbf F$} :
+le laisserons inclus dans la force $\mathbf F$.} :
 
 \begin{equation}
 \label{3-eqMvtDiscretT}
 \delta\left(\mathbf{u}^{k+1}-\mathbf{u}^{k}\right) + 
-\nu_m\mathbf{u}^{k+1}\pm\omega_{c}\mathbf{b}\times\mathbf{u}^{k+1}=
-\frac{q}{m}\mathbf F
+\nu_m\mathbf{u}^{k+1}+\omega_{c}\mathbf{b}\times\mathbf{u}^{k+1}=
+\mathbf F
 \end{equation}
 
 où $\delta=\alpha_\omega/\Delta t$. En combinant \ref{3-eqMvtDiscretT} et
@@ -450,13 +478,13 @@ terme de Laplace. La vitesse s'exprime alors comme une somme pondérée du
 transport perpendiculaire et du transport croisé :
 \begin{equation}
 \label{3-eqMvtPonderee}
-\mathbf{u}^{k+1}=A\left(\mathbf F + \delta\mathbf{u}^{k}\right)\pm B\mathbf
+\mathbf{u}^{k+1}=A\left(\mathbf F + \delta\mathbf{u}^{k}\right)+ B\mathbf
 b\times\left(\mathbf F + \delta\mathbf{u}^{k}\right)
 \end{equation}
 avec 
 \begin{equation*}
 \label{3-coefficientsVitesses}
-A=\frac{q}{m}\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=-\frac{q}{m}\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
+A=\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=-\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
 \end{equation*}
 
 L'expression ainsi obtenue pour la vitesse
@@ -466,14 +494,15 @@ s'écrire en fonction du changement de potentiel :
 
 \begin{equation}
 \label{3-eqCorrection}
-\mathbf F(\mathbf E^{k+1}) = \mathbf F(\mathbf E^{k})-\nabla
+\mathbf F(\mathbf E^{k+1}) = \mathbf F(\mathbf E^{k})-\frac{q}{m}\nabla
 (\Phi^{k+1}-\Phi^{k})
 \end{equation}
 
-Cette propriété est alors mise à profit pour utiliser une méthode de
+Cette propriété est ensuite mise à profit afin d'utiliser une méthode de
 prédiction-correction pour les vitesses fluides. Celles-ci sont calculées
 explicitement dans une première étape à partir de l'ancien champ électrique,
-puis corrigées par le changement de potentiel $\Theta=\Phi^{k+1}-\Phi^k$ :
+puis corrigées par le changement de potentiel
+$\Theta=q(\Phi^{k+1}-\Phi^k)/m$ :
 
 \begin{equation}
 \label{3-eqCorrectionVitesse}
@@ -482,9 +511,9 @@ puis corrigées par le changement de potentiel $\Theta=\Phi^{k+1}-\Phi^k$ :
 \Theta
 \end{equation}
 
-Pour résoudre la différence de potentiel, on considère ensuite l'équation de
+Pour résoudre la différence de potentiel, on considère l'équation de
 conservation du courant~\eqrefp{eqCourant} dans laquelle on substitue les
-vitesses par leur expression \eqref{3-eqCorrectionVitesse} :
+vitesses par leur expression (données par \eqref{3-eqCorrectionVitesse}) :
 
 \begin{equation}
 \begin{split}
@@ -493,41 +522,149 @@ vitesses par leur expression \eqref{3-eqCorrectionVitesse} :
 \Theta-(\sum_iq_in_iB_i-en_eB_e)\mathbf
 b\times\nabla
 \Theta)\\=(en_e\tilde{\mathbf
-u}_e^{k+1}-\sum_iq_in_i\tilde{\mathbf u}_i^{k+1})
+u}_e^{k+1}-\sum_iq_in_i\tilde{\mathbf u}_i^{k+1})-\mathcal L_{j_\para}
 \end{split}
 \end{equation}
 
 Après cette correction, l'ensemble des vitesses fluides $\mathbf u_\alpha$
 satisfait exactement à la continuité du courant. 
 
-\subsubsection{Maillages croisés et sous-relaxation}
+\subsubsection{Sous-relaxation et maillages croisés}
+L'équation \eqref{3-eqCourantCoefficient}, discrétisée spatialement sur un
+stencil à 9 points, mène à un système linéaire potentiellement mal conditionné
+quand le coefficient $B$ devient supérieur au coefficient $A$, ie. en présence
+d'un fort champ magnétique. Pour nous assurer que $A>B$ en toutes circonstances,
+l'une des solutions est de choisir un pas de temps inférieur à l'inverse de la
+fréquence cyclotronique $\Delta t\leq\omega_{ce}\puissance{-1}$ et
+ainsi résoudre l'intégralité du mouvement électronique. Cependant, du fait de la
+très faible masse des électrons, on peut s'attendre à ce que les termes
+d'inertie ne jouent pas un très grand rôle macroscopiquement et qu'une
+description des fréquences de l'ordre de $\omega_{ce}$ soit inutile.
 
-Quand le transport magnétisé commence à dominer, 
+Il est aussi possible d'augmenter artificiellement la valeur de $A$ en
+remplaçant le facteur $\delta$ par :
 
+\begin{equation*}
+\delta=\max(\alpha_\omega/\Delta t,|\omega_c|)
+\end{equation*}
 
-où $\delta=\alpha_\omega/\Delta t$ prend la place du facteur
-usuel $\Delta t\puissance{-1}$ de la dérivée temporelle. Cette opération, qui
-peut être vue comme une sous-relaxation de la vitesse électronique en présence
-d'un fort champ magnétique, permet  Si $\Delta t\omega_c<$1, il n'y a aucune
-substitution,
+Cette opération, qui n'a objectivement aucun effet pour les
+ions\footnote{Dans des champs magnétiques typiquement de l'ordre de la centaine
+de Gauss, le pas de temps choisit, de l'ordre de 10$^{-8}$s, est toujours bien
+inférieur à l'inverse des fréquences cyclotroniques ioniques.}, permet de
+sous-relaxer la vitesse électronique à l'échelle cyclotronique. En nous assurant
+que celle-ci n'évolue pas trop brutalement, le pas de temps peut alors être
+largement augmenté sans modification significative des solutions\footnote{Cette
+technique semble néanmoins avoir un impact négatif quand la résolution spatiale
+dépasse une certaine échelle, faisant apparaître des structures dont la taille
+peut varier en fonction du maillage... Nous cherchons encore à
+expliquer ce phénomène et à quantifier le seuil de validité de la technique,
+l'augmentation artificielle du terme d'inertie (correspondant à une augmentation
+de la masse électronique) pouvant amener une modification des fréquences
+hybrides qui entrent en jeu dans l'évolution acoustique du plasma.}.
 
+Sur cette sous-relaxation, l'interpolation nécéssaire à l'évaluation du
+membre de droite dans \eqref{3-eqCourantCoefficient} mène inexorablement à l'introduction d'une
+erreur dans l'évolution de la vitesse. Au bout de quelques $\Delta t$, cette
+erreur peut se propager à l'ensemble des points et s'accumuler,
+entraînant de sérieux problèmes de convergence à petit pas de temps. Pour remédier à ce problème, nous
+limitons l'erreur d'interpolation en suivant à la fois la vitesse
+et la vitesse croisée sur tous les points du maillage :
+
+\begin{equation}
+\label{3-eqMvtPonderee}
+\mathbf{u}^{k+1}=A\left(\mathbf F + \delta\mathbf{u}^{k}\right)+ B\left(\mathbf
+b\times\mathbf F +
+\delta\left((1-\beta)\mathbf{u}_\times^{k}+\beta\mathbf
+b\times\mathbf{u}^{k}\right)\right)
+\end{equation}
+\begin{equation}
+\label{3-eqMvtPonderee}
+\mathbf{u}_\times^{k+1}=-B\left(\mathbf F + \delta\mathbf{u}^{k}\right)+
+A\left(\mathbf
+b\times\mathbf F +
+\delta\left((1-\beta)\mathbf{u}_\times^{k}+\beta\mathbf
+b\times\mathbf{u}^{k}\right)\right)
+\end{equation}
+
+Le coefficient $\beta$ est un paramètre donnant un contrôle sur
+l'utilisation de ce maillage secondaire. Quand $\beta$=0, aucune
+interpolation n'est nécéssaire, mais $\mathbf{u}$ et $\mathbf{u}_\times$
+tendent à se désynchroniser et le schéma numérique diverge vite. Il faut en
+fait un minimum d'interpolation $\beta$>0 pour garder les vitesses consistantes entre elles
+(tout en gardant en tête que trop d'interpolation $\beta\rightarrow$1 mène à une
+explosion de l'erreur à petit pas de temps). Un calcul analytique pour estimer
+l'erreur d'interpolation montre qu'un choix approprié pour le paramètre $\beta$
+est :
+
+\begin{equation}
+\label{3-eqMvtPonderee}
+\beta=\left(\frac{\nu^2+\omega_c^2}{(\delta+\nu)^2+\omega_c^2}\right)^{1/2}
+\end{equation}
+
+avec cette valeur, le schéma numérique converge proprement pour n'importe quel
+ordering entre $\nu$, $\omega_c$ et $\delta$.
+
+\subsection{Equations de continuité ioniques}
+Les équations de continuité pour les espèces ioniques sont résolues avec les
+vitesses $\mathbf u_i^{k+1}$, en utilisant au choix un schéma
+Upwind-explicite/implicite ou MUSCL-explicite/implicite :
+
+\begin{equation}
+n_i^{k+1}+\nabla\cdot(n_i^{k/k+1}\mathbf u_i^{k+1})=\mathcal S_i-\mathcal
+L_{i_\para}
+\end{equation}
+
+Les pertes parallèles $L_{i_\para}$ et aux bords du
+domaines sont implicitées afin de s'assurer que la densité ne devienne pas
+négative.
 
 \subsection{Flux de chaleur et équation d'énergie}
 
+Le flux de chaleur porté par les électrons étant sensible au champ magnétique de
+la même façon que le flux de particules, nous adoptons la même méthode que
+précédemment. Le flux de chaleur est tout d'abord prédit en fonction de
+l'ancien gradient de température :
 \begin{equation}
-S_s(T_e)=n^{k+1}n_gk_{s}^{iz}(T_e)
+\label{3-eqChaleurPonderee}
+\tilde{\mathbf{q}}_e^{k+1}=-A_e(
+\frac{5e^2n_eT_e}{2m_e}\nabla T_e^k+\delta q_e^k)-B_e\mathbf
+b\times(\frac{5e^2n_eT_e}{2m_e}\nabla T_e^k +\delta q_e^k)
 \end{equation}
-où $n_g$ est la densité du gaz et $k_{s}^{iz}$ le coefficient d'ionisation spécifique à l'espèce.
-\cite{Hemsworth}
 
-\section{Vérification et validation}
+avec les mêmes coefficients $A_e$ et $B_e$ que pour le flux électronique. On
+corrige ensuite le flux de chaleur en prenant en compte sa réponse au changement
+de température $\mathcal T=(T_e^{k+1}-T_e^k)$ :
 
-\subsection{Etude de convergence en temps et en espace}
+\begin{equation}
+\label{3-eqCorrectionVitesse}
+\mathbf q^{k+1} = \tilde{\mathbf q}^{k+1}-A_\varepsilon\nabla
+\mathcal T-B_\varepsilon\mathbf b\times\nabla
+\mathcal T
+\end{equation}
+
+avec 
+\begin{equation*}
+\label{3-coefficientsChaleur}
+A_\varepsilon=A_e\frac{5e^2n_eT_e}{2m_e}\;\;\;\;\text{et}\;\;\;B_\varepsilon=B_e\frac{5e^2n_eT_e}{2m_e}
+\end{equation*}
+
+L'équation d'énergie est utilisée pour résoudre ce changement de température
+
+\begin{equation}
+\label{3-eqTemperature}
+\left(\frac{3en_e}{2\Delta t}+\frac{5}{2}\mathcal S_ee\right)\mathcal T
++\nabla\cdot\left(A_\varepsilon\nabla\mathcal T+B_\varepsilon\mathbf b\times\nabla\mathcal T\right) + \frac{5}{2}\mathcal{S}_e
+eT_e = eT_e\frac{\text{d}n_e}{\text{dt}}+ {n_e\left(\mathcal{P}_\text{ext}-\Pi\right)}+(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e
+\end{equation}
+
+$\mathcal T=T_e^{k+1}-T_e^{k}$
+\subsection{Etude de convergence en espace}
+
 \subsubsection{Densité}
 \subsubsection{Potentiel}
 \subsubsection{Température}
-\subsection{Influence du champ magnétique}
-\subsection{Réponses à la température}
+
 
 %\bibliographystyle{alpha}
 %\bibliography{biblio}

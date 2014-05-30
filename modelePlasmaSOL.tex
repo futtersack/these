@@ -112,12 +112,12 @@ de Fourier.
 La densité $n$ du plasma est contrôlée par l'équation de continuité des
 électrons. L'effet des collisions coulombiennes est pris en compte à travers un
 terme diffusif de coefficient $D_\perp\sim eT_\text{e}/m_\text{e}\nu_\text{ei}$
-et on note $S$ un terme source modélisant le flux de particules
+et on note $\mathcal{S}$ un terme source modélisant le flux de particules
 provenant du plasma de c\oe{}ur. L'équation de continuité s'écrit :
 
 \begin{equation}
 \label{2-ContinuiteElectrons}
-\partial_t n + \nabla\cdot(n\mathbf{u}) = D_\perp\nabla^2_\perp n + S
+\partial_t n + \nabla\cdot(n\mathbf{u}) = D_\perp\nabla^2_\perp n + \mathcal{S}
 \end{equation}
 
 En décomposant la divergence suivant les directions parallèle et
@@ -129,7 +129,7 @@ peut se développer en :
 \begin{equation}
 \label{2-ContinuiteElectrons2}
 \partial_t n + \nabla_\para(nu_{\para}) =
-\mathbf{u}_E\cdot\nabla_\perp n + D_\perp\nabla^2_\perp n + S
+\mathbf{u}_E\cdot\nabla_\perp n + D_\perp\nabla^2_\perp n + \mathcal{S}
 \end{equation}
 
 Le terme d'advection $\mathbf{u}_E\cdot\nabla_\perp
@@ -144,7 +144,7 @@ s'écrit alors :
 \begin{equation}
 \label{2-eqContinuiteFinale}
 \partial_t n + \nabla_{\para}(nu_{\para}) =
-\frac{1}{B}\left[n,\Phi\right] + D_\perp\nabla^2_\perp n + S
+\frac{1}{B}\left[n,\Phi\right] + D_\perp\nabla^2_\perp n + \mathcal{S}
 \end{equation}
 
 Le terme non-linéaire $[n,\Phi]$ est l'un des éléments moteur du modèle
@@ -285,7 +285,7 @@ d'un côté du plasma. Avec ces expressions, le système d'équations
 \begin{align}
 \label{2-eqContinuiteMoyenne}
 &\partial_t n + \frac{nc_s}{L_\para}e^{\Lambda-e\Delta \Phi/T_e} =
-\frac{1}{B}\left[n,\Phi\right] + D_\perp\nabla^2_\perp n + S\\
+\frac{1}{B}\left[n,\Phi\right] + D_\perp\nabla^2_\perp n + \mathcal{S}\\
 &\partial_\text{t}\Omega - \nu_\perp
 \nabla_\perp^2\Omega+
 \frac{1}{B}\left[\Phi,\Omega\right]=\frac{ec_sB^2}{m_iL_\para}\left(1-e^{\Lambda-e\Delta
@@ -334,7 +334,7 @@ réécrit le système d'équations
 \label{2-eqContinuiteNorm}
 &\partial_t \text{N}
 = \left[\Phi,\text{N}\right] -\sigma \text{N}e^{\Lambda-\Delta\Phi}
- + D\nabla^2 \text{N} + S
+ + D\nabla^2 \text{N} + \mathcal{S}
 \\
 \label{2-eqCourantNorm}
 &\partial_\text{t}\text{W} = 
@@ -380,7 +380,7 @@ simulations sont donnés dans le tableau~\ref{2-TokamParam} :
 Paramètre&&Expression&&Valeur\\
 \midrule 
 $N_x$, $N_y$ && $L_\perp$ && 256\\
-$S$ && - && 10$^{-2}$\\
+$\mathcal{S}$ && - && 10$^{-2}$\\
 $g$ &&
 $(\rho_\text{L}(1+\tau)/R_0)[(1+s)\sin\text{c}(\Delta\theta)
 -s\cos(\Delta\theta)]$ && 5.10$^{-4}$\\
@@ -587,7 +587,7 @@ et l'influence de la température électronique.
 \label{2-eqContinuiteMag}
 &\partial_t \text{N}
 = - \nabla\cdot\left(\text{N}\mathbf U_\text{E}\right) -\sigma
-\text{N}e^{\Lambda-\Delta\Phi} + D\nabla^2 \text{N} + S
+\text{N}e^{\Lambda-\Delta\Phi} + D\nabla^2 \text{N} + \mathcal{S}
 \\
 \label{2-eqCourantMag}
 &\partial_\text{t}\text{W} = 
@@ -663,13 +663,13 @@ barrière.
 	\label{2-eqTempBase}
 		\frac{3}{2}\partial_t \text{P}_e +
 		\frac{3}{2}\nabla\cdot\left(\text{P}_e\mathbf{U}+\mathbf{Q}\right) +
-		\text{P}_e\nabla\cdot\mathbf{U}=\text{S}_{\text{T}_e} +
+		\text{P}_e\nabla\cdot\mathbf{U}=\mathcal{S}_{\text{T}_e} +
 		\mathbf{\Pi}:\nabla \mathbf U
 	\end{equation}
 	
 	avec $\text{P}_e=\text{NT}_e$ la pression électronique, $\mathbf{Q}$ le
-	flux de chaleur et $\text{S}_{\text{T}_e}$ un terme source d'énergie cohérent
-	avec le flux entrant de particules. 
+	flux de chaleur et $\mathcal{S}_{\text{T}_e}$ un terme source d'énergie
+	cohérent avec le flux entrant de particules. 
 	
 	Pour simplifier l'équation~\ref{2-eqTempBase}, la vitesse
 	fluide dans les divergences est prise égale à la vitesse de dérive électrique $\mathbf
@@ -692,7 +692,7 @@ afin contrôler l'amplitude des flux diffusifs dans la direction perpendiculaire
 \partial_t \text{N}
 =& - \nabla\cdot\left(\text{N}\mathbf U_\text{E}\right) -\sigma
 \text{N}\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e} + D\nabla^2 \text{N}
-+ S
++ \mathcal{S}
 \\[0.5cm]
 \label{2-eqCourantTemp}
 \begin{split}
@@ -710,7 +710,7 @@ U_{\nabla\text{B}}\right)/\text{N} +\nu\nabla^2\text{W}
 +\gamma\sigma\text{P}_e\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e}\\
 &-2/3\text{P}_e\nabla\cdot\mathbf U_\text{E}
 +\chi\nabla^2\text{P}_e
-+2/3\text{S}_{\text{T}_e}
++2/3\mathcal{S}_{\text{T}_e}
 \end{split}
 \end{align}
 
