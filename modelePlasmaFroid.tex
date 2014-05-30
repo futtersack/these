@@ -130,14 +130,15 @@ l'expression de l'énergie dirigée $\mathcal{U}_e=m_eu_e^2$ :
 \label{3-eqTemperature}
 \frac{3}{2}en_e\frac{\text{d}T_e}{\text{dt}}+\nabla\cdot\mathbf
 q_e + \frac{5}{2}\mathcal{S}_e eT_e = eT_e\frac{\text{d}n_e}{\text{dt}}+ 
-{n_e\left(\mathcal{P}_\text{ext}-\Pi\right)}+(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e
+{en_e\left(\mathcal{P}_\text{ext}-\Pi\right)}+(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e
 \end{equation}
 
 où $T_e$ est la température électronique exprimée en eV, $\text{d/dt}$
 représente la dérivée totale, $\mathcal{S}_e$ est le terme source d'électrons
 lié à l'ionisation, $\mathcal{P}_\text{ext}$ la puissance extérieure déposée
-dans le plasma et $\Pi$ le terme de perte d'énergie dûe aux collisions. Le chauffage
-ohmique n'apparaît plus explicitement en fonction du champ électrique mais est
+dans le plasma et $\Pi$ le terme de perte d'énergie dûe aux collisions, tous
+deux exprimés en eV.s$\puissance{-1}$.
+Le chauffage ohmique n'apparaît plus explicitement en fonction du champ électrique mais est
 inclus dans le terme $(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e$ qui peut être vu
 comme une production de chaleur conséquente au travail de la force de traînée générée par
 les collisions (voir \S~\ref{Introduction}-\ref{1-ConservationEnergie}).
@@ -287,21 +288,20 @@ de la gaine et la densité moyenne calculée le long des lignes de champ
 (typiquement $a\approx$0.7-0.9).
 Après cette opération de fermeture, le système d'équation peut se réécrire en
 fonction des variables moyennées ($\bar{n}_\alpha$, $\bar{\mathbf
-u}_\alpha$,$\bar{T}_e$\ldots) :
+u}_\alpha$,$\bar{T}_e$,\ldots) :
 
 \begin{align}
 \label{3-equations2D1}
 \partial_t \bar{n}_\alpha& +
-\nabla_\perp\cdot\left(\bar{n}_\alpha\bar{\mathbf{u}}_{\alpha_\perp}\right)=\mathcal{S}_\alpha
+\nabla_\perp\cdot\left(\bar{n}_\alpha\bar{\mathbf{u}}_{\alpha_\perp}\right)=\bar{\mathcal{S}}_\alpha
 - \mathcal{L}_{\alpha_\para}\\[0.5cm]
 \nabla_\perp\cdot&(\sum_ie\bar{n}_i\bar{\mathbf{u}}_{i_\perp}
 -e\bar{n}_e\bar{\mathbf{u}}_{e_\perp})= - \mathcal{L}_{j_\para}\\[0.5cm]
-\begin{split}\frac{3}{2}\bar{n}_e&\partial_t\bar{T}_e +
-\nabla_\perp\cdot(\bar{\mathbf{q}}_{e_\perp}) +
-(\frac{5}{2}\mathcal{S}_e-\partial_t\bar{n}_e)\bar{T}_e =\\
-&\bar{n}_e\bar{\mathbf{u}}_{e_\perp}\cdot(\nabla_\perp
-\bar{\Phi}-\frac{5}{2}\nabla_\perp
-\bar{T}_e)+\bar{n}_e(\mathcal{P}_\text{ext}-\Pi)-\mathcal{L}_{\varepsilon_\para}
+\begin{split}\frac{3}{2}e\bar{n}_e&\frac{\text{d}\bar{T}_e}{\text{d}t} +
+(\frac{5}{2}\bar{\mathcal{S}}_e
+-\frac{\text{d}\bar{n}_e}{\text{d}t})e\bar{T}_e+\nabla_\perp\cdot(\bar{\mathbf{q}}_{e_\perp})\\
+&=e\bar{n}_e(\bar{\mathcal{P}}_\text{ext}-\bar{\Pi})-\mathcal{L}_{\varepsilon_\para}
++(2\bar{n}_e\n\bar{u}_e+\bar{\mathcal{S}}_e)\bar{\mathcal{U}}_e
 \label{3-equations2D2}
 \end{split}
 \end{align}
@@ -378,12 +378,11 @@ rendant la convergence particulièremant rapide sur un maillage 2D.
 
 \subsection{Fréquences, termes sources et conditions parallèles}
 Avant de résoudre à proprement dit les équations du modèle, MAGNIS
-calcule l'ensemble des fréquences : la fréquence de
-collision électrons-neutres $\nu_{en}$, ions-neutres $\nu_{in}$ et d'ionisation
-$\nu_\text{iz}$. En présence de plusieurs espèces, la fréquence effective, résultat de toutes les
-interactions, s'écrit :
+calcule l'ensemble des fréquences. En présence de plusieurs espèces, la
+fréquence effective, résultat de toutes les interactions, s'écrit :
+
 \begin{equation*}
-\nu_{\alpha s}=n_\alpha\sum_{s\neq\alpha} \frac{m_s}{m_\alpha+m_s}
+\nu_{\alpha}=n_\alpha\sum_{s\neq\alpha} \frac{m_s}{m_\alpha+m_s}
 n_sk^m_{\alpha s}
 \end{equation*}
 
@@ -394,9 +393,12 @@ particules en collision, sont lus dans des tables en fonction de l'énergie des
 particules.
 Les valeurs des sections efficaces et des coefficients contenus dans ces tables
 sont issues de LXCAT~\parencite{LXCAT}, calculées par des expériences de
-swarm~\parencite{Phelps} ou en résolvant directement l'équation de
-Bolzmann\parencite{Bolsig}. Un grand
+swarm~\parencite{Phelps} ou encore obtenues en résolvant directement l'équation
+de Boltzmann~\parencite{Bolsig}. Un grand
 nombre de réactions chimiques peuvent éventuellement être prises en compte.
+Dans le cas d'un plasma n'étant constitué que d'une seule espèce, l'ensemble
+de fréquences se réduit à la fréquence de collision électrons-neutres
+$\nu_{en}$, ions-neutres $\nu_{in}$ et d'ionisation $\nu_\text{iz}$.
 
 Le terme source de particule est calculé en fonction de la fréquence
 d'ionisation :
@@ -418,12 +420,12 @@ influence :
 \mathcal L^{k+1}=\mathcal L^{k}+\frac{d\mathcal L^{k}}{d\mathcal Q}(\mathcal
 Q^{k+1}-\mathcal Q^k) \end{equation*}
 Originalement mise en \oe vre dans les travaux de
-Hagelaar~\parencite{Hagelaar}, nous utilisons cette technique pour quelques
+Hagelaar~\parencite{HagelaarImpl}, nous utilisons cette technique pour quelques
 termes du modèle.} :
 \begin{equation*}
-n_e\Pi(T_e^{k+1})=n_e\left(\Pi(T_e^{k})+\frac{\partial\Pi}{\partial
-T_e}\left(T_e^{k+1}-T_e^{k}\right)\right)= n_en_g\left(
-\frac{\partial k_{\varepsilon}}{\partial T_e}T_e^{k+1}+k_{\varepsilon}\right)
+en_e\Pi(T_e^{k+1})=en_e\left(\Pi(T_e^{k})+\frac{\partial\Pi}{\partial
+T_e}\left(T_e^{k+1}-T_e^{k}\right)\right)= en_en_g\left(k_{\varepsilon}+
+\frac{\partial k_{\varepsilon}}{\partial T_e}(T_e^{k+1}-T_e^{k})\right)
 \end{equation*}
 
 avec $k_\varepsilon$ un coefficient de transfert d'énergie (sommé sur 
@@ -432,7 +434,7 @@ l'ensemble des processus de collision).
 Enfin, les vitesses des particules au niveau des parois sont calculées en
 fonction de leur nature isolante, conductrice ou polarisée (les expressions
 sont données dans \ref{3-vitessesBord}) puis prisent en compte implicitement
-dans les équations de continuités.
+dans les équations de continuité.
 
 \subsection{Expression des vitesses et conservation du courant}
 L'un des points clés du modèle tient à la méthode de résolution de l'équation du
@@ -634,36 +636,105 @@ b\times(\frac{5e^2n_eT_e}{2m_e}\nabla T_e^k +\delta q_e^k)
 
 avec les mêmes coefficients $A_e$ et $B_e$ que pour le flux électronique. On
 corrige ensuite le flux de chaleur en prenant en compte sa réponse au changement
-de température $\mathcal T=(T_e^{k+1}-T_e^k)$ :
+de température $\mathcal T=e(T_e^{k+1}-T_e^k)$ :
 
 \begin{equation}
 \label{3-eqCorrectionVitesse}
 \mathbf q^{k+1} = \tilde{\mathbf q}^{k+1}-A_\varepsilon\nabla
-\mathcal T-B_\varepsilon\mathbf b\times\nabla
+\mathcal T+B_\varepsilon\mathbf b\times\nabla
 \mathcal T
 \end{equation}
 
 avec 
 \begin{equation*}
 \label{3-coefficientsChaleur}
-A_\varepsilon=A_e\frac{5e^2n_eT_e}{2m_e}\;\;\;\;\text{et}\;\;\;B_\varepsilon=B_e\frac{5e^2n_eT_e}{2m_e}
+A_\varepsilon=A_e\frac{5en_eT_e}{2m_e}\;\;\;\;\text{et}\;\;\;B_\varepsilon=B_e\frac{5en_eT_e}{2m_e}
 \end{equation*}
 
-L'équation d'énergie est utilisée pour résoudre ce changement de température
+L'équation d'énergie \eqref{3-eqTemperature} est utilisée pour résoudre le
+changement de température $\mathcal T$. 
 
 \begin{equation}
-\label{3-eqTemperature}
-\left(\frac{3en_e}{2\Delta t}+\frac{5}{2}\mathcal S_ee\right)\mathcal T
-+\nabla\cdot\left(A_\varepsilon\nabla\mathcal T+B_\varepsilon\mathbf b\times\nabla\mathcal T\right) + \frac{5}{2}\mathcal{S}_e
-eT_e = eT_e\frac{\text{d}n_e}{\text{dt}}+ {n_e\left(\mathcal{P}_\text{ext}-\Pi\right)}+(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e
+\label{3-eqTemperature2}
+\begin{split}
+\left(\frac{3n_e}{2\Delta
+t}+n_e\frac{\partial\Pi}{\partial T_e}+\max(C,0)\right)\mathcal T
+-\nabla\cdot\left(A_\varepsilon\nabla\mathcal T- B_\varepsilon\mathbf
+b\times\nabla\mathcal T\right)\\ =  C eT_e^k -\nabla\tilde{\mathbf q}_e^{k+1}+
+en_e(\mathcal{P}_\text{ext}-\Pi)-\mathcal L_{\varepsilon_\para}
+\end{split}\end{equation}
+
+avec 
+
+\begin{equation*}C=-\frac{5}{2}\mathcal S_e-\frac{3}{2}n_e\mathbf
+u_e\frac{\nabla
+T_e^k}{T_e^k}+(2n_e\nu_e+\mathcal{S}_e)\frac{\mathcal{U}_e}{eT_e^k} +\frac{\text{d} n_e}{\text{d} t}
+\end{equation*}
+
+Le coefficient $C$ contient les termes qui peuvent apporter une contribution
+négative dans l'équation d'énergie. Si l'un des
+termes de $C$ est positif, nous le décomposons suivant une itération de
+Newton en le supposant proportionnel à $T_e$. Le terme est alors comptabilisé
+implicitement, stabilisant et accélérant la convergence du schéma
+\parencite{HagelaarImpl} :
+
+\begin{equation*}
+	C<0\rightarrow C^{k+1}=C^{k}+\frac{\partial C^k/T_e\,T_e}{\partial
+	T_e}(T_e^{k+1}-T_e^k)=C^{k}+ C^k/T_e^k\mathcal T
+\end{equation*}
+
+\subsection{Etude de convergence sur maillage} 
+Afin de vérifier le schéma numérique de MAGNIS, nous réalisons dans ce
+paragraphe une étude de convergence sur maillage. 
+
+Le cas de test correspond à une configuration magnétique complexe de type filtre
+dans un plasma d'argon avec des parois conductrices. L'intensité du
+champ magnétique est choisie suffisament importante $B$=250 G pour
+tester le modèle dans une situation assez défavorable. La pression est prise à 100 mTorr
+pour supprimer les phénomènes non stationnaires qui apparaissent à basse
+pression et qui rendent impossible cette étude.
+
+La figure~\ref{3-convergence} montre l'erreur relative calculée pour la densité
+totale du plasma à l'état stationnaire. On voit que l'erreur décroît comme le carré
+de l'inverse du nombre de maille, donnant un ordre 2 pour la convergence du
+schéma de MAGNIS.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=70mm]{figures/3-convergence.eps}
+{\caption{Erreur relative des solutions calculées en fonction de l'échelle du
+maillage h=1/\#points.}
+\label{3-convergence}}
+\end{figure}
+
+A partir d'un maillage grossier de taille 16x16, nous construisons une série de
+maillages rafinés d'un facteur 2 dans chaque
+direction par rapport à leur prédécesseur, la grille la
+plus fine de cette étude étant de taille 512x512. Comme nous n'avons pas de
+solution analytique au cas de test, nous utilisons l'extrapolation de
+Richardson comme solution de référence~\parencite{Roache} :
+
+\begin{equation}
+f_{h=0}=\frac{4}{3}f_{1}-\frac{1}{3}f_2
 \end{equation}
 
-$\mathcal T=T_e^{k+1}-T_e^{k}$
-\subsection{Etude de convergence en espace}
+$f_{1}$ et $f_2$ étant les solutions calculées sur les maillages les plus fins,
+ie. respectivement sur 512 et 256 points de maillages. Avec cette solution,
+l'erreur relative (mesurée suivant la norme L1) correpondant à un maillage
+d'échelle $h$ ($h$ est égal à l'inverse du nombre de points) s'écrit :
 
-\subsubsection{Densité}
-\subsubsection{Potentiel}
-\subsubsection{Température}
+\begin{equation}
+\epsilon\,(\text{\%})=\frac{|f_h-f_{h=0}|}{f_{h=0}}
+\end{equation}
+
+Bien que d'autres
+vérifications comme la convergence temporelle, la méthode des solutions manufacturées, ou
+une étude des taux de croissance des modes du système n'aient pas été
+entreprises, celles-ci seront les bienvenues pour tester davantage les
+solutions calculées par MAGNIS. La validation du code est quant à elle réalisée
+dans le chapitre suivant, à travers trois études de cas simplifiées
+représentatives d'expérimentations réelles.
+
 
 
 %\bibliographystyle{alpha}
