@@ -3,35 +3,34 @@
 \begin{refsection}
 
 \section{Fondamentaux et échelles caractéristiques}
-\subsection{Les plasmas}. 
+\subsection{Les plasmas}
 L'état de plasma est souvent considéré un peu équivoquement comme
 un quatrième état de la matière. En réalité, une définition plus correcte serait
-celle d'un état gazeux partiellement ou totalement ionisé, ie. possédant une
-population d'électrons et d'ions, possiblement de différentes espèces. Ces populations de
-charges libres, qui sont sensibles aux forces
+celle d'un état gazeux partiellement ou totalement ionisé, c'est à dire
+possédant une population d'électrons et d'ions, possiblement de différentes
+espèces. Ces populations de charges libres, qui sont sensibles aux forces
 électromagnétiques, permettent alors le transport de courant et influencent
-fortement le comportement global du plasma, provoquant l'apparitions de
+fortement le comportement global du plasma, provoquant l'apparition de
 phénomènes collectifs et souvent non-linéaires.
 
 Historiquement, nous avons pris conscience de l'existence des plasmas à travers
 les phénomènes de flammes, d'éclairs et d'aurores boréales, mais à des
 conditions de pression et de température différentes de celles de l'atmosphère
 terrestre, ils sont omniprésents : dans l'espace intergalactique et
-intersidéral, dans le vent solaire et les étoiles, 99\% de la matière connue
-est sous cette forme.
+intersidéral, dans le vent solaire et les étoiles, 99\% de la matière est connue
+sous cette forme.
 
 De nos jours, l'homme créé artificiellement des plasmas pour de nombreuses
-applications : des dispositifs d'affichage et d'éclairage au traitement et à la
-gravure de matériaux, de la propulsion spatiale jusqu'à la fusion
-thermonucléaire contrôlée, sont autant d'exemples pour lequels la maîtrise des plasmas est essentielle.
+applications : les dispositifs d'affichage et d'éclairage, le traitement et la
+gravure de matériaux, la propulsion spatiale ou encore la fusion
+thermonucléaire contrôlée, sont autant d'exemples pour lesquels la maîtrise des
+plasmas est essentielle.
 
-L'étude du comportement des plasmas est une problématique au c\oe ur de
-projets de recherche ambitieux tels que la fusion thermonucléaire contrôlée. 
-Le plasma et son comportement sont décrits par la théorie de la physique des
-plasmas. Elle intègre les connaissances de nombreux domaines, tels que la
+Le comportement des plasmas est décrit par la théorie de la physique des
+plasmas qui intègre les connaissances de nombreux domaines, tels que la
 physique statistique, l'électromagnétisme, ou encore la dynamique des fluides.
-Ce premier chapitre rappelle les bases théoriques nécéssaires à la compréhension
-des travaux présentés dans ce manuscrit
+Le premier chapitre rappelle quelques bases théoriques sur cette physique,
+nécessaires à la compréhension des travaux présentés et à l'autosuffisance du manuscrit.
 
 \subsection{Les paramètres plasmas}
 Les plasmas se présentent donc comme des gaz dont le comportement est influencé
@@ -50,12 +49,11 @@ La population électronique permet de définir deux paramètres principaux :
 	eT_{e}=m_{e} v_{\text{T}{e}}\puissance{2}
 \end{equation}
 
-où $m_{e}$ est la masse de l'électron, et $e$ la charge élémentaire. Pour un
-électron possédant une énergie de \unit{1}{\electronvolt}, la vitesse thermique
-$v_{\text{T}{e}}$ est de l'ordre de 4.10$^5$~m/s.
-Du fait de la différence de masse, cette vitesse est bien inférieure pour les
-ions, qui, à même énergie, auront une vitesse thermique d'environ
-10$^3 $~m/s.
+où $m_{e}$ est la masse de l'électron, et $e$ la charge élémentaire. Pour un électron possédant une énergie de
+\unit{1}{\electronvolt}, la vitesse thermique $v_{\text{T}{e}}$ est de l'ordre
+de 4.10$^5$~m/s. A même énergie, du fait de la différence de masse, cette vitesse est bien
+inférieure pour les ions (quand les concepts de température et de
+vitesse thermique a un sens) et vaut environ 10$^3 $~m/s :
 
 \begin{equation}
 	v_{\text{T}{i}}\sim\left(m_{e}/m_{i}\right)^{\text{\textonehalf}}
@@ -97,7 +95,7 @@ les caractéristiques et la dynamique du plasma.
 
 L'ionisation du gaz suit l'évolution de la température électronique $T_{e}$
 qui mesure l'agitation thermique des électrons. Densité et température
-électroniques permettent de définir le paramètre plasma:
+électroniques permettent de définir le paramètre de couplage $\Xi$ :
 
 \begin{equation}
 \label{1-paramPlasma}
@@ -111,8 +109,9 @@ l'agitation thermique désordonnée contre les forces d'interactions
 coulombiennes structurantes.
 
 Les plasmas classiques (ou cinétiques) sont caractérisés par
-$\Xi\ll 1$. Ils ont une population d'électrons assez espacée et/ou une
-température suffisamment élevée.
+$\Xi\ll$ 1. Ils ont une population d'électrons assez espacée et/ou une
+température suffisamment élevée. Quand $\Xi\geq$1, la physique est totalement
+différente, et le plasma est dit fortement couplé.
 
 \subsection{Quasineutralité et phénomène d'écrantage}
 La dynamique d'un plasma résulte du couplage entre le mouvement des
@@ -126,9 +125,19 @@ v_\alpha\times\mathbf B)
 \end{equation}
 
 l'indice $\alpha$ dénotant le type de la particule chargée, $m_\alpha$
-et $q_\alpha$ sa masse et sa charge, $\mathbf v_\alpha$ sa vitesse et $(\mathbf
-E,\mathbf B)$ le champ électromagnétique.
-Elle se décompose principalement sur deux échelles de temps :
+et $q_\alpha$ sa masse et sa charge, $\mathbf v_\alpha$ sa vitesse. Le champ
+électromagnétique $(\mathbf E,\mathbf B)$ peut généralement se décomposer en
+deux parties :
+un champ extérieur, souvent imposé par l'homme pour
+contrôler le plasma, et un champ autocohérent, créé par le plasma lui même en
+réponse à la séparation et au déplacement des charges (équation de
+Maxwell-Gauss et Maxwell-Ampère).
+Le champ magnétique généré par les courants du plasma étant
+habituellement bien moins intense que le champ appliqué, il est commun de
+ne considérer que ce dernier pour étudier le comportement du plasma.
+
+Elle se décompose principalement sur deux
+échelles de temps :
 la première phase correspond à l'équilibre électrostatique, où une
 quasineutralité s'établit au sein du plasma. Dans une deuxième phase, l'évolution quasineutre du
 plasma, plus lente, tend à former un équilibre entre le déplacement des particules et la valeur locale
@@ -581,7 +590,7 @@ d'équilibre autour de laquelle le potentiel s'ajuste constamment pour
 \begin{minipage}{0.9\textwidth}flux d'énergie et de chaleur\ldots?
 \end{minipage}}
 \subsubsection{Gaine dans les plasmas multi-espèces}
-Le critère de Bohm pour un plasma multi-espèce a été dérivé par Riemann
+Le critère de Bohm pour un plasma multi-espèces a été dérivé par Riemann
 \parencite{Riemann95}, il prend la forme :
 
 \begin{equation}
@@ -685,7 +694,7 @@ difficile à résoudre du fait de la complexité de l'opérateur de collisions
 $C[f]$. Les méthodes utilisées pour la résoudre nécessitent de nombreuses
 approximations sur la fonction de distribution\parencite{HagelaarHDR}. Pour
 réduire le problème, l'équation peut être intégrée dans l'espace des vitesses
-en ne gardant que les dimensions statiales et temporelle du système : c'est
+en ne gardant que les dimensions spatiales et temporelle du système : c'est
 l'approche fluide.
 
 \subsection{Les quantités fluides}
@@ -786,8 +795,8 @@ fluide et $\mathcal{S}_\alpha$ un terme source se mesurant en nombre de
 particules par unité de temps et de volume. Dans les plasmas froids, ce terme source est issu
 de l'intégration du terme de collisions et rend compte du nombre de particules
 créées ou perdues lors de collisions inélastiques. Il est constitué
-par l'ensemble des intéractions collisionnelles et chimiques :
-$$\mathcal{S}_\alpha=\sum_s N_s n_{\alpha}n_{s}k_{\alpha s}$$ où $s$ denote les
+par l'ensemble des interactions collisionnelles et chimiques :
+$$\mathcal{S}_\alpha=\sum_s N_s n_{\alpha}n_{s}k_{\alpha s}$$ où $s$ dénote les
 autres espèces présentes dans le plasma, $N$ est le nombre de particules créées lors
 d'une collision (négatif en cas de destruction), $n_i$ la densité de l'espèce en collision et $k_{\alpha s}=\left<\sigma_{\alpha s}
 v_r\right>$ le coefficient de collision/réaction
@@ -834,7 +843,7 @@ dominantes, $\mathbf{R_\alpha}$ s'exprime à travers la fermeture de
 Braginsky en fonction du courant $\mathbf
 j=en\left(\mathbf u_i-\mathbf u_e\right)$ et du gradient de température
 électronique $\nabla T_e$~\parencite{Braginsky}. Dans le cadre des plasmas
-froids, c'est les collisions avec le gaz au repos qui sont dominantes. La force termique peut être
+froids, c'est les collisions avec le gaz au repos qui sont dominantes. La force thermique peut être
 négligée et le terme de friction se réécrit de façon macroscopique :
 \begin{equation}
 \label{1-forceFriction}
@@ -843,7 +852,7 @@ u)}}=m_\alpha n_\alpha\mathbf u_\alpha\sum_{s\neq\alpha}\frac{m_s}{m_\alpha+m_s}
 n_sk^m_{\alpha s} = m_\alpha n_\alpha \nu_\alpha \mathbf u_\alpha
 \end{equation}
 où $k^m_{\alpha s}=\left<\sigma^m_{\alpha s}v_r\right>$ est un coefficient
-efficace de transfert de quantité de mouvement. En remplacant les expressions du
+efficace de transfert de quantité de mouvement. En remplaçant les expressions du
 tenseur de pression (\eqref{1-tenseurPression}) et du terme de friction (\eqref{1-forceFriction}) dans
 \eqref{1-eqQuantiteMouvement} et en la combinant avec l'équation de continuité
 (\eqref{1-eqContinuite}), on obtient l'équation du mouvement qui contrôle
@@ -961,7 +970,7 @@ eT_\alpha\frac{\text{d}n_\alpha}{\text{dt}}+
 \end{equation}
 
 Dans notre étude des plasmas froids magnétisés, la température ionique $T_i$
-est très proche de celle des neutres et il n'est pas nécéssaire de décrire
+est très proche de celle des neutres et il n'est pas nécessaire de décrire
 son évolution. $T_e$ en revanche joue un rôle primordial dans le comportement
 du plasma car directement responsable de l'ionisation du gaz et donc du
 transport collisionnel généré. Comme le flux de chaleur électronique est très
@@ -975,7 +984,7 @@ Les équations \eqref{1-eqEnergieInterne}-\eqref{1-eqTemperature2} font
 intervenir des moments d'ordre trois, les composantes du vecteur de flux de
 chaleur $\mathbf q_\alpha$ dont les expressions sont assez similaires et se
 dérivent de la même façon que celles du flux de particules. Quand les électrons
-sont suffisement collisionnels et que l'énergie dirigée est inférieure à
+sont suffisamment collisionnels et que l'énergie dirigée est inférieure à
 l'énergie chaotique ($m_eu_e^2/2\ll T_e$), l'équation pour le flux de chaleur
 électronique prend la forme~\parencite{Golant} :
 
