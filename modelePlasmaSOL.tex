@@ -37,40 +37,49 @@ dans la direction perpendiculaire au champ magnétique.
 
 \sectionmark{Le code TOKAM2D}
 La première année de cette thèse a consisté à utiliser et modifier le
-code {TOKAM2D}. Le but était alors de se familiariser avec les
-techniques développées pour la modélisation des plasmas
-de SOL et les mécanismes du transport magnétisé afin
+code {TOKAM2D}. Le but était alors de se familiariser avec les mécanismes du
+transport magnétisé et les techniques développées pour la modélisation des
+plasmas de Scrape-Off-Layer (SOL) afin
 de pouvoir les appliquer au problème des sources d'ions. 
 
 Le code TOKAM2D est un code fluide, quasineutre, qui décrit le transport
 transverse en se basant sur l'approximation des vitesses de dérive (voir
-\S~\ref{Introduction}-\ref{vitessesDerive}). Initialement développé à
-l'Institut Méditerranéen Technologique de Marseille (IMTM) pour étudier la
-turbulence d'interchange, sa modification pour intégrer un forçage de la
-turbulence par un flux au lieu d'un gradient d'équilibre a permis de retrouver
-le caractère intermittent du transport et la longueur de décroissance du profil
-de densité que l'on mesurait expérimentalement~\cite{SarazinPhD}. L'étude du
-modèle a ainsi permis d'améliorer la compréhension du mécanisme de
-l'instabilité d'interchange, par la mise en évidence du transport turbulent de
-type avalanche. Il a aussi aidé à prouver le déclenchement à seuil de l'instabilité.
+\S~\ref{ApproximationsEqMvt}-\ref{vitessesDerive}). Il fut initialement
+développé à l'Institut Méditerranéen Technologique de Marseille (IMTM) pour
+étudier la turbulence générée par l'instabilité d'interchange resultante de
+l'interaction entre le gradient de pression et la courbure du champ
+magnétique~\parencite{Garbet}. C'est l'un des premiers codes à avoir opté pour
+un forçage de la turbulence par un flux au lieu d'un gradient d'équilibre et
+ainsi de lever et de remettre en question l'hypothèse de séparabilité
+des échelles entre l'équilibre et les fluctuations qui était utilisée auparavant.
+
+Le code TOKAM2D a permis retrouver le caractère extrêmement intermittent du
+transport dans la SOL et la longueur de décroissance du profil de densité que l'on
+mesurait expérimentalement~\cite{SarazinPhD}. L'étude du modèle a ainsi permis
+d'améliorer la compréhension du mécanisme de l'instabilité d'interchange,
+notamment par la mise en évidence d'un transport turbulent de type avalanche
+(structure auto-organisées de densité se propageant radialement sur de longues
+distances) et l'analyse du déclenchement à seuil de l'instabilité.
 
 \subsection{Hypothèses du modèle}
-Dans les conditions typiques de la SOL, l'utilisation d'un modèle fluide est
-justifiée par la forte collisionnalité du plasma. Le libre parcours moyen
-$\lambda_\alpha=v_T \nu_{ei}$, de l'ordre du mètre, est très inférieur à la
-longueur de connexion parallèle des lignes de champ $L_\para\sim
-$~100m.
+Dans les conditions typiques de la SOL ($n_e\sim\,$10$^{19}$~m$^{-3}$,
+$T_e\sim\,$70~eV), l'utilisation d'un modèle fluide est justifiée par la forte
+collisionnalité du plasma : pour les ions, le libre parcours moyen
+$\lambda_i=v_{\text{T}{i}} \nu_{ei}$, de l'ordre du mètre, est très
+inférieur à la longueur de connexion parallèle des lignes de champ
+$L_\para\sim\,$100~m.
 
-Le plasma est de plus très magnétisé $B\sim$~1T, les fréquences
+Le plasma est de plus très magnétisé $B\sim\,$1~T, les fréquences
 caractéristiques du transport transverse sont donc suffisamment lentes devant la
 fréquence cyclotronique ionique pour nous placer dans le cadre de
 l'approche par vitesses de dérive :
 
 \begin{equation}
-\omega\ll\omega_c\Leftrightarrow \varepsilon_\omega\equiv\frac{\omega}{\omega_c}\ll 1
+\omega\ll\omega_{ci}\Leftrightarrow
+\varepsilon_\omega\equiv\frac{\omega}{\omega_{ci}}\ll 1
 \end{equation}
 
-D'un autre côté $\rho\indice{i}$, le rayon de Larmor ionique, d'environ
+D'un autre côté $\rho\indice{Li}$, le rayon de Larmor ionique, d'environ
 1mm, est bien supérieur à la longueur de
 Debye $\lambda_D$, de l'ordre de 10$^{-5}$~m, ce qui autorise à
 considérer le plasma quasineutre dans son ensemble, avec des densités ionique
@@ -81,26 +90,55 @@ de continuité des électrons ainsi que l'équation de conservation du courant. 
 températures électronique
 $T_e$ et ionique $T_i$ sont supposées constantes, avec un rapport $\tau=T_i/T_e$.
 
+Enfin, le problème est réduit de trois à deux dimensions sur la base de l'hypothèse
+flûte, qui suppose une propagation instantanée des fluctuations le long des
+lignes de champ : les conditions aux limites parallèles, dérivées du critère de
+Bohm, deviennent des termes sources après l'intégration des équations le long
+des lignes de champ magnétique.
+
 \begin{figure}[!htbp]
 \centering
-    \includegraphics[width=0.8\textwidth]{figures/2-tokamSimDomain.png}
+    \includegraphics[width=0.9\textwidth]{figures/2-tokamSimDomain.png}
     \caption{La région simulée est située à la frontière du plasma confiné,
     au niveau de la séparatrice, et dans le plan poloïdal médian.}
     \label{2-figTokamGeom}
 \end{figure}
 
-L'hypothèse flûte, qui sera développée \S~\ref{Introduction}-\ref{2-flute},
-permet enfin de réduire le problème de trois à deux dimensions.
-La figure~\ref{2-figTokamGeom} montre la zone simulée. La SOL est représentée
-en géométrie slab, ie. avec $x\equiv(r-a)/\rho_\text{L}$ et $y\equiv
-a\theta/\rho_\text{L}$ les coordonnées transverses, normalisées par le rayon
-de Larmor ionique. La séparatrice est modélisée par un flux entrant de particules,
-qui sépare la zone simulée en deux régions :
+La figure~\ref{2-figTokamGeom} montre la zone simulée. La SOL est représentée dans le plan
+poloïdal (perpendiculaire à la direction toroïdale)
+en géométrie slab\footnote{Dans cette approche simplifiée, l'enroulement des
+lignes de champ autour des surfaces magnétiques est supposé suffisamment
+faible pour que l'on puisse assimiler la direction parallèle ($z$) à la
+direction toroïdale. Dans ces conditions, le gradient transverse d'une
+grandeur $f$ par rapport à l'angle poloïdal $\theta$ peut être approximé avec
+les coordonnées normalisées par la dérivée $\partial_y$ en supposant $r\approx
+a$ :
+$$\frac{\rho_{Li}}{r}\partial_\theta f(x,y)\approx\partial_y
+f(x,y)$$
+ce qui constitue l'approximation slab. Ces
+coordonnées n'intègrent donc pas les effets de courbure géométrique.}, ie.
+avec $x\equiv(r-a)/\rho_{Li}$ et $y\equiv a\theta/\rho_{Li}$ les coordonnées
+transverses au champ magnétique
+(cf.~\S\ref{ApproximationsEqMvt}-\ref{1-vitessesDerive}), normalisées par le rayon de Larmor ionique.
+
+La séparatrice est modélisée par un terme source entrant de particules, de profil gaussien :
+
+\begin{equation}
+\mathcal S=\mathcal{S}_0 \exp[(x-x_\mathcal{S})^2/l_\mathcal{S}^2]
+\end{equation}
+
+Le terme source sépare la zone
+simulée en deux régions :
 
 \begin{itemize}
-  \item une région stable, ie. où la courbure magnétique est favorable, à gauche
-  de la source
-  \item une région sujette à l'instabilité d'interchange (côté LFS) à droite
+  \item une région stable à gauche
+  de la source, qui peut représenter la SOL côté champ fort (High Field
+  Side (HFS), entre le centre du tokamak et le plasma de c\oe ur). Dans cette
+  région, la courbure magnétique est favorable à la stabilité vis-à-vis de l'instabilité
+  d'interchange $\nabla 1/B\cdot\nabla N>0$
+  \item une région sujette à l'instabilité d'interchange à
+  droite de la source, qui modélise la SOL côté faible champ (Low Field Side
+  (LFS), entre le plasma de c\oe ur et la paroi extérieure du tokamak)
  \end{itemize}
  
 Dans la version initiale de TOKAM2D, le domaine de simulation a été choisi
@@ -110,36 +148,59 @@ de Fourier.
 \subsection{Dérivation des équations}
 \subsubsection{Équation de conservation de la matière}
 La densité $n$ du plasma est contrôlée par l'équation de continuité des
-électrons. L'effet des collisions coulombiennes est pris en compte à travers un
-terme diffusif de coefficient $D_\perp\sim eT_\text{e}/m_\text{e}\nu_\text{ei}$
-et on note $\mathcal{S}$ un terme source modélisant le flux de particules
-provenant du plasma de c\oe{}ur. L'équation de continuité s'écrit :
+électrons\footnote{Pour modéliser le transport dans les plasmas froids, en
+l'absence de champ magnétique, l'habitude est plutôt de calculer la densité
+plasma à partir de l'équation de continuité des ions, ceux-ci ayant une
+dynamique bien plus lente que les électrons et des conditions aux limites
+bien définies au niveau des parois ou des gaines. Ce choix permet en plus de
+traiter les plasmas multi-espèces sans difficulté.
+
+Dans les plasmas d'hydrogène fortement magnétisés caractéristiques des tokamaks,
+le transport dans la direction transverse au champ magnétique est
+essentiellement dû à la dérive $\mathbf E\times\mathbf B$, identique pour les
+ions et les électrons. Suivre la population électronique à la place de la
+population ionique permet alors de négliger le terme d'inertie avec plus de
+légitimité (ce dernier étant critique pour les ions dans le cas de plasmas
+froids basse-pression).}.
+En notant $\mathcal{S}$ un
+terme source modélisant les particules provenant du plasma de
+c\oe{}ur (c'est le terme qui constitue le forçage par le flux de la turbulence),
+l'équation de continuité s'écrit :
 
 \begin{equation}
 \label{2-ContinuiteElectrons}
 \partial_t n + \nabla\cdot(n\mathbf{u}) = D_\perp\nabla^2_\perp n + \mathcal{S}
 \end{equation}
 
-En décomposant la divergence suivant les directions parallèle et
-perpendiculaire, et en se souvenant que le flux de matière transverse est
+avec $\mathbf u$ la vitesse fluide électronique. Le terme diffusif, de
+coefficient $D_\perp$, est ajouté pour contrôler l'erreur du schéma d'advection et le stabiliser. Il s'inspire de la description
+dite "classique" du transport transverse, qui consiste à approximer l'effet des
+collisions coulombiennes par une diffusion de fréquence caractéristique
+$\nu_{ei}$ et de pas caractéristique $\rho_{L}$. Le coefficient
+$D_\perp\sim\nu_{ei}\rho_{Li}^2$ varie peu dans l'ensemble du plasma et présente
+une valeur typique de 10$^{-2}\,$m$^2$.s$^{-1}$.
+
+La divergence du flux d'advection peut se décomposer suivant les directions
+parallèle et perpendiculaire, et en se souvenant que le flux de matière transverse est
 essentiellement issu de l'advection par la vitesse de dérive électrique
-(cf.~\S~\ref{Introduction}-\ref{vitessesDerive}), \eqref{2-ContinuiteElectrons}
-peut se développer en :
+(cf.~\S~\ref{ApproximationsEqMvt}-\ref{vitessesDerive}), \eqref{2-ContinuiteElectrons}
+se développe en :
 
 \begin{equation}
 \label{2-ContinuiteElectrons2}
-\partial_t n + \nabla_\para(nu_{\para}) =
-\mathbf{u}_E\cdot\nabla_\perp n + D_\perp\nabla^2_\perp n + \mathcal{S}
+\partial_t n + \nabla_\para(nu_{\para}) +
+\mathbf{u}_E\cdot\nabla_\perp n = D_\perp\nabla^2_\perp n + \mathcal{S}
 \end{equation}
 
-Le terme d'advection $\mathbf{u}_E\cdot\nabla_\perp
-n$ se réécrit en utilisant la notation
-du crochet de Poisson $[n,\Phi]=\mathbf{b}.(\nabla_\perp
-n\times\nabla_\perp\Phi)$.
-C'est la forme que prend toute advection d'un champ scalaire par une vitesse de
-dérive $\mathbf{v}_\text{D}=\nabla H\times\mathbf{B}/B^2$, où $\nabla H$ est la
-force à l'origine de la dérive. L'équation de continuité pour les électrons
-s'écrit alors :
+En substituant l'expression de la vitesse de dérive électrique
+(\eqref{1-eqVitessesDerive}) dans le terme d'advection
+$\mathbf{u}_E\cdot\nabla_\perp n$, celui-ci peut s'écrire en utilisant la
+notation du crochet de Poisson $[n,\Phi]=\mathbf{b}.(\nabla_\perp
+n\times\nabla_\perp\Phi)$, où $\Phi$ est le potentiel
+électrique dont dérive le champ électrique $\mathbf E=-\nabla\Phi$. C'est la
+forme que prend toute advection d'un champ scalaire par une vitesse de dérive
+$\mathbf{v}_\text{D}=\nabla H\times\mathbf{B}/B^2$, où $\nabla H$ est la force
+à l'origine de la dérive. L'équation de continuité pour les électrons s'écrit alors :
 
 \begin{equation}
 \label{2-eqContinuiteFinale}
@@ -150,7 +211,7 @@ s'écrit alors :
 Le terme non-linéaire $[n,\Phi]$ est l'un des éléments moteur du modèle
 d'interchange. Couplant la densité au potentiel électrique, il opère un
 transfert d'excitation des composantes radiales des fluctuations à leurs
-composantes poloïdal es et réciproquement. Les termes de flux parallèle et de
+composantes poloïdales et réciproquement. Les termes de flux parallèle et de
 diffusion sont stabilisant, ils tendent à
 amortir les fluctuations et donc à homogénéiser le système.
 
@@ -178,26 +239,30 @@ crochet de Poisson entre la densité et la courbure du champ magnétique :
 \nabla\cdot\mathbf{j}_*=
 \nabla_\perp\cdot\left(\nabla_\perp\left(
 P_i+P_e\right)\times\mathbf{B}/B^2\right) =
-T_e(1+\tau)\left[n,B\puissance{-1}\right]
+eT_e(1+\tau)\left[n,B\puissance{-1}\right]
 \end{equation}
 
-La vitesse de polarisation étant de plus
+La vitesse de polarisation étant
 proportionnelle à la masse des particules \eqrefp{1-vitessePol}, on ne
 retient dans l'expression du courant que la contribution ionique :
+
 \begin{equation}
-\mathbf{j}_p\sim\text{e}n\mathbf{u}^i_p=-\frac{nm_\text{i}}{B^2}\frac{\text{d}\nabla_\perp
-\Phi}{\text{dt}}
+\mathbf{j}_p\sim
+en\mathbf{u}^i_p=-\frac{nm_{i}}{B^2}\frac{\text{d}\nabla_\perp \Phi}{\text{dt}}
 \end{equation}
 
 En exprimant la dérivée totale de
 façon eulérienne, la divergence du courant de polarisation devient :
+
 \begin{equation}
-\nabla\cdot\mathbf{j}_p\sim\nabla\cdot\left(\text{e}n\mathbf{u}^i_p\right)\equiv
--\nabla_\perp\cdot\left(\frac{nm_\text{i}}{B^2}\left(\partial_\text{t} -
+\nabla\cdot\mathbf{j}_p\sim\nabla\cdot\left({e}n\mathbf{u}^i_p\right)\equiv
+-\nabla_\perp\cdot\left(\frac{nm_{i}}{B^2}\left(\partial_{t} -
 \nu_\perp \nabla_\perp^2 +
 \mathbf{u}\cdot\nabla_\perp\right)\nabla_\perp \Phi\right)
 \end{equation}
-$\nu_\perp$ représentant une viscosité effective du milieu.
+
+La contribution d'effet visqueux est rajoutée, pour les même raisons que
+$D_\perp$, à travers la viscosité ionique perpendiculaire $\nu_\perp$.
 De manière similaire à \eqref{2-ContinuiteElectrons2}, seule l'advection par la
 vitesse de dérive électrique est considérée dans la divergence : 
 $\nabla\cdot\left(\mathbf{u}\,\nabla_\perp^2 \Phi\right)
@@ -207,27 +272,28 @@ En insérant l'expression des dérives, \eqref{EqCourant1} se réécrit :
 \begin{equation}\begin{split}
 \label{EqCourant2}
 \nabla_\para j_\para +
-T_e(1+\tau)\left[n,B\puissance{-1}\right] + \nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\left(\partial_\text{t}\nabla_\perp
-\Phi - \nu_\perp \nabla_\perp^3 \Phi \right)\right) \\+
-\nabla_\perp\cdot\left(-\frac{nm_\text{i}}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
+eT_e(1+\tau)\left[n,B\puissance{-1}\right] +
+\nabla_\perp\cdot\left(-\frac{nm_{i}}{B^2}\left(\partial_{t}\nabla_\perp \Phi - \nu_\perp \nabla_\perp^3 \Phi \right)\right) \\+
+\nabla_\perp\cdot\left(-\frac{nm_{i}}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
 \Phi\right)=0
 \end{split}
 \end{equation}
 
 Diverses considérations sur l'importance relative des termes contenus dans
 \eqref{EqCourant2} (reliées aux hypothèses d'ordering
-et aux variations de champ magnétique) sont développées dans
-\cite{SarazinPhD}. En effectuant un changement de variable
-$\Omega=\nabla_\perp^2\Phi$, où $W$ symbolise une vorticité\footnote{La
+et aux variations de champ magnétique) sont développées dans la thèse de Yannick
+Sarasin~\cite{SarazinPhD}. En effectuant un changement de variable
+$\Omega=\nabla_\perp^2\Phi$, où $\Omega$ symbolise une vorticité\footnote{La
 vorticité d'un écoulement est généralement définie comme le rotationnel de sa vitesse. Dans la SOL, le champ de vitesse correspond essentiellement à la dérive ExB, ce qui donne pour un champ magnétique constant de 1T : 
 $\nabla\times\mathbf{v}\sim\nabla\times\mathbf{u}_E=\nabla\times(\mathbf{E}/B\times\mathbf{b})\equiv-\nabla_\perp^2
 \Phi=\Omega$ }, \eqref{EqCourant2} se transforme en une équation simplifiée dite
 de vorticité:
+
 \begin{equation}\begin{split}
 \label{2-eqCourantFinale}
 \nabla_\para{j}_\para +
-T_e(1+\tau)\left[n,B\puissance{-1}\right] =\\
-\frac{nm_i}{B^2}\left(\partial_\text{t}\Omega - \nu_\perp
+eT_e(1+\tau)\left[n,B\puissance{-1}\right] =\\
+\frac{nm_i}{B^2}\left(\partial_{t}\Omega - \nu_\perp
 \nabla_\perp^2\Omega+
 B\puissance{-1}\left[\Phi,\Omega\right]\right)
 \end{split}
@@ -235,9 +301,9 @@ B\puissance{-1}\left[\Phi,\Omega\right]\right)
 
  Dans le système d'équations
  \eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale}, seules restent
- inconnues la vitesse parallèle électronique  et le courant parallèle. La
- fermeture s'opère alors en moyennant les équations le long de la direction
- parallèle. 
+ inconnues la vitesse parallèle électronique  et le courant parallèle. Le
+ système se referme alors en moyennant les équations le long de la
+ direction parallèle. 
 
 \subsection{Système moyenné et normalisation}
 \label{2-flute}
@@ -247,63 +313,80 @@ B\puissance{-1}\left[\Phi,\Omega\right]\right)
 expérimentales\footnote{Des mesures expérimentales ont montré que le vecteur
 d'onde parallèle des fluctuations électrostatiques était très petit devant la
 longueur de connexion parallèle $L_\para$\parencite{Wootton}}, consiste à
-considérer les fluctuations constantes le long des lignes de champ. Toute grandeur $f(x,y)$
-vérifiant l'hypothèse flûte est donc indépendante de la direction parallèle et
-sa moyenne est égale à la fonction elle-même :
+considérer les fluctuations constantes le long des lignes de champ. Toute
+grandeur $f(x,y,z)$ vérifiant l'hypothèse flûte est donc indépendante de la
+direction parallèle $z$ et sa moyenne est égale à la fonction elle-même :
+
 \begin{equation}
-\left<f(x,y)\right>_\para=f(x,y)
+\left<f(x,y,z)\right>_\para\rightarrow f(x,y)
 \end{equation}
-En supposant que la densité $n$ et le potentiel $\Phi$ ne dépendent que de x et
-de y, le passage des équations
-\eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale} à la moyenne laisse
-la plupart des termes inchangés.
+
+En supposant que la densité $n$ et le potentiel $\Phi$ vérifient cette hypothèse
+flûte, le passage des équations
+\eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale} à la moyenne laisse la plupart des termes inchangés.
 
 Les divergences parallèles du flux et du
 courant font naturellement apparaître
 les conditions aux limites de gaine issue du critère de Bohm
-(cf.~\S~\ref{1-gaine}) :
+(cf.~\S~\ref{Introduction}-\ref{1-gaine}) :
+
 \begin{align}
 \left<\nabla_\para
-nu_\para\right>_\para&=\frac{nc_s}{L_\para}\exp(\Lambda-\Delta\Phi/T_e)
+nu_\para\right>_\para&=\frac{nc_s}{L_\para}\exp(\Lambda-(\Phi-\Phi_\text{wall})/T_e)
 \\
 \left<\nabla_\para
-j_\para\right>_\para&=\frac{enc_s}{L_\para}\left(1-\exp(\Lambda-\Delta\Phi/T_e)\right)
+j_\para\right>_\para&=\frac{enc_s}{L_\para}\left(1-\exp(\Lambda-(\Phi-\Phi_\text{wall})/T_e)\right)
 \end{align}
 
+où $c_s=\sqrt{eT_e/m_i}$ est la vitesse acoustique
+ionique, $\Lambda=T_{e}\ln({m_{i}/2\pi m_{e})/2}$ est le
+potentiel flottant et $\Phi-\Phi_\text{wall}=\Delta \Phi$ représente la
+différence de potentiel entre le plasma et la paroi. 
+
 La moyenne sur le terme de courbure est plus délicate à obtenir et doit tenir
-compte de l'enroulement des lignes de champ magnétique. Dans~\parencite{Garbet},
-Xavier Garbet détermine un coefficient de courbure
-$g_\perp\sim\partial_xB^{-1}$ en T$^{-1}$.m$^{-1}$ moyen tel que :
+compte de l'enroulement des lignes de champ magnétique.
+Dans~\parencite{Garbet}, Xavier Garbet détermine un coefficient de courbure
+moyen $g_\perp\propto\partial_xB^{-1}$ (qui se mesure en T$^{-1}$.m$^{-1}$) tel
+que :
+
 \begin{equation}
-\left<T_e(1+\tau)\left[n,B^{-1}\right]\right>_\para=T_eg_\perp\partial_yn
+\left<eT_e(1+\tau)\left[n,B^{-1}\right]\right>_\para=eT_eg_\perp\partial_yn
 \end{equation}
+
 comme ce coefficient est positif, le signe du terme déstabilisant
-de l'interchange $T_eg_\perp\partial_yn$ ne dépend que du sens du gradient de
-densité, donnant un caractère de ballooning à l'instabilité, ie. qui ne se développe que
-d'un côté du plasma. Avec ces expressions, le système d'équations
-\eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale} devient :
+de l'interchange ne dépend plus que du sens du gradient
+radial de densité. Le mécanisme d'interchange sera donc stable à gauche de la
+source et le transport turbulent ne se développera que du côté droit de la zone
+de simulation, où le gradient radial moyen de densité est négatif.
+Avec ces expressions, le système d'équations \eqref{2-eqContinuiteFinale}~--~\eqref{2-eqCourantFinale} devient :
+
 \begin{align}
 \label{2-eqContinuiteMoyenne}
-&\partial_t n + \frac{nc_s}{L_\para}e^{\Lambda-e\Delta \Phi/T_e} =
+&\partial_t n + \frac{nc_s}{L_\para}e^{\Lambda-\Delta \Phi/T_e} =
 \frac{1}{B}\left[n,\Phi\right] + D_\perp\nabla^2_\perp n + \mathcal{S}\\
-&\partial_\text{t}\Omega - \nu_\perp
+&\partial_{t}\Omega - \nu_\perp
 \nabla_\perp^2\Omega+
-\frac{1}{B}\left[\Phi,\Omega\right]=\frac{ec_sB^2}{m_iL_\para}\left(1-e^{\Lambda-e\Delta
-\Phi/T_e}\right) -\frac{B^2}{m_i}T_eg_\perp\partial_y\ln n
+\frac{1}{B}\left[\Phi,\Omega\right]=\frac{ec_sB^2}{m_iL_\para}\left(1-e^{\Lambda-\Delta
+\Phi/T_e}\right) -\frac{B^2}{m_i}eT_eg_\perp\partial_y\ln n
 \label{2-eqCourantMoyenne}
 \end{align}
  
 \subsubsection{Normalisation des équations}
 
-On considère maintenant le champ magnétique et la température constants 
-$B_{\indice{0}}$=1T et $T_0$=1eV.
+Considérons maintenant le champ magnétique et la température constants en espace
+et en temps :
+\begin{equation}
+B=B_{\indice{0}}=1\,\text{T~~~~~~~et~~~~~~~}eT_e=eT_0=1\,\text{eV}
+\end{equation}
+et supposons les
+ions froids $T_i=$0.
 Pour faire apparaître les grandeurs caractéristiques du système et simplifier
 l'écriture des équations, les différents termes sont adimensionnées à
 l'aide de ces deux constantes. Le temps est normalisé à l'inverse de la
 fréquence cyclotronique ionique :
 
 \begin{equation}
-t = \overline{t}\:\omega_c\puissance{-1} =
+t = \overline{t}\:\omega_{ci}\puissance{-1} =
 \overline{t}\:\frac{m_i}{eB\indice{0}}
 \end{equation}
 
@@ -311,18 +394,20 @@ Les longueurs et vitesses sont alors logiquement normalisées par le rayon de
 Larmor et la vitesse de Bohm :
 
 \begin{eqnarray}
-x = \overline{x}\:\rho_\text{L} =
+x = \overline{x}\:\rho_{Li} =
 \overline{x}\:\frac{m_ic_s}{eB\indice{0}} &
 et &
 v=\overline{v}c_s=\overline{v}\left(\frac{eT\indice{0}}{m_i}\right)^{\text{\textonehalf}}
 \end{eqnarray}
 
 Nous définissons de plus les variables adimensionnées du modèle, la densité
-$\text{N}$, le potentiel électrostatique $\Phi$ (pour lequel nous gardons la
-même notation) et la vorticité $\text{W}$ par :
+$\text{N}$, le potentiel électrostatique $\overline{\Phi}$ (pour lequel nous
+garderons la même notation, ie. sans la barre, dans le reste du chapitre) et la
+vorticité $\text{W}$ par :
 
 \begin{eqnarray}
-n = n_{\indice{0}}\text{N} \text{~~~~~~~} \Phi=\frac{\Phi T\indice{0}}{e}
+n = n_{\indice{0}}\text{N} \text{~~~~~~~} \Phi=\frac{\overline{\Phi}
+T\indice{0}}{e}
 \text{~~~~~~~} \Omega=\frac{\text{W} T\indice{0}}{e\rho_L^2}
 \end{eqnarray}
 
@@ -337,7 +422,7 @@ réécrit le système d'équations
  + D\nabla^2 \text{N} + \mathcal{S}
 \\
 \label{2-eqCourantNorm}
-&\partial_\text{t}\text{W} = 
+&\partial_{t}\text{W} = 
 \left[\Phi,\text{W}\right]
 +\sigma\left(1-e^{\Lambda-\Delta\Phi}\right) 
 -g\partial_y\log\text{N}
@@ -345,13 +430,13 @@ réécrit le système d'équations
 \end{align}
  
 Les coefficients de diffusion $D$ et de viscosité $\nu$ sont normalisés au
-coefficient de Bohm $D_B=\rho_\text{L}c_s$ et nous posons
-$\sigma=\rho_\text{L}/L_\para$. Du côté droit, nous interprétons $\sigma$
+coefficient de Bohm $D_B=\rho_{Li}c_s$ et nous posons
+$\sigma=\rho_{Li}/L_\para$. Du côté droit, nous interprétons $\sigma$
 comme une conductivité de gaine. Du fait de sa faible valeur
 $\sigma\sim$10$^{-5}$, elle limite les pertes en courant parallèle au niveau des
 parois (limiteur), permettant à l'instabilité de se développer. Ce terme régule
 le potentiel électrostatique et amortis les fluctuations, en ramenant constamment
-le potentiel plasma à $\Lambda$ le potentiel flottant.
+le potentiel plasma à $\Lambda$, le potentiel flottant.
 
 Le quatrième terme de~\eqref{2-eqCourantNorm}, issu de la divergence
 du courant diamagnétique, contient l'élément déstabilisant de
@@ -371,23 +456,30 @@ Le système d'équations
 adimensionnées (\eqref{2-eqContinuiteNorm}--\eqref{2-eqCourantNorm}) est un
 modèle 2D minimal pour étudier l'instabilité d'interchange qui se développe dans
 la SOL des tokamaks. La figure~\ref{2-CartesBase} montre les solutions obtenues
-par TOKAM2D dans une simulation typique de plasma de bord. Les paramètres de la
-simulations sont donnés dans le tableau~\ref{2-TokamParam} :
+par TOKAM2D dans une simulation typique de plasma de bord, dont les paramètres
+sont donnés dans le tableau~\ref{2-TokamParam} :
+
 \begin{table*}[!htbp]
 \footnotesize\centering
 \ra{1.3}
-\begin{tabular}{@{}ccccc@{}}\toprule
-Paramètre&&Expression&&Valeur\\
+\begin{tabular}{@{}lcccccc@{}}\toprule
+Définition&&Paramètre&&Expression&&Valeur\\
 \midrule 
-$N_x$, $N_y$ && $L_\perp$ && 256\\
-$\mathcal{S}$ && - && 10$^{-2}$\\
-$g$ &&
-$(\rho_\text{L}(1+\tau)/R_0)[(1+s)\sin\text{c}(\Delta\theta)
--s\cos(\Delta\theta)]$ && 5.10$^{-4}$\\
-$\sigma$ &&
-$\rho_\text{L}/L_\para$ &&
+Nombre de maille&&$N_x$, $N_y$ && - && 256\\
+Taille du domaine&&$L_x$, $L_y$ &&$L_x$, $L_y$ /$\rho_{Li}$ && 256\\
+Intensité source&&$\mathcal{S}_0$ &&
+$\mathcal{S}_0$/$n_0\omega_{ci}$
+&& 10$^{-2}$\\
+Profil source&& $x_\mathcal{S}$,
+$l_\mathcal{S}$ && $\exp[(x-x_\mathcal{S})^2/l_\mathcal{S}^2]$
+&& 64,32\\
+Coefficient de courbure&&$g$ &&
+$(\rho_{Li}(1+\tau)/R_0)\sin\text{c}(\Delta\theta)$\footnotemark &&
+5.10$^{-4}$\\
+Conductivité de gaine&&$\sigma$ &&
+$\rho_{Li}/L_\para$ &&
 10$^{-5}$\\
-$D,\nu$ &&
+Coefficient de diffusion, viscosité&&$D,\nu$ &&
 $D_\perp,\nu_\perp/D_B$ &&
 10$^{-2}$\\
 \bottomrule
@@ -395,19 +487,21 @@ $D_\perp,\nu_\perp/D_B$ &&
 \caption{Tableau présentant les paramètres du modèle et
 leur valeur typique.}\label{2-TokamParam}
 \end{table*}
+\footnotetext{L'expression provient de \parencite{SarazinPhD}, le
+$\sin\text{c}(\Delta\theta)\sim\sin(\Delta\theta)/\Delta\theta$ et
+$\Delta\theta$ représente l'écartement du limiteur par rapport à l'angle
+poloïdal de symétrie $\theta_0=0$}
 
-La source est placée en X$\sim$50$\rho_\text{L}$. A gauche, le plasma est
-stable. A droite, le transport est dominé par l'instabilité d'interchange : de
+
+A gauche, le plasma est stable. A droite, le transport est dominé par l'instabilité d'interchange : de
 forts flux de densité, des avalanches, traversent le domaine par intermittence.
 Les fronts, qui peuvent se propager sur plusieurs centaines de
-$\rho_\text{L}$, augmentent considérablement la largeur de la SOL.
+$\rho_{Li}$, augmentent considérablement la largeur de la SOL.
 Un équilibre est atteint quand les pertes parallèles égalent le transport
 radial moyen.
 Les avalanches sont advectées par le champ électrique créé entre les structures
-de potentiel. La taille de ces structures est typiquement de l'ordre de la
-dizaine de $\rho_\text{L}$, et dépend principalement 
-du paramètre de courbure $g$, de la conductivité de gaine $\sigma$ et de la
-valeur des coefficients de diffusion $D$ et $\nu$.
+de potentiel que se forment, dont la taille dans la direction $y$ est
+typiquement de l'ordre de la dizaine de $\rho_{Li}$.
 
 \begin{figure}[!htbp]
     \centering
@@ -424,15 +518,17 @@ valeur des coefficients de diffusion $D$ et $\nu$.
 Quand l'équilibre est atteint, la nature de ce transport turbulent peut être
 caractérisée statistiquement par des fonctions de distribution en probabilités
 (PDF pour Probability Distribution Function) des différentes valeurs. 
+
  \begin{figure}[!htbp]
 \centering
     \includegraphics[width=8cm]{figures/2-PDFBase.eps}
     \caption{Densité de probabilité pour la densité et le flux radial}
     \label{2-PDFBase}
 \end{figure}
+
  Les PDF
 de la densité et du flux radial sont présentées sur la figure~\ref{2-PDFBase}. Elles
-sont calculées proches de la source, à X$\sim$80$\rho_\text{L}$, sur un
+sont calculées au milieu du domaine, à $x=$128$\rho_{Li}$, sur un
 échantillon statistique de 2000 pas de temps et moyennées suivant la direction
 poloïdale. La PDF est centrée autour la valeur moyenne de la grandeur,
 normalisée par son écart type, et donne en pourcentage la fréquence d'apparition
@@ -590,7 +686,7 @@ et l'influence de la température électronique.
 \text{N}e^{\Lambda-\Delta\Phi} + D\nabla^2 \text{N} + \mathcal{S}
 \\
 \label{2-eqCourantMag}
-&\partial_\text{t}\text{W} = 
+&\partial_{t}\text{W} = 
 -\nabla\cdot\left(\text{W}\mathbf U_\text{E}\right)
 +\text{B}^2\sigma\left(1-e^{\Lambda-\Delta\Phi}\right) 
 -\frac{\text{B}^2}{\text{N}}\nabla\cdot\left(\text{N}\mathbf U^i_*\right) 
@@ -623,7 +719,7 @@ Pour illustrer la modification du code, nous simulons le cas d'une
 barrière magnétique. Sur la
 figure~\ref{2-CartesMagBarrier}, on observe le profil du champ magnétique : égal
 à 0.1T et légèrement décroissant sur l'ensemble du domaine, la barrière est
-placée en $\text{X}\sim$ 200$\rho_\text{L}$ et monte jusqu'à 0.2T à son maximum.
+placée en $x\sim\,$200$\,\rho_{Li}$ et monte jusqu'à 0.2~T à son maximum.
 
 	\begin{figure}[!htbp]
     \centering
@@ -696,7 +792,7 @@ afin contrôler l'amplitude des flux diffusifs dans la direction perpendiculaire
 \\[0.5cm]
 \label{2-eqCourantTemp}
 \begin{split}
-\partial_\text{t}\text{W} =& 
+\partial_{t}\text{W} =& 
 -\nabla\cdot\left(\text{W}\mathbf U_\text{E}\right)
 +\text{B}^2\sigma\sqrt{\text{T}_e}\left(1-e^{\Lambda-\Delta\Phi/\text{T}_e}\right)\\
 &-\text{B}^2\nabla\cdot\left(\text{N}\mathbf
@@ -705,7 +801,7 @@ U_{\nabla\text{B}}\right)/\text{N} +\nu\nabla^2\text{W}
 \\[0.5cm]
 \label{2-eqEnergyTemp}
 \begin{split}
-\partial_\text{t}\text{P}_e=&
+\partial_{t}\text{P}_e=&
 -\nabla\cdot\left(\text{P}_e\mathbf U_\text{E}\right)
 +\gamma\sigma\text{P}_e\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e}\\
 &-2/3\text{P}_e\nabla\cdot\mathbf U_\text{E}
@@ -796,8 +892,8 @@ distance, se cisaille et génère les vortex caractéristiques de l'instabilité
 Les travaux réalisés par Theilhaber sur la modélisation PIC 2D de l'interaction
 plasma-surface perpendiculairement au champ magnétique
 \parencite{Theilhaber} montrent que l'instabilité de Kelvin-Helmotz est à
-l'origine de la formation d'une gaine "de champs croisés" de largeur $l\sim$
-5$\rho_\text{L}$.
+l'origine de la formation d'une gaine "de champs croisés" de largeur $l\sim\,$
+5$\,\rho_{Li}$.
 
 Dans cette simulation, ce phénomène est un artefact numérique, amplifié par les
 conditions aux limites strictes. On peut toutefois imaginer que si un fort
@@ -842,7 +938,7 @@ Contrairement au cas des plasmas froids, où les électrons perdent leur énergi
 par collision dans le piège magnétique, on
 remarque que dans un plasma totalement ionisé la température croît avec
 l'intensité du champ. Sur la carte de température, on voit bien l'emplacement du
-zonal flow au niveau du gradient de potentiel, en X $\sim$ 140 $\rho_\text{L}$.
+zonal flow au niveau du gradient de potentiel, en $x\sim\,$140$\,\rho_{Li}$.
 	
 \subsubsection{Simulation d'une colonne de plasma magnétisée}
 Regardons maintenant une configuration de type colonne magnétisée : 
@@ -850,8 +946,8 @@ Regardons maintenant une configuration de type colonne magnétisée :
 \begin{itemize}
   \item le champ magnétique est pris homogène et constant, d'intensité B = 0.1T
   \item les dimensions de la source, en supposant le rayon de Larmor ionique
-  $\rho_\text{L}\simeq$~6~10$^{-4}$~m, sont approximativement égales à 16 cm x
-  16 cm x 6 m, la conductivité de gaine $\sigma=\rho_\text{L}/L_\para$ étant prise
+  $\rho_{Li}\simeq$~6~10$^{-4}$~m, sont approximativement égales à 16 cm x
+  16 cm x 6 m, la conductivité de gaine $\sigma=\rho_{Li}/L_\para$ étant prise
   égale à 10$^{-4}$
   \item à la gaine, dans la direction perpendiculaire, le potentiel plasma est
   fixé au potentiel flottant

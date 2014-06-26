@@ -398,13 +398,29 @@ de Boltzmann~\parencite{Bolsig}. Un grand
 nombre de réactions chimiques peuvent éventuellement être prises en compte.
 Dans le cas d'un plasma n'étant constitué que d'une seule espèce, l'ensemble
 de fréquences se réduit à la fréquence de collision électrons-neutres
-$\nu_{en}$, ions-neutres $\nu_{in}$ et d'ionisation $\nu_\text{iz}$.
+$\nu_{en}$, ions-neutres $\nu_{in}$ et d'ionisation $\nu^\text{iz}$.
+
+\begin{figure}[!htbp]
+    \centering
+    \subfigure[]{\label{3-coeffColl1}
+    \includegraphics[width=0.3\textwidth]{figures/3-coeffColl1.eps}}
+    \subfigure[]{\label{3-coeffColl2}
+    \includegraphics[width=0.3\textwidth]{figures/3-coeffColl2.eps}}
+    \subfigure[]{\label{3-coeffColl3}
+    \includegraphics[width=0.3\textwidth]{figures/3-coeffColl3.eps}}
+    \caption{Cartes de densité \subref{4-PegasesCarteDensiteBase}~, de potentiel
+    \subref{4-PegasesCartePotentielBase}~ et de température
+    \subref{4-PegasesCarteTemperatureBase}~ dans le cas de parois
+    diélectriques.}
+    \label{2-CartesWithTe}
+\end{figure}
 
 Le terme source de particule est calculé en fonction de la fréquence
 d'ionisation :
+
 \begin{equation*}
 \mathcal{S}_{\alpha}=n_\alpha n_g
-k^m_{\alpha_\text{iz}}(T_e)=n_\alpha\nu_{\alpha_\text{iz}}
+k_{\alpha}^\text{iz}(T_e)=n_\alpha\nu_{\alpha}^\text{iz}
 \end{equation*}
 
 Le terme de perte d'énergie par électron, $\Pi$, est lui aussi fortement
@@ -424,11 +440,11 @@ Hagelaar~\parencite{HagelaarImpl}, nous utilisons cette technique pour quelques
 termes du modèle.} :
 \begin{equation*}
 en_e\Pi(T_e^{k+1})=en_e\left(\Pi(T_e^{k})+\frac{\partial\Pi}{\partial
-T_e}\left(T_e^{k+1}-T_e^{k}\right)\right)= en_en_g\left(k_{\varepsilon}+
-\frac{\partial k_{\varepsilon}}{\partial T_e}(T_e^{k+1}-T_e^{k})\right)
+T_e}\left(T_e^{k+1}-T_e^{k}\right)\right)= en_en_g\left(k_e^\varepsilon+
+\frac{\partial k_e^\varepsilon}{\partial T_e}(T_e^{k+1}-T_e^{k})\right)
 \end{equation*}
 
-avec $k_\varepsilon$ un coefficient de transfert d'énergie (sommé sur 
+avec $k_e^\varepsilon$ un coefficient de transfert d'énergie (sommé sur 
 l'ensemble des processus de collision).
 
 Enfin, les vitesses des particules au niveau des parois sont calculées en
