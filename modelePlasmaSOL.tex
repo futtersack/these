@@ -379,7 +379,7 @@ et en temps :
 B=B_{\indice{0}}=1\,\text{T~~~~~~~et~~~~~~~}eT_e=eT_0=1\,\text{eV}
 \end{equation}
 et supposons les
-ions froids $T_i=$0.
+ions froids $T_i=\,$0.
 Pour faire apparaître les grandeurs caractéristiques du système et simplifier
 l'écriture des équations, les différents termes sont adimensionnées à
 l'aide de ces deux constantes. Le temps est normalisé à l'inverse de la
@@ -397,7 +397,7 @@ Larmor et la vitesse de Bohm :
 x = \overline{x}\:\rho_{Li} =
 \overline{x}\:\frac{m_ic_s}{eB\indice{0}} &
 et &
-v=\overline{v}c_s=\overline{v}\left(\frac{eT\indice{0}}{m_i}\right)^{\text{\textonehalf}}
+v=\overline{v}c_s=\overline{v}\sqrt{\frac{eT\indice{0}}{m_i}}
 \end{eqnarray}
 
 Nous définissons de plus les variables adimensionnées du modèle, la densité
@@ -430,11 +430,14 @@ réécrit le système d'équations
 \end{align}
  
 Les coefficients de diffusion $D$ et de viscosité $\nu$ sont normalisés au
-coefficient de Bohm $D_B=\rho_{Li}c_s$ et nous posons
-$\sigma=\rho_{Li}/L_\para$. Du côté droit, nous interprétons $\sigma$
-comme une conductivité de gaine. Du fait de sa faible valeur
-$\sigma\sim$10$^{-5}$, elle limite les pertes en courant parallèle au niveau des
-parois (limiteur), permettant à l'instabilité de se développer. Ce terme régule
+coefficient de Bohm $D_B=\rho_{Li}c_s$\footnote{Le coefficient normalisé de
+diffusion $D$ peut aussi se lire comme le ratio entre la fréquence des
+collisions coulombiennes et la fréquence cyclotronique ionique :
+$$D=\frac{D_\perp}{D_B}=\frac{\nu_{ei}\rho_{Li}^2}{\rho_{Li}c_s}=\frac{\nu_{ei}}{\omega_{ci}}$$
+}.
+Du côté droit, nous interprétons $\sigma=\rho_{Li}/L_\para$ comme une
+conductivité de gaine. Du fait de sa faible valeur $\sigma\sim\,$10$^{-5}$, elle
+limite les pertes en courant parallèle au niveau des parois (limiteur), permettant à l'instabilité de se développer. Ce terme régule
 le potentiel électrostatique et amortis les fluctuations, en ramenant constamment
 le potentiel plasma à $\Lambda$, le potentiel flottant.
 
@@ -456,7 +459,7 @@ Le système d'équations
 adimensionnées (\eqref{2-eqContinuiteNorm}--\eqref{2-eqCourantNorm}) est un
 modèle 2D minimal pour étudier l'instabilité d'interchange qui se développe dans
 la SOL des tokamaks. La figure~\ref{2-CartesBase} montre les solutions obtenues
-par TOKAM2D dans une simulation typique de plasma de bord, dont les paramètres
+par TOKAM2D pour une simulation typique de plasma de bord, dont les paramètres
 sont donnés dans le tableau~\ref{2-TokamParam} :
 
 \begin{table*}[!htbp]
@@ -492,17 +495,6 @@ $\sin\text{c}(\Delta\theta)\sim\sin(\Delta\theta)/\Delta\theta$ et
 $\Delta\theta$ représente l'écartement du limiteur par rapport à l'angle
 poloïdal de symétrie $\theta_0=0$}
 
-
-A gauche, le plasma est stable. A droite, le transport est dominé par l'instabilité d'interchange : de
-forts flux de densité, des avalanches, traversent le domaine par intermittence.
-Les fronts, qui peuvent se propager sur plusieurs centaines de
-$\rho_{Li}$, augmentent considérablement la largeur de la SOL.
-Un équilibre est atteint quand les pertes parallèles égalent le transport
-radial moyen.
-Les avalanches sont advectées par le champ électrique créé entre les structures
-de potentiel que se forment, dont la taille dans la direction $y$ est
-typiquement de l'ordre de la dizaine de $\rho_{Li}$.
-
 \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteBase}
@@ -510,30 +502,43 @@ typiquement de l'ordre de la dizaine de $\rho_{Li}$.
     \subfigure[]{\label{2-CartePotentielBase}
     \includegraphics[height=6cm]{figures/2-CartePotentielBase.eps}}
     \caption{Cartes de la densité \subref{2-CarteDensiteBase}~~et du potentiel
-    électrostatique
+    électrostatique. Le profil du terme source $\mathcal{S}$ est représenté en
+    gris sur la carte de densité.
     \subref{2-CartePotentielBase}}
     \label{2-CartesBase}
 \end{figure}
 
-Quand l'équilibre est atteint, la nature de ce transport turbulent peut être
+A gauche, le plasma est stable. A droite, le transport est dominé par l'instabilité d'interchange : de
+forts flux de densité, des avalanches, traversent le domaine par intermittence.
+Les fronts, qui peuvent se propager sur plusieurs centaines de
+$\rho_{Li}$, augmentent considérablement la largeur de la SOL.
+Les avalanches sont advectées par le champ électrique qui se créé entre les
+structures de potentiel, dont la taille dans la direction $y$ est
+typiquement de l'ordre de la dizaine de $\rho_{Li}$.
+Un équilibre est atteint (la densité totale et le profil radial moyen
+n'évoluent plus) quand les pertes parallèles égalent le transport radial moyen.
+
+A l'équilibre, la nature de ce transport turbulent peut être
 caractérisée statistiquement par des fonctions de distribution en probabilités
-(PDF pour Probability Distribution Function) des différentes valeurs. 
+(PDF pour Probability Distribution Function) des différentes valeurs. Les PDF
+de la densité et du flux radial sont présentées sur la figure~\ref{2-PDFBase} : 
 
  \begin{figure}[!htbp]
 \centering
     \includegraphics[width=8cm]{figures/2-PDFBase.eps}
-    \caption{Densité de probabilité pour la densité et le flux radial}
+    \caption{Densité de probabilité pour la densité et le flux radial. Les PDF
+    sont normalisées par l'écrart entre le maximum et minimum de la quantité :
+    $\Delta\chi=\chi_\text{max}-\chi_\text{min}.$}
     \label{2-PDFBase}
 \end{figure}
 
- Les PDF
-de la densité et du flux radial sont présentées sur la figure~\ref{2-PDFBase}. Elles
-sont calculées au milieu du domaine, à $x=$128$\rho_{Li}$, sur un
-échantillon statistique de 2000 pas de temps et moyennées suivant la direction
-poloïdale. La PDF est centrée autour la valeur moyenne de la grandeur,
-normalisée par son écart type, et donne en pourcentage la fréquence d'apparition
-des fluctuations en fonction de leur importance.
-
+Les PDF
+sont calculées au milieu du domaine, à $x=\,$128$\,\rho_{Li}$, sur un
+échantillon statistique de 2000 pas de temps et de 256 positions
+poloïdales. La PDF est centrée autour la valeur
+moyenne de la grandeur, et normalisée par l'écart entre les valeurs maximum et
+minimum. Elle donne en pourcentage la répartition globale des valeurs
+que peut prendre la quantité et permet de quantifier l'importance des fluctuations.
 
 Sur ces PDF on voit par exemple que la densité est le plus souvent
 légèrement inférieure à la densité moyenne, et que des évènements plus

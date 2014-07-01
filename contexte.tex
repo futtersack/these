@@ -4,37 +4,78 @@
 
 \addstarredpart{Introduction}
 \markboth{Introduction}{INTRODUCTION}
-Le comportement et l'évolution d'un plasma dans un champ
-magnétique est étudié depuis de nombreuses années dans le cadre de la recherche
-sur la fusion thermonuclaire. Le programme ITER, qui concrétise l'effort
-internationnal pour reproduire des réactions de fusion sur Terre, utilise un
-concept de confinement magnétique en forme d'anneau appelé « tokamak ». La
-matière, chauffée à des températures supérieures à 150 millions de degrés
-Celsius, y est totalement ionisée et doit être confinée par un puissant champ
-magnétique afin de rester dans cet état.
+Comprendre la nature et les mécanismes du transport des particules dans un
+plasma en présence d'un champ magnétique est une étape essentielle au
+développement et à l'optimisation de nombreuses applications.
+Parmis les plus ambitieuses, la fusion thermonucléaire contrôlée, qui
+consiste à reproduire sur Terre des réactions de fusion\footnote{La réaction de fusion entre deux atomes d'Hydrogène, 
+qui fait naturellement briller les étoiles, est à ce jour la source d'énergie
+la plus prometteuse pour soutenir le besoin croissant en énergie de notre civilisation,
+économiquement pérenne, techniquement faisable et écologiquement durable}, repose sur un
+dispositif de confinement magnétique en forme d'anneau appelé « tokamak ».
+La matière, chauffée à des températures supérieures à 150 millions de degrés
+Celsius, y est totalement ionisée et doit être confinée par un puissant champ magnétique afin
+de rester dans cet état. La réussite de ce projet (d'initiative
+internationnale depuis le lancement du programme ITER) dépend alors
+fondamentalement de la maîtrise du transport de l'énergie et de la matière au
+sein de ce champ magnétique.
+
+Cette problématique, cruciale pour la recherche sur la fusion, est tout aussi
+importante dans le développement de sources plasmas froids (partiellement
+ionisées et où la température des ions, proche de celle du gaz,
+est bien inférieure la température des électrons : $T_e\neq T_i\sim
+T_n$) qui opèrent à basse pression, et dans lesquelles l'application d'un champ
+magnétique amène à des améliorations critiques pour les performances de la
+décharges. Ce type de sources est communément utilisée dans de
+nombreux domaines, tels que le traitement et la gravure de surface
+\parencite{Lie}, la propulsion spatiale \parencite{Zhu}, ou encore l'injection de neutres pour la
+fusion. Le champ magnétique permet alors de limiter la pertes des particules sur
+les parois (miroirs magnétiques, magnétrons), de laisser pénétrer dans le
+plasma une tension appliquée (propulseurs à effet Hall, extraction
+des ions négatifs), et/ou d'obtenir un certain type de chauffage par le couplage
+d'énergie entre des ondes électromagnétiques et les électrons (décharges
+hélicons, sources à résonnance électron-cyclotron (ECR)). Ces sources ont
+typiquement pour paramètres : une densité plasma $n_e\sim\,$10$^16$ -
+10$^18\,$m$^{-3}$, une densité de gaz $n_g\sim\,$10$^9\,$m$^{-3}$, une
+température électronique $T_e\sim$1-20~eV, une intensité de champ magnétique
+pouvant varier de quelques Gauss à 0.1~Tesla, et changent donc de façon notable
+par rapport à ceux des plasmas chaud de fusion.
+
+Le développement et l'optimisation de ces sources se basent généralement sur la
+combinaison de recherches expérimentales et d'études théoriques, elles-même
+fortement secondées par l'introduction d'un nouveau type d'empirisme : la
+simulation numérique.
+La construction de codes de calculs, traduisant divers niveaux d'abstraction de
+modèles physiques, mathématiques et numériques, et donnant accès à une
+certaine réalité virtuelle à questionner, peut nous aider à
+comprendre et à interpréter les phénomènes et les processus qui apparaissent dans ces
+plasmas. Cependant, dans le domaine des plasmas froids, la compréhension de
+l'effet du champ magnétique est loin d'être complète, et les méthodes
+habituelles de modélisation, basées sur des hypothèses d'ordering parfois
+injustifiées, atteignent leur limites dans le cas des sources basse-pression. Ce
+problème est devenu particulièrement urgent dans les récents efforts entrepris pour modéliser
+la source d'ions négatifs du système d'injection de neutres d'ITER, dans
+laquelle le champ magnétique, initialement mis en place pour baisser la
+température électronique et faciliter l'extraction des ions négatifs, peut
+amener un comportement complexe encore mal compris. 
+
+L'objectif de cette thèse, à travers l'élaboration d'un modèle fluide sans
+approximation d'ordering entre les longueurs caractéristiques de ces sources
+magnétisées (ie. la dimension du plasma $L$, les libres parcours moyens
+$\lambda_{e,i}$ et les rayons de Larmor ioniques et électroniques
+$\rho_{Le,i}$),
+vise ainsi à améliorer la compréhension et les outils de simulation pour
+cette source d'ion, mais avec potentiellement de nombreux bénéfices pour la
+modélisation des plasmas froids en général.
+
+\section{État de l'art}
 
 
+\section{La source d'ions négatifs pour ITER}
 
 
-source
-d'énergie la plus prometteuse à ce jour pour soutenir le besoin croissant en énergie de notre civilisation,
-économiquement pérenne, techniquement faisable et écologiquement durable.. Pour
-reproduire la température nécéssaire par confinement magnétique Le contôle du
-transport dans la direction transverse au champ magnétique est un enjeu majeur
-dans l'optimisation des futurs réacteurs de fusion. D'une part celui-ci doit
-être suffisamment faible pour garantir un bon niveau de confinement de l'énergie
-: l'apparition de barrières de transport permettent ainsi des mode de
-confinement améliorés, plus propices aux réactions de
-fusions~\parencite{GarbetBarriere,Ghendrih}. D'un autre côté, un transport
-transverse plus important permet d'étaler le dépot de puissance, typiquement de
-l'ordre  limiter les contraintes thermiques sur les matériaux en contact avec
-le plasma en augmentant la largeur du dépot de puissance, ce qui est alors
-bénéfique au .
+\section{Environnement de la thèse}
 
-	Les plasmas magnétisés jouent aussi un rôle crucial Les plasmas sont utilisés
-	dans de nombreuses applications industrielles et de recherches. Parmis ces .  La prise en compte de l'inertie
-	dans les équations de transport nous permet de plus de capturer la dynamique transitoire du plasma, comme certains types d'instabilités. Ce modèle fluide et dynamique peut être utilisé pour explorer
-		une large gamme de topologies et d'intensités de champ magnétique.
 				
 		
 		Dans une dernière partie, nous analysons des simulations représentatives de
