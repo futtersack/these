@@ -24,14 +24,14 @@ sein de ce champ magnétique.
 Cette problématique, cruciale pour la recherche sur la fusion, est tout aussi
 importante dans le développement de sources plasmas froids (avec un plasma
 partiellement ionisé dont la température des ions, proche de celle du gaz,
-est bien inférieure la température des électrons : $T_e\neq T_i\sim
+est bien inférieure à la température des électrons : $T_e\neq T_i\sim
 T_n$) qui opèrent à basse pression, et dans lesquelles l'application d'un champ
 magnétique amène à des améliorations critiques pour les performances de la
-décharges. Ce type de sources est communément utilisée dans de
+décharges. Ce type de source est communément utilisé dans de
 nombreux domaines, tels que le traitement et la gravure de
 surface~\parencite{Lieberman}, la propulsion spatiale~\parencite{Zhurin}, ou
-encore l'injection de neutres pour la fusion. Le champ magnétique permet alors
-de limiter la pertes des particules sur les parois (miroirs magnétiques,
+encore l'injection de neutres pour la fusion~\parencite{SimoninHDR}. Le champ
+magnétique permet alors de limiter la pertes des particules sur les parois (miroirs magnétiques,
 magnétrons), de laisser pénétrer dans le plasma une tension appliquée
 (propulseurs à effet Hall, extraction des ions négatifs), et/ou d'obtenir un
 certain type de chauffage par le couplage d'énergie entre des ondes
@@ -73,8 +73,8 @@ sont censés déposer 17~MW de puissance chacun, en accélérant un
 faiseau de 40~A d'ions D$^-$ à 1~MeV d'énergie puis en le neutralisant afin de
 l'injecter directement dans le plasma de c\oe ur. Pour atteindre ces objectifs,
 la source d'ions négatifs en amont du l'injecteur doit fournir
-une densité de courant de 250~A/m$^2$ uniformément répartie sur une large
-surface ($\sim\,$1.6~m x 0.8~m) tout en opérant à basse-pression
+une densité de courant de l'ordre de 250~A/m$^2$, uniformément répartie sur une
+large surface ($\sim\,$1.6~m x 0.8~m) tout en opérant à basse-pression
 (<~0.3~Pa)~\parencite{Hemsworth,SimoninHDR}.
 
 colonnes
@@ -117,14 +117,15 @@ les approximations suivantes :
   particules
 \end{itemize}
 
-Dans les méthodes standards de modélisation, on retrouve les théories de la
-Magnéto-hydrodynamique
+Dans les méthodes standards de modélisation, on retrouve les théories fluides de
+la Magnéto-hydrodynamique
  (MHD) introduite
-par Alfvén~\parencite{Alfven}, de l'approximation par les vitesses de dérive ou encore celle du centre-guide
-pour les modèles particulaires.
+par Alfvén~\parencite{Alfven} et des vitesses de dérive~\parencite{SarazinPhD}
+ou encore celle du centre-guide pour les modèles
+particulaires~\parencite{Taylor,Lee,Garbet10}.
 La MHD, généralisation de la mécanique des fluides, assimile le plasma à un fluide unique dans lequel
-l'inertie est essentiellement due aux ions et la température reliée aux
-électrons. Du point de vue particulaire, la
+l'inertie est essentiellement due aux ions et la mobilité reliée aux
+électrons~\parencite{Rax}. Du point de vue particulaire, la
 théorie du centre-guide décompose le mouvement des particules en un mouvement
 circulaire rapide superposé au déplacement d'un centre-guide parallèlement et
 perpendiculairement au champ magnétique. L'approche fluide des vitesses de
@@ -135,7 +136,7 @@ décrire les plasmas de bord des tokamaks.
 
 Dans le domaine des plasmas froids, une autre méthodologie s'est développée du
 fait des conditions de plasmas et des intérêts de recherche
-divergents. En effet, les sources plasmas magnétisées qui nous intéressent
+différents. En effet, les sources plasmas magnétisées qui nous intéressent
 se distinguent des plasmas de fusion sous plusieurs aspects :
 
 \begin{itemize}
@@ -156,7 +157,7 @@ Le transport dans ces sources se décrit habituellement par des modèles fluides
 de type Dérive-Diffusion~\parencite{Porteous,Lieberman,Rozhansky} quand les
 plasmas sont suffisamment collisionnels. Des modèles
 cinétiques Particles-In-Cell (PIC) avec des opérateurs collisionnels
-Monte-Carlo~\parencite{Claustre,Adam} ou hybrides
+Monte-Carlo~\parencite{PIC3D,Adam} ou hybrides
 fluide-cinétique~\parencite{BoeufGarrigues} peuvent aussi être utilisés quand
 une connaissance détaillée de la fonction de distribution devient nécessaire
 (interaction onde-particule, population à plusieurs niveaux d'énergie), mais
