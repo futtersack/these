@@ -244,33 +244,55 @@ population cible $\beta$, est définie par :
 
 où $n_\beta$ est la densité de l'espèce cible, $\sigma_{\alpha \beta}$ est la
 section efficace de collision et $v_r=|v_\alpha-v_\beta|$ le module de
-la vitesse relative entre la particule incidente et la population cible. 
-Le cas des collisions entre les particules chargées et
-un gaz au repos peut se simplifier davantage en négligeant la vitesse de ce
-dernier, de telle sorte que $v_r=v_\alpha$. 
+la vitesse relative entre la particule incidente et la cible. 
+Le cas des collisions gaz -- particules chargées peut souvent se simplifier
+davantage en négligeant la vitesse du gaz (quand celui-ci est au repos et forme
+un fond diffus pour le plasma), de telle sorte que $v_r=v_\alpha$.
 
 La relation \eqref{1-collisionfreq}
 concerne une particule de vitesse $v_\alpha$ ; pour tenir compte de l'ensemble des particules
-de l'espèce et obtenir un coefficient macroscopique, on calcule la moyenne sur
-la fonction de distribution en vitesse :
+de l'espèce et obtenir un coefficient macroscopique, on prend la moyenne de
+cette fréquence sur la distribution de vitesse :
 
 \begin{equation}
 \label{1-collisionfreqMacro}
-	\nu_{\alpha\beta}=\left<\nu_{\alpha
-	\beta}(v_r)\right>_v=n_\beta\left<\sigma_{\alpha
+	\left<\nu_{\alpha
+	\beta}\right>_v=n_\beta\left<\sigma_{\alpha
 	\beta}(v_r)\,v_r\right>_v=n_\beta k_{\alpha
 	\beta}
 \end{equation}
 
-avec $k_{\alpha\beta}=\left<\sigma_{\alpha\beta}
-v_r\right>$ le taux de collision/réaction associé qui se mesure en m$^{3}$/s.
+$k_{\alpha\beta}=\left<\sigma_{\alpha\beta}
+v_r\right>$ définit alors un taux de collision/réaction, qui se mesure en
+m$^{3}$/s, associé au phénomène. Pour les électrons, ce taux de collision se
+calcule directement avec la fonction de distribution, soit en la supposant 
+maxwellienne, soit en l'estimant à travers une approximation de
+champ local\footnote{en considérant une population d'électrons dans une
+petite zone de plasma en interaction avec le gaz (sans prendre en compte les ions) et
+dans un champ électrique $\mathbf E$ monotone, un équilibre se forme entre
+l'énergie gagnée par l'accélération dans $\mathbf E$ et celle perdue dans les
+collisions.} ; le taux s'exprime alors en fonction du ratio entre les
+valeurs locales du champ électrique et de la densité de neutres : $\mathbf E/n_g$.
+Dans ces deux cas, le taux de collision est très sensible à la température
+électronique $T_e$. 
 
-Lors de collisions \emph{élastiques}\footnote{Les collisions sont dites élastiques car
-elles donnent lieu à des transferts d'impulsion et d'énergie sans changer
-la nature des particules à l'issue de la collision.}, les particules échangent
-de la quantité de mouvement en fonction de leur ratio de masse. Entre les
-électrons et les espèces plus lourdes, ce transfert d'énergie est très faible et cause une isotropisation
-globale des vitesses électroniques.
+Pour les ions la situation est moins claire et
+de telles approximations sont impossibles ; on a alors recours à des calculs de
+mécanique quantique~\parencite{raju} ou à des expériences spéciales dites de
+"swarm"~\parencite{Phelps} pour mesurer $\nu$, indirectement à partir de
+modèles de Dérive-Diffusion (voir~\S\ref{ApproximationsEqMvt}-\ref{1-transportAmbipolaire}).
+
+Lors de collisions
+\emph{élastiques}\footnote{Les collisions sont dites élastiques car elles
+donnent lieu à des transferts d'impulsion et d'énergie sans changer la nature
+des particules à l'issue de la collision.}, les particules échangent de la
+quantité de mouvement en fonction de leur ratio de masse. Entre les électrons
+et les espèces plus lourdes, ce transfert d'énergie est très faible et cause
+une isotropisation globale des vitesses électroniques. Au contraire, dans les
+plasmas froids, les ions ont
+tendance à céder une grande partie de leur énergie aux
+neutres omniprésents et leur température reste donc voisine de celle du gaz. 
+
 Dans le cas des plasmas totalement ionisés, seules les collisions coulombiennes 
 (interactions binaires entre particules chargées dues à la force de Coulomb)
 sont présentes. 
@@ -278,7 +300,7 @@ La fréquence de collision $\nu_{ei}$ mesure alors la fréquence à laquelle un
 électron est dévié de plus de 90° de sa trajectoire initiale:
 
 \begin{equation}
-	\nu_{ei}\sim\frac{4\sqrt{2\pi}e\puissance{4} n_{e} \ln\Lambda
+	\left<\nu_{ei}\right>_v\sim\frac{4\sqrt{2\pi}e\puissance{4} n_{e} \ln\Lambda
 	}{3(4\pi\varepsilon\indice{0})\puissance{2}m_{e}\puissance{1/2}T_{e}\puissance{3/2}}
 \end{equation}
 
@@ -286,25 +308,9 @@ avec $\ln \Lambda$ le logarithme de Coulomb,
 $\Lambda=\lambda_\text{D}(e\puissance{2}/4\pi\varepsilon\indice{0}
 T_{e})\puissance{-1}$ étant le ratio entre la longueur de Debye et une
 distance minimale d'approche.
-
-Dans les plasmas faiblement ionisés, le
-gaz neutre forme un fond diffus et influence fortement le transport des particules chargées.
-Les fréquences de collisions électrons-neutres et ions-neutres sont alors
-définies par :
-
-\begin{equation}
-	\nu_{en}=\sigma_{en} n_{n} v_{e}
-	\;\;\;\;\text{et}\;\;\;\;\nu_{in}=\sigma_{in} n_{n} v_{i}
-\end{equation} 
- 
-avec $\sigma_{en}$ et $\sigma_{in}$ les sections efficaces de
-réaction\footnote{\fcolorbox{red}{white}{Les sections efficaces de collisions sont permettent de
-caractériser \ldots}} électrons-neutres et ions neutres. La principale
-différence dans le transport entre les plasmas faiblement et totalement ionisés tient à la
-présence de ce gaz neutre : les collisions avec le gaz sont un puit
-direct de quantité de mouvement et d'énergie alors que les
-collisions coulombiennes résultent en une redistribution de celles-ci au sein
-du plasma.
+Contrairement aux collisions avec le gaz, les
+collisions coulombiennes résultent en une redistribution de la quantité de
+mouvement et de l'énergie au sein du plasma.
 
 Les collisions avec le gaz peuvent aussi entraîner des réactions plus complexes
 au cours desquelles les particules changent de nature ou d'état (ionisation,
@@ -318,30 +324,23 @@ efficaces, permet un ordering sur l'importance de ces processus dans l'évolutio
 du plasma.
 
 En plus d'une fréquence, on associe souvent une longueur caractéristique
-à l'occurrence d'une collision. Le libre parcours moyen $\lambda_\text{lpm}$
+à l'occurrence d'une collision. Le libre parcours moyen $\lambda_\alpha$
 représente alors la distance que peut parcourir une particule à une vitesse
 $v_\alpha$ avant de subir une certaine interaction avec le système qui l'entoure
 :
 
 \begin{equation}
-	\lambda_\alpha=\frac{v_\alpha}{\nu_\alpha}
+	\lambda_\alpha=\frac{\left<v_\alpha\right>}{\left<\nu_\alpha\right>}
+	=\frac{\left<v_\alpha\right>}{n_g\left<\sigma_\alpha v\right>}
 \end{equation} 
 
-La collisionnalité d'une espèce est
+La collisionnalité d'une espèce est enfin
 définie par le ratio entre son libre parcours moyen $\lambda_\alpha$ et la
 taille $L$ du plasma. Quand le libre parcours moyen est petit devant la
 taille du plasma $\lambda_\alpha/L\ll 1$
 les particules ont le temps de faire de nombreuses collisions avant de
-traverser entièrement le système. Dans des plasmas collisionnels, la description
-du transport des espèces est alors simplifiée, les collisions amenant le système dans un état
-d'équilibre statistique, caractérisé par des fonctions de distributions de
-type Maxwell-Boltzmann (cf. paragraphe \ref{Introduction}-\ref{Maxwell-Boltzmann}).
+traverser entièrement le système.
 
-\fcolorbox{red}{white}{$\sigma$ essentielle à la description
-du transport mais difficiles à obtenir\parencite{Phelps}(Phelps)\ldots 
-}
-
-$k_{\alpha i}=\left<\sigma_{\alpha i} v_r\right>$
 \subsection{Plasma et champ magnétique} 
 \label{1-plasma-champMag}
 Un plasma magnétisé est un plasma dans lequel le champ magnétique ambiant
@@ -352,13 +351,21 @@ perpendiculairement au champ magnétique.
 
 Dans un champ magnétique uniforme, le
 mouvement d'une particule chargée soumise à la force de Lorentz peut se décrire
-par trois composantes :
+par trois composantes (cf. figure \ref{1-particleDrifts}) :
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/1-mouvementCyclotron.png}
+{\caption{Mouvement cyclotronique des particules dans un champ magnétique autour
+d'un centre-guide dont la trajectoire dérive lentement, perpendiculairement aux
+lignes de champ.}\label{1-particleDrifts}}
+\end{figure}
 
 \begin{itemize}
-  \item Un déplacement libre le long lignes de champ
+  \item Un déplacement libre le long des lignes de champ
   \item Un mouvement de rotation rapide de la particule
   autour d'un centre-guide dans le plan perpendiculaire à l'axe magnétique
-  \item Une lente dérive de ce centre-guide, perpediculairement au champ
+  \item Une lente dérive de ce centre-guide, perpendiculairement au champ
   magnétique, qui est due aux forces extérieures
 \end{itemize}
 
@@ -369,9 +376,8 @@ cyclotronique, est caractérisé par la pulsation cyclotronique :
 \omega\indice{{c\alpha}}=\frac{e B}{m_\alpha}
 \end{equation}
 
-où $B=\mathbf B\cdot\mathbf b$ avec $\mathbf b$ le vecteur unitaire dans la
-direction du champ magnétique. Le rayon de l'orbite, appelé rayon de Larmor
-$\rho_{L\alpha}$, révèle quant à lui une échelle spatiale représentative du transport magnétisé.
+où $B$ est l'intensité du champ magnétique. Le rayon de l'orbite, appelé rayon
+de Larmor $\rho_{L\alpha}$, révèle quant à lui une échelle spatiale représentative du transport magnétisé.
 Le rayon de Larmor se calcule en fonction de la pulsation cyclotronique et de la vitesse
 $v\indice{\alpha}$ de la particule :
 
@@ -381,7 +387,8 @@ $v\indice{\alpha}$ de la particule :
 \end{equation}
 
 Pour les ions suffisamment énergétiques, ainsi que pour les électrons en général,
-la vitesse typique de la particule est sa vitesse thermique. On peut alors noter :
+la vitesse typique d'une particule est sa vitesse thermique. On peut alors noter
+:
 
 \begin{equation}
 \underbrace{\frac{e B}{m_\alpha}}_{\omega_{c\alpha}}
@@ -394,26 +401,19 @@ hélicoïdales se resserrent, limitant de plus en plus le déplacement des
 particules perpendiculairement à la direction magnétique. L'influence du champ
 sur le transport peut alors être mesurée par le paramètre de
 magnétisation $\delta$, une espèce pouvant être considérée comme magnétisée à
-partir du moment où la longueur caractéristique $L_\perp$ du transport
-perpendiculaire considéré est grande devant son rayon de Larmor :
+partir du moment où son rayon de
+Larmor est petit devant la longueur caractéristique $L_\perp$ du plasma
+perpendiculairement au champ magnétique :
 
 \begin{equation}
 \delta=\frac{\rho_{L\alpha}}{L_\perp}\ll 1
 \end{equation}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/1-mouvementCyclotron.png}
-{\caption{Mouvement cyclotronique des particules dans un champ magnétique autour
-d'un centre-guide dont la trajectoire dérive lentement, perpendiculairement aux
-lignes de champ.}\label{1-particleDrifts}}
-\end{figure}
-
 L'application d'un champ électrique conjointement à un champ magnétique
 induit une troisième sorte de mouvement, appelé communément "dérive
 ExB" (E-cross-B) : le phénomène de dérive se décrit comme un lent déplacement du
 centre guide de la particule, perpendiculairement aux champs électrique et
-magnétique (cf. figure \ref{1-particleDrifts}). Son expression s'obtient en
+magnétique. Son expression s'obtient en
 prenant le produit vectoriel de l'équation du mouvement par le champ magnétique
 :
 
@@ -421,15 +421,15 @@ prenant le produit vectoriel de l'équation du mouvement par le champ magnétiqu
 \mathbf{v}_\text{E}=\frac{\mathbf{E}\times\mathbf{B}}{B^2}
 \end{equation}
 
-La vitesse de dérive électrique, principale source de transport perpendiculaire
-dans un plasma magnétisé, est indépendante de la masse et de la charge des
-particules : égale pour les ions et les électrons, elle n'est donc à
+Principale source de transport perpendiculaire
+dans un plasma magnétisé, la vitesse de dérive électrique est indépendante de
+la masse et de la charge des particules : égale pour les ions et les électrons, elle n'est donc à
 l'origine d'aucun courant, ce qui la rend particulière. 
 
 Il peut en effet apparaître d'autres vitesses de dérive. En toute généralité, 
 pour chaque force $\mathbf F$ appliquée au plasma, le champ magnétique est à
 l'origine d'une vitesse de dérive dans la direction perpendiculaire aux deux
-forces qui entrent en jeu :
+forces entrant en jeu :
 
 \begin{equation}
 \mathbf{v}\indice{\text{F}}=\frac{\mathbf{F}\times\mathbf{B}}{q_\alpha B^2}
@@ -438,12 +438,12 @@ forces qui entrent en jeu :
 Si la force $\mathbf F$ est indépendante de la charge ou
 fonction de la masse de la particule, la différence entre les vitesses de dérive
 électroniques et ioniques induira un courant $\mathbf
-j\indice{\text{F}}=en(\mathbf v\indice{\text{F}_\text{i}}-\mathbf
-v\indice{\text{F}_\text{e}})$. 
+j\indice{\text{F}}=en(\mathbf v\indice{\text{F}{i}}-\mathbf
+v\indice{\text{F}{e}})$. 
 
 Dans un plasma, où l'anisotropie due au champ
 magnétique est souvent utilisée pour contrôler et limiter le déplacement des
-particules, les vitesses de dérives sont à l'origine d'un transport
+particules, les vitesses de dérive sont à l'origine d'un transport
  transverse déconfinant, qui s'amplifie généralement par le développement de
  comportements non-linéaires et turbulent.
  
@@ -458,23 +458,23 @@ recombinant facilement à sa surface. Ceci étant, un plasma ne peut se mainteni
 que si le nombre de particules créées dans son volume est suffisant pour
 balancer ces pertes en surface. 
 
-De plus, les électrons interceptant généralement
+De plus, les électrons, qui interceptent généralement
 plus rapidement la paroi du fait de leur faible masse et de leur température,
 polarisent négativement la surface du matériau.
 L'augmentation progressive de ce potentiel, qui attire les ions et repousse les
-électrons les moins énergétique, mène alors à la formation en périphérie du
+électrons les moins énergétiques, mène alors à la formation en périphérie du
 plasma d'une région de densité ionique supérieure, et donc non-neutre, que l'on
 appelle gaine électrostatique (ou gaine de Debye, voir figure~\ref{1-gaine1}).
-Cette gaine a une taille caractéristique de l'ordre de quelques longueurs de
-Debye $\lambda_\text{D}$, longueur critique à partir de laquelle un plasma
-quasineutre  s'écrante de la paroi.
+Cette gaine a une taille caractéristique de l'ordre de quelques
+$\lambda_\text{D}$, longueur critique à partir de laquelle un plasma
+quasineutre s'écrante de la paroi.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=60mm,width=60mm]{figures/1-sheath.jpg}{\caption{Séparation
 du plasma entre une région quasineutre et la gaine à sa
 périphérie. A la frontière, il y a rupture de la quasineutralité et la vitesse
-ionique est égale à la vitesse de Bohm
+ionique, sans un plasma stationnaire, est égale à la vitesse de Bohm
 $c_\text{s}$\parencite{Rax}.}\label{1-gaine1}}
 \end{figure}
 
@@ -489,13 +489,13 @@ plasma, et peuvent être décrits par une distribution de Boltzmann :
 	n_{e}=n\indice{0}\exp(e\Phi/eT_{e})
 \end{equation}
 
-avec $n\indice{0}$ la densité de référence prise au niveau du potentiel nul.
-Pour égaler le flux électronique et écranter la polarisation de la paroi, la
-quasineutralité doit être brisée. L'étude de la transition plasma-gaine montre,
-à travers l'énoncé du critère de Bohm \parencite{Stangeby}, que
-cette condition ne peut être remplie que si la vitesse ionique en entrée de
-gaine est au moins égale à $c_s$, communément appelée vitesse de Bohm ou encore
-vitesse acoustique ionique\footnote{la deuxième appellation provient de la similitude entre la
+avec $n\indice{0}$ une densité de référence prise au niveau du potentiel nul.
+L'étude de la transition plasma-gaine montre,
+à travers l'énoncé du critère de Bohm~\parencite{Stangeby}, que
+la formation d'une région non neutre telle que la gaine au bord du plasma n'est
+possible que si la vitesse ionique en entrée de gaine est au moins égale à
+$c_s$, communément appelée vitesse de Bohm ou encore vitesse acoustique
+ionique\footnote{la deuxième appellation provient de la similitude entre la
 transition subsonique-supersonique qui s'observe dans les gaz neutres. Les
 ondes acoustiques, reliées aux surpressions et aux sous-pressions, se propagent
 dans un plasma par le champ électrique. L'élasticité du plasma est alors due à
@@ -505,25 +505,40 @@ la température électronique $T_\text{e}$ et à l'inertie ionique.} :
 v_i\ge c_s=\sqrt{\frac{e (T_{e}+T_{i})}{m_{i}}}
 \end{equation}
 
-Pour assurer ce critère de Bohm, un champ électrique accélérant les ions
-jusqu'à $c_s$ apparaît sur une longueur de collision, définissant une zone de
-prégaine.
-Dans un plasma collisionnel, la chute de potentiel, sur une distance
-relativement courte, est importante ; à faible collisionnalité, elle
-peut s'étaler sur tout le plasma et la prégaine correspond alors à l'ensemble du
-plasma quasineutre.
-
-
-\subsubsection{Physique de la gaine}
-\label{1-gaine}
-Considérons de nouveau l'équation de Poisson, qui contrôle l'évolution du
-potentiel électrique, au voisinage de la paroi :
+Dans le cas d'un plasma quasineutre isotherme ou stationnaire, on peut aussi
+montrer que $v_i$ ne peut pas dépasser $c_s$, donnant une limite
+dure à la vitesse ionique :
 
 \begin{equation}
-\frac{d\puissance{2}\Phi}{d\xi}=\frac{e(n_{e}-n_{i})}{\varepsilon\indice{0}}
+\left.\begin{aligned}
+\text{Gaine :~~~~~~~~~~~~~~~~~~~~~~~~~}v_i\ge c_s\\
+\text{Plasma quasineutre :~~~}v_i\le c_s
+\end{aligned}
+\;\;\right\}\;\;v_i=c_s
 \end{equation}
 
- en supposant que $\xi$ est la
+
+Afin d'assurer le critère de Bohm, un champ électrique ambipolaire
+se met en place pour accélérer les ions jusqu'à $c_s$. Celui-ci apparaît sur une
+longueur typique de l'ordre de la longueur de collision,
+définissant la zone de prégaine.
+Dans un plasma collisionnel, la chute de potentiel, qui s'effectue sur une
+distance relativement courte, est importante ; à faible collisionnalité, elle
+peut s'étaler sur l'ensemble du plasma et la prégaine correspond alors à
+la totalité du plasma quasineutre.
+
+
+\subsubsection{Physique simple de la gaine}
+\label{1-gaine}
+Considérons de nouveau l'équation de Poisson, qui contrôle l'évolution du
+potentiel électrique, dans une représentation 1D au voisinage de la paroi. Dans
+le cas d'un plasma n'étant composé que d'une seule espèce d'ion,  :
+
+\begin{equation}
+\frac{d\puissance{2}\Phi}{dx}=\frac{e(n_{e}-n_{i})}{\varepsilon\indice{0}}
+\end{equation}
+
+ en supposant que $x$ est la
  direction normale à la paroi et que le champ électrique dérive directement
  d'un potentiel $\Phi$.
  Quand le plasma est suffisamment dense pour que $\lambda_D\ll L$, l'équation de poisson permet
@@ -531,12 +546,12 @@ potentiel électrique, au voisinage de la paroi :
 
  \begin{itemize}
    \item Face à la paroi chargée négativement se
-   développe un fort gradient de potentiel ($d\Phi/d\xi\sim 1/\lambda_D$) dont le plasma
+   développe un fort gradient de potentiel ($d\Phi/dx\sim 1/\lambda_D$) dont le plasma
    s'écrante en formant une épaisseur de peau ionique non-neutre de
    taille caractéristique $\lambda_D$
    \item Le reste du plasma, de taille caractéristique $L$, satisfait
    à l'hypothèse de quasineutralité et le potentiel varie en
-   $d\Phi/d\xi\sim1/L$
+   $d\Phi/dx\sim1/L$
  \end{itemize}
 
 La frontière entre la gaine et la prégaine, partie quasineutre du plasma, peut
@@ -545,71 +560,82 @@ gaine, afin de maintenir la décroissance du potentiel jusqu'à la paroi, la
 densité ionique doit diminuer moins rapidement que la densité d'électrons.
  
 \begin{equation}
-	\frac{dn_{i}}{d\xi}<\frac{dn_{e}}{d\xi}
+	\frac{dn_{i}}{dx}<\frac{dn_{e}}{dx}
 \end{equation}
 
 En appliquant la
-loi de conservation de l'énergie entre l'entrée de la gaine (où les densités sont égales) et la paroi, on trouve le
-critère général obtenu par Bohm en hydrodynamique :
+loi de conservation de l'énergie entre l'entrée de la gaine (où les densités
+sont égales) et la paroi, on trouve le critère général obtenu par Bohm en
+hydrodynamique :
 
 \begin{equation}
-	v_{{i}\,|_{\xi=\xi_s}}\geq c_{s}
+	v_{{i}\,|_{x=x_s}}\geq c_{s}
 \end{equation}
 
-où $\xi_s$ indique la position de la frontière plasma/gaine.
-Dans le cas de plasmas non-magnétisés et avec l'hypothèse d'une température
-électronique uniforme $T_{e}\gg T_{i}$, on montre de plus que la
-vitesse ionique doit rester subsonique dans la prégaine, donnant une limite dure
-$v_{i}=c_{s}$.
-Pour estimer la chute de potentiel, on peut alors écrire :
+où $x_s$ indique la position de la frontière plasma/gaine (l'indice $s$ dénotera
+dans la suite du paragraphe la position de la gaine).
+Pour estimer la chute de potentiel, on peut alors écrire la conservation de
+l'énergie des ions à l'entrée de la gaine et au niveau d'une région centrale
+où $v_{i}=0$, placée en $x=0$ :
 
 \begin{equation}
-	\left(\frac{2e(\Phi_{\xi}-\Phi_{\xi_{s}})}{m_{i}}+v_{i}\puissance{2}\right)_{\xi=\xi_s}=
-	\frac{eT_{e}}{m_{i}}=\left(\frac{2e(\Phi_{\xi}-\Phi_{\xi_{s}})}{m_{i}}\right)_{\xi=0}
+	\frac{2e(\Phi_{x}-\Phi_{x_{s}})}{m_{i}}+v_{i}\puissance{2}=\;\left\{
+	\begin{aligned}
+	v_i^2=eT_{e}/m_{i}\text{~~~~~~en~~}{x=x_s}\\
+	2e(\Phi_{0}-\Phi_{x_{s}})/m_{i}\text{~~~~en~~}{x=0\,}
+	\end{aligned}\right.
 \end{equation}
 
-A partir d'une région centrale où $v_{i}=0$, le potentiel chute donc de
-$T_{e}/2$ et la densité, par conséquence, d'un facteur
-$n_{s}/n\indice{0}=e^{-1/2}$, l'indice $s$ dénotant dans la suite du
-paragraphe la position de la gaine.
-Le flux d'électron atteignant la paroi se calcule en intégrant une maxwellienne sur le
-demi-espace des vitesses positives :
+Dans la prégaine, Le potentiel chute donc de
+$T_{e}/2$ et la densité, du fait de la relation de Boltzman des électrons, d'un
+facteur $n_{s}/n\indice{0}=e^{-1/2}$.
+
+Pour estimer la chute de potentiel dans la gaine, nous supposerons que le
+courant est nul dans la paroi, auquel cas les flux électronique et ionique sont
+égaux. Dans une gaine non-collisionnelle, le flux ionique $\Gamma_i^\text{w}$
+tombant sur la paroi est égal à celui entrant dans la gaine ; c'est la densité en lisière de gaine
+multipliée par la vitesse de Bohm :
 
 \begin{equation}
-	v_{e}^\text{wall}=\frac{1}{\sqrt{\pi}v_{e\perp}}\int_0^\infty
-	v_{e\perp}
-	e^{-v_{e\perp}^2/v_{\text{T}e}^2}dv_{e\perp}=\frac{1}{2\sqrt{\pi}}v_{\text{T}e}=\sqrt{\frac{eT_{e}}{2\pi
-	m_{e}}}
+\Gamma_i^\text{w}=n_sc_s
 \end{equation}
 
-les flux ionique et électronique sont égaux à la paroi, le flux ionique étant
-conservé à travers la gaine :
+Le flux d'électronique se calcule en multipliant le facteur de
+Boltzman par la vitesse thermique à la paroi sur le demi-espace des vitesses
+positives :
 
 \begin{equation}
-	\Gamma_{e}^\text{wall}=n_{e}^\text{wall}\exp{\left(\frac{\Phi_\text{wall}}{T_{e}}\right)}\sqrt{\frac{eT_{e}}{2\pi
-	m_{e}}}=\Gamma_{i}^\text{wall}=\Gamma_{i}
+\Gamma_e^\text{w}=n_s\exp\left(\frac{\Phi_\text{w}-\Phi_s}{T_e}\right)v_{e}^\text{w}
 \end{equation}
+avec 
 \begin{equation}
-\label{1-densitéIonique}
-	n_{i}=n_{s}\exp{\left(\frac{\Phi_{s}-\Phi_\text{wall}}{T_{e}}\right)}\sqrt{\frac{eT_{e}}{2\pi
-	m_{e}v_{i}\puissance{2}}}
+	v_{e}^\text{w}=\frac{1}{\sqrt{2\pi}v_{\text{T}_e}}\int_0^\infty
+	v\exp\left(-v^2/2v_{\text{T}_e}^2\right)dv=\frac{1}{\sqrt{2\pi}}v_{\text{T}e}=
+	\sqrt{\frac{eT_{e}}{2\pi m_{e}}}
 \end{equation}
 
-en prenant la relation \ref{1-densitéIonique} au seuil de la gaine, on peut
-calculer le potentiel flottant $\Lambda$ qui s'établit naturellement entre le
-plasma et le mur :
+L'égalité des deux flux donne alors :
 
 \begin{equation}
-	\Lambda=\Phi_{s}-\Phi_\text{wall}=\frac{1}{2}T_{e}\ln{\frac{m_{i}c_{s}^2}{2\pi
+n_sc_s=n_s\exp\left(\frac{\Phi_\text{w}-\Phi_s}{T_e}\right)\sqrt{\frac{eT_{e}}{2\pi
+m_{e}}}
+\end{equation}
+
+on en déduit le potentiel flottant $\Lambda$ qui s'établit
+naturellement entre le plasma et le mur :
+
+\begin{equation}
+	\Lambda=\Phi_{s}-\Phi_\text{w}=\frac{1}{2}T_{e}\ln{\frac{m_{i}c_{s}^2}{2\pi
 	m_{e}v_{i}\puissance{2}}}
 	\end{equation}
 
-Si l'on suppose donc $v_\text{i}=c_{s}$ à l'entrée de gaine, le potentiel
-flottant d'un plasma d'hydrogène à une température électronique d'1eV est
-défini par le logarithme du rapport de masse :
+Pour un plasma d'hydrogène isotherme à une température électronique
+d'1eV, stationnaire et dans l'approximation des ions froids, le potentiel
+flottant est défini par le logarithme du rapport de masse, montrant le rôle
+fondamental de la différence d'inertie entre les ions et les électrons :
 
 \begin{equation}
-	\Lambda=\frac{1}{2}\ln{\frac{m_{i}}{2\pi
+	\Lambda_{\text{H}^+}=\frac{1}{2}\ln{\frac{m_{i}}{2\pi
 	m_{e}}}=2.8388
 	\end{equation}
 
@@ -620,7 +646,7 @@ figure (\ref{1-profilesgaine}) :
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=70mm,width=80mm]{figures/1-sheathprofiles.jpg}{\caption{Profils
-des densités électronique, ionique,
+des densités électronique et ionique,
 du potentiel et de la vitesse ionique à
 la transition plasma-gaine\parencite{Rax}. La taille
 de la gaine est ici exagérée.}\label{1-profilesgaine}}
@@ -635,13 +661,35 @@ d'équilibre autour de laquelle le potentiel s'ajuste constamment pour
 	j_{s}=en_{s}v_{i}\left(1-e^{\Lambda-\Phi_{s}/T_{e}}\right)
 \end{equation}
 
-\fcolorbox{red}{white}{
-\begin{minipage}{0.9\textwidth}flux d'énergie et de chaleur\ldots?
-\end{minipage}}
+Il est aussi possible de quantifier l'énergie perdue à la paroi par les
+électrons. Comme les électrons ne transfèrent que de l'énergie cinétique quand
+ils sont perdus à la paroi, le flux d'énergie s'écrit :
+
+\begin{equation}
+	\Gamma_\varepsilon^\text{w}=n_ev_{e}^\text{w}\varepsilon_e^\text{w}
+\end{equation}
+
+où $\varepsilon_e^\text{w}$ représente l'energie moyenne perdue par électron,
+qui peut être obtenue directement en moyennant la aussi sur une
+demi-maxwellienne :
+
+\begin{equation}
+	\varepsilon_e^\text{w}=\frac{1}{\sqrt{2\pi}v_{\text{T}_e}v_{e}^\text{w}}\int_0^\infty
+	\frac{m_e}{2e}\left(v^2+2v_{\text{T}_e}^2\right)v\exp\left(-v^2/2v_{\text{T}_e}^2\right)dv
+	=2T_e
+\end{equation}
+
+Pour obtenir le flux d'énergie perdu par les électrons en entrée de gaine, il
+faut ajouter le potentiel de gaine à $\varepsilon_e^\text{w}$ afin de tenir
+compte de l'énergie transférée aux ions dans la chute de potentiel :
+
+\begin{equation}
+	\varepsilon_s=2T_e+\Phi_s-\Phi_\text{w}
+\end{equation}
+
 \subsubsection{Gaine dans les plasmas multi-espèces}
-Le critère de Bohm pour un plasma multi-espèces a été dérivé par Riemann
-\parencite{Riemann95},\parencite{Allen},\parencite{Franklin}, il prend la
-forme :
+Le critère de Bohm pour un plasma multi-espèces a été dérivé par
+Riemann~\parencite{Riemann95}, il prend la forme :
 
 \begin{equation}
 \label{1-BohmMulti}
@@ -649,19 +697,25 @@ forme :
 \end{equation}
 
 avec $c_{si}\approx\sqrt{eT_e/m_i}$ la vitesse de Bohm de l'espèce $i$.
-L'inégalité \eqref{1-BohmMulti} est vérifiée si chaque fraction possède sa
-propre vitesse de Bohm en entrée de gaine, ou si tous les ions ont la même
-vitesse, $c_s$, une sorte de vitesse de Bohm du système :
+L'inégalité \eqref{1-BohmMulti} est vérifiée dans deux situations :
 
-\begin{equation}
+\begin{itemize}
+  \item si chaque espèce possède sa
+propre vitesse de Bohm en entrée de gaine $c_{si}$
+	\item si les ions ont tous la même vitesse, sorte de vitesse de Bohm du système
+	\begin{equation}
 \label{1-BohmSpeed}
 c_s=\sqrt{\sum_i\frac{n_i}{n_e}c_{si}^2}
 \end{equation}
+ \end{itemize}
 
-Cette propriété a été confirmée par une étude de la gaine dans un plasma
-argon-helium réalisée par Severn et al.~\parencite{Severn}, montrant que les
-ions d'argon se déplacent 75\% plus rapidement que leur vitesse de Bohm
-spécifique.
+La première proposition est controversée et
+discutable~\parencite{Allen,Franklin} mais c'est la seule théorie
+qui autorise une solution stationnaire du plasma.
+De plus certaines expérimentations la contredisent, comme par
+exemple les travaux de Severn et al.~\parencite{Severn}, qui montrent que dans
+le cas d'un plasma argon-helium de concentration équivalente, les ions d'argon
+se déplacent 75\% plus rapidement que leur vitesse de Bohm spécifique. 
 
 \subsubsection{Gaine dans les plasmas magnétisés}
 La situation dans le cas d'un champ magnétique normal à la paroi est
