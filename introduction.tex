@@ -229,21 +229,41 @@ les particules, prises deux à deux, peuvent interagir binairement.
 Ces interactions directes entre particules donnent lieu à des transferts
 d'impulsion, d'énergie ou encore à des réactions plus complexes telles que
 l'ionisation, l'excitation et la recombinaison ; elles sont regroupées
-sous le terme général de collisions et se caractérisent par des fréquences de
-collisions.
+sous le terme général de collisions et sont caractérisées à l'échelle
+microscopique par des sections efficaces de collision. La fréquence de
+collision $\nu_{\alpha \beta}$, qui donne pour une réaction la probabilité
+d'interaction par unité de temps d'une particule de l'espèce $\alpha$ sur une
+population cible $\beta$, est définie par :
 
 \begin{equation}
 \label{1-collisionfreq}
-	\nu_{\alpha s}=\left<\sigma_{\alpha s}
-\sigma_{in} n_{n} v_{i}\right>
-\end{equation} 
+	\nu_{\alpha
+	\beta}(v_r)=n_\beta\sigma_{\alpha
+	\beta}(v_r)\,v_r
+\end{equation}
+
+où $n_\beta$ est la densité de l'espèce cible, $\sigma_{\alpha \beta}$ est la
+section efficace de collision et $v_r=|v_\alpha-v_\beta|$ le module de
+la vitesse relative entre la particule incidente et la population cible. 
+Le cas des collisions entre les particules chargées et
+un gaz au repos peut se simplifier davantage en négligeant la vitesse de ce
+dernier, de telle sorte que $v_r=v_\alpha$. 
+
+La relation \eqref{1-collisionfreq}
+concerne une particule de vitesse $v_\alpha$ ; pour tenir compte de l'ensemble des particules
+de l'espèce et obtenir un coefficient macroscopique, on calcule la moyenne sur
+la fonction de distribution en vitesse :
+
 \begin{equation}
-\label{1-coefTaux}
-	k_{\alpha s}=\left<\sigma_{\alpha s}
-v_r\right>
-\end{equation} 
-le coefficient de collision/réaction associé avec
-$v_r=(\mathbf u_s-\mathbf u_\alpha)$ la vitesse relative des deux fluides.
+\label{1-collisionfreqMacro}
+	\nu_{\alpha\beta}=\left<\nu_{\alpha
+	\beta}(v_r)\right>_v=n_\beta\left<\sigma_{\alpha
+	\beta}(v_r)\,v_r\right>_v=n_\beta k_{\alpha
+	\beta}
+\end{equation}
+
+avec $k_{\alpha\beta}=\left<\sigma_{\alpha\beta}
+v_r\right>$ le taux de collision/réaction associé qui se mesure en m$^{3}$/s.
 
 Lors de collisions \emph{élastiques}\footnote{Les collisions sont dites élastiques car
 elles donnent lieu à des transferts d'impulsion et d'énergie sans changer
