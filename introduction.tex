@@ -130,7 +130,7 @@ et $q_\alpha$ sa masse et sa charge, $\mathbf v_\alpha$ sa vitesse. Le champ
 électromagnétique $(\mathbf E,\mathbf B)$ peut généralement se décomposer en
 deux parties :
 un champ extérieur, souvent imposé par l'homme pour
-contrôler le plasma, et un champ autocohérent, créé par le plasma lui même en
+contrôler le plasma, et un champ auto-cohérent, créé par le plasma lui même en
 réponse à la séparation et au déplacement des charges (équation de
 Maxwell-Gauss et Maxwell-Ampère).
 Le champ magnétique généré par les courants du plasma étant
@@ -160,7 +160,7 @@ l'équilibre suivant la loi de Maxwell-Poisson :
 
 où $\varepsilon\indice{0}$ est la constante diélectrique du
 vide et $e\,(n_{i}-n_{e})$ la densité spatiale de charge. 
-En applicant le principe fondamental de la dynamique à un électron, deux
+En appliquant le principe fondamental de la dynamique à un électron, deux
 échelles caractéristiques apparaissent : la fréquence de Langmuir, ou pulsation
 plasma $\omega_{pe}$ et la longueur de Debye $\lambda_D$, toutes deux reliées
 par l'intermédiaire de la vitesse thermique électronique \eqrefp{1-VThermique}:
@@ -247,12 +247,12 @@ section efficace de collision et $v_r=|v_\alpha-v_\beta|$ le module de
 la vitesse relative entre la particule incidente et la cible. 
 Le cas des collisions gaz -- particules chargées peut souvent se simplifier
 davantage en négligeant la vitesse du gaz (quand celui-ci est au repos et forme
-un fond diffus pour le plasma), de telle sorte que $v_r=v_\alpha$.
+un fond diffus pour le plasma), de sorte que $v_r=v_\alpha$.
 
 La relation \eqref{1-collisionfreq}
 concerne une particule de vitesse $v_\alpha$ ; pour tenir compte de l'ensemble des particules
 de l'espèce et obtenir un coefficient macroscopique, on prend la moyenne de
-cette fréquence sur la distribution de vitesse :
+cette fréquence sur la distribution en vitesse :
 
 \begin{equation}
 \label{1-collisionfreqMacro}
@@ -271,16 +271,18 @@ champ local\footnote{en considérant une population d'électrons dans une
 petite zone de plasma en interaction avec le gaz (sans prendre en compte les ions) et
 dans un champ électrique $\mathbf E$ monotone, un équilibre se forme entre
 l'énergie gagnée par l'accélération dans $\mathbf E$ et celle perdue dans les
-collisions.} ; le taux s'exprime alors en fonction du ratio entre les
-valeurs locales du champ électrique et de la densité de neutres : $\mathbf E/n_g$.
-Dans ces deux cas, le taux de collision est très sensible à la température
-électronique $T_e$. 
+collisions. C'est ce qu'on appelle un équilibre de champ local.} ; le taux
+s'exprime alors en fonction du ratio entre les valeurs locales du champ électrique et de la densité de neutres : $\mathbf E/n_g$.
+La vitesse des électrons étant leur vitesse thermique, le taux
+de collision est donc en général très sensible à la température électronique
+$T_e$.
 
 Pour les ions la situation est moins claire et
-de telles approximations sont impossibles ; on a alors recours à des calculs de
-mécanique quantique~\parencite{raju} ou à des expériences spéciales dites de
-"swarm"~\parencite{Phelps} pour mesurer $\nu$, indirectement à partir de
-modèles de Dérive-Diffusion (voir~\S\ref{ApproximationsEqMvt}-\ref{1-transportAmbipolaire}).
+de telles approximations sont impossibles ; on a alors recours à des expériences spéciales dites de
+"swarm"~\parencite{Phelps} pour mesurer $\nu$ indirectement à partir de
+modèles de Dérive-Diffusion
+(voir~\S\ref{ApproximationsEqMvt}-\ref{1-transportAmbipolaire}) ou à des calculs
+de mécanique quantique~\parencite{raju}.
 
 Lors de collisions
 \emph{élastiques}\footnote{Les collisions sont dites élastiques car elles
@@ -326,12 +328,11 @@ du plasma.
 En plus d'une fréquence, on associe souvent une longueur caractéristique
 à l'occurrence d'une collision. Le libre parcours moyen $\lambda_\alpha$
 représente alors la distance que peut parcourir une particule à une vitesse
-$v_\alpha$ avant de subir une certaine interaction avec le système qui l'entoure
-:
+$v_\alpha$ avant de subir une interaction avec le système qui l'entoure :
 
 \begin{equation}
 	\lambda_\alpha=\frac{\left<v_\alpha\right>}{\left<\nu_\alpha\right>}
-	=\frac{\left<v_\alpha\right>}{n_g\left<\sigma_\alpha v\right>}
+	=\frac{\left<v_\alpha\right>}{n_g\left<\sigma_\alpha v_\alpha\right>}
 \end{equation} 
 
 La collisionnalité d'une espèce est enfin
@@ -339,7 +340,10 @@ définie par le ratio entre son libre parcours moyen $\lambda_\alpha$ et la
 taille $L$ du plasma. Quand le libre parcours moyen est petit devant la
 taille du plasma $\lambda_\alpha/L\ll 1$
 les particules ont le temps de faire de nombreuses collisions avant de
-traverser entièrement le système.
+traverser entièrement le système. Dans les plasmas basse-pression, où la
+fréquence d'ionisation est souvent plus élevée que la fréquence de collision
+ions-neutres, la longueur caractéristique du transport ionique est alors reliée
+à une certaine longueur d'ionisation $\lambda_\text{iz}$.
 
 \subsection{Plasma et champ magnétique} 
 \label{1-plasma-champMag}
@@ -355,10 +359,10 @@ par trois composantes (cf. figure \ref{1-particleDrifts}) :
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/1-mouvementCyclotron.png}
+\includegraphics[width=0.7\textwidth]{figures/1-mouvementCyclotron.png}
 {\caption{Mouvement cyclotronique des particules dans un champ magnétique autour
-d'un centre-guide dont la trajectoire dérive lentement, perpendiculairement aux
-lignes de champ.}\label{1-particleDrifts}}
+d'un centre-guide dont la trajectoire dérive lentement, dans la direction
+perpendiculaire aux lignes de champ.}\label{1-particleDrifts}}
 \end{figure}
 
 \begin{itemize}
@@ -400,9 +404,9 @@ Quand le champ magnétique s'intensifie, les trajectoires
 hélicoïdales se resserrent, limitant de plus en plus le déplacement des
 particules perpendiculairement à la direction magnétique. L'influence du champ
 sur le transport peut alors être mesurée par le paramètre de
-magnétisation $\delta$, une espèce pouvant être considérée comme magnétisée à
+magnétisation $\delta$ ; une espèce pouvant être considérée comme magnétisée à
 partir du moment où son rayon de
-Larmor est petit devant la longueur caractéristique $L_\perp$ du plasma
+Larmor est petit devant la longueur caractéristique $L_\perp$ du plasma,
 perpendiculairement au champ magnétique :
 
 \begin{equation}
@@ -467,22 +471,24 @@ plasma d'une région de densité ionique supérieure, et donc non-neutre, que l'
 appelle gaine électrostatique (ou gaine de Debye, voir figure~\ref{1-gaine1}).
 Cette gaine a une taille caractéristique de l'ordre de quelques
 $\lambda_\text{D}$, longueur critique à partir de laquelle un plasma
-quasineutre s'écrante de la paroi.
+quasineutre s'écrante de la paroi. Dans les plasmas classiques où cette longueur
+est petite à l'échelle du plasma, le rôle de la gaine est essentiellement de
+maintenir la quasineutralité dans le volume en régulant les flux d'ions et
+d'électrons tombant sur les parois. 
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[height=60mm,width=60mm]{figures/1-sheath.jpg}{\caption{Séparation
 du plasma entre une région quasineutre et la gaine à sa
 périphérie. A la frontière, il y a rupture de la quasineutralité et la vitesse
-ionique, sans un plasma stationnaire, est égale à la vitesse de Bohm
+ionique, dans un plasma stationnaire, est égale à la vitesse de Bohm
 $c_\text{s}$\parencite{Rax}.}\label{1-gaine1}}
 \end{figure}
 
-Dans les plasmas classiques où sa taille est petite
-à l'échelle du plasma, le rôle de la gaine est essentiellement de
-maintenir la quasineutralité dans le volume en régulant les flux d'ions et
-d'électrons tombant aux parois. Les électrons, énergétiquement confinés par le
-potentiel de la surface, forment un équilibre électrostatique à l'intérieur du
+
+
+Les électrons, énergétiquement confinés
+par le potentiel de la surface, forment un équilibre électrostatique à l'intérieur du
 plasma, et peuvent être décrits par une distribution de Boltzmann :
 
 \begin{equation}
@@ -514,7 +520,7 @@ dure à la vitesse ionique :
 \text{Gaine :~~~~~~~~~~~~~~~~~~~~~~~~~}v_i\ge c_s\\
 \text{Plasma quasineutre :~~~}v_i\le c_s
 \end{aligned}
-\;\;\right\}\;\;v_i=c_s
+\;\;\right\}\;\;\Rightarrow v_i=c_s
 \end{equation}
 
 
@@ -555,7 +561,7 @@ le cas d'un plasma n'étant composé que d'une seule espèce d'ion,  :
  \end{itemize}
 
 La frontière entre la gaine et la prégaine, partie quasineutre du plasma, peut
-être définie à partir de la brisure de la quasineutralité. A l'intérieur de la
+être définie à partir de la rupture de la quasineutralité. A l'intérieur de la
 gaine, afin de maintenir la décroissance du potentiel jusqu'à la paroi, la
 densité ionique doit diminuer moins rapidement que la densité d'électrons.
  
@@ -586,23 +592,23 @@ où $v_{i}=0$, placée en $x=0$ :
 	\end{aligned}\right.
 \end{equation}
 
-Dans la prégaine, Le potentiel chute donc de
-$T_{e}/2$ et la densité, du fait de la relation de Boltzman des électrons, d'un
-facteur $n_{s}/n\indice{0}=e^{-1/2}$.
+En égalant les expressions, on trouve que le potentiel chute de
+$T_{e}/2$ dans la prégaine et la densité d'un facteur
+$n_{s}/n\indice{0}=e^{-1/2}$, du fait de la relation de Boltzmann des électrons.
 
-Pour estimer la chute de potentiel dans la gaine, nous supposerons que le
+Pour estimer la chute de potentiel dans la gaine, nous supposons que le
 courant est nul dans la paroi, auquel cas les flux électronique et ionique sont
-égaux. Dans une gaine non-collisionnelle, le flux ionique $\Gamma_i^\text{w}$
-tombant sur la paroi est égal à celui entrant dans la gaine ; c'est la densité en lisière de gaine
-multipliée par la vitesse de Bohm :
+égaux. Dans une gaine non-collisionnelle, le flux ionique
+tombant sur la paroi $\Gamma_i^\text{w}$ est égal à celui entrant dans la gaine
+; c'est la densité en lisière de gaine multipliée par la vitesse de Bohm :
 
 \begin{equation}
 \Gamma_i^\text{w}=n_sc_s
 \end{equation}
 
-Le flux d'électronique se calcule en multipliant le facteur de
-Boltzman par la vitesse thermique à la paroi sur le demi-espace des vitesses
-positives :
+Le flux électronique se calcule en multipliant le facteur de
+Boltzmann par la vitesse thermique à la paroi, obtenue en intégrant la fonction
+de distribution sur le demi-espace des vitesses positives :
 
 \begin{equation}
 \Gamma_e^\text{w}=n_s\exp\left(\frac{\Phi_\text{w}-\Phi_s}{T_e}\right)v_{e}^\text{w}
@@ -630,7 +636,7 @@ naturellement entre le plasma et le mur :
 	\end{equation}
 
 Pour un plasma d'hydrogène isotherme à une température électronique
-d'1eV, stationnaire et dans l'approximation des ions froids, le potentiel
+d'1~eV, stationnaire et dans l'approximation des ions froids, le potentiel
 flottant est défini par le logarithme du rapport de masse, montrant le rôle
 fondamental de la différence d'inertie entre les ions et les électrons :
 
@@ -669,7 +675,7 @@ ils sont perdus à la paroi, le flux d'énergie s'écrit :
 	\Gamma_\varepsilon^\text{w}=n_ev_{e}^\text{w}\varepsilon_e^\text{w}
 \end{equation}
 
-où $\varepsilon_e^\text{w}$ représente l'energie moyenne perdue par électron,
+où $\varepsilon_e^\text{w}$ représente l'énergie moyenne perdue par électron,
 qui peut être obtenue directement en moyennant la aussi sur une
 demi-maxwellienne :
 
@@ -737,7 +743,7 @@ critère de Bohm est alors légèrement corrigé pour tenir compte du transport 
  
  Le cas d'une gaine totalement parallèle au champ magnétique s'avère bien plus
  complexe et n'est pas clairement défini dans la littérature. Dans la
- contruction du modèle, comme $\lambda_D/\rho_L\ll 1$, nous supposerons que le
+ construction du modèle, comme $\lambda_D/\rho_L\ll 1$, nous supposerons que le
  critère de Bohm est inchangé, ie. que les ions doivent au moins atteindre la
  vitesse de Bohm à la sortie du plasma quasineutre.
 
@@ -789,7 +795,7 @@ souvent aux forces électromagnétiques. Lors de collisions, les particules peuv
 trajectoire, et ainsi se déplacer instantanément dans des régions éloignées de leur espace des
 phases (ou encore totalement disparaître lors de collisions inélastiques).
 L'opérateur de collisions $C[f_\alpha]$, qui doit représenter l'intégralité de
-ces effets discrets, mesure le taux auquels les particules sont transférées d'un
+ces effets discrets, mesure le taux auquel les particules sont transférées d'un
 volume de l'espace des phases à un autre.
 
  L'équation de Boltzmann permet de
@@ -878,7 +884,7 @@ w\puissance{2} f_\alpha(\mathbf r,\mathbf v,t) \,\text{d}\puissance{3}\mathbf{v}
 En montant en ordre, les moments apportent de plus en plus de détails sur la
 fonction de distribution, donnant théoriquement une description du plasma
 strictement équivalente à la description statistique. Dans les fluides
-collisionnels (et plus précisément quand les auto-collisions sont suffamment
+collisionnels (et plus précisément quand les auto-collisions sont suffisamment
 nombreuses), il ne suffit généralement que de la densité $n_\alpha$, de la
 vitesse $\mathbf{u}_\alpha$ et de la température $T_\alpha$ pour caractériser l'ensemble des particules d'une espèce, les fonctions de distribution
 prenant la forme de maxwelliennes locales\footnote{Il suffit de deux vitesses
@@ -899,7 +905,7 @@ Les moments de la fonction de distribution se calculent ainsi facilement.}:
 
 Pour une espèce dont la fonction de distribution n'est à priori pas
 maxwellienne, on réalise une opération de fermeture du système d'équations, qui,
-à l'ordre $k$, consite à approximer ou exprimer les moments d'ordre $k$+1
+à l'ordre $k$, consiste à approximer ou exprimer les moments d'ordre $k$+1
 en fonction des moments d'ordre inférieur et de leur gradient.
 
 \subsection{Les équations de conservation}
