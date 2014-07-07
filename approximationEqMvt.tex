@@ -94,12 +94,8 @@ et aux collisions avec le gaz. Pour modéliser ce type de plasma, la prise en
 compte du terme collisionnel dans l'équation du mouvement est essentielle.
 En l'absence de champ magnétique, le rapport d'échelle entre le libre parcours moyen des particules
 et la taille du plasma $\lambda_\alpha\ll L$ permet de simplifier l'équation du
-mouvement en négligeant les termes d'inertie, relativement faibles\footnote{Les
-termes inertiels peuvent être négligés quand la vitesse fluide $\mathbf u$ est
-subsonique : $\mathbf u$ vérifie alors $\mathbf u\ll \left<v\right>/K_n$, où
-$K_n=\lambda/L$ est le nombre de Knudsen et $$\nu \mathbf u=\frac{
-\left<v\right>\mathbf u}{\lambda}\gg \frac{u^2}{\lambda}K_n=\frac{u^2}{L}\sim
-\mathbf u\cdot\nabla\mathbf u$$} par rapport au terme collisionnel :
+mouvement en négligeant les termes d'inertie, relativement faibles par rapport
+au terme collisionnel :
 
 \begin{equation}
 \label{1-eqDriftDif}
@@ -151,7 +147,18 @@ correspondant à un courant nul :
 \begin{equation}
 \label{1-eqEAmb}
 \mathbf j=0 \Rightarrow \mathbf E=\mathbf
-E_a=\frac{D_i-D_e}{\mu_i+\mu_e}\frac{\nabla n}{n}
+E_a=\frac{D_i-D_e}{\mu_i+\mu_e}\frac{\nabla
+n}{n}
+\end{equation}
+
+Les coefficients de diffusion et de mobilité étant bien plus important pour les
+électrons que pour les ions, on peut estimer la chute du potentiel ambipolaire
+en fonction de la température électronique :
+
+\begin{equation}
+\label{1-eqApproxEAmb}
+\mathbf E_a\approx T_e\frac{\nabla
+n}{n}\rightarrow\mathbf E_a\cdot L\approx\frac{T_e}{2}
 \end{equation}
 
 A l'interface entre les parois et le plasma, une gaine positive se
@@ -162,8 +169,10 @@ Les ions, quant à eux, ont une durée de vie de l'ordre de
 $\nu_\text{iz}\puissance{-1}$ : depuis leur zone de création, ils sont
 continûment accélérés par le champ ambipolaire jusqu'à être perdus à la paroi
 où ils se recombinent. La théorie classique des gaines prédit qu'à l'équilibre,
-la densité diminue d'un facteur $\sim\,$2 et la chute de potentiel ambipolaire
-est de l'ordre de $T_e/2$ (cf. \S\ref{Introduction}-\ref{1-gaines}).
+la densité diminue d'un facteur $\sim\,$2 et la chute de potentiel, conformément
+à l'estimation donnée par~\eqref{1-eqApproxEAmb}, est de l'ordre de
+$T_e/2$ (cf.
+\S\ref{Introduction}-\ref{1-gaines}).
 
 \subsection{Équation de dérive-diffusion magnétisée}
 \label{1-deriveDiffMag}
@@ -191,14 +200,14 @@ sont devenus des tenseurs d'ordre 2 :
 \begin{align}
 \boldsymbol{\mu}_\alpha =
  \begin{pmatrix}
-  \mu_{\alpha\perp} & \mu_{\alpha\times} & 0 \\
-  \mu_{\alpha\times} & \mu_{\alpha\perp} & 0 \\
+  \mu_{\alpha\perp} & \pm\mu_{\alpha\times} & 0 \\
+  \pm\mu_{\alpha\times} & \mu_{\alpha\perp} & 0 \\
   0  & 0  & \mu_{\alpha\para} 
  \end{pmatrix}\;\;\;\;\text{et}\;\;\;\;
  \mathbf D_\alpha =
  \begin{pmatrix}
-  D_{\alpha\perp} & D_{\alpha\times} & 0 \\
-  D_{\alpha\times} & D_{\alpha\perp} & 0 \\
+  D_{\alpha\perp} & \pm D_{\alpha\times} & 0 \\
+ \pm D_{\alpha\times} & D_{\alpha\perp} & 0 \\
   0  & 0  & D_{\alpha\para} 
  \end{pmatrix}
 \end{align}
@@ -229,7 +238,7 @@ transport croisé commence à dominer sur le transport collisionnel et devient p
 $B\puissance{-1}$. Cette loi de puissance que suit le transport par rapport au
 champ magnétique est souvent interprétée comme la signature d'un transport
 anormal, mais apparaît naturellement dans les équations à travers les
-coefficients $\mu_{\alpha\times}$ et $D_{\alpha\times}$.
+coefficients de transport $\mu_{\alpha\times}$ et $D_{\alpha\times}$.
 
 
 \section{Approche par les vitesses de dérive}
@@ -388,9 +397,9 @@ u^e_*)=e(\nabla(p_i+p_e)\times\mathbf B/B^2)
 
 \subsection{Dérive de polarisation}
 
-Dans le cas d'un champ électrique variant lentement dans le temps, une troisième
-dérive, d'un ordre de grandeur inférieur aux dérives électrique et diamagnétique,
-peut être identifiée : 
+Dans le cas d'un champ électrique variant lentement dans le temps et dans
+l'espace, une troisième dérive, d'un ordre de grandeur inférieur aux dérives
+électrique et diamagnétique, peut être identifiée : 
 
 \begin{equation}
 \label{1-vitessePol}
@@ -413,12 +422,23 @@ u_E}{\text{dt}}=-\frac{m_\alpha}{q_\alpha B^2}\frac{\text{d}\nabla_\perp
 \end{equation}
 
 C'est la dérive de polarisation $\mathbf{u}_\perp^{(2)}=\mathbf u^\alpha_p$, qui
-dérive du terme d'inertie. Bien qu'elle soit d'un ordre de grandeur inférieur aux deux autres
-vitesses de dérive, la divergence du flux qui lui est associé est comparable à celle du
-flux diamagnétique. Comme la dérive électrique n'a aucune influence sur
-l'évolution du courant, la contribution de la dérive de polarisation est dès
-lors du même ordre de grandeur que celle de la dérive diamagnétique et ne peut plus
-être négligée.
+dérive du terme d'inertie. La présence du ratio $m_\alpha/q_\alpha$ indique
+d'une part que cette vitesse porte du courant, et d'autre part que ce
+courant est principalement porté par les ions :
+
+\begin{equation}
+\label{1-courantPol}
+\mathbf{j}_p = en_i\mathbf u^i_p-en_e\mathbf u^e_p\simeq
+-\frac{en_im_i}{q_i B^2}\frac{\text{d}\nabla_\perp \Phi}{\text{dt}}
+\end{equation}
+
+Bien que la vitesse de polarisation soit d'un ordre de
+grandeur inférieur aux deux autres vitesses de dérive, la divergence du flux 
+de polarisation est comparable à celle du flux diamagnétique. Comme
+la dérive électrique ne transporte aucun courant, la
+contribution de la dérive de polarisation est dès lors du même ordre de
+grandeur que celle de la dérive diamagnétique et ne peut plus être négligée
+dans l'équation du courant.
 
 %\bibliographystyle{apalike}
 %\bibliography{biblio}

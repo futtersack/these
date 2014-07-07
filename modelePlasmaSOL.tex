@@ -532,25 +532,25 @@ de la densité et du flux radial sont présentées sur la figure~\ref{2-PDFBase}
     \caption{Fonction de distribution de probabilité pour la
     densité~\subref{2-TokamPDFDensite}~~et le flux
     radial~\subref{2-TokamPDFFlux}. La moyenne est repérée par le trait en
-    pointillé.}
+    pointillé et l'écart type apparaît en coulour plus foncée.}
     \label{2-PDFBase}
 \end{figure}
 
 Les PDF
 sont calculées au milieu du domaine, à $x=\,$128$\,\rho_{Li}$, sur un
 échantillon statistique de 2000 pas de temps et de 256 positions
-poloïdales. La PDF est centrée autour la valeur
-moyenne de la grandeur, et normalisée par l'écart entre les valeurs maximum et
-minimum. Elle donne en pourcentage la répartition globale des valeurs
+poloïdales. La PDF donne en pourcentage la répartition globale des valeurs
 que peut prendre la quantité et permet de quantifier l'importance des fluctuations.
 
-Sur ces PDF on voit par exemple que la densité est le plus souvent
-légèrement inférieure à la densité moyenne, et que des évènements plus
-importants, de 3 à 4 fois l'écart type, peuvent apparaître. La PDF du flux
-montre un phénomène caractéristique de l'instabilité d'interchange : bien que
-les avalanches donnent l'impression que le transport moyen soit dirigé dans
-le sens des X croissants, le flux statistique le plus probable correspond aux
-trous de plasmas qui remontent le gradient de densité.
+Sur ces PDF on voit par exemple que la densité et le flux radial sont le plus
+souvent inférieurs à leur moyenne, et que des évènements plus
+importants, de 3 à 4 fois l'écart type, peuvent apparaître. Bien que
+les avalanches donnent l'impression d'un transport radial
+important dirigé dans le sens des $x$ croissants, ces PDF
+montrent que les densités et les flux statistiques les plus probables 
+correspondent aux trous de plasmas qui remontent le gradient de densité. Le flux
+moyen, résultant de la somme de ces évènements, n'est donc que légèrement
+positif.
 
 Dans cette partie, nous avons présenté le modèle de base et le type
 de solution que calculait TOKAM2D. Nous allons maintenant détailler les
@@ -567,23 +567,33 @@ ces plasmas :
 	\item l'influence des parois sur le transport est primordiale. Des conditions
 	aux limites périodiques, si elles sont acceptables dans le cadre de l'étude de
 	l'instabilité d'interchange, ne peuvent pas représenter le champ électrique
-	ambipolaire qui résulte de la chute de potentiel dans la gaine.
-	\item le champ magnétique peut avoir une géométrie plus complexe et présenter
-	de forts gradients.
-	\item L'ionisation, processus contrôlant le bilan de particules, est fortement
+	ambipolaire qui résulte de la chute de potentiel dans la prégaine
+	\item le champ magnétique peut être
+	totalement absent de certaines régions du plasma et présenter de forts
+	gradients à l'entrée des zones magnétisées
+	\item l'ionisation, processus contrôlant le bilan de particules, est fortement
 	dépendante de la température électronique. Un modèle isotherme est donc
-	intrinsèquement inadapté pour capturer la physique des sources d'ions.
+	intrinsèquement inadapté pour capturer la physique des sources d'ions
+	\item le champ magnétique, de bien plus faible
+	intensité, ne confine pas les ions qui ont en général un rayon de Larmor
+	supérieur aux dimensions de la source
+	\item la dynamique des espèces est dominée par la perte de
+	quantité de mouvement liée aux collisions avec le gaz. La
+	prise en compte du terme collisionnel dans l'équation du mouvement est
+	alors primordiale.
 \end{itemize}
 
 Dans cette partie, nous présentons les évolutions successives du modèle pour
-tenir compte de ces trois points.
-Si les simulations de cette version complétée de TOKAM2D ne correspondent pas
-encore aux plasmas froids des sources d'ions, elles seront tout de même
-éclairantes sur le type de
+tenir compte des trois premiers points. 
+Si les simulations de
+cette version complétée de TOKAM2D ne correspondent pas encore aux plasmas
+froids des sources d'ions, elles seront tout de même éclairantes sur le type de
 transport qui se met en place dans des configurations de type filtre magnétique
-et colonne de plasma pour des cas limites de notre étude, ie. où le plasma
-est totalement ionisé et très magnétisé\footnote{La levée de ces deux hypothèses, qui n'est possible qu'en incluant l'interaction avec les atomes neutres, requiert une réécriture
-plus en profondeur du modèle, ce qui sera l'objet de la partie suivante.}.
+et colonne de plasma pour des cas limites de notre étude, ie. où le plasma est
+totalement ionisé et très magnétisé. La levée de ces deux hypothèses,
+qui n'est possible qu'en incluant l'interaction avec les atomes neutres,
+requiert une réécriture plus en profondeur du modèle, ce qui sera l'objet de la
+partie suivante.
 
 Dans le cadre de la recherche sur la fusion, cette refonte de TOKAM2D a tout
 d'abord permis de vérifier les approximations choisies dans la description de
