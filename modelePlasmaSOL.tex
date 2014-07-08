@@ -183,7 +183,7 @@ $D_\perp\sim\nu_{ei}\rho_{Li}^2$ varie peu dans l'ensemble du plasma et présent
 une valeur typique de 10$^{-2}\,$m$^2$.s$^{-1}$.
 
 La divergence du flux d'advection peut se décomposer suivant les directions
-parallèle et perpendiculaires. En se souvenant que le flux de matière
+parallèle et perpendiculaire. En se souvenant que le flux de matière
 transverse est essentiellement issu de l'advection par la vitesse de dérive électrique
 (cf.~\S~\ref{ApproximationsEqMvt}-\ref{vitessesDerive}), \eqref{2-ContinuiteElectrons}
 se développe en :
@@ -283,8 +283,8 @@ eT_e(1+\tau)\left[n,B\puissance{-1}\right] +
 
 Diverses considérations sur l'importance relative des termes contenus dans
 \eqref{EqCourant2} (reliées aux hypothèses d'ordering
-et aux variations de champ magnétique) sont développées dans la thèse de Yannick
-Sarasin~\cite{SarazinPhD}. En effectuant un changement de variable
+et aux variations de champ magnétique) sont développées dans la thèse de Yanick
+Sarazin~\cite{SarazinPhD}. En effectuant un changement de variable
 $\Omega=\nabla_\perp^2\Phi$, où $\Omega$ symbolise une vorticité\footnote{La
 vorticité d'un écoulement est généralement définie comme le rotationnel de sa vitesse. Dans la SOL, le champ de vitesse correspond essentiellement à la dérive ExB, ce qui donne pour un champ magnétique constant de 1T : 
 $\nabla\times\mathbf{v}\sim\nabla\times\mathbf{u}_E=\nabla\times(\mathbf{E}/B\times\mathbf{b})\equiv-\nabla_\perp^2
@@ -505,7 +505,7 @@ poloïdal de symétrie $\theta_0=0$}
     \subfigure[]{\label{2-CartePotentielBase}
     \includegraphics[height=6cm]{figures/2-CartePotentielBase.eps}}
     \caption{Cartes de la densité~\subref{2-CarteDensiteBase}~~et du potentiel
-    électrostatique~\subref{2-CartePotentielBase}. Le profil du terme source
+    électrostatique~\subref{2-CartePotentielBase}~. Le profil du terme source
     $\mathcal{S}$ est représenté en gris sur la carte de densité.
     }
     \label{2-CartesBase}
@@ -629,11 +629,11 @@ non-périodique~\parencite{Futtersack} et sur l'influence de la température
 	
 	\begin{equation}
 	\label{2-BC}
-		\alpha \partial^2_{x}\chi + \beta \partial_{x}\chi + \gamma \chi =
+		\alpha \partial^2_{x}\psi + \beta \partial_{x}\psi + \gamma \psi =
 		\delta
 	\end{equation}
 	
-	$\chi$ pouvant représenter la densité, le potentiel ou la vorticité. Par
+	$\psi$ pouvant représenter la densité, le potentiel ou la vorticité. Par
 	exemple, à l'aide de l'expression~\ref{2-BC}, le quadruplet
 	\{0,0,$\gamma$,$\delta$\} définit une condition aux limites de Dirichlet, et
 	\{0,$\beta$,0,$\delta$\} une condition aux limites de Neumann, toutes
@@ -665,8 +665,8 @@ non-périodique~\parencite{Futtersack} et sur l'influence de la température
 \begin{figure}[!htbp]
 \centering
     \includegraphics[width=8cm]{figures/2-profileDenNoLimit.eps}
-    \caption{Profils radiaux (moyennés dans la direction poloïdale) de densité
-    pour un cas périodique et un cas absorbant
+    \caption{Profils radiaux (moyennés en temps et dans la direction poloïdale)
+    de densité pour un cas bi-périodique et un cas absorbant
     (non-périodique radialement)\label{2-profileDenNoLimit}.}
 \end{figure}
 	La figure~\ref{2-profileDenNoLimit} montre les profils de densité, moyennés
@@ -686,14 +686,15 @@ non-périodique~\parencite{Futtersack} et sur l'influence de la température
 	gaine joue un rôle crucial, prouvant la nécessité d'opter pour des conditions
 	aux limites issues de considération physiques. Dans la direction
 	perpendiculaire, en attendant qu'une théorie solide se développe, il faut être
-	conscient de l'influence du choix des conditions aux limites.
+	conscient de l'influence du choix de ces conditions aux limites.
 	
 	TOKAM2D ayant été initialement
 	développé avec une méthode spectrale, l'implémentation de conditions aux
 	limites non-périodiques a nécessité une réécriture presque complète du code.
-	La nouvelle version est maintenant basée sur une méthode Volumes Finis, avec un
-	schéma d'advection MUSCL (Modified Upwind Scheme for Conservation Laws),
-	pouvant supporter les chocs, les discontinuités et les forts gradients. 
+	La nouvelle version est maintenant basée sur une méthode Volumes
+	Finis~\parencite{toro}, avec un schéma d'advection MUSCL (Modified Upwind
+	Scheme for Conservation Laws)~\parencite{vanLeer}, pouvant supporter les chocs,
+	les discontinuités et les forts gradients.
 	
 	\subsection{Inclusion d'un champ magnétique non uniforme}
 	
@@ -717,10 +718,11 @@ non-périodique~\parencite{Futtersack} et sur l'influence de la température
 &\partial_{t}\text{W} = 
 -\nabla\cdot\left(\text{W}\mathbf U_\text{E}\right)
 +\text{B}^2\sigma\left(1-e^{\Lambda-\Delta\Phi}\right) 
--\frac{\text{B}^2}{\text{N}}\nabla\cdot\left(\text{N}\mathbf U^i_*\right) 
+-\frac{\text{B}^2}{\text{N}}\nabla\cdot\left(\text{N}\mathbf U_*\right) 
 +\nu\nabla_\perp^2\text{W}
 \end{align}
 
+avec $\mathbf U_E$ et $\mathbf U_*$ les vitesses de dérives normalisées.
 Pour profiter de la nullité mathématique du rotationnel du gradient de
 pression dans l'expression de la divergence du courant
 diamagnétique, nous remarquons que celle-ci est équivalente à l'advection de la
@@ -740,8 +742,8 @@ B\right)=\mathbf B\left[\text{P},\frac{1}{\text{B}^2}\right]
 \end{align}
 
 Cette vitesse ressemble à la vitesse de dérive particulaire due au gradient du
-champ magnétique que l'on rencontre dans la théorie du centre
-guide. 
+champ magnétique que l'on rencontre dans la théorie du
+centre-guide~\parencite{Lee}.
 
 Pour illustrer la modification du code, nous simulons le cas d'une
 barrière magnétique. Sur la
@@ -756,7 +758,7 @@ placée en $x=\,$200$\,\rho_{Li}$ et monte jusqu'à 0.2~T à son maximum.
     \subfigure[]{\label{2-CartePotentielMagBarrier}
     \includegraphics[height=5.8cm]{figures/2-CartePotentielMagBarrier.eps}}
     \caption{Cartes de densité \subref{2-CarteDensiteMagBarrier} et de potentiel
-    \subref{2-CartePotentielMagBarrier}}
+    \subref{2-CartePotentielMagBarrier}~.}
     \label{2-CartesMagBarrier}
 \end{figure}
 
@@ -773,13 +775,13 @@ barrière.
 	\subsection{Implémentation de l'équation d'énergie}
 	La fermeture isotherme choisie dans le modèle de TOKAM2D est aussi très
 	discutable. Comme le potentiel plasma est fortement lié à la température
-	électronique à travers les conditions de gaines, il a tendance à suivre ses
+	électronique à travers les conditions de gaine, il a tendance à suivre ses
 	fluctuations. Le transport transverse dans la SOL peut alors se voir grandement
 	impacté par l'apparition d'un gradient radial de température qui donne
 	naturellement naissance à une dérive poloïdale. De plus, la prise en compte des
 	variations spatiales de la température complexifie énormément la relation de
 	dispersion obtenue par analyse linéaire du modèle, et peut donner lieu à
-	l'apparition d'instabilités différentes de l'interchange.
+	l'apparition d'instabilités différentes de l'interchange\parencite{Berk}.
 	
 	Pour obtenir l'équation de la température électronique, nous partons de
 	l'équation de conservation de l'énergie normalisée :
@@ -791,9 +793,9 @@ barrière.
 		\text{P}_e\nabla\cdot\mathbf{U}_e=\mathcal{S}_{\text{T}_e} 
 	\end{equation}
 	
-	avec $\text{P}_e=\text{NT}_e$ la pression électronique, $\mathbf{Q_e}$ le
-	flux de chaleur normalisé et $\mathcal{S}_{\text{T}_e}$ un terme source
-	d'énergie cohérent avec le flux entrant de particules. 
+	avec $\text{P}_e=\text{NT}_e$ la pression électronique normalisée à $n_0eT_0$,
+	$\mathbf{Q}_e$ le flux de chaleur normalisé et $\mathcal{S}_{\text{T}_e}$ un
+	terme source d'énergie cohérent avec le flux entrant de particules. 
 	
 	Pour simplifier l'équation~\ref{2-eqTempBase}, et pour les mêmes
 	considérations que précédemment, la vitesse fluide dans les divergences est
@@ -804,10 +806,12 @@ barrière.
 	Le flux de chaleur est choisi proportionnel au gradient de pression\footnote{Plusieurs expressions
 	sont utilisées pour décrire la divergence du flux de chaleur. Le plus souvent,
 	on choisit un terme proportionnel au gradient de température 
-$\mathbf{Q}=\chi\nabla\text{T}_e$. Dans
-notre modèle $\mathbf{Q}=\chi\nabla\text{P}_e$ pour ajouter un terme diffusif
-analogue à celui des deux autres équations.} $\mathbf{Q}=\chi\nabla\text{P}_e$
-afin contrôler l'amplitude des flux diffusifs dans la direction perpendiculaire.
+$\mathbf{Q}_e=\chi\nabla\text{T}_e$. Dans
+notre modèle $\mathbf{Q}_e=\chi\nabla\text{P}_e$ pour ajouter un terme diffusif
+analogue à celui des deux autres équations.}
+$\mathbf{Q}_e=\chi\nabla\text{P}_e$, où $\chi$ est une conductivité thermique
+normalisée à $D_B=\rho_{Li}c_s$, afin contrôler l'amplitude des flux diffusifs
+dans la direction perpendiculaire.
 	Les équations du modèle s'écrivent alors :
 	
 %\hspace*{-2cm}\begin{minipage}{1.1\textwidth}
@@ -873,13 +877,12 @@ température électronique :
 	\Phi_{s}=\Lambda\text{T}_e(x,y)
 \end{equation}
 
-La figure~\ref{2-CartePotentielSurTeWhTedNdx} montre le rapport
-$\Phi/\text{T}_e$, intervenant dans les conditions aux limites parallèles. Ce
-rapport étant centré autour de $\Lambda$, on constate que le transport du
-courant dans la direction parallèle force le potentiel à suivre les
-variations de température en rappellant de façon exponentielle le potentiel
-plasma à $\Lambda\text{T}_e$. Il est donc déterminant dans l'équilibre qui
-se met en place.
+La figure~\ref{2-CartePotentielSurTeWhTedNdx} montre le courant
+parallèle. On observe sur cette figure
+que maintenant c'est le rapport $\Phi/\text{T}_e$ qui est centré autour de
+$\Lambda$. Le transport du courant dans la direction parallèle
+force le potentiel à suivre les variations de température en rappellant de
+façon exponentielle le potentiel plasma à $\Lambda\text{T}_e$. 
 
 \begin{figure}[!htbp]
 \centering
@@ -887,14 +890,13 @@ se met en place.
     \includegraphics[height=6cm]{figures/2-CartePotentielSurTeWhTedNdx.eps}}
 	\subfigure[]{\label{2-ProfileFluxWhTe}
     \includegraphics[height=5.5cm]{figures/2-profileFluxRadialWhTedNdx.eps}}    
-    \caption{\subref{2-CartePotentielSurTeWhTedNdx}~ Carte du potentiel électrostatique
-    rapporté à la température. \subref{2-ProfileFluxWhTe}~~Comparaison des
-    profils du flux radial moyenné poloïdalement entre les cas isotherme et
-    anisothermes.}
+    \caption{\subref{2-CartePotentielSurTeWhTedNdx}~ Carte du courant parallèle.
+    \subref{2-ProfileFluxWhTe}~~Comparaison des profils du flux radial, moyenné en temps et en $y$, entre les cas
+    isotherme et anisotherme.}
 \end{figure}
 
-L'une des conséquences immédiatement observables de cette corrélation est
-l'apparition d'un champ électrique radial moyen non nul, qui, combiné au champ
+L'une des conséquences immédiatement observable de cette corrélation est
+l'apparition d'un champ électrique radial moyen non nul qui, combiné au champ
 magnétique, donne naissance à une dérive poloïdale du type ExB. Sur la
 figure~\ref{2-ProfileFluxWhTe}, on peut voir que par rapport au cas isotherme,
 le transport transverse est réduit notablement. En observant la dynamique
@@ -905,10 +907,11 @@ potentiel, lui même proche du gradient de température.
 Ce phénomène rappelle les "zonal flows" qui se forment en présence
 d'un champ électrique radial $\nabla_x{\Phi}$. Pour illustration, les profils
 moyennés en temps et en $y$ du potentiel électrique, du flux radial et du
-flux poloïdal sont montés figure~\ref{2-profileFluxRadialWhTedNdx}. On y voit que le flux poloïdal moyen
-est plus important que son homologue radial, mais surtout qu'il suit
-le gradient radial de potentiel (positif quand $\nabla_x\Phi\ge\,$0 et négatif
-quand $\nabla_x\Phi<\,$0), confirmant l'hypothèse proposée pour son origine.
+flux poloïdal sont montés figure~\ref{2-profileFluxRadialWhTedNdx}. On observe
+que le flux poloïdal moyen est plus important que son homologue radial, mais
+surtout qu'il suit le gradient radial de potentiel (positif quand
+$\nabla_x\Phi\ge\,$0 et négatif quand $\nabla_x\Phi<\,$0), confirmant
+l'hypothèse proposée pour son origine.
 
 	\begin{figure}[!htbp]
     \centering
@@ -927,9 +930,9 @@ domaine donne naissance à une dérive poloïdale qui varie sur une très courte
 distance, se cisaille et génère des vortex caractéristiques de l'instabilité.
 Les travaux réalisés par Theilhaber sur la modélisation PIC 2D de l'interaction
 plasma-surface perpendiculairement au champ magnétique
-\parencite{Theilhaber} montrent que l'instabilité de Kelvin-Helmotz est à
+ montrent que l'instabilité de Kelvin-Helmotz est à
 l'origine de la formation d'une gaine "de champs croisés" de largeur $l\sim\,$
-5$\,\rho_{Li}$.
+5$\,\rho_{Li}$~\parencite{Theilhaber}.
 
 Dans cette simulation, ce phénomène est un artefact des
 conditions aux limites strictes. On peut toutefois imaginer que si un fort
@@ -937,7 +940,7 @@ champ électrique se forme en face de la paroi (comme celui de la gaine), tout
 flux arrivant sera dévié perpendiculairement par effet de dérive.
 Dans les sources d'ions avec barrière magnétique, ce comportement peut être
 observé à proximité des parois dans la région du filtre, mais est encore assez
-mal compris.
+mal compris~\parencite{PIC2D,PIC3D,Kolev}.
 Il rappelle cependant que le choix des conditions aux limites dans la direction
 transverse n'est pas sans conséquences sur le transport et qu'une théorie
 serait nécessaire pour décrire convenablement le transport.
@@ -1003,7 +1006,7 @@ courbure du champ magnétique, se développe.
 La caractérisation de cette instabilité est encore à réaliser
 mais on peut dores et déjà essayer de la relier au travaux
 réalisés dans~\parencite{Berk} qui prédisent une instabilité à fort taux de
-croissance en présence de parois conductrice et d'un gradient de température.
+croissance en présence de parois conductrices et d'un gradient de température.
 Conformément à nos attentes, le plasma est en rotation dans le plan transverse (sur les
 figures~\ref{2-MagColumnWithTe}, la rotation s'effectue dans le sens
 anti-trigonométrique, qui correspond à la direction de la dérive ExB).
@@ -1024,14 +1027,14 @@ champ, court-circuitant le transport perpendiculaire.
     \subfigure[]{\label{2-CarteTeMagColumn}
     \includegraphics[height=5.75cm]{figures/2-CarteTeMagColumn.eps}}
     \caption{Cartes de densité \subref{2-CarteDensiteMagColumn}, de potentiel
-    \subref{2-CartePotentielMagColumn} et de température \subref{2-CarteTeMagColumn}}
+    \subref{2-CartePotentielMagColumn}~ et de température
+    \subref{2-CarteTeMagColumn}~.}
     \label{2-MagColumnWithTe}
 	\end{figure}
 	
 \section{L'approche par vitesses de dérive pour les plasmas
 froids}
 \label{vitessesDerivePlasmaFroid}
-\parencite{Sudan}
 Les équations de TOKAM2D ne décrivent
 pas non plus l'interaction collisionnelle des particules chargées avec la
 population neutre, essentielle dans la physique des plasmas froids. Dans les
@@ -1057,9 +1060,10 @@ Lorentz $\omega_{c\alpha}\mathbf{b}\times\mathbf{u}_\alpha$ :
 
 \begin{equation}
 \label{2-MaplVitesse}
-\mathbf{u}_\alpha=\frac{q_\alpha}{m_\alpha}(\nu_\alpha\puissance{2b}+\omega_{c\alpha}\puissance{2})\puissance{-1}
--\frac{q_\alpha}{m_\alpha}\left(\nabla \Phi +\frac{\nabla p_\alpha}{q_\alpha
-n_\alpha}\right)-\frac{\text{d}\mathbf{u}_\alpha}{\text{dt}}
+\mathbf{u}_\alpha=\frac{q_\alpha}{m_\alpha}(\nu_\alpha\puissance{2}+\omega_{c\alpha}\puissance{2})\puissance{-1}
+\left[-\frac{q_\alpha}{m_\alpha}\left(\nabla \Phi +\frac{\nabla
+p_\alpha}{q_\alpha
+n_\alpha}\right)-\frac{\text{d}\mathbf{u}_\alpha}{\text{dt}}\right]
 \end{equation}
 
  \begin{figure}[!htbp]

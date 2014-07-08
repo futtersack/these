@@ -4,16 +4,16 @@
 
 \addstarredpart{Introduction}
 \markboth{Introduction}{INTRODUCTION}
-
+\section*{}
 Comprendre la nature et les mécanismes du transport des particules dans un
 plasma en présence d'un champ magnétique est une étape essentielle au
 développement et à l'optimisation de nombreuses applications.
 Parmis les plus ambitieuses, la fusion thermonucléaire contrôlée, qui
-consiste à reproduire sur Terre des réactions de fusion\footnote{La réaction de fusion entre deux atomes d'Hydrogène, 
-qui fait naturellement briller les étoiles, est à ce jour la source d'énergie
-la plus prometteuse pour soutenir le besoin croissant en énergie de notre civilisation,
-économiquement pérenne, techniquement faisable et écologiquement durable}, repose sur un
-dispositif de confinement magnétique en forme d'anneau appelé « tokamak ».
+consiste à reproduire sur Terre des réactions de fusion\footnote{La réaction de
+fusion entre deux atomes d'hydrogène, qui fait naturellement briller les
+étoiles, est à ce jour la source d'énergie la plus prometteuse pour soutenir le besoin croissant en énergie de notre civilisation,
+économiquement pérenne, techniquement faisable et écologiquement durable.},
+repose sur un dispositif de confinement magnétique en forme d'anneau appelé « tokamak ».
 La matière, chauffée à des températures supérieures à 150 millions de degrés
 Celsius, y est totalement ionisée et doit être confinée par un puissant champ magnétique afin
 de rester dans cet état. La réussite de ce projet (d'initiative
@@ -39,8 +39,8 @@ certain type de chauffage par le couplage d'énergie entre des ondes
 électron-cyclotron (ECR)). Ces sources ont typiquement pour paramètres : une
 densité plasma $n_e\sim\,$10$^{16}$ - 10$^{18}\,$m$^{-3}$, une densité de gaz
 $n_g\sim\,$10$^{19}\,$m$^{-3}$, une température électronique $T_e\sim\,$1-20~eV,
-une intensité de champ magnétique pouvant varier de quelques gauss à 0.1~tesla,
-et changent donc de façon notable par rapport à ceux des plasmas chaud de fusion.
+une intensité de champ magnétique pouvant varier de quelques Gauss à 0.1~Tesla,
+et sont donc radicalement différents de ceux des plasmas chaud de fusion.
 
 Le développement et l'optimisation de ces sources se basent généralement sur la
 combinaison de recherches expérimentales et d'études théoriques, elles-même
@@ -71,11 +71,58 @@ neutres pour chauffer le plasma, générer du courant et alimenter le réacteur 
 combustible. Dans le cahier des charges d'ITER, ces injecteurs
 sont censés déposer 17~MW de puissance chacun, en accélérant un
 faiseau de 40~A d'ions D$^-$ à 1~MeV d'énergie puis en le neutralisant afin de
-l'injecter directement dans le plasma de c\oe ur. Pour atteindre ces objectifs,
-la source d'ions négatifs en amont du l'injecteur doit fournir
+l'injecter directement dans le plasma de c\oe ur. 
+Pour atteindre ces objectifs,
+la source d'ions négatifs en amont de l'injecteur doit fournir
 une densité de courant de l'ordre de 250~A/m$^2$, uniformément répartie sur une
-large surface ($\sim\,$1.6~m x 0.8~m) tout en opérant à basse-pression
-(<~0.3~Pa)~\parencite{Hemsworth,SimoninHDR}.
+large surface ($\sim\,$1.6~m x 0.8~m) tout en opérant à
+basse-pression (<~0.3~Pa)~\parencite{SimoninHDR}. 
+
+Le concept de source d'ions négatifs retenu pour le projet ITER est
+actuellement développé à l'IPP de Garching~\parencite{Hemsworth}. Il s'agit
+d'une source à couplage inducif (ICP) dans laquelle la création du plasma et la
+production d'ions négatifs prennent place dans deux régions séparées de la
+source (schématiquement représentée sur la
+figure~\ref{IPPIonSource}). Le plasma est créé par un chauffage radio-fréquence
+(RF) de 100 kW à 1MHz dans des "drivers", puis diffuse à travers une chambre
+d'expansion rectangulaire. La production d'ions négatifs a lieu quant à elle de
+l'autre côté de la source, au niveau des grilles d'extraction, par des
+réactions de surface sur les parois vaporisée au césium.
+Cette région est séparée de la zone de création du plasma par un filtre magnétique dont le rôle
+principal est de réduire la température électronique à proximité de la grille
+d'extraction, ce qui est nécéssaire pour obtenir une production suffisante
+d'ions négatifs et limiter leur taux de destruction par collision avec les
+électrons. 
+Depuis quelques années, le développement de la source fait cependant face à un
+problème majeur vis-à-vis de la non-uniformité du courant extrait, bien plus
+important dans la partie haute de la source que dans sa partie basse. 
+
+\begin{figure}[!hbtp]
+\subfigure[]{\label{IPPIonSource}
+ \begin{minipage}[c][1\width]{0.5\textwidth} 
+ \includegraphics[width=0.8\textwidth]{figures/sourceIPP.png}
+ \end{minipage}} 
+\subfigure[]{
+ \begin{minipage}[c][1\width]{ 0.5\textwidth} 
+ \includegraphics[width=0.8\textwidth]{figures/sourceSimonin1.png}\label{SimoninIonSource}
+ \end{minipage}} 
+ \caption{Schémas des deux concepts de source d'ions négatifs :
+    \subref{IPPIonSource}~ Prototype d'un "driver" de la source IPP de Garching
+    ; \subref{SimoninIonSource}~ Source CYBELE en géométrie colonne en
+    développement au CEA. } 
+ \end{figure}
+
+Pour
+comprendre l'origine de ce phénomène et corriger l'inhomogénéité du plasma, de
+serieux efforts ont été entrepris, aussi bien au niveau de la modélisation que
+de l'expérimentation. Hélas, la physique qui résulte de la combinaison entre le
+plasma du driver, de la zone d'extraction et de la zone de filtre est très
+complexe, et entraîne l'apparition de forts gradients de densité, de température
+et de potentiel eux mêmes responsables 
+
+
+ Afin d'obtenir une bonne
+compréhension de la physique Le groupe GREPHE du LAPLACE a été choisi pour développer un modèle numérique autoconsistant de cette source en 2006
 
 colonnes
 \parencite{RosenbluthSimon}
@@ -84,12 +131,13 @@ colonnes
 \parencite{Fruchtman} stationnaire
 \parencite{Sternberg} plasma infini dans z, symetrie axiale \ldots 
 
+\parencite{Rosenbluth}\parencite{Chandrasekhar}
 \begin{center}
 \rule{0.6\textwidth}{1pt}
 \end{center}
 
 Le comportement d'un plasma en présence d'un champ magnétique a été
-longuement étudié et se trouve maintenant décrit dans de nombreux classiques de
+longuement étudié et se trouve maintenant décrit dans de nombreux ouvrages sur
 la physique des plasmas.
 Les premières expérimentations dans les années 1950-1960 sur le confinement
 magnétique du plasma démontrèrent l'existence d'un regime de transport classique
@@ -109,10 +157,9 @@ les approximations suivantes :
 
 \begin{itemize}
   \item L'ionisation (quasiment) totale du plasma
-  \item Une agitation thermique importante et des distributions en
-  vitesses maxwelliennes pour les particules
+  \item Une agitation thermique importante des les particules
   \item La forte magnétisation des électrons et des ions par un champ de
-  plusieurs teslas confinant le plasma dans un volume fini
+  plusieurs Teslas confinant le plasma dans un volume fini
   \item L'interaction de type Spitzer (collisions coulombiennes) entre les
   particules
 \end{itemize}
@@ -140,14 +187,14 @@ différents. En effet, les sources plasmas magnétisées qui nous intéressent
 se distinguent des plasmas de fusion sous plusieurs aspects :
 
 \begin{itemize}
-  \item Du au faible champ magnétique (de l'ordre de 0.01~T), seuls
-  les électrons sont magnétisés, le rayon le Larmor ionique dépassant souvent la
+  \item Du fait de la faible intensité du champ magnétique (de l'ordre de
+  0.01~T), seuls les électrons sont magnétisés, le rayon le Larmor ionique dépassant souvent la
   taille caractéristique du système
   \item La matière n'est que partiellement ionisée, l'interaction avec
-  le gaz neutre influençant de façon dominante le transport du plasma.
+  le gaz neutre influençant de façon prédominante le transport dans le plasma.
   \item Le plasma n'est pas confiné sur des lignes de champ fermée et
   l'interaction avec les parois est omniprésente, celles-ci agissant comme de
-  parfaits puits de particules et d'énergie pour le plasma.
+  parfaits puits de particules et d'énergie pour le plasma ;
   le temp de résidence d'une particule dans le système se voit
   ainsi considérablement diminué et les distributions en vitesses des
   espèces peuvent s'écarter de façon notable de distributions maxwelliennes.
@@ -160,9 +207,9 @@ cinétiques Particles-In-Cell (PIC) avec des opérateurs collisionnels
 Monte-Carlo~\parencite{PIC3D,Adam} ou hybrides
 fluide-cinétique~\parencite{BoeufGarrigues} peuvent aussi être utilisés quand
 une connaissance détaillée de la fonction de distribution devient nécessaire
-(interaction onde-particule, population à plusieurs niveaux d'énergie), mais
+(interactions ondes-particules, population à plusieurs niveaux d'énergie), mais
 ils requièrent des ressources et des temps de calculs bien plus conséquents que
-leurs homologues fluides, ce qui les rends bien moins adaptés aux études
+leurs homologues fluides, ce qui les rend bien moins adaptés aux études
 paramétriques. De plus, la plupart de ces travaux de modélisation se focalisent
 sur la performance et la caractérisation des décharges pour des applications
 spécifiques (\parencite{Lieberman} et reférences inclues) et, excepté quelques
@@ -172,18 +219,20 @@ symétrie axiale~\parencite{Fruchtman}), très peu de travaux sont dédiés à l
 compréhension du transport magnétisé en soi.
 
 
-\section{Environnement de la thèse}
-
 				
 L'objectif de cette thèse, à travers l'élaboration d'un modèle fluide sans
-approximation d'ordering entre les longueurs caractéristiques de ces sources
-magnétisées (ie. la dimension du plasma $L$, les libres parcours moyens
-$\lambda_{e,i}$ et les rayons de Larmor ioniques et électroniques
+autre approximation d'ordering que celle sur la longueur de Debye
+$\Lambda_D$ entre les longueurs caractéristiques de ces sources magnétisées (ie.
+la dimension du plasma $L$, les libres parcours moyens $\lambda_{e,i}$ et les rayons de Larmor ioniques et électroniques
 $\rho_{Le,i}$),
 vise ainsi à améliorer la compréhension et les outils de simulation pour
-cette source d'ion, mais avec potentiellement de nombreux bénéfices pour la
-modélisation des plasmas froids magnétisés en général.
+la source d'ions négatif du système d'injection de neutre d'ITER, mais avec
+potentiellement de nombreux bénéfices pour la modélisation des plasmas froids magnétisés en général.
 		
+\begin{center}
+\rule{0.6\textwidth}{1pt}
+\end{center}	
+	
 		Dans une dernière partie, nous analysons des simulations représentatives de
 		plusieurs expérimentations avec différentes configurations de champ en comparant
 		les résultats avec des données expérimentales ou issues de modèles développés
@@ -200,10 +249,7 @@ modélisation des plasmas froids magnétisés en général.
 		tokamaks.
 		
 
-\subsubsection{Les filtres magnétiques}
-\parencite{Hemsworth} status of ITER NBI
 
-\parencite{Rosenbluth}\parencite{Chandrasekhar}
 %\bibliographystyle{apalike}
 %\bibliography{biblio}
 \end{refsection}
