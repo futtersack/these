@@ -1,6 +1,107 @@
 \ChapterStar{Conclusion}
 \addstarredpart{Conclusion}
 \markboth{Conclusion}{CONCLUSION}
-Dans cet objectif, le développement d'un modèle fluide pour étudier la nature et
-les mécanismes du transport dans les plasmas froids magnétisé
+Les connaissances sur le sujet du transport magnétisé n'ont que très peu évolué
+dans le domaine des plasmas froids depuis les années 1960 et ne suffisent plus
+pour expliquer le comportement complexe du plasma que l'on peut rencontrer dans
+les sources magnétisées basse-pression actuellement en développement.
+Ce problème devient particulièrement urgent dans le cadre de la modélisation de
+la source d'ions négatifs d'ITER où le plasma, confronté à une barrière
+magnétique de l'ordre de la centaine de Gauss, forme une assymétrie prononcée
+dans le plan perpendiculaire au champ magnétique. Celle-ci, en rendant
+extrêmement inhomogène la densité de courant extraite, réduit considérablement
+les performances de la source.
+
+Les modèles fluides développés pour comprendre le transport dans ce type de
+source se basent habituellement sur les équations de dérive-diffusion dans leur
+forme tensorielle, qui tiennent compte de la forte anisotropie du champ
+magnétique.
+Cependant, dans des sources basse-pression,
+l'approximation standard de forte collisionnalité n'est plus
+valide et nous avons vu que la prise en compte de l'inertie des ions devient
+essentielle pour décrire correctement le transport. 
+
+La première année de cette thèse, qui a consisté à étudier et comprendre un
+modèle décrivant le transport fortement magnétisé dans les plasmas de
+bord des tokamaks, a notamment permis de mettre en avant l'importance de ce
+terme d'inertie dans l'équation de conservation de la charge, à travers le rôle
+du courant de polarisation.
+Quand le plasma est très magnétisé, la contribution du courant de polarisation
+devient du même ordre de grandeur que celle du courant diamagnétique et ne
+peut donc plus être négligée. L'autre point déterminant, qui a conduit à
+inclure les pertes le long de la direction parallèle, s'avère crucial dans
+l'évolution du potentiel électrique.
+
+MAGNIS a été élaboré en fonction de ces deux observations. Puisque les modèles
+habituellement utilisés dépendent d'approximations de
+l'équation de la quantité de mouvement et en sont par suite fortement limités,
+nous avons choisi de la résoudre entièrement et sans ordering particulier entre les
+différentes échelles spatiales du transport. Ainsi, notre modèle est à même de
+décrire les plasmas des sources basse pression, en présence et en l'absence de champ magnétique.
+L'ajout du terme d'inertie dans l'équation du courant permet aussi à MAGNIS de
+décrire les phénomènes instationnaires et turbulent, caractéristiques du
+transport magnétisé et encore relativement inexplorés. 
+
+\begin{center}
+\rule{0.6\textwidth}{1pt}
+\end{center}
+
+Le premier résultat encourageant concerne la facilité avec laquelle le modèle
+arrive à décrire la dérive due à la barrière magnétique, là où les autres
+modèles rencontraient systématiquement des problèmes de stabilité. Le test de
+convergence sur maillage est aussi très concluant, et nous assure de la qualité
+des solutions calculées dans un cas simple collisionnel. 
+
+Les trois études de cas apportent quant à eux des éléments de validation
+importants pour le modèle, qui arrive à reproduire au moins qualitativement les
+comportements déjà observés. L'effet de dérive du flux électronique et la
+variation du courant extrait en fonction de l'intensité du champ magnétique sont des
+résultats exemplaires bien connus caractéristiques de la géométrie du filtre
+magnétique.
+Dans la colonne magnétisée, la rotation presque solide du plasma et le
+transport des courants (dans les direction perpendiculaires et parallèles) vont
+du côté de la théorie classique du transport magnétisé dans le cas d'une dérive
+azimutale refermée sur elle-même.
+La comparaison avec le modèle de plasma de bord permet quand à elle de nous
+assurer que notre description de l'évolution du plasma dans un cas fortement
+magnétisé est cohérente en trouvant des résultats très similaires sur les
+caractéristiques principales du transport comme la formation des structures
+auto-cohérentes et le profil moyen de densité fortement allongé dans la zone
+instable du plasma vis-à-vis de l'instabilité d'interchange.
+
+Les cas à plus basse pression, quand les phénomènes instationnaires
+commencent à apparaître, sont cependant toujours problématiques. Nous
+cherchons encore à expliquer et caractériser les instabilités observées mais
+sans savoir réellement comment tester la convergence. Ces phénomènes, qui ne
+sont pas systématiquement observés dans les expérimentations, 
+persistent cependant à apparaître dans une grande variété de situations, nous
+incitant à penser que leur existence est bien réélle. De plus, dans une
+géométrie périodique (où la dérive se referme sur elle-même) où des codes PIC
+font état de la présence d'une instabilité, MAGNIS reproduit de manière très similaire 
+le développement de structures se déplaçant perpendiculairement au champ
+magnétique et à son gradient.
+
+\begin{center}
+\rule{0.6\textwidth}{1pt}
+\end{center}
+
+L'idée commune est que la simulation n'est qu'une illustration de la
+modélisation. En nous donnant accès à une réalité virtuelle à questionner et
+analyser, les modèles permettent de régler et d'optimiser les applications
+concrètes. Cependant un autre point souvent laissé de côté mais tout aussi
+intéressant est de voir comment les simulation peuvent aider à améliorer les
+modèles. MAGNIS est un bon exemple de cette problématique ; il a été construit
+tout au long de cette thèse par des aller-retour continus entre le constat d'une
+certaine physique sur les simulations et la modification subséquente du modèle.
+
+
+Bien que
+l'approche fluide ne soit pas fondamentalement justifiée pour décrire la
+dynamique des ions dans les plasmas froids, le couplage avec les électrons par
+le champ électrique semble améliorer dans un certain sens cette insuffisance en
+rendant cohérente l'évolution globale du plasma.
+
+Bien que des phénomènes à la fois dans les
+simulations PIC et nos simulations fluides, il est sûr que MAGNIS ne
+pourra pas décrire l'ensemble des mécanismes découlant de la cinétique ionique
 

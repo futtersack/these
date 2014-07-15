@@ -77,8 +77,8 @@ arbitraire}
 
 \subsection{Équations de conservation}
 Pour décrire l'évolution des espèces dans un plasma partiellement ionisé, basse
-pression et magnétisé, l'équation du mouvement doit tenir compte de
-l'interaction avec le gaz, du terme de Laplace et de l'inertie :
+pression et magnétisé, l'équation de la quantité de mouvement doit tenir compte
+de l'interaction avec le gaz, du terme de Laplace et de l'inertie :
 
 \begin{equation}
 \label{3-eqMouvement}
@@ -399,7 +399,7 @@ petits pas de temps $\Delta t=t^{k+1}-t^k$, en suivant l'algorithme suivant :
   les électrons $\mathcal P_\text{ext}$, des termes sources de particules
   $\mathcal{S}$ et des vitesses aux bords du domaine $W_{\para}$ et $W_{\perp}$
   \item Prédiction des vitesses fluides ${\overset{\sim}{\mathbf u}}^{\;k+1}$ à
-  l'aide de l'équation du mouvement \eqref{3-eqMouvement}
+  l'aide de l'équation de la quantité de mouvement \eqref{3-eqMouvement}
   \item Résolution du champ électrique $\mathbf E^{k+1}$ et du potentiel
   électrostatique $\Phi^{k+1}$ à travers la conservation du courant, en
   s'appuyant sur la réponse des vitesses fluides au changement $\Delta \mathbf
@@ -522,9 +522,9 @@ sont données dans \ref{3-vitessesBord}) puis prisent en compte implicitement
 dans les équations de continuité.
 
 \subsection{Discrétisation des vitesses et interpolation}
-L'un des points clés du modèle tient à la méthode de résolution de l'équation du
-mouvement et de la conservation du courant. Écrivons \eqref{3-eqMouvement} comme
-une équation algébrique d'inconnue $\mathbf u$, reliant la fréquence caractéristique du transport
+L'un des points clés du modèle tient à la méthode de résolution de l'équation de
+la quantité de mouvement et de la conservation du courant. Écrivons
+\eqref{3-eqMouvement} comme une équation algébrique d'inconnue $\mathbf u$, reliant la fréquence caractéristique du transport
 $\omega\sim\partial_t$, une fréquence de collision effective $\nu_m$ et la
 fréquence cyclotronique $\omega_c$ avec un champ
 accélérateur $\mathbf F$ incluant le terme inertiel d'advection :

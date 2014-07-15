@@ -1,29 +1,53 @@
-\Chapter{Approximations usuelles de l'équation du mouvement}
+\Chapter{Approximations de l'équation de quantité de mouvement}
 \label{ApproximationsEqMvt}
 \begin{refsection}
-\section{L'équation du mouvement}
+\section{L'équation de quantité de mouvement}
 
 Dans sa vocation à expliquer et comprendre les phénomènes naturels et les
 systèmes complexes, la recherche scientifique se base toujours sur la
 formalisation des concepts, des processus et des interactions dans des
-modèles, représentations simplifiées de la réalité. Un modèle Les  qui se
-consacre à la 
-
-L'équation du mouvement, qui contrôle l'évolution des vitesses fluides $\mathbf
-u_\alpha$, régit l'essentiel de la dynamique du plasma. En fonction des
-processus et des phénomènes de transport que l'on désire observer, la construction,
+modèles, représentations intelligibles de la réalité. En physique, ces modèles
+peuvent être plus ou moins complets ou simplifiés en fonction des hypothèses
+initiales et des différentes approximations. Ils ne sont
+pas censés représenter exactement leur sujet, mais au moins décrire une
+certaine physique en jeu.
+Les modèles sont l'un des
+principaux outils de la science moderne, et, grâce à l'outil numérique, nous
+donne accès à une réalité virtuelle plus facilement analysable et questionnable
+que le vrai monde.
 
 \begin{figure}[!htbp]
     \centering
-	\includegraphics[width=0.7\textwidth]{figures/1-cave.jpg}
-	\caption{Allégorie de la caverne.}\label{SOL}
+	\includegraphics[width=0.6\textwidth]{figures/1-cave.jpg}
+	\caption{Allégorie de la caverne. La célèbre histoire de
+	Platon~\parencite{Platon} raconte l'histoire d'hommes condamnés à ne voir que
+	l'apparence des phénomènes qui les entourent. Afin de parvenir à la connaissance de la réalité
+	intelligible des Idées, il doivent effectuer une démarche intellectuelle
+	et sortir de la caverne.}\label{caverne}
 \end{figure}
 
-La première hypothèse communément retenue pour simplifier le
-modèle consiste à considérer le tenseur de pression isotrope, ie.
+
+Actuellement, les modèle les plus complets pour décrire un plasma sont sans
+conteste les modèles cinétiques. Cependant, en plus d'être très coûteux à
+résoudre numériquement, ces modèles donnent des résultats très bruités
+et difficilement interprétables. Pour la compréhension des phénomènes qui ont
+lieux dans les plasmas, on leur préfère donc assez souvent un modèle fluide, qui
+donne un accès plus direct aux mécanismes de transport. En fonction des
+processus et des phénomènes de transport que l'on désire observer, les modèles
+fluides, qui permettent d'isoler, de négliger, ou même d'amplifier certains
+termes, sont plus à même de nous aider à comprendre les liens entre les différents mécanismes.
+
+Dans la théorie fluide, l'équation de quantité de
+mouvement \eqref{1-eqMouvement}, qui contrôle l'évolution des vitesses fluides
+$\mathbf u_\alpha$, régit l'essentiel de la dynamique du plasma. Cependant, comme sa forme complète
+ est encore trop compliquée, il est courant de la
+simplifier davantage en considérant d'autres hypothèses.
+La première de ces hypothèses communément retenue pour simplifier l'équation de
+la quantité de mouvement consiste à considérer le tenseur de pression isotrope,
+ie.
 $\boldsymbol{\Pi}_\alpha=0$, en supposant que les transferts d'impulsion dus
 aux collisions entre particules d'espèces différentes ont plus d'effet que
-ceux résultants de la viscosité. L'équation du
+ceux résultants de la viscosité. L'équation de la quantité de
 mouvement~\eqref{1-eqMouvement} se réduit ainsi à un équilibre entre les forces
 d'inertie, de frottement, de traînée, de Lorentz et de pression :
 
@@ -52,7 +76,8 @@ et l'on préfère simplifier davantage l'expression de la vitesse fluide.
 
 Dans le domaine des plasmas
 froid, on fait plutôt l'hypothèse de forte collisionnalité et on développe
-l'équation du mouvement en fonction du petit paramètre $\lambda_{lpm}/L$.
+l'équation de la quantité de mouvement en fonction du petit paramètre
+$\lambda_{lpm}/L$.
 Dans le domaine des plasmas de fusions fortement magnétisés, il est d'usage de
 considérer le petit paramètre $\delta=\rho_L/L$ pour moyenner l'équation
 \eqref{1-eqBilanForce} sur les échelles rapides. 
@@ -92,11 +117,12 @@ Les plasmas froids de décharge utilisés dans l'industrie et la recherche n'ont
 en général qu'un faible degré d'ionisation $\alpha<$1\% et la dynamique des
 espèces y est dominée par la perte de quantité de mouvement liée à l'ionisation
 et aux collisions avec le gaz. Pour modéliser ce type de plasma, la prise en
-compte du terme collisionnel dans l'équation du mouvement est essentielle.
+compte du terme collisionnel dans l'équation de la quantité de mouvement est
+essentielle.
 En l'absence de champ magnétique, le rapport d'échelle entre le libre parcours moyen des particules
-et la taille du plasma $\lambda_\alpha\ll L$ permet de simplifier l'équation du
-mouvement en négligeant les termes d'inertie, relativement faibles par rapport
-au terme collisionnel :
+et la taille du plasma $\lambda_\alpha\ll L$ permet de simplifier l'équation de
+la quantité de mouvement en négligeant les termes d'inertie, relativement
+faibles par rapport au terme collisionnel :
 
 \begin{equation}
 \label{1-eqDriftDif}
@@ -311,7 +337,7 @@ problème du confinement des plasmas de fusion.
 \subsection{Vitesses de dérive électrique et diamagnétique}
 
 Quand le degré d'ionisation du plasma est très élevé, le terme issu de
-l'interaction avec le gaz peut être négligé dans l'équation du
+l'interaction avec le gaz peut être négligé dans l'équation de la quantité de
 mouvement~\eqref{1-eqBilanForce} :
 
 \begin{equation}
@@ -325,9 +351,9 @@ u_\alpha\times \mathbf B\right)
 
  Sous l'hypothèse de faible variation spatiale des grandeurs et des champs à
  l'échelle du rayon de Larmor, la lente évolution du système par rapport aux
- fréquences cyclotroniques permet d'effectuer un développement de l'équation du
- mouvement en fonction du petit paramètre $\delta$. En négligeant le
- mouvement cyclotronique, qui correspond à l'ordre 0 de ce développement et qui
+ fréquences cyclotroniques permet d'effectuer un développement de l'équation de
+ la quantité de mouvement en fonction du petit paramètre $\delta$. En négligeant
+ le mouvement cyclotronique, qui correspond à l'ordre 0 de ce développement et qui
  est de moyenne nulle sur un temps $t\sim\omega_{c\alpha}^{-1}$, la projection
  de~\eqref{1-eqSOL} perpendiculairement au champ magnétique s'écrit à l'ordre 1
  en $\delta$ :
