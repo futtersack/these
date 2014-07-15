@@ -9,7 +9,9 @@ la problématique liée à l'approche standard de modélisation des plasmas froi
 nous présentons l'élaboration d'un nouveau modèle, MAGNIS (MAGnetized Negative
 Ion Source) ; nous le dérivons en expliquant les différents termes
 essentiels à description du transport dans les plasmas froids puis nous détaillons le
-schéma numérique original utilisé pour résoudre les équations.
+schéma numérique original utilisé pour résoudre les équations. Enfin une
+première étape de vérification du modèle est présentée à travers une étude de
+convergence sur maillage.
 
 \section{Problématique}
 
@@ -48,7 +50,7 @@ D'un autre côté,
 		une large gamme de topologies et d'intensités de champ magnétique.
 
 \section{Description du modèle}
-Le plasma est constitué d'électrons et d'une ou plusieurs espèces d'ions de
+Le plasma est constitué d'électrons et d'une ou plusieurs espèces d'ions, de
 charge $q_\alpha$ et de masse $m_\alpha$. On considère un plasma de taille $L$,
 confiné et en interaction avec des parois à travers une gaine large de quelques longueurs
 de Debye. La longueur $L$ est prise suffisamment grande $L\gg\lambda_D$ pour
@@ -64,7 +66,7 @@ contient un terme de puissance
 absorbée avec un profil fixé. Enfin, le flux de chaleur magnétisé
 est décrit par une équation dédiée.
 
-Le modèle, construit sans approximation d'échelle (excepté pour $\lambda_D$),
+Le modèle, construit sans approximation d'échelle (excepté sur $\lambda_D$),
 permet la résolution du transport magnétisé quelque soit l'ordering entre les
 libres parcours moyens $\lambda_{{i/e}}$, les rayons de Larmor ioniques et
 électroniques $\rho_{L{i/Le}}$ et la taille $L$ du plasma :
@@ -168,14 +170,19 @@ conséquence du travail du champ électrique, transformé en chaleur par
 l'intermédiaire des collisions. L'ajout d'énergie dans le plasma, par exemple
 avec un chauffage RF, est modélisé par un terme
 de puissance absorbée $\mathcal{P}_\text{ext}$, que nous imposons avec un
-certain profil. Enfin, le terme de perte d'énergie due aux collisions $\Pi_e$ se
-décompose en une perte lié à l'ionisation et un transfert vers les autres
-espèces :
+certain profil. Enfin, le terme de perte d'énergie due aux collisions $\Pi_e$,
+dépendant de la température électronique, se décompose en une perte lié à
+l'ionisation et un terme de transfert vers les autres espèces :
 
 \begin{equation}
-en_e\Pi_e=-en_e\left(\sum_{s}E_sn_sk_{es}+\sum_{s'}\frac{3m_e}{m_{s'}}n_s'k^m_{es'}T_e\right)
+en_e\Pi_e(T_e)
+=-en_e\left(\sum_{s}E_sn_sk_{es}(T_e)+\sum_{s'}\frac{3m_e}{m_{s'}}n_s'k^m_{es'}(T_e)T_e\right)
+\equiv-en_en_gk^\varepsilon_e(T_e)
 \end{equation}
 
+
+avec $k_e^\varepsilon$ un taux effectif de transfert d'énergie (sommé sur 
+l'ensemble des processus de collision, y compris les auto-collisions).
 La fermeture du modèle se fait sur le flux de chaleur $\mathbf{q}_e$, tel qu'exprimé par V.E. Golant
 dans~\parencite{Golant} :
 
@@ -220,13 +227,14 @@ où $c_{si}=(eT_e/m_i)^{\text{\textonehalf}}$ est la vitesse de Bohm
 spécifique à l'espèce $i$.
 Chaque espèce ionique atteint donc au minimum sa propre vitesse de Bohm, mais
 peut éventuellement être perdue avec une vitesse
-supersonique\footnote{Souvent, on impose l'égalité stricte $W_i=c_s$ au
+supersonique\footnote{Souvent, on impose l'égalité stricte $W_i=c_{si}$ au
 niveau de la gaine car la transition subsonique-supersonique est interdite dans
 le plasma quand celui-ci est considéré stationnaire ou isotherme. Si ces
 hypothèses ne sont pas retenues, rien n'empêche à priori à la vitesse ionique de
 dépasser la vitesse de Bohm. C'est ce que nous avons constaté lors du
 développement du modèle, où dans certaines situations, fixer artificiellement
-$W_i$ à $c_s$ provoquait une accumulation de densité à la la frontière plasma-gaine.
+$W_i$ à $c_{si}$ peut faire apparaître une accumulation de densité à la la
+frontière plasma-gaine.
 
 Ainsi, nous n'imposons qu'un minimum à la vitesse ionique, tel que défini par
 le critère de Bohm et nous laissons au modèle quasineutre le soin de résoudre la
@@ -234,8 +242,8 @@ vitesse à l'intérieur du plasma.}.
 
 Le flux d'électrons est obtenu en considérant une fonction de distribution
 maxwellienne, que l'on intègre sur le demi-espace des vitesses dirigées vers la
-paroi, avec $v_{Te}=(eT_e/m_e)^{\text{\textonehalf}}$ la vitesse électronique
-thermique :
+paroi, polarisée à $\Phi_w$, avec $v_{Te}=(eT_e/m_e)^{\text{\textonehalf}}$ la
+vitesse électronique thermique :
 
 \begin{equation}
 \Gamma_e=n_eW_e=n_e\frac{1}{\sqrt{2\pi}}v_{Te}=n_e\sqrt{\frac{eT_e}{2\pi
@@ -255,16 +263,16 @@ m_e}}\exp(-(\Phi-\Phi_w)/T_e)
 \end{equation}
 
 Dans
-le cas d'un plasma n'étant composé que d'une seule espèce d'ion, on retrouve
-le potentiel flottant normalisé $\Lambda=({m_i}/{2\pi
-m_e})^{\text{\textonehalf}}$, valeur d'équilibre autour de laquelle
-le potentiel plasma s'ajuste.
-La condition \ref{3-sheathcurrent} se factorise alors en :
+le cas d'un plasma n'étant composé que d'une seule espèce d'ion, 
+la condition \ref{3-sheathcurrent} se factorise alors en :
 
 \begin{equation}
 \mathbf{j}\cdot\mathbf{n}=en_ec_s(1-\exp(\Lambda-(\Phi-\Phi_w)/T_e))
 \end{equation}
 
+le potentiel flottant normalisé $\Lambda=({m_i}/{2\pi
+m_e})^{\text{\textonehalf}}$ est la valeur d'équilibre autour de laquelle
+le potentiel plasma s'ajuste pour s'accomoder à la paroi.
 Si la paroi est isolante, la surface se polarise
 pour assurer la nullité du courant sortant :
 
@@ -314,9 +322,10 @@ particules $n_\alpha$, du potentiel électrostatique $\Phi$ et de la
 température électronique $T_e$ dans un espace à trois dimensions. 
 
 Le champ magnétique n'affecte que très peu les particules dans la direction
-parallèle aux lignes de champ : le plasma est stationnaire, et les électrons, en
-équilibre de Boltzmann le long des lignes. Le problème du
-transport magnétisé se réduit alors essentiellement au problème du transport
+parallèle aux lignes de champ : le plasma est stationnaire, et les électrons,
+confinés par le potentiel de gaine, sont en équilibre de Boltzmann le long des
+lignes.
+Le problème du transport magnétisé se réduit alors essentiellement au problème du transport
 dans plan perpendiculaire à $\mathbf B$, qui est le plan des dérives et des
 fort gradients.
 
@@ -324,10 +333,11 @@ La dissociation des mouvements parallèle et perpendiculaire s'effectue
 en réécrivant les équations dans un repère axé sur le champ magnétique
 (O,$\mathbf x$,$\mathbf y$,$\mathbf b$). En considérant l'hypothèse flûte, qui
 consiste à supposer le transport rapide des fluctuations dans la direction
-parallèle, l'intégration du système le long de les lignes de champ magnétique
-laisse la plupart des termes inchangés.
-Les conditions aux limites au bout des lignes de champ apparaissent comme des
-termes nets de perte $\mathcal L_\para$ 
+parallèle, l'intégration du système le long des lignes de champ magnétique
+laisse la plupart des termes des
+Eqs.(\ref{3-continuite}~-~\ref{3-eqTemperature}) inchangés.
+Les conditions aux limites au bout des lignes de champ apparaissent quant à
+elles comme des termes nets de perte $\mathcal L_\para$ 
 dans les équations de conservation :
 
 \begin{align}
@@ -335,25 +345,25 @@ dans les équations de conservation :
 \begin{split}
 \mathcal{L}&_{i_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_iu_{i_\para}\right)=\frac{2a}{L_\para}n_iW_{i_\para}\\
 \mathcal{L}&_{e_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_eu_{e_\para}\right)=\frac{2}{L_\para}n_e\sqrt{\frac{eT_e}{2\pi
-m_e}}\exp(-(\Phi-\Phi_{w\para})/T_e)\\
+m_e}}\exp(-(\Phi-\Phi_{w_\para})/T_e)\\
 \mathcal{L}&_{j_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(j_\para\right)=\sum_i\mathcal{L}_{i_\para}-\mathcal{L}_{e_\para}\\
 \mathcal{L}&_{\varepsilon_\para}=\frac{1}{L_\para}
 \int_{-L_\para/2}^{L_\para/2}\nabla_\para
 \left(\frac{5}{2}n_eT_eu_{e_\para}+q_{e_\para}\right)
-=\frac{2}{L_\para}n_eW_{e_\para}(2T_e+\Phi-\Phi_w)
+=\frac{2}{L_\para}n_eW_{e_\para}(2T_e+\Phi-\Phi_{w_\para})
 \end{split}
 \end{align}
 
 où $L_\para$ est la taille du plasma dans la direction du champ magnétique. Pour
 les électrons, $\mathcal{L}_{e_\para}$ implique le potentiel de la
-paroi au bout des lignes de champ $\Phi_{w\para}$. Pour les pertes ioniques, un
+paroi au bout des lignes de champ $\Phi_{w_\para}$. Pour les pertes ioniques, un
 facteur $a$ représente approximativement le ratio entre la densité de particules à l'entrée
 de la gaine et la densité moyenne calculée le long des lignes de champ
 (typiquement $a\approx\,$0.7-0.9).
 
-Après cette opération de moyenne le long, le système d'équation peut se
-réécrire en fonction des variables moyennées ($\bar{n}_\alpha$, $\bar{\mathbf
-u}_\alpha$,$\bar{T}_e$,\ldots) :
+Après cette opération de moyenne le long des lignes de champ magnétique, le
+système d'équation peut se réécrire en fonction des variables moyennées ($\bar{n}_\alpha$, $\bar{\mathbf
+u}_\alpha$, $\bar{T}_e$, \ldots) :
 
 \begin{align}
 \label{3-equations2D1}
@@ -371,7 +381,7 @@ u}_\alpha$,$\bar{T}_e$,\ldots) :
 \end{split}
 \end{align}
 
-Dans la suite, nous laissons de côté la notation de moyenne, l'indice
+L'approximation flûte, nous laissons de côté la notation de moyenne, l'indice
 perpendiculaire et nous omettons volontairement l'indice $\alpha$ pour les
 quantités se référant indifféremment aux ions ou aux électrons.
 
@@ -380,8 +390,8 @@ quantités se référant indifféremment aux ions ou aux électrons.
 Les équations Eqs.(\ref{3-equations2D1}~-~\ref{3-equations2D2}) sont résolues
 semi-implicitement dans le temps avec une prédiction-correction des flux de
 particules et de chaleur pour garantir la conservation du courant et de
-l'énergie. Les variables macroscopiques sont avancées temporellement par
-petit pas de temps $\Delta t=t^{k+1}-t^k$ en suivant l'algorithme suivant :
+l'énergie. Les variables macroscopiques sont avancées temporellement, par
+petits pas de temps $\Delta t=t^{k+1}-t^k$, en suivant l'algorithme suivant :
 
 \begin{enumerate}
   \item Calcul de toutes les fréquences $\nu$ pour
@@ -416,9 +426,9 @@ petit pas de temps $\Delta t=t^{k+1}-t^k$ en suivant l'algorithme suivant :
 {\caption{Schéma du domaine du simulation, entouré d'une gaine
 non-collisionnelle positive.
 Les quantités scalaires $n$, $\Phi$ et $T_e$ sont définies aux noeuds et sur les
-bords du maillage. Les composantes x et y des champs vectoriels sont
-situées entre les noeuds, sur les arêtes des volumes de contrôle, respectivement
-au niveau des flèches horizontales et verticales.}
+bords du maillage. Les composantes $x$ et $y$ des champs vectoriels sont
+situées entre les n\oe uds, sur les arêtes des volumes de contrôle,
+respectivement au niveau des flèches horizontales et verticales.}
 \label{3-maillage}}
 \end{figure}
 
@@ -430,32 +440,31 @@ domaine, et se repèrent par les indices $(i,j)$. Les quantités vectorielles
 sont définies à mi-chemin entre les noeuds, aux indices $(i+1/2,j)$ pour leur
 composante selon $x$ et $(i,j+1/2)$ pour leur composante selon $y$.
 Les opérateurs
-de divergence, quant à eux, sont discrétisés en suivant une méthode de volumes
-finis~\parencite{toro}, les volumes étant définis autour des n\oe ds du
+de divergence, quant à eux, sont discrétisés autour des volumes de contrôles en
+suivant une méthode de volumes finis~\parencite{toro}, les volumes étant définis autour des n\oe uds du
 maillages. 
 
 Les parois perpendiculaires et parallèles peuvent être choisies conductrices ou
 isolantes, impliquant le jeu de conditions aux limites adapté sur les flux
-au bord du domaine. Le domaine peut aussi être choisi périodique dans l'une des 
-directions pour représenter certaines géométries, et éventuellement
+aux bordx du domaine. Le domaine peut aussi être choisi périodique dans l'une
+des directions pour représenter certaines géométries, et éventuellement
 de longueur infinie dans la direction parallèle.
  
 Pour résoudre les systèmes linéaires du modèle, nous utilisons un solveur
 9-points basé sur la procédure
 MSI (Modified Strongly Implicit Procedure) décrite par Schneider
 dans~\parencite{Schneider}. Sa principale caractéristique est de tenir
-compte du caractère intrinsèquement lié des équations fluides pour diminuer le nombre
-d'itérations nécessaires pour trouver la solution du problème. Autorisant des
+compte du caractère intrinsèquement lié des équations fluides afin de diminuer
+le nombre d'itérations nécessaires pour trouver la solution du problème. Autorisant des
 conditions aux limites périodiques, le solveur est de plus construit pour
-utiliser une approche multi-grille rendant la convergence particulièrement
-rapide sur un maillage 2D.
+utiliser une approche multi-grille~\parencite{Fedorenko} rendant la convergence
+particulièrement rapide sur un maillage 2D.
 
 \subsection{Fréquences, termes sources et conditions parallèles}
 Avant de résoudre à proprement dit les équations du modèle, à chaque
 itération et pour chaque interaction, MAGNIS lit les taux $k_\text{iz}$,
-$k^m_{\alpha s}$ et $k^\varepsilon_{\alpha
-s}$ dans des tables en fonction de l'énergie des
-particules. 
+$k^m_{\alpha s}$ et $k^\varepsilon_{e}$ dans des tables en fonction
+de l'énergie des particules. 
 Les valeurs des taux et donc des sections efficaces contenus dans ces tables
 sont issues de LXCAT~\parencite{LXCAT}, calculées par des expériences de
 swarm~\parencite{Phelps} ou encore obtenues en résolvant directement l'équation
@@ -473,7 +482,7 @@ sur la figure~\ref{3-tauxcollision}.
     \caption{Valeur en fonction de la température électronique des taux
     ~\subref{3-coeffColl1}~ de collision électrons-neutres,
     ~\subref{3-coeffColl2}~ d'ionisation et~\subref{3-coeffColl3}~ de perte
-    d'énergie.}
+    d'énergie dans l'hydrogène et dans l'argon.}
     \label{3-tauxcollision}
 \end{figure}
 
@@ -481,22 +490,12 @@ Le terme source de particules est calculé en fonction de la fréquence
 d'ionisation et pris en compte implicitement :
 
 \begin{equation*}
-\mathcal{S}_{\alpha}=n_\alpha^{k+1} n_g
+\mathcal{S}_{\alpha}=n_\alpha^{k+1} \nu_\alpha^\text{iz}=n_\alpha^{k+1} n_g
 k_{\alpha}^\text{iz}(T_e)
 \end{equation*}
 
 Le terme de perte d'énergie par électron est lui aussi fortement dépendant de la
-température électronique.
-
-\begin{equation}
-en_e\Pi_e(T_e)
-=-en_e\left(\sum_{s}E_sn_sk_{es}(T_e)+\sum_{s'}\frac{3m_e}{m_{s'}}n_s'k^m_{es'}(T_e)T_e\right)
-\equiv-en_en_gk^\varepsilon_e(T_e)
-\end{equation}
-
-
-avec $k_e^\varepsilon$ un taux effectif de transfert d'énergie (sommé sur 
-l'ensemble des processus de collision, y compris les auto-collisions). Afin de
+température électronique. Afin de
 résoudre correctement l'évolution de la température, ce terme est décomposé par une itération
 de Newton\footnote{Cette technique peut être utilisée en toute généralité pour
 renforcer la stabilité numérique en présence de pertes lorsque celles-ci
@@ -607,9 +606,9 @@ l'utilisation de ce maillage secondaire. Quand $\beta\,$= 0, aucune
 interpolation n'est nécessaire, mais $\mathbf{u}$ et $\mathbf{u}_\times$
 tendent à se désynchroniser et le schéma numérique diverge vite. Il faut en
 fait un minimum d'interpolation $\beta\,$> 0 pour garder les vitesses
-consistantes entre elles (tout en gardant en tête que trop d'interpolation $\beta\rightarrow$1 mène à une
-explosion de l'erreur à petit pas de temps). Un calcul analytique pour estimer
-l'erreur d'interpolation montre qu'un choix approprié pour le paramètre $\beta$
+consistantes entre elles (tout en gardant en tête que trop d'interpolation
+$\beta\rightarrow\,$1 mène à une explosion de l'erreur à petit pas de temps). Un
+calcul analytique pour estimer l'erreur d'interpolation montre qu'un choix approprié pour le paramètre $\beta$
 est :
 
 \begin{equation}
@@ -665,7 +664,7 @@ u}_e^{k+1}-\sum_iq_in_i\tilde{\mathbf u}_i^{k+1})-\mathcal L_{j_\para}
 
 Cette équation est résolue pour $\Theta$ en incluant les conditions aux limites
 de façon implicite. Une fois le potentiel $\Phi^{k+1}$ mis à jour, les vitesses
-fluides $\mathbf u^{k+1}$ sont corrigées en fonction du nouveau champ
+fluides $\mathbf u^{k+1}_\alpha$ sont corrigées en fonction du nouveau champ
 électrique.
 Après cette correction, l'ensemble des vitesses fluides $\mathbf u_\alpha$
 satisfait exactement à la continuité du courant.
@@ -788,31 +787,64 @@ implicitement, stabilisant la convergence du schéma
 
 \subsection{Étude de convergence sur maillage} 
 Afin de vérifier le schéma numérique de MAGNIS, nous réalisons dans ce
-paragraphe une étude de convergence sur maillage. 
+paragraphe une étude de convergence sur maillage. Le cas de test, dont les paramètres sont donnés dans le
+tableau~\ref{3-paramConvStudy}, correspond à une configuration magnétique
+complexe de type filtre magnétique (un schéma du domaine est illustré sur la
+figure~\ref{4-pegasesSimDomain} du chapitre suivant) dans un plasma
+d'argon avec des parois conductrices.
 
-Le cas de test correspond à une configuration magnétique complexe de type filtre
-dans un plasma d'argon avec des parois conductrices. L'intensité du
-champ magnétique est choisie suffisamment importante $B$=250 G pour
-tester le modèle dans une situation assez défavorable. La pression est prise à 100 mTorr
-pour supprimer les phénomènes non stationnaires qui apparaissent à basse
-pression et qui rendent impossible cette étude.
+L'intensité du champ magnétique est choisie suffisamment importante $B=\,$250 G
+pour tester le modèle dans une situation délicate où le rayon de larmor des
+électrons devient progressivement supérieur à leur libre parcours moyen, ie.
+avec un paramètre de Hall électronique variant fortement dans le domaine de
+simulation :
 
-La figure~\ref{3-convergence} montre l'erreur relative calculée pour la densité
-totale du plasma à l'état stationnaire. On voit que l'erreur décroît comme le carré
-de l'inverse du nombre de maille, donnant un ordre 2 pour la convergence du
-schéma de MAGNIS.
+\begin{equation}
+h_e=\frac{\omega_{ce}}{\nu_e}\quad\in\quad \left[0,100\right]
+\end{equation}
 
-\begin{figure}[htbp]
+La pression est prise à 100 mTorr pour supprimer les phénomènes non stationnaires qui apparaissent à basse
+pression et qui rendent impossible cette étude. 
+
+\bigskip
+\begin{minipage}{\textwidth}
+\begin{minipage}[b]{0.32\textwidth}
+\footnotesize
 \centering
-\includegraphics[height=70mm]{figures/3-convergence.eps}
-{\caption{Erreur relative des solutions calculées en fonction de l'échelle du
-maillage h=1/\#points.}
-\label{3-convergence}}
-\end{figure}
+\ra{1.3}
+\begin{tabular}{cc}\toprule
+\multicolumn{2}{c}{\bf Paramètres}\\
+\midrule 
+$L_x$, $L_y$ & 12cm\\
+$L_z$ & 8cm\\
+$B$&250G\\
+$l_B$, $x_B$&2.5cm, 7.5cm\\
+$\mathcal{P}_\text{ext}$&150W\\
+$l_{\mathcal S}$, $x_{\mathcal S}$&2cm, 0cm\\
+$\text{gaz (Ar)}$ & 10$^{-1}\,$Torr\\
+\bottomrule
+\end{tabular}\bigskip\medskip
+      \captionof{table}{Paramètres de la simulation.}
+\label{3-paramConvStudy}
+      \end{minipage}
+  \hfill
+      \begin{minipage}[b]{0.62\textwidth}\centering
+    \includegraphics[width=0.8\textwidth]{figures/3-convergence.eps}
+    \captionof{figure}{Erreur relative des solutions calculées en fonction de l'échelle du
+maillage $h=1/N$.}\label{3-convergence}
+    \end{minipage}
+\end{minipage}
+\bigskip
 
-A partir d'un maillage grossier de taille 16x16, nous construisons une série de
-maillages raffinés d'un facteur 2 dans chaque
-direction par rapport à leur prédécesseur, la grille la
+Nous considérons un maillage carré de taille $N$ et d'échelle $h$
+définie comme l'inverse du nombre de points par direction :
+
+\begin{equation}
+h=\frac{1}{N}
+\end{equation}
+
+A partir d'un maillage grossier d'échelle $h=\,$1/16 (ie. de taille 16x16),
+nous construisons une série de maillages raffinés d'un facteur 2 dans chaque direction par rapport à leur prédécesseur, la grille la
 plus fine de cette étude étant de taille 512x512. Comme nous n'avons pas de
 solution analytique au cas de test, nous utilisons l'extrapolation de
 Richardson comme solution de référence~\parencite{Roache} :
@@ -822,23 +854,52 @@ f_{h=0}=\frac{4}{3}f_{1}-\frac{1}{3}f_2
 \end{equation}
 
 $f_{1}$ et $f_2$ étant les solutions calculées sur les maillages les plus fins,
-ie. respectivement sur 512 et 256 points de maillages. Avec cette solution,
-l'erreur relative (mesurée suivant la norme L1) correspondant à un maillage
-d'échelle $h$ ($h$ est égal à l'inverse du nombre de points) s'écrit :
+ie. respectivement sur 512 et 256 points de maillage. Avec cette solution,
+l'erreur relative (mesurée suivant la norme $L^1$) correspondant à un maillage
+d'échelle $h$ s'écrit :
 
 \begin{equation}
-\epsilon\,(\text{\%})=\frac{|f_h-f_{h=0}|}{f_{h=0}}
+\epsilon_h\,(\text{\%})=\frac{|f_h-f_{h=0}|}{f_{h=0}}
 \end{equation}
 
-Bien que d'autres
-vérifications comme la convergence temporelle, la méthode des solutions manufacturées, ou
-une étude des taux de croissance des modes du système n'aient pas été
-entreprises, celles-ci seront les bienvenues pour tester davantage les
-solutions calculées par MAGNIS. La validation du code est quant à elle réalisée
-dans le chapitre suivant, à travers trois études de cas simplifiées
-représentatives d'expérimentations réelles.
+La figure~\ref{3-convergence} montre l'erreur relative calculée pour la densité
+totale du plasma à l'état stationnaire, soit :
 
+\begin{equation}
+f_h=\sum_{i=1}^{N}\sum_{j=1}^{N}n_e(i,j)\text{dV}(i,j)
+\end{equation}
 
+$\text{dV}(i,j)$ étant le volume élémentaire de contrôle autour du n\oe ud
+(i,j). On voit que l'erreur décroît comme le carré de l'inverse du nombre de
+maille, donnant un ordre 2 pour la convergence du schéma de MAGNIS.
+
+La vérification et la validation sont des processus menés
+pour contrôler les modèles et codes numériques en s'assurant que les solutions
+calculées :
+
+\begin{itemize}
+  \item correspondent bien d'une part aux solutions des
+  équations du modèle que l'on cherche à obtenir (vérification)
+	\item reflètent aussi la réalité
+	physique du phénomène à étudier (validation)
+	\end{itemize}
+	
+Le résultat de cette étude sur maillage, très encourageant, apporte une première
+vérification de MAGNIS. Cependant cette étude concerne un cas simple,
+et ne permet aucunement de valider les phénomènes instationnaires qui peuvent
+apparaître et les instabilités qui se développent dans certaines
+conditions. Une étude sur la convergence de la taille des structures et des
+fréquences caractéristiques des instabilités sera importante pour le futur de
+MAGNIS. 
+
+Dans le chapitre suivant, nous apportons des éléments de validation pour
+MAGNIS, à travers trois études de cas simplifiées représentatives
+d'expérimentations réelles. Pour poursuivre le processus de vérification et
+validation, on pourrait envisager entre autres d'utiliser la méthode des
+solutions manufacturées~\parencite{Roy}, de faire une étude sur les taux de
+croissance des modes du système, ou encore de réaliser plus de benchmarks avec
+des codes cinétiques ou des résultats expérimentaux.
+Ces tests seront les bienvenus pour tester et garantir davantage les solutions calculées par MAGNIS. 
 
 %\bibliographystyle{alpha}
 %\bibliography{biblio}
