@@ -55,24 +55,22 @@ d'inertie, de frottement, de traînée, de Lorentz et de pression :
 \label{1-eqBilanForce}
 \underbrace{m_\alpha \left(\partial_t \mathbf{u_\alpha} +
 (\mathbf{u_\alpha}\cdot\nabla)\mathbf{u_\alpha}\right)}_\text{Inertie}
-+\underbrace{m_\alpha\nu_\alpha\mathbf
-u_\alpha}_\text{Frottement}+\underbrace{m_\alpha
-\frac{\mathcal S_\alpha}{n_\alpha}\mathbf
-u_\alpha}_\text{Traînée}=\underbrace{{q_\alpha}\left(\mathbf
++\underbrace{m_\alpha\left(\nu_\alpha^c+
+\nu_\alpha^\text{iz}\right)\mathbf
+u_\alpha}_\text{Frottement \& Création}=\underbrace{{q_\alpha}\left(\mathbf
 E+\mathbf u_\alpha\times \mathbf B\right)}_\text{Forces électromagnétiques}
 -\underbrace{\frac{\nabla p_\alpha}{n_\alpha}}_\text{Pression}
 \end{equation}
  
 Le poids des différents termes de \eqref{1-eqBilanForce} varie en fonction des
-paramètres du plasma et permet de définir le type de transport qui des fluides
-électroniques et ioniques.
+paramètres du plasma et permet de définir les types de mécanismes qui régissent
+le transport des fluides électroniques et ioniques.
 
-En physique des plasmas les fluides électroniques et ioniques sont couplés à
-travers le champ électrique et le champ magnétique rend le transport très
-anisotrope. Bien que l'on puisse dériver ici aussi des nombres
-adimentionnés pour certains phénomènes tels que la transition
-subsonique-supersonique, la catégorisation des écoulements est plus compliquée
-et l'on préfère simplifier davantage l'expression de la vitesse fluide.
+
+
+Dans les plasmas les fluides électroniques et ioniques sont couplés à
+travers le champ électrique et peuvent être assimilés à un unique fluide
+(théorie MHD). 
 
 Dans le domaine des plasmas
 froid, on fait plutôt l'hypothèse de forte collisionnalité et on développe
@@ -81,34 +79,6 @@ $\lambda_{lpm}/L$.
 Dans le domaine des plasmas de fusions fortement magnétisés, il est d'usage de
 considérer le petit paramètre $\delta=\rho_L/L$ pour moyenner l'équation
 \eqref{1-eqBilanForce} sur les échelles rapides. 
-
-\section{Relation de Boltzmann}
-
-Un premier cas limite peut être obtenu quand le terme de pression domine
-sur l'ensemble des termes du membre de gauche de \eqref{1-eqBilanForce}, qui en
-les négligeant, se transforme en :
-
-\begin{equation}
-\label{1-equilibreBoltzman}
-q_\alpha\mathbf
-E =\frac{e}{n_\alpha}\nabla n_\alpha T_\alpha
-\end{equation}
-
-C'est la relation de Boltzmann. Ce cas de figure est caractéristique pour les
-électrons non-collisionnels enfermés dans un puit de potentiel (par exemple résultant de
-l'interaction entre le plasma et les parois). En l'absence de champ magnétique
-ou parallèlement aux lignes de champ, le champ électrique et le gradient de
-pression se compensent, amenant les électrons dans un équilibre de Boltzmann,
-ie. où les particules suivent une distribution de Boltzmann :
-
-\begin{equation}
-\label{1-profilBoltzman}
-n_\alpha=n_0\exp(q_\alpha \Phi/eT_\alpha)
-\end{equation}
-
-Cette hypothèse est fondamentale dans la dérivation des modèles fluides de
-transport pour les plasmas dans la mesure où elle constitue l'une des bases de
-la théorie des gaines vue précédemment. 
 
 \section{Cas collisionnel : Équation de dérive-diffusion}
 \label{1-transportAmbipolaire}
@@ -128,13 +98,21 @@ faibles par rapport au terme collisionnel :
 \label{1-eqDriftDif}
 n_\alpha\mathbf u_\alpha=\frac{q_\alpha}{\nu_\alpha m_\alpha}n_\alpha\mathbf
 E-\frac{\nabla\left(n_\alpha eT_\alpha\right)}{\nu_\alpha
-m_\alpha}\equiv\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf
+m_\alpha}
+\end{equation}
+
+Dans le cas où la mobilité peut être supposée constante, on peut la rentrer dans
+la divergence :
+
+\begin{equation}
+\label{1-eqDriftDif}
+n_\alpha\mathbf u_\alpha\equiv\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf
 E-{\nabla\left(D_\alpha n_\alpha\right)}
 \end{equation}
 
-C'est l'équation de dérive-diffusion, avec les coefficients de
-transport $\mu_\alpha$ et $D_\alpha$, tous deux
-inversement proportionnels à la fréquence de collision $\nu_\alpha$ (donc à la
+ C'est l'équation de dérive-diffusion, avec les coefficients de
+transport $\mu_\alpha=q_\alpha/\nu_\alpha m_\alpha$ et
+$D_\alpha=eT_\alpha/\nu_\alpha m_\alpha$, tous deux inversement proportionnels à la fréquence de collision $\nu_\alpha$ (donc à la
 densité de gaz), et reliés par la relation d'Einstein :
 
 \begin{equation}
@@ -143,9 +121,9 @@ D_\alpha/\mu_\alpha=T_\alpha
 \end{equation}
 
 \begin{itemize}
-  \item la mobilité, définie par $\mu_\alpha=q_\alpha/\nu_\alpha m_\alpha$,
+  \item la mobilité, définie par $\mu_\alpha$,
   mesure la disposition d'une espèce à laisser passer le courant au sein d'un milieu
-  \item la diffusion, de coefficient $D_\alpha=eT_\alpha/\nu_\alpha m_\alpha$,
+  \item la diffusion, de coefficient $D_\alpha$,
   représente la tendance naturelle d'un système à rendre homogène sa densité de particule sous l'effet
   de l'agitation thermique.
 \end{itemize}
@@ -192,14 +170,31 @@ A l'interface entre les parois et le plasma, une gaine positive se
 forme et enferme les électrons dans un puit de potentiel. Ce phénomène, en plus
 des collisions, permet une isotropisation rapide de la fonction de distribution
 des électrons, qui peuvent alors être considérés en équilibre de Boltzmann.
-Les ions, quant à eux, ont une durée de vie de l'ordre de
-$\nu_\text{iz}\puissance{-1}$ : depuis leur zone de création, ils sont
-continûment accélérés par le champ ambipolaire jusqu'à être perdus à la paroi
-où ils se recombinent. La théorie classique des gaines prédit qu'à l'équilibre,
-la densité diminue d'un facteur $\sim\,$2 et la chute de potentiel, conformément
-à l'estimation donnée par~\eqref{1-eqApproxEAmb}, est de l'ordre de
-$T_e/2$ (cf.
-\S\ref{Introduction}-\ref{1-gaines}).
+Un premier cas limite peut être obtenu quand le terme de pression domine
+sur l'ensemble des termes du membre de gauche de \eqref{1-eqBilanForce}, qui en
+les négligeant, se transforme en :
+
+\begin{equation}
+\label{1-equilibreBoltzman}
+q_\alpha\mathbf
+E =\frac{e}{n_\alpha}\nabla n_\alpha T_\alpha
+\end{equation}
+
+C'est la relation de Boltzmann. Ce cas de figure est caractéristique pour les
+électrons non-collisionnels enfermés dans un puit de potentiel (par exemple résultant de
+l'interaction entre le plasma et les parois). En l'absence de champ magnétique
+ou parallèlement aux lignes de champ, le champ électrique et le gradient de
+pression se compensent, amenant les électrons dans un équilibre de Boltzmann,
+ie. où les particules suivent une distribution de Boltzmann :
+
+\begin{equation}
+\label{1-profilBoltzman}
+n_\alpha=n_0\exp(q_\alpha \Phi/eT_\alpha)
+\end{equation}
+
+Cette hypothèse est fondamentale dans la dérivation des modèles fluides de
+transport pour les plasmas dans la mesure où elle constitue l'une des bases de
+la théorie des gaines vue précédemment. 
 
 \subsection{Équation de dérive-diffusion magnétisée}
 \label{1-deriveDiffMag}
