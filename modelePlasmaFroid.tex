@@ -155,8 +155,8 @@ l'expression de l'énergie dirigée $\mathcal{U}_e=m_eu_e^2/2$ (cf.
 
 \begin{equation}
 \label{3-eqTemperature}
-\frac{3}{2}en_e\frac{\text{d}T_e}{\text{dt}}+\nabla\cdot\mathbf
-q_e + \frac{5}{2}\mathcal{S}_e eT_e = eT_e\frac{\text{d}n_e}{\text{dt}}+ 
+\frac{3}{2}n_e\frac{\text{d}T_e}{\text{dt}}+\nabla\cdot\mathbf
+q_e + \frac{5}{2}\mathcal{S}_e T_e = T_e\frac{\text{d}n_e}{\text{dt}}+ 
 en_e\left(\mathcal{P}_\text{ext}+\Pi_e\right)+(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e
 \end{equation}
 
@@ -189,12 +189,12 @@ dans~\parencite{Golant} :
 \begin{equation}
 \label{3-eqFluxChaleur}
 \partial_t \mathbf{q}_e + \nu_e\mathbf{q}_e+\omega_e\mathbf{q}_e\times\mathbf{b} =
--\frac{5}{2}\frac{e^2}{m_e}n_eT_e\nabla T_e
+-\frac{5}{2}\frac{n_eT_e}{m_e}\nabla T_e
 \end{equation}
 
-Le gradient de température, moteur du flux de chaleur, est multiplié par une
-conductivité thermique du plasma $5n_eT_e/2m_e$, approximation classique pour
-refermer le système~\parencite{bittencourt}.
+Le gradient de température, moteur du flux de chaleur, est multiplié par le
+facteur $5n_eT_e/2m_e$, approximation classique pour refermer le
+système~\parencite{bittencourt}.
 Dans les sources magnétisées,
 où la longueur de gradient thermique est de l'ordre de la largeur
 du filtre magnétique, le flux de chaleur est magnétisé de la même façon que le
@@ -223,7 +223,7 @@ définis par :
 \Gamma_i=n_iW_i=n_i\max\left(c_{si},\mathbf{u_i}\cdot\mathbf{n}\right)
 \end{equation}
 
-où $c_{si}=(eT_e/m_i)^{\text{\textonehalf}}$ est la vitesse de Bohm
+où $c_{si}=(T_e/m_i)^{\text{\textonehalf}}$ est la vitesse de Bohm
 spécifique à l'espèce $i$.
 Chaque espèce ionique atteint donc au minimum sa propre vitesse de Bohm, mais
 peut éventuellement être perdue avec une vitesse
@@ -242,12 +242,12 @@ vitesse à l'intérieur du plasma.}.
 
 Le flux d'électrons est obtenu en considérant une fonction de distribution
 maxwellienne, que l'on intègre sur le demi-espace des vitesses dirigées vers la
-paroi, polarisée à $\Phi_w$, avec $v_{Te}=(eT_e/m_e)^{\text{\textonehalf}}$ la
+paroi, polarisée à $\Phi_w$, avec $v_{Te}=(T_e/m_e)^{\text{\textonehalf}}$ la
 vitesse électronique thermique :
 
 \begin{equation}
-\Gamma_e=n_eW_e=n_e\frac{1}{\sqrt{2\pi}}v_{Te}=n_e\sqrt{\frac{eT_e}{2\pi
-m_e}}\exp(-(\Phi-\Phi_w)/T_e)
+\Gamma_e=n_eW_e=n_e\frac{1}{\sqrt{2\pi}}v_{Te}=n_e\sqrt{\frac{T_e}{2\pi
+m_e}}\exp(-e(\Phi-\Phi_w)/T_e)
 \end{equation}
 
 La somme des flux
@@ -258,8 +258,8 @@ conservation de la charge \eqref{eqCourant} en fonction de la polarisation de la
 \begin{equation}
 \label{3-sheathcurrent}
 \mathbf{j}\cdot\mathbf{n}=\sum_i{q_in_iW_i}
--en_e\sqrt{\frac{eT_e}{2\pi
-m_e}}\exp(-(\Phi-\Phi_w)/T_e)
+-en_e\sqrt{\frac{T_e}{2\pi
+m_e}}\exp(-e(\Phi-\Phi_w)/T_e)
 \end{equation}
 
 Dans
@@ -279,7 +279,7 @@ pour assurer la nullité du courant sortant :
 \begin{equation}\begin{split}
 \mathbf j\cdot\mathbf{n}=0\Leftrightarrow
 \Phi_w=\Phi-T_e\ln\left(\sqrt{\frac{2\pi
-m_e}{eT_e}}\frac{1}{en_e}\sum_iq_in_iW_i\right)
+m_e}{T_e}}\frac{1}{en_e}\sum_iq_in_iW_i\right)
 \end{split}\end{equation}
 
 Pour les conditions aux limites de l'équation sur la température
@@ -307,11 +307,9 @@ condition limite pour le flux de chaleur :
 \end{equation}
 
 Ces conditions aux limites sont justifiées dans des plasmas non-magnétisés et à l'extrémité
-de lignes de champ interceptant la paroi dans des plasmas magnétisés. Dans la
-direction perpendiculaire au champ magnétique, nous gardons comme hypothèse que
-la vitesse ionique doit au minimum atteindre la vitesse de Bohm
-\eqref{3-fluxIonique} pour permettre une rupture de la quasineutralité du
-plasma et l'apparition d'une gaine de charge d'espace positive.
+de lignes de champ interceptant la paroi dans les plasmas magnétisés. Bien
+que ce choix soit discutable, nous les appliquons aussi dans la direction
+perpendiculaire au champ magnétique.
 
 
 \subsection{Réduction 2D du modèle}
@@ -331,39 +329,47 @@ fort gradients.
 
 La dissociation des mouvements parallèle et perpendiculaire s'effectue
 en réécrivant les équations dans un repère axé sur le champ magnétique
-(O,$\mathbf x$,$\mathbf y$,$\mathbf b$). En considérant l'hypothèse flûte, qui
-consiste à supposer le transport rapide des fluctuations dans la direction
-parallèle, l'intégration du système le long des lignes de champ magnétique
-laisse la plupart des termes des
-Eqs.(\ref{3-continuite}~-~\ref{3-eqTemperature}) inchangés.
-Les conditions aux limites au bout des lignes de champ apparaissent quant à
-elles comme des termes nets de perte $\mathcal L_\para$ 
-dans les équations de conservation :
+(O,$\mathbf x$,$\mathbf y$,$\mathbf b$). On peut ensuite intégrer chacun des
+termes le long de la direction parallèle suivant l'opération :
+
+\begin{equation}
+\text{Moyennes le long des lignes :\qquad}
+\bar{X}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}X \text{d}l
+\end{equation}
+
+où $L_\para$ est la taille du plasma dans la direction du champ magnétique et
+$\text{d}l$ la variation infinitésimale d'une ligne de champ.
+Les divergences parallèles font intervenir les conditions aux limites au bout
+des lignes de champ, qui apparaissent alors comme des termes nets de
+perte $\mathcal L_\para$ dans les équations de conservation :
 
 \begin{align}
 \label{3-vitessesBord}
 \begin{split}
-\mathcal{L}&_{i_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_iu_{i_\para}\right)=\frac{2a}{L_\para}n_iW_{i_\para}\\
-\mathcal{L}&_{e_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_eu_{e_\para}\right)=\frac{2}{L_\para}n_e\sqrt{\frac{eT_e}{2\pi
-m_e}}\exp(-(\Phi-\Phi_{w_\para})/T_e)\\
-\mathcal{L}&_{j_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(j_\para\right)=\sum_i\mathcal{L}_{i_\para}-\mathcal{L}_{e_\para}\\
+\mathcal{L}&_{i_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_iu_{i_\para}\right)dl=\frac{2a}{L_\para}n_iW_{i_\para}\\
+\mathcal{L}&_{e_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(n_eu_{e_\para}\right)dl=\frac{2}{L_\para}n_e\sqrt{\frac{T_e}{2\pi
+m_e}}\exp(-e(\Phi-\Phi_{w_\para})/T_e)\\
+\mathcal{L}&_{j_\para}=\frac{1}{L_\para}\int_{-L_\para/2}^{L_\para/2}\nabla_\para\left(j_\para\right)dl=\sum_i\mathcal{L}_{i_\para}-\mathcal{L}_{e_\para}\\
 \mathcal{L}&_{\varepsilon_\para}=\frac{1}{L_\para}
 \int_{-L_\para/2}^{L_\para/2}\nabla_\para
-\left(\frac{5}{2}n_eT_eu_{e_\para}+q_{e_\para}\right)
+\left(\frac{5}{2}n_eT_eu_{e_\para}+q_{e_\para}\right)dl
 =\frac{2}{L_\para}n_eW_{e_\para}(2T_e+\Phi-\Phi_{w_\para})
 \end{split}
 \end{align}
 
-où $L_\para$ est la taille du plasma dans la direction du champ magnétique. Pour
-les électrons, $\mathcal{L}_{e_\para}$ implique le potentiel de la
+Pour les électrons, $\mathcal{L}_{e_\para}$ implique le potentiel de la
 paroi au bout des lignes de champ $\Phi_{w_\para}$. Pour les pertes ioniques, un
 facteur $a$ représente approximativement le ratio entre la densité de particules à l'entrée
 de la gaine et la densité moyenne calculée le long des lignes de champ
 (typiquement $a\approx\,$0.7-0.9).
 
-Après cette opération de moyenne le long des lignes de champ magnétique, le
-système d'équation peut se réécrire en fonction des variables moyennées ($\bar{n}_\alpha$, $\bar{\mathbf
-u}_\alpha$, $\bar{T}_e$, \ldots) :
+En considérant l'hypothèse flûte, qui
+consiste à supposer le transport rapide des fluctuations dans la direction
+parallèle, l'intégration du système le long des lignes de champ magnétique
+laisse les autres termes des
+Eqs.(\ref{3-continuite}~-~\ref{3-eqTemperature}) quasiment inchangés.
+Le système d'équation peut alors se réécrire en fonction des variables moyennées
+($\bar{n}_\alpha$, $\bar{\mathbf u}_\alpha$, $\bar{T}_e$, \ldots) :
 
 \begin{align}
 \label{3-equations2D1}
@@ -381,7 +387,7 @@ u}_\alpha$, $\bar{T}_e$, \ldots) :
 \end{split}
 \end{align}
 
-L'approximation flûte, nous laissons de côté la notation de moyenne, l'indice
+Dans la suite, nous laissons de côté la notation de moyenne, l'indice
 perpendiculaire et nous omettons volontairement l'indice $\alpha$ pour les
 quantités se référant indifféremment aux ions ou aux électrons.
 
@@ -394,12 +400,13 @@ l'énergie. Les variables macroscopiques sont avancées temporellement, par
 petits pas de temps $\Delta t=t^{k+1}-t^k$, en suivant l'algorithme suivant :
 
 \begin{enumerate}
-  \item Calcul de toutes les fréquences $\nu$ pour
-  chaque interaction à prendre en compte, du profil de puissance absorbée par
-  les électrons $\mathcal P_\text{ext}$, des termes sources de particules
-  $\mathcal{S}$ et des vitesses aux bords du domaine $W_{\para}$ et $W_{\perp}$
+  \item Calcul de toutes les fréquences $\nu^{k+1}$ pour
+  chaque interaction à prendre en compte, des termes sources de particules
+  $\mathcal{S}^{k+1}$ et des vitesses aux bords du domaine $W_{\para}^{k+1}$ et
+  $W_{\perp}^{k+1}$
   \item Prédiction des vitesses fluides ${\overset{\sim}{\mathbf u}}^{\;k+1}$ à
-  l'aide de l'équation de la quantité de mouvement \eqref{3-eqMouvement}
+  l'aide de l'équation de la quantité de mouvement \eqref{3-eqMouvement} en
+  utilisant $\mathbf E^{k}$.
   \item Résolution du champ électrique $\mathbf E^{k+1}$ et du potentiel
   électrostatique $\Phi^{k+1}$ à travers la conservation du courant, en
   s'appuyant sur la réponse des vitesses fluides au changement $\Delta \mathbf
@@ -417,13 +424,13 @@ petits pas de temps $\Delta t=t^{k+1}-t^k$, en suivant l'algorithme suivant :
   l'équation de conservation de l'énergie \eqref{3-eqTemperature}, en incluant la réponse du flux de
   chaleur au changement $\Delta T_e=T_e^{k+1}-T_e^{k}$.
   \item Correction du flux de chaleur $\mathbf
-  q_e^{k+1}$ pour tenir compte du changement de la température.
+  q_e^{k+1}$ pour tenir compte du changement de la température $\Delta T_e$.
 \end{enumerate}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/3-magnisGrid.png}
-{\caption{Schéma du domaine du simulation, entouré d'une gaine
+{\caption{Schéma du domaine du simulation, avec à sa frontière une gaine
 non-collisionnelle positive.
 Les quantités scalaires $n$, $\Phi$ et $T_e$ sont définies aux noeuds et sur les
 bords du maillage. Les composantes $x$ et $y$ des champs vectoriels sont
@@ -441,8 +448,8 @@ sont définies à mi-chemin entre les noeuds, aux indices $(i+1/2,j)$ pour leur
 composante selon $x$ et $(i,j+1/2)$ pour leur composante selon $y$.
 Les opérateurs
 de divergence, quant à eux, sont discrétisés autour des volumes de contrôles en
-suivant une méthode de volumes finis~\parencite{toro}, les volumes étant définis autour des n\oe uds du
-maillages. 
+suivant une méthode de volumes finis~\parencite{toro}, les volumes de
+contrôle étant définis autour des n\oe uds du maillages. 
 
 Les parois perpendiculaires et parallèles peuvent être choisies conductrices ou
 isolantes, impliquant le jeu de conditions aux limites adapté sur les flux
@@ -452,7 +459,7 @@ de longueur infinie dans la direction parallèle.
  
 Pour résoudre les systèmes linéaires du modèle, nous utilisons un solveur
 9-points basé sur la procédure
-MSI (Modified Strongly Implicit Procedure) décrite par Schneider
+MSI (Modified Strongly Implicit) décrite par Schneider
 dans~\parencite{Schneider}. Sa principale caractéristique est de tenir
 compte du caractère intrinsèquement lié des équations fluides afin de diminuer
 le nombre d'itérations nécessaires pour trouver la solution du problème. Autorisant des
@@ -465,11 +472,12 @@ Avant de résoudre à proprement dit les équations du modèle, à chaque
 itération et pour chaque interaction, MAGNIS lit les taux $k_\text{iz}$,
 $k^m_{\alpha s}$ et $k^\varepsilon_{e}$ dans des tables en fonction
 de l'énergie des particules. 
-Les valeurs des taux et donc des sections efficaces contenus dans ces tables
-sont issues de LXCAT~\parencite{LXCAT}, calculées par des expériences de
+Les taux contenus dans ces tables
+sont issues de LXCAT~\parencite{LXCAT}, intégrés sur une distribution
+maxwellienne pour les électrons calculées par des expériences de
 swarm~\parencite{Phelps} ou encore obtenues en résolvant directement l'équation
-de Boltzmann~\parencite{Bolsig}. Pour les électrons, ces valeurs sont illustrées
-sur la figure~\ref{3-tauxcollision}.
+de Boltzmann~\parencite{Bolsig}. Pour les électrons, ces valeurs sont
+illustrées sur la figure~\ref{3-tauxcollision}.
 
 \begin{figure}[!htbp]
     \centering
@@ -482,32 +490,32 @@ sur la figure~\ref{3-tauxcollision}.
     \caption{Valeur en fonction de la température électronique des taux
     ~\subref{3-coeffColl1}~ de collision électrons-neutres,
     ~\subref{3-coeffColl2}~ d'ionisation et~\subref{3-coeffColl3}~ de perte
-    d'énergie dans l'hydrogène et dans l'argon.}
+    d'énergie dans des gaz de dihydrogène et d'argon~\parencite{siglo}.}
     \label{3-tauxcollision}
 \end{figure}
 
 Le terme source de particules est calculé en fonction de la fréquence
 d'ionisation et pris en compte implicitement :
 
-\begin{equation*}
+\begin{equation}
 \mathcal{S}_{\alpha}=n_\alpha^{k+1} \nu_\alpha^\text{iz}=n_\alpha^{k+1} n_g
 k_{\alpha}^\text{iz}(T_e)
-\end{equation*}
+\end{equation}
 
 Le terme de perte d'énergie par électron est lui aussi fortement dépendant de la
 température électronique. Afin de
-résoudre correctement l'évolution de la température, ce terme est décomposé par une itération
+résoudre l'évolution de la température, ce terme est décomposé par une itération
 de Newton\footnote{Cette technique peut être utilisée en toute généralité pour
 renforcer la stabilité numérique en présence de pertes lorsque celles-ci
 dépendent fortement de la quantité perdue 
 $\frac{d\mathcal L}{d\mathcal Q}<0$.
-La perte est alors décomposée suivant une itération de Newton pour atténuer son
-influence :
+La perte est alors décomposée suivant une itération de Newton pour
+réaliser une prédiction implicite et atténuer son influence :
 \begin{equation*}
 \mathcal L^{k+1}=\mathcal L^{k}+\frac{d\mathcal L^{k}}{d\mathcal Q}(\mathcal
 Q^{k+1}-\mathcal Q^k) \end{equation*}
 Originalement mise en \oe vre dans~\parencite{HagelaarImpl}, nous utilisons cette technique pour quelques
-termes du modèle.} :
+termes du modèle.} pour faire une prédiction implicite :
 
 \begin{equation}
 en_e\Pi_e(T_e^{k+1})=en_e\left(\Pi_e(T_e^{k})+\frac{\partial \Pi_e}{\partial
@@ -537,10 +545,10 @@ accélérateur $\mathbf F$ incluant le terme inertiel d'advection :
 \end{equation}
 
 avec 
-\begin{equation*}\mathbf F=\frac{q}{m}E-\frac{e\nabla
+\begin{equation}\mathbf F=\frac{q}{m}E-\frac{e\nabla
 n T}{m
 n}-\alpha_u\mathbf{u}\cdot\nabla\mathbf{u}
-\end{equation*}
+\end{equation}
 
 Les facteurs $\alpha_\omega$ et $\alpha_u$ sont des paramètres numériques qui
 permettent de modifier l'influence des termes d'inertie, ou éventuellement de
@@ -566,36 +574,37 @@ terme de Laplace. La vitesse s'exprime alors comme une somme pondérée du
 transport perpendiculaire et du transport croisé :
 
 \begin{equation}
-\label{3-eqMvtPonderee}
-\mathbf{u}^{k+1}=A\left(\mathbf F + \delta\mathbf{u}^{k}\right)+ B\mathbf
-b\times\left(\mathbf F + \delta\mathbf{u}^{k}\right)
+\label{3-eqMvtPonderee1}
+\mathbf{u}^{k+1}=\text{A}_u\left(\mathbf F + \delta\mathbf{u}^{k}\right)+
+\text{B}_u\mathbf b\times\left(\mathbf F + \delta\mathbf{u}^{k}\right)
 \end{equation}
 avec 
-\begin{equation*}
+\begin{equation}
 \label{3-coefficientsVitesses}
-A=\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;B=-\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
-\end{equation*}
+\text{A}_u=\frac{\nu_m+\delta}{(\nu_m+\delta)^2+\omega_c^2}\;\;\;\;\text{et}\;\;\;\text{B}_u=-\frac{\omega_c}{(\nu_m+\delta)^2+\omega_c^2}
+\end{equation}
 
-L'interpolation nécessaire à l'évaluation du
-deuxième terme de \eqref{3-eqMvtPonderee} mène
+L'interpolation spatiale nécessaire à l'évaluation du
+deuxième terme de \eqref{3-eqMvtPonderee1} mène
 inexorablement à l'introduction d'une erreur dans l'évolution de la vitesse. Au
-bout de quelques $\Delta t$, cette erreur peut se propager à l'ensemble des
-points et s'accumuler, entraînant de sérieux problèmes de convergence à petit
+bout d'un grand nombre de $\Delta t$, cette erreur peut se propager à
+l'ensemble des points et s'accumuler, entraînant de sérieux problèmes de convergence à petit
 pas de temps. Pour remédier à ce problème, nous limitons l'erreur
-d'interpolation en suivant à la fois la vitesse et la vitesse croisée sur tous
-les points du maillage :
+d'interpolation en suivant à la fois la vitesse $\mathbf u$ et la vitesse
+croisée $\mathbf u_\times=\mathbf b\times\mathbf u$ sur tous les points du
+maillage :
 
 \begin{equation}
-\label{3-eqMvtPonderee}
-\mathbf{u}^{k+1}=A\left(\mathbf F + \delta\mathbf{u}^{k}\right)+ B\left(\mathbf
-b\times\mathbf F +
+\label{3-eqMvtPonderee12}
+\mathbf{u}^{k+1}=\text{A}_u\left(\mathbf F + \delta\mathbf{u}^{k}\right)+
+\text{B}_u\left(\mathbf b\times\mathbf F +
 \delta\left((1-\beta)\mathbf{u}_\times^{k}+\beta\mathbf
 b\times\mathbf{u}^{k}\right)\right)
 \end{equation}
 \begin{equation}
-\label{3-eqMvtPonderee}
-\mathbf{u}_\times^{k+1}=-B\left(\mathbf F + \delta\mathbf{u}^{k}\right)+
-A\left(\mathbf
+\label{3-eqMvtPonderee2}
+\mathbf{u}_\times^{k+1}=-\text{B}_u\left(\mathbf F +
+\delta\mathbf{u}^{k}\right)+ \text{A}_u\left(\mathbf
 b\times\mathbf F +
 \delta\left((1-\beta)\mathbf{u}_\times^{k}+\beta\mathbf
 b\times\mathbf{u}^{k}\right)\right)
@@ -612,7 +621,7 @@ calcul analytique pour estimer l'erreur d'interpolation montre qu'un choix appro
 est :
 
 \begin{equation}
-\label{3-eqMvtPonderee}
+\label{3-eqMvtPonderee3}
 \beta=\left(\frac{\nu^2+\omega_c^2}{(\delta+\nu)^2+\omega_c^2}\right)^{1/2}
 \end{equation}
 
@@ -622,9 +631,9 @@ ordering entre $\nu$, $\omega_c$ et $\delta$.
 
 \subsection{Conservation du courant et correction des vitesses}
 
-L'expression obtenue pour la vitesse
-fluide (\eqref{3-eqCorrection}) fait intervenir le champ électrique à travers le
-terme $\mathbf F$.
+Les expressions obtenues pour les vitesses
+fluides (\eqref{3-eqMvtPonderee12} et \eqref{3-eqMvtPonderee2}) font intervenir
+le champ électrique à travers le terme $\mathbf F$.
 L'évaluation de ce terme avec un champ électrique pris au temps $k$+1 peut alors
 s'écrire en fonction du changement de potentiel :
 
@@ -636,14 +645,23 @@ s'écrire en fonction du changement de potentiel :
 
 La propriété \eqref{3-eqCorrection} est mise à profit afin de constuire un
 schéma de prédiction-correction pour les vitesses fluides. Celles-ci sont
-calculées explicitement dans une première étape à partir de l'ancien champ électrique,
-puis corrigées par le changement de potentiel
-$\Theta=\Phi^{k+1}-\Phi^k$ :
+calculées explicitement dans une première étape à partir des
+équations~\eqref{3-eqMvtPonderee12} et \eqref{3-eqMvtPonderee2} avec 
+l'ancien champ électrique :
+
+\begin{equation}
+\tilde{\mathbf u}^{k+1}(\mathbf{E}^k)=\text{A}_u\mathbf F(\mathbf E^{k}) +
+\text{B}_u\mathbf b\times\mathbf F(\mathbf E^{k}) + \text{\ldots}
+\end{equation}
+
+puis corrigées par le changement de champ électrique
+$\nabla\Theta=\nabla(\Phi^{k+1}-\Phi^k)$ :
 
 \begin{equation}
 \label{3-eqCorrectionVitesse}
-\mathbf u^{k+1} = \tilde{\mathbf u}^{k+1}-\frac{q}{m}A\nabla
-\Theta-\frac{q}{m}B\mathbf b\times\nabla
+\mathbf u^{k+1}(\mathbf{E}^{k+1}) = \tilde{\mathbf
+u}^{k+1}(\mathbf{E}^k)-\frac{q}{m}\text{A}_u\nabla
+\Theta-\frac{q}{m}\text{B}_u\mathbf b\times\nabla
 \Theta
 \end{equation}
 
@@ -654,8 +672,8 @@ vitesses par leur expression (données par \eqref{3-eqCorrectionVitesse}) :
 \begin{equation}
 \begin{split}
 \label{3-eqCourantCoefficient}
--\nabla\cdot\left((\sum_i\frac{q_i^2}{m_i}n_iA_i-\frac{e^2}{m_e}n_eA_e)\nabla
-\Theta-(\sum_i\frac{q_i^2}{m_i}n_iB_i-\frac{e^2}{m_e}n_eB_e)\mathbf
+-\nabla\cdot\left((\sum_i\frac{q_i^2}{m_i}n_i\text{A}_{ui}-\frac{e^2}{m_e}n_e\text{A}_{ue})\nabla
+\Theta-(\sum_i\frac{q_i^2}{m_i}n_i\text{B}_{ui}-\frac{e^2}{m_e}n_e\text{B}_{ue})\mathbf
 b\times\nabla
 \Theta\right)\\=(en_e\tilde{\mathbf
 u}_e^{k+1}-\sum_iq_in_i\tilde{\mathbf u}_i^{k+1})-\mathcal L_{j_\para}
@@ -665,29 +683,36 @@ u}_e^{k+1}-\sum_iq_in_i\tilde{\mathbf u}_i^{k+1})-\mathcal L_{j_\para}
 Cette équation est résolue pour $\Theta$ en incluant les conditions aux limites
 de façon implicite. Une fois le potentiel $\Phi^{k+1}$ mis à jour, les vitesses
 fluides $\mathbf u^{k+1}_\alpha$ sont corrigées en fonction du nouveau champ
-électrique.
+électrique $\mathbf{E}^{k+1}=\mathbf{E}^{k}-\nabla\Theta$.
 Après cette correction, l'ensemble des vitesses fluides $\mathbf u_\alpha$
 satisfait exactement à la continuité du courant.
 
-\subsubsection{Sous-relaxation et maillages croisés}
+\subsubsection{Relaxation de la vitesse électronique}
 
 L'équation \eqref{3-eqCourantCoefficient}, discrétisée spatialement sur un
 stencil à 9 points, mène à un système linéaire potentiellement mal conditionné
-quand le coefficient $B$ devient supérieur au coefficient $A$, ie. en présence
-d'un fort champ magnétique. Pour nous assurer que $A>B$ en toutes circonstances,
-l'une des solutions est de choisir un pas de temps inférieur à l'inverse de la
+quand le coefficient $\text{B}_u$ devient supérieur au coefficient $\text{A}_u$,
+ie. en présence d'un fort champ magnétique :
+
+\begin{equation}
+\frac{|\text{A}_u|}{|\text{B}_u|}=\frac{\nu^m+\delta}{\omega_c}=\frac{\nu^m+\frac{\alpha_\omega}{\Delta
+t}}{\omega_c}
+\end{equation}
+
+Pour nous assurer que $\text{A}_u>\text{B}_u$ en toutes circonstances, l'une
+des solutions est de choisir un pas de temps inférieur à l'inverse de la
 fréquence cyclotronique électronique $\Delta t\leq\omega_{ce}\puissance{-1}$ et
-ainsi résoudre l'intégralité du mouvement électronique. Cependant, du fait de la
-très faible masse des électrons, on peut s'attendre à ce que les termes
+ainsi résoudre l'intégralité du mouvement électronique. Cependant, du fait de
+la très faible masse des électrons, on peut s'attendre à ce que les termes
 d'inertie ne jouent pas un très grand rôle macroscopiquement et qu'une
 description des fréquences de l'ordre de $\omega_{ce}$ soit inutile.
 
-Il est aussi possible d'augmenter artificiellement la valeur de $A$ en
+Il est aussi possible d'augmenter artificiellement la valeur de $\text{A}_u$ en
 remplaçant le facteur $\delta$ par :
 
-\begin{equation*}
+\begin{equation}
 \delta=\max(\alpha_\omega/\Delta t,|\omega_c|)
-\end{equation*}
+\end{equation}
 
 ie. en prenant $\alpha_\omega=\max(1,|\omega_c|\Delta t)$.
 Cette opération, qui n'a dans des conditions typiques de nos plasmas froids
@@ -713,27 +738,31 @@ Les équations de continuité pour les espèces ioniques sont résolues avec les
 vitesses $\mathbf u_i^{k+1}$, en utilisant au choix un schéma
 Upwind-explicite/implicite ou MUSCL-explicite/implicite :
 
-\begin{equation}
-n_i^{k+1}+\nabla\cdot(n_i^{k/k+1}\mathbf u_i^{k+1})=\mathcal S_i-\mathcal
-L_{i_\para}\frac{n_i^{k+1}}{n_i^k}
-\end{equation}
+\begin{align}
+\text{Explicite :\qquad}& n_i^{k+1}=n_i^{k}+\Delta
+t\left(\mathcal S_i-\nabla\cdot(n_i^{k}\mathbf
+u_i^{k+1})-\mathcal L_{i_\para}\frac{n_i^{k+1}}{n_i^k}\right)\\
+\text{Implicite :\qquad}&n_i^{k+1}=n_i^{k}+\Delta
+t\left(\mathcal S_i-\nabla\cdot(n_i^{k+1}\mathbf
+u_i^{k+1})-\mathcal L_{i_\para}\frac{n_i^{k+1}}{n_i^k}\right)
+\end{align}
 
 Les pertes parallèles $\mathcal {L}_{i_\para}$ et aux bords du
-domaine sont implicitées afin de s'assurer que la densité ne devienne pas
-négative.
+domaine sont toujours implicitées afin de s'assurer que la densité ne devienne
+pas négative.
 
 \subsection{Flux de chaleur et équation d'énergie}
 
 Le flux de chaleur porté par les électrons étant sensible au champ magnétique de
 la même façon que le flux de particules, nous adoptons la même méthode que
-précédemment. Le flux de chaleur est tout d'abord prédit en fonction de
-l'ancien gradient de température :
+précédemment (cf.\eqref{3-eqMvtPonderee12} et \eqref{3-eqMvtPonderee2}). Le flux de chaleur est tout d'abord
+prédit en fonction de l'ancien gradient de température :
 
 \begin{equation}
 \label{3-eqChaleurPonderee}
-\tilde{\mathbf{q}}_e^{k+1}=-A_e(
-\frac{5e^2n_eT_e}{2m_e}\nabla T_e^k+\delta q_e^k)-B_e\mathbf
-b\times(\frac{5e^2n_eT_e}{2m_e}\nabla T_e^k +\delta q_e^k)
+\tilde{\mathbf{q}}_e^{k+1}=-\text{A}_{ue}(
+\frac{5n_eT_e}{2m_e}\nabla T_e^k+\delta q_e^k)-\text{B}_{ue}\mathbf
+b\times(\frac{5n_eT_e}{2m_e}\nabla T_e^k +\delta q_e^k)
 \end{equation}
 
 avec les mêmes coefficients $A_e$ et $B_e$ que pour le flux électronique. On
@@ -742,15 +771,15 @@ de température $\mathcal T=e(T_e^{k+1}-T_e^k)$ :
 
 \begin{equation}
 \label{3-eqCorrectionVitesse}
-\mathbf q^{k+1} = \tilde{\mathbf q}^{k+1}-A_\varepsilon\nabla
-\mathcal T+B_\varepsilon\mathbf b\times\nabla
+\mathbf q^{k+1} = \tilde{\mathbf q}^{k+1}-\text{A}_\varepsilon\nabla
+\mathcal T+\text{B}_\varepsilon\mathbf b\times\nabla
 \mathcal T
 \end{equation}
 
 avec 
 \begin{equation*}
 \label{3-coefficientsChaleur}
-A_\varepsilon=A_e\frac{5en_eT_e}{2m_e}\;\;\;\;\text{et}\;\;\;B_\varepsilon=B_e\frac{5en_eT_e}{2m_e}
+\text{A}_\varepsilon=\text{A}_{ue}\frac{5n_eT_e}{2m_e}\;\;\;\;\text{et}\;\;\;\text{B}_\varepsilon=\text{B}_{ue}\frac{5n_eT_e}{2m_e}
 \end{equation*}
 
 L'équation d'énergie \eqref{3-eqTemperature} est utilisée pour résoudre le
@@ -762,7 +791,7 @@ changement de température $\mathcal T$.
 \left(\frac{3n_e}{2\Delta
 t}+n_e\frac{\partial Q_e}{\partial T_e}+\max(C,0)\right)\mathcal T
 -\nabla\cdot\left(A_\varepsilon\nabla\mathcal T- B_\varepsilon\mathbf
-b\times\nabla\mathcal T\right)\\ =  C eT_e^k -\nabla\tilde{\mathbf q}_e^{k+1}+
+b\times\nabla\mathcal T\right)\\ =  C T_e^k -\nabla\tilde{\mathbf q}_e^{k+1}+
 en_e(\mathcal{P}_\text{ext}-Q_e)-\mathcal L_{\varepsilon_\para}
 \end{split}\end{equation}
 
@@ -770,7 +799,7 @@ avec
 
 \begin{equation*}C=-\frac{5}{2}\mathcal S_e-\frac{3}{2}n_e\mathbf
 u_e\frac{\nabla
-T_e^k}{T_e^k}+(2n_e\nu_e+\mathcal{S}_e)\frac{\mathcal{U}_e}{eT_e^k} +\frac{\text{d} n_e}{\text{d} t}
+T_e^k}{T_e^k}+(2n_e\nu_e+\mathcal{S}_e)\frac{\mathcal{U}_e}{T_e^k} +\frac{\text{d} n_e}{\text{d} t}
 \end{equation*}
 
 Le coefficient $C$ contient les termes qui peuvent apporter une contribution

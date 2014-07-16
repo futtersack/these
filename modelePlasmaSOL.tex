@@ -241,7 +241,7 @@ crochet de Poisson entre la densité et la courbure du champ magnétique :
 \nabla\cdot\mathbf{j}_*=
 \nabla_\perp\cdot\left(\nabla_\perp\left(
 P_i+P_e\right)\times\mathbf{B}/B^2\right) =
-eT_e(1+\tau)\left[n,B\puissance{-1}\right]
+T_e(1+\tau)\left[n,B\puissance{-1}\right]
 \end{equation}
 
 La vitesse de polarisation étant
@@ -274,7 +274,7 @@ En insérant l'expression des dérives, \eqref{EqCourant1} se réécrit :
 \begin{equation}\begin{split}
 \label{EqCourant2}
 \nabla_\para j_\para +
-eT_e(1+\tau)\left[n,B\puissance{-1}\right] +
+T_e(1+\tau)\left[n,B\puissance{-1}\right] +
 \nabla_\perp\cdot\left(-\frac{nm_{i}}{B^2}\left(\partial_{t}\nabla_\perp \Phi - \nu_\perp \nabla_\perp^3 \Phi \right)\right) \\+
 \nabla_\perp\cdot\left(-\frac{nm_{i}}{B^2}\mathbf{u}_E\cdot\nabla_\perp^2
 \Phi\right)=0
@@ -294,7 +294,7 @@ de vorticité:
 \begin{equation}\begin{split}
 \label{2-eqCourantFinale}
 \nabla_\para{j}_\para +
-eT_e(1+\tau)\left[n,B\puissance{-1}\right] =\\
+T_e(1+\tau)\left[n,B\puissance{-1}\right] =\\
 \frac{nm_i}{B^2}\left(\partial_{t}\Omega - \nu_\perp
 \nabla_\perp^2\Omega+
 B\puissance{-1}\left[\Phi,\Omega\right]\right)
@@ -340,7 +340,7 @@ nu_\para\right>_\para&=\frac{nc_s}{L_\para}\exp(\Lambda-(\Phi-\Phi_\text{w})/T_e
 j_\para\right>_\para&=\frac{enc_s}{L_\para}\left(1-\exp(\Lambda-(\Phi-\Phi_\text{w})/T_e)\right)
 \end{align}
 
-où $c_s=\sqrt{eT_e/m_i}$ est la vitesse acoustique
+où $c_s=\sqrt{T_e/m_i}$ est la vitesse acoustique
 ionique, $\Lambda=T_{e}\ln({m_{i}/2\pi m_{e})/2}$ est le
 potentiel flottant et $\Phi-\Phi_\text{w}=\Delta \Phi$ représente la
 différence de potentiel entre le plasma et la paroi. 
@@ -352,7 +352,7 @@ moyen $g_\perp\propto\partial_xB^{-1}$ (qui se mesure en T$^{-1}$.m$^{-1}$) tel
 que :
 
 \begin{equation}
-\left<eT_e(1+\tau)\left[n,B^{-1}\right]\right>_\para=eT_eg_\perp\partial_yn
+\left<T_e(1+\tau)\left[n,B^{-1}\right]\right>_\para=T_eg_\perp\partial_yn
 \end{equation}
 
 comme ce coefficient est positif, le signe du terme déstabilisant
@@ -369,7 +369,7 @@ Avec ces expressions, le système d'équations \eqref{2-eqContinuiteFinale}~--~\
 &\partial_{t}\Omega - \nu_\perp
 \nabla_\perp^2\Omega+
 \frac{1}{B}\left[\Phi,\Omega\right]=\frac{ec_sB^2}{m_iL_\para}\left(1-e^{\Lambda-\Delta
-\Phi/T_e}\right) -\frac{B^2}{m_i}eT_eg_\perp\partial_y\ln n
+\Phi/T_e}\right) -\frac{B^2}{m_i}T_eg_\perp\partial_y\ln n
 \label{2-eqCourantMoyenne}
 \end{align}
  
@@ -378,7 +378,7 @@ Avec ces expressions, le système d'équations \eqref{2-eqContinuiteFinale}~--~\
 Considérons maintenant le champ magnétique et la température constants en espace
 et en temps :
 \begin{equation}
-B=B_{\indice{0}}=1\,\text{T~~~~~~~et~~~~~~~}eT_e=eT_0=1\,\text{eV}
+B=B_{\indice{0}}=1\,\text{T~~~~~~~et~~~~~~~}T_e=T_0=1\,\text{eV}
 \end{equation}
 et supposons les
 ions froids $T_i=\,$0.
@@ -793,7 +793,7 @@ barrière.
 		\text{P}_e\nabla\cdot\mathbf{U}_e=\mathcal{S}_{\text{T}_e} 
 	\end{equation}
 	
-	avec $\text{P}_e=\text{NT}_e$ la pression électronique normalisée à $n_0eT_0$,
+	avec $\text{P}_e=\text{NT}_e$ la pression électronique normalisée à $n_0T_0$,
 	$\mathbf{Q}_e$ le flux de chaleur normalisé et $\mathcal{S}_{\text{T}_e}$ un
 	terme source d'énergie cohérent avec le flux entrant de particules. 
 	

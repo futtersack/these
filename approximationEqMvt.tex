@@ -1,6 +1,15 @@
 \Chapter{Approximations de l'équation de quantité de mouvement}
+\chaptermark{Approx. de l'équation de quantité de mouvement}
+
 \label{ApproximationsEqMvt}
 \begin{refsection}
+Dans ce chapitre, nous présentons deux modèles courament utilisés 
+pour décrire les plasmas magnétisés. Le modèle de dérive-diffusion utilisé dans
+le domaine des plasmas froids, suppose un plasma collisionnel et stationnaire.
+Le modèle des vitesses de dérive représente des plasmas totalement ionisés et très
+magnétisés. Nous discutons enfin de la pertinence des deux modèles dans le cadre
+de la modélisation des sources basse-pression.
+
 \section{L'équation de quantité de mouvement}
 
 Dans sa vocation à expliquer et comprendre les phénomènes naturels et les
@@ -10,7 +19,7 @@ modèles, représentations intelligibles de la réalité. En physique, ces modè
 peuvent être plus ou moins complets ou simplifiés en fonction des hypothèses
 initiales et des différentes approximations. Ils ne sont
 pas censés représenter exactement leur sujet, mais au moins décrire une
-certaine physique en jeu.
+certaine physique mise en jeu.
 Les modèles sont l'un des
 principaux outils de la science moderne, et, grâce à l'outil numérique, nous
 donne accès à une réalité virtuelle plus facilement analysable et questionnable
@@ -18,11 +27,11 @@ que le vrai monde.
 
 \begin{figure}[!htbp]
     \centering
-	\includegraphics[width=0.6\textwidth]{figures/1-cave.jpg}
+	\includegraphics[width=0.5\textwidth]{figures/1-cave.jpg}
 	\caption{Allégorie de la caverne. La célèbre histoire de
 	Platon~\parencite{Platon} raconte l'histoire d'hommes condamnés à ne voir que
 	l'apparence des phénomènes qui les entourent. Afin de parvenir à la connaissance de la réalité
-	intelligible des Idées, il doivent effectuer une démarche intellectuelle
+	intelligible des Idées, ils doivent effectuer une démarche intellectuelle
 	et sortir de la caverne.}\label{caverne}
 \end{figure}
 
@@ -49,7 +58,7 @@ $\boldsymbol{\Pi}_\alpha=0$, en supposant que les transferts d'impulsion dus
 aux collisions entre particules d'espèces différentes ont plus d'effet que
 ceux résultants de la viscosité. L'équation de la quantité de
 mouvement~\eqref{1-eqMouvement} se réduit ainsi à un équilibre entre les forces
-d'inertie, de frottement, de traînée, de Lorentz et de pression :
+d'inertie, de frottement, de Lorentz et de pression :
 
 \begin{equation}
 \label{1-eqBilanForce}
@@ -64,21 +73,46 @@ E+\mathbf u_\alpha\times \mathbf B\right)}_\text{Forces électromagnétiques}
  
 Le poids des différents termes de \eqref{1-eqBilanForce} varie en fonction des
 paramètres du plasma et permet de définir les types de mécanismes qui régissent
-le transport des fluides électroniques et ioniques.
+le transport des fluides électroniques et ioniques. Les termes estimés petits
+relativement aux autres peuvent ainsi être négligés pour obtenir une
+expression plus simple de la vitesse fluide et permettre des développements
+analytiques.
 
+Un premier cas limite peut être obtenu quand le terme de pression domine
+sur l'ensemble des termes du membre de gauche de \eqref{1-eqBilanForce}. Ce cas
+de figure est caractéristique pour des électrons non-collisionnels enfermés
+dans un puit de potentiel (par exemple résultant de l'interaction entre le
+plasma et les parois). Dans ces conditions, \eqref{1-eqBilanForce} s'écrit:
 
+\begin{equation}
+\label{1-equilibreBoltzman}
+q_\alpha\mathbf
+E =\frac{e}{n_\alpha}\nabla n_\alpha T_\alpha
+\end{equation}
 
-Dans les plasmas les fluides électroniques et ioniques sont couplés à
-travers le champ électrique et peuvent être assimilés à un unique fluide
-(théorie MHD). 
+C'est la relation de Boltzmann. En l'absence de champ magnétique
+ou parallèlement aux lignes de champ, le champ électrique et le gradient de
+pression se compensent, amenant les électrons dans un équilibre statistique de
+Boltzmann, ie. où les particules suivent une distribution de Boltzmann :
+
+\begin{equation}
+\label{1-profilBoltzman}
+n_\alpha=n_0\exp(q_\alpha \Phi/T_\alpha)
+\end{equation}
+
+Cette hypothèse est fondamentale dans la dérivation des modèles fluides de
+transport pour les plasmas dans la mesure où elle constitue l'une des bases de
+la théorie des gaines vue précédemment. 
 
 Dans le domaine des plasmas
-froid, on fait plutôt l'hypothèse de forte collisionnalité et on développe
+froid, on fait l'hypothèse de forte collisionnalité et on développe
 l'équation de la quantité de mouvement en fonction du petit paramètre
 $\lambda_{lpm}/L$.
-Dans le domaine des plasmas de fusions fortement magnétisés, il est d'usage de
-considérer le petit paramètre $\delta=\rho_L/L$ pour moyenner l'équation
-\eqref{1-eqBilanForce} sur les échelles rapides. 
+Dans le domaine des plasmas de fusions fortement magnétisés, il est
+plutôt d'usage de considérer le petit paramètre $\delta=\rho_L/L$ pour moyenner
+l'équation \eqref{1-eqBilanForce} sur les échelles de temps supérieures à
+l'inverse de la fréquence cyclotronique $\omega_{c}$.
+
 
 \section{Cas collisionnel : Équation de dérive-diffusion}
 \label{1-transportAmbipolaire}
@@ -97,27 +131,31 @@ faibles par rapport au terme collisionnel :
 \begin{equation}
 \label{1-eqDriftDif}
 n_\alpha\mathbf u_\alpha=\frac{q_\alpha}{\nu_\alpha m_\alpha}n_\alpha\mathbf
-E-\frac{\nabla\left(n_\alpha eT_\alpha\right)}{\nu_\alpha
+E-\frac{\nabla\left(n_\alpha T_\alpha\right)}{\nu_\alpha
 m_\alpha}
 \end{equation}
 
-Dans le cas où la mobilité peut être supposée constante, on peut la rentrer dans
-la divergence :
+avec $\nu_\alpha=\nu_\alpha^c+\nu_\alpha^\text{iz}$ une fréquence de collision
+effective. Dans le cas d'un plasma isotherme, on peut sortir la température de
+la divergence.
+En notant $\mu_\alpha=e/\nu_\alpha m_\alpha$ et
+$D_\alpha=T_\alpha/\nu_\alpha m_\alpha$, le flux de \eqref{1-eqDriftDif} se
+réécrit avec une loi d'Ohm et une loi de Fick :
 
 \begin{equation}
-\label{1-eqDriftDif}
-n_\alpha\mathbf u_\alpha\equiv\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf
-E-{\nabla\left(D_\alpha n_\alpha\right)}
+\label{1-eqDriftDif2}
+n_\alpha\mathbf u_\alpha\equiv\underbrace{\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf E}_\text{Loi d'Ohm}+\underbrace{D_\alpha{\nabla n_\alpha}}_\text{Loi
+de Fick}
 \end{equation}
 
- C'est l'équation de dérive-diffusion, avec les coefficients de
-transport $\mu_\alpha=q_\alpha/\nu_\alpha m_\alpha$ et
-$D_\alpha=eT_\alpha/\nu_\alpha m_\alpha$, tous deux inversement proportionnels à la fréquence de collision $\nu_\alpha$ (donc à la
-densité de gaz), et reliés par la relation d'Einstein :
+ C'est le flux de dérive-diffusion, caractérisé par les coefficients de
+transport $\mu_\alpha$ et
+$D_\alpha$, tous deux inversement proportionnels à la fréquence de collision
+$\nu_\alpha$ (donc à la densité de gaz), et reliés par la relation d'Einstein :
 
 \begin{equation}
 \label{1-EinsteinRelation}
-D_\alpha/\mu_\alpha=T_\alpha
+D_\alpha/\mu_\alpha=\frac{T_\alpha}{e}
 \end{equation}
 
 \begin{itemize}
@@ -128,15 +166,15 @@ D_\alpha/\mu_\alpha=T_\alpha
   de l'agitation thermique.
 \end{itemize}
 
-En combinant \eqref{1-eqDriftDif} avec l'équation de continuité
-\eqref{1-eqContinuite}, on obtient une équation d'évolution de la densité
-constituée d'une loi d'Ohm et d'une loi de Fick :
+En combinant \eqref{1-eqDriftDif2} avec l'équation de continuité
+\eqref{1-eqContinuite}, on obtient l'équation d'évolution de la densité
+dite de dérive-diffusion :
  
 \begin{equation}
 \label{1-eqDriftDifContinuite}
 \partial_t
-n_\alpha=\nabla\cdot(\underbrace{\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf E}_\text{Loi d'Ohm}+\underbrace{D_\alpha{\nabla n_\alpha}}_\text{Loi
-de Fick})+S_\alpha
+n_\alpha=\nabla\cdot({\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf E}
++{D_\alpha{\nabla n_\alpha}})+S_\alpha
 \end{equation}
 
 Dans des plasmas de décharge collisionnels, à partir de la source d'ionisation,
@@ -156,45 +194,23 @@ E_a=\frac{D_i-D_e}{\mu_i+\mu_e}\frac{\nabla
 n}{n}
 \end{equation}
 
-Les coefficients de diffusion et de mobilité étant bien plus important pour les
-électrons que pour les ions, on peut estimer la chute du potentiel ambipolaire
-en fonction de la température électronique :
+Si l'on applique l'équation de
+dérive-diffusion~\eqref{1-eqDriftDifContinuite} à un plasma peu collisionnel,
+ie. dans la limite $\nu_{i,e}\rightarrow\,$0, cette description peut poser
+problème, les mobilités tendant quant à elles vers l'infini. Le modèle de
+dérive-diffusion n'est en effet strictement valide que quand le libre parcours
+moyen ne dépasse pas la longueur caractéristique des gradients $\lambda\sim L_{\nabla}$. 
 
-\begin{equation}
-\label{1-eqApproxEAmb}
-\mathbf E_a\approx T_e\frac{\nabla
-n}{n}\rightarrow\mathbf E_a\cdot L\approx\frac{T_e}{2}
-\end{equation}
+Quand ce critère n'est pas respecté, ce n'est pas très grave pour les
+électrons, l'équilibre de
+Boltzmann tenant toujours.
+Pour les ions, la seule issue repose sur la prise en compte du
+terme de création $\nu^\text{iz}_i\mathbf u_i$ qui défini une limite haute pour
+la mobilité ionique.
+Le modèle de dérive-diffusion est ainsi encore utilisable, mais perd beaucoup en
+précision.
 
-A l'interface entre les parois et le plasma, une gaine positive se
-forme et enferme les électrons dans un puit de potentiel. Ce phénomène, en plus
-des collisions, permet une isotropisation rapide de la fonction de distribution
-des électrons, qui peuvent alors être considérés en équilibre de Boltzmann.
-Un premier cas limite peut être obtenu quand le terme de pression domine
-sur l'ensemble des termes du membre de gauche de \eqref{1-eqBilanForce}, qui en
-les négligeant, se transforme en :
-
-\begin{equation}
-\label{1-equilibreBoltzman}
-q_\alpha\mathbf
-E =\frac{e}{n_\alpha}\nabla n_\alpha T_\alpha
-\end{equation}
-
-C'est la relation de Boltzmann. Ce cas de figure est caractéristique pour les
-électrons non-collisionnels enfermés dans un puit de potentiel (par exemple résultant de
-l'interaction entre le plasma et les parois). En l'absence de champ magnétique
-ou parallèlement aux lignes de champ, le champ électrique et le gradient de
-pression se compensent, amenant les électrons dans un équilibre de Boltzmann,
-ie. où les particules suivent une distribution de Boltzmann :
-
-\begin{equation}
-\label{1-profilBoltzman}
-n_\alpha=n_0\exp(q_\alpha \Phi/eT_\alpha)
-\end{equation}
-
-Cette hypothèse est fondamentale dans la dérivation des modèles fluides de
-transport pour les plasmas dans la mesure où elle constitue l'une des bases de
-la théorie des gaines vue précédemment. 
+Regardons maintenant ce que donne ce modèle en présence d'un champ magnétique.
 
 \subsection{Équation de dérive-diffusion magnétisée}
 \label{1-deriveDiffMag}
@@ -202,42 +218,69 @@ L'utilisation d'un champ magnétique dans un plasma permet de contrôler en part
 le transport des particules et d'obtenir des configurations favorables pour
 diverses applications. Cependant, la prise en compte du terme de Laplace dans
 \eqref{1-eqBilanForce} impose une forte anisotropie dans le système, ce qui
-complexifie considérablement les phénomènes de transport : en
+complexifie considérablement les phénomènes de transport. En
 négligeant l'inertie, on peut considérer \eqref{1-eqBilanForce} comme une
-équation algébrique d'inconnue $\mathbf u$ qui s'écrit sous une forme
-tensorielle de l'équation de dérive-diffusion :
+équation algébrique d'inconnue $\mathbf u$ ; le réagencement des différents
+termes donne :
 
 \begin{equation}
-\label{1-eqDriftDif}
-n_\alpha\mathbf u_\alpha=\frac{q_\alpha}{|q_\alpha|}\mu_\alpha
+\label{2-eqDriftDifMag}
+\begin{split}
+n_\alpha\mathbf u_\alpha&=\frac{q_\alpha}{|q_\alpha|}\mu_\alpha
 n_\alpha\left(\mathbf E+\mathbf u_\alpha\times\mathbf
-B\right)-\nabla\left(D_\alpha n_\alpha\right)\equiv
+B\right)-D_\alpha\nabla\left( n_\alpha\right)
+\\
+&=\frac{q_\alpha}{|q_\alpha|} n_\alpha\left(\mu_{\alpha_\para}\left(\mathbf
+b\cdot\mathbf E\right)\mathbf b+\mu_{\alpha_\perp}\left(\mathbf
+E-\left(\mathbf
+b\cdot\mathbf E\right)\mathbf
+b\right)+\mu_{\alpha_\times}\mathbf
+b\times\mathbf E\right)
+\\
+&-\left(D_{\alpha_\para}\left(\mathbf
+b\cdot\nabla n_\alpha\right)\mathbf b+D_{\alpha_\perp}\left(\mathbf
+\nabla n_\alpha-\left(\mathbf
+b\cdot\nabla n_\alpha\right)\mathbf
+b\right)+D_{\alpha_\times}\mathbf
+b\times\mathbf \nabla n_\alpha\right)
+\end{split}
+\end{equation}
+
+Pour une meilleure lisibilité, on réécrit l'équation~\ref{2-eqDriftDifMag}
+sous forme tensorielle, donnant l'équation de dérive-diffusion magnétisée,
+courament utilisée dans le domaine des plasmas froids pour modéliser le
+transport magnétisé~\parencite{grephe, propulseur} :
+
+\begin{equation}
+\label{2-eqDriftDifMag2}
+n_\alpha\mathbf u_\alpha\equiv
 \frac{q_\alpha}{|q_\alpha|} n_\alpha\boldsymbol{\mu}_\alpha\cdot \mathbf
-E-{\nabla\left(\mathbf{D}_\alpha n_\alpha\right)}
+E-\mathbf{D}_\alpha{\nabla\left( n_\alpha\right)}
 \end{equation}
 
 où la mobilité $\boldsymbol{\mu}_\alpha$ et la diffusion $\mathbf{D}_\alpha$
-sont devenus des tenseurs d'ordre 2 :
+sont devenus des tenseurs d'ordre 2. Dans un repère avec le champ magnétique axé
+sur la direction du champ magnétique $\mathbf B=B\mathbf e_z$ :
 
 \begin{align}
 \boldsymbol{\mu}_\alpha =
  \begin{pmatrix}
-  \mu_{\alpha\perp} & \pm\mu_{\alpha\times} & 0 \\
-  \pm\mu_{\alpha\times} & \mu_{\alpha\perp} & 0 \\
-  0  & 0  & \mu_{\alpha\para} 
+  \mu_{\alpha_\perp} & \pm\mu_{\alpha_\times} & 0 \\
+  \pm\mu_{\alpha_\times} & \mu_{\alpha_\perp} & 0 \\
+  0  & 0  & \mu_{\alpha_\para} 
  \end{pmatrix}\;\;\;\;\text{et}\;\;\;\;
  \mathbf D_\alpha =
  \begin{pmatrix}
-  D_{\alpha\perp} & \pm D_{\alpha\times} & 0 \\
- \pm D_{\alpha\times} & D_{\alpha\perp} & 0 \\
-  0  & 0  & D_{\alpha\para} 
+  D_{\alpha_\perp} & \pm D_{\alpha_\times} & 0 \\
+ \pm D_{\alpha_\times} & D_{\alpha_\perp} & 0 \\
+  0  & 0  & D_{\alpha_\para} 
  \end{pmatrix}
 \end{align}
 
 Dans la direction parallèle au champ magnétique, les coefficients de mobilité et
 de diffusion sont inchangés
 $\mu_{\alpha\para}=\mu_{\alpha}=q_\alpha/m_\alpha\nu_\alpha$ et
-$D_{\alpha\para}=D_\alpha=eT_\alpha/m_\alpha\nu_\alpha$. Les coefficients de la
+$D_{\alpha\para}=D_\alpha=T_\alpha/m_\alpha\nu_\alpha$. Les coefficients de la
 direction perpendiculaire font quant à eux apparaître le paramètre de Hall
 $h_\alpha=\omega_{c\alpha}/\nu_\alpha$ :
 
@@ -251,7 +294,7 @@ $h_\alpha=\omega_{c\alpha}/\nu_\alpha$ :
 \end{align}
 
 Quand $h_\alpha=0$, les tenseurs sont diagonaux et isotropes. Ensuite, plus le
-facteur de hall augmente, plus le transport dans les directions transverses se
+paramètre de Hall augmente, plus le transport dans les directions transverses se
 réduit :
 les coefficients indicés avec le symbole perpendiculaire sont inversement
 proportionnels au carré du champ magnétique $\mu_{\alpha\perp},
@@ -262,6 +305,26 @@ champ magnétique est souvent interprétée comme la signature d'un transport
 anormal, mais apparaît naturellement dans les équations à travers les
 coefficients de transport $\mu_{\alpha\times}$ et $D_{\alpha\times}$.
 
+Dans les sources magnétisées, pour un paramètre de Hall électronique de l'ordre
+de $h_e\approx\,$1000, on obtient typiquement des ratios sur les modilités :
+
+\begin{equation}
+\frac{\mu_{e_\perp}}{\mu_{e_\para}}\approx
+10^{-6}-10^{-10}\text{~~~~~~~~et~~~~~~~~}\frac{\mu_{e_\times}}{\mu_{e_\para}}\approx
+\frac{\mu_{e_\perp}}{\mu_{e_\times}}\approx10^{-3}
+\end{equation}
+
+En revanche, les ions n'étant généralement que peu magnétisés, leur mobilité
+dans la direction perpendiculaire reste principalement fonction de la fréquence
+de collision et d'ionisation  :
+
+\begin{equation}
+\mu_{i_\times}=\frac{h_i}{1+h_i^2}\mu_i=\frac{e^2B}{(\nu_i^2+\omega_{ci}^2)}\propto\frac{1}{\nu_i^2}
+\end{equation}
+
+À travers le champ magnétique, les ions sont alors plus rapides que les
+électrons, les deux fluides se séparent, entraînant l'apparition d'un
+courant : le courant de Hall. 
 
 \section{Approche par les vitesses de dérive}
 \label{vitessesDerive}
@@ -365,7 +428,7 @@ où $\mathbf E$ est le champ électrique dérivant du potentiel électrostatique
 $\Phi$. En prenant le produit vectoriel par $\mathbf B$ de cette équation, on
 obtient les deux vitesses de dérive fluides principales, la vitesse de dérive
 électrique $\mathbf u_E$ et la vitesse de dérive diamagnétique $\mathbf u_*$,
-relativement liées aux gradients transverses de potentiel électrique $\Phi$ et
+respectivement liées aux gradients transverses de potentiel électrique $\Phi$ et
 de pression $p_\alpha$:
 
 \begin{equation}
@@ -404,8 +467,8 @@ p_\alpha}{q_\alpha B^2}\right)
 =\frac{1}{q_\alpha}\nabla p_\alpha\times\nabla\frac{1}{B}\cdot \mathbf b
 \end{equation}
 
-La divergence du flux diamagnétique est donc nulle aux effets de courbure du
-champ magnétique près. Par contre, et comme
+La divergence du flux diamagnétique est donc nulle
+aux effets de courbure du champ magnétique près ($\nabla B^{-1}$). Par contre, et comme
 précisé au paragraphe \S\ref{1-plasma-champMag}, la dérive diamagnétique est 
 sensible à la charge des particules et est donc la seule à porter du courant.
 L'influence de ce courant est fondamentale dans la stabilité du plasma :
