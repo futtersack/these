@@ -259,19 +259,15 @@ $B$&250G&&$l_B$, $x_B$&2.5cm, 7.5cm\\
 \captionof{table}{Paramètres de la simulation.}\label{4-PegasesScanPreParam}
 \end{minipage}
 	
- A 1~mTorr, la
-	densité diminue d'une décade et présente une sorte de palier dans la région de
-	champ magnétique croissant que l'on devine dans les courbes expérimentales.
-	
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-pegasesCompPressDenProfile}
     \includegraphics[height=5cm]{figures/4-pegasesCompPressDenProfile.eps}}
     \subfigure[]{\label{4-pegasesCompPressTempProfile}
     \includegraphics[height=5cm]{figures/4-pegasesCompPressTempProfile.eps}}
-    \caption{Profils de densité~\subref{4-pegasesCompPressTempProfile}~ et de
+    \caption{Profils de densité~\subref{4-pegasesCompPressDenProfile}~ et de
     température~\subref{4-pegasesCompPressTempProfile}~ pour trois pressions de
-    gaz différentes, 1mtorr, 10mtorr et 100mtorr.}
+    gaz différentes, 1 mTorr, 10 mTorr et 100 mTorr.}
     \label{pegasesCompPressProfils}
 \end{figure}
 	
@@ -289,7 +285,7 @@ magnétique, rectiligne dans le modèle).
 	La comparaison des profils à différents champs magnétiques, présentée
 	figure~\ref{4-pegasesCompMagProfile}, est un peu moins concordante. Les mesures
 	expérimentales montrent en effet une augmentation de la densité et une
-	température post-filtre de 2eV. Cependant, lors des mesures à 140G
+	température post-filtre de 2 eV. Cependant, lors des mesures à 140 G
 	d'intensité de champ, on voit que le profil du filtre est aussi un peu plus
 	large, pouvant éventuellement influencer les paramètres du plasma.
 	
@@ -305,10 +301,10 @@ magnétique, rectiligne dans le modèle).
     \label{4-pegasesCompMagProfile}
 \end{figure}
 
-Pour confirmer ces hypothèses, faisons varier la largeur de dépôt d'énergie
-et la largeur de la barrière pour deux intensités de champ magnétique puis
-comparons la densité maximale et la température des électrons après le
-filtre~(voir le tableau \ref{4-pegasesCompLargeurs}). On voit ainsi que quand le
+Pour confirmer ces hypothèses, faisons varier $l_\mathcal{S}$ la largeur de
+dépôt d'énergie et $l_B$ la largeur de la barrière pour deux
+intensités de champ magnétique puis comparons la densité maximale et la température des électrons après le
+filtre. On voit dans le tableau \ref{4-pegasesCompLargeurs} que quand le
 filtre est plus long, la densité augmente et la température baisse de façon plus
 prononcée.
 De l'autre côté, quand l'énergie est déposée sur une plus grande distance, la
@@ -324,17 +320,17 @@ température électronique remonte.
 && $n (m^{-3})$ & $\min T_e (eV)$ && $n (m^{-3})$ & $\min T_e (eV)$\\
 \midrule 
 250G\\
-\scriptsize $l_S=2cm$ &&\bfseries\scriptsize 1.58
+\scriptsize $l_\mathcal{S}=2cm$ &&\bfseries\scriptsize 1.58
 10\textsuperscript{17}&\bfseries\scriptsize 0.91&&\scriptsize 2.3
 10\textsuperscript{17}&\scriptsize 0.73
 \\
-\scriptsize $l_S=4cm$  &&\scriptsize 1.4 10\textsuperscript{17} &\scriptsize
-2.08&&\scriptsize 12 10\textsuperscript{17}&\scriptsize 1.38\\
+\scriptsize $l_\mathcal{S}=4cm$  &&\scriptsize 1.4 10\textsuperscript{17}
+&\scriptsize 2.08&&\scriptsize 12 10\textsuperscript{17}&\scriptsize 1.38\\
 140G\\
-\scriptsize $l_S=2cm$ &&\scriptsize 1.57 10\textsuperscript{17} &\scriptsize
-1.27&&\scriptsize 1.96 10\textsuperscript{17}&\scriptsize 0.98 \\
-\scriptsize $l_S=4cm$  &&\scriptsize 1.39 10\textsuperscript{17} &\scriptsize
-2.36&&\bfseries\scriptsize 1.75 10\textsuperscript{17}&\bfseries\scriptsize
+\scriptsize $l_\mathcal{S}=cm$ &&\scriptsize 1.57 10\textsuperscript{17}
+&\scriptsize 1.27&&\scriptsize 1.96 10\textsuperscript{17}&\scriptsize 0.98 \\
+\scriptsize $l_\mathcal{S}=4cm$  &&\scriptsize 1.39 10\textsuperscript{17}
+&\scriptsize 2.36&&\bfseries\scriptsize 1.75 10\textsuperscript{17}&\bfseries\scriptsize
 1.6\\
 \bottomrule
 \end{tabular}
@@ -354,51 +350,79 @@ champ magnétique est plus étendu. L'influence de la taille de la zone de
 chauffage n'est donc pas négligeable dans le cas des sources d'ion et semble de
 plus varier en fonction de la configuration magnétique.
 
-\subsection{Transport du courant dans le cas de parois conductrices}
+\subsection{Transport du courant dans le cas de parois conductrices et d'un bias
+appliqué}
 
-Nous passons maintenant sur le cas de parois
+La suite de cette étude porte sur le cas de parois
 conductrices. Dans cette configuration, représentative de
 l'un des modes de fonctionnement de PEGASES ainsi que de nombreuses
 expérimentations, l'application d'un bias positif sur la grille d'extraction afin d'extraire un
 courant d'ions négatifs modifie aussi de manière conséquente les boucles de
-courant, qui peuvent alors se refermer dans les parois (effet
-Simon~\parencite{Simon55}).
+courant dans le plasma. Le transport du courant est régit par l'équation de
+conservation du courant :
 
-Cet effet peut être particulièrement déterminant pour le transport global du
-plasma dans le cas des parois qui interceptent les lignes de champ magnétique,
-et où la gaine joue un rôle important dans l'évolution du potentiel jusqu'au
-c\oe{}ur de la source. A basse pression, les solutions deviennent instationnaires, et le transport
-change radicalement de nature, devenant instable avec de violents phénomènes
-intermittents.
+\begin{equation}
+\nabla\cdot\mathbf j=\nabla_\para\cdot \mathbf j_\para +\nabla_\perp\cdot
+\mathbf j_\perp
+\end{equation}
+
+ L'image simple d'un transport du courant homogène et
+ambipolaire, mais fortement réduit par le champ magnétique dans la direction perpendiculaire est
+totalement trompeuse. Il est clair aujourd'hui que ce transport de courant, même
+en l'absence de champ magnétique, est bien plus difficile à appréhender, le
+courant formant des boucles et des vortex (tourbillons) et pouvant
+éventuellement se refermer dans des parois conductrices (effet Simon~\parencite{Simon55}).
+
+Cet effet est particulièrement déterminant pour le transport global du
+plasma en présence d'un champ magnétique ; les électrons, qui auront plutôt
+tendance à faire passer le courant par les parois qui
+interceptent les lignes de champ magnétique, court-circuitent l'intérieur du
+plasma. La gaine au bout des lignes de champ joue alors un rôle crucial dans
+l'évolution du potentiel, et ce jusqu'au c\oe{}ur de la source. A basse
+pression, les solutions deviennent instationnaires, et le transport change
+radicalement de nature, devenant instable avec des phénomènes instationnaires
+et réguliers.
 	
 \subsubsection{Influence du champ magnétique}
-Dans les sources d'ions utilisant un filtre magnétique, c'est le courant
-d'électrons qui est principalement responsable des inhomogénéités observées.
-Théoriquement réduit d'un facteur en $1/B^2$ à travers le filtre dans une
-analyse unidimensionnelle, on peut voir sur la
-figure~\ref{pegasesVarMagCourantParoi} que le courant récupéré au niveau de la
-grille d'extraction se comporte plutôt en $1/B$, ce qui est
-généralement prit comme la signature de la présence d'un transport anormal.
+Dans les sources d'ions utilisant un filtre magnétique, on soupsonne le flux
+d'électrons d'être le principal responsable de l'inhomogénéité
+de densité observée~\parencite{PIC2D,PIC3D}.
+Notons le courant total d'électron récupéré à la paroi par :
+
+\begin{equation}
+I=\int\int J_e\text{dA}
+\end{equation}
+
+$I$ est théoriquement réduit d'un facteur en $1/B^2$ à travers le filtre dans
+une analyse unidimensionnelle (ne tenant pas compte de la direction de dérive
+$y$). On peut voir sur la figure~\ref{pegasesVarMagCourantParoi} le courant
+total $I$ récupéré au niveau de la grille d'extraction : sans bias appliqué, $I$
+suit à peu près cette loi d'échelle en $1/B^2$. Cependant, quand le bias
+augmente, on voit que le $I$ commence plutôt à suivre une loi en
+$1/B$. Cette variation en $1/B$ est généralement prise comme la signature de la
+présence d'un transport anormal.
+
 Pourtant, dans ces sources, le transport reste classique et la raison de cette
-augmentation significative doit être recherchée dans les effets de dérive
-induits par le champ magnétique. Nous ne nous tenterons pas à
-expliquer l'origine de transport, bien que la future utilisation de MAGNIS sera
-possiblement d'une grande utilité pour aider à répondre à cette question.
+augmentation significative doit être recherchée dans les effets induits par les
+dérives  magnétiques. Nous ne nous tenterons pas à
+expliquer l'origine de ce transport (bien que la future utilisation de MAGNIS
+sera possiblement d'une grande utilité pour aider à répondre à cette question).
 Actuellement, même si les tentatives d'explications s'accordent sur la
-traversée du filtre via la forte dérive ExB à proximité de la gaine, la
-déviation du flux électronique en face du filtre reste incomprise.
+traversée du filtre des électrons via la forte dérive ExB à proximité de la
+gaine, la déviation d'origine du flux électronique en face du filtre reste à
+l'origine de nombreux débats.
 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/4-pegasesVarMagCourantParoi.eps}
-	{\caption{Courant total récupéré à la paroi en fonction de l'intensité du
-	filtre magnétique pour trois voltages appliqués. }
+	{\caption{Courant total d'électrons récupéré à la paroi $I$ en fonction de l'intensité du filtre magnétique pour trois
+	voltages appliqués. }
 	\label{pegasesVarMagCourantParoi}}
 	\end{figure}
 
 Attardons nous donc sur le flux électronique, à travers l'augmentation
 progressive de l'intensité du champ magnétique. La
-figure~\ref{4-pegasesfluxElectronique} représente une comparaison croisée du
+figure~\ref{pegasesVarMagCourantParoi} représente une comparaison croisée du
 flux d'électrons pour un champ magnétique variant de 0G à 500G et trois bias
 différents de 0V, 10V et 20V appliqués à la source. 
 
