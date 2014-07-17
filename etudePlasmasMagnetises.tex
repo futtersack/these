@@ -341,7 +341,7 @@ source d'énergie $l_S$ et de filtre magnétique $l_B$ différentes.}
 \end{table}
 
 Dans les mesures réalisées sur PEGASES, le filtre magnétique est respectivement
-de largeur 4cm et 2cm dans les cas à 140G et 250G, ne laissant que deux
+de largeur 4 cm et 2 cm dans les cas à 140 G et 250 G, ne laissant que deux
 résultats "possibles" à prendre en considération. 
 Les valeurs se rapprochant le plus des données expérimentales sont en gras dans
 le tableau, elles correspondent à une largeur de source plus petite dans le cas fortement
@@ -358,7 +358,8 @@ conductrices. Dans cette configuration, représentative de
 l'un des modes de fonctionnement de PEGASES ainsi que de nombreuses
 expérimentations, l'application d'un bias positif sur la grille d'extraction afin d'extraire un
 courant d'ions négatifs modifie aussi de manière conséquente les boucles de
-courant dans le plasma. Le transport du courant est régit par l'équation de
+courant dans le plasma (dans la source de Garching, on joue sur le bias pour
+optimiser les flux). Le transport du courant est régit par l'équation de
 conservation du courant :
 
 \begin{equation}
@@ -366,10 +367,10 @@ conservation du courant :
 \mathbf j_\perp
 \end{equation}
 
- L'image simple d'un transport du courant homogène et
-ambipolaire, mais fortement réduit par le champ magnétique dans la direction perpendiculaire est
-totalement trompeuse. Il est clair aujourd'hui que ce transport de courant, même
-en l'absence de champ magnétique, est bien plus difficile à appréhender, le
+L'image simple d'un transport du courant homogène et
+ambipolaire (et éventuellement fortement réduit par un champ magnétique dans la
+direction perpendiculaire) est totalement trompeuse. Il est clair aujourd'hui
+que ce transport de courant, même en l'absence de champ magnétique, est bien plus difficile à appréhender, le
 courant formant des boucles et des vortex (tourbillons) et pouvant
 éventuellement se refermer dans des parois conductrices (effet Simon~\parencite{Simon55}).
 
@@ -392,13 +393,28 @@ Notons le courant total d'électron récupéré à la paroi par :
 \begin{equation}
 I=\int\int J_e\text{dA}
 \end{equation}
+\begin{minipage}{\textwidth}
+\footnotesize\centering
+\ra{1.3}
+\begin{tabular}{lcclc}\toprule
+\multicolumn{5}{c}{\bf Paramètres}\\
+\midrule 
+Parois & Conductrices &&$L_x$, $L_y$, $L_z$  & 12cm, 12cm,
+8cm\\
+$\mathcal{P}_\text{ext}$&250W&&$l_\mathcal{S}$, $x_\mathcal{S}$&2cm, 0cm\\
+$B$&\textbf{0--250 G}&&$l_B$, $x_B$&2.5cm, 7.5cm\\
+$\Phi_w$ & \textbf{0--20 V}&&gaz (Ar) & 1 mTorr\\
+\bottomrule
+\end{tabular}
+\captionof{table}{Paramètres de la simulation.}\label{4-PegasesScanPreParam}
+\end{minipage}
 
 $I$ est théoriquement réduit d'un facteur en $1/B^2$ à travers le filtre dans
 une analyse unidimensionnelle (ne tenant pas compte de la direction de dérive
 $y$). On peut voir sur la figure~\ref{pegasesVarMagCourantParoi} le courant
-total $I$ récupéré au niveau de la grille d'extraction : sans bias appliqué, $I$
-suit à peu près cette loi d'échelle en $1/B^2$. Cependant, quand le bias
-augmente, on voit que le $I$ commence plutôt à suivre une loi en
+total $I$ récupéré au niveau de la grille d'extraction (sur le bord droit du
+domaine) : sans bias appliqué, $I$ suit à peu près cette loi d'échelle en
+$1/B^2$. Cependant, quand le bias augmente, on voit que le $I$ commence plutôt à suivre une loi en
 $1/B$. Cette variation en $1/B$ est généralement prise comme la signature de la
 présence d'un transport anormal.
 
@@ -416,73 +432,77 @@ l'origine de nombreux débats.
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/4-pegasesVarMagCourantParoi.eps}
 	{\caption{Courant total d'électrons récupéré à la paroi $I$ en fonction de l'intensité du filtre magnétique pour trois
-	voltages appliqués. }
+	voltages appliqués (0 V, 10 V et 20 V). }
 	\label{pegasesVarMagCourantParoi}}
 	\end{figure}
 
 Attardons nous donc sur le flux électronique, à travers l'augmentation
 progressive de l'intensité du champ magnétique. La
-figure~\ref{pegasesVarMagCourantParoi} représente une comparaison croisée du
-flux d'électrons pour un champ magnétique variant de 0G à 500G et trois bias
-différents de 0V, 10V et 20V appliqués à la source. 
+figure~\ref{4-pegasesfluxElectronique} représente une comparaison croisée du
+flux d'électrons pour un champ magnétique variant de 0 G à 500 G et trois bias
+différents de 0 V, 10 V et 20 V appliqués à la grille d'extraction de la source. 
 
 Les trois premières cartes, en l'absence de filtre magnétique, montrent la
-situation initiale pour les trois différents voltages. Cette situation, bien que
-basique, est déjà intriguâtes, le flux électronique formant des
-vortex en dehors de la région d'ionisation et remontant le long du
-gradient de densité\footnote{Ce phénomène est hors de contexte du présent
+situation initiale pour les trois différents voltages. Basiquement, on observe
+que l'application du bias attire le flux électronique qui peut alors atteindre
+dans le plasma une densité de courant de l'ordre de $\sim$10$^2$ A/m$^2$ et que
+le flux à la paroi est uniforme\footnote{Cette
+situation, bien que basique, est déjà intriguante en soi : le flux électronique
+forme des vortex en dehors de la région d'ionisation et remonte le long des
+gradient de densité. Ce phénomène est hors de contexte du présent
 manuscrit mais mérite tout de même d'être signalé, étant totalement absent de
 la littérature.
-Des simulations particulaires ont par ailleurs montré un comportement
-similaire.}. On observe cependant que l'application du bias attire le flux
-électronique qui peut alors atteindre dans le plasma une densité de courant de
-quelques centaines d'ampère par mètre carré.
+Des simulations PIC ont par ailleurs montré un comportement
+similaire~\parencite{PIC3D}.}.
 
  \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figures/4-pegasesfluxElectronique.pdf}
 	{\caption{Flux électronique à travers le filtre magnétique sur une plage
-	allant de 0G à 500G pour trois différents voltages appliqués.}
+	allant de 0 G à 500 G pour trois voltages appliqués sur la grille
+	d'extraction (sur le bord droit du domaine) différents 0 V, 10 V et 20 V.}
 	\label{4-pegasesfluxElectronique}}
 	\end{figure}
 	
-L'apparition du filtre magnétique, à faible intensité de champ, modifie
+L'application d'un filtre magnétique, même à faible intensité de champ, modifie
 complètement le flux électronique : la densité de courant devient asymétrique et
-décuple d'intensité dans le bas de la région d'ionisation. A 10G, la
-température électronique est de l'ordre de 5eV, donnant un rayon de Larmor
-électronique d'environ 5mm. Les électrons sont déjà magnétisés et ne peuvent
-traverser le filtre qu'au niveau de la paroi située en Y=12cm. Le flux
+décuple d'intensité dans le bas de la région d'ionisation. À 10 G, la
+température électronique est de l'ordre de 5 eV, donnant un rayon de Larmor
+électronique d'environ 5 mm. Les électrons sont déjà magnétisés et ne peuvent
+traverser le filtre qu'au niveau de la paroi située en $y\,$=12 cm. Le flux
 d'électrons se sépare ensuite pour rejoindre les ions qui ont traversé la
 barrière sans perturbation, une partie plus ou moins importante allant à la
 paroi en fonction du bias et l'autre traversant le domaine en sens inverse
-jusqu'à atteindre la paroi en Y=0cm.
+jusqu'à atteindre la paroi en $y\,$= 0 cm.
 
-A 50G, l'intensité du courant électronique reste importante et un phénomène de
-rotation des électrons autour de la barrière magnétique devient plus clair.
-L'application du bias montre aussi que le flux pénètre sur quelques centimètre
-dans la partie basse du filtre. A 200G et sans bias appliqué, le flux
-électronique est fortement réduit à travers la barrière et change encore de
+À 50 G, l'intensité du courant électronique reste importante et un phénomène de
+circulation des électrons autour de la barrière magnétique devient plus clair.
+L'application du bias montre aussi que le flux est dévié et longe la grille
+d'extraction sur quelques centimètres en direction de la partie basse du filtre.
+À 200 G et sans bias appliqué, le flux électronique est fortement réduit à travers la barrière et change encore de
 forme : le premier courant qui remontait le long du champ magnétique devient
-moins important que le flux de retour. L'application d'un bias ou l'augmentation
-de l'intensité de la barrière mène alors à l'apparition d'un phénomène instable
-que nous allons regarder plus en détail dans la partie suivante.
+moins important que le flux de retour en bas de la barrière. L'application d'un
+bias ou l'augmentation de l'intensité du champ magnétique mène alors à
+l'apparition d'un phénomène instable que nous allons regarder plus en détail dans la partie suivante.
+
+Plus généralement, sur l'ensemble des cas présentés avec $B\neq\,$0, on remarque
+que le bias ne change pas radicalement les profils du flux.
 
 \subsection{Phénomènes intermittents, instabilités}
-A faible champ magnétique ou à pression suffisamment élevée, les solutions
-obtenues par MAGNIS sont stationnaires, validant à posteriori l'hypothèse
-d'approximation de l'inertie qui fonde les modèles de dérive-diffusion.
+À faible champ magnétique ou à pression suffisamment élevée, les solutions
+obtenues par MAGNIS sont stationnaires.
 Cependant, lorsque la pression diminue, le transport collisionnel n'est plus
 dominant et des phénomènes instables, caractéristiques des plasmas
 magnétisés, peuvent apparaître et affecter toute la dynamique du système. 
  
 \subsubsection{Vagues ioniques}
 La première instabilité que l'on voit apparaître est illustrée
-figure~\ref{4-PegasesCarteDensiteWaves}. A intervalles régulières, un front
-de surdensité traverse le filtre magnétique à très grande vitesse. La direction
- de propagation est perpendiculaire au front de densité, à l'oblique entre le
- champ magnétique et son gradient. Sans bias et à une pression de gaz de 1mTorr,
+figure~\ref{4-PegasesCarteDensiteWaves}. À intervalles régulières, des bouffées
+de plasma traversent le filtre magnétique à des vitesses de l'ordre de la
+vitesse de Bohm du système.
+La direction de propagation est perpendiculaire au front de densité, à l'oblique entre le champ magnétique et son gradient. Sans bias et à une pression de gaz de 1mTorr,
  les fronts de densité apparaissent à une fréquence d'environ 120kHz et se
- déplacent à une vitesse approximative de 2.2 km.s$\puissance{-1}$. 
+ déplacent à une vitesse approximative de 2.10$^3$ m.s$\puissance{-1}$. 
  
 \begin{figure}[!htbp] 
   \centering
@@ -490,9 +510,11 @@ de surdensité traverse le filtre magnétique à très grande vitesse. La direct
     \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteWave.eps}}
     \subfigure[]{\label{4-PegasesCarteViSurTeVarBias}
     \includegraphics[height=5cm]{figures/4-PegasesCarteViSurTeVarBias.eps}}
-    \caption{Cartes de densité~\subref{4-PegasesCarteDensiteWaves}~ et de
-    nombre de Mach~\subref{4-PegasesCarteViSurTeVarBias} pour un champ
-    magnétique de 250G, une densité de neutre de 1mTorr et un bias appliqué de
+    \caption{Cartes de la densité plasma~\subref{4-PegasesCarteDensiteWaves}~ et
+    de vitesse ionique rapportée à la
+    vitesse de Bohm locale
+    $c_s=\sqrt{T_e/m_i}$~\subref{4-PegasesCarteViSurTeVarBias}~ pour un champ
+    magnétique de 250 G, une densité d'argon de 1mTorr et un bias appliqué de
     20V.}
     \label{4-PegasesVaguesIoniques}
 \end{figure}
@@ -500,47 +522,52 @@ de surdensité traverse le filtre magnétique à très grande vitesse. La direct
  La figure~\ref{4-PegasesCarteViSurTeVarBias} représente la vitesse ionique
  rapportée à la vitesse de Bohm, ie. le nombre de Mach de
  l'écoulement ionique. On voit tout d'abord qu'une grande partie du domaine est
- occupée par des ions dont la vitesse dépasse la vitesse acoustique locale. En
- effet, les ions franchissent Mach1 le long du gradient de température, à
- $T_e\sim 5eV$ puis accélèrent encore jusqu'à atteindre Mach2 avant le front de
- densité. La vitesse décroît ensuite lors de la traversée de la surdensité, tout
- en restant supérieure à la vitesse de Bohm. La vitesse calculée du
- front est cependant inférieure à la vitesse des particules le constituant,
- soulignant le caractère ondulatoire de cette surdensité. Ce phénomène fait
- naturellement penser à la transition subsonique-supersonique qui advient dans
- les gaz compressibles classiques, où le front de densité serait l'onde
- acoustique résultante du passage des ions supersoniques. La vitesse de
- propagation de l'onde permet ainsi de définir une température critique :
+ occupée par des ions dont la vitesse dépasse la vitesse de Bohm locale. En
+ effet, les ions franchissent le seuil $v_i=c_s$ (Mach1) le long du gradient de
+ température, à $T_e\sim\,$5 eV puis accélèrent encore jusqu'à atteindre
+ $v_i=2c_s$ (Mach2) avant le front de densité. La vitesse décroît ensuite lors
+ de la traversée de la bouffée, tout en restant de l'ordre de la vitesse de
+ Bohm.
+ 
+ La vitesse de phase $v_\phi$ calculée ($v_\phi\sim\,$2.10$^3$
+ m.s$\puissance{-1}$) , représentative de la propagation de la bouffée, est inférieure à la
+ vitesse des particules la constituant ($u_i\sim\,$4.10$^3$
+ m.s$\puissance{-1}$). Très naïvement, ce phénomène fait penser aux phénomènes
+ de compression-décompression liés aux ondes soniques dans les gaz
+ classiques, où le front de densité serait l'onde acoustique
+ résultante du passage des ions supersoniques. En supposant que la vitesse de
+ propagation de l'onde est caractéristique de cette transition (dans
+ l'analogie, les ondes sonores se déplacent à la vitesse du son), il est tentant de définir la température correspondante à $v\phi$ :
  
  \begin{equation}
- 	V_f=c_{s}=\sqrt{\frac{T_e}{Zm_i}}\simeq 2.2\;10^{3}\,\text{m.s}^{-1}
+ 	v_\phi=c_{s}=\sqrt{\frac{T_e}{m_i}}\simeq 2.2\;10^{3}\,\text{m.s}^{-1}
  	\Leftrightarrow T_e\simeq 2\,\text{eV}
  \end{equation}
  
- Quelques propriétés peuvent être immédiatement dégagées. L'apparition et
- certaines particularités de cette instabilité sont directement reliées au
- gradient de température électronique et au terme d'inertie  :
+ Quelques propriétés peuvent être immédiatement dégagées. L'apparition de cette
+ instabilité et certaines de ses particularités sont directement reliées au
+ gradient de température électronique et au terme d'inertie :
  
  \begin{itemize}
    	\item Les solutions du modèle quand le terme inertiel d'advection est
 	négligé sont stationnaires.
-   \item Un plasma isotherme s'étend dans le sens du flux d'électron
-   transverse et atteint lui aussi une solution stationnaire.
+   \item Un plasma isotherme s'étend dans le filtre dans la direction du flux
+   d'électrons transverse et atteint lui aussi une solution stationnaire.
    \item la direction des fronts d'ondes est fortement corrélée au gradient
    de température.
 \end{itemize}
 
-La réponse à la polarisation de la grille d'extraction est aussi une autre
+La réponse à la polarisation de la grille d'extraction est aussi une
 caractéristique intéressante de ce phénomène. Les
 figures~\ref{4-PegasesCarteDensiteVarBiasWave}~
 \subref{4-PegasesCarteDensiteVarBias1}~ \subref{4-PegasesCarteDensiteVarBias2}~
 et~\subref{4-PegasesCarteDensiteVarBias3}~ illustrent cet effet en partie : la
-dynamique des fronts, de vitesse approximativement constante à 0V, se décompose
-en deux temps après l'application d'un faible voltage. Les fronts ralentissent
-au niveau du maximum du filtre magnétique, augmentent en densité, puis sont
-propulsés vers les parois après un certain temps de latence. A 30V, le champ
-électrique freine si bien les ions qu'un bras de densité équivalente à celle du
-plasma de la région d'ionisation se forme. 
+dynamique des fronts, de vitesse de phase $v_\phi$ approximativement constante à
+0 V, se décompose en deux temps après l'application d'un faible voltage. Les
+fronts ralentissent au niveau du maximum du filtre magnétique, augmentent en densité, puis sont
+propulsés vers les parois après un certain temps de latence. À 30 V, en
+l'absence de champ accélérateur, un bras de plasma se forme en travers du
+filtre, de densité équivalente à celle du plasma de la région d'ionisation.
 	
 	\begin{figure}[!htbp]
   \centering
@@ -556,45 +583,52 @@ plasma de la région d'ionisation se forme.
     \label{4-PegasesCarteDensiteVarBiasWave}
 \end{figure}
 
-On peut maintenant raccorder l'étrange flux électronique qui apparaissait dans
-les cas fortement magnétisés de la
-figure~\ref{4-PegasesCarteDensiteVarBiasWave}. Un champ électrique se forme
+On peut maintenant préciser la forme du flux électronique 
+dans les cas fortement magnétisés de la
+figure~\ref{4-pegasesfluxElectronique}. Un champ électrique apparaît
 entre les fronts de densité, et se combine au filtre
-magnétique pour faire naître un mouvement de dérive du type ExB, exacerbant le
+magnétique pour faire naître un mouvement de dérive du type ExB, amplifiant le
 transport des électrons au travers de la barrière. 
 
-Enfin, il faut toutefois relever que le modèle n'arrive pas à atteindre 
-une fréquence ou une longueur d'onde caractéristique pour ces oscillations,
-celles-ci n'ayant pas convergé lors des tests sur maillage\footnote{La
+Enfin, il faut toutefois relever que le modèle n'arrive pas à trouver 
+de fréquence ou de longueur d'onde caractéristique pour ces oscillations,
+celles-ci variant en fonction de la taille du maillage. La
 vitesse des particules ainsi que celle des fronts d'onde semblent quant-à
-elles indépendantes du maillage.}.
+elles indépendantes du maillage.
 La caractérisation complète de cette instabilité est donc pour le moment
 assez difficile à réaliser.
+
 Pour terminer, on peut se poser la question de la réalité physique de
 ce phénomène, qui n'a apparemment pas été remarqué lors des expérimentations. La
 présence d'ions supersoniques ne serait pourtant pas surprenante, étant donné
 les gradients extrêmes, la très faible température électronique 
 après le filtre, et la forte tension retenant le flux ionique.
-Des simulations PIC récemment lancées au GREPHE sur une géométrie similaire
-semblent montrer un comportement similaire, ce qui nous conforte dans les
-résultats du modèle.
+Des simulations PIC, récemment lancées au GREPHE sur une géométrie similaire
+à notre configuration, semblent montrer un comportement similaire, ce qui nous
+conforte dans les résultats du modèle.
 
-	\subsubsection{Instabilité flûte}
-	A plus haute pression (10 mTorr et 100 mTorr), la variation de la tension
-	appliquée à la grille d'extraction révèle une autre instabilité qui prend la
-	forme de vaguelettes (cf.
-	figure~\ref{4-PegasesCarteDensiteVarBias5}). On peut aussi la voir apparaître
-	le long des fronts de densité, au niveau des parois, dans des
-	simulations isothermes ou encore dans le cas de la colonne de plasma.
+	\subsubsection{Peigne de densité}
+	A plus haute pression (10 mTorr et 100 mTorr), l'application d'un bias positif
+	à la grille d'extraction révèle une autre instabilité qui prend la forme d'un
+	"peigne" (cf.
+	figure~\ref{4-PegasesCarteDensiteVarBias5}). On peut aussi la voir apparaître :
+	
+	\begin{itemize}
+	  \item le long des fronts de densité
+	  \item au niveau des parois
+	  \item dans des simulations isothermes
+	  \item dans un champ magnétique uniforme (cas de la colonne de plasma)
+	\end{itemize}
 		
 \begin{figure}[!htbp]
   \centering
     \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteVarBias5.eps}
-    \caption{Cartes de densité pour une pression de gaz de 10mTorr et un bias
-    appliqué de 30V.\label{4-PegasesCarteDensiteVarBias5}}
+    \caption{Carte de densité pour une pression de gaz de 10 mTorr et un bias
+    de 30 V appliqué à la grille
+    d'extraction.\label{4-PegasesCarteDensiteVarBias5}}
 \end{figure}
 	
-	Ce phénomène, qui se développe sur le bord du plasma et
+	Ce phénomène, qui se développe sur les bords du plasma et
 	en présence d'un champ électrique important, rappelle
 	les travaux de Simon~\parencite{Simon63} dans lesquels il démontre que l'état
 	stationnaire peut devenir instable si le signe du produit du
@@ -612,16 +646,18 @@ résultats du modèle.
 	prise en compte de la température électronique et la présence d'un gradient
 	de champ magnétique, rendant l'étude analytique de ce phénomène problématique.
 
-
-	MAGNIS a été conçu dans la perspective d'une résolution multi-espèces de
-	l'évolution du plasma et pourra bientôt prendre en compte les ions
-	négatifs, ce qui permettra une modélisation du propulseur PEGASES en mode
-	opérationnel. En attendant, nous avons vu qu'il reproduit correctement les
-	résultats expérimentaux obtenus avec l'utilisation d'un gaz inerte tel que
-	l'argon et qu'il ouvre la perspective de l'étude instationnaire du transport
-	magnétisé.
+	Dans cette partie, nous avons tout d'abord donné des éléments pour
+	valider le modèle dans une configuration de filtre magnétique. Nous avons ainsi
+	montré que MAGNIS pouvait reproduire le comportement du flux électronique et
+	l'inhomogénéité du plasma dans le plan perpendiculaire au champ
+	magnétique. Nous avons aussi donné les premiers constats de la présence d'ions
+	supersoniques et d'un transport instationnaire à travers le filtre.
+	Malgré les problèmes de convergence qui nous font douter de la nature physique
+	ou numérique des instabilités, il est très difficile les faire
+	totalement disparaître en jouant sur les paramètres.
 	
 \section{Colonne de plasma magnétisée - Cybele}
+
 Cybele, présentée sur la figure~\ref{4-cybelePhoto}, est une source d'ions
 négatifs de dimension très allongée développée à
 l'IRFM (CEA)~\cite{Simonin} dans le cadre de la recherche sur les systèmes
@@ -633,6 +669,7 @@ Le faisceau est ensuite injecté au c\oe{}ur du réacteur pour déposer son éne
 directement dans le plasma. Pour ITER, les deux IDN devront fournir 17MW de
 puissance chacun, en injectant 40A de D$\puissance{0}$ à
 1MeV~\parencite{Hemsworth}.}.
+
 \begin{figure}[!htbp]
   \centering
   \subfigure[]{\label{4-cybelePhoto}
@@ -640,63 +677,83 @@ puissance chacun, en injectant 40A de D$\puissance{0}$ à
     \subfigure[]{\label{4-CybelePhoto2}
     \includegraphics[height=8cm]{figures/4-CybelePhoto2.jpg}} 
     \caption{Photographies de la source d'ions négatifs Cybele en développement
-    à l'IFRM de Cadarache~\parencite{SimoninHDR}.
+    à l'IFRM de Cadarache~\parencite{SimoninHDR}. Le plasma est
+    sondable radialement à partir du hublot (à travers lequel apparaît le
+    plasma en jaune sur la photographie~\ref{4-CybelePhoto2})
     \label{4-cybelePhoto}} 
 \end{figure}	
 
 \begin{figure}[!htbp]
   \centering
+    \includegraphics[height=5cm]{figures/sourceIPP.png}
+    \caption{Schémas conceptuel du prototype de l'un des huits modules de la
+    source IPP de Garching.
+\label{4-GarchingSchema}}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
     \includegraphics[height=8cm]{figures/4-cybeleSchema.png}
-    \caption{Schémas en coupe de Cybele~\parencite{SimoninHDR}. A gauche dans la
-vue de dessus, le champ magnétique est perpendiculaire au plan et confine le
+    \caption{Schémas de principe en coupe de Cybele~\parencite{SimoninHDR}. A
+    gauche dans la vue de dessus, le champ magnétique est perpendiculaire au plan et confine le
 plasma qui est créé au centre de la source. La vue de face montre quant-à elle
 la fine colonne de plasma, de densité homogène sur toute sa hauteur.
 \label{4-cybeleSchema}}
 \end{figure}	
 
 Actuellement, les sources d'ions négatifs en amont des IDN se servent d'un champ
-magnétique pour filtrer et refroidir les électrons. La configuration magnétique,
-très similaire à celle de PEGASES, entraîne dans ce type de sources de fortes
-inhomogénéités du plasma, avec l'émergence de différents gradients
-(densité, température, champ magnétique)~\parencite{Fantz,Kolev}. L'uniformité
-du plasma généré par la source est cependant primordiale pour une bonne efficacité de l'accélérateur
-dans l'IDN, et de nombreux efforts sont portés à la correction de ce problème.
+magnétique en configuration filtre pour refroidir les électrons (un schéma de la
+source développée pour ITER est rappelé sur la figure~\ref{4-GarchingSchema}).
+Nous avons vu précédemment que cette configuration magnétique entraîne
+dans ce type de sources de fortes inhomogénéités du plasma, avec l'émergence de
+fort gradients de densité et de température dans le plan
+perpenduculaire au champ~\parencite{Fantz,Kolev}.
+L'uniformité du plasma généré par la source est cependant primordiale pour une
+bonne efficacité de l'accélérateur dans l'IDN, et de nombreux efforts sont
+portés pour palier à ce problème.
 
-L'une des pistes possible est d'utiliser le champ magnétique non pas pour
+L'une des pistes étudiée est d'utiliser le champ magnétique non pas pour
 filtrer les électrons énergétiques mais plutôt pour les confiner au centre
-d'une colonne de plasma en rotation autour d'un axe magnétique. Ce concept,
+d'une colonne de plasma en rotation autour d'un axe magnétique (voir le schéma
+de la figure~\ref{4-cybeleSchema}). Ce concept,
 idéal pour la géométrie étirée de Cybele, permettrait d'obtenir une densité de
 plasma homogène sur toute la longueur de la source. 
 
 \subsection{Caractéristiques de la source}
 
-La source Cybele, rectangulaire de dimension 
-15x20x120~cm$\puissance{3}$, est schématisée 
-figure~\ref{4-cybeleSchema}. Le centre de la source est
-occupé par des cathodes filamentaires qui, polarisées négativement à -60V et
+La source Cybele est rectangulaire et de dimension 
+15~cm x 20~cm x 120~cm. Le centre de la source est
+occupé par des cathodes filamentaires qui, polarisées négativement à -60 V et
 libèrent des électrons primaires de 70 eV
 d'énergie pour créer et entretenir le plasma.
 Celui-ci est ensuite confiné dans un champ magnétique vertical et uniforme, généré par deux
-groupes de bobines\footnote{La décomposition sur la hauteur des bobines
-latérales en différentes parties indépendantes permet de faire varier l'intensité du champ
-localement et ainsi de créer une configuration miroir pour retenir les
-électrons qui seraient sinon perdus très rapidement le long de la direction
-parallèle. Une autre solution pour réduire le transport parallèle des électrons
-consiste à polariser négativement les parois aux extrémités des lignes de
-champ.} sur les côtés de la source, l'intensité du champ pouvant varier de 0G à
-160G. Cybele opère enfin avec un gaz d'hydrogène à très basse pression,
-P $\simeq$ 0.7-2 mTorr, condition requise pour réduire la perte des ions
-négatifs par phénomène d'épluchage électronique.
+groupes de bobines\footnote{La décomposition des bobines
+latérales sur la hauteur en plusieurs parties indépendantes permet de faire
+varier l'intensité du champ magnétique localement. On peut ainsi créer une
+configuration miroir pour retenir les électrons qui seraient sinon perdus très
+rapidement le long de la direction parallèle. 
 
-Les mesures expérimentales, réalisées avec des sondes de Langmuir, donnent une
-densité d'environ 3.10$\puissance{18}$ m$\puissance{-3}$ au centre du plasma, et
-de 5.10$\puissance{17}$ m$\puissance{-3}$ en périphérie tandis que la
-température électronique chute de 6 eV à un peu plus de 2 eV à la parois. Une mesure
+Une autre solution pour réduire
+le transport parallèle des électrons consiste à polariser négativement les
+parois aux extrémités des lignes de champ.} sur les côtés de la source,
+l'intensité du champ pouvant varier de 0 G à 160 G. Cybele opère enfin avec un
+gaz d'hydrogène à très basse pression, P $\simeq$ 0.7--2 mTorr, condition
+requise pour réduire la perte des ions négatifs par le phénomène d'épluchage
+électronique. Dans le cadre de la
+ligne IDN Siphore, de rapport d'aspect laminaire, ce type de
+source s'adapte parfaitement à l'accélérateur Singap (pour Single Aperture
+Photo-neutralization) qui neutralise le faiseau d'ions négatif 
+par photodétachement à l'aide d'un laser de 1 kW et d'une cavité de
+Fabry-Perot~\parencite{SimoninHDR}.
+
+Les mesures expérimentales en H$_2$, réalisées avec des sondes de
+Langmuir~\parencite{Simonin}, donnent une densité d'environ 3.10$\puissance{18}$
+m$\puissance{-3}$ au centre du plasma, et de 5.10$\puissance{17}$
+m$\puissance{-3}$ en périphérie. La température électronique chute quant à
+elle de 6 eV à un peu plus de 2 eV au niveau des parois latérales. Une mesure
 temporelle du courant de saturation ionique (voir
-figure~\ref{4-CybeleFourierSignal}) a de plus détecté la
-présence d'une fluctuation périodique à une basse fréquence (un pic à
-37kHz et une bande de largeur plus significative autour de 32kHz), signe
-éventuel d'un phénomène d'intermittence dans le plasma.
+figure~\ref{4-CybeleFourierSignal})  détecté la présence d'une
+fluctuation périodique à une basse fréquence (un pic à 37kHz et une bande de largeur plus significative autour de 32kHz), signe éventuel d'un phénomène d'intermittence dans le plasma.
 
 \begin{figure}[!htbp]
   \centering
