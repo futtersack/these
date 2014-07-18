@@ -579,7 +579,7 @@ filtre, de densité équivalente à celle du plasma de la région d'ionisation.
     \includegraphics[height=6cm]{figures/4-PegasesCarteDensiteVarBias3.eps}}
     \caption{Cartes de densité\subref{4-PegasesCarteDensiteVarBias1}~, de
     potentiel\subref{4-PegasesCarteDensiteVarBias2}~ et de
-    température\subref{4-PegasesCarteDensiteVarBias3}}
+    température\subref{4-PegasesCarteDensiteVarBias3}~.}
     \label{4-PegasesCarteDensiteVarBiasWave}
 \end{figure}
 
@@ -593,7 +593,7 @@ transport des électrons au travers de la barrière.
 Enfin, il faut toutefois relever que le modèle n'arrive pas à trouver 
 de fréquence ou de longueur d'onde caractéristique pour ces oscillations,
 celles-ci variant en fonction de la taille du maillage. La
-vitesse des particules ainsi que celle des fronts d'onde semblent quant-à
+vitesse des particules ainsi que celle des fronts d'onde semblent quant à
 elles indépendantes du maillage.
 La caractérisation complète de cette instabilité est donc pour le moment
 assez difficile à réaliser.
@@ -656,19 +656,93 @@ conforte dans les résultats du modèle.
 	ou numérique des instabilités, il est très difficile les faire
 	totalement disparaître en jouant sur les paramètres.
 	
-\section{Colonne de plasma magnétisée - Cybele}
+\section{Colonne de plasma magnétisée}
+Dans la littérature sur la théorie du transport magnétisé, on utilise
+souvent l'exemple de la colonne de plasma magnétisée idéale et infinie dans la
+direction parallèle pour réduire le comportement du plasma à un problème 1D
+radial. Il existe de plus de nombreuses expérimentations en
+configuration de colonne, entre autres :
 
-Cybele, présentée sur la figure~\ref{4-cybelePhoto}, est une source d'ions
-négatifs de dimension très allongée développée à
-l'IRFM (CEA)~\cite{Simonin} dans le cadre de la recherche sur les systèmes
-d'injection de neutres (IDN) qui sont utilisés pour le chauffage et la
-génération de courant dans les réacteurs de fusion par confinement magnétique\footnote{Le principe d'un
-injecteur de neutres est basé sur l'accélération d'ions à très haute énergie,
-puis neutralisés afin de former un puissant faisceau de neutres.
+\begin{itemize}
+  \item Cybele au CEA de Cadarache, que nous détaillerons plus en détail
+  \item Mistral, au Piim de
+  Marseille\parencite{Pierre, PierreExp, Brochard, Oldenburger}
+  \item Mirabelle à Nancy~\parencite{Bousselin}
+  \item NAGDIS-I et NAGDIS-II au Japon~\parencite{nishijimamodelling}
+  \item CSDX (source hélicon, 15 cm de diamètre, 5 kW de puisance RF, champ
+  magnétique de 2.4 kG)~\parencite{CSDX}
+ \end{itemize}
+
+\begin{figure}[!htbp] 
+  \centering
+  	\subfigure[]{\label{4-MistralParam}
+    \includegraphics[height=5cm]{figures/4-MistralParam.png}}
+    \subfigure[]{\label{4-MistralProfils}
+    \includegraphics[height=14cm]{figures/4-MistralProfils.png}}
+    \caption{Paramètres typiques de Mistral~\subref{4-MistralParam}~, profils de
+    densité, potentiels et température pour trois intensités
+    de champ magnétique dans de l'argon à 10$^{-4}$
+    mTorr~\subref{4-MistralParam}~
+    \parencite{Oldenburger}.}
+    \label{4-MistralExp}
+\end{figure}
+
+\begin{figure}[!htbp] 
+  \centering
+    \subfigure[]{\label{4-MirabelleProfil}
+    \includegraphics[height=6cm]{figures/4-MirabelleProfil.png}}
+    \subfigure[]{\label{4-MirabelleParam}
+    \includegraphics[height=10cm]{figures/4-MirabelleParam.png}}
+    \caption{Profil de densité et de température mesurés sur Mirabelle et
+    paramètres typique de la source\parencite{Bousselin}.}
+    \label{4-MirabelleExp}
+\end{figure}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/4-CybeleNAGDIS.png}
+\caption{Images successives prises par caméra rapide~\parencite{NagdisCamera}.
+La structure effectue une rotation complète en 230 \micro s et apparaît par
+intermittence.
+\label{4-CybeleNagdis}}
+\end{figure}
+
+Les paramètres principaux des sources Mistral et Mirabelle ainsi que des profils
+caractéristiques sont présentés sur les
+figures~\ref{4-MistralExp}, \ref{4-MirabelleExp}.
+Chacune dans ses objectifs de recherche particuliers, ces expérimentations
+ont permis une amélioration de la théorie du tran sport magnétisé dans cette
+géométrie de colonne en mesurant et analysant notamment : la rotation pas
+toujours homogène du plasma (on peut voir un exemple de NAGDIS-II sur la
+figure~\ref{4-CybeleNagdis}), l'apparition de différents types
+d'instabilités et, plus généralement, tous les mécanismes de transport qui se mettent en place dans ces sources.
+
+Les travaux ont de plus fourni une énorme quantité de mesures
+expérimentales (sur des supports variant des sondes de Langmuir aux caméras
+rapides) caractérisant les phénomènes de transport et les paramètres typiques
+des plasmas obtenus sur une large gamme de conditions expérimentales différentes. 
+
+Le test de MAGNIS sur cette configuration colonne de plasma magnétisé nous
+donnera une validation supplémentaire pour le modèle. Dans l'ensemble des
+sources précédemment citées, nous choisissons de simuler une configuration simplifiée de
+Cybele. Ce choix a tout d'abord été motivé par les collaborations
+développées autour de la problématique de l'injection
+de neutres (IDN)\footnote{Les campagnes de caractérisation de Cybele m'ont
+notamment permis d'essayer l'expérimentation et de choisir un diagnostique à
+mettre en place (voir figure~\ref{4-CybeleFourierSignal}).}.
+La source Cybele est de plus de forme rectangulaire et donc parfaitement adaptée
+au domaine simple de MAGNIS.
+
+\subsection{Cybele}
+
+Cybele, présentée sur la figure~\ref{4-cybelePhoto}, est une
+source d'ions négatifs de dimension très allongée développée à l'IRFM
+(CEA)~\cite{Simonin} dans le cadre de la recherche sur les systèmes d'IDN qui sont utilisés pour le chauffage et la génération de
+courant dans les réacteurs de fusion par confinement magnétique\footnote{Le principe d'un injecteur de neutres est basé sur l'accélération d'ions à très haute énergie, puis neutralisés afin de former un puissant faisceau de neutres.
 Le faisceau est ensuite injecté au c\oe{}ur du réacteur pour déposer son énergie
 directement dans le plasma. Pour ITER, les deux IDN devront fournir 17MW de
 puissance chacun, en injectant 40A de D$\puissance{0}$ à
 1MeV~\parencite{Hemsworth}.}.
+
 
 \begin{figure}[!htbp]
   \centering
@@ -679,7 +753,7 @@ puissance chacun, en injectant 40A de D$\puissance{0}$ à
     \caption{Photographies de la source d'ions négatifs Cybele en développement
     à l'IFRM de Cadarache~\parencite{SimoninHDR}. Le plasma est
     sondable radialement à partir du hublot (à travers lequel apparaît le
-    plasma en jaune sur la photographie~\ref{4-CybelePhoto2})
+    plasma en jaune sur la photographie~\subref{4-CybelePhoto2}~.)
     \label{4-cybelePhoto}} 
 \end{figure}	
 
@@ -687,7 +761,7 @@ puissance chacun, en injectant 40A de D$\puissance{0}$ à
   \centering
     \includegraphics[height=5cm]{figures/sourceIPP.png}
     \caption{Schémas conceptuel du prototype de l'un des huits modules de la
-    source IPP de Garching.
+    source IPP de Garching~\parencite{SimoninHDR}.
 \label{4-GarchingSchema}}
 \end{figure}
 
@@ -706,11 +780,11 @@ magnétique en configuration filtre pour refroidir les électrons (un schéma de
 source développée pour ITER est rappelé sur la figure~\ref{4-GarchingSchema}).
 Nous avons vu précédemment que cette configuration magnétique entraîne
 dans ce type de sources de fortes inhomogénéités du plasma, avec l'émergence de
-fort gradients de densité et de température dans le plan
+gradients de densité et de température dans le plan
 perpenduculaire au champ~\parencite{Fantz,Kolev}.
 L'uniformité du plasma généré par la source est cependant primordiale pour une
 bonne efficacité de l'accélérateur dans l'IDN, et de nombreux efforts sont
-portés pour palier à ce problème.
+entrepris pour résoudre ce problème.
 
 L'une des pistes étudiée est d'utiliser le champ magnétique non pas pour
 filtrer les électrons énergétiques mais plutôt pour les confiner au centre
@@ -723,8 +797,8 @@ plasma homogène sur toute la longueur de la source.
 
 La source Cybele est rectangulaire et de dimension 
 15~cm x 20~cm x 120~cm. Le centre de la source est
-occupé par des cathodes filamentaires qui, polarisées négativement à -60 V et
-libèrent des électrons primaires de 70 eV
+occupé par des cathodes filamentaires qui sont polarisées négativement à - 60 V
+et libèrent des électrons primaires de 70 eV
 d'énergie pour créer et entretenir le plasma.
 Celui-ci est ensuite confiné dans un champ magnétique vertical et uniforme, généré par deux
 groupes de bobines\footnote{La décomposition des bobines
@@ -742,32 +816,47 @@ requise pour réduire la perte des ions négatifs par le phénomène d'épluchag
 électronique. Dans le cadre de la
 ligne IDN Siphore, de rapport d'aspect laminaire, ce type de
 source s'adapte parfaitement à l'accélérateur Singap (pour Single Aperture
-Photo-neutralization) qui neutralise le faiseau d'ions négatif 
-par photodétachement à l'aide d'un laser de 1 kW et d'une cavité de
+Photo-neutralization) qui neutralise le faiseau d'ions négatifs
+par photo-détachement à l'aide d'un laser de 1 kW et d'une cavité de
 Fabry-Perot~\parencite{SimoninHDR}.
 
-Les mesures expérimentales en H$_2$, réalisées avec des sondes de
-Langmuir~\parencite{Simonin}, donnent une densité d'environ 3.10$\puissance{18}$
-m$\puissance{-3}$ au centre du plasma, et de 5.10$\puissance{17}$
-m$\puissance{-3}$ en périphérie. La température électronique chute quant à
-elle de 6 eV à un peu plus de 2 eV au niveau des parois latérales. Une mesure
+Les mesures expérimentales en H$_2$, présentées sur la figure~\ref{4-CybeleExp},
+montrent que la densité est d'environ 3.10$\puissance{18}$ m$\puissance{-3}$ au
+centre du plasma, et plutôt de l'ordre de 5.10$\puissance{17}$ m$\puissance{-3}$
+en périphérie.
+La température électronique chute quant à elle de 6 eV à un peu plus de 2 eV au niveau des parois latérales. Une mesure
 temporelle du courant de saturation ionique (voir
-figure~\ref{4-CybeleFourierSignal})  détecté la présence d'une
-fluctuation périodique à une basse fréquence (un pic à 37kHz et une bande de largeur plus significative autour de 32kHz), signe éventuel d'un phénomène d'intermittence dans le plasma.
-
+figure~\ref{4-CybeleFourierSignal}) a détecté la présence d'une
+fluctuation périodique à une basse fréquence (un pic à 37 kHz et une bande de
+largeur plus significative autour de 32 kHz), signe éventuel d'un phénomène
+périodique et intermittent dans le plasma.
+\begin{figure}[!htbp]
+  \centering
+    \subfigure[]{\label{4-CybeleExp1}
+    \includegraphics[height=6cm]{figures/4-CybeleExp.png}}
+    \subfigure[]{\label{4-CybeleExp2}
+    \includegraphics[height=6cm]{figures/4-CybeleExp2.png}}
+    \subfigure[]{\label{4-CybeleExp3}
+    \includegraphics[height=6cm]{figures/4-CybeleExp3.png}}
+    \caption{Profils de densité\subref{4-CybeleExp1}~, de
+    potentiel\subref{4-CybeleExp2}~ et de
+    température\subref{4-CybeleExp3}~~\parencite{SimoninHDR}.}
+    \label{4-CybeleExp}
+\end{figure}
 \begin{figure}[!htbp]
   \centering
     \includegraphics[height=6cm]{figures/4-CybeleFourierSignal.jpg}
     \caption{Spectre du courant de saturation
-    ionique à r=5cm du centre de la source.
-    L'oscilloscope est réglé sur 25kHz/carreau.\label{4-CybeleFourierSignal}}
+    ionique à $r\,$= 5 cm du centre de la source.
+    L'oscilloscope est réglé sur 25 kHz/carreau.\label{4-CybeleFourierSignal}}
 \end{figure}
 
-Là encore, une simulation concrète de l'évolution du plasma dans
-Cybele nécessiterait la prise en compte des ions négatifs et de la source de
-courant créée par le type de chauffage avec cathode émissive. L'étude qui suit
-se limite à une colonne de plasma plus classique, telle que Mirabelle à
-Nancy~\parencite{Mirabelle} ou NAGDIS-II au Japon~\parencite{NAGDIS1}.
+Dans Cybele, le plasma est chauffé en injectant un courant
+d'électron très énergétique à l'aide de filaments. Notre cas de
+test, lui, suppose une puissance directement absorbée ; ce n'est évidemment pas
+la même chose, mais la physique sous-jacente reste très liée. Une puissance
+absorbée est plutôt caractéristique d'un chauffage RF. Cependant, dans une future version de Cybele, il est aussi
+prévu d'utiliser une antenne hélicon, qui couplera la puissance par absobtion d'énergie.
  
 \subsection{Simulation d'une colonne de plasma}
 
@@ -781,15 +870,35 @@ lignes de champ et forment des vortex dans la direction perpendiculaire,
 permettent de créer des phénomènes de court-circuit dans le plasma et stimulent
 significativement le transport transverse~\parencite{Gurevich}.
 
-Commençons par montrer les résultats d'une simulation classique. Le domaine de
-simulation, sur la figure~\ref{4-cybeleSimDomain}, est pris de dimension
-20x20x120 cm$\puissance{3}$ et représente toujours le plan transverse au champ
-magnétique, qui est pris uniforme et d'intensité B=100G. Le plasma est créé au
-centre du domaine par un chauffage de forme gaussienne en 2D, en supposant une
-puissance absorbée d'environ 100W. La pression de gaz (Hydrogène) est fixée à
-1mTorr avec toutes les parois conductrices et reliées à la masse (exceptées
-celles aux extrémités les lignes de champ qui seront prises de nature isolante
-dans un cas test.
+Commençons par montrer les résultats d'une simulation classique, dont les
+paramètres sont donnés dans le tableau~\ref{4-CybeleParam1}. Le domaine de
+simulation, sur la figure~\ref{4-cybeleSimDomain}, est pris de dimension 20
+cm x 20 cm x 120 cm et représente toujours le plan transverse au
+champ magnétique, qui est pris uniforme et d'intensité $B\,$= 100 G. Le plasma
+est créé au centre du domaine par un chauffage de forme gaussienne en 2D, de
+largueur $l_\mathcal{S}\,$= 1 cm et en supposant une puissance absorbée
+d'environ 100 W.
+La pression de gaz (H$^2$) est fixée à 1mTorr avec toutes les parois
+conductrices et reliées à la masse (exceptées celles aux extrémités les lignes
+de champ qui seront prises de nature isolante dans un cas test).
+
+\begin{table*}[!htbp]
+\footnotesize\centering
+\ra{1.3}
+\begin{tabular}{cc}\toprule
+\multicolumn{2}{c}{\bf Paramètres}\\
+\midrule 
+Parois & Conductrices\\
+$L_x$, $L_y$ & 20 cm\\
+$L_z$ & 120 cm\\
+$B$&100 G, uniforme\\
+$\mathcal{P}_\text{ext}$&100 W\\
+$l_\mathcal{S}$, $x_\mathcal{S}$& 1 cm, 10 cm\\
+$\text{gaz (H}^2\text{)}$ & 1 mTorr\\
+\bottomrule
+\end{tabular}
+\caption{Paramètres de la simulation.}\label{4-CybeleParam1}
+\end{table*}
 
 \begin{figure}[!htbp]
 \centering
@@ -808,7 +917,7 @@ magnétique.}
     \includegraphics[height=5.5cm]{figures/4-CybeleCarteTemperatureBase.eps}}
     \caption{Cartes de densité \subref{4-CybeleCarteDensiteBase}~, de
     potentiel \subref{4-CybeleCartePotentielBase}~ et de
-    température \subref{4-CybeleCarteTemperatureBase}}
+    température \subref{4-CybeleCarteTemperatureBase}~.}
     \label{CybeleCartesBase}
 \end{figure}
 
@@ -823,8 +932,8 @@ exponentiellement décroissante sur une longueur de 2 à 3 cm. Le phénomène le
 remarquable est cependant la formation d'un bras de plasma (ou un long filament
 en 3D) partant de la zone centrale et tournant à une vitesse angulaire
 constante.
-Une rotation complète de cette structure de mode $m=$1 s'effectue en $T\simeq$
-23 \micro s, correspondant à une vitesse angulaire de :
+Une rotation complète de cette structure de mode $m\,$= 1 s'effectue en
+$t\simeq\,$23 \micro s, correspondant à une vitesse angulaire de :
 
 \begin{equation}
 \Omega_R=\frac{2\pi m}{T}\simeq2.25\;10^5\text{rad/s}
@@ -839,42 +948,33 @@ ne rend que faiblement compte de la structure de densité.
  La température présente quant-à elle un fort gradient, passant de 10 eV à moins
  d'1 eV sur 2 à 3 cm de longueur.
 
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.5\textwidth]{figures/4-CybeleNAGDIS.png}
-\caption{Images successives prises par caméra rapide~\parencite{NagdisCamera}.
-La structure effectue une rotation complète en 230 \micro s et apparaît par
-intermittence.
-\label{4-CybeleNagdis}}
-\end{figure}
-
 Dans les colonnes de plasma magnétisées, les électrons ont tendance à s'échapper
 le long des lignes de champ dans la direction parallèle. Le flux électronique
 est alors déterminé par les conditions de gaine de Bohm~\parencite{Stangeby} et
 entièrement gouverné par le rapport $\Phi/T_e$. Au centre du plasma, la
 température électronique est très élevée. Pour retenir les électrons, le
-potentiel plasma augmente, atteignant un ratio $\Phi/T_e$ de 1.1515 permettant
-de déduire une densité de courant parallèle négative de :
+potentiel plasma augmente, atteignant un ratio $\Phi/T_e$ de 1.1515. Ce ratio
+correspond à une densité de courant parallèle négative de :
+
 \begin{equation}
 \mathbf j_\para=enc_s(1-\exp(\Lambda-1.1515))\sim -600\text{A.m}\puissance{-2}
 \end{equation}
 
-qui est une estimation assez correcte de la valeur résolue par le modèle (-780
-A.m$\puissance{-2}$). En dehors du plasma central, le ratio devient supérieur
+En dehors du plasma central, le ratio devient supérieur
 au potentiel flottant, inversant le signe du courant récupéré au bout les lignes
-de champ. Les électrons sont accélérés afin de compenser la trop grande perte de
-charges positives. On peut placer la frontière entre ces deux régions au niveau
+de champ. On peut placer la frontière entre ces deux régions au niveau
 de la fin du plasma central, indiquant une modification dans le transport des
 particules à cet endroit.
 
-La figure~\ref{4-CybeleProfilsRadial} montre le profil radial moyennés dans le
-temps des précédents champs, du centre de la source au bord X=20cm. Le plasma
-est confiné sur un rayon de 4 cm tandis que le potentiel plasma
+La figure~\ref{4-CybeleProfilsRadial} montre le profil radial moyenné dans le
+temps des précédents champs, du centre de la source au bord $x\,$= 20 cm. Le
+plasma est confiné sur un rayon d'environ 4 cm tandis que le potentiel plasma
 diminue progressivement, bien que de façon un peu plus prononcée juste après la
 chute de densité du plasma. 
-Le profil poloïdal est moyenné sur un repère tournant, qui positionne le pic de
-densité en $\theta=-\pi/2$. On peut remarquer la présence d'une légère avance de
-phase de la température sur la densité. Le potentiel, de son côté, est de forme
+Les profils azimutaux sont calculés en repérant le pic de
+densité puis en le plaçcant en $\theta=-\pi/2$ à chaque pas de temps, puis en
+moyennant sur l'ensemble de la simulation.
+On peut remarquer la présence d'une légère avance de phase de la température sur la densité. Le potentiel, de son côté, est de forme
 sinusoïdale et montre aussi un déphasage, dans le sens opposé, avec la densité.
 
 \begin{figure}[!htbp]
@@ -884,13 +984,13 @@ sinusoïdale et montre aussi un déphasage, dans le sens opposé, avec la densit
     \subfigure[]{\label{4-CybeleProfilsPol}
     \includegraphics[height=5.2cm]{figures/4-CybeleProfileTempPol.eps}}
     \caption{Profils radiaux~\subref{4-CybeleProfilsRadial}~ et
-    poloïdaux~\subref{4-CybeleProfilsPol}~ moyennés en temps de la densité, du
+    azimutaux~\subref{4-CybeleProfilsPol}~ moyennés en temps de la densité, du
     potentiel et de la température. Le profil radial est pris du centre de la source au bord droit
-    en X=20cm. Le profil poloïdal est moyenné sur un repère tournant qui suit
-    la structure de densité à r=5 cm du centre de la source. Les quantités
+    en $x\,$= 20 cm. Le profil poloïdal est moyenné sur un repère tournant qui
+    suit la structure de densité à r=5 cm du centre de la source. Les quantités
     $\tilde{\Phi}$ et $\tilde{T}_e$ sont les variations de potentiel et de température par rapport à leur valeur
-    moyenne, qui sont respectivement égale à 9V et 2eV. La structure se déplace
-    dans le sens horaire, ie. vers les $\theta$ croissants.}
+    moyenne, qui sont respectivement égale à 9 V et 2 eV. La structure se
+    déplace dans le sens horaire, ie. vers les $\theta$ croissants.}
     \label{4-CybeleProfils}
 \end{figure}
 
@@ -900,8 +1000,8 @@ transverse, illustrés sur la figure~\ref{4-CybeleCarteFlux}.
 Les ions, créés au centre de la source, traversent le champ magnétiques et
 tombent aux parois en effectuant des spirales dans le même sens que le bras de
 densité. On constate que le courant ionique est maximal au centre de la source,
-et qu'un fort flux passe par la surdensité. La vitesse du fluide ionique
-est cependant deux à trois fois moins importante que la vitesse de rotation de
+et que le flux est plus fort au niveau du bras de densité. La
+vitesse du fluide ionique est cependant deux à trois fois moins importante que la vitesse de rotation de
 la structure. Sur la seconde image, on peut remarquer que le fluide électronique
 change de direction après un minimum, situé là encore aux alentours de la
 frontière du plasma confiné.
@@ -916,18 +1016,20 @@ frontière du plasma confiné.
     température \subref{4-CybeleCarteCourant}}
     \label{4-CybeleCarteFlux}
 \end{figure}
-
 Dans la direction radiale et en présence d'un champ magnétique, les gradients
-moyens de potentiel et de pression donnent naissance à une vitesse de dérive
-fluide. Le champ électrique radial moyen $E_r$ d'environ 120 V/m, entraîne
-théoriquement une dérive poloïdale de l'ordre de :
+moyens de potentiel et de pression donnent naissance à des dérives
+fluides. 
+Le champ électrique radial moyen $E_r=\nabla_r\Phi$ d'environ 120 V/m,
+entraîne théoriquement une dérive poloïdale de l'ordre de :
+
 \begin{equation}
 \omega_E=\frac{E_r}{rB}\simeq10^5\,\text{rad/s} 
 \end{equation}
+
 qui est du même ordre de grandeur que la vitesse de rotation du bras de plasma.
-La figure~\ref{4-CybeleVitessesDerive} montre les profils de ces deux vitesses
-de dérive le long de la direction radiale. On observe que la vitesse de dérive
-diamagnétique, ie. liée au gradient de pression, est dominante au centre du
+La figure~\ref{4-CybeleVitessesDerive} montre les profils des vitesses
+de dérive électrique et diamagnétique le long de la direction radiale. On
+observe que la vitesse de dérive diamagnétique, ie. liée au gradient de pression, est dominante au centre du
 plasma. 
 
 \begin{figure}[!htbp]
@@ -951,7 +1053,27 @@ paramètres : L'intensité du champ magnétique et les conditions parallèles
 montrent un rapide aperçu de l'influence de ces variables.
 
 \subsection{Variation croissante du champ magnétique}
-Nous reprenons dans cette partie les conditions de base utilisées précédemment.
+Nous reprenons dans cette partie les conditions de base utilisées précédemment :
+
+\begin{table*}[!htbp]
+\footnotesize\centering
+\ra{1.3}
+\begin{tabular}{cc}\toprule
+\multicolumn{2}{c}{\bf Paramètres}\\
+\midrule 
+Parois & Conductrices\\
+$L_x$, $L_y$ & 20 cm\\
+$L_z$ & 120 cm\\
+$B$&\mathbf{1--170 G}, uniforme\\
+$\mathcal{P}_\text{ext}$&100 W\\
+$l_\mathcal{S}$, $x_\mathcal{S}$& 1 cm, 10 cm\\
+$\text{gaz (H}^2\text{)}$ & 1 mTorr\\
+\bottomrule
+\end{tabular}
+\caption{Paramètres de la simulation.}\label{4-CybeleParam1}
+\end{table*}
+
+
 En l'absence de champ magnétique, le transport est isotrope. La différence de
 mobilité entre les ions et les électrons donne naissance à un champ électrique
 dit ambipolaire qui les fait dériver ensemble jusqu'aux parois. Le plasma
@@ -959,8 +1081,6 @@ d'hydrogène a une densité de 3.10$\puissance{14}$ m$\puissance{-3}$ et sa
 température, assez homogène, est de 11eV. Ajoutons maintenant un champ
 magnétique : au fur et à mesure de la montée en intensité, on peut repérer 4
 modes de fonctionnement.
-
-\subsubsection{de 0G à 2G}
 
 \begin{figure}[!htbp]
   \centering
@@ -975,7 +1095,9 @@ modes de fonctionnement.
     \label{4-CybeleVarMag-1}
 \end{figure}
 
-L'apparition d'un faible champ magnétique modifie légèrement la nature du
+\subsubsection{de 0G à 2G}
+
+L'application d'un faible champ magnétique modifie légèrement la nature du
 transport. Observons la figure~\ref{4-CybeleVarMag1} : entre 1 G et 2 G, le
 plasma forme un anneau, de densité équivalente au cas non
 magnétisé. La température au centre de la source s'élève, passant 
@@ -984,11 +1106,11 @@ successivement à 14 eV puis à 20 eV. Le rayon de l'anneau est approximativemen
 \begin{equation}
 \frac{L_\perp}{2}=10\,\text{cm}>\rho\indice{e}>l_c\simeq 5\,\text{cm}
 \end{equation}
-où $L_\perp$ est la longueur caractéristique de la source et $l_c$ une distance
-critique. 
+où $L_\perp$ est la longueur caractéristique de la source et $l_c$ une longueur
+critique déterminant ce régime de fonctionnement. 
 
 \subsubsection{de 3G à 15G}
-A partir de 3G, le plasma se met en rotation, changeant encore de forme (comme
+À partir de 3 G, le plasma se met en rotation, changeant encore de forme (comme
 le montre la figure~\ref{4-CybeleVarMag2}). Deux îlots de densité plus élevée
 apparaissent, tournant à une vitesse angulaire $\Omega_r$ qui varie de 1 à 
 2.10$\puissance{6}\,\text{rad.s}\puissance{-1}$ sur une orbite de rayon
