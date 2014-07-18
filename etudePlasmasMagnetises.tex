@@ -657,10 +657,17 @@ conforte dans les résultats du modèle.
 	totalement disparaître en jouant sur les paramètres.
 	
 \section{Colonne de plasma magnétisée}
-Dans la littérature sur la théorie du transport magnétisé, on utilise
-souvent l'exemple de la colonne de plasma magnétisée idéale et infinie dans la
-direction parallèle pour réduire le comportement du plasma à un problème 1D
-radial. Il existe de plus de nombreuses expérimentations en
+Dans une géométrie simple comme la colonne de plasma, avec un champ magnétique
+axial et uniforme, de nombreuses tentatives ont été entreprises pour réduire le
+problème multidimensionnel de diffusion du plasma à travers le champ à une
+sorte de diffusion ambipolaire effective. Cependant, même à très faible
+champ magnétique, la diffusion des ions et des électrons fondamentalement non
+ambipolaire : les courants, qui se referment dans les parois aux extrémités des
+lignes de champ et forment des vortex dans la direction perpendiculaire,
+permettent de créer des phénomènes de court-circuit dans le plasma et stimulent
+significativement le transport transverse~\parencite{Gurevich}.
+
+Il existe de plus de nombreuses expérimentations en
 configuration de colonne, entre autres :
 
 \begin{itemize}
@@ -680,9 +687,9 @@ configuration de colonne, entre autres :
     \subfigure[]{\label{4-MistralProfils}
     \includegraphics[height=14cm]{figures/4-MistralProfils.png}}
     \caption{Paramètres typiques de Mistral~\subref{4-MistralParam}~, profils de
-    densité, potentiels et température pour trois intensités
+    densité, potentiel et température pour trois intensités
     de champ magnétique dans de l'argon à 10$^{-4}$
-    mTorr~\subref{4-MistralParam}~
+    mTorr~\subref{4-MistralProfils}~
     \parencite{Oldenburger}.}
     \label{4-MistralExp}
 \end{figure}
@@ -694,43 +701,37 @@ configuration de colonne, entre autres :
     \subfigure[]{\label{4-MirabelleParam}
     \includegraphics[height=10cm]{figures/4-MirabelleParam.png}}
     \caption{Profil de densité et de température mesurés sur Mirabelle et
-    paramètres typique de la source\parencite{Bousselin}.}
+    paramètres typique de la source \parencite{Bousselin}.}
     \label{4-MirabelleExp}
 \end{figure}
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.5\textwidth]{figures/4-CybeleNAGDIS.png}
-\caption{Images successives prises par caméra rapide~\parencite{NagdisCamera}.
-La structure effectue une rotation complète en 230 \micro s et apparaît par
-intermittence.
-\label{4-CybeleNagdis}}
-\end{figure}
 
-Les paramètres principaux des sources Mistral et Mirabelle ainsi que des profils
-caractéristiques sont présentés sur les
-figures~\ref{4-MistralExp}, \ref{4-MirabelleExp}.
 Chacune dans ses objectifs de recherche particuliers, ces expérimentations
-ont permis une amélioration de la théorie du tran sport magnétisé dans cette
+ont permis une amélioration de la théorie du transport magnétisé dans cette
 géométrie de colonne en mesurant et analysant notamment : la rotation pas
-toujours homogène du plasma (on peut voir un exemple de NAGDIS-II sur la
-figure~\ref{4-CybeleNagdis}), l'apparition de différents types
+toujours homogène du plasma, l'apparition de différents types
 d'instabilités et, plus généralement, tous les mécanismes de transport qui se mettent en place dans ces sources.
 
 Les travaux ont de plus fourni une énorme quantité de mesures
 expérimentales (sur des supports variant des sondes de Langmuir aux caméras
 rapides) caractérisant les phénomènes de transport et les paramètres typiques
-des plasmas obtenus sur une large gamme de conditions expérimentales différentes. 
+des plasmas obtenus sur une large gamme de conditions expérimentales
+différentes.  Les paramètres principaux des sources Mistral et Mirabelle ainsi que des profils
+caractéristiques sont par exemple présentés sur les
+figures~\ref{4-MistralExp} et \ref{4-MirabelleExp}.
 
 Le test de MAGNIS sur cette configuration colonne de plasma magnétisé nous
 donnera une validation supplémentaire pour le modèle. Dans l'ensemble des
 sources précédemment citées, nous choisissons de simuler une configuration simplifiée de
 Cybele. Ce choix a tout d'abord été motivé par les collaborations
 développées autour de la problématique de l'injection
-de neutres (IDN)\footnote{Les campagnes de caractérisation de Cybele m'ont
-notamment permis d'essayer l'expérimentation et de choisir un diagnostique à
-mettre en place (voir figure~\ref{4-CybeleFourierSignal}).}.
+de neutres (IDN)\footnote{Dans le cadre du programme de recherche sur l'IDN,
+le groupe GREPHE a déjà collaboré avec Alain Simonin qui développe Cybele au
+CEA. J'ai notamment été invité à suivre les campagnes de caractérisation de
+Cybele et à choisir un diagnostique à mettre en place (voir
+figure~\ref{4-CybeleFourierSignal}).}.
 La source Cybele est de plus de forme rectangulaire et donc parfaitement adaptée
-au domaine simple de MAGNIS.
+au domaine de simulation de MAGNIS.
+\newpage
 
 \subsection{Cybele}
 
@@ -742,7 +743,6 @@ Le faisceau est ensuite injecté au c\oe{}ur du réacteur pour déposer son éne
 directement dans le plasma. Pour ITER, les deux IDN devront fournir 17MW de
 puissance chacun, en injectant 40A de D$\puissance{0}$ à
 1MeV~\parencite{Hemsworth}.}.
-
 
 \begin{figure}[!htbp]
   \centering
@@ -860,15 +860,7 @@ prévu d'utiliser une antenne hélicon, qui couplera la puissance par absobtion 
  
 \subsection{Simulation d'une colonne de plasma}
 
-Dans une géométrie simple comme la colonne de plasma, avec un champ magnétique
-axial et uniforme, de nombreuses tentatives ont été entreprises pour réduire le
-problème multidimensionnel de diffusion du plasma à travers le champ à une
-sorte de diffusion ambipolaire effective. Cependant, même à très faible champ
-magnétique, la diffusion des ions et des électrons fondamentalement non
-ambipolaire : les courants, qui se referment dans les parois aux extrémités des
-lignes de champ et forment des vortex dans la direction perpendiculaire,
-permettent de créer des phénomènes de court-circuit dans le plasma et stimulent
-significativement le transport transverse~\parencite{Gurevich}. Commençons par montrer les résultats d'une simulation classique, dont les
+Commençons par montrer les résultats d'une simulation classique, dont les
 paramètres sont donnés dans le tableau~\ref{4-CybeleParam1} :
 
 \begin{table*}[!htbp]
@@ -907,7 +899,11 @@ absorbée. Bien que celle-ci soit de deux ordres de grandeur inférieure à la
 densité mesurée dans Cybele, il suffit de choisir une puissance absorbée
 cohérente pour obtenir un résultat proche des mesures expérimentales.} au centre
 de la source à 3.10$\puissance{16}$ m$\puissance{-3}$, et
-exponentiellement décroissante sur une longueur de 2 à 3 cm. Le phénomène le plus
+exponentiellement décroissante sur une longueur de 2 à 3 cm. Le potentiel
+décroît monotonement de 12 V à un peu moins de 0 V dans la direction radiale et
+ne rend que faiblement compte de la structure de densité.
+ La température présente quant-à elle un fort gradient, passant de 10 eV à moins
+ d'1 eV sur 2 à 3 cm de longueur. Le phénomène le plus
 remarquable est cependant la formation d'un bras de plasma (ou un long filament
 en 3D) partant de la zone centrale et tournant à une vitesse angulaire
 constante.
@@ -932,24 +928,29 @@ magnétique.}
     \includegraphics[height=5.5cm]{figures/4-CybeleCartePotentielBase.eps}}
     \subfigure[]{\label{4-CybeleCarteTemperatureBase}
     \includegraphics[height=5.5cm]{figures/4-CybeleCarteTemperatureBase.eps}}
-    \caption{Cartes de densité \subref{4-CybeleCarteDensiteBase}~, de
-    potentiel \subref{4-CybeleCartePotentielBase}~ et de
-    température \subref{4-CybeleCarteTemperatureBase}~.}
+    \caption{Cartes de densité~\subref{4-CybeleCarteDensiteBase}~, de
+    potentiel~\subref{4-CybeleCartePotentielBase}~ et de
+    température~\subref{4-CybeleCarteTemperatureBase}~.}
     \label{CybeleCartesBase}
 \end{figure}
 
 Les images enregistrées avec des caméras rapides lors des expérimentations
 sur les colonnes ont déjà montré un
-comportement similaire du plasma (voir figure~\ref{4-CybeleNagdis}) , ce qui est
-là aussi très encourageant sur la validité des solutions trouvées par MAGNIS. Le potentiel
-décroît monotonement de 12 V à un peu moins de 0 V dans la direction radiale et
-ne rend que faiblement compte de la structure de densité.
- La température présente quant-à elle un fort gradient, passant de 10 eV à moins
- d'1 eV sur 2 à 3 cm de longueur.
+comportement similaire du plasma (voir figure~\ref{4-CybeleNagdis}). 
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/4-CybeleNAGDIS.png}
+\caption{Images successives prises par caméra rapide~\parencite{NagdisCamera}.
+La structure effectue une rotation complète en 230 \micro s et apparaît par
+intermittence.
+\label{4-CybeleNagdis}}
+\end{figure}
 
 Dans les colonnes de plasma magnétisées, les électrons ont tendance à s'échapper
-le long des lignes de champ dans la direction parallèle. Le flux électronique
-est alors déterminé par les conditions de gaine de Bohm~\parencite{Stangeby} et
+le long des lignes de champ dans la direction parallèle. Le courant parallèle
+est montré sur la figure~\ref{4-cybeleCartePotentielSurTe}. Il est
+déterminé par les conditions de gaine de Bohm~\parencite{Stangeby} et
 entièrement gouverné par le rapport $\Phi/T_e$. Au centre du plasma, la
 température électronique est très élevée. Pour retenir les électrons, le
 potentiel plasma augmente, atteignant un ratio $\Phi/T_e$ de 1.1515. Ce ratio
@@ -965,16 +966,15 @@ correspond à une densité de courant parallèle négative de :
     - 700 A/m$^2$\label{4-cybeleCartePotentielSurTe}}
 \end{figure}
 
-
 \begin{equation}
 \mathbf j_\para=enc_s(1-\exp(\Lambda-1.1515))\sim -600\text{A.m}\puissance{-2}
 \end{equation}
 
-En dehors du plasma central, le ratio devient supérieur
+En dehors du plasma central, le ratio devient légèrement supérieur
 au potentiel flottant, inversant le signe du courant récupéré au bout les lignes
-de champ. On peut placer la frontière entre ces deux régions au niveau
-de la fin du plasma central, indiquant une modification dans le transport des
-particules à cet endroit.
+de champ sur une grande partie du domaine. À la frontière entre ces
+deux régions (un cercle de rayon $r\sim\,$2,5 cm autour du centre du domaine),
+on peut supposer un changement radical de la nature du transport du courant.
 
 La figure~\ref{4-CybeleProfilsRadial} montre le profil radial moyenné dans le
 temps des précédents champs, du centre de la source au bord $x\,$= 20 cm. Le
@@ -982,10 +982,11 @@ plasma est confiné sur un rayon d'environ 4 cm tandis que le potentiel plasma
 diminue progressivement, bien que de façon un peu plus prononcée juste après la
 chute de densité du plasma. 
 Les profils azimutaux sont calculés en repérant le pic de
-densité puis en le plaçcant en $\theta=-\pi/2$ à chaque pas de temps, puis en
-moyennant sur l'ensemble de la simulation.
-On peut remarquer la présence d'une légère avance de phase de la température sur la densité. Le potentiel, de son côté, est de forme
-sinusoïdale et montre aussi un déphasage, dans le sens opposé, avec la densité.
+densité puis en le plaçant en $\theta=-\pi/2$ à chaque pas de temps. Le profil
+est ensuite moyenné sur l'ensemble de la durée de la simulation.
+On peut remarquer la présence d'une légère avance de phase de la température
+sur la densité. Le potentiel, de son côté, est de forme sinusoïdale et montre
+aussi un déphasage, dans le sens opposé, avec la densité.
 
 \begin{figure}[!htbp]
   \centering
@@ -997,15 +998,16 @@ sinusoïdale et montre aussi un déphasage, dans le sens opposé, avec la densit
     azimutaux~\subref{4-CybeleProfilsPol}~ moyennés en temps de la densité, du
     potentiel et de la température. Le profil radial est pris du centre de la source au bord droit
     en $x\,$= 20 cm. Le profil poloïdal est moyenné sur un repère tournant qui
-    suit la structure de densité à r=5 cm du centre de la source. Les quantités
-    $\tilde{\Phi}$ et $\tilde{T}_e$ sont les variations de potentiel et de température par rapport à leur valeur
+    suit la structure de densité à $r\,$= 5 cm du centre de la source. Les
+    quantités $\tilde{\Phi}$ et $\tilde{T}_e$ sont les variations de potentiel et de température par rapport à leur valeur
     moyenne, qui sont respectivement égale à 9 V et 2 eV. La structure se
-    déplace dans le sens horaire, ie. vers les $\theta$ croissants.}
+    déplace dans le sens horaire, ie. dans la direction des $\theta$ croissants
+    sur la figure.}
     \label{4-CybeleProfils}
 \end{figure}
 
-Pour déterminer l'origine de la structure et de la rotation, intéressons nous
-tout d'abord aux flux électronique et ionique dans la direction
+Pour caractériser un peu plus la rotation, intéressons nous
+maintenant aux flux électronique et ionique dans la direction
 transverse, illustrés sur la figure~\ref{4-CybeleCarteFlux}.
 Les ions, créés au centre de la source, traversent le champ magnétiques et
 tombent aux parois en effectuant des spirales dans le même sens que le bras de
@@ -1022,10 +1024,11 @@ frontière du plasma confiné.
     \includegraphics[height=5.5cm]{figures/4-CybeleCarteFluxIBase.eps}}
     \subfigure[]{\label{4-CybeleCarteFluxEBase}
     \includegraphics[height=5.5cm]{figures/4-CybeleCarteFluxEBase.eps}}
-    \caption{Cartes de densité \subref{4-CybeleCarteFluxEBase}~ et de
-    température \subref{4-CybeleCarteCourant}}
+    \caption{Densités de courant ionique
+    \subref{4-CybeleCarteFluxIBase}~ et électronique~\subref{4-CybeleCarteFluxEBase}~.}
     \label{4-CybeleCarteFlux}
 \end{figure}
+\newpage
 Dans la direction radiale et en présence d'un champ magnétique, les gradients
 moyens de potentiel et de pression donnent naissance à des dérives
 fluides. 
@@ -1050,7 +1053,7 @@ plasma.
 \end{figure}
 
 Cette dérive entraîne les ions et les électrons dans des directions
-contraires, générant un fort courant. A r~$\sim$~4~cm, au niveau de la
+contraires, générant un fort courant. À $r\sim\,$4~cm, au niveau de la
 séparation, les deux vitesses s'égalisent, puis la vitesse de dérive électrique, qui ne
 génère que peu de courant, prend le dessus. Dans la région traversée par le bras
 de densité, $\omega_E\simeq$ 2,3.10$\puissance{6}\,\text{rad.s}\puissance{-1}$
@@ -1060,10 +1063,12 @@ Lors de l'exploration des modes de fonctionnement de la source, le transport
 dans la colonne de plasma s'est révélé principalement sensible à deux
 paramètres : L'intensité du champ magnétique et les conditions parallèles 
 (longueur de la source et nature des parois). Les deux sections suivantes
-montrent un rapide aperçu de l'influence de ces variables.
+montrent un rapide aperçu de l'influence de ces deux variables.
 
 \subsection{Variation croissante du champ magnétique}
-Nous reprenons dans cette partie les conditions de base utilisées précédemment :
+Nous reprenons dans cette partie les conditions de base utilisées précédemment,
+en faisant varier l'intensité du champ magnétique de 0 G à 170 G (cf.
+tableau~\ref{4-CybeleParam2})
 
 \begin{table*}[!htbp]
 \footnotesize\centering
@@ -1074,7 +1079,7 @@ Nous reprenons dans cette partie les conditions de base utilisées précédemmen
 Parois & Conductrices\\
 $L_x$, $L_y$ & 20 cm\\
 $L_z$ & 120 cm\\
-$B$&\textbf{1--170 G}, uniforme\\
+$B$&\textbf{1--170 G, uniforme}\\
 $\mathcal{P}_\text{ext}$&100 W\\
 $l_\mathcal{S}$, $x_\mathcal{S}$& 1 cm, 10 cm\\
 $\text{gaz (H}^2\text{)}$ & 1 mTorr\\
@@ -1083,16 +1088,13 @@ $\text{gaz (H}^2\text{)}$ & 1 mTorr\\
 \caption{Paramètres de la simulation.}\label{4-CybeleParam2}
 \end{table*}
 
-
-En l'absence de champ magnétique, le transport est isotrope. La différence de
-mobilité entre les ions et les électrons donne naissance à un champ électrique
-dit ambipolaire qui les fait dériver ensemble jusqu'aux parois. Le plasma
+En l'absence de champ magnétique, le transport est isotrope. Le plasma
 d'hydrogène a une densité de 3.10$\puissance{14}$ m$\puissance{-3}$ et sa
 température, assez homogène, est de 11 eV. Ajoutons maintenant un champ
-magnétique : au fur et à mesure de la montée en intensité, on peut repérer 4
-modes de fonctionnement.
+magnétique ; au fur et à mesure de la montée en intensité du champ, on peut
+repérer quatre modes de fonctionnement.
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
   \centering
     \subfigure[]{\label{4-CybeleVarMag1}
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag1.eps}}
@@ -1100,48 +1102,51 @@ modes de fonctionnement.
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag2.eps}}
     \subfigure[]{\label{4-CybeleVarMag3}
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag3.eps}}
-    \caption{Cartes de densité à 1G\subref{4-CybeleVarMag1}~, 4G
-    \subref{4-CybeleVarMag2}~ et 15G \subref{4-CybeleVarMag3}}
+    \caption{Cartes de densité à 1 G~\subref{4-CybeleVarMag1}~, 4
+    G~\subref{4-CybeleVarMag2}~ et 15 G~\subref{4-CybeleVarMag3}~.}
     \label{4-CybeleVarMag-1}
 \end{figure}
 
-\subsubsection{de 0G à 2G}
+\subsubsection{de 1G à 2G}
 
 L'application d'un faible champ magnétique modifie légèrement la nature du
 transport. Observons la figure~\ref{4-CybeleVarMag1} : entre 1 G et 2 G, le
 plasma forme un anneau, de densité équivalente au cas non
 magnétisé. La température au centre de la source s'élève, passant 
 successivement à 14 eV puis à 20 eV. Le rayon de l'anneau est approximativement
-égal au rayon de Larmor électronique local, qui s'encadre par :
+égal au rayon de Larmor électronique local, qui peut être encadré par :
+
 \begin{equation}
-\frac{L_\perp}{2}=10\,\text{cm}>\rho\indice{e}>l_c\simeq 5\,\text{cm}
+\frac{L_\perp}{2}=10\,\text{cm}>\rho\indice{Le}>l_c\simeq 5\,\text{cm}
 \end{equation}
 où $L_\perp$ est la longueur caractéristique de la source et $l_c$ une longueur
 critique déterminant ce régime de fonctionnement. 
 
 \subsubsection{de 3G à 15G}
-À partir de 3 G, le plasma se met en rotation, changeant encore de forme (comme
-le montre la figure~\ref{4-CybeleVarMag2}). Deux îlots de densité plus élevée
-apparaissent, tournant à une vitesse angulaire $\Omega_r$ qui varie de 1 à 
-2.10$\puissance{6}\,\text{rad.s}\puissance{-1}$ sur une orbite de rayon
- approximativement égale au rayon de Larmor électronique, qui devient inférieur
-à 5cm. La température maximale commence à osciller\footnote{A B=7.5G, la
-fréquence cyclotronique électronique est égale à
+À partir de 3 G, le plasma perd sa symétrie axiale. Deux îlots de densité plus
+élevée apparaissent, tournant à une vitesse angulaire $\Omega_R$ qui varie de 1
+à 2.10$\puissance{6}\,\text{rad.s}\puissance{-1}$ sur une orbite de rayon
+approximativement égale au rayon de Larmor électronique, qui devient inférieur
+à $l_c\,$= 5 cm. La température maximale commence à osciller\footnote{À B=7.5G,
+la fréquence cyclotronique électronique est égale à
 1,3.10$\puissance{8}\,\text{s}\puissance{-1}$, très proche de la fréquence de
-collision des électrons. Le maximum de température atteint son plus haut taux de fluctuation.} et augmente plus modérément.
+collision des électrons. Le maximum de température atteint son plus haut taux
+de fluctuation.} et augmente modérément.
 
 Ce type de fonctionnement, qui est caractérisé par une
 fréquence de rotation assez rapide et la présence d'une structure de densité de
-mode m=2, se manifeste jusqu'à un champ magnétique d'une petite vingtaine de
+mode m = 2, se manifeste jusqu'à un champ magnétique d'une petite vingtaine de
 gauss. 
 
+
 \subsubsection{de 18G à 70G}
-Entre 18G et 30G, le plasma devient extrêmement instable, comme illustré
+Entre 18 G et 30 G, le plasma devient extrêmement instable, comme illustré
 sur la figure~\ref{4-CybeleVarMag-2} : le plasma croît en
 densité et en température jusqu'à atteindre une valeur critique, puis relaxe
-très rapidement en créant une onde de surdensité. La fréquence de ce cycle
-est d'environ 9~kHz.
-\begin{figure}[htbp]
+très rapidement en dégageant une bouffée de plasma. La fréquence de ce cycle
+est d'environ 5~kHz.
+
+\begin{figure}[htb]
   \centering
     \subfigure[]{\label{4-CybeleVarMag4}
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag4.eps}}
@@ -1149,30 +1154,34 @@ est d'environ 9~kHz.
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag5.eps}}
     \subfigure[]{\label{4-CybeleVarMag6}
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag6.eps}}
-    \caption{Cartes de densité à 20G à trois instants
-    différents.}
+    \caption{Cartes de densité à 20 G à trois instants
+    différents ($t\,$=~0$\micro$s,
+    $t\,$=~80$\micro$s et $t\,$=~120$\micro$s). Un cycle dure approximativement
+    180~$\micro$s.}
     \label{4-CybeleVarMag-2}
 \end{figure}
-La figure~\ref{4-CybeleVarMag8} montre la forme du plasma à 35G, qui s'est
-stabilisé. La température moyenne des électrons redescend à une quinzaine
-d'électronvolts, faisant diminuant le rayon de Larmor ionique jusqu'à une
-longueur de l'ordre de la dizaine de centimètres, soit une longueur inférieure à
-la longueur caractéristique du système.
-Plusieurs pics, situés à la frontière du plasma, sont de densités 2 à 3 fois
-supérieure à la densité centrale. On commence aussi à voir apparaître un bras en
-périphérie du plasma, qui tourne à une fréquence de 50kHz. 
-\begin{figure}[!htbp]
+
+La figure~\ref{4-CybeleVarMag8} montre la forme du plasma à 35 G, qui s'est
+stabilisé\footnote{La température moyenne des électrons redescend à une
+quinzaine d'électronvolts. Le rayon de Larmor ionique local, qui était
+auparavant supérieur à la longueur caractéristique du système, diminue
+jusqu'à une longueur de l'ordre de la dizaine de centimètres. Nous supposons
+que la "stabilité" du plasma est ici fortement dépendant du ratio entre le
+rayon de Larmor ionique et la taille du plasma.}. Plusieurs pics, situés à la
+frontière du plasma, sont de densités 2 à 3 fois supérieure à la densité centrale. On commence aussi à voir apparaître un bras en périphérie du plasma, qui tourne à une fréquence de 50kHz.
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=0.33\textwidth]{figures/4-CybeleVarMag8.eps}
-{\caption{Carte de densité à 35G.}
+{\caption{Carte de densité à 35 G.}
 \label{4-CybeleVarMag8}}
 \end{figure}
 
 De 35G à 70G, le plasma est dans un régime transitoire : la température
-et la densité oscillent fortement, et les surdensités sont relaxées à travers 
-le mode poloïdal qui se développe de plus en plus.
+oscille fortement, et la densité centrale se relaxe régulièrement à travers 
+le mode poloïdal, qui se développe de plus en plus.
+
 \subsubsection{de 70G à 170G}
-A partir de 70G, le rayon de Larmor ionique devient inférieur à 5cm : les ions
+À partir de 70G, le rayon de Larmor ionique devient inférieur à 5 cm : les ions
 peuvent être considérés comme magnétisés.
 Sur la figure~\ref{4-CybeleVarMag9}, on voit que le
 plasma forme une spirale. La structure poloïdale de mode m=1 tourne à une
@@ -1180,9 +1189,10 @@ vitesse de 4.10$\puissance{5}\,\text{rad.s}\puissance{-1}$. Les
 figures~\ref{4-CybeleVarMag10} et~\ref{4-CybeleVarMag11} représentent la densité
 du plasma à 130G (où le plasma se déplace en effectuant une rotation presque
 solide) et 170G, caractérisée par l'apparition d'un mode poloïdal m=2. 
+
 Le tableau~\ref{4-CybeleVarMagTab} résume les propriétés du plasma observées
 dans cette partie.
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
   \centering
     \subfigure[]{\label{4-CybeleVarMag9}
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag9.eps}}
@@ -1190,8 +1200,8 @@ dans cette partie.
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag10.eps}}
     \subfigure[]{\label{4-CybeleVarMag11}
     \includegraphics[height=5.5cm]{figures/4-CybeleVarMag11.eps}}
-    \caption{Cartes de densité à 80G~\subref{4-CybeleVarMag9}~, 130G
-    \subref{4-CybeleVarMag10}~ et 170G \subref{4-CybeleVarMag11}}
+    \caption{Cartes de densité à 80 G~\subref{4-CybeleVarMag9}~, 130 G
+    \subref{4-CybeleVarMag10}~ et 170 G \subref{4-CybeleVarMag11}~.}
     \label{4-CybeleVarMag-3}
 \end{figure}
 
@@ -1204,7 +1214,7 @@ B&&\multicolumn{2}{c}{Champs}&&\multicolumn{2}{c}{Échelles} &&
 Rotation\\
 \cmidrule{3-4} \cmidrule{6-7} \cmidrule{9-9}
 && $n$ (m\textsuperscript{-3}) & $T_e$ (eV)&& $\omega_\alpha$
-&$\rho\indice{\alpha}$&& $\Omega_r$ (10\textsuperscript{5}rad/s)\\
+&$\rho\indice{\alpha}$&& $\Omega_R$ (10\textsuperscript{5}rad/s)\\
 \midrule Phase 1&&&&&\multicolumn{2}{c}{électrons}\\
 \scriptsize 1-2 &&\scriptsize 3.3 10\textsuperscript{14} $\nearrow$~~
 \scriptsize 3.5 10\textsuperscript{14} &\scriptsize14 $\nearrow$~~\scriptsize 20 &&
@@ -1236,17 +1246,19 @@ magnétique variant de 1G à 170G.}\label{4-CybeleVarMagTab}
 
 Cette étude sur la variation croissante du champ magnétique montre tout d'abord
 que le plasma se comporte très différemment en fonction des diverses plages
-d'intensité, avec parfois la superposition de plusieurs types de transport.
-Ensuite nous pouvons constater que globalement, la densité augmente en fonction
-du champ magnétique tandis que la température électronique progresse tout
-d'abord jusqu'à une trentaine d'eV, puis redescend sous la barre des 10eV. 
+d'intensité, avec parfois la superposition de plusieurs modes de fonctionnement.
 
-Enfin on note qu'un mode poloïdal se développe en
-présence du champ magnétique, avec un unique bras tournant à une
-vitesse angulaire $\Omega_r\sim$ 2.3 10\textsuperscript{5} rad/s. Dans
-certaines conditions un deuxième bras peut aussi apparaître, de vitesse
-inférieure au premier - ou égale auquel cas les deux bras tournent en phase de
-part et d'autre du centre de la source.
+Pour résumer, on constate que à puissance fixée, la densité augmente en
+fonction du champ magnétique tandis que la température électronique progresse tout
+d'abord jusqu'à une trentaine d'électronvolts, puis redescend sous la barre des
+10 eV.
+Un mode poloïdal se développe avec l'augmentation du champ magnétique, avec un
+unique bras tournant à une vitesse angulaire $\Omega_R\sim$ 2.3 10\textsuperscript{5} rad/s. Dans
+certaines conditions un deuxième bras peut aussi apparaître. Ce deuxième bras ne
+se déplace pas forcément à la même vitesse que le premier. À vitesse égale
+les deux bras tournent en phase de part et d'autre du centre de la source, mais
+quand l'une des vitesses est inférieure, les bras peuvent se dépasser (ou
+éventuellement fusionner).
 
 \subsection{Rôle de la direction parallèle}
 
@@ -1269,12 +1281,20 @@ donc au courant) de sortir du système par les parois, les contraintes imposées
 au transport transverse évoluent. La figure~\ref{4-CybeleProfileDenRadiale}
 montre les profils radiaux de densité et de température pour différentes
 longueurs de source ainsi qu'un cas dans lequel les parois aux extrémités des lignes de champ
-sont choisies isolantes. En toute généralité, on peut constater que l'effet
+sont choisies isolantes, et où la conservation du courant ne se joue que dans la
+direction perpendiculaire :
+
+\begin{equation}
+n_iW_{i_\para}=n_eW_{e_\para}\Leftrightarrow\nabla_\para\cdot\mathbf j_\para = 0
+\Rightarrow \nabla_\perp\cdot\mathbf j_\perp = 0
+\end{equation}
+
+En toute généralité, on peut constater que l'effet
 principal de l'augmentation de la longueur parallèle est de faire monter la
-densité tout en abaissant la température.
+densité tout en abaissant la température électronique.
 L'allongement de la source a le même effet que l'augmentation de l'intensité du
-champ magnétique, ie. on voit sur la densité une structure poloïdale de mode
-m=1, voir m=2 à certaines longueurs.
+champ magnétique, ie. à certaines longueurs, on voit apparaître sur la densité
+une structure poloïdale de mode m=1, voir m=2.
 
 La figure~\ref{CybeleCartesIsolant} montre les différents champs dans le cas de
 parois isolantes. Le plasma, qui ne peut plus s'échapper le long de la direction
@@ -1298,20 +1318,15 @@ potentiel est un peu plus bas.
     \label{CybeleCartesIsolant}
 \end{figure}		
 
-A travers cette partie, nous avons tout d'abord vu que 
+Dans cette partie, nous avons tout d'abord vu que 
 les solutions calculées par MAGNIS pour une colonne de plasma
 sont plutôt cohérentes : Qualitativement, le plasma est confiné dans le plan
 transverse et en rotation. La forme caractéristique en spirale, ainsi que
-l'intermittence du transport, sont retrouvées. Enfin, et comme le prédit les
-théories, l'ajout de parois conductrices dans la direction parallèle (ainsi
-que dans la direction perpendiculaire) en permettant de court-circuiter le
-plasma, montre la nécessite de tenir compte des pertes en particules et en
-courant le long du champ magnétique.
-
-Il est de plus intéressant de préciser que, malgré un maillage cartésien très
-peu adapté à la résolution d'un problème cylindrique et l'habituelle difficulté
-liée à la discrétisation des flux magnétisés, le schéma de MAGNIS est très
-stable, supportant sans difficulté la propagation des discontinuités.
+l'instationnarité du plasma observées en manipulation sont reproduites. 
+Enfin, nous avons montré que la direction parallèle joue un rôle crucial dans
+les mécanismes du transport magnétisé, et qu'il est donc nécéssaire de
+tenir compte des pertes en particules et en courant le long du champ magnétique
+pour bien capter la physique sous-jacente.
 
 \section{Plasma de bord de tokamaks}
 
@@ -1326,7 +1341,7 @@ radiale.
 Les modèles décrivant les plasmas de SOL ont tous un
 point commun :
 ils sont construits avec une hypothèse d'ordering basée sur la forte magnétisation des
-particules qui permet de simplifier considérablement les équations
+particules, ce qui permet de simplifier considérablement les équations
 du transport transverse dans le plasma, en séparant le mouvement cyclotronique
 des mouvements de dérive.
 Cette hypothèse d'ordering n'est
@@ -1340,8 +1355,8 @@ pour :
   \item valider les solutions du transport magnétisé calculées par MAGNIS
   \item	tester le schéma numérique du modèle, dans le cadre d'un plasma
   totalement ionisé et turbulent
+ \end{itemize}
   
- \end{itemize} 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/4-tokamSimDomain.png}
@@ -1351,17 +1366,37 @@ chapitre II. La boîte correspond à une petite région de la SOL, de dimension
 \label{4-tokamSimDomain}}
 \end{figure}
 
+\begin{table*}[!htbp]
+\footnotesize\centering
+\ra{1.3}
+\begin{tabular}{cc}\toprule
+\multicolumn{2}{c}{\bf Paramètres}\\
+\midrule 
+Parois & Conductrices\\
+$L_x$, $L_y$ & 2 cm\\
+$L_z$ & 10 m\\
+$B$&1 T, légèrement décroissant\\
+$T_e$& plasma isotherme, 1 eV\\
+$\mathcal{P}_\text{ext}$&1 kW\\
+$l_\mathcal{S}$, $x_\mathcal{S}$& 0.2 mm, 0.6 cm\\
+$\text{gaz (H}^2\text{)}$ & -- \\
+\bottomrule
+\end{tabular}
+\caption{Paramètres de la simulation.}\label{4-CybeleParam3}
+\end{table*}
 
-Nous reprenons les paramètres de simulation utilisés dans le chapitre 2 : Le
-champ magnétique, à peu près égal à 1T, est choisi linéairement
-décroissant, et correspond à un coefficient de courbure des lignes de champ
-g=5.10$^{-4}$.
-Le plasma est considéré isotherme et la densité de neutre égale à zéro. La
+Nous reprenons les paramètres et la géométrie de simulation utilisés dans le
+chapitre~III. Le champ magnétique, à peu près égal à 1T, est
+choisi linéairement décroissant jusqu'à 0.98 T sur le bord droit du
+domaine\footnote{Ce choix correspond à un coefficient de courbure des lignes de
+champ g=5.10$^{-4}$ (cf.~\S~\ref{chapitre3}-\ref{2-flute})}.
+Le plasma est considéré isotherme et la densité de neutre est égale à zéro. La
 taille de la zone simulée, dont on rappelle la géométrie
-figure~\ref{4-tokamSimDomain}, est de 200 $\rho_\text{L}^i$ soit à peu près
-2cm pour une température électronique de 1eV. La longueur de la boîte dans la direction
-du champ magnétique est choisie égale à 10m pour obtenir une conductivité
-parallèle $\sigma$=10$^{-5}$.
+figure~\ref{4-tokamSimDomain}, est de 2~cm~x~2~cm soit à peu près 200
+$\rho_{Li}$ pour une température électronique de 1 eV. La longueur de la
+boîte dans la direction du champ magnétique est choisie égale à 10 m pour obtenir une
+conductivité parallèle $\sigma$=10$^{-5}$. Ces paramètres de simulation sont
+rappelés dans le tableau~\ref{4-CybeleParam3}.
 
 \begin{figure}[!htbp]
   \centering
@@ -1379,34 +1414,36 @@ redimensionnée avec $n_0~\simeq$~10$^{19}$~m$^{-3}$.}
 La figure~\ref{4-TokamDensite} présente les cartes de densité
 calculées par MAGNIS et par TOKAM pour ces conditions. On peut
 constater que MAGNIS donne des résultats remarquablement proches de ceux
-escomptés au vu de la disparité de conception entre les deux modèles. Tout
-d'abord, il arrive à capturer le mécanisme de l'instabilité d'interchange , stable quand
-$\nabla B\cdot\nabla n<0$ et donnant naissance à un transport intermittent de
-type avalanche côté HFS. Le mouvement cyclotronique, que l'on devine au début
-des simulations de MAGNIS, se confond très vite dans le transport
-macroscopique transverse. Les particules sont enfin principalement
-advectées dans la direction radiale entre les structures de potentiel qui se
-forment. Ces résultats valident a posteriori l'approximation des vitesses de
-dérive, mais montre surtout que MAGNIS donne des solutions correctes
-dans des cas fortement magnétisés.
+escomptés au vu de la différence de conception entre les deux modèles. 
+
+Tout d'abord, il arrive à capturer le mécanisme de l'instabilité d'interchange ,
+stable quand $\nabla 1/B\cdot\nabla n>0$ et donnant naissance à un transport intermittent de
+type avalanche côté HFS (cf.~\S~\ref{chapitre3}-\ref{2-hypotheses}). Le
+mouvement cyclotronique, qui apparaît dans les premiers pas de temps des
+simulations de MAGNIS, se confond très vite dans le transport macroscopique
+transverse. Les particules sont enfin principalement advectées dans la
+direction radiale entre les structures de potentiel qui se forment. Ces
+résultats montre bien que MAGNIS donne des solutions correctes dans
+des cas fortement magnétisés.
 
 Une différence notable concerne cependant le gradient moyen de potentiel qui
-apparaît dans la direction radiale et sur les bords de la simulation\footnote{Plutôt choisies de façon arbitraire dans la simulation de
-TOKAM, avec les parois prises totalement absorbantes pour la densité et
-fixées au potentiel flottant pour le potentiel, les conditions aux limites
-implémentées dans MAGNIS reposent sur un modèle de gaine.}. Cette
-tendance donne naissance à
-une dérive poloïdale, et se retrouve dans la version anisotherme de TOKAM.
-Quand le gradient de densité varie, cette dérive entraîne une diminution du transport transverse à travers un effet de
-cisaillement. 
+apparaît dans la direction radiale et sur les bords de la 
+simulation\footnote{Plutôt choisies de façon arbitraire dans la simulation de
+TOKAM, avec les parois prises totalement absorbantes pour la densité et fixées
+au potentiel flottant pour le potentiel, les conditions aux limites
+implémentées dans MAGNIS reposent sur un modèle de gaine.}. Ce gradient donne
+naissance à une dérive poloïdale (suivant la direction $y$ dans notre
+géométrie), qui se retrouve dans la version anisotherme de TOKAM présentée au chapitre III.
+Quand le gradient de densité varie, cette dérive entraîne une diminution du
+transport transverse à travers un effet de cisaillement. 
 
 \subsection{Comparaison des profils et de la statistique}
 
 Moyennés dans le temps et sur la direction poloïdale, les profils de densité
 (fig.~\ref{4-TokamProfileDensite}) et de flux radial moyen
 (fig.~\ref{4-TokamProfileFluxRadial}) sont très proches : sur le profil de
-densité, les différences sont possiblement dues aux conditions aux limites
-perpendiculaires et parallèle. Le seul écart observable sur le flux radial
+densité, les différences essentiellement sont dues aux conditions aux limites
+perpendiculaires. Le seul écart observable sur le flux radial
 moyen (calculé en multipliant le profil moyen de densité par la vitesse
 radiale moyenne) se situe à gauche de la source, où la densité est contrôlée par
 l'équilibre entre le flux radial diffusif et les pertes le long des lignes de
@@ -1420,15 +1457,16 @@ champ magnétique.
     \includegraphics[height=5.5cm]{figures/4-TokamProfileFluxRadial.eps}}
     \caption{Comparaison des profils de
     densité~\subref{4-pegasesCompPressTempProfile}~ et de flux
-    radial~\subref{4-pegasesCompPressTempProfile}~ entre TOKAM et MAGNIS}
+    radial~\subref{4-pegasesCompPressTempProfile}~ entre TOKAM et MAGNIS.}
     \label{4-TokamProfils}
 \end{figure}
 
-Enfin, la figure~\ref{4-TokamPDFDensite} montre les densités de probabilité des
-fluctuations de densité et de flux radial au niveau de la source de particule.
+Enfin, la figure~\ref{4-TokamPDFDensite} montre les PDF (centrées sur la
+moyenne et normalisées à l'écart type pour comparer) des fluctuations de densité
+et de flux radial au niveau de la source de particules.
 On retrouve là encore un accord très correct, avec une légère déformation de la
-PDF, donnant une probabilité plus grande de faible flux dirigé vers les x
-décroissant et des évènements (les avalanches) plus importants en sens opposé.
+PDF par rapport à une gaussienne, ce qui est caractéristique du transport dans
+la SOL.
 
  \begin{figure}[!htbp]
 \centering
@@ -1439,9 +1477,9 @@ le flux radial.}
 \end{figure}
 
 TOKAM, dont le modèle a été spécifiquement développé pour étudier les plasmas de
-SOL, a été validé analytiquement et est encore utilisé quotidiennement dans le
-cadre de la recherche sur les plasmas de fusion. La capacité à
-reproduire avec autant de similitude ces résultats est très encourageante,
+SOL, a été validé par de nombreuses études (notamment sur les taux de croissance
+des modes du système) et est encore utilisé quotidiennement dans le cadre de la
+recherche sur les plasmas de fusion. La capacité à reproduire avec autant de similitude ces résultats est très encourageante,
 et prouve que MAGNIS peut capturer la physique de base du
 transport fortement magnétisé, tout en restant suffisamment stable confronté à un
 problème de type turbulent.
