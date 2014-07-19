@@ -56,15 +56,12 @@
 \renewcommand{\cftaftertoctitle}{\hfill}
 
 %Une table des matiere par chapitre
-\usepackage[french]{minitoc}
-\setcounter{minitocdepth}{2}
+
 \usepackage{chngcntr}
 \numberwithin{equation}{section}
 \usepackage[squaren,Gray,thinspace]{SIunits}
 \usepackage{lipsum}
-\renewcommand{\mtctitle}{}
 
-\dominitoc
 %ajoute la bibliographie dans la table des matieres
 \usepackage[nottoc]{tocbibind}
 \renewcommand{\tocbibname}{Liste des références}
@@ -169,13 +166,14 @@
 \usepackage{nameref}
 
 \usepackage[refsection=chapter, isbn=false,bibencoding=utf8,
-    url=false,sorting=none,
+    url=false,sorting=none,sortcites=true,
     doi=false,
     eprint=false,
 backend=biber]{biblatex}
 
 \addbibresource{biblio.bib}
 \usepackage{subfigure}
+
 \usepackage{epstopdf} 
 
 \usepackage{booktabs}
@@ -213,27 +211,33 @@ backend=biber]{biblatex}
 %\uspackage[authoryear]{natbib}
 %\usepackage{chapterbib}
 %\bibliographystyle{siam}
-% \usepackage{hyperref}
-% \hypersetup{
-%      unicode=true,          % non-Latin characters in Acrobat’s bookmarks
-%      pdftoolbar=true,        % show Acrobat’s toolbar?
-%      pdfmenubar=true,        % show Acrobat’s menu?
-%      pdffitwindow=false,     % window fit to page when opened
-%      pdfstartview={FitH},    % fits the width of the page to the window
-%      pdftitle={These Futtersack},% title
-%      pdfauthor={Romain Futtersack},     % author
-%      pdfsubject={Fluid Modeling of Magnetized Transport in Low-Temperature
-%      Plasmas},   % subject of the document
-%      pdfcreator={Romain Futtersack},   % creator of the document
-%      pdfproducer={LAPLACE}, % producer of the document
-%      pdfkeywords={Fluid} {Modeling} {Magnetized} {Low-Temperature} {Plasmas}
-%      {Transport}, % list of keywords
-%      pdfnewwindow=true,      % links in new window
-%      colorlinks=true,       % false: boxed links; true: colored links
-%      linkcolor=black,          % color of internal links (change box color with
-%      % linkbordercolor)
-%      citecolor=cyan,        % color of links to bibliography
-%      filecolor=magenta,      % color of file links
-%      urlcolor=cyan           % color of external links
-%  }
+\definecolor{perso}{rgb}{0,0,0.8}
+\usepackage{hyperref}
+\hypersetup{
+     unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+     pdftoolbar=true,        % show Acrobat’s toolbar?
+     pdfmenubar=true,        % show Acrobat’s menu?
+     pdffitwindow=false,     % window fit to page when opened
+     pdfstartview={FitH},    % fits the width of the page to the window
+     pdftitle={These Futtersack},% title
+     pdfauthor={Romain Futtersack},     % author
+     pdfsubject={Fluid Modeling of Magnetized Transport in Low-Temperature
+     Plasmas},   % subject of the document
+     pdfcreator={Romain Futtersack},   % creator of the document
+     pdfproducer={LAPLACE}, % producer of the document
+     pdfkeywords={Fluid} {Modeling} {Magnetized} {Low-Temperature} {Plasmas}
+     {Transport}, % list of keywords
+     pdfnewwindow=true,      % links in new window
+     colorlinks=true,       % false: boxed links; true: colored links
+     linkcolor=perso,          % color of internal links (change box color with
+     % linkbordercolor)
+     citecolor=perso,        % color of links to bibliography
+     filecolor=magenta,      % color of file links
+     urlcolor=cyan           % color of external links
+ }
 
+\usepackage[french]{minitoc}
+\setcounter{minitocdepth}{2}
+\renewcommand{\mtctitle}{}
+
+\dominitoc

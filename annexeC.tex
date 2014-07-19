@@ -1,1 +1,32 @@
-\Chapter{MUSCL scheme}
+\Chapter{Analyse linéaire de TOKAM anisotherme}
+\label{Annexe C}
+\begin{refsection}
+
+\section{Analyse linéaire de TOKAM anisotherme}
+\begin{align}
+\label{2-eqContinuiteTemp}
+\partial_t \text{N}
+=& - \nabla\cdot\left(\text{N}\mathbf U_\text{E}\right) -\sigma
+\text{N}\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e} + D\nabla^2 \text{N}
++ \mathcal{S}
+\\[0.5cm]
+\label{2-eqCourantTemp}
+\begin{split}
+\partial_{t}\text{W} =& 
+-\nabla\cdot\left(\text{W}\mathbf U_\text{E}\right)
++\text{B}^2\sigma\sqrt{\text{T}_e}\left(1-e^{\Lambda-\Delta\Phi/\text{T}_e}\right)\\
+&-\text{B}^2\nabla\cdot\left(\text{N}\mathbf
+U_{\nabla\text{B}}\right)/\text{N} +\nu\nabla^2\text{W}
+\end{split}
+\\[0.5cm]
+\label{2-eqEnergyTemp}
+\begin{split}
+\partial_{t}\text{P}_e=&
+-\nabla\cdot\left(\text{P}_e\mathbf U_\text{E}\right)
++2/3\left(\gamma\sigma\text{P}_e\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e}\right.\\
+&\left.-\text{P}_e\nabla\cdot\mathbf U_\text{E}
++\chi\nabla^2\text{P}_e
++\mathcal{S}_{\text{T}_e}\right)
+\end{split}
+\end{align}
+\end{refsection}
