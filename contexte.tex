@@ -8,9 +8,9 @@
 Comprendre la nature et les mécanismes du transport des particules dans un
 plasma en présence d'un champ magnétique est une étape essentielle au
 développement et à l'optimisation de nombreuses applications.
-Parmi les plus ambitieuses, la fusion thermonucléaire contrôlée, qui
-consiste à reproduire sur Terre des réactions de fusion\footnote{La réaction de
-fusion entre deux atomes d'hydrogène, qui fait naturellement briller les
+Parmi les plus ambitieuses, la fusion thermonucléaire
+contrôlée~\parencite{Wesson}, qui consiste à reproduire sur Terre des réactions
+de fusion\footnote{La réaction de fusion entre deux atomes d'hydrogène, qui fait naturellement briller les
 étoiles, est à ce jour la source d'énergie la plus prometteuse pour soutenir le besoin croissant en énergie de notre civilisation,
 économiquement pérenne, techniquement faisable et écologiquement durable.},
 repose sur un dispositif de confinement magnétique en forme d'anneau appelé « tokamak ».
@@ -39,8 +39,9 @@ certain type de chauffage par le couplage d'énergie entre des ondes
 électron-cyclotron (ECR)). Ces sources ont typiquement pour paramètres : une
 densité plasma $n_e\sim\,$10$^{16}$ - 10$^{18}\,$m$^{-3}$, une densité de gaz
 $n_g\sim\,$10$^{19}\,$m$^{-3}$, une température électronique $T_e\sim\,$1-20~eV,
-une intensité de champ magnétique pouvant varier de quelques Gauss à 0.1~Tesla,
-et sont donc radicalement différents de ceux des plasmas chaud de fusion.
+une intensité de champ magnétique pouvant varier de quelques Gauss à un dixième
+de Tesla, et sont donc radicalement différents de ceux des plasmas chaud de
+fusion.
 
 Le développement et l'optimisation de ces sources se basent généralement sur la
 combinaison de recherches expérimentales et d'études théoriques, elles-mêmes
@@ -83,7 +84,15 @@ actuellement développé à l'IPP de Garching~\parencite{Hemsworth}. Il s'agit
 d'une source à couplage inductif (ICP) dans laquelle la création du plasma et la
 production d'ions négatifs prennent place dans deux régions séparées de la
 source (schématiquement représentée sur la
-figure~\ref{IPPIonSource}). Le plasma est créé par un chauffage radio-fréquence
+figure~\ref{IPPIonSource}) :
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/sourceIPP.png}
+{\caption{Schéma de l'un des "driver" de la source d'ions
+négatifs de l'IPP Garching.}\label{IPPIonSource}}
+\end{figure}
+
+ Le plasma est créé par un chauffage radio-fréquence
 (RF) de 100 kW à 1MHz dans des "drivers", puis diffuse à travers une chambre
 d'expansion rectangulaire. La production d'ions négatifs a lieu quant à elle de
 l'autre côté de la source, au niveau des grilles d'extraction, par des
@@ -93,38 +102,36 @@ principal est de réduire la température électronique à proximité de la gril
 d'extraction, ce qui est nécessaire pour obtenir une production suffisante
 d'ions négatifs et limiter leur taux de destruction par collision avec les
 électrons. 
-Depuis quelques années, le développement de la source fait cependant face à un
-problème majeur vis-à-vis de la non-uniformité du courant extrait, bien plus
+
+Depuis quelques années, le développement de la source fait
+face à un problème majeur vis-à-vis de la non-uniformité du courant extrait, bien plus
 important dans la partie haute de la source que dans sa partie basse. 
-
-\begin{figure}[!hbtp]
-\subfigure[]{\label{IPPIonSource}
- \begin{minipage}[c][1\width]{0.5\textwidth} 
- \includegraphics[width=0.8\textwidth]{figures/sourceIPP.png}
- \end{minipage}} 
-\subfigure[]{
- \begin{minipage}[c][1\width]{ 0.5\textwidth} 
- \includegraphics[width=0.8\textwidth]{figures/sourceSimonin1.png}\label{SimoninIonSource}
- \end{minipage}} 
- \caption{Schémas des deux concepts de source d'ions négatifs :
-    \subref{IPPIonSource}~ Prototype d'un "driver" de la source IPP de Garching
-    ; \subref{SimoninIonSource}~ Source CYBELE en géométrie colonne en
-    développement au CEA. } 
- \end{figure}
-
-Pour
-comprendre l'origine de ce phénomène et corriger l'inhomogénéité du plasma, de
-sérieux efforts ont été entrepris, aussi bien au niveau de la modélisation que
-de l'expérimentation. Hélas, la physique qui résulte de la combinaison entre le
-plasma du driver, de la zone d'extraction et de la zone de filtre est très
-complexe, et entraîne l'apparition de forts gradients de densité, de température
-et de potentiel eux mêmes responsables 
+Pour comprendre l'origine de ce phénomène et corriger l'inhomogénéité du plasma,
+de sérieux efforts ont été entrepris, aussi bien au niveau de la modélisation que
+de l'expérimentation. Cependant la physique qui résulte de la combinaison entre
+le plasma du driver, de la zone d'extraction et de la zone de filtre est très
+complexe, et entraîne l'apparition de forts gradients de densité,
+de température et de potentiel, eux-même à l'origine de mécanismes de transport
+encore inexpliqués.
 
 
- Afin d'obtenir une bonne
-compréhension de la physique Le groupe GREPHE du LAPLACE a été choisi pour développer un modèle numérique auto-consistant de cette source en 2006
+
+
+Le groupe GREPHE du LAPLACE a été choisi pour
+développer un modèle numérique auto-consistant de la source de Garching en 2006.
+
+
+
 
 colonnes
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/sourceSimonin1.png}
+{\caption{Schéma de concept de source d'ions négatifs CYBELE en géométrie colonne en
+   cours de développement au CEA.}\label{CYBELEIonSource}}
+\end{figure}
+
 \parencite{RosenbluthSimon}
 \parencite{Sakawa} (Modified Simon Hoh Instability)$E_r\cdot\nabla n > 0$
 \parencite{Hoh} Instability Penning discharge
