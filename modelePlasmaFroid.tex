@@ -19,32 +19,29 @@ La compréhension de l'origine et de la nature du transport dans les plasmas
 froids magnétisés est un enjeu majeur pour la conception, la réalisation et
 l'optimisation de nombreuses applications et procédés. La plupart des modèles
 fluides décrivant les phénomènes de transport magnétisés dans les plasmas
-froids sont basés sur les équations de dérive-diffusion (\S
+froids sont basés sur les équations de Dérive-Diffusion (\S
 \ref{1-deriveDiffMag}).
  Cependant, à basse pression ou au delà d'une
 certaine intensité de champ magnétique, la résolution numérique de ces
 équations est complexe voire impossible 
 
-Les équations de dérive-diffusion, en s'appuyant sur l'approximation d'un plasma
+Les équations de Dérive-diffusion, en s'appuyant sur l'approximation d'un plasma
 collisionnel et stationnaire, sont en fait peu adaptées pour décrire le
 transport fortement magnétisé à basse pression et ce problème ne peut alors
 généralement être adressé qu'à travers le développement de modèles cinétiques
 numériquement très coûteux, demandant à priori la résolution d'échelles de
 l'ordre de la longueur de Debye et de la fréquence plasma.
 
-
-
 Dans les plasmas fortement magnétisés, la description du transport transverse
 par les vitesses de dérive (cf.\S\ref{ApproximationsEqMvt}-\ref{vitessesDerive})
 où l'équilibre des courants fait intervenir la divergence de la dérive de
 polarisation. Cette dérive, essentielle dans la dynamique du transport
 transverse, est absente du modèle qui néglige totalement l'inertie des
-particules. Le modèle de dérive-diffusion cherche une solution stationnaire à
+particules. Le modèle de Dérive-Diffusion cherche une solution stationnaire à
 un problème intrinsèquement non-stationnaire.
 \parencite{Fruchtman}
 \parencite{Sternberg}
 D'un autre côté,
-
   La prise en compte de l'inertie
 	dans les équations de transport nous permet de plus de capturer la dynamique transitoire du plasma, comme certains types d'instabilités. Ce modèle fluide et dynamique peut être utilisé pour explorer
 		une large gamme de topologies et d'intensités de champ magnétique.
@@ -59,7 +56,7 @@ stationnaire, de sorte que le champ électrique dérive directement d'un
 potentiel électrostatique $\mathbf{E}=-\nabla \Phi$. Le transport est décrit
 dans le plan perpendiculaire au champ magnétique et les conditions aux limites
 parallèles, qui dérivent d'une théorie classique de gaine, sont
-inclues directement dans les équations de conservation à travers des termes
+incluses directement dans les équations de conservation à travers des termes
 sources effectifs. L'équation d'énergie tient compte des pertes
 associées à l'ensemble des collisions (dont celles dues à l'ionisation des particules) et
 contient un terme de puissance
@@ -291,7 +288,7 @@ Pour les conditions aux limites de l'équation sur la température
 \end{equation}
  
  On peut alors relier cette perte totale aux flux sortants de l'équation
- d'énergie \eqrefp{3-eqTemperature}, ie. au flux d'énergie porté
+ d'énergie \eqrefp{3-eqTemperature}, i.e. au flux d'énergie porté
  par les particules et au flux de chaleur :
  
 \begin{equation}
@@ -324,8 +321,8 @@ parallèle aux lignes de champ : le plasma est stationnaire, et les électrons,
 confinés par le potentiel de gaine, sont en équilibre de Boltzmann le long des
 lignes.
 Le problème du transport magnétisé se réduit alors essentiellement au problème du transport
-dans plan perpendiculaire à $\mathbf B$, qui est le plan des dérives et des
-fort gradients.
+dans le plan perpendiculaire à $\mathbf B$, qui est le plan des dérives et des
+forts gradients.
 
 La dissociation des mouvements parallèle et perpendiculaire s'effectue
 en réécrivant les équations dans un repère axé sur le champ magnétique
@@ -430,7 +427,7 @@ petits pas de temps $\Delta t=t^{k+1}-t^k$, en suivant l'algorithme suivant :
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/3-magnisGrid.png}
-{\caption{Schéma du domaine du simulation, avec à sa frontière une gaine
+{\caption{Schéma du domaine de simulation, avec à sa frontière une gaine
 non-collisionnelle positive.
 Les quantités scalaires $n$, $\Phi$ et $T_e$ sont définies aux noeuds et sur les
 bords du maillage. Les composantes $x$ et $y$ des champs vectoriels sont
@@ -475,7 +472,7 @@ de l'énergie des particules.
 Les taux contenus dans ces tables
 sont issues de LXCAT~\parencite{LXCAT}, intégrés sur une distribution
 maxwellienne pour les électrons calculées par des expériences de
-swarm~\parencite{Phelps} ou encore obtenues en résolvant directement l'équation
+swarm~\parencite{Ellis} ou encore obtenues en résolvant directement l'équation
 de Boltzmann~\parencite{Bolsig}. Pour les électrons, ces valeurs sont
 illustrées sur la figure~\ref{3-tauxcollision}.
 
@@ -514,8 +511,8 @@ réaliser une prédiction implicite et atténuer son influence :
 \begin{equation*}
 \mathcal L^{k+1}=\mathcal L^{k}+\frac{d\mathcal L^{k}}{d\mathcal Q}(\mathcal
 Q^{k+1}-\mathcal Q^k) \end{equation*}
-Originalement mise en \oe vre dans~\parencite{HagelaarImpl}, nous utilisons cette technique pour quelques
-termes du modèle.} pour faire une prédiction implicite :
+Originalement mise en \oe uvre dans~\parencite{HagelaarImpl}, nous utilisons
+cette technique pour quelques termes du modèle.} pour faire une prédiction implicite :
 
 \begin{equation}
 en_e\Pi_e(T_e^{k+1})=en_e\left(\Pi_e(T_e^{k})+\frac{\partial \Pi_e}{\partial
@@ -692,7 +689,7 @@ satisfait exactement à la continuité du courant.
 L'équation \eqref{3-eqCourantCoefficient}, discrétisée spatialement sur un
 stencil à 9 points, mène à un système linéaire potentiellement mal conditionné
 quand le coefficient $\text{B}_u$ devient supérieur au coefficient $\text{A}_u$,
-ie. en présence d'un fort champ magnétique :
+i.e. en présence d'un fort champ magnétique :
 
 \begin{equation}
 \frac{|\text{A}_u|}{|\text{B}_u|}=\frac{\nu^m+\delta}{\omega_c}=\frac{\nu^m+\frac{\alpha_\omega}{\Delta
@@ -714,7 +711,7 @@ remplaçant le facteur $\delta$ par :
 \delta=\max(\alpha_\omega/\Delta t,|\omega_c|)
 \end{equation}
 
-ie. en prenant $\alpha_\omega=\max(1,|\omega_c|\Delta t)$.
+i.e. en prenant $\alpha_\omega=\max(1,|\omega_c|\Delta t)$.
 Cette opération, qui n'a dans des conditions typiques de nos plasmas froids
 magnétisés aucun effet pour les ions\footnote{Dans des champs magnétiques
 typiquement de l'ordre de la centaine de Gauss, le pas de temps choisit, de l'ordre de 10$^{-8}$s, est toujours bien
@@ -824,7 +821,7 @@ d'argon avec des parois conductrices.
 
 L'intensité du champ magnétique est choisie suffisamment importante $B=\,$250 G
 pour tester le modèle dans une situation délicate où le rayon de Larmor des
-électrons devient progressivement supérieur à leur libre parcours moyen, ie.
+électrons devient progressivement supérieur à leur libre parcours moyen, i.e.
 avec un paramètre de Hall électronique variant fortement dans le domaine de
 simulation :
 
@@ -872,7 +869,7 @@ définie comme l'inverse du nombre de points par direction :
 h=\frac{1}{N}
 \end{equation}
 
-A partir d'un maillage grossier d'échelle $h=\,$1/16 (ie. de taille 16x16),
+A partir d'un maillage grossier d'échelle $h=\,$1/16 (i.e. de taille 16x16),
 nous construisons une série de maillages raffinés d'un facteur 2 dans chaque direction par rapport à leur prédécesseur, la grille la
 plus fine de cette étude étant de taille 512x512. Comme nous n'avons pas de
 solution analytique au cas de test, nous utilisons l'extrapolation de
@@ -883,7 +880,7 @@ f_{h=0}=\frac{4}{3}f_{1}-\frac{1}{3}f_2
 \end{equation}
 
 $f_{1}$ et $f_2$ étant les solutions calculées sur les maillages les plus fins,
-ie. respectivement sur 512 et 256 points de maillage. Avec cette solution,
+i.e. respectivement sur 512 et 256 points de maillage. Avec cette solution,
 l'erreur relative (mesurée suivant la norme $L^1$) correspondant à un maillage
 d'échelle $h$ s'écrit :
 
@@ -900,7 +897,7 @@ f_h=\sum_{i=1}^{N}\sum_{j=1}^{N}n_e(i,j)\text{dV}(i,j)
 
 $\text{dV}(i,j)$ étant le volume élémentaire de contrôle autour du n\oe ud
 (i,j). On voit que l'erreur décroît comme le carré de l'inverse du nombre de
-maille, donnant un ordre 2 pour la convergence du schéma de MAGNIS.
+mailles, donnant un ordre 2 pour la convergence du schéma de MAGNIS.
 
 La vérification et la validation sont des processus menés
 pour contrôler les modèles et codes numériques en s'assurant que les solutions

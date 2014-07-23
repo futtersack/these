@@ -47,10 +47,12 @@
 	\cleardoublepage
 	
 	\tableofcontents
-	
-	\ChapterStar{}
+%	\cleardoublepage
+	%\ChapterStar{}
 
 	\printnomenclature[3em]
+	\input{nomenclature}
+	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%% 
 	%%  Chapters
@@ -60,7 +62,6 @@
 	%\pagenumbering{arabic}
 	%\setcounter{page}{0} 
 	\renewcommand{\labelitemi}{$\bullet$}
-	\input{nomenclature}
 	\input{contexte}
 	\input{introduction}
 	\input{approximationEqMvt}

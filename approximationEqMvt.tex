@@ -1,10 +1,10 @@
-\Chapter{Modélidation des plasmas magnétisés}
+\Chapter{Modélisation des plasmas magnétisés}
 \chaptermark{Modélidation des plasmas magnétisés}
 
 \label{ApproximationsEqMvt}
 \begin{refsection}
 Dans ce chapitre, nous présentons deux modèles couramment utilisés 
-pour décrire les plasmas magnétisés. Le modèle de dérive-diffusion utilisé dans
+pour décrire les plasmas magnétisés. Le modèle de Dérive-Diffusion utilisé dans
 le domaine des plasmas froids, suppose un plasma collisionnel et stationnaire.
 Le modèle des vitesses de dérive représente des plasmas totalement ionisés et très
 magnétisés. Nous discutons enfin de la pertinence des deux modèles dans le cadre
@@ -21,7 +21,7 @@ initiales et des différentes approximations. Ils ne sont
 pas censés représenter exactement leur sujet, mais au moins décrire une
 certaine physique mise en jeu.
 Les modèles sont l'un des
-principaux outils de la science moderne, et, grâce à l'outil numérique, nous
+principaux outils de la science moderne, et, grâce aux méthodes numériques, nous
 donne accès à une réalité virtuelle plus facilement analysable et questionnable
 que le vrai monde.
 
@@ -36,28 +36,28 @@ que le vrai monde.
 \end{figure}
 
 
-Actuellement, les modèle les plus complets pour décrire un plasma sont sans
+Actuellement, les modèles les plus complets pour décrire un plasma sont sans
 conteste les modèles cinétiques. Cependant, en plus d'être très coûteux à
 résoudre numériquement, ces modèles donnent des résultats très bruités
 et difficilement interprétables. Pour la compréhension des phénomènes qui ont
-lieux dans les plasmas, on leur préfère donc assez souvent un modèle fluide, qui
-donne un accès plus direct aux mécanismes de transport. En fonction des
+lieu dans les plasmas, on leur préfère donc assez souvent les modèles fluides,
+qui donnent un accès plus direct aux mécanismes de transport. En fonction des
 processus et des phénomènes de transport que l'on désire observer, les modèles
 fluides, qui permettent d'isoler, de négliger, ou même d'amplifier certains
 termes, sont plus à même de nous aider à comprendre les liens entre les différents mécanismes.
 
 Dans la théorie fluide, l'équation de quantité de
 mouvement \eqref{1-eqMouvement}, qui contrôle l'évolution des vitesses fluides
-$\mathbf u_\alpha$, régit l'essentiel de la dynamique du plasma. Cependant, comme sa forme complète
- est encore trop compliquée, il est courant de la
-simplifier davantage en considérant d'autres hypothèses.
-La première de ces hypothèses communément retenue pour simplifier l'équation de
-la quantité de mouvement consiste à considérer le tenseur de pression isotrope,
-ie.
+$\mathbf u_\alpha$, régit l'essentiel de la dynamique du plasma. Cependant, sa forme complète
+ est encore trop compliquée, et il est courant de la
+simplifier davantage en considérant certaines approximations.
+Communément retenue dans le domaine des plasmas froids, la première hypothèse
+pour simplifier l'équation de la quantité de mouvement consiste à considérer le
+tenseur de pression isotrope, i.e.
 $\boldsymbol{\Pi}_\alpha=0$, en supposant que les transferts d'impulsion dus
 aux collisions entre particules d'espèces différentes ont plus d'effet que
-ceux résultants de la viscosité. L'équation de la quantité de
-mouvement~\eqref{1-eqMouvement} se réduit ainsi à un équilibre entre les forces
+ceux résultants de la viscosité. L'équation de la
+quantité de mouvement~\eqref{1-eqMouvement} se réduit ainsi à un équilibre entre les forces
 d'inertie, de frottement, de Lorentz et de pression :
 
 \begin{equation}
@@ -108,15 +108,15 @@ Dans le domaine des plasmas
 froid, on fait l'hypothèse de forte collisionnalité et on développe
 l'équation de la quantité de mouvement en fonction du petit paramètre
 $\lambda_{lpm}/L$.
-Dans le domaine des plasmas de fusions fortement magnétisés, il est
+Dans le domaine des plasmas de fusion fortement magnétisés, il est
 plutôt d'usage de considérer le petit paramètre $\delta=\rho_L/L$ pour moyenner
 l'équation \eqref{1-eqBilanForce} sur les échelles de temps supérieures à
 l'inverse de la fréquence cyclotronique $\omega_{c}$.
 
 
-\section{Cas collisionnel : Équation de dérive-diffusion}
+\section{Cas collisionnel : Équation de Dérive-Diffusion}
 \label{1-transportAmbipolaire}
-\subsection{Équation de dérive-diffusion non magnétisée}
+\subsection{Équation de Dérive-Diffusion non magnétisée}
 Les plasmas froids de décharge utilisés dans l'industrie et la recherche n'ont
 en général qu'un faible degré d'ionisation $\alpha<$1\% et la dynamique des
 espèces y est dominée par la perte de quantité de mouvement liée à l'ionisation
@@ -148,7 +148,7 @@ n_\alpha\mathbf u_\alpha\equiv\underbrace{\frac{q_\alpha}{|q_\alpha|}\mu_\alpha 
 de Fick}
 \end{equation}
 
- C'est le flux de dérive-diffusion, caractérisé par les coefficients de
+ C'est le flux de Dérive-Diffusion, caractérisé par les coefficients de
 transport $\mu_\alpha$ et
 $D_\alpha$, tous deux inversement proportionnels à la fréquence de collision
 $\nu_\alpha$ (donc à la densité de gaz), et reliés par la relation d'Einstein :
@@ -168,7 +168,7 @@ D_\alpha/\mu_\alpha=\frac{T_\alpha}{e}
 
 En combinant \eqref{1-eqDriftDif2} avec l'équation de continuité
 \eqref{1-eqContinuite}, on obtient l'équation d'évolution de la densité
-dite de dérive-diffusion :
+dite de Dérive-Diffusion :
  
 \begin{equation}
 \label{1-eqDriftDifContinuite}
@@ -195,10 +195,10 @@ n}{n}
 \end{equation}
 
 Si l'on applique l'équation de
-dérive-diffusion~\eqref{1-eqDriftDifContinuite} à un plasma peu collisionnel,
-ie. dans la limite $\nu_{i,e}\rightarrow\,$0, cette description peut poser
+Dérive-Diffusion~\eqref{1-eqDriftDifContinuite} à un plasma peu collisionnel,
+i.e. dans la limite $\nu_{i,e}\rightarrow\,$0, cette description peut poser
 problème, les mobilités tendant quant à elles vers l'infini. Le modèle de
-dérive-diffusion n'est en effet strictement valide que quand le libre parcours
+Dérive-Diffusion n'est en effet strictement valide que quand le libre parcours
 moyen ne dépasse pas la longueur caractéristique des gradients $\lambda\sim L_{\nabla}$. 
 
 Quand ce critère n'est pas respecté, ce n'est pas très grave pour les
@@ -207,12 +207,12 @@ Boltzmann tenant toujours.
 Pour les ions, la seule issue repose sur la prise en compte du
 terme de création $\nu^\text{iz}_i\mathbf u_i$ qui défini une limite haute pour
 la mobilité ionique.
-Le modèle de dérive-diffusion est ainsi encore utilisable, mais perd beaucoup en
+Le modèle de Dérive-Diffusion est ainsi encore utilisable, mais perd beaucoup en
 précision.
 
 Regardons maintenant ce que donne ce modèle en présence d'un champ magnétique.
 
-\subsection{Équation de dérive-diffusion magnétisée}
+\subsection{Équation de Dérive-Diffusion magnétisée}
 \label{1-deriveDiffMag}
 L'utilisation d'un champ magnétique dans un plasma permet de contrôler en partie
 le transport des particules et d'obtenir des configurations favorables pour
@@ -247,7 +247,7 @@ b\times\mathbf \nabla n_\alpha\right)
 \end{equation}
 
 Pour une meilleure lisibilité, on réécrit l'équation~\ref{2-eqDriftDifMag}
-sous forme tensorielle, donnant l'équation de dérive-diffusion magnétisée,
+sous forme tensorielle, donnant l'équation de Dérive-Diffusion magnétisée,
 couramment utilisée dans le domaine des plasmas froids pour modéliser le
 transport magnétisé~\parencite{grephe, propulseur} :
 
@@ -336,12 +336,12 @@ parallèle au champ magnétique et d'une dérive lente du centre-guide des parti
 la direction transverse. Cette décomposition, qui peut se voir comme une
 version fluide de la théorie particulaire du centre-guide, sous-entend que les
 fréquences cyclotroniques sont grandes devant les fréquences caractéristiques du
-transport, ie. $\omega_{ce},\omega_{ci}\gg\omega$. 
+transport, i.e. $\omega_{ce},\omega_{ci}\gg\omega$. 
  
 \subsection{Les plasmas de la Scrape-Off-Layer}
 La Scrape-Off-Layer des tokamaks, ou SOL, est la zone en
-périphérie du plasma confiné, ie. qui commence à partir de la séparatrice et qui
-peut éventuellement s'étendre jusqu'aux parois internes du tore (voir
+périphérie du plasma confiné, i.e. qui commence à partir de la séparatrice et
+qui peut éventuellement s'étendre jusqu'aux parois internes du tore (voir
 figure~\ref{SOL}). Dans cette région, les
 particules ne sont plus confinées car les lignes de champ interceptent un
 obstacle matériel (un limiteur ou un divertor) traité et dessiné spécifiquement
@@ -370,7 +370,7 @@ fréquence caractéristique du transport parallèle :
 
 \begin{equation}
 \omega_\para\sim
-\frac{v_{\text{T}\alpha}}{L_\para}\approx\omega_{c\alpha}\frac{\rho_{L\alpha}}{L_\para}\rightarrow
+\frac{v_{{T}_\alpha}}{L_\para}\approx\omega_{c\alpha}\frac{\rho_{L\alpha}}{L_\para}\rightarrow
 \delta=\frac{\rho_{L\alpha}}{L_\para}=\frac{\omega_\para}{\omega_{c\alpha}}\ll1
 \end{equation} 
 
@@ -380,7 +380,7 @@ typiques $L_\nabla$ de quelques centimètres sont bien supérieures aux rayon de
 Larmor ionique $\rho_{Li}\approx3.10^{-4}$~m et électroniques
 $\rho_{Le}\approx7.10^{-6}$~m) entraînent un transport de fréquence
 caractéristique $\omega_\perp\sim v_\perp/L_\para\sim\rho_{L\alpha}
-v_{\text{T}\alpha}/(L_\para L_\nabla)$ de deux ordres de grandeur inférieur à
+v_{{T}_\alpha}/(L_\para L_\nabla)$ de deux ordres de grandeur inférieur à
 $\omega_{c\alpha}$ :
 
 \begin{equation}
@@ -389,7 +389,7 @@ L_\nabla}\sim\delta^2
 \end{equation}
 
 Malgré leur faible fréquence, ces vitesses de dérives sont à l'origine de tous
-les mécanismes de micro-turbulence et jouent ainsi un rôle primordiale dans le
+les mécanismes de micro-turbulence et jouent ainsi un rôle primordial dans le
 problème du confinement des plasmas de fusion.
 
 \subsection{Vitesses de dérive électrique et diamagnétique}

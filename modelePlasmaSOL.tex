@@ -15,8 +15,8 @@ courant sont ensuite dérivées avec quelques précisions sur les approximations
 choisies.
 Dans une deuxième partie, nous présentons les évolutions du
 modèle et les modifications entreprises sur le code pour lui
-permettre décrire le transport dans des conditions caractéristiques aux plasmas
-froids. Sont ainsi passées en revues :
+permettre de décrire le transport dans des conditions caractéristiques aux
+plasmas froids. Sont ainsi passés en revue :
 
 \begin{itemize}
   \item l'inclusion de conditions aux limites
@@ -54,7 +54,7 @@ un forçage de la turbulence par un flux au lieu d'un gradient d'équilibre afin
 de lever et de remettre en question l'hypothèse de séparabilité des échelles
 entre l'équilibre et les fluctuations qui était utilisée auparavant.
 
-Le code TOKAM2D a entre autre permis retrouver le caractère extrêmement
+Le code TOKAM2D a entre autres permis de retrouver le caractère extrêmement
 intermittent du transport dans la SOL et la longueur de décroissance du profil de densité que l'on
 mesurait expérimentalement~\cite{SarazinPhD}. L'étude du modèle a ainsi aidé à
 améliorer la compréhension du mécanisme de l'instabilité d'interchange,
@@ -68,7 +68,7 @@ densité auto-organisées se propageant radialement sur de longues distances (de
 Dans les conditions typiques de la SOL ($n_e\sim\,$10$^{19}$~m$^{-3}$,
 $T_e\sim\,$70~eV), l'utilisation d'un modèle fluide est justifiée par la forte
 collisionnalité du plasma : pour les ions, le libre parcours moyen
-$\lambda_i=v_{\text{T}{i}}/\nu_{ei}$, de l'ordre du mètre, est très
+$\lambda_i=v_{{T}_{i}}/\nu_{ei}$, de l'ordre du mètre, est très
 inférieur à la longueur de connexion parallèle des lignes de champ
 $L_\para\sim\,$100~m.
 
@@ -120,7 +120,7 @@ a$ :
 $$\frac{\rho_{Li}}{r}\partial_\theta f(x,y)\approx\partial_y
 f(x,y)$$
 ce qui constitue l'approximation slab. Ces
-coordonnées n'intègrent donc pas les effets de courbure géométrique.}, ie.
+coordonnées n'intègrent donc pas les effets de courbure géométrique.}, i.e.
 avec $x\equiv(r-a)/\rho_{Li}$ et $y\equiv a\theta/\rho_{Li}$ les coordonnées
 transverses au champ magnétique
 (cf.~\S\ref{ApproximationsEqMvt}-\ref{1-vitessesDerive}), normalisées par le rayon de Larmor ionique.
@@ -216,7 +216,7 @@ Le terme non-linéaire $[n,\Phi]$ est l'un des éléments moteur du modèle
 d'interchange. Couplant la densité au potentiel électrique, il opère un
 transfert d'excitation des composantes radiales des fluctuations à leurs
 composantes poloïdales et réciproquement. Les termes de flux parallèle et de
-diffusion sont stabilisant, ils tendent à
+diffusion sont stabilisants, ils tendent à
 amortir les fluctuations et donc à homogénéiser le système.
 
 \subsubsection{Équation de conservation du courant}
@@ -406,7 +406,7 @@ v=\overline{v}c_s=\overline{v}\sqrt{\frac{eT\indice{0}}{m_i}}
 
 Nous définissons de plus les variables adimensionnées du modèle, la densité
 $\text{N}$, le potentiel électrostatique $\overline{\Phi}$ (pour lequel nous
-garderons la même notation, ie. sans la barre, dans le reste du chapitre) et la
+garderons la même notation, i.e. sans la barre, dans le reste du chapitre) et la
 vorticité $\text{W}$ par :
 
 \begin{eqnarray}
@@ -594,7 +594,7 @@ Si les simulations de
 cette version complétée de TOKAM2D ne correspondent pas encore aux plasmas
 froids des sources d'ions, elles seront tout de même éclairantes sur le type de
 transport qui se met en place dans des configurations de type filtre magnétique
-et colonne de plasma pour des cas limites de notre étude, ie. où le plasma est
+et colonne de plasma pour des cas limites de notre étude, i.e. où le plasma est
 totalement ionisé et très magnétisé. La levée de ces deux hypothèses,
 qui n'est possible qu'en incluant l'interaction avec les atomes neutres,
 requiert une réécriture plus en profondeur du modèle, ce qui fait l'objet de la
@@ -812,8 +812,8 @@ $\mathbf{Q}_e=\chi\nabla\text{T}_e$. Dans
 notre modèle $\mathbf{Q}_e=\chi\nabla\text{P}_e$ pour ajouter un terme diffusif
 analogue à celui des deux autres équations.}
 $\mathbf{Q}_e=\chi\nabla\text{P}_e$, où $\chi$ est une conductivité thermique
-normalisée à $D_B=\rho_{Li}c_s$, afin contrôler l'amplitude des flux diffusifs
-dans la direction perpendiculaire.
+normalisée à $D_B=\rho_{Li}c_s$, afin de contrôler l'amplitude des flux
+diffusifs dans la direction perpendiculaire.
 	Les équations du modèle s'écrivent alors :
 	
 %\hspace*{-2cm}\begin{minipage}{1.1\textwidth}
@@ -1006,7 +1006,7 @@ Quand la température électronique est prise en compte,
 le plasma commence à se déformer et une instabilité, indépendante de la
 courbure du champ magnétique, se développe.
 La caractérisation de cette instabilité est encore à réaliser
-mais on peut dores et déjà essayer de la relier au travaux
+mais on peut d'ores et déjà essayer de la relier au travaux
 réalisés dans~\parencite{Berk} qui prédisent une instabilité à fort taux de
 croissance en présence de parois conductrices et d'un gradient de température.
 Conformément à nos attentes, le plasma est en rotation dans le plan transverse (sur les
@@ -1014,8 +1014,8 @@ figures~\ref{2-MagColumnWithTe}, la rotation s'effectue dans le sens
 anti-trigonométrique, qui correspond à la direction de la dérive ExB).
 
 Les conditions aux limites choisies, en supposant $\Phi=\Lambda$ et $W=0$ à la
-paroi, empêche le courant de rentrer ou de sortir par les bords latéraux. Comme
-les électrons sont moins mobiles que les ions perpendiculairement au champ
+paroi, empêchent le courant de rentrer ou de sortir par les bords latéraux.
+Comme les électrons sont moins mobiles que les ions perpendiculairement au champ
 magnétique, pour conserver
 la quasineutralité du plasma, le courant préfère passer le long des lignes de
 champ, court-circuitant le transport perpendiculaire.
