@@ -299,6 +299,8 @@ alors recours à des expériences spéciales dites de
 "swarm"~\parencite{Ellis,Phelps} pour mesurer $\nu$ indirectement à partir de
 modèles de Dérive-Diffusion (voir~\S\ref{ApproximationsEqMvt}-\ref{1-transportAmbipolaire}).
 
+\subsubsection{Collisions élastiques et inélastiques}
+
 Lors de collisions
 \emph{élastiques}\footnote{Les collisions sont dites élastiques car elles
 donnent lieu à des transferts d'impulsion et d'énergie sans changer la nature
@@ -340,6 +342,8 @@ du plasma. L'association de fréquences de collisions à chaque type de réactio
 (eg. $\nu^\text{iz}$ pour l'ionisation), là aussi en fonction de sections
 efficaces, permet un ordering sur l'importance de ces processus dans l'évolution
 du plasma.
+
+\subsubsection{Libre parcours moyen}
 
 En plus d'une fréquence, on associe souvent une longueur caractéristique
 à l'occurrence d'une collision. Le libre parcours moyen $\lambda_\alpha$
@@ -389,6 +393,7 @@ perpendiculaire aux lignes de champ.}\label{1-particleDrifts}}
   magnétique, qui est due aux forces extérieures.
 \end{itemize}
 
+\subsubsection{Mouvement cyclotronique}
 Le mouvement de rotation autour des lignes de champ, appelé mouvement
 cyclotronique, est caractérisé par la pulsation cyclotronique : 
 
@@ -429,6 +434,8 @@ perpendiculairement au champ magnétique :
 \begin{equation}
 \delta=\frac{\rho_{L\alpha}}{L_\perp}\ll 1
 \end{equation}
+
+ \subsubsection{Vitesses de dérive}
 
 L'application d'un champ électrique conjointement à un champ magnétique
 induit une troisième sorte de mouvement, appelé communément "dérive
@@ -472,6 +479,35 @@ magnétique est souvent utilisée pour contrôler et limiter le déplacement des
 particules, les vitesses de dérive sont à l'origine d'un transport
  transverse déconfinant, qui s'amplifie généralement par le développement de
  comportements non-linéaires et turbulents.
+ 
+ \subsubsection{Paramètre de Hall}
+ Dans un plasma le paramètre de Hall, $h_\alpha$, mesure l'importance du
+ transport magnétisé par rapport au transport collisionnel. Il est définit par
+ le ratio entre la fréquence cyclotronique $\omega_{c\alpha}$ et la fréquence
+ de collision $\nu_\alpha$ :
+ 
+ \begin{equation}
+ h_\alpha=\frac{\omega_{c\alpha}}{\nu_\alpha}=\frac{eB}{m_\alpha\nu_\alpha}
+ \end{equation}
+ 
+ Le paramètre de Hall électronique peut se retrouver en mesurant l'angle de Hall
+ $\theta_h$ qui se forme entre le courant dans le plasma et le
+ champ électrique $h_e=\tan(\theta_h)$.
+ L'effet Hall dans un plasma partiellement ionisé peut être bien plus important
+ que son analogue dans les solides. En effet, souvent très inférieur à 1 dans
+ les métaux, le paramètre de Hall électronique que l'on rencontre dans les
+ sources magnétisées peut varier sur une large gamme de valeurs, typiquement :
+ 
+  \begin{equation}
+ 0.1\,<\,h_e\,<\,1000
+ \end{equation}
+ 
+Dans nos conditions de sources magnétisées, le paramètre de
+ Hall des ions ne dépasse que très rarement l'unité, ce qui signifie que ceux-ci
+ ne sont que faiblement influencés par le champ magnétique.
+ La différence de vitesse entre les ions et les électrons à travers le
+ champ magnétique est à l'origine du courant de Hall : c'est ce courant qui
+ donne son nom au propulseur à effet Hall.
  
 \subsection{Les gaines électrostatiques}
 \label{1-gaines}

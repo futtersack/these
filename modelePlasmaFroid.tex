@@ -464,7 +464,7 @@ conditions aux limites périodiques, le solveur est de plus construit pour
 utiliser une approche multi-grille~\parencite{Fedorenko} rendant la convergence
 particulièrement rapide sur un maillage 2D.
 
-\subsection{Fréquences, termes sources et conditions parallèles}
+\subsection{Fréquences, termes sources et conditions aux limites}
 Avant de résoudre à proprement dit les équations du modèle, à chaque
 itération et pour chaque interaction, MAGNIS lit les taux $k_\text{iz}$,
 $k^m_{\alpha s}$ et $k^\varepsilon_{e}$ dans des tables en fonction
@@ -590,7 +590,7 @@ pas de temps. Pour remédier à ce problème, nous limitons l'erreur
 d'interpolation en suivant à la fois la vitesse $\mathbf u$ et la vitesse
 croisée $\mathbf u_\times=\mathbf b\times\mathbf u$ sur tous les points du
 maillage :
-
+3-magnisVectCross
 \begin{equation}
 \label{3-eqMvtPonderee12}
 \mathbf{u}^{k+1}=\text{A}_u\left(\mathbf F + \delta\mathbf{u}^{k}\right)+
@@ -606,6 +606,21 @@ b\times\mathbf F +
 \delta\left((1-\beta)\mathbf{u}_\times^{k}+\beta\mathbf
 b\times\mathbf{u}^{k}\right)\right)
 \end{equation}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/3-magnisVectCross.png}
+{\captionsetup{justification=raggedright,
+singlelinecheck=false}\label{3-magnisVectCross}\caption{Schéma de définition des vitesses fluides et des vitesses croisées : les composantes vectorielles en $x$ de $\mathbf
+ u_{|_x}$ et de $\mathbf
+ u_{\times|_x}=(\mathbf b\times\mathbf u_y)_{|_x}$ sont définies aux mêmes
+ points. \\ Les points de maillage en rouge sont impliqués dans l'interpolation
+ classique de la composante $x$ des gradients à l'origines des flux de dérive.
+ Par exemple pour obtenir le champ $\mathbf{E}_\times$ en~($i$+1/2 ,$\,j$)~:
+ $$\widetilde{E}_{\times|_x}^{(i+1/2,j)}={\widetilde{\nabla
+ \Phi}}_y^{(i+1/2,j)}=-\frac{1}{4\Delta
+ y}(\Phi^{(i+1,j+1)}-\Phi^{(i-1,j+1)}+\Phi^{(i,j+1)}-\Phi^{(i,j-1)})$$ }}
+\end{figure}
 
 Le coefficient $\beta$ est un paramètre donnant un contrôle sur
 l'utilisation de ce maillage secondaire. Quand $\beta\,$= 0, aucune
@@ -627,6 +642,7 @@ ordering entre $\nu$, $\omega_c$ et $\delta$.
 
 
 \subsection{Conservation du courant et correction des vitesses}
+\subsubsection{Prédiction et correction}
 
 Les expressions obtenues pour les vitesses
 fluides (\eqref{3-eqMvtPonderee12} et \eqref{3-eqMvtPonderee2}) font intervenir

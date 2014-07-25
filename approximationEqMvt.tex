@@ -625,17 +625,19 @@ n_\alpha}{n_\alpha q_\alpha B^2}
 \section{Discussion}
 Nous avons présenté deux modèles respectivement utilisés dans le domaines des
 plasmas de fusion et des plasmas froids et allons maintenant discuter de leur
-pertinence pour décrire une source basse-pression.
+pertinence pour décrire une source basse-pression magnétisée.
 
-Le modèle de basé sur les vitesses de dérive est basé sur de nombreuses
-hypothèses qui sont fondamentalement injustifiée dans le cadre des sources :
+\subsection{Sur le modèle des vitesses de dérive}
+Le modèle basé sur les vitesses de dérive s'appuie sur de nombreuses
+hypothèses et appoximations qui sont fondamentalement injustifiée dans le cadre
+des sources :
 
 \begin{itemize}
-  \item Tout d'abord, le modèle ne tient pas compte de l'interaction avec le
-  gaz. Les collisions élastiques et inélastiques sont des éléments
-  primordiaux dans la physique des plasmas froids. L'ionisation contrôle
-  notamment le bilan de particule et c'est un puit de quantité de mouvement qui
-  peut influencer fortement la dynamique ionique à basse pression de gaz.
+  \item Tout d'abord, le modèle considère un plasma totalement ionisé, ne tenant
+  pas compte de l'interaction avec le gaz. Or, les collisions élastiques et
+  inélastiques sont des éléments primordiaux dans la physique des plasmas froids. L'ionisation contrôle
+  notamment le bilan de particule et c'est un puit de quantité de mouvement
+  pouvant influencer fortement la dynamique ionique à basse pression de gaz.
   \item En l'absence de collision avec le gaz, la dérive électrique ne porte pas
   de courant et le champ électrique n'intervient dans l'équation du courant qu'à
   travers la vitesse de polarisation. Ce n'est pas vrai dans le cas des sources
@@ -647,8 +649,22 @@ hypothèses qui sont fondamentalement injustifiée dans le cadre des sources :
   magnétique.
 \end{itemize}
 
-Le modèle de Dérive-Diffusion pose quant à lui des problèmes sur d'autres points
-:
+Cependant, dans le développement en ordre, le modèle des vitesses de
+dérive ne fait pas directement d'approximations (sur le tenseur de pression, les
+collisions coulombiennes et l'inertie). On voit par exemple que dans l'équation
+du courant, la présence des termes d'inertie joue un rôle majeur à travers le
+courant de polarisation qui referme l'équation du courant.
+
+Le modèle des vitesses de dérive peut aussi être adapté à la présence d'un gaz
+en incluant le terme de collision dans l'expression de la vitesse, mais
+on ne sait plus trop à quoi correspond le petit paramètre $\epsilon_\omega$ ni
+si un développement en ordres successifs de $\epsilon_\omega$ a encore un
+sens.
+
+\subsection{Sur le modèle de Dérive-Diffusion}
+
+Le modèle de Dérive-Diffusion, encore très utilisé dans le domaine des plasmas
+froids, pose quant à lui des problèmes sur d'autres points :
 
 \begin{itemize}
   \item L'hypothèse de forte collisionnalité n'est pas rigoureusement justifiée
@@ -660,9 +676,22 @@ Le modèle de Dérive-Diffusion pose quant à lui des problèmes sur d'autres po
   l'équation de la quantité de mouvement.
   \item L'équation de Dérive-Diffusion, discrétisée spatialement sur un
 	stencil à 9 points, mène à un système linéaire potentiellement mal conditionné
-	quand les coefficients de transport croisé deviennent supérieurs aux
-	coefficients perpendiculaire, i.e. en présence d'un fort champ magnétique.
+	quand les coefficients de transport croisé sont supérieurs aux
+	coefficients perpendiculaires, i.e. en présence d'un fort champ magnétique. Le
+	probème est numériquement instable et devient difficile à résoudre. 
+	\item Enfin, le modèle néglige totalement l'inertie des particules dont dérive
+	le courant de polarisation, crucial dans la description du transport fortement
+	magnétisé. On manque ainsi tout l'aspect dynamique du transport. Le
+	modèle, en cherchant une solution stationnaire à un problème fondamentalement
+	instationnaire, est donc très peu adapté au transport fortement magnétisé.
 \end{itemize}
+
+Le modèle de Dérive-Diffusion tel que présenté dans ce chapitre fait
+l'hypothèse d'un plasma isotherme, mais cette hypothèse est assez facile à
+lever et ne nécessite que peu de modification sur les équations et les
+coefficients de transport. La prise en compte des termes d'inertie demande par
+contre un nouveau formalisme pour la dérivation du modèle, qui ne décrit plus
+uniquement le phénomène simple de dérive-diffusion.
 
 %\bibliographystyle{apalike}
 %\bibliography{biblio}

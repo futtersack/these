@@ -131,20 +131,38 @@ La séparatrice est modélisée par un terme source entrant de particules, de pr
 \mathcal S=\mathcal{S}_0 \exp[(x-x_\mathcal{S})^2/l_\mathcal{S}^2]
 \end{equation}
 
+\begin{minipage}{1\textwidth}
+\begin{minipage}{0.4\textwidth}
 Le terme source sépare la zone
-simulée en deux régions :
+simulée en deux régions (voir figure~\ref{2-stable}) :
 
-\begin{itemize}
-  \item une région stable à gauche
-  de la source, qui peut représenter la SOL côté champ fort (High Field
-  Side (HFS), entre le centre du tokamak et le plasma de c\oe ur). Dans cette
-  région, la courbure magnétique est favorable à la stabilité vis-à-vis de l'instabilité
-  d'interchange $\nabla 1/B\cdot\nabla N>0$
-  \item une région sujette à l'instabilité d'interchange à
-  droite de la source, qui modélise la SOL côté faible champ (Low Field Side
-  (LFS), entre le plasma de c\oe ur et la paroi extérieure du tokamak)
- \end{itemize}
- 
+  \labelitemi~ une région stable à gauche
+  de la source, qui peut représenter la SOL côté champ fort (HFS\footnotemark{}).
+  Dans cette région, la courbure magnétique est favorable à la stabilité vis-à-vis de l'instabilité
+  d'interchange $\nabla 1/B\cdot\nabla N>0$.
+  
+  \labelitemi~ une région sujette à l'instabilité d'interchange à
+  droite de la source, qui modélise la SOL côté faible champ 
+  (LFS).
+
+\end{minipage}
+\qquad
+\begin{minipage}{0.6\textwidth}
+\centering
+    \includegraphics[width=1\textwidth]{figures/2-stable.png}
+    \captionof{figure}{Côté faible champ, la courbure et le gradient de densité
+    sont opposés. L'interchange est instable~\parencite{SarazinPhD}.}
+    \label{2-stable}
+\end{minipage}
+\end{minipage}
+
+\footnotetext{Il
+  est d'usage de parler de \emph{côté fort champ} (ou High Field Side HFS) et de
+  \emph{côté faible champ} (Low Field Side ou LFS) pour désigner la partie du
+  plan poloïdal entre le centre du tokamak et le plasma de c\oe ur
+  (R<R$_\text{O}$) et la partie se situant entre le plasma de c\oe ur et la
+  paroi extérieure du tokamak (R>R$_\text{O}$). Cette dénomination est faite en
+  référence à l'amplitude relative du champ magnétique toroïdal de part et d'autre de l'axe magnétique.}
 Dans la version initiale de TOKAM2D, le domaine de simulation a été choisi
 bipériodique pour permettre un traitement dans l'espace
 de Fourier.

@@ -40,20 +40,25 @@
 \usepackage[french]{babel}
 
 
-\usepackage[center,labelfont=bf]{caption}
+\usepackage[center,labelfont=bf,font=footnotesize]{caption}
 \usepackage{indentfirst}
 \usepackage{floatrow}
 %\usepackage[margin=25mm]{geometry}
 \usepackage[subfigure]{tocloft} 
 \uchyph=0
 \interfootnotelinepenalty=10000
+\setcounter{secnumdepth}{3}
 %\renewcommand{\cftbeforetoctitleskip}{-0.25in}        % Title is 1in from top
 % title
 \renewcommand{\cftchapnumwidth}{8mm}
 \renewcommand{\cftsecnumwidth}{4mm}
 \renewcommand{\cftsubsecnumwidth}{8mm}
+\renewcommand{\cftsubsubsecnumwidth}{4mm}
 \renewcommand{\cfttoctitlefont}{\hfill \huge  \bfseries}
 \renewcommand{\cftaftertoctitle}{\hfill}
+
+\renewcommand\thesubsubsection{\alph{subsubsection}.}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}	
 
 %Une table des matiere par chapitre
 
@@ -237,7 +242,7 @@ backend=biber]{biblatex}
  }
 
 \usepackage[french]{minitoc}
-\setcounter{minitocdepth}{2}
+\setcounter{minitocdepth}{3}
 \renewcommand{\mtctitle}{}
 
 \dominitoc

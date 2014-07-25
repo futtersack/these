@@ -19,9 +19,11 @@ les phénomènes observés confrontés aux observations expérimentales et
 numériques.
 
 \section{Barrière magnétique - PEGASES}
+\subsection{La géométrie barrière magnétique}
 La configuration filtre magnétique utilisée dans PEGASES est caractéristique
 dans de nombreuses applications pour diminuer la température électronique
 
+\subsection{Le propulseur PEGASES}
 PEGASES, acronyme de \emph{Plasma Propulsion with Electronegative Gases}, est
 un prototype de propulseur électrostatique à grille (PEG)
 ion-ion~\parencite{Chabert} conçu au LPP (Laboratoire de Physique des
@@ -79,6 +81,8 @@ simuler un plasma d'argon, avec la géométrie présentée figure
 magnétique.}
 \label{4-pegasesSimDomain}}
 \end{figure}
+
+\subsection{Simulation de base - Parois isolantes}
 
 Le domaine de simulation est rectangulaire et de
 dimensions similaires à celles du prototype. La puissance est déposée dans la
@@ -435,11 +439,22 @@ l'origine de nombreux débats.
 	\label{pegasesVarMagCourantParoi}}
 	\end{figure}
 
+\subsubsection{Le flux électronique magnétisé}
+
 Attardons nous donc sur le flux électronique, à travers l'augmentation
 progressive de l'intensité du champ magnétique. La
 figure~\ref{4-pegasesfluxElectronique} représente une comparaison croisée du
 flux d'électrons pour un champ magnétique variant de 0 G à 500 G et trois bias
 différents de 0 V, 10 V et 20 V appliqués à la grille d'extraction de la source. 
+
+ \begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figures/4-pegasesfluxElectronique.pdf}
+	{\caption{Flux électronique à travers le filtre magnétique sur une plage
+	allant de 0 G à 500 G pour trois voltages appliqués sur la grille
+	d'extraction (sur le bord droit du domaine) différents 0 V, 10 V et 20 V.}
+	\label{4-pegasesfluxElectronique}}
+	\end{figure}
 
 Les trois premières cartes, en l'absence de filtre magnétique, montrent la
 situation initiale pour les trois différents voltages. Basiquement, on observe
@@ -454,15 +469,6 @@ la littérature.
 Des simulations PIC ont par ailleurs montré un comportement
 similaire~\parencite{PIC3D}.}.
 
- \begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.85\textwidth]{figures/4-pegasesfluxElectronique.pdf}
-	{\caption{Flux électronique à travers le filtre magnétique sur une plage
-	allant de 0 G à 500 G pour trois voltages appliqués sur la grille
-	d'extraction (sur le bord droit du domaine) différents 0 V, 10 V et 20 V.}
-	\label{4-pegasesfluxElectronique}}
-	\end{figure}
-	
 L'application d'un filtre magnétique, même à faible intensité de champ, modifie
 complètement le flux électronique : la densité de courant devient asymétrique et
 décuple d'intensité dans le bas de la région d'ionisation. À 10 G, la
@@ -655,7 +661,8 @@ conforte dans les résultats du modèle.
 	ou numérique des instabilités, il est très difficile les faire
 	totalement disparaître en jouant sur les paramètres.
 	
-\section{Colonne de plasma magnétisée}
+\section{Colonne de plasma magnétisée - Cybele}
+\subsection{La configuration colonne magnétisée}
 Dans une géométrie simple comme la colonne de plasma, avec un champ magnétique
 axial et uniforme, de nombreuses tentatives ont été entreprises pour réduire le
 problème multidimensionnel de diffusion du plasma à travers le champ à une
@@ -732,7 +739,7 @@ La source Cybele est de plus de forme rectangulaire et donc parfaitement adapté
 au domaine de simulation de MAGNIS.
 \newpage
 
-\subsection{Cybele}
+\subsection{La source d'ions négatifs Cybele}
 
 Cybele, présentée sur la figure~\ref{4-cybelePhoto}, est une
 source d'ions négatifs de dimension très allongée développée à l'IRFM
@@ -791,8 +798,6 @@ d'une colonne de plasma en rotation autour d'un axe magnétique (voir le schéma
 de la figure~\ref{4-cybeleSchema}). Ce concept,
 idéal pour la géométrie étirée de Cybele, permettrait d'obtenir une densité de
 plasma homogène sur toute la longueur de la source. 
-
-\subsection{Caractéristiques de la source}
 
 La source Cybele est rectangulaire et de dimension 
 15~cm x 20~cm x 120~cm. Le centre de la source est
@@ -885,7 +890,7 @@ simulation, sur la figure~\ref{4-cybeleSimDomain}, est pris de dimension
 20~cm~x~20~cm~x~120~cm et représente toujours le plan transverse au champ
 magnétique, qui est pris uniforme et d'intensité $B\,$= 100 G. Le plasma est créé au centre du domaine par un chauffage de forme gaussienne en 2D, de largeur $l_\mathcal{S}\,$= 1 cm et en supposant une puissance absorbée
 d'environ 100 W.
-La pression de gaz (H$^2$) est fixée à 1mTorr avec toutes les parois
+La pression de gaz (H$^2$) est fixée à 1~mTorr avec toutes les parois
 conductrices et reliées à la masse (exceptées celles aux extrémités les lignes
 de champ qui seront prises de nature isolante dans un cas test).
 
