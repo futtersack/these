@@ -513,7 +513,7 @@ poloïdal de symétrie $\theta_0=0$}
     \label{2-CartesBase}
 \end{figure}
 
-A gauche, le plasma est stable. A droite, le transport est dominé par l'instabilité d'interchange : de
+À gauche, le plasma est stable. À droite, le transport est dominé par l'instabilité d'interchange : de
 forts flux de densité, des avalanches, traversent le domaine par intermittence.
 Les fronts, qui peuvent se propager sur plusieurs centaines de
 $\rho_{Li}$, augmentent considérablement la largeur de la SOL.
@@ -523,7 +523,7 @@ typiquement de l'ordre de la dizaine de $\rho_{Li}$.
 Un équilibre est atteint (la densité totale et le profil radial moyen
 n'évoluent plus) quand les pertes parallèles égalent le transport radial moyen.
 
-A l'équilibre, la nature de ce transport turbulent peut être
+À l'équilibre, la nature de ce transport turbulent peut être
 caractérisée statistiquement par des fonctions de distribution en probabilités
 (PDF pour Probability Distribution Function) des différentes valeurs. Les PDF
 de la densité et du flux radial sont présentées sur la figure~\ref{2-PDFBase} : 
@@ -847,7 +847,37 @@ U_{\nabla\text{B}}\right)/\text{N} +\nu\nabla^2\text{W}
 %\end{minipage}
 
 avec $\gamma$ un coefficient pris égal à 5/2. 
-\subsubsection{Impact sur le transport transverse}
+
+\subsection{Analyse linéaire de TOKAM anisotherme}
+
+\begin{align}
+\label{2-eqContinuiteTemp}
+\partial_t \text{N}
+=& - \nabla\cdot\left(\text{N}\mathbf U_\text{E}\right) -\sigma
+\text{N}\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e} + D\nabla^2 \text{N}
++ \mathcal{S}
+\\[0.5cm]
+\label{2-eqCourantTemp}
+\begin{split}
+\partial_{t}\text{W} =& 
+-\nabla\cdot\left(\text{W}\mathbf U_\text{E}\right)
++\text{B}^2\sigma\sqrt{\text{T}_e}\left(1-e^{\Lambda-\Delta\Phi/\text{T}_e}\right)\\
+&-\text{B}^2\nabla\cdot\left(\text{N}\mathbf
+U_{\nabla\text{B}}\right)/\text{N} +\nu\nabla^2\text{W}
+\end{split}
+\\[0.5cm]
+\label{2-eqEnergyTemp}
+\begin{split}
+\partial_{t}\text{P}_e=&
+-\nabla\cdot\left(\text{P}_e\mathbf U_\text{E}\right)
++2/3\left(\gamma\sigma\text{P}_e\sqrt{\text{T}_e}e^{\Lambda-\Delta\Phi/\text{T}_e}\right.\\
+&\left.-\text{P}_e\nabla\cdot\mathbf U_\text{E}
++\chi\nabla^2\text{P}_e
++\mathcal{S}_{\text{T}_e}\right)
+\end{split}
+\end{align}
+
+\subsection{Impact de l'équation d'énergie sur le transport transverse}
 
 La figure~\ref{2-CartesWithTe} montre les solutions calculées par TOKAM2D avec
 la température électronique dans une géométrie mono-périodique. On remarque tout
