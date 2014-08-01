@@ -68,9 +68,8 @@
 \usepackage{lipsum}
 
 %ajoute la bibliographie dans la table des matieres
-\usepackage[nottoc]{tocbibind}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 \renewcommand{\tocbibname}{Liste des références}
-
 
 \setlength{\cftbeforesecskip}{0.5em}
 \renewcommand\cftchapfont{\large\bfseries}
@@ -125,15 +124,19 @@
 	\cleardoublepage
 	\titleformat{\chapter}[display]
 		{\normalfont\huge\bfseries}{\chaptertitlename\
-		\thechapter}{20pt}{\vspace{-80pt}\Huge} \chapter*{#1}
+		\thechapter}{20pt}{\vspace{-80pt}\Huge} 
+		\chapter*{#1}
 	\pagestyle{chapitre}}
-\usepackage{appendix} % Makes appendices
+\usepackage[titletoc]{appendix}
+\renewcommand{\appendixtocname}{Annexes}
+\renewcommand{\appendixpagename}{Annexes}
 \usepackage{cclicenses} % Creative commons
 \usepackage{afterpage} % Makes appendices
 \usepackage{microtype} % makes pdf look better
 
 
 \usepackage{setspace}
+\usepackage{bookmark}
 
 \renewcommand{\theequation}{\thechapter-\thesection.\arabic{equation}}
 \renewcommand{\thechapter}{\Roman{chapter}}
@@ -170,11 +173,15 @@
 \usepackage[final]{pdfpages} 
 \usepackage{nameref}
 
-\usepackage[refsection=chapter, isbn=false,bibencoding=utf8,
-    url=false,sorting=none,sortcites=true,
-    doi=false,
-    eprint=false,
-backend=biber]{biblatex}
+
+\usepackage[%
+%###
+refsection=chapter, isbn=false,bibencoding=utf8,
+url=false,sorting=none,sortcites=true,
+doi=false,
+eprint=false,
+backend=biber
+]{biblatex}
 
 \addbibresource{biblio.bib}
 \usepackage{subfigure}
@@ -198,8 +205,9 @@ backend=biber]{biblatex}
   \item[\large\bfseries
   \ifstrequal{#1}{C}{Constantes}{%
   \ifstrequal{#1}{R}{Symboles romans}{%
-  \ifstrequal{#1}{G}{Symboles grecs}{%  
-  \ifstrequal{#1}{A}{Acronymes}{}}}}]
+  \ifstrequal{#1}{G}{Symboles grecs}{%
+  \ifstrequal{#1}{D}{Divers}{%  
+  \ifstrequal{#1}{A}{Acronymes}{}}}}}]
   }
 
 \renewcommand*{\nompreamble}{\markboth{\nomname}{\nomname}}
@@ -207,6 +215,8 @@ backend=biber]{biblatex}
 \newcommand{\nomdescr}[1]{\parbox[t]{8cm}{\RaggedRight #1}}
 \newcommand{\nomwithdim}[5]{\nomenclature[#1]{#2}%
 {\nomdescr{#3}\parbox[t]{3cm}{\RaggedRight #4}\parbox[t]{2cm}{\RaggedLeft #5}}}
+\newcommand{\nomLarge}[4]{\nomenclature[#1]{#2}{\parbox[t]{4cm}}%
+{\nomdescr{#3}}}
 
 \makenomenclature
 

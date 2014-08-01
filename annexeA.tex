@@ -2,7 +2,7 @@
 \label{AnnexeA}
 \begin{refsection}
 
-\section*{La fusion et les tokamaks}
+\section*{La fusion, les tokamaks et le transport transverse}
 
 La fusion thermonucléaire, qui a naturellement lieu dans le coeur des étoiles,
 est un processus où deux noyaux atomiques s'assemblent pour former un noyau
@@ -76,6 +76,73 @@ russe (toroïdalnaïa kamera s magnitnymi katushkami : en français, chambre tor
 magnétiques)~\parencite{efda}.}\label{tokamak}
 \end{figure}
 
+Le plasma  est créé par chauffage ohmique en induisant un courant
+par la décharge du solénoïde central. Le champ magnétique principal, généré
+par les bobines toroïdales, confine les particules dans des trajectoires
+cyclotroniques autour des lignes de champ. Le courant électrique qui apparaît
+dans le plasma, est à son tour à l'origine d'un champ magnétique poloïdal, qui
+permet d'obtenir la forme hélicoïdale des lignes de champ (sans laquelle
+une lente dérive du plasma dans la direction verticale serait inévitable). Elles
+engendrent des surfaces toriques, les surfaces magnétiques.
+Enfin, les bobines poloïdales permettent d'ajuster la position et la forme du
+plasma.
+
+L'équilibre magnétique, qui résulte du champ magnétique extérieur et du champ
+magnétique auto-généré par les courants du plasma, est décrit au moyen des
+équations de la MHD (Magnéto-Hydro-Dynamique).
+La résolution de ces équations donne accès à la forme et aux propriétés des
+surfaces magnétiques. Ce sont des surfaces fermées et emboîtées. Comme le
+transport des particules dans la direction parallèle au champ magnétique est de
+plusieurs ordres de grandeurs supérieur au transport dans la direction
+perpendiculaire, ces surfaces ont la propriété d'être iso-pression,
+iso-température, iso-densité et iso-courant.
+
 Le confinement de la configuration tokamak repose sur la rapidité du transport
-parallèle par rapport aux processus de transport transverses
+parallèle par rapport aux processus de transport transverses. Historiquement, le
+premier mécanisme envisagé pour décrire le transport transverse est l'existence
+de collisions coulombiennes entre particules. Deux particules circulant le long
+de lignes de champ voisines peuvent interagir électrostatiquement  et se voir
+déviées de leur trajectoire le long d'une autre ligne de champ. L'effet de ces
+collisions peut être décrit en terme de diffusion : c'est le transport
+classique, de fréquence caractéristique $\nu_{ei}\propto nT^{-3/2}$ et de pas
+caractéristique $\rho_{L}$ le rayon de Larmor des particules. Le coefficient de
+diffusion classique prend la forme :
+
+\begin{equation}
+D_\perp\sim\nu_{ei}\rho_{L}^2
+\end{equation}
+
+Selon la théorie classique, c'est le processus dominant de la dégradation du
+confinement dans un tokamak. Il suffirait ainsi de réduire $\rho_L$, et donc
+d'augmenter le champ magnétique $B$, pour améliorer le confinement.
+Malheureusement, les mesures expérimentales montrent que les coefficients de
+transport de la chaleur et des électrons sont de plusieurs ordres de grandeurs
+supérieurs à ceux prédits par la théorie classique. En ce qui concerne le
+transport de matière, les observations rapportent en effet des coefficients de
+diffusion de l'ordre de celui de Bohm, défini par :
+
+\begin{equation}
+D_\text{Bohm} \equiv \rho_L v_{T} \sim T/qB
+\end{equation}
+
+où $v_{T}$ est la vitesse thermique des particules, $T$ leur température, $q$
+leur charge et $B$ l'intensité du champ magnétique. Le rapport typique des
+valeurs expérimentales et classiques est $D_\perp/D_\text{Bohm}\,$=~10$^{-2}$.
+Parce qu'il n'était pas expliqué dans le cadre de la théorie classique, ce
+transport a reçu le nom de transport anormal.
+
+Il est aujourd'hui communément admis que ce fort transport transverse est
+d'origine turbulente. Avec en point de mire l'amélioration du confinement pour
+satisfaire le critère de Lawson, théoriciens et expérimentateurs travaillent
+depuis plusieurs années à la compréhension des mécanismes et
+caractéristiques de la turbulence.
+
+Signalons enfin qu'un trop bon confinement n'est pas souhaitable : l'énergie
+produite dans les réaction de fusion doit bien être récupérée, et il faudra
+également veiller à l'extraction des impuretés et des cendres d'hélium.
+
+Pour toutes ces raisons, le contrôle du transport transverse et donc de la
+turbulence est un des enjeux majeurs des machines à fusion magnétique. Il passe
+par la compréhension de son origine, et la détermination de ses
+caractéristiques.
 \end{refsection}

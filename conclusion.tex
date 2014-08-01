@@ -1,12 +1,12 @@
 \ChapterStar{Conclusion}
-\addstarredpart{Conclusion}
+\addstarredchapter{Conclusion}
 \markboth{Conclusion}{CONCLUSION}
-Les connaissances sur le sujet du transport magnétisé n'ont que très peu évolué
-dans le domaine des plasmas froids depuis les années 1960 et ne suffisent plus
-pour expliquer le comportement complexe du plasma que l'on
-rencontre dans les sources magnétisées basse-pression actuellement en développement.
+Dans les sources magnétisées basse-pression actuellement en
+développement, le plasma a un comportement complexe que les
+approches habituellement utilisées pour modéliser le transport
+magnétisé ne permettent pas d'expliquer.
 
-Pour répondre à cette problématique, cette thèse revisite la modélidation
+Pour répondre à cette problématique, cette thèse revisite la modélisation
 des plasmas froids et propose un nouveau modèle fluide décrivant le transport
 magnétisé dans le plan perpendiculaire au champ magnétique.
 
@@ -17,47 +17,60 @@ magnétisé dans le plan perpendiculaire au champ magnétique.
 La première année de cette thèse s'est déroulée au CEA de Cadarache.
 L'objectif était de se familiariser avec les techniques de modélisation
 utilisées pour décrire les plasmas fortement magnétisés de fusion puis d'essayer
-de les adapter aux conditions spécifiques des plasmas froids. J'ai ainsi :
+de les adapter aux conditions spécifiques des plasmas froids. Cette première
+année a donc consisté à :
 
 \begin{itemize}
-  \item étudié et utilisé le code TOKAM2D qui simule
+  \item étudier et utiliser le code TOKAM2D qui simule
   l'instabilité d'interchange dans les plasmas de bord de tokamaks. Le 
   modèle de TOKAM2D est fluide, quasineutre, et décrit l'évolution de la
   densité et du potentiel électrique dans le plan perpendiculaire au champ
-  magnétique en se basant sur l'approximation des vitesses de dérive ;
-  \item inclu la possibilité de définir des conditions aux limites pour traiter
-  la présence de parois.
+  magnétique en se basant sur l'approximation des vitesses de dérive.
+  \item inclure la possibilité de définir des conditions aux limites pour
+  traiter la présence de parois.
   La version initiale du code était en géométrie bi-périodique pour une résolution des
   équations dans l'espace de Fourier. Il a fallut changer de schéma
   numérique et donc réécrire une grande partie du code, dont une inversion de
-  Laplacien ;
-  \item ajouté la définition d'un champ magnétique
-  variable et les termes correspondant dans les équations du modèle ;
-  \item effectué une étude sur le courant et l'impact des conditions aux
-  limites parallèles et perpendiculaires sur le transport ;
-  \item implémenté une équation d'énergie pour suivre l'évolution de la
+  Laplacien.
+  \item ajouter la définition d'un champ magnétique
+  variable et les termes correspondant dans les équations du modèle.
+  \item implémenter une équation d'énergie pour suivre l'évolution de la
   température électronique.
 \end{itemize} 
-
- Une adaptation plus poussée de TOKAM2D a cependant été confrontée à deux
- problèmes majeurs :
  
- \begin{itemize}
-   \item l'hypothèse de forte magnétisation est discutable pour les ions
- et s'effondre totalement dans les zones peu magnétisées des sources de plasma
- froids ; l'ajout de l'interaction avec les neutres assure la validité des
- expressions des vitesses de dérive quand $B\rightarrow\,$0, mais la fréquence
- de collision doit être suffisamment grande, ce qui est encore discutable dans
- le cas des sources basse-pression ;
- \item le développement des divergences dans les équations de conservation pose
- la question des conditions aux limites à appliquer aux directions
- perpendiculaires.
+ Au cours de cette année, nous avons aussi réalisé une étude sur le courant et
+ l'impact des conditions aux limites parallèles et perpendiculaires sur le
+ transport. Cette étude montre deux points : d'une part que les conditions aux
+ limites sur le courant parallèle influencent fortement le transport et la
+ turbulence (prouvant que celles-ci doivent être issues d'une
+ théorie bien posée pour capturer la physique du problème). D'autre part elle
+ prévient que dans la direction perpendiculaire, en attendant qu'une théorie
+ solide se développe, il faut être conscient de l'influence du choix de ces
+ conditions aux limites.
+	
+Une adaptation plus poussée de TOKAM2D pour ajouter l'interaction avec les
+neutres a été confrontée à deux problèmes majeurs : 
+
+D'une part, l'hypothèse de
+forte magnétisation est discutable pour les ions et s'effondre totalement dans les
+zones peu magnétisées des sources de plasma froids ; l'ajout de l'interaction
+avec les neutres assure la validité des expressions des vitesses de dérive
+quand $B\rightarrow\,$0, mais la fréquence de collision doit être suffisamment
+grande, ce qui n'est pas le cas des sources basse-pression\footnote{De plus, l'approche
+des vitesses de dérive utilise un développement en ordre de la vitesse
+perpendiculaire en supposant que le mouvement des particules se décompose en un
+mouvement rapide de moyenne nulle et un lent mouvement de dérive. Même si
+l'on peut retrouver un petit paramètre, mixant le rayon de Larmor et le libre
+parcours moyen, pour exprimer la vitesse perpendiculaire, le principe de base
+de décomposition n'a plus vraiment de sens.}.
+Ensuite, le
+développement des divergences dans les équations de conservation pose la
+question des conditions aux limites à appliquer aux directions perpendiculaires.
  Et plus particulièrement dans l'équation de conservation de la charge pour
  laquelle nous ne connaissons que le courant total entrant ou sortant de la
  gaine. 
- \end{itemize}
    
- Ces travaux ont permis de mettre en avant la nécessité d'inclure
+ Ces travaux sur TOKAM2D ont permis de mettre en avant la nécessité d'inclure
  le terme d'inertie ionique dans les équations de conservation ainsi que les pertes de
  matière, de courant et d'énergie le long de la direction parallèle. En effet
  dans l'équation de la charge, l'inertie ionique a un rôle déterminant à travers
@@ -70,42 +83,47 @@ de les adapter aux conditions spécifiques des plasmas froids. J'ai ainsi :
  
  La suite de la thèse a été consacrée à l'élaboration d'un
  nouveau modèle et d'un code numérique, MAGNIS, pour étudier le transport
- dans les plasmas froids magnétisés. Quelques mots sur le modèle de
- MAGNIS :
+ dans les plasmas froids magnétisés. Les principes de MAGNIS sont les suivants :
  
 \begin{itemize}
   \item c'est un modèle fluide, construit sans autre approximation
-  d'échelle que celle de la longueur de Debye (quasineutralité) ;
+  d'échelle que celle de la longueur de Debye (quasineutralité).
   \item il décrit le transport d'un plasma dans le
   plan perpendiculaire au champ magnétique. C'est le plan des dérives, des forts
   gradients et des instabilités, essentiel pour comprendre le transport
-  magnétisé ;
+  magnétisé.
   \item il résout implicitement en temps les équations de conservation de la
   charge et de l'énergie en s'appuyant sur une prédiction-correction des
   vitesses fluides et du flux de chaleur. Chaque espèce ionique a sa propre
-  équation de continuité ;
+  équation de continuité.
   \item  les conditions aux limites parallèles et perpendiculaires sont 
- dérivées du critère de Bohm et donc issues de considérations physiques. La
- vitesse des ions est supposée au minimum supersonique en entrée de gaine, mais
- est calculée de façon auto-cohérente à l'intérieur du plasma ;
+ dérivées de la théorie classique de gaine (critère de Bohm) et donc issues de
+ considérations physiques. La vitesse des ions est supposée au minimum
+ supersonique en entrée de gaine, mais est calculée de façon auto-cohérente à l'intérieur du plasma.
  \item les opérateurs de divergence sont discrétisés avec une méthode de Volumes
- Finis, et les flux sont calculés à partir d'un schéma UPWIND ou MUSCL ;
- \item en paramètre d'entrée, on fixe le profil de puissance absordée, la
+ Finis, et les flux ioniques sont calculés à partir d'un schéma UPWIND ou MUSCL.
+ \end{itemize} 
+
+En paramètre d'entrée, on fixe le profil de puissance absordée, la
  pression et les données caractéristiques du gaz ainsi que la géométrie du champ
- magnétique.
- Les parois peuvent être choisies diélectriques ou conductrices, avec la possibilité d'appliquer un bias. En
-sortie, le code donne l'évolution des champs et des courants dans le plasma ;
- \item MAGNIS est écrit en Fortran,
- et atteint une convergence pour des cas stationnaires en quelques minutes / heures suivant les paramètres de la simulation sur une machine standard de bureau.
-\end{itemize} 
+ magnétique. Les parois peuvent être choisies diélectriques ou conductrices,
+ avec la possibilité d'appliquer un bias. En sortie, le code donne l'évolution
+ des champs et des courants dans le plasma. MAGNIS est écrit en Fortran,
+ et atteint une convergence pour des cas stationnaires en quelques minutes /
+ heures suivant les paramètres de la simulation sur une machine standard de bureau.
 
 La construction de MAGNIS a demandé un travail numérique
-important pour obtenir une bonne discrétisation des flux
-magnétisés et le développement de techniques originales pour augmenter la
-stabilité du modèle.
+important pour obtenir une discrétisation des flux
+magnétisés minimisant les erreurs d'interpolation (utilisation d'un maillage
+dual et pondération entre les vitesses perpendiculaires et les vitesses
+croisées). Nous avons aussi implémenté des techniques originales pour augmenter
+la stabilité du modèle, comme la relaxation de la vitesse électronique et
+l'utilisation d'itérations de Newton pour impliciter certains termes des
+équations.
+
 En plus d'un premier test de convergence sur maillage qui a vérifié une
-convergence à l'ordre 2 du schéma dans un cas stationnaire, j'ai testé MAGNIS
-pour validation sur trois cas simplifiés, chacun représentatif d'une
+convergence à l'ordre 2 du schéma dans un cas stationnaire, nous avons testé
+MAGNIS pour validation sur trois cas simplifiés, chacun représentatif d'une
 problématique particulière :
 
 \begin{itemize}
@@ -121,14 +139,18 @@ problématique particulière :
   plasma. Dans cette géométrie, le transport du plasma est très sensible à la
   longueur et aux conditions aux limites de la direction parallèle ;
   \item appliqué aux conditions et à la géométrie des plasmas de bord de
-  tokamaks, MAGNIS arrive à capturer la physique de base du transport fortement
-  magnétisé, tout en restant suffisamment stable confronté à un problème de type turbulent.
+  tokamaks, MAGNIS arrive à capturer l'instabilité d'interchange,
+  en reproduisant à la fois la dynamique ballistique des avalanches, qui sont
+  des flux très intermittents pouvant se propager sur une longue distance, son
+  caractère à seuil et la particularité de ballonning de l'instabilité.
+  Ce test a aussi montré que le code restait stable confronté à un problème
+  de type turbulent.
 \end{itemize} 
 
 MAGNIS peut décrire les plasmas des sources basse-pression, en présence et en
 l'absence de champ magnétique. L'ajout du terme d'inertie dans l'équation du
-courant permet aussi à MAGNIS de capturer les phénomènes instationnaires et
-turbulents, caractéristiques du transport magnétisé et encore relativement
+courant permet aussi en principe à MAGNIS de capturer les phénomènes
+instationnaires et turbulents, caractéristiques du transport magnétisé et encore relativement
 inexplorés.
 
 \begin{center}
@@ -142,50 +164,44 @@ commencent à apparaître, sont toujours problématiques :
 
 \begin{itemize}
 
-  \item la vérification numérique du modèle est compliquée en présence
-  d'instabilités et en dehors des tests de convergence classiques (qui ne
-  fonctionnent pas toujours) nous manquons d'outils et de techniques pour
-  vérifier et caractériser ces phénomènes ;
+  
   \item MAGNIS reproduit l'instabilité décrite par Simon \& Hoh ainsi
   que l'instabilité d'interchange mais une étude des taux de croissance est
-  nécessaire pour valider ces comportements ;
-  \item dans la configuration filtre, les ions supersoniques n'ont
-  jamais été détectés (mais sans jamais avoir été réellement cherchés non
-  plus). La réalité de cette instabilité est donc discutable, et doit
-  donc être prouvée par exemple avec une étude linéaire du modèle ; 
+  nécessaire pour valider ces comportements.
+  \item pour des filtres magnétiques le modèle prédit des ions supersoniques
+  (localement en aval du filtre où $T_e$ est bas) qui ne semblent pas avoir été
+  détectés expérimentalement sur PEGASES. Une étude analytique du modèle et des
+  comparaisons expérimentales ou avec des codes PIC devront vérifier leur
+  existence.
+  \item la vérification numérique du modèle est compliquée en présence
+  d'instabilités et en dehors des tests de convergence classiques, qui ne sont
+  pas toujours applicables, nous manquons d'outils et de techniques pour
+  vérifier et caractériser ces phénomènes.
+    \item les comparaisons des résultats du modèle avec l'expérimentation du
+  projet METRIS sur les profils de densité et
+  de courant sont en cours et très encourageantes, mais pour pousser plus
+  loin la validation de MAGNIS, des comparaisons systématiques avec les mesures
+  expérimentales et des modèles PIC sont maintenant indispensables.
   \item le code a été appliqué sur des cas idéalisés ne comprenant qu'une seule
   espèce ionique. Les méthodes ont atteint maintenant suffisamment
   de maturité pour pouvoir être appliqués à des configurations plus réelles,
   avec plus de chimie et l'ajout d'autre espèces ioniques, dont des ions
   négatifs. Rien n'interdit ce développement dans le modèle, et il ne demandera
-  que peu d'ajustement dans le code ;
-  \item les comparaisons avec METRIS sont en cours et très encourageantes,
-  mais pour pousser plus loin la validation de MAGNIS, des comparaisons
-  systématiques avec les mesures expérimentales et des modèles PIC sont
-  maintenant indispensables ;
-  \item  il y a aussi des questions sur ce que nous
-  pouvons voir avec un code fluide. MAGNIS est un code quasineutre, nous ne
-  pouvons par conséquent capturer aucun phénomène en lien avec la séparation
-  de charge comme l'instabilité diochotron et les trous de plasma dans les
-  colonnes magnétisées ;
-  \item nous ne décrivons pas non plus la fonction de distribution des
-  ions, nous supposons $T_i$ uniforme et le tenseur de pression est pris
-  isotrope. Une grande partie de la physique cinétique nous est donc
-  inaccessible ;
+  que peu d'ajustement dans le code.
+
 \end{itemize} 
 
+Il y a aussi des questions sur ce que nous pouvons voir avec un code
+quasineutre. En supposant la quasineutralité, nous ne pouvons par conséquent
+capturer aucun phénomène en lien avec la séparation de charge comme
+l'instabilité diochotron et les trous de plasma dans les colonnes magnétisées.
+Nous ne décrivons pas non plus la fonction de distribution des ions, nous
+supposons $T_i$ uniforme et le tenseur de pression est pris isotrope, ce qui
+nous prive d'une partie de la physique cinétique.
+Pour l'instant nous avons encore du mal à estimer la validité/les conséquences des
+approximations fluides, et il faudra effectuer des comparaisons avec des
+modèles PIC pour vérifier l'existence des phénomènes observés avec MAGNIS.
 
-\begin{center}
-\rule{0.6\textwidth}{1pt}
-\end{center}
 
-L'idée commune est que la simulation n'est qu'une illustration de la
-modélisation. En nous donnant accès à une réalité virtuelle à questionner et
-analyser, les modèles permettent de régler et d'optimiser les applications
-concrètes. Cependant un autre point souvent laissé de côté mais tout aussi
-intéressant est de voir comment les simulations peuvent aider à améliorer les
-modèles. MAGNIS est un bon exemple de cette problématique ; il a été construit
-tout au long de cette thèse par des aller-retour continus entre le constat d'une
-certaine physique sur les simulations et la modification subséquente du modèle.
 
 

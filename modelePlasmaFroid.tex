@@ -15,36 +15,39 @@ convergence sur maillage.
 
 \section{Problématique}
 
-La compréhension de l'origine et de la nature du transport dans les plasmas
+Comprendre l'origine et la nature du transport dans les plasmas
 froids magnétisés est un enjeu majeur pour la conception, la réalisation et
-l'optimisation de nombreuses applications et procédés. La plupart des modèles
-fluides décrivant les phénomènes de transport magnétisés dans les plasmas
-froids sont basés sur les équations de Dérive-Diffusion (\S
-\ref{1-deriveDiffMag}).
- Cependant, à basse pression ou au delà d'une
-certaine intensité de champ magnétique, la résolution numérique de ces
-équations est complexe voire impossible 
+l'optimisation de nombreuses applications et
+procédés~\parencite{Lieberman}. Dans le domaine des plasmas froids, la plupart des modèles
+fluides décrivant les phénomènes de transport magnétisés sont basés sur les
+équations de Dérive-Diffusion (\S~\ref{1-deriveDiffMag}).
 
-Les équations de Dérive-diffusion, en s'appuyant sur l'approximation d'un plasma
-collisionnel et stationnaire, sont en fait peu adaptées pour décrire le
-transport fortement magnétisé à basse pression et ce problème ne peut alors
+Cependant, à basse pression ou au delà d'une
+certaine intensité de champ magnétique, la résolution numérique de ces
+équations est complexe voire impossible. Ce problème ne peut alors
 généralement être adressé qu'à travers le développement de modèles cinétiques
 numériquement très coûteux, demandant à priori la résolution d'échelles de
 l'ordre de la longueur de Debye et de la fréquence plasma.
 
-Dans les plasmas fortement magnétisés, la description du transport transverse
-par les vitesses de dérive (cf.\S\ref{ApproximationsEqMvt}-\ref{vitessesDerive})
-où l'équilibre des courants fait intervenir la divergence de la dérive de
-polarisation. Cette dérive, essentielle dans la dynamique du transport
-transverse, est absente du modèle qui néglige totalement l'inertie des
-particules. Le modèle de Dérive-Diffusion cherche une solution stationnaire à
-un problème intrinsèquement non-stationnaire.
-\parencite{Fruchtman}
-\parencite{Sternberg}
-D'un autre côté,
-  La prise en compte de l'inertie
-	dans les équations de transport nous permet de plus de capturer la dynamique transitoire du plasma, comme certains types d'instabilités. Ce modèle fluide et dynamique peut être utilisé pour explorer
-		une large gamme de topologies et d'intensités de champ magnétique.
+Pour les plasmas fortement magnétisés, la description du transport transverse
+par les vitesses de dérive
+(cf.\S~\ref{ApproximationsEqMvt}-\ref{vitessesDerive}) fait intervenir la divergence de la dérive de
+polarisation dans l'équilibre des courants~\parencite{Tamain2}. Cette dérive,
+essentielle dans la dynamique du transport transverse en présence d'un fort champ magnétique, est
+absente du modèle de Dérive-Duffusion qui néglige totalement l'inertie des
+particules.
+Les modèles de Dérive-Diffusion, en cherchant une solution stationnaire à un
+problème intrinsèquement non-stationnaire, sont en fait peu adaptées pour décrire le
+transport fortement magnétisé~\parencite{Fruchtman,Sternberg}.
+
+Nous adressons la complexité de ce transport à travers l’élaboration d'un modèle
+fluide sans approximation d'ordering entre les longueurs caractéristiques du
+plasma magnétisé (i.e. la dimension du plasma $L$, les libres parcours moyens
+$\lambda_{i,e}$ et les rayons de Larmor ioniques et électroniques $\rho_{Li,e}$). 
+La prise en compte de l'inertie	dans les équations de transport nous permet de
+plus de capturer la dynamique transitoire du plasma, comme certains types
+d'instabilités. Ce modèle fluide dynamique peut être utilisé pour explorer
+une large gamme de topologies et d'intensités de champ magnétique.
 
 \section{Description du modèle}
 Le plasma est constitué d'électrons et d'une ou plusieurs espèces d'ions, de
@@ -111,7 +114,7 @@ où $k^m_{\alpha
 s}=\left<\sigma^m_{\alpha s}v_r\right>$ est un taux de transfert de quantité de
 mouvement spécifique à la réaction considérée, $\sigma^m_{\alpha s}$ étant la
 section efficace de l'interaction et $v_r$ la vitesse relative des particules en
-collision (voir \S\ref{Introduction}-\ref{1-Collisions}). Un grand nombre
+collision (voir \S~\ref{Introduction}-\ref{1-Collisions}). Un grand nombre
 d'interactions et de réactions chimiques peuvent éventuellement être prises en compte avec cette description.
 
 L'évolution de chaque espèce est décrite par une équation de continuité :
@@ -147,8 +150,8 @@ l'évolution du potentiel électrostatique $\Phi$.
 
 L'équation de conservation de l'énergie est obtenue classiquement en substituant
 l'équation de continuité afin d'éliminer le terme convectif puis en retranchant
-l'expression de l'énergie dirigée $\mathcal{U}_e=m_eu_e^2/2$ (cf.
-\S~\ref{Introduction}-\ref{1-ConservationEnergie}) :
+l'expression de l'énergie dirigée $\mathcal{U}_e=m_eu_e^2/2$
+(cf.~\eqref{1-eqEnergieInterne}) :
 
 \begin{equation}
 \label{3-eqTemperature}
@@ -160,12 +163,11 @@ en_e\left(\mathcal{P}_\text{ext}+\Pi_e\right)+(2n_e\nu_e+\mathcal{S}_e)\mathcal{
 où $T_e$ est la température électronique exprimée en unité d'énergie,
 $\text{d/dt}=\partial_t+u_e\cdot\nabla$ représente la dérivée totale et
 $\mathcal{S}_e$ est le terme source d'électrons lié à l'ionisation. 
-Le chauffage ohmique n'apparaît pas explicitement en fonction du champ
-électrique mais est inclus dans le terme
-$(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e$ ; c'est la
-conséquence du travail du champ électrique, transformé en chaleur par
-l'intermédiaire des collisions. L'ajout d'énergie dans le plasma, par exemple
-avec un chauffage RF, est modélisé par un terme
+Le chauffage ohmique, conséquence du travail du champ électrique transformé en
+chaleur par l'intermédiaire des collisions, n'apparaît pas explicitement en
+fonction du champ électrique mais est inclus dans le terme
+$(2n_e\nu_e+\mathcal{S}_e)\mathcal{U}_e$. L'ajout d'énergie dans le plasma, par
+exemple avec un chauffage RF, est modélisé par un terme
 de puissance absorbée $\mathcal{P}_\text{ext}$, que nous imposons avec un
 certain profil. Enfin, le terme de perte d'énergie due aux collisions $\Pi_e$,
 dépendant de la température électronique, se décompose en une perte lié à
@@ -212,8 +214,13 @@ particules est imposé à la surface :
 \end{equation} 
 
 avec $\mathbf{n}$ le vecteur normal à la paroi et $W_\alpha$ une vitesse de
-perte effective de l'espèce en entrée de gaine. Les flux d'ions positifs sont
-définis par :
+perte effective de l'espèce en entrée de gaine. Les flux d'ions
+positifs\footnote{Le comportement des ions négatifs est à rapprocher de celui
+des électrons. Enfermés dans le puit de potentiel, les ions négatifs
+suivent eux aussi une distribution de Boltzmann. Leur prise en compte complique
+cependant l'écriture des conditions aux bords du
+plasma et, dans l'objectif de garder les équations claires, nous ne présentons
+dans ce manuscrit que le cas des ions positifs.} sont définis par :
 
 \begin{equation}
 \label{3-fluxIonique}
@@ -235,7 +242,7 @@ frontière plasma-gaine.
 
 Ainsi, nous n'imposons qu'un minimum à la vitesse ionique, tel que défini par
 le critère de Bohm et nous laissons au modèle quasineutre le soin de résoudre la
-vitesse à l'intérieur du plasma.}.
+vitesse à l'intérieur du plasma.}. 
 
 Le flux d'électrons est obtenu en considérant une fonction de distribution
 maxwellienne, que l'on intègre sur le demi-espace des vitesses dirigées vers la
@@ -264,7 +271,7 @@ le cas d'un plasma n'étant composé que d'une seule espèce d'ion,
 la condition \ref{3-sheathcurrent} se factorise alors en :
 
 \begin{equation}
-\mathbf{j}\cdot\mathbf{n}=en_ec_s(1-\exp(\Lambda-(\Phi-\Phi_w)/T_e))
+\mathbf{j}\cdot\mathbf{n}=en_ec_s(1-\exp(\Lambda-e(\Phi-\Phi_w)/T_e))
 \end{equation}
 
 le potentiel flottant normalisé $\Lambda=({m_i}/{2\pi
@@ -275,7 +282,7 @@ pour assurer la nullité du courant sortant :
 
 \begin{equation}\begin{split}
 \mathbf j\cdot\mathbf{n}=0\Leftrightarrow
-\Phi_w=\Phi-T_e\ln\left(\sqrt{\frac{2\pi
+\Phi_w=\Phi-\frac{T_e}{e}\ln\left(\sqrt{\frac{2\pi
 m_e}{T_e}}\frac{1}{en_e}\sum_iq_in_iW_i\right)
 \end{split}\end{equation}
 
@@ -284,7 +291,7 @@ Pour les conditions aux limites de l'équation sur la température
 électrons en entrée de gaine en additionnant l'énergie moyenne perdue à la paroi (intégrée sur une distribution semi-maxwellienne) et l'énergie transférée aux ions dans la chute de potentiel :
 
 \begin{equation}
-	\varepsilon_w=2T_e+\Phi-\Phi_w
+	\varepsilon_w=2T_e+e(\Phi-\Phi_w)
 \end{equation}
  
  On peut alors relier cette perte totale aux flux sortants de l'équation
@@ -293,20 +300,28 @@ Pour les conditions aux limites de l'équation sur la température
  
 \begin{equation}
 \Gamma_\varepsilon=\frac{5}{2}{\Gamma}_eT_e+\mathbf{q}_e\cdot\mathbf{n}=
-\Gamma_e\left(2T_e+\Phi-\Phi_w\right)
+\Gamma_e\left(2T_e+e(\Phi-\Phi_w)\right)
 \end{equation}
 
 En regroupant les termes portant sur le flux d'électron, on peut exprimer la
 condition limite pour le flux de chaleur :
 
 \begin{equation}
-\mathbf{q}_e\cdot\mathbf{n}=\Gamma_e\left(\Phi-\Phi_w-\frac{1}{2}T_e\right)
+\mathbf{q}_e\cdot\mathbf{n}=\Gamma_e\left(e(\Phi-\Phi_w)-\frac{1}{2}T_e\right)
 \end{equation}
 
-Ces conditions aux limites sont justifiées dans des plasmas non-magnétisés et à l'extrémité
-de lignes de champ interceptant la paroi dans les plasmas magnétisés. Bien
-que ce choix soit discutable, nous les appliquons aussi dans la direction
-perpendiculaire au champ magnétique.
+Ces conditions aux limites, dérivées de la théorie des gaines
+non-collisionnelles classiques positives\footnote{En cas de
+phénomène d'inversion de gaine ($\Phi$ devient inférieur à $\Phi_w$), nous
+traitons le problème en réduisant la vitesse ionique du facteur de Boltzmann :
+$$W_i=W_i\left(1-\exp\left(-\frac{\Phi-\Phi_w}{T_e}\right)\right)$$
+Dans une situation typique où $\Phi>\Phi_w$, ce facteur est dérisoire et les
+ions ont chacun leur vitesse de Bohm. Quand $\Phi\approx\Phi_w$, le facteur de
+Boltzmann réduit la vitesses des ions qui ne sont plus accélérés dans la chute
+de potentiel. On prévient de même la vitesse électronique de devenir trop élevée
+en limitant le facteur à une valeur maximale.}, sont justifiées dans des
+plasmas non-magnétisés et à l'extrémité de lignes de champ interceptant la paroi dans les plasmas magnétisés. Bien que ce choix soit discutable, nous les appliquons aussi dans la direction perpendiculaire au champ magnétique.
+
 
 
 \subsection{Réduction 2D du modèle}
@@ -375,11 +390,11 @@ Le système d'équation peut alors se réécrire en fonction des variables moyen
 - \mathcal{L}_{\alpha_\para}\\[0.5cm]
 \nabla_\perp\cdot&(\sum_ie\bar{n}_i\bar{\mathbf{u}}_{i_\perp}
 -e\bar{n}_e\bar{\mathbf{u}}_{e_\perp})= - \mathcal{L}_{j_\para}\\[0.5cm]
-\begin{split}\frac{3}{2}e\bar{n}_e&\frac{\text{d}\bar{T}_e}{\text{d}t} +
+\begin{split}\frac{3}{2}\bar{n}_e&\frac{\text{d}\bar{T}_e}{\text{dt}} +
 (\frac{5}{2}\bar{\mathcal{S}}_e
--\frac{\text{d}\bar{n}_e}{\text{d}t})e\bar{T}_e+\nabla_\perp\cdot(\bar{\mathbf{q}}_{e_\perp})\\
+-\frac{\text{d}\bar{n}_e}{\text{dt}})\bar{T}_e+\nabla_\perp\cdot(\bar{\mathbf{q}}_{e_\perp})\\
 &=e\bar{n}_e(\bar{\mathcal{P}}_\text{ext}-\bar{Q_e})-\mathcal{L}_{\varepsilon_\para}
-+(2\bar{n}_en\bar{u}_e+\bar{\mathcal{S}}_e)\bar{\mathcal{U}}_e
++(2\bar{n}_e\bar{\nu}_e+\bar{\mathcal{S}}_e)\bar{\mathcal{U}}_e
 \label{3-equations2D2}
 \end{split}
 \end{align}
@@ -415,7 +430,7 @@ petits pas de temps $\Delta t=t^{k+1}-t^k$, en suivant l'algorithme suivant :
   \item Calcul de la densité électronique en utilisant l'hypothèse de
   quasineutralité.
   \item Prédiction du flux de chaleur ${\overset{\sim}{\mathbf q}}_e^{\;k+1}$
-  (de la même manière que pour le flux de particule) d'après
+  (de la même manière que pour le flux de particules) d'après
   \eqref{3-eqFluxChaleur}.
   \item Résolution de la température électronique $T_e^{k+1}$ à partir de
   l'équation de conservation de l'énergie \eqref{3-eqTemperature}, en incluant la réponse du flux de
@@ -445,7 +460,7 @@ sont définies à mi-chemin entre les noeuds, aux indices $(i+1/2,j)$ pour leur
 composante selon $x$ et $(i,j+1/2)$ pour leur composante selon $y$.
 Les opérateurs
 de divergence, quant à eux, sont discrétisés autour des volumes de contrôles en
-suivant une méthode de volumes finis~\parencite{toro}, les volumes de
+suivant une méthode de Volumes Finis~\parencite{toro}, les volumes de
 contrôle étant définis autour des n\oe uds du maillages. 
 
 Les parois perpendiculaires et parallèles peuvent être choisies conductrices ou
@@ -461,7 +476,7 @@ dans~\parencite{Schneider}. Sa principale caractéristique est de tenir
 compte du caractère intrinsèquement lié des équations fluides afin de diminuer
 le nombre d'itérations nécessaires pour trouver la solution du problème. Autorisant des
 conditions aux limites périodiques, le solveur est de plus construit pour
-utiliser une approche multi-grille~\parencite{Fedorenko} rendant la convergence
+utiliser une approche multigrille~\parencite{Fedorenko} rendant la convergence
 particulièrement rapide sur un maillage 2D.
 
 \subsection{Fréquences, termes sources et conditions aux limites}
@@ -470,11 +485,14 @@ itération et pour chaque interaction, MAGNIS lit les taux $k_\text{iz}$,
 $k^m_{\alpha s}$ et $k^\varepsilon_{e}$ dans des tables en fonction
 de l'énergie des particules. 
 Les taux contenus dans ces tables
-sont issues de LXCAT~\parencite{LXCAT}, intégrés sur une distribution
-maxwellienne pour les électrons calculées par des expériences de
-swarm~\parencite{Ellis} ou encore obtenues en résolvant directement l'équation
-de Boltzmann~\parencite{Bolsig}. Pour les électrons, ces valeurs sont
-illustrées sur la figure~\ref{3-tauxcollision}.
+sont issus de LXCAT~\parencite{LXCAT} : pour les électrons, ils
+sont obtenus en intégrant les sections efficaces sur une distribution
+maxwellienne ou en résolvant directement l'équation de
+Boltzmann~\parencite{Bolsig}. Pour les ions, nous supposons la limite
+basse-énergie et nous choisissons des taux constants, calculés lors
+d'expériences dites de "swarm"~\parencite{Ellis}.
+Ces valeurs sont illustrées pour les électrons sur la
+figure~\ref{3-tauxcollision}.
 
 \begin{figure}[!htbp]
     \centering
@@ -590,7 +608,7 @@ pas de temps. Pour remédier à ce problème, nous limitons l'erreur
 d'interpolation en suivant à la fois la vitesse $\mathbf u$ et la vitesse
 croisée $\mathbf u_\times=\mathbf b\times\mathbf u$ sur tous les points du
 maillage :
-3-magnisVectCross
+
 \begin{equation}
 \label{3-eqMvtPonderee12}
 \mathbf{u}^{k+1}=\text{A}_u\left(\mathbf F + \delta\mathbf{u}^{k}\right)+
@@ -611,14 +629,14 @@ b\times\mathbf{u}^{k}\right)\right)
 \centering
 \includegraphics[width=0.8\textwidth]{figures/3-magnisVectCross.png}
 {\captionsetup{justification=raggedright,
-singlelinecheck=false}\label{3-magnisVectCross}\caption{Schéma de définition des vitesses fluides et des vitesses croisées : les composantes vectorielles en $x$ de $\mathbf
- u_{|_x}$ et de $\mathbf
- u_{\times|_x}=(\mathbf b\times\mathbf u_y)_{|_x}$ sont définies aux mêmes
- points. \\ Les points de maillage en rouge sont impliqués dans l'interpolation
- classique de la composante $x$ des gradients à l'origines des flux de dérive.
+singlelinecheck=false}\label{3-magnisVectCross}\caption{Schéma de définition
+des vitesses fluides et des vitesses croisées : les composantes vectorielles en
+$x$ des vitesses, $\mathbf u_{|_x}$ et $\mathbf u_{\times|_x}=(\mathbf
+b\times\mathbf u_y)_{|_x}$, sont définies aux mêmes points. \\ Les points de
+maillage en rouge sont impliqués dans l'interpolation classique de la composante $x$ des gradients à l'origine des flux de dérive.
  Par exemple pour obtenir le champ $\mathbf{E}_\times$ en~($i$+1/2 ,$\,j$)~:
- $$\widetilde{E}_{\times|_x}^{(i+1/2,j)}={\widetilde{\nabla
- \Phi}}_y^{(i+1/2,j)}=-\frac{1}{4\Delta
+ $$\widetilde{E}_{\times}^{(i+1/2,j)}={\widetilde{\nabla_y
+ \Phi}}^{(i+1/2,j)}=\frac{1}{4\Delta
  y}(\Phi^{(i+1,j+1)}-\Phi^{(i-1,j+1)}+\Phi^{(i,j+1)}-\Phi^{(i,j-1)})$$ }}
 \end{figure}
 
@@ -668,14 +686,14 @@ l'ancien champ électrique :
 \end{equation}
 
 puis corrigées par le changement de champ électrique
-$\nabla\Theta=\nabla(\Phi^{k+1}-\Phi^k)$ :
+$\nabla\varphi=\nabla(\Phi^{k+1}-\Phi^k)$ :
 
 \begin{equation}
 \label{3-eqCorrectionVitesse}
 \mathbf u^{k+1}(\mathbf{E}^{k+1}) = \tilde{\mathbf
 u}^{k+1}(\mathbf{E}^k)-\frac{q}{m}\text{A}_u\nabla
-\Theta-\frac{q}{m}\text{B}_u\mathbf b\times\nabla
-\Theta
+\varphi-\frac{q}{m}\text{B}_u\mathbf b\times\nabla
+\varphi
 \end{equation}
 
 Pour résoudre la différence de potentiel, on considère l'équation de
@@ -683,20 +701,20 @@ conservation du courant~\eqrefp{eqCourant} dans laquelle on substitue les
 vitesses par leur expression (données par \eqref{3-eqCorrectionVitesse}) :
 
 \begin{equation}
-\begin{split}
+\begin{split}\mkern-60mu
 \label{3-eqCourantCoefficient}
 -\nabla\cdot\left((\sum_i\frac{q_i^2}{m_i}n_i\text{A}_{ui}-\frac{e^2}{m_e}n_e\text{A}_{ue})\nabla
-\Theta-(\sum_i\frac{q_i^2}{m_i}n_i\text{B}_{ui}-\frac{e^2}{m_e}n_e\text{B}_{ue})\mathbf
+\varphi-(\sum_i\frac{q_i^2}{m_i}n_i\text{B}_{ui}-\frac{e^2}{m_e}n_e\text{B}_{ue})\mathbf
 b\times\nabla
-\Theta\right)\\=(en_e\tilde{\mathbf
+\varphi\right)\\=(en_e\tilde{\mathbf
 u}_e^{k+1}-\sum_iq_in_i\tilde{\mathbf u}_i^{k+1})-\mathcal L_{j_\para}
 \end{split}
 \end{equation}
 
-Cette équation est résolue pour $\Theta$ en incluant les conditions aux limites
+Cette équation est résolue pour $\varphi$ en incluant les conditions aux limites
 de façon implicite. Une fois le potentiel $\Phi^{k+1}$ mis à jour, les vitesses
 fluides $\mathbf u^{k+1}_\alpha$ sont corrigées en fonction du nouveau champ
-électrique $\mathbf{E}^{k+1}=\mathbf{E}^{k}-\nabla\Theta$.
+électrique $\mathbf{E}^{k+1}=\mathbf{E}^{k}-\nabla\varphi$.
 Après cette correction, l'ensemble des vitesses fluides $\mathbf u_\alpha$
 satisfait exactement à la continuité du courant.
 
@@ -738,7 +756,7 @@ largement augmenté sans modification significative des solutions dans une
 grande majorité de cas\footnote{Cette
 technique semble néanmoins avoir un impact sur les
 instabilités introduites par le terme d'inertie quand la résolution spatiale
-dépasse une certaine échelle en faisant varier la taille et la fréquence des
+dépasse une certaine échelle, faisant varier la taille et la fréquence des
 structures en fonction du maillage...
 Nous cherchons encore à expliquer ce phénomène et à quantifier le seuil de
 validité de la technique, ainsi que ses limites, l'augmentation artificielle du
@@ -768,8 +786,8 @@ pas négative.
 
 Le flux de chaleur porté par les électrons étant sensible au champ magnétique de
 la même façon que le flux de particules, nous adoptons la même méthode que
-précédemment (cf.\eqref{3-eqMvtPonderee12} et \eqref{3-eqMvtPonderee2}). Le flux de chaleur est tout d'abord
-prédit en fonction de l'ancien gradient de température :
+précédemment (cf.~\eqref{3-eqMvtPonderee12} et \eqref{3-eqMvtPonderee2}). Le
+flux de chaleur est tout d'abord prédit en fonction de l'ancien gradient de température :
 
 \begin{equation}
 \label{3-eqChaleurPonderee}
@@ -780,7 +798,7 @@ b\times(\frac{5n_eT_e}{2m_e}\nabla T_e^k +\delta q_e^k)
 
 avec les mêmes coefficients $A_e$ et $B_e$ que pour le flux électronique. On
 corrige ensuite le flux de chaleur en prenant en compte sa réponse au changement
-de température $\mathcal T=e(T_e^{k+1}-T_e^k)$ :
+de température $\mathcal T=(T_e^{k+1}-T_e^k)$ :
 
 \begin{equation}
 \label{3-eqCorrectionVitesse}

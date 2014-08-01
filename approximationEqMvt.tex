@@ -130,8 +130,9 @@ $\lambda/L$.
 \label{vitessesDerive}
 L'approche par les vitesses de dérive est à la base de nombreux modèles
 développés pour étudier le transport dans les plasmas de fusion par
-confinement magnétique~\parencite{Garcia,Bisai,Tamain}. Dans cette approche, la
-vitesse des particules est exprimée en fonction du mouvement cyclotronique rapide, d'une composante
+confinement magnétique\footnote{pour plus de détails sur la fusion par
+confinement magnétique et les tokamaks, voir
+l'annexe~\ref{AnnexeA}}~\parencite{Garcia,Bisai,Tamain}. Dans cette approche, la vitesse des particules est exprimée en fonction du mouvement cyclotronique rapide, d'une composante
 parallèle au champ magnétique et d'une dérive lente du centre-guide des particules dans
 la direction transverse. Cette décomposition, qui peut se voir comme une
 version fluide de la théorie particulaire du centre-guide, sous-entend que les
@@ -146,9 +147,9 @@ $L_\nabla$ étant la longueur de gradient caractéristique du
 plasma dans la direction perpendiculaire au champ magnéique. 
  
 \subsection{Les plasmas de la Scrape-Off-Layer}
-La Scrape-Off-Layer des tokamaks, ou SOL, est la zone en
-périphérie du plasma confiné, i.e. qui commence à partir de la séparatrice et
-qui peut éventuellement s'étendre jusqu'aux parois internes du tore (voir
+La Scrape-Off-Layer des tokamaks, ou SOL, est la zone en périphérie du
+plasma confiné, i.e.
+qui commence à partir de la séparatrice et qui peut éventuellement s'étendre jusqu'aux parois internes du tore (voir
 figure~\ref{SOL}). Dans cette région, les
 particules ne sont plus confinées car les lignes de champ interceptent un
 obstacle matériel (un limiteur ou un divertor) traité et dessiné spécifiquement
@@ -186,7 +187,7 @@ transport parallèle :
 
 Dans la direction perpendiculaire au champ
 magnétique, les vitesses de dérive
-\mbox{(cf.~\S\ref{Introduction}-\ref{1-plasma-champMag})} associées aux
+\mbox{(cf.~\S~\ref{Introduction}-\ref{1-plasma-champMag})} associées aux
 gradients transverses entraînent un
 transport de fréquence caractéristique $\omega_\perp$ de deux
 ordres de grandeur inférieur à $\omega_{c\alpha}$\footnote{Les longueurs de
@@ -279,30 +280,45 @@ de matière en comparaison de la dérive électrique : pour s'en convaincre, il
 suffit de regarder la divergence des flux issus de ces vitesses :
 
 \begin{equation}
+\label{1-divElecDrift}
+\begin{split}
 \nabla\cdot\left(n_\alpha\mathbf
-u_E\right)=\nabla\cdot\left(n_\alpha\frac{\mathbf B\times\nabla
-\Phi}{B^2}\right) =-\nabla \Phi\times\nabla\frac{n_\alpha}{B}\cdot \mathbf b
+u_E\right)&=\nabla\cdot\left(n_\alpha\frac{\mathbf B\times\nabla
+\Phi}{B^2}\right) =\nabla \Phi\times\nabla\frac{n_\alpha}{B}\cdot \mathbf b\\
+&=\frac{\nabla \Phi}{\mathbf B}\times\nabla n_\alpha\cdot \mathbf
+b+\underbrace{n_\alpha\nabla
+\Phi\times\nabla\frac{1}{B}\cdot \mathbf b}_{\text{terme de
+courbure}\;\propto\nabla 1/B}
+\end{split}
 \end{equation}
 
 \begin{equation}
 \nabla\cdot\left(n_\alpha\mathbf
 u^\alpha_*\right)=\nabla\cdot\left(\frac{\mathbf B\times\nabla
 p_\alpha}{q_\alpha B^2}\right)
-=\frac{1}{q_\alpha}\nabla p_\alpha\times\nabla\frac{1}{B}\cdot \mathbf b
+=\underbrace{\frac{1}{q_\alpha}\nabla
+p_\alpha\times\nabla\frac{1}{B}\cdot \mathbf b}_{\text{terme de
+courbure}\;\propto\nabla 1/B}
 \end{equation}
 
-L'intensité du champ magnétique varie très peu dans la SOL et la longueur du
-gradient de courbure $L_{\nabla 1/B}$ est bien supérieure à la longueur de
-gradient des autres quantités. La divergence du flux diamagnétique, qui n'est
-due qu'aux effets de courbure du champ magnétique, est donc très faible, voir
+L'intensité du champ magnétique varie très peu dans la SOL. Les fluctuations de
+potentiel électrique $\widetilde{\Phi}$ et de densité $\widetilde{n}$
+sont de plusieurs ordres de grandeurs supérieures à celles du champ magnétique
+radial $B_r$ : $\widetilde{n}$/$n$ peut atteindre la valeur 1 proche de la
+paroi, tandis que $\widetilde{B}_r$/$B$ ne dépasse guère
+10$^{-4}$~\parencite{SarazinPhD}.
+On peut ainsi négliger les effets de courbure et ne considérer que l'avection par
+la dérive électrique dans la divergence du flux~\eqref{1-divElecDrift} :
+$\nabla\cdot(n_\alpha\mathbf u_E)\approx \mathbf u_E\cdot\nabla n$. La divergence du flux diamagnétique, qui
+n'est due qu'aux effets de courbure du champ magnétique, est très faible, voir
 nulle dans le cas d'un champ magnétique uniforme $\nabla1/B\,$=~0.
-Par contre, et comme précisé au paragraphe \S\ref{1-plasma-champMag}, la dérive
+Par contre, et comme précisé au paragraphe \S~\ref{1-plasma-champMag}, la dérive
 diamagnétique est sensible à la charge des particules et est donc la seule à porter du courant.
 L'influence de ce courant est fondamentale dans la stabilité du plasma :
 
 \begin{equation}
-\mathbf j_*=e(n_i\mathbf u^i_*-n_e\mathbf
-u^e_*)=e(\nabla(p_i+p_e)\times\mathbf B/B^2)
+\mathbf j_*=(q_in_i\mathbf u^i_*-q_en_e\mathbf
+u^e_*)=\nabla(p_i+p_e)\times\mathbf B/B^2
 \end{equation}
 
 
@@ -656,10 +672,11 @@ du courant, la présence des termes d'inertie joue un rôle majeur à travers le
 courant de polarisation qui referme l'équation du courant.
 
 Le modèle des vitesses de dérive peut aussi être adapté à la présence d'un gaz
-en incluant le terme de collision dans l'expression de la vitesse, mais
+en incluant le terme de collision dans l'expression de la vitesse. Cependant, 
 on ne sait plus trop à quoi correspond le petit paramètre $\epsilon_\omega$ ni
-si un développement en ordres successifs de $\epsilon_\omega$ a encore un
-sens.
+si un développement en ordres successifs de $\epsilon_\omega$ a encore 
+un sens quelconque (l'approche des vitesses de dérive est basée sur la
+superposition du mouvement de dérive et d'un mouvement rapide de moyenne nulle).
 
 \subsection{Sur le modèle de Dérive-Diffusion}
 
@@ -689,8 +706,8 @@ froids, pose quant à lui des problèmes sur d'autres points :
 Le modèle de Dérive-Diffusion tel que présenté dans ce chapitre fait
 l'hypothèse d'un plasma isotherme, mais cette hypothèse est assez facile à
 lever et ne nécessite que peu de modification sur les équations et les
-coefficients de transport. La prise en compte des termes d'inertie demande par
-contre un nouveau formalisme pour la dérivation du modèle, qui ne décrit plus
+coefficients de transport. La prise en compte des termes d'inertie demande en
+revanche un nouveau formalisme pour la dérivation du modèle, qui ne décrit plus
 uniquement le phénomène simple de dérive-diffusion.
 
 %\bibliographystyle{apalike}

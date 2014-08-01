@@ -1,7 +1,8 @@
-
 \ChapterStar{Introduction}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\theequation}{\arabic{equation}}
 \begin{refsection}
-\addstarredpart{Introduction}
+\addstarredchapter{Introduction}
 \markboth{Introduction}{INTRODUCTION}
 Comprendre la nature et les mécanismes du transport des particules dans un
 plasma en présence d'un champ magnétique est une étape essentielle au
@@ -10,8 +11,9 @@ Parmi les plus ambitieuses, la fusion thermonucléaire
 contrôlée~\parencite{Wesson}, qui consiste à reproduire sur Terre des réactions
 de fusion\footnote{La réaction de fusion entre deux atomes d'hydrogène, qui fait naturellement briller les
 étoiles, est à ce jour la source d'énergie la plus prometteuse pour soutenir le besoin croissant en énergie de notre civilisation,
-économiquement pérenne, techniquement faisable et écologiquement durable.},
-repose sur un dispositif de confinement magnétique en forme d'anneau appelé « tokamak ».
+économiquement pérenne, techniquement faisable et écologiquement durable
+(plus de détails sont donnés en Annexe~\ref{AnnexeA}.}, repose sur un dispositif
+de confinement magnétique en forme d'anneau appelé « tokamak ».
 La matière, chauffée à des températures supérieures à 150 millions de degrés
 Celsius, y est totalement ionisée et doit être confinée par un puissant champ magnétique afin
 de rester dans cet état. La réussite de ce projet (d'initiative
@@ -34,12 +36,11 @@ performances de la décharge. Ce type de source est couramment employé dans de
 nombreux domaines, tels que le traitement et la gravure de
 surface~\parencite{Lieberman}, la propulsion spatiale~\parencite{Zhurin}, ou
 encore l'injection de neutres pour la fusion~\parencite{SimoninHDR}. Le champ
-magnétique permet alors de limiter la perte des particules sur les parois (miroirs magnétiques, magnétrons), de laisser pénétrer dans le plasma une tension appliquée (propulseurs à effet Hall, extraction des ions négatifs), et/ou d'obtenir un certain type de chauffage par le couplage d'énergie entre des ondes électromagnétiques et les électrons (décharges hélicons, sources à résonance électron-cyclotron (ECR)). Ces sources ont typiquement pour paramètres : une
-densité plasma $n_e\sim\,$10$^{16}$ - 10$^{18}\,$m$^{-3}$, une densité de gaz
-$n_g\sim\,$10$^{19}\,$m$^{-3}$, une température électronique $T_e\sim\,$1-20~eV
-et une intensité de champ magnétique ne dépassant que rarement le
-dixième de Tesla. Ils sont donc radicalement différents de ceux des plasmas chaud de
-fusion.
+magnétique permet alors de limiter la perte des particules sur les parois
+(miroirs magnétiques, magnétrons), de laisser pénétrer dans le plasma une
+tension appliquée (propulseurs à effet Hall), d'abaisser la température
+électronique (sources d'ions négatifs), et/ou d'obtenir un certain
+type de chauffage par le couplage d'énergie entre des ondes électromagnétiques et les électrons (décharges hélicons, sources à résonance électron-cyclotron (ECR)). Ces sources ont typiquement pour paramètres : une densité plasma $n_e\sim\,$10$^{16}$ - 10$^{18}\,$m$^{-3}$, une densité de gaz $n_g\sim\,$10$^{19}\,$m$^{-3}$, une température électronique $T_e\sim\,$1-20~eV et une intensité de champ magnétique ne dépassant que rarement le dixième de Tesla. Ils sont donc radicalement différents de ceux des plasmas chaud de fusion.
 
 Le développement et l'optimisation de ces sources se basent généralement sur la
 combinaison de recherches expérimentales et d'études théoriques, elles-mêmes
@@ -66,9 +67,7 @@ améliorer la compréhension du transport magnétisé dans
 la source d'ions négatifs, avec potentiellement de nombreux bénéfices pour
 la modélisation des plasmas froids magnétisés en général.
 
-\begin{center}
-\rule{0.6\textwidth}{1pt}
-\end{center}
+\section*{Les sources d'ions négatifs}
 
 Le futur réacteur expérimental de fusion ITER se servira de deux injecteurs de
 neutres (IDN) pour chauffer le plasma, générer du courant et alimenter le
@@ -94,9 +93,9 @@ figure~\ref{IPPIonSource}).
 d'expansion rectangulaire. La production d'ions négatifs a lieu quant à elle de
 l'autre côté de la source, au niveau des grilles d'extraction, par des
 réactions de surface sur les parois vaporisées au césium.
-Cette région est séparée de la zone de création du plasma par un filtre magnétique dont le rôle
-principal est de réduire la température électronique à proximité de la grille
-d'extraction, ce qui est nécessaire pour obtenir une production suffisante
+Cette région est séparée de la zone de création du plasma par un filtre
+magnétique, aussi appelé barrière magnétique, dont le rôle principal est de
+réduire la température électronique à proximité de la grille d'extraction, ce qui est nécessaire pour obtenir une production suffisante
 d'ions négatifs et limiter leur taux de destruction par collision avec les
 électrons. Cependant la physique qui résulte de la combinaison entre
 le plasma du driver, de la zone d'extraction et de la zone de filtre est très
@@ -105,7 +104,7 @@ de température et de potentiel, eux-mêmes à l'origine de mécanismes de trans
 encore inexpliqués. 
 
 \vspace{5 mm}
-\begin{minipage}{1\textwidth}
+\begin{minipage}{0.9\textwidth}
 \begin{minipage}{0.5\textwidth}
 \includegraphics[width=1\textwidth]{figures/sourceIPP.png}
 \captionsetup{justification=raggedright, singlelinecheck=false}
@@ -147,16 +146,13 @@ développement, notamment pour simuler son intégration dans la ligne Siphore.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/sourceSimonin1.png}
+\includegraphics[width=0.7\textwidth]{figures/sourceSimonin1.png}
 {\caption{Schémas de principe (vue de dessus à gauche et vue de face à droite)
 de la source d'ions négatifs Cybele.}\label{CYBELEIonSource}}
 \end{figure}
 
 
-\begin{center}
-\rule{0.6\textwidth}{1pt}
-\end{center}
-
+\section*{État de l'art}
 Le comportement d'un plasma en présence d'un champ magnétique a été
 longuement étudié et se trouve maintenant décrit dans de nombreux ouvrages sur
 la physique des plasmas.
@@ -238,17 +234,147 @@ sur la performance et la caractérisation des décharges pour des applications
 spécifiques (\parencite{Lieberman} et références inclues) et, excepté quelques
 récentes études analytiques de colonnes de plasma idéales
 (stationnaires~\parencite{Sternberg}, infinie suivant la direction axiale et de
-symétrie axiale~\parencite{Fruchtman}), très peu de travaux sont dédiés à la
+symétrie axiale~\parencite{Fruchtman09}), très peu de travaux sont dédiés à la
 compréhension du transport magnétisé en soi.
 
 \begin{center}
-\rule{0.6\textwidth}{1pt}
+\rule{0.5\textwidth}{1pt}
 \end{center}
 
-Le groupe GREPHE du LAPLACE a une grande expérience dans la modélisation des
-plasmas froids magnétisés. Depuis le milieu des années 90, où il a commencé 
-à s'impliquer dans la modélisation de la propulsion spatiale (GDR propulsion
-Plasma, ANR TELIOPEH, contrats SNECMA, SNES, ESA), le groupe a graduellement
+
+La connaissance sur le transport magnétisé dans les plasmas froids magnétisés
+peut se résumer ainsi :
+
+\textbf{1}. Le champ magnétique piège les électrons dans des orbites
+cyclotroniques, ce qui rend leur transport fortement anisotropique. Selon
+l'approche fluide standard~\parencite{Chen,Rozhansky,Lieberman,Rax}, les
+coefficients de transport magnétisés prennent la forme de
+tenseurs.
+Considérons le flux électronique $\mathbf G$ en l'absence de champ magnétique :
+
+\begin{equation}
+\mathbf G = \mu_e n_e\mathbf E - D_e\nabla(n_eT_e)
+\end{equation}
+
+avec $\mu_e$ et $D_e$ les coefficients de mobilité et de diffusion, $n_e$ la
+densité électronique, $\mathbf E$ le champ électrique et $T_e$ la température des électrons. Le flux
+électronique $\boldsymbol{\Gamma}$ en présence d'un champ magnétique est alors
+donné par :
+\begin{equation}
+\label{MagnetizedFlux}
+\boldsymbol{\Gamma} = \frac{1}{1+h_e^2}(\mathbf G + (\mathbf
+h\cdot\mathbf G)\mathbf h-\underbrace{\mathbf h\times\mathbf
+G}_\text{dérive})\equiv n_e\boldsymbol{\mu}_e\cdot\mathbf
+E-\mathbf{D}_e\cdot\nabla(n_eT_e)
+\end{equation}
+\begin{equation}
+\mathbf h=\mu_e\mathbf B=\frac{e}{m_e\nu_e}\mathbf
+B=\frac{\omega_{ce}}{\nu_e}\mathbf b
+\end{equation}
+où $\mathbf B$ est le champ magnétique et $h_e=|\mathbf h_e|$ est le paramètre
+de Hall mesurant l'influence du champ
+magnétique sur le transport collisionnel. \eqref{MagnetizedFlux} donne la
+définition d'un tenseur de mobilité $\boldsymbol{\mu}_e$ dont les composants
+diagonaux sont très anisotropiques :
+ 
+\begin{itemize}
+  \item $\mu_{e\para}=\mu_e$ parallèlement à $\mathbf B$
+  \item $\mu_{e\perp}$ perpendiculairement à $\mathbf B$ :
+\end{itemize}
+
+\begin{equation}
+\mu_{e\perp}=\frac{1}{1+h_e^2}\mu_e\approx\frac{m_e\nu_e}{eB^2}
+\end{equation}
+Le tenseur de mobilité a aussi des composants non-diagonaux :
+
+\begin{equation}
+\mu_{e\times}=\frac{h_e}{1+h_e^2}\mu_e\approx\pm\frac{1}{B}
+\end{equation}
+
+Ils décrivent le flux d'électrons dans la direction $\mathbf
+B\times\mathbf G$, composé de la dérive $\mathbf E$x$\mathbf B$ (partie
+advective de $\mathbf G$) et de la dérive diamagnétique (partie diffusive de
+$\mathbf G$). Quand la configuration étudiée est de symétrie cylindrique et que le champ magnétique est
+dans le plan ($z$,$r$), cette dérive se referme sur elle-même dans la direction
+azimutale et n'interfère pas directement avec le transport des particules vers
+la paroi (voir figure~\ref{Contextederive}-a). En conséquence le transport est
+contrôlé uniquement par $\mu_{e\para}$ et $\mu_{e\perp}$, avec un ratio $\mu_{e\para}/\mu_{e\perp}$ pouvant aller
+jusqu'à 8 ordres de magnitude ; le confinement est alors dû à la très faible
+valeur de $\mu_{e\perp}$.
+\vspace{1cm}
+
+\textbf{2}. Quand la mobilité dans la direction perpendiculaire au champ
+magnétique est fortement réduite ($\mu_{e\para}\gg\mu_{e\perp}$) le plasma a tendance à
+développer des instabilités et de la turbulence, ce qui amplifie
+considérablement le transport transverse des électrons. Un grand nombre de
+publications font état de ce transport "anormal" (i.e.
+$\mu_{e\perp}$ plus grand que dans l'expression classique donnée précédemment)
+lié à ces instabilités dans des sources plasmas froids
+basse-pression~\parencite{Bradley,Adam}.
+
+Des simulations PIC ont aussi montré
+la présence d'un transport turbulent et de phénomènes instationnaires, par
+exemple dans le cas des propulseurs à effets Hall~\cite{Adam08}. La
+compréhension des phénomènes de transport anormaux dans les plasmas froids
+basse-pression reste superficielle et on ne peut ni quantifier leur effets, ni
+même donner de lois d'échelle utilisables.
+Les théories développées dans le cadre de la recherche sur la fusion
+thermonucléaire contrôlée ne semblent pas non plus pouvoir s'appliquer du fait de conditions et
+de paramètres plasmas très différents. Par manque de connaissance,
+beaucoup d'auteurs s'appuient sur la formule empirique proposée par Bohm
+$\mu_\perp=1/16B$~\parencite{Bohm} sans plus de justifications.
+\vspace{1cm}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/derives.png}
+{\caption{Configurations "Filtre magnétique" pour
+\textbf{a)} une dérive azimutale et \textbf{b)} une dérive
+bloquée. Dans le deuxième cas, le plasma développe une
+asymétrie (effet Hall) et fait passer le flux
+électronique au travers du filtre au niveau de la
+paroi.}\label{Contextederive}}
+\end{figure}
+
+\textbf{3}. Avec la présence de parois conductrices, le transport dans les
+plasmas froids est généralement non-ambipolaire, i.e. les flux ioniques et
+électroniques ne sont localement pas égaux et les courants se rebouclent à
+travers les murs~\parencite{Rozhansky}, provoquant un effet de "court-circuit".
+Dans de nombreuses configurations, les électrons ont ainsi tendance à quitter
+le plasma le long des lignes de champ tandis que les ions sont perdus sur toute
+la surface des parois, ce qui rend les pertes globales bien plus importantes
+que celles prédites par la théorie ambipolaire.
+
+Cet effet, découvert par Simon en 1955~\parencite{Simon55}, peut dans certains
+cas expliquer le transport "anormal" observé mais reste encore souvent négligé,
+comme l'a si bien illustré la polémique récente dans la littérature
+(e.g.~\parencite{Fruchtman,Simon08,Fruchtman08}). De plus, bien que la relation
+de Boltzmann,
+\begin{equation}
+-e\mathbf
+E =\frac{\nabla (n_e T_e)}{n_e}
+\end{equation}
+ne soit pas justifiée dans la direction perpendiculaire au champ magnétique,
+plusieurs récentes publications font l'hypothèse irréaliste d'un transport
+totalement ambipolaire~\parencite{Fruchtman,Nasi}.
+\vspace{1cm}
+
+\textbf{4}. Dans les géométries cylindriques, la dérive due au champ magnétique
+est dans la direction azimutale et n'interfère pas directement avec le
+confinement du plasma, mais dans les
+configurations où cette symétrie est absente, la dérive magnétique est bloquée
+par la paroi et elle joue un rôle majeur dans le transport perpendiculaire
+(figure~\ref{Contextederive}-b). La dérive bloquée a alors tendance à déformer
+le plasma, de façon similaire à la polarisation d'un solide par l'effet Hall.
+
+Dans la configuration filtre, on peut donc s'attendre à ce que le transport
+transverse soit plutôt dominé par $\mu_{e\times}$ et suive une loi d'échelle en $1/B$, tout comme le transport
+turbulent. Cet effet est critique pour la source d'ITER car il
+entraîne la non-uniformité du courant d'ions négatifs extraits, comme le montre
+les mesures expérimentales sur la source de l'IPP Garching.
+
+ \section*{Contexte local} Le
+groupe GREPHE du LAPLACE a une grande expérience dans la modélisation des plasmas froids magnétisés. Depuis le milieu des années 90, où il a commencé à s'impliquer dans la modélisation des propulseurs à effet Hall (GDR propulsion Plasma, ANR TELIOPEH, contrats SNECMA, SNES, ESA), le groupe a graduellement
 étendu son domaine de recherche à d'autres sources de plasma magnétisé
 (PLASMODIE, ESSILOR). En 2006, le groupe GREPHE
 a été choisi pour concevoir un modèle numérique auto-consistant de la source de
@@ -278,21 +404,18 @@ le sujet de cette thèse.
 \end{itemize}
  
  La première année de
- le thèse s'est déroulée au sein de l'équipe théorique GP2B (Groupe Physique du Plasma de Bord) de l'Institut de
+ le thèse s'est déroulée au sein de l'équipe théorique GP2B de l'Institut de
  Recherche sur la Fusion Magnétique du CEA de Cadarache, avec laquelle le GREPHE
  a entamé une collaboration dans le contexte de ce projet. Elle a consisté à
  étudier les méthodes utilisées dans la recherche
  sur la fusion pour modéliser le transport fortement magnétisé afin de les
- appliquer au domaine des plasmas froids. La suite de la thèse s'est passé à
+ appliquer au domaine des plasmas froids. La suite de la thèse s'est passée à
  Toulouse au GREPHE et a été dédiée au développement d'un nouveau modèle,
  combinant les techniques spécifiques aux deux communautés.
  
-\begin{center}
-\rule{0.6\textwidth}{1pt}
-\end{center}	
-
+\section*{Organisation de la thèse}
 	Le premier chapitre de cette thèse rappelle une partie des concepts 
-	fondamentaux de la physique des plasmas, nécéssaires à la fois à la bonne
+	fondamentaux de la physique des plasmas, nécessaires à la fois à la bonne
 	compréhension du transport magnétisé et à l'auto-suffisance du manuscrit. Nous
 	y parlons des plasmas, des phénomènes de transport et des échelles
 	caractéristiques que nous serons amenés à rencontrer tout au long du manuscrit.
@@ -317,19 +440,19 @@ le sujet de cette thèse.
 	Dans le chapitre IV, nous présentons MAGNIS, le nouveau code développé dans le
 	cadre de la thèse. C'est un modèle fluide, quasineutre, qui décrit le transport
 	du plasma dans le plan perpendiculaire au champ magnétique. Les conditions aux
-	limites sont dérivées du critère de Bohm, et contiennent un maximum de
-	considérations physiques. Nous détaillons dans une deuxième partie le schéma
-	numérique élaboré spécialement pour le modèle.
+	limites sont dérivées d'une théorie classique de gaine (intégrant le critère
+	de Bohm), et contiennent un maximum de considérations physiques. Nous
+	détaillons dans une deuxième partie le schéma numérique élaboré spécialement pour le modèle.
 	
 	 Le dernier chapitre porte sur l'étude de trois cas de test simplifiés,
 inspirés d'expérimentations réelles. Chacun des cas possède sa problématique
-spécifique, et est représentatif d'une configuration magnétique
+spécifique, et est représentatif d'une géométrie magnétique
 particulière :
 \begin{itemize}
-  \item la géométrie de filtre magnétique pour le propulseur électrostatique PEGASES
-		ou la source d'ions négatifs du système IDN d'ITER ;
+  \item la configuration de filtre magnétique (ou barrière magnétique) pour le
+  propulseur électrostatique PEGASES ou la source d'ions négatifs du système IDN d'ITER ;
 		\item une colonne de plasma avec un champ uniforme, caractéristique de
-		nombreuses expérimentations, dont la source d'ions CYBELE ;
+		nombreuses expérimentations, dont la source d'ions Cybele ;
 		\item une configuration typique de plasma de bord de tokamak, avec un champ
 		magnétique intense et l'apparition d'un transport de nature turbulente.
 \end{itemize}
@@ -338,4 +461,7 @@ particulière :
 %\bibliographystyle{apalike}
 %\bibliography{biblio}
 \end{refsection}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\theequation}{\thechapter-\thesection.\arabic{equation}}
+%\adjustmtc[1]
 

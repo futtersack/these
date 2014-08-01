@@ -93,10 +93,10 @@ L'ionisation du gaz suit l'évolution de la température
 électronique $T_{e}$ ;
 dans les plasmas, le degré d'ionisation $\alpha$ est donné par le rapport
 entre la densité électronique $n_{e}$ et la densité de gaz neutre
-$n_{n}$ :
+$n_{g}$ :
 
 \begin{equation}
-\alpha=\frac{n_{e}}{n_{e}+n_{n}}
+\alpha=\frac{n_{e}}{n_{e}+n_{g}}
 \end{equation}
 
 Cette fraction va définir l'importance de l'interaction entre les particules
@@ -297,7 +297,8 @@ s'exprime alors en fonction du ratio entre la valeur locale du champ
 Pour les ions la fonction de distribution est plus difficile à déterminer ; on a
 alors recours à des expériences spéciales dites de
 "swarm"~\parencite{Ellis,Phelps} pour mesurer $\nu$ indirectement à partir de
-modèles de Dérive-Diffusion (voir~\S\ref{ApproximationsEqMvt}-\ref{1-transportAmbipolaire}).
+modèles de Dérive-Diffusion
+(voir~\S~\ref{ApproximationsEqMvt}-\ref{1-transportAmbipolaire}).
 
 \subsubsection{Collisions élastiques et inélastiques}
 
@@ -305,9 +306,9 @@ Lors de collisions
 \emph{élastiques}\footnote{Les collisions sont dites élastiques car elles
 donnent lieu à des transferts d'impulsion et d'énergie sans changer la nature
 des particules à l'issue de la collision.}, les particules échangent de
-l'énergie en fonction de leur ratio de masse. Entre les électrons et les
-espèces plus lourdes, les électrons sont diffusés de façon aléatoire et perdent
-donc de la quantité de mouvement au profit d'une isotropisation globale
+l'énergie en fonction de leur ratio de masse. Dans les collision entre les
+électrons et les espèces plus lourdes, les premiers sont diffusés de façon
+aléatoire et perdent donc de la quantité de mouvement au profit d'une isotropisation globale
 des vitesses électroniques.
 Au contraire, dans les plasmas froids, les ions ont tendance à céder une grande partie de leur énergie aux
 neutres omniprésents et leur température reste voisine de celle du gaz. 
@@ -745,7 +746,8 @@ demi-maxwellienne :
 
 Pour obtenir l'énergie moyenne totale $\varepsilon_e^s$ perdu par les électrons
 en entrée de gaine, il faut ajouter le potentiel de gaine à
-$\varepsilon_e^\text{w}$ afin de prendre en compte l'énergie transférée aux ions dans la chute de potentiel :
+$\varepsilon_e^\text{w}$ afin de prendre en compte l'énergie transférée aux
+ions dans la chute de potentiel :
 
 \begin{equation}
 	\varepsilon_e^s=2T_e+e(\Phi_s-\Phi_\text{w})
@@ -1022,8 +1024,8 @@ où $j$ dénote une interaction, $N_j$ est le nombre de particules
 créées lors d'une collision (négatif en cas de destruction), $n_\alpha$ et $n_s$
 la densité des espèces en collision et $k_{j}=\left<\sigma_{j}
 v_r\right>$ le coefficient de collision/réaction associé
-(cf.\S\ref{1-Collisions}), avec $v_r=(\mathbf u_s-\mathbf u_\alpha)$ la vitesse
-relative des deux fluides. Le terme source peut ensuite se décomposer en une
+(cf.\S~\ref{1-Collisions}), avec $v_r=(\mathbf u_s-\mathbf u_\alpha)$ la
+vitesse relative des deux fluides. Le terme source peut ensuite se décomposer en une
 partie positive liée à la création par ionisation et à une partie négative due à la recombinaison :
 
 \begin{equation}
@@ -1177,9 +1179,10 @@ Pour les électrons, cette puissance collisionnelle est généralement négative
 \begin{equation}
 	\Pi_e=\int_{\mathbf
 	v}\frac{m_\alpha}{2}v^2C_\alpha \text{d}^3\mathbf
-	v=-en_e\sum_{j}\left(E_jn_sk_{j}\right)-en_e\sum_{s}\left(\frac{2m_e}{m_s}n_sk^m_{es}\varepsilon_e\right)
+	v=-en_e\sum_{j}\left(E_jn_sk_{j}\right)-en_e\sum_{s}\left(\frac{2m_e}{m_s}n_sk^m_{es}\varepsilon_e\right)=-en_en_gk_e^\varepsilon
 \end{equation}
 
+avec $\Theta_e^\varepsilon$ un taux de puissance moyenne perdue par électron. 
 Le premier terme donne la perte d'énergie inélastique sommée sur l'ensemble
 des processus d'excitation et d'ionisation $j$, avec $E_j$ l'énergie de seuil de
 la réaction. Le second terme représente la perte d'énergie dans les collisions
@@ -1188,10 +1191,10 @@ collisions élastiques avec le gaz, l'expression de $\Pi_e$
 se simplifie :
 
 \begin{equation}
-	\Pi_e\approx-en_en_g\left(E_\text{iz}k_\text{iz}+\frac{2m_e}{m_g}k^m_e\varepsilon_e\right)=-en_e\Theta_e^\varepsilon
+	\Pi_e\approx-en_en_g\left(E_\text{iz}k_\text{iz}+\frac{2m_e}{m_g}k^m_e\varepsilon_e\right)
 \end{equation}
 
-avec $\Theta_e^\varepsilon$ un taux de puissance moyenne perdue par électron. 
+
 
 On peut
 maintenant soustraire la contribution de l'énergie dirigée
@@ -1292,19 +1295,16 @@ q_e+\frac{5}{2}\frac{n_e
 T_e}{m_\alpha}+\frac{e}{m_e} \mathbf q_e\times\mathbf
 B=-\nu_{e}^\varepsilon\mathbf q_e
 \end{equation}
-
 La fréquence $\nu_e^\varepsilon$ regroupe alors l'ensemble des collisions, y
 compris les auto-collisions :
 \begin{equation}
 \nu_e^\varepsilon=\nu_{en}^\varepsilon+\nu_{ei}^\varepsilon+\nu_{ee}^\varepsilon\footnote{La fréquence de diffusion de chaleur lors des
-collisions avec le gaz se calcule avec :
-$$\nu_{en}^\varepsilon=n<\frac{3}{2}\sin^2\theta\sigma(v,\cos\theta)v>$$
-Pour des collisions isotropes, cette expression est à peu près égale à la
-fréquence de transfert de quantité de mouvement :
-$$\nu_{en}^\varepsilon\approx\nu_{en}^m=n<(1-cos\theta)\sigma
-v>$$ }
+collisions avec le gaz dominantes et isotropes, cette féquence est à peu près
+égale à la fréquence de transfert de quantité de mouvement $\nu_{en}^\varepsilon\approx\nu_{en}^m$ }
 \end{equation} Le système \{\textup{\ref{1-eqContinuite},
-\ref{1-eqQuantiteMouvement}, \ref{1-eqEnergieInterne}, \ref{1-eqFluxChaleur}}\} forme une suite d'équations de conservation décrivant le comportement et l'évolution des espèces dans le plasma.
+\ref{1-eqQuantiteMouvement}, \ref{1-eqEnergieInterne}, \ref{1-eqFluxChaleur}}\}
+forme une suite d'équations de conservation décrivant le comportement et
+l'évolution des espèces dans le plasma.
 Ces équations sont rigoureusement valides pour des échelles de temps et d'espace
 grandes devant les échelles caractéristiques collisionnelles :
 

@@ -15,9 +15,6 @@
 \input{macro.tex}
 \defbibheading{subbib}{%
  \section*{\nameref{refsection:\therefsection}}
- %Références du
- % chapitre\space\therefsection :
- %\\
  }
 %% Begin Document
 \begin{document}
@@ -45,19 +42,28 @@
 	
 	\thispagestyle{empty}
 	\cleardoublepage
-	
+	\pdfbookmark{\contentsname}{toc}
+
+	%\bookmarksetup{startatroot}
 	\tableofcontents
 %	\cleardoublepage
 	%\ChapterStar{}
 
-	\printnomenclature[3em]
-	\input{nomenclature}
+	%\printnomenclature[3em]
+	%\input{nomenclature}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%% 
 	%%  Chapters
 	%% 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\makeatletter
+    \renewcommand\mainmatter{%
+        \clearpage
+    	  \@mainmattertrue
+      	\pagenumbering{arabic}
+      	\setcounter{page}{0} }
+    \makeatother
 	\mainmatter
 	%\pagenumbering{arabic}
 	%\setcounter{page}{0} 
@@ -75,12 +81,14 @@
 	
 
 %\thispagestyle{empty}\cleardoublepage\thispagestyle{chapitre}
-	
 	\appendix
-	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}	
+	\addappheadtotoc 
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\renewcommand{\thefigure}{\arabic{figure}}
+	\renewcommand{\theequation}{\arabic{equation}}	
 	\input{annexeA}
 	\input{annexeB}
-	\input{annexeC}
+	%\input{annexeC}
 
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -89,8 +97,16 @@
 	%% 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%\bibliographystyle{alpha}
+	%\ChapterStar{Bibliographie}
+	%\addstarredpart{Préface}
+	%\markboth{Préface}{PRÉFACE}
+	\newpage
+	\thispagestyle{empty}
+	\newpage
+	\thispagestyle{chapitre}
+	\addstarredchapter{Références}
 	\printbibheading%[heading=bibbook]
 	\bibbysection[heading=subbib]
-		
+	\input{couverture}
 
 \end{document}
