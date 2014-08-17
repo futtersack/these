@@ -253,11 +253,11 @@ tenseurs.
 Considérons le flux électronique $\mathbf G$ en l'absence de champ magnétique :
 
 \begin{equation}
-\mathbf G = \mu_e n_e\mathbf E - D_e\nabla(n_eT_e)
+\mathbf G = \mu_e n_e\mathbf E - D_e\nabla(n_e)
 \end{equation}
 
 avec $\mu_e$ et $D_e$ les coefficients de mobilité et de diffusion, $n_e$ la
-densité électronique, $\mathbf E$ le champ électrique et $T_e$ la température des électrons. Le flux
+densité électronique et $\mathbf E$ le champ électrique. Le flux
 électronique $\boldsymbol{\Gamma}$ en présence d'un champ magnétique est alors
 donné par :
 \begin{equation}
@@ -265,7 +265,7 @@ donné par :
 \boldsymbol{\Gamma} = \frac{1}{1+h_e^2}(\mathbf G + (\mathbf
 h\cdot\mathbf G)\mathbf h-\underbrace{\mathbf h\times\mathbf
 G}_\text{dérive})\equiv n_e\boldsymbol{\mu}_e\cdot\mathbf
-E-\mathbf{D}_e\cdot\nabla(n_eT_e)
+E-\mathbf{D}_e\cdot\nabla(n_e)
 \end{equation}
 \begin{equation}
 \mathbf h=\mu_e\mathbf B=\frac{e}{m_e\nu_e}\mathbf
@@ -351,7 +351,7 @@ comme l'a si bien illustré la polémique récente dans la littérature
 (e.g.~\parencite{Fruchtman,Simon08,Fruchtman08}). De plus, bien que la relation
 de Boltzmann,
 \begin{equation}
--e\mathbf
+q_e\mathbf
 E =\frac{\nabla (n_e T_e)}{n_e}
 \end{equation}
 ne soit pas justifiée dans la direction perpendiculaire au champ magnétique,

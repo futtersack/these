@@ -210,13 +210,16 @@ backend=biber
   \ifstrequal{#1}{A}{Acronymes}{}}}}}]
   }
 
-\renewcommand*{\nompreamble}{\markboth{\nomname}{\nomname}}
+\renewcommand{\nomname}{Liste des notations}
 
+\renewcommand*{\nompreamble}{\markboth{\nomname}{\nomname}}
 \newcommand{\nomdescr}[1]{\parbox[t]{8cm}{\RaggedRight #1}}
 \newcommand{\nomwithdim}[5]{\nomenclature[#1]{#2}%
-{\nomdescr{#3}\parbox[t]{3cm}{\RaggedRight #4}\parbox[t]{2cm}{\RaggedLeft #5}}}
-\newcommand{\nomLarge}[4]{\nomenclature[#1]{#2}{\parbox[t]{4cm}}%
-{\nomdescr{#3}}}
+{\nomdescr{#3}\parbox[t]{3cm}{\centering #4}\parbox[t]{2cm}{\RaggedLeft #5}}}
+\newcommand{\nomLarge}[3]{\nomenclature[#1]{#2}%
+{\RaggedLeft #3}}
+\newcommand{\nomDivers}[4]{\nomenclature[#1]{#2}%
+{\parbox[t]{8cm}{\RaggedRight #3}\parbox[t]{7cm}{\RaggedRight #4}}}
 
 \makenomenclature
 
