@@ -47,10 +47,10 @@
 	%\bookmarksetup{startatroot}
 	\tableofcontents
 	
-	%\ChapterStar{}
 	%\newpage
 	%\cleardoublepage
 	%\printnomenclature[5em]
+	%\addstarredchapter{Liste des notations}
 	%\input{nomenclature}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,7 +83,7 @@
 
 %\thispagestyle{empty}\cleardoublepage\thispagestyle{chapitre}
 	\appendix
-	\addappheadtotoc 
+	%\addappheadtotoc 
 	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 	\renewcommand{\thefigure}{\arabic{figure}}
 	\renewcommand{\theequation}{\arabic{equation}}	
@@ -105,8 +105,8 @@
 	\thispagestyle{empty}
 	\newpage
 	\thispagestyle{chapitre}
-	\addstarredchapter{Références}
 	\printbibheading%[heading=bibbook]
+	\addstarredchapter{Références}
 	\bibbysection[heading=subbib]
 	%\input{couverture}
 
