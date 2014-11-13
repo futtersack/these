@@ -301,14 +301,18 @@ p_\alpha\times\nabla\frac{1}{B}\cdot \mathbf b}_{\text{terme de
 courbure}\;\propto\nabla 1/B}
 \end{equation}
 
-L'intensité du champ magnétique varie très peu dans la SOL. Les fluctuations de
-potentiel électrique $\widetilde{\Phi}$ et de densité $\widetilde{n}$
-sont de plusieurs ordres de grandeurs supérieures à celles du champ magnétique
-radial $B_r$ : $\widetilde{n}$/$n$ peut atteindre la valeur 1 proche de la
-paroi, tandis que $\widetilde{B}_r$/$B$ ne dépasse guère
-10$^{-4}$~\parencite{SarazinPhD}.
-On peut ainsi négliger les effets de courbure et ne considérer que l'avection par
-la dérive électrique dans la divergence du flux~\eqref{1-divElecDrift} :
+Les termes de courbure ont deux contributions : La première contribution,
+correspondant aux fluctuations magnétiques, est négligeable ; l'intensité du
+champ magnétique varie très peu dans la SOL et $\widetilde{B}$/$B$ ne dépasse guère
+10$^{-4}$~\parencite{SarazinPhD}, contrairement aux fluctuations de potentiel $\widetilde{\Phi}$ et de densité $\widetilde{n}$
+qui 
+peuvent atteindre la valeur 1 proche de la paroi. La deuxième contribution,
+plus importante, provient de la variation spatiale du champ magnétique toroïdal. Cette
+contribution est elle aussi petite devant le terme issu de la dérive électrique,
+le champ toroïdal variant à l'échelle du grand rayon du tokamak, qui est
+bien supérieure à celle des fluctuations de potentiel.
+
+On peut ainsi négliger les effets de courbure et ne considérer que l'avection par la dérive électrique dans la divergence du flux~\eqref{1-divElecDrift} :
 $\nabla\cdot(n_\alpha\mathbf u_E)\approx \mathbf u_E\cdot\nabla n$. La divergence du flux diamagnétique, qui
 n'est due qu'aux effets de courbure du champ magnétique, est très faible, voir
 nulle dans le cas d'un champ magnétique uniforme $\nabla1/B\,$=~0.
@@ -448,7 +452,7 @@ dite de Dérive-Diffusion :
 \begin{equation}
 \label{1-eqDriftDifContinuite}
 \partial_t
-n_\alpha=\nabla\cdot({\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf E}
+n_\alpha=-\nabla\cdot({\frac{q_\alpha}{|q_\alpha|}\mu_\alpha n_\alpha\mathbf E}
 +{D_\alpha{\nabla n_\alpha}})+S_\alpha
 \end{equation}
 

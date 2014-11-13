@@ -74,7 +74,8 @@ $T_e\sim\,$70~eV), l'utilisation d'un modèle fluide est justifiée par la forte
 collisionnalité du plasma : pour les ions, le libre parcours moyen
 $\lambda_i=v_{{T}_{i}}/\nu_{ei}$, de l'ordre du mètre, est très
 inférieur à la longueur de connexion parallèle des lignes de champ
-$L_\para\sim\,$100~m (pour les électrons, le libre parcours est marginal).
+$L_\para\sim\,$100~m (pour les électrons, le ratio $\lambda_e/L_\para$ est
+négligeable).
 
 Le plasma est constitué d'électrons et d'une seule espèce d'ions de charge +$e$.
 Il est de plus très magnétisé $B\sim\,$1~T ; les fréquences caractéristiques du
@@ -540,7 +541,7 @@ poloïdal de symétrie $\theta_0=0$}
     \includegraphics[height=6cm]{figures/2-CarteDensiteBase.eps}}
     \subfigure[]{\label{2-CartePotentielBase}
     \includegraphics[height=6cm]{figures/2-CartePotentielBase.eps}}
-    \caption{Cartes de la densité~\subref{2-CarteDensiteBase}~~et du potentiel
+    \caption{Cartes de la densité~\subref{2-CarteDensiteBase}~et du potentiel
     électrostatique~\subref{2-CartePotentielBase}. Le profil du terme source
     $\mathcal{S}$ est représenté en gris sur la carte de densité.
     }
@@ -569,7 +570,7 @@ de la densité et du flux radial sont présentées sur la figure~\ref{2-PDFBase}
     \subfigure[]{\label{2-TokamPDFFlux}
     \includegraphics[width=0.45\textwidth]{figures/2-TokamPDFFlux.eps}}
     \caption{Fonction de distribution de probabilité pour la
-    densité~\subref{2-TokamPDFDensite}~~et le flux
+    densité~\subref{2-TokamPDFDensite}~et le flux
     radial~\subref{2-TokamPDFFlux}. La moyenne est repérée par le trait en
     pointillé et l'écart type est montré en couleur plus foncée.}
     \label{2-PDFBase}
@@ -807,7 +808,7 @@ système d'équations mais réduit les erreurs numériques.
     \includegraphics[height=5.8cm]{figures/2-CarteDensiteMagBarrier.eps}}
     \subfigure[]{\label{2-CartePotentielMagBarrier}
     \includegraphics[height=5.8cm]{figures/2-CartePotentielMagBarrier.eps}}
-    \caption{Cartes de densité \subref{2-CarteDensiteMagBarrier}~ et de
+    \caption{Cartes de densité \subref{2-CarteDensiteMagBarrier} et de
     potentiel
     \subref{2-CartePotentielMagBarrier}.}
     \label{2-CartesMagBarrier}
@@ -848,7 +849,7 @@ cas de base, et chute de 4 ordres de grandeur à l'entrée du filtre.
     \subfigure[]{\label{2-magBarrierFlucProfil}
     \includegraphics[height=5.8cm]{figures/2-magBarrierFluctProfil.eps}}
     \caption{Profil radial de densité moyenné en temps et poloïdalement
-    \subref{2-magBarrierDenProfil}~ et profil radial du taux de fluctuation
+    \subref{2-magBarrierDenProfil} et profil radial du taux de fluctuation
     \subref{2-magBarrierFlucProfil}.
     La géométrie du champ magnétique, approximativement égal à 0.1~T sur
     l'ensemble du domaine et montant jusqu'à 0.2~T au centre du filtre, est
@@ -1070,9 +1071,9 @@ la courbure $g$ et la conductivité de gaine $\sigma$, qui semble donc régir un
 mécanisme d'instabilité autre que l'interchange.
 
 La caractérisation de cette
-instabilité est encore à réaliser mais on peut d'ores et déjà essayer de la
-relier aux travaux effectués dans~\parencite{Berk} qui prédisent une instabilité
-à fort taux de croissance en présence de parois conductrices et d'un gradient
+instabilité est encore à réaliser mais on peut d'ores et déjà la
+relier aux travaux effectués par Berk dans~\parencite{Berk} qui prédisent une
+instabilité à fort taux de croissance en présence de parois conductrices et d'un gradient
 de température.
 
 \subsection{Impact de l'équation d'énergie sur le transport transverse}
@@ -1092,8 +1093,8 @@ la température, ce n'est pas surprenant, les équations qui gouvernent leur
     \includegraphics[height=5.75cm]{figures/2-CartePotentielWhTe.eps}}
     \subfigure[]{\label{2-CarteTeWhTe}
     \includegraphics[height=5.75cm]{figures/2-CarteTeWhTe.eps}}
-    \caption{Cartes de densité~\subref{2-CarteDensiteWithTe}~, de
-    potentiel~\subref{2-CartePotentielWithTe}~ et de température 
+    \caption{Cartes de densité~\subref{2-CarteDensiteWithTe}, de
+    potentiel~\subref{2-CartePotentielWithTe} et de température 
     électronique~\subref{2-CarteTeWhTe}.}
     \label{2-CartesWithTe}
 	\end{figure}
@@ -1147,15 +1148,18 @@ en le rappelant de façon exponentielle à $\Lambda\text{T}_e$.
     \includegraphics[height=6cm]{figures/2-CartePotentielSurTeWhTedNdx.eps}}
 	\subfigure[]{\label{2-ProfileFluxWhTe}
     \includegraphics[height=5.5cm]{figures/2-profileFluxRadialWhTedNdx.eps}}    
-    \caption{\subref{2-CartePotentielSurTeWhTedNdx}~ Carte du courant parallèle.
-    \subref{2-ProfileFluxWhTe}~~Comparaison des profils du flux radial, moyenné en temps et en $y$, entre les cas
+    \caption{\subref{2-CartePotentielSurTeWhTedNdx}~Carte du courant parallèle.
+    \subref{2-ProfileFluxWhTe}~Comparaison des profils du flux radial, moyenné en temps et en $y$, entre les cas
     isotherme et anisotherme.}
 \end{figure}
 
 Sur la figure~\ref{2-ProfileFluxWhTe}, qui montre le profil du flux radial
 moyen, on voit que par rapport au cas isotherme, le transport transverse est réduit
-notablement. En observant la dynamique des flux, on peut supposer que cette
-diminution est reliée au cisaillement d'une vitesse de dérive poloïdale.
+notablement. Cette baisse de $<\Gamma_r>$ est probablement fortement
+dépendante des paramètres de la simulation et en particulier du rapport
+$\mathcal{S}_T/\mathcal{S}$. Dans cette simulation, en observant la dynamique
+des flux, on peut supposer que cette diminution est reliée au cisaillement
+d'une vitesse de dérive poloïdale.
 Ce phénomène rappelle les "equilibrium flows" qui se forment en présence
 d'un champ électrique radial $\nabla_x{\Phi}$. Pour illustration, les profils
 moyennés en temps et en $y$ du potentiel électrique, du flux radial et du
@@ -1226,8 +1230,8 @@ précédemment ; il est dû là aussi aux conditions aux limites transverses.
     \includegraphics[height=5.75cm]{figures/2-CartePotentielMagBarrierWhTe.eps}}
     \subfigure[]{\label{2-CarteTeMagBarrierWhTe}
     \includegraphics[height=5.75cm]{figures/2-CarteTeMagBarrierWhTe.eps}}
-    \caption{Cartes de densité~\subref{2-CarteDensiteMagBarrierWhTe}~, de
-    potentiel~\subref{2-CartePotentielMagBarrierWhTe}~et de température
+    \caption{Cartes de densité~\subref{2-CarteDensiteMagBarrierWhTe}, de
+    potentiel~\subref{2-CartePotentielMagBarrierWhTe} et de température
    \subref{2-CarteTeMagBarrierWhTe}.}
     \label{2-CartesWithTeFiltre}
 	\end{figure}
@@ -1250,8 +1254,11 @@ Regardons maintenant une configuration de type colonne magnétisée :
   parallèle $\sigma=\rho_{Li}/L_\para=\,$10$^{-4}$
   \item à la paroi, dans la direction perpendiculaire au champ magnétique, le
   potentiel plasma est fixé au potentiel flottant $\Lambda$ et la vorticité
-  supposée nulle. Ces conditions aux limites empêchent le courant de rentrer ou
-  de sortir par les bords latéraux
+  supposée nulle. Ces conditions aux limites empêchent la matière de
+  rentrer ou de sortir par les bords latéraux du domaine\footnote{Ces
+  conditions aux limites représentent très mal la réalité, la paroi agissant
+  plutôt comme un parfait puit de matière pour le plasma.} et amortissent la
+  turbulence à proximité de la paroi.
   \item une source de particules et de chaleur, avec un profil gaussien de
   largeur $l_{\mathcal S}=\,$32$\,\rho_{Li}$, est placée au centre du domaine
 \end{itemize}
@@ -1283,7 +1290,7 @@ champ, court-circuitant le transport perpendiculaire.
     \subfigure[]{\label{2-CarteTeMagColumn}
     \includegraphics[height=5.75cm]{figures/2-CarteTeMagColumn.eps}}
     \caption{Cartes de densité \subref{2-CarteDensiteMagColumn}, de potentiel
-    \subref{2-CartePotentielMagColumn}~ et de température
+    \subref{2-CartePotentielMagColumn} et de température
     \subref{2-CarteTeMagColumn}.}
     \label{2-MagColumnWithTe}
 	\end{figure}
