@@ -19,10 +19,12 @@
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc}
 \usepackage{xcolor,graphicx}
-\usepackage[a4paper]{geometry}
-\setlength{\textheight}{675pt}
-\setlength{\topmargin}{-32pt}
-\setlength{\footskip}{60pt}
+%\usepackage[a4paper]{geometry}
+\usepackage[paperwidth=16.9cm,
+paperheight=24cm,hmargin={1.5cm,1.2cm},vmargin={1.5cm,2.2cm}]{geometry}
+%\setlength{\textheight}{675pt}
+%\setlength{\topmargin}{-32pt}
+%\setlength{\footskip}{60pt}
 \DeclareUnicodeCharacter{00A0}{~}
 \usepackage{wrapfig}
 %\usepackage{verbatim}
@@ -56,6 +58,7 @@
 \renewcommand{\cftsubsubsecnumwidth}{4mm}
 \renewcommand{\cfttoctitlefont}{\hfill \huge  \bfseries}
 \renewcommand{\cftaftertoctitle}{\hfill}
+\setlength{\cftbeforetoctitleskip}{-3em}
 
 \renewcommand\thesubsubsection{\alph{subsubsection}.}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}	
@@ -108,8 +111,10 @@
 	\newpage
 	\pagestyle{empty}
 	\cleardoublepage
+	
 	\titleformat{\chapter}[display]
-		{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+		{\vspace{-2cm}\normalfont\huge\bfseries}{\chaptertitlename\
+		\thechapter}{20pt}{\Huge}
 	\chapter{#1}
 	\nomtcrule
 	\minitoc

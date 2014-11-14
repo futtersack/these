@@ -135,7 +135,6 @@ transverses au champ magnétique
 (cf.~\S~\ref{ApproximationsEqMvt}-\ref{1-vitessesDerive}), normalisées par le
 rayon de Larmor ionique.
 La séparatrice est modélisée par un terme source entrant de particules, de profil gaussien :
-
 \begin{equation}
 \mathcal S=\mathcal{S}_0 \exp[-(x-x_\mathcal{S})^2/l_\mathcal{S}^2]
 \end{equation}
@@ -538,9 +537,9 @@ poloïdal de symétrie $\theta_0=0$}
 \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteBase}
-    \includegraphics[height=6cm]{figures/2-CarteDensiteBase.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/2-CarteDensiteBase.eps}}
     \subfigure[]{\label{2-CartePotentielBase}
-    \includegraphics[height=6cm]{figures/2-CartePotentielBase.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/2-CartePotentielBase.eps}}
     \caption{Cartes de la densité~\subref{2-CarteDensiteBase}~et du potentiel
     électrostatique~\subref{2-CartePotentielBase}. Le profil du terme source
     $\mathcal{S}$ est représenté en gris sur la carte de densité.
@@ -566,9 +565,9 @@ de la densité et du flux radial sont présentées sur la figure~\ref{2-PDFBase}
 \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-TokamPDFDensite}
-    \includegraphics[width=0.45\textwidth]{figures/2-TokamPDFDensite.eps}}
+    \includegraphics[height=0.35\textwidth]{figures/2-TokamPDFDensite.eps}}
     \subfigure[]{\label{2-TokamPDFFlux}
-    \includegraphics[width=0.45\textwidth]{figures/2-TokamPDFFlux.eps}}
+    \includegraphics[height=0.35\textwidth]{figures/2-TokamPDFFlux.eps}}
     \caption{Fonction de distribution de probabilité pour la
     densité~\subref{2-TokamPDFDensite}~et le flux
     radial~\subref{2-TokamPDFFlux}. La moyenne est repérée par le trait en
@@ -805,9 +804,9 @@ système d'équations mais réduit les erreurs numériques.
 \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteMagBarrier}
-    \includegraphics[height=5.8cm]{figures/2-CarteDensiteMagBarrier.eps}}
+    \includegraphics[height=0.38\textwidth]{figures/2-CarteDensiteMagBarrier.eps}}
     \subfigure[]{\label{2-CartePotentielMagBarrier}
-    \includegraphics[height=5.8cm]{figures/2-CartePotentielMagBarrier.eps}}
+    \includegraphics[height=0.38\textwidth]{figures/2-CartePotentielMagBarrier.eps}}
     \caption{Cartes de densité \subref{2-CarteDensiteMagBarrier} et de
     potentiel
     \subref{2-CartePotentielMagBarrier}.}
@@ -845,9 +844,9 @@ cas de base, et chute de 4 ordres de grandeur à l'entrée du filtre.
 \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-magBarrierDenProfil}
-    \includegraphics[height=5.8cm]{figures/2-magBarrierDenProfil.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/2-magBarrierDenProfil.eps}}
     \subfigure[]{\label{2-magBarrierFlucProfil}
-    \includegraphics[height=5.8cm]{figures/2-magBarrierFluctProfil.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/2-magBarrierFluctProfil.eps}}
     \caption{Profil radial de densité moyenné en temps et poloïdalement
     \subref{2-magBarrierDenProfil} et profil radial du taux de fluctuation
     \subref{2-magBarrierFlucProfil}.
@@ -969,6 +968,7 @@ $(\omega, k_x, k_y)$ et sa stabilité, définie par un taux de croissance
 $\gamma_k$, le mode étant instable à partir de $\gamma_k>\,$0.
 
 Considérons un mode de densité, de potentiel et de température par :
+
 \begin{equation}
 \begin{pmatrix}
 \widetilde{\text{N}}_k\\\widetilde{\Phi}_k\\\widetilde{\text{T}}_k
@@ -982,13 +982,13 @@ $\Psi_1$ et $\Psi_2$ correspondant aux déphasages respectifs de
 $\widetilde{\Phi}$ et de $\widetilde{\text{T}}$ par rapport à
 $\widetilde{\text{N}}$. On note "$\text{cc}$" pour le complexe conjugé et
 le taux de croissance $\gamma_k$ correspond à la partie imaginaire de $\omega$
-:
-$\gamma_k=-\text{Im}(\omega)$.
+: $\gamma_k=-\text{Im}(\omega)$.
 Le système simplifié \eqref{2-eqContinuiteTemp} conduit à la relation de dispersion
 suivante, reliant le taux de croissance du mode à son vecteur d'onde
 $k=\sqrt{k_x^2+k_y^2}$ :
 
-\begin{equation}\mkern-60mu
+\small
+\begin{equation}\mkern-20mu
 \label{2-dispersion}
 \left|\begin{array}{ccc}
 \begin{gathered}
@@ -1026,6 +1026,7 @@ k^2\\
 
 \end{array}\right|=0\\[3ex]
 \end{equation}
+\normalsize
 
  avec $\overbar{L}_\text{N}$, $\overbar{L}_\text{T}$ et
  $\overbar{L}_\text{NT}$ les longueurs de gradient d'équilibre radiaux respectives de la densité, de la
@@ -1088,11 +1089,11 @@ la température, ce n'est pas surprenant, les équations qui gouvernent leur
 \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteWithTe}
-    \includegraphics[height=5.75cm]{figures/2-CarteDensiteWhTe.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CarteDensiteWhTe.eps}}
     \subfigure[]{\label{2-CartePotentielWithTe}
-    \includegraphics[height=5.75cm]{figures/2-CartePotentielWhTe.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CartePotentielWhTe.eps}}
     \subfigure[]{\label{2-CarteTeWhTe}
-    \includegraphics[height=5.75cm]{figures/2-CarteTeWhTe.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CarteTeWhTe.eps}}
     \caption{Cartes de densité~\subref{2-CarteDensiteWithTe}, de
     potentiel~\subref{2-CartePotentielWithTe} et de température 
     électronique~\subref{2-CarteTeWhTe}.}
@@ -1145,9 +1146,9 @@ en le rappelant de façon exponentielle à $\Lambda\text{T}_e$.
 \begin{figure}[!htbp]
 \centering
 	\subfigure[]{\label{2-CartePotentielSurTeWhTedNdx}
-    \includegraphics[height=6cm]{figures/2-CartePotentielSurTeWhTedNdx.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/2-CartePotentielSurTeWhTedNdx.eps}}
 	\subfigure[]{\label{2-ProfileFluxWhTe}
-    \includegraphics[height=5.5cm]{figures/2-profileFluxRadialWhTedNdx.eps}}    
+    \includegraphics[height=0.38\textwidth]{figures/2-profileFluxRadialWhTedNdx.eps}}
     \caption{\subref{2-CartePotentielSurTeWhTedNdx}~Carte du courant parallèle.
     \subref{2-ProfileFluxWhTe}~Comparaison des profils du flux radial, moyenné en temps et en $y$, entre les cas
     isotherme et anisotherme.}
@@ -1225,11 +1226,11 @@ précédemment ; il est dû là aussi aux conditions aux limites transverses.
 	\begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteMagBarrierWhTe}
-    \includegraphics[height=5.75cm]{figures/2-CarteDensiteMagBarrierWhTe.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CarteDensiteMagBarrierWhTe.eps}}
     \subfigure[]{\label{2-CartePotentielMagBarrierWhTe}
-    \includegraphics[height=5.75cm]{figures/2-CartePotentielMagBarrierWhTe.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CartePotentielMagBarrierWhTe.eps}}
     \subfigure[]{\label{2-CarteTeMagBarrierWhTe}
-    \includegraphics[height=5.75cm]{figures/2-CarteTeMagBarrierWhTe.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CarteTeMagBarrierWhTe.eps}}
     \caption{Cartes de densité~\subref{2-CarteDensiteMagBarrierWhTe}, de
     potentiel~\subref{2-CartePotentielMagBarrierWhTe} et de température
    \subref{2-CarteTeMagBarrierWhTe}.}
@@ -1284,11 +1285,11 @@ champ, court-circuitant le transport perpendiculaire.
  \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{2-CarteDensiteMagColumn}
-    \includegraphics[height=5.75cm]{figures/2-CarteDensiteMagColumn.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CarteDensiteMagColumn.eps}}
     \subfigure[]{\label{2-CartePotentielMagColumn}
-    \includegraphics[height=5.75cm]{figures/2-CartePotentielMagColumn.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CartePotentielMagColumn.eps}}
     \subfigure[]{\label{2-CarteTeMagColumn}
-    \includegraphics[height=5.75cm]{figures/2-CarteTeMagColumn.eps}}
+    \includegraphics[height=0.39\textwidth]{figures/2-CarteTeMagColumn.eps}}
     \caption{Cartes de densité \subref{2-CarteDensiteMagColumn}, de potentiel
     \subref{2-CartePotentielMagColumn} et de température
     \subref{2-CarteTeMagColumn}.}

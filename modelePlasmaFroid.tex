@@ -497,11 +497,11 @@ figure~\ref{3-tauxcollision}.
 \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{3-coeffColl1}
-    \includegraphics[width=0.3\textwidth]{figures/3-coeffColl1.eps}}
+    \includegraphics[width=0.32\textwidth]{figures/3-coeffColl1.eps}}
     \subfigure[]{\label{3-coeffColl2}
-    \includegraphics[width=0.3\textwidth]{figures/3-coeffColl2.eps}}
+    \includegraphics[width=0.32\textwidth]{figures/3-coeffColl2.eps}}
     \subfigure[]{\label{3-coeffColl3}
-    \includegraphics[width=0.3\textwidth]{figures/3-coeffColl3.eps}}
+    \includegraphics[width=0.32\textwidth]{figures/3-coeffColl3.eps}}
     \caption{Valeur en fonction de la température électronique des taux
     ~\subref{3-coeffColl1} de collision électrons-neutres,
     ~\subref{3-coeffColl2} d'ionisation et~\subref{3-coeffColl3} de perte
@@ -533,9 +533,12 @@ Originalement mise en \oe uvre dans~\parencite{HagelaarImpl}, nous utilisons
 cette technique pour quelques termes du modèle.} pour faire une prédiction implicite :
 
 \begin{equation}
-en_e\Pi_e(T_e^{k+1})=en_e\left(\Pi_e(T_e^{k})+\frac{\partial \Pi_e}{\partial
-T_e}\left(T_e^{k+1}-T_e^{k}\right)\right)= en_en_g\left(k_e^\varepsilon+
-\frac{\partial k_e^\varepsilon}{\partial T_e}(T_e^{k+1}-T_e^{k})\right)
+\begin{split}
+en_e\Pi_e(T_e^{k+1})&=en_e\left(\Pi_e(T_e^{k})+\frac{\partial \Pi_e}{\partial
+T_e}\left(T_e^{k+1}-T_e^{k}\right)\right)\\&= en_en_g\left(k_e^\varepsilon+
+\frac{\partial k_e^\varepsilon}{\partial
+T_e}\left(T_e^{k+1}-T_e^{k}\right)\right)
+\end{split}
 \end{equation}
 
 
@@ -814,7 +817,7 @@ avec
 \end{equation*}
 
 L'équation d'énergie \eqref{3-eqTemperature} est utilisée pour résoudre le
-changement de température $\mathcal T$. 
+changement de température~$\mathcal T$ : 
 
 \begin{equation}
 \label{3-eqTemperature2}

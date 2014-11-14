@@ -1,6 +1,8 @@
+\setcounter{minitocdepth}{2}
 \Chapter{Étude de plasmas magnétisés}
 \chaptermark{Étude de plasmas magnétisés}
 \label{EtudePlasmaMag}
+\setcounter{minitocdepth}{3}
 \begin{refsection}
 Ce cinquième chapitre porte sur l'étude de trois cas de test simplifiés,
 inspirés d'expérimentations réelles. Chacun des cas possède sa problématique
@@ -31,23 +33,6 @@ comportement complexe, et mener à différentes asymétries dans le plasma,
 notamment sur le flux électronique, comme montré sur la
 figure~\ref{IPPIonSourcecourant2}.
 
-\vspace{5 mm}
-\begin{minipage}{0.9\textwidth}
-\begin{minipage}{0.5\textwidth}
-\includegraphics[width=1\textwidth]{figures/sourceIPP.png}
-\captionsetup{justification=raggedright, singlelinecheck=false}
-\captionof{figure}{Schéma de principe de l'un des "driver" de la source d'ions
-négatifs de l'IPP Garching.}\label{IPPIonSource2}
-\end{minipage}\qquad\qquad
-\begin{minipage}{0.40\textwidth}
-\includegraphics[width=0.9\textwidth]{figures/sourceIPPcourant.png}
-\captionsetup{justification=raggedright, singlelinecheck=false}
-\captionof{figure}{Dérive du flux électronique
-le long de la barrière de champ magnétique.}\label{IPPIonSourcecourant2}
-\end{minipage}
-\end{minipage}
-\vspace{5 mm}
-
 Pour valider le modèle de MAGNIS, le cas de test de la barrière magnétique est
 incontournable. Entre la source d'ions négatifs d'ITER, qui a déjà fait l'objet
 de quantités de publications, la manipulation expérimentale de METRIS, dont la
@@ -67,6 +52,22 @@ nous choisissons de présenter ce dernier pour plusieurs raisons :
   des résultats avec des modèles PIC dans ce contexte
 \end{itemize}
 
+\vspace{5 mm}
+\begin{minipage}{0.9\textwidth}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=1\textwidth]{figures/sourceIPP.png}
+\captionsetup{justification=raggedright, singlelinecheck=false}
+\captionof{figure}{Schéma de principe de l'un des "driver" de la source d'ions
+négatifs de l'IPP Garching.}\label{IPPIonSource2}
+\end{minipage}\qquad\qquad
+\begin{minipage}{0.40\textwidth}
+\includegraphics[width=0.9\textwidth]{figures/sourceIPPcourant.png}
+\captionsetup{justification=raggedright, singlelinecheck=false}
+\captionof{figure}{Dérive du flux électronique
+le long de la barrière de champ magnétique.}\label{IPPIonSourcecourant2}
+\end{minipage}
+\end{minipage}
+\vspace{5 mm}
 
 \subsection{Le propulseur PEGASES}
 PEGASES, acronyme de \emph{Plasma Propulsion with Electronegative GASES}, est
@@ -162,11 +163,11 @@ et sans bias appliqué sont illustrées sur les figures de \ref{4-CartesWithTe} 
 \begin{figure}[!htbp]
     \centering
     \subfigure[]{\label{4-PegasesCarteDensiteBase}
-    \includegraphics[height=5.75cm]{figures/4-PegasesCarteDensiteBase.eps}}
+    \includegraphics[height=0.38\textwidth]{figures/4-PegasesCarteDensiteBase.eps}}
     \subfigure[]{\label{4-PegasesCartePotentielBase}
-    \includegraphics[height=5.75cm]{figures/4-PegasesCartePotentielBase.eps}}
+    \includegraphics[height=0.38\textwidth]{figures/4-PegasesCartePotentielBase.eps}}
     \subfigure[]{\label{4-PegasesCarteTemperatureBase}
-    \includegraphics[height=5.75cm]{figures/4-PegasesCarteTemperatureBase.eps}}
+    \includegraphics[height=0.38\textwidth]{figures/4-PegasesCarteTemperatureBase.eps}}
     \caption{Cartes de densité \subref{4-PegasesCarteDensiteBase}, de potentiel
     \subref{4-PegasesCartePotentielBase} et de température
     \subref{4-PegasesCarteTemperatureBase} dans le cas de parois
@@ -222,9 +223,9 @@ permettent de se faire une idée de la dynamique du système.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-PegasesCarteFluxIBase}
-    \includegraphics[height=6cm]{figures/4-PegasesCarteFluxIBase.eps}}
+    \includegraphics[height=0.42\textwidth]{figures/4-PegasesCarteFluxIBase.eps}}
     \subfigure[]{\label{4-PegasesCarteFluxEBase}
-    \includegraphics[height=6cm]{figures/4-PegasesCarteFluxEBase.eps}}
+    \includegraphics[height=0.42\textwidth]{figures/4-PegasesCarteFluxEBase.eps}}
     \caption{Densité de courant ionique \subref{4-PegasesCarteFluxIBase}
     et électronique \subref{4-PegasesCarteFluxEBase}. Le champ magnétique,
     perpendiculaire au domaine de simulation et dirigé vers le lecteur, est à
@@ -294,7 +295,7 @@ présence de l'asymétrie générale du plasma, qui n'apparaît pas sur ces coup
 	
 \subsubsection{Scan en pression}
 Nous regardons tout d'abord l'effet de la pression du gaz, choisie
-successivement à 1 mTorr, 10 mTorr et 100 mTorr, sur le transport du plasma.
+successivement à 1~mTorr, 10~mTorr et 100~mTorr, sur le transport du plasma.
 Les paramètres des simulations sont rappelés dans le
 	tableau~\ref{4-PegasesScanPreParam}. 
 
@@ -555,7 +556,7 @@ différents de 0 V, 10 V et 20 V appliqués à la grille d'extraction de la sour
 
  \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=0.85\textwidth]{figures/4-pegasesfluxElectronique.pdf}
+	\includegraphics[height=0.9\textheight]{figures/4-pegasesfluxElectronique.pdf}
 	{\caption{Flux électronique à travers le filtre magnétique sur une plage
 	allant de 0 G à 500 G pour trois voltages appliqués sur la grille
 	d'extraction (sur le bord droit du domaine) différents 0~V, 10~V et 20~V.}
@@ -620,9 +621,9 @@ m.s$\puissance{-1}$.
 \begin{figure}[!htbp] 
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteWaves}
-    \includegraphics[height=5cm]{figures/4-PegasesCarteDensiteWave.eps}}
+    \includegraphics[height=0.42\textwidth]{figures/4-PegasesCarteDensiteWave.eps}}
     \subfigure[]{\label{4-PegasesCarteViSurTeVarBias}
-    \includegraphics[height=5cm]{figures/4-PegasesCarteViSurTeVarBias.eps}}
+    \includegraphics[height=0.42\textwidth]{figures/4-PegasesCarteViSurTeVarBias.eps}}
     \caption{Cartes de la densité plasma~\subref{4-PegasesCarteDensiteWaves} et
     de vitesse ionique rapportée à la
     vitesse de Bohm locale
@@ -686,11 +687,11 @@ filtre, de densité équivalente à celle du plasma de la région d'ionisation.
 	\begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias1}
-    \includegraphics[height=6cm]{figures/4-PegasesCarteDensiteVarBias1.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-PegasesCarteDensiteVarBias1.eps}}
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias2}
-    \includegraphics[height=6cm]{figures/4-PegasesCarteDensiteVarBias2.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-PegasesCarteDensiteVarBias2.eps}}
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias3}
-    \includegraphics[height=6cm]{figures/4-PegasesCarteDensiteVarBias3.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-PegasesCarteDensiteVarBias3.eps}}
     \caption{Cartes de densité pour
     trois bias appliqués : 0V\subref{4-PegasesCarteDensiteVarBias1},
     10V\subref{4-PegasesCarteDensiteVarBias2} et
@@ -742,9 +743,9 @@ ionique.
 	\begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-PegasesCarteDensiteVarBias5}
-    \includegraphics[height=6cm]{figures/4-PegasesCarteDensiteVarBias5.eps}}
+    \includegraphics[height=0.42\textwidth]{figures/4-PegasesCarteDensiteVarBias5.eps}}
     \subfigure[]{\label{4-PegasesCarteDensiteVarBiasPeriod}
-    \includegraphics[height=6cm]{figures/4-PegasesCarteDensiteVarBiasPeriod.eps}}
+    \includegraphics[height=0.42\textwidth]{figures/4-PegasesCarteDensiteVarBiasPeriod.eps}}
     \caption{\subref{4-PegasesCarteDensiteVarBias5}~Carte de densité pour une
     pression de gaz de 10 mTorr et un bias de 30 V appliqué à la grille
     d'extraction. Des structures
@@ -886,9 +887,9 @@ puissance chacun, en injectant 40A de D$\puissance{0}$ à
     \label{4-cybelePhoto}} 
 \end{figure}	
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
   \centering
-    \includegraphics[height=8cm]{figures/4-cybeleSchema.png}
+    \includegraphics[width=0.8\textwidth]{figures/4-cybeleSchema.png}
     \caption{Schémas de principe en coupe de Cybele~\parencite{SimoninHDR}. À
     gauche dans la vue de dessus, le champ magnétique est perpendiculaire au plan et confine le
 plasma qui est créé au centre de la source. La vue de face montre quant à elle
@@ -953,11 +954,11 @@ périodique et intermittent dans le plasma.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-CybeleExp1}
-    \includegraphics[height=6cm]{figures/4-CybeleExp.png}}
+    \includegraphics[height=0.35\textwidth]{figures/4-CybeleExp.png}}
     \subfigure[]{\label{4-CybeleExp2}
-    \includegraphics[height=6cm]{figures/4-CybeleExp2.png}}
+    \includegraphics[height=0.35\textwidth]{figures/4-CybeleExp2.png}}
     \subfigure[]{\label{4-CybeleExp3}
-    \includegraphics[height=6cm]{figures/4-CybeleExp3.png}}
+    \includegraphics[height=0.35\textwidth]{figures/4-CybeleExp3.png}}
     \caption{Profils expérimentaux de densité~\subref{4-CybeleExp1}, de
     potentiel~\subref{4-CybeleExp2} et de
     température~\subref{4-CybeleExp3} obtenus sur Cybele par
@@ -1037,11 +1038,11 @@ Le potentiel décroît monotonement de 12 V à 0 V dans la direction radiale.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-CybeleCarteDensiteMoy}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCarteDensiteMoy.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCarteDensiteMoy.eps}}
     \subfigure[]{\label{4-CybeleCartePotentielMoy}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCartePotentielMoy.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCartePotentielMoy.eps}}
     \subfigure[]{\label{4-CybeleCarteTemperatureMoy}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCarteTemperatureMoy.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCarteTemperatureMoy.eps}}
     \caption{Cartes moyennées en temps de
     densité~\subref{4-CybeleCarteDensiteMoy}, de potentiel~\subref{4-CybeleCartePotentielMoy} et de
     température~\subref{4-CybeleCarteTemperatureMoy}.}
@@ -1051,11 +1052,11 @@ Le potentiel décroît monotonement de 12 V à 0 V dans la direction radiale.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-CybeleCarteDensiteBase}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCarteDensiteBase.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCarteDensiteBase.eps}}
     \subfigure[]{\label{4-CybeleCartePotentielBase}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCartePotentielBase.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCartePotentielBase.eps}}
     \subfigure[]{\label{4-CybeleCarteTemperatureBase}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCarteTemperatureBase.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCarteTemperatureBase.eps}}
     \caption{Cartes instantanées de densité~\subref{4-CybeleCarteDensiteBase},
     de potentiel~\subref{4-CybeleCartePotentielBase} et de
     température~\subref{4-CybeleCarteTemperatureBase}.}
@@ -1117,9 +1118,9 @@ on peut supposer un changement radical de la nature du transport du courant.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-CybeleProfilsRadial}
-    \includegraphics[height=5.2cm]{figures/4-CybeleProfileTempRadiale.eps}}
+    \includegraphics[height=0.35\textwidth]{figures/4-CybeleProfileTempRadiale.eps}}
     \subfigure[]{\label{4-CybeleProfilsAzim}
-    \includegraphics[height=5.2cm]{figures/4-CybeleProfileTempPol.eps}}
+    \includegraphics[height=0.35\textwidth]{figures/4-CybeleProfileTempPol.eps}}
     \caption{Profils radiaux~\subref{4-CybeleProfilsRadial} et
     azimutaux~\subref{4-CybeleProfilsAzim} moyennés en temps de la densité, du
     potentiel et de la température. Le profil radial est pris du centre de la source au bord droit
@@ -1159,9 +1160,9 @@ frontière du plasma confiné.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-CybeleCarteFluxIBase}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCarteFluxIBase.eps}}
+    \includegraphics[height=0.37\textwidth]{figures/4-CybeleCarteFluxIBase.eps}}
     \subfigure[]{\label{4-CybeleCarteFluxEBase}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCarteFluxEBase.eps}}
+    \includegraphics[height=0.37\textwidth]{figures/4-CybeleCarteFluxEBase.eps}}
     \caption{Densités de courant ionique
     \subref{4-CybeleCarteFluxIBase} et électronique~\subref{4-CybeleCarteFluxEBase}.}
     \label{4-CybeleCarteFlux}
@@ -1219,7 +1220,7 @@ Parois & Conductrices &&$L_x$, $L_y$, $L_z$  & 20cm, 20cm,
 $\mathcal{P}_\text{ext}$&100W&&$l_\mathcal{S}$, $x_\mathcal{S}$&1cm, 10cm\\
 $\mathbf B$ &\textbf{1--170 G, uniforme}&&$\Delta t$, $\Delta x$&10$^{-8}$s,
 0.15cm\\
-gaz (H_2) & 1.6 mTorr&&&\\
+gaz (H$_2$) & 1.6 mTorr&&&\\
 \bottomrule
 \end{tabular}
 \captionof{table}{Paramètres de la simulation.}\label{4-CybeleBParam}
@@ -1234,11 +1235,11 @@ repérer quatre modes de fonctionnement.
 \begin{figure}[!htb]
   \centering
     \subfigure[]{\label{4-CybeleVarMag1}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag1.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag1.eps}}
     \subfigure[]{\label{4-CybeleVarMag2}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag2.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag2.eps}}
     \subfigure[]{\label{4-CybeleVarMag3}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag3.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag3.eps}}
     \caption{Cartes de densité à 1 G~\subref{4-CybeleVarMag1}, 4
     G~\subref{4-CybeleVarMag2} et 15 G~\subref{4-CybeleVarMag3}.}
     \label{4-CybeleVarMag-1}
@@ -1285,11 +1286,11 @@ est d'environ 5~kHz.
 \begin{figure}[htb]
   \centering
     \subfigure[]{\label{4-CybeleVarMag4}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag4.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag4.eps}}
     \subfigure[]{\label{4-CybeleVarMag5}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag5.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag5.eps}}
     \subfigure[]{\label{4-CybeleVarMag6}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag6.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag6.eps}}
     \caption{Cartes de densité à 20 G à trois instants
     différents ($t\,$=~0$\micro$s,
     $t\,$=~80$\micro$s et $t\,$=~120$\micro$s). Un cycle dure approximativement
@@ -1309,7 +1310,7 @@ centrale. On commence aussi à voir apparaître un bras en périphérie du plasm
 qui tourne à une fréquence de 50~kHz.
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.33\textwidth]{figures/4-CybeleVarMag8.eps}
+\includegraphics[width=0.38\textwidth]{figures/4-CybeleVarMag8.eps}
 {\caption{Carte de densité à 35 G.}
 \label{4-CybeleVarMag8}}
 \end{figure}
@@ -1331,11 +1332,11 @@ m = 2.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-CybeleVarMag9}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag9.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag9.eps}}
     \subfigure[]{\label{4-CybeleVarMag10}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag10.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag10.eps}}
     \subfigure[]{\label{4-CybeleVarMag11}
-    \includegraphics[height=5.5cm]{figures/4-CybeleVarMag11.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleVarMag11.eps}}
     \caption{Cartes de densité à 80 G~\subref{4-CybeleVarMag9}, 130 G
     \subref{4-CybeleVarMag10} et 170 G \subref{4-CybeleVarMag11}.}
     \label{4-CybeleVarMag-3}
@@ -1402,23 +1403,6 @@ l'intensité du champ, avec parfois la superposition de plusieurs modes de
 fonctionnement.
 
 \subsection{Rôle de la direction parallèle}
-\begin{minipage}{\textwidth}
-\footnotesize\centering
-\ra{1.3}
-\begin{tabular}{lcclc}\toprule
-\multicolumn{5}{c}{\bf Paramètres}\\
-\midrule 
-Parois & Conductrices / Isolantes &&$L_x$, $L_y$  & 20cm, 20cm\\
-\textbf{L}$_z$& \textbf{1--20 m}&&$l_\mathcal{S}$, $x_\mathcal{S}$&1cm, 10cm\\
-$\mathcal{P}_\text{ext}$&100W&&$\Delta t$, $\Delta x$&10$^{-8}$s,
-0.15cm\\
-$B$ & 100 G, uniforme&&&\\
-gaz (H_2) & 1.6 mTorr&&&\\
-\bottomrule
-\end{tabular}
-\captionof{table}{Paramètres de la simulation.}\label{4-CybeleZParam}
-\end{minipage}	
-
 La direction parallèle joue aussi un rôle très influent dans la
 dynamique du plasma. En laissant plus ou moins la possibilité aux électrons (et
 donc au courant) de sortir du système par les parois, les contraintes imposées
@@ -1433,12 +1417,29 @@ n_iW_{i_\para}=n_eW_{e_\para}\Leftrightarrow\nabla_\para\cdot\mathbf j_\para = 0
 \Rightarrow \nabla_\perp\cdot\mathbf j_\perp = 0
 \end{equation}
 
+\begin{minipage}{\textwidth}
+\footnotesize\centering
+\ra{1.3}
+\begin{tabular}{lcclc}\toprule
+\multicolumn{5}{c}{\bf Paramètres}\\
+\midrule 
+Parois & Conductrices / Isolantes &&$L_x$, $L_y$  & 20cm, 20cm\\
+\textbf{L}$_z$& \textbf{1--20 m}&&$l_\mathcal{S}$, $x_\mathcal{S}$&1cm, 10cm\\
+$\mathcal{P}_\text{ext}$&100W&&$\Delta t$, $\Delta x$&10$^{-8}$s,
+0.15cm\\
+$B$ & 100 G, uniforme&&&\\
+gaz (H$_2$) & 1.6 mTorr&&&\\
+\bottomrule
+\end{tabular}
+\captionof{table}{Paramètres de la simulation.}\label{4-CybeleZParam}
+\end{minipage}	
+
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-CybeleProfileDenRadialeZ}
-    \includegraphics[height=5.25cm]{figures/4-CybeleProfileDenRadialeZ.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleProfileDenRadialeZ.eps}}
     \subfigure[]{\label{4-CybeleProfileTempRadialeZ}
-    \includegraphics[height=5cm]{figures/4-CybeleProfileTempRadialeZ.eps}}
+    \includegraphics[height=0.38\textwidth]{figures/4-CybeleProfileTempRadialeZ.eps}}
     \caption{Comparaison des profils de
     densité~\subref{4-CybeleProfileDenRadialeZ} et de
     température~\subref{4-CybeleProfileTempRadialeZ} pour différentes
@@ -1464,11 +1465,11 @@ potentiel est un peu plus bas.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-CybeleCarteDensiteIsolant}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCarteDensiteIsolant.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCarteDensiteIsolant.eps}}
     \subfigure[]{\label{4-CybeleCartePotentielIsolant}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCartePotentielIsolant.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCartePotentielIsolant.eps}}
     \subfigure[]{\label{4-CybeleCarteTemperatureIsolant}
-    \includegraphics[height=5.5cm]{figures/4-CybeleCarteTemperatureIsolant.eps}}
+    \includegraphics[height=0.4\textwidth]{figures/4-CybeleCarteTemperatureIsolant.eps}}
     \caption{Cartes de densité \subref{4-CybeleCarteDensiteIsolant}, de
     potentiel \subref{4-CybeleCartePotentielIsolant} et de
     température \subref{4-CybeleCarteTemperatureIsolant} dans le cas de parois
@@ -1541,6 +1542,18 @@ $\text{gaz (H}_2\text{)}$ & -- &&$\Delta t$, $\Delta x$&10$^{-8}$s, 10$^{-4}$m\\
 \caption{Paramètres de la simulation.}\label{4-CybeleParam3}
 \end{table*}
 
+\begin{figure}[!htbp]
+  \centering
+    \subfigure[]{\label{4-Tokam1}
+    \includegraphics[height=0.48\textwidth]{figures/4-Tokam1.eps}}
+    \subfigure[]{\label{4-Tokam2}
+    \includegraphics[height=0.48\textwidth]{figures/4-Tokam2.eps}}
+    \caption{Carte de densité telle que calculée par MAGNIS~\subref{4-Tokam1}
+et par TOKAM~\subref{4-Tokam2}. La densité calculée par TOKAM est ici
+redimensionnée avec $n_0~\simeq$~10$^{19}$~m$^{-3}$.}
+    \label{4-TokamDensite}
+\end{figure}
+
 Nous reprenons les paramètres et la géométrie de simulation utilisés dans le
 chapitre~\ref{chapitre3}. Le champ magnétique, à peu près égal à 1~T, est
 choisi linéairement décroissant jusqu'à 0.98~T sur le bord droit du
@@ -1553,17 +1566,6 @@ figure~\ref{4-tokamSimDomain}, est de 2~cm~x~2~cm soit à peu près
 conductivité parallèle $\sigma$~=~10$^{-5}$. Ces paramètres de simulation sont
 rappelés dans le tableau~\ref{4-CybeleParam3}.
 
-\begin{figure}[!htbp]
-  \centering
-    \subfigure[]{\label{4-Tokam1}
-    \includegraphics[height=8cm]{figures/4-Tokam1.eps}}
-    \subfigure[]{\label{4-Tokam2}
-    \includegraphics[height=8cm]{figures/4-Tokam2.eps}}
-    \caption{Carte de densité telle que calculée par MAGNIS~\subref{4-Tokam1}
-et par TOKAM~\subref{4-Tokam2}. La densité calculée par TOKAM est ici
-redimensionnée avec $n_0~\simeq$~10$^{19}$~m$^{-3}$.}
-    \label{4-TokamDensite}
-\end{figure}
 
 
 La figure~\ref{4-TokamDensite} présente les cartes de densité
@@ -1607,9 +1609,9 @@ champ magnétique.
 \begin{figure}[!htbp]
   \centering
     \subfigure[]{\label{4-TokamProfileDensite}
-    \includegraphics[height=5.5cm]{figures/4-TokamProfileDensite.eps}}
+    \includegraphics[height=0.38\textwidth]{figures/4-TokamProfileDensite.eps}}
     \subfigure[]{\label{4-TokamProfileFluxRadial}
-    \includegraphics[height=5.5cm]{figures/4-TokamProfileFluxRadial.eps}}
+    \includegraphics[height=0.38\textwidth]{figures/4-TokamProfileFluxRadial.eps}}
     \caption{Comparaison des profils de
     densité~\subref{4-TokamProfileDensite} et de flux
     radial~\subref{4-TokamProfileFluxRadial} entre TOKAM et MAGNIS.}
@@ -1628,9 +1630,9 @@ flux positifs, et avec des flux négatifs importants mais peu probables.
 \begin{figure}[!htb]
   \centering
     \subfigure[]{\label{4-MagnisPDFDen}
-    \includegraphics[height=5.5cm]{figures/4-MagnisPDFDen.eps}}
+    \includegraphics[height=0.35\textwidth]{figures/4-MagnisPDFDen.eps}}
     \subfigure[]{\label{4-TokamPDFDen}
-    \includegraphics[height=5.5cm]{figures/4-TokamPDFDen.eps}}
+    \includegraphics[height=0.35\textwidth]{figures/4-TokamPDFDen.eps}}
     \caption{PDF des fluctuations de
     densité issues de MAGNIS~\subref{4-MagnisPDFDen} et de 
     TOKAM~\subref{4-TokamPDFDen}. L'écart type est représenté en couleur plus
@@ -1641,9 +1643,9 @@ flux positifs, et avec des flux négatifs importants mais peu probables.
 \begin{figure}[!htb]
   \centering
     \subfigure[]{\label{4-MagnisPDFFlux}
-    \includegraphics[height=5.5cm]{figures/4-MagnisPDFFlux.eps}}
+    \includegraphics[height=0.35\textwidth]{figures/4-MagnisPDFFlux.eps}}
     \subfigure[]{\label{4-TokamPDFFlux}
-    \includegraphics[height=5.5cm]{figures/4-TokamPDFFlux.eps}}
+    \includegraphics[height=0.35\textwidth]{figures/4-TokamPDFFlux.eps}}
     \caption{PDF des fluctuations de
     flux radial issues de MAGNIS~\subref{4-MagnisPDFFlux} et de 
     TOKAM~\subref{4-TokamPDFFlux}. L'écart type est représenté en couleur plus
@@ -1656,7 +1658,7 @@ et de flux radial au niveau de la source de particules, recentrées
 sur la moyenne et normalisées à l'écart type pour pousser la comparaison. On
 voit un accord encore une fois très correct.
 
- \begin{figure}[!htbp]
+ \begin{figure}[!htb]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/4-TokamPDFDensite.eps}
 {\caption{Comparaisons des densités de probabilité pour la densité et
